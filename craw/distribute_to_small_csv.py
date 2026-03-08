@@ -50,7 +50,7 @@ def process_csv_split(input_dir='data_amazon_origin', output_dir='data_amazon_sp
     logging.info(f"Bắt đầu chia nhỏ dữ liệu thành các file {rows_per_file} dòng...")
 
     file_count = 0
-    for i in range(0, len(full_df), rows_per_file):
+    for i in range(0, 1500, rows_per_file):
         chunk = full_df.iloc[i: i + rows_per_file]
 
         # Đặt tên file theo định dạng: part_1.csv, part_2.csv...
