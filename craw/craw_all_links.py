@@ -13,12 +13,11 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 def init(output_dir='data_amazon'):
-    # Thiết lập logging
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s',
         handlers=[
-            logging.FileHandler("amazon_ids_scraper.log", encoding='utf-8'),
+            logging.FileHandler("amazon_deep_scraper.log", encoding='utf-8'),
             logging.StreamHandler()
         ]
     )
@@ -27,157 +26,161 @@ def init(output_dir='data_amazon'):
         # for subdir in ["raw", "processed"]:
         #     os.makedirs(os.path.join(output_dir, subdir), exist_ok=True)
     except Exception as e:
-        logging.error(f"Lỗi khi tạo thư mục: {str(e)}")
+        logging.error(f"Lỗi khởi tạo: {str(e)}")
         sys.exit(1)
 
 
 def get_chrome_driver():
-    """Khởi tạo Chrome driver với các biện pháp tránh bị phát hiện"""
     options = Options()
     options.add_argument("--headless")
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=1920,1080")
     options.add_argument("--disable-blink-features=AutomationControlled")
-    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36")
-
+    options.add_argument(
+        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36")
     driver = webdriver.Chrome(options=options)
-    driver.set_page_load_timeout(60)
     return driver
 
 
 def get_high_res_img(url):
-    """Xử lý Regex để lấy link ảnh chất lượng cao nhất từ Amazon"""
     if not url: return url
     return re.sub(r'\._AC_.*_\.', '.', url)
 
 
 def extract_product_data(driver):
-    """Trích xuất ASIN, Link sản phẩm và Link Image từ các thẻ listitem"""
     products = []
+    logging.info("    [Bắt đầu trích xuất] Đang phân tích nội dung trang...")
+
     try:
-        logging.info("    [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...")
-        wait = WebDriverWait(driver, 20)
+        wait = WebDriverWait(driver, 15)
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[role='listitem']")))
 
-        try:
-            wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[role='listitem']")))
-            logging.info("    [Thành công] Đã tìm thấy danh sách sản phẩm.")
-        except TimeoutException:
-            logging.error(
-                "    [Lỗi Timeout] Quá thời gian chờ nhưng không tìm thấy 'listitem'. Có thể trang load lỗi hoặc bị Captcha.")
-            return []
+        # Cuộn trang để load ảnh
+        logging.info("    [Cuộn trang] Đang kích hoạt Lazy load...")
+        for i in range(1, 4):
+            driver.execute_script(f"window.scrollTo(0, document.body.scrollHeight * {i / 3});")
+            time.sleep(1.5)
 
-        # Cuộn trang để kích hoạt lazy load ảnh
-        logging.info("    [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...")
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight/2);")
-        time.sleep(2)
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(2)
-
-        # Lấy tất cả listitem có chứa ASIN
         items = driver.find_elements(By.CSS_SELECTOR, "div[role='listitem'][data-asin]")
-        logging.info(f"    [Xử lý] Tìm thấy {len(items)} thẻ chứa ASIN tiềm năng.")
+        logging.info(f"    [Xử lý] Tìm thấy {len(items)} thẻ sản phẩm.")
 
         for item in items:
             asin = item.get_attribute("data-asin")
-            if not asin:
-                continue
+            if not asin: continue
 
             try:
-                # 1. Tìm Link sản phẩm
+                # Tìm link
                 link_tag = item.find_element(By.CSS_SELECTOR, "a.a-link-normal[href*='/dp/']")
                 href = link_tag.get_attribute("href")
                 clean_href = href.split("/ref=")[0] if "/ref=" in href else href
-                full_url = "https://www.amazon.com" + clean_href if clean_href.startswith('/') else clean_href
 
-                # 2. Tìm Link Ảnh
+                # Tìm ảnh
                 img_tag = item.find_element(By.CSS_SELECTOR, "img.s-image")
-                img_url = img_tag.get_attribute("src")
-                img_url_hd = get_high_res_img(img_url)
+                img_url = get_high_res_img(img_tag.get_attribute("src"))
 
-                products.append({
-                    'asin': asin,
-                    'url': full_url,
-                    'image_url': img_url_hd
-                })
+                products.append({'asin': asin, 'url': clean_href, 'image_url': img_url})
             except NoSuchElementException:
-                logging.debug(
-                    f"        [Bỏ qua] Sản phẩm ASIN {asin} không có cấu trúc link/ảnh chuẩn (có thể là quảng cáo).")
+                logging.debug(f"        [Bỏ qua] ASIN {asin} là nội dung quảng cáo không chuẩn.")
                 continue
 
-        # Loại bỏ trùng lặp trong nội bộ trang (bằng ASIN)
-        unique_products = list({v['asin']: v for v in products}.values())
-        logging.info(f"    [Hoàn tất] Trích xuất thành công {len(unique_products)} sản phẩm (Đã loại trùng).")
-        return unique_products
+        logging.info(f"    [Thành công] Đã lấy được {len(products)} item từ trang này.")
+        return products
 
-    except Exception as e:
-        logging.error(f"    [Lỗi hệ thống] Lỗi không xác định trong quá trình trích xuất: {str(e)}")
+    except TimeoutException:
+        logging.error("    [Lỗi Timeout] Không tìm thấy danh sách sản phẩm sau 15s.")
         return []
 
 
-def scrape_pages(category_url, start_page, end_page):
+def scrape_category(base_url, max_pages=20):
     init()
-    all_data = []
     driver = get_chrome_driver()
-    logging.info(f"BẮT ĐẦU CẠO DỮ LIỆU TỪ TRANG {start_page} ĐẾN {end_page}")
+    all_results = []
 
     try:
-        for page in range(start_page, end_page + 1):
-            url = f"{category_url}&page={page}"
-            logging.info(f"--- Đang truy cập trang {page} ---")
-            logging.info(f"URL: {url}")
+        current_url = base_url
+        for p in range(1, max_pages + 1):
+            logging.info(f"TRANG {p}: Đang tải dữ liệu...")
+            logging.info(f"URL: {current_url}")
 
+            driver.get(current_url)
+
+            if "captcha" in driver.page_source.lower() or "automated access" in driver.page_source:
+                logging.error("    [CHẶN BOT] Amazon đã phát hiện và chặn Captcha.")
+                break
+
+            data = extract_product_data(driver)
+            if not data:
+                logging.warning("    [Thông báo] Trang trống hoặc bị lỗi load.")
+                break
+
+            all_results.extend(data)
+
+            # Tìm nút Next
             try:
-                driver.get(url)
-            except Exception as e:
-                logging.error(f"    [Lỗi Kết Nối] Không thể tải trang {page}: {str(e)}")
-                continue
-
-            # Kiểm tra Captcha
-            if "To discuss automated access" in driver.page_source or "captcha" in driver.current_url.lower():
-                logging.error("!!! [CẢNH BÁO] TRÌNH DUYỆT BỊ CHẶN BỞI CAPTCHA !!! Dừng quá trình cạo.")
+                next_btn = driver.find_element(By.CSS_SELECTOR, "a.s-pagination-next")
+                current_url = next_btn.get_attribute("href")
+                logging.info(f"    [Phân trang] Đã tìm thấy nút Next cho trang {p + 1}.")
+                time.sleep(5)
+            except NoSuchElementException:
+                logging.info("    [Kết thúc] Đã tới trang cuối cùng hiển thị.")
                 break
-
-            page_products = extract_product_data(driver)
-
-            if not page_products:
-                logging.warning(f"Trang {page} trả về danh sách rỗng. Có thể đã hết trang hoặc bị chặn ẩn.")
-                break
-
-            all_data.extend(page_products)
-            logging.info(f"Đã thu thập tổng cộng {len(all_data)} sản phẩm sau trang {page}.")
-
-            # Delay ngẫu nhiên một chút để giả lập người dùng thật
-            time.sleep(5)
-
     finally:
-        logging.info("Đang đóng trình duyệt và lưu dữ liệu...")
         driver.quit()
-        save_to_csv(all_data)
+        save_to_csv(all_results)
 
 
-def save_to_csv(data, filename="amazon_product_links.csv"):
+import pandas as pd
+
+
+def save_to_csv(data):
     if not data:
-        logging.warning("Không có dữ liệu nào để lưu.")
+        logging.warning("Không có dữ liệu mới để lưu.")
         return
 
-    # Loại bỏ trùng lặp cuối cùng dựa trên ASIN
-    unique_data = list({v['asin']: v for v in data}.values())
-    file_path = os.path.join('data_amazon', filename)
+    file_path = os.path.join('data_amazon', 'amazon_products_3.csv')
     fieldnames = ['asin', 'url', 'image_url']
 
+    new_df = pd.DataFrame(data)
+    new_df.drop_duplicates(subset=['asin'], keep='first', inplace=True)
+
+    if os.path.exists(file_path) and os.stat(file_path).st_size > 0:
+        logging.info(f"    [Xử lý tệp lớn] Đang lọc trùng lặp với dữ liệu cũ...")
+        try:
+            existing_asins = pd.read_csv(file_path, usecols=['asin'], dtype={'asin': str})['asin'].values
+            existing_asins_set = set(existing_asins)
+            # Lọc: Chỉ giữ lại những dòng mà ASIN chưa tồn tại trong file
+            new_df = new_df[~new_df['asin'].isin(existing_asins_set)]
+            del existing_asins_set
+        except Exception as e:
+            logging.error(f"    [Lỗi] Không thể đọc cột ASIN từ file cũ: {str(e)}")
+    if new_df.empty:
+        logging.info("    [Thông báo] Tất cả sản phẩm đều đã tồn tại trong file (sau khi lọc triệu dòng).")
+        return
+
+    # Bước 3: Ghi nối tiếp (mode='a')
     try:
-        file_exists = os.path.exists(file_path)
-        with open(file_path, 'a', newline='', encoding='utf-8') as f:
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
-            if not file_exists:
-                writer.writeheader()
-            writer.writerows(unique_data)
-        logging.info(f"SUCCESS: THÀNH CÔNG: Đã lưu {len(unique_data)} sản phẩm vào: {file_path}")
+        # header=False nếu file đã có dữ liệu để tránh lặp lại tiêu đề ở giữa file
+        file_exists = os.path.exists(file_path) and os.stat(file_path).st_size > 0
+        new_df.to_csv(file_path, mode='a', index=False, header=not file_exists, encoding='utf-8')
+
+        logging.info(
+            f"✅ THÀNH CÔNG: Đã nối thêm {len(new_df)} dòng mới vào tệp {len(new_df)} dòng.")
     except Exception as e:
-        logging.error(f"ERROR: LỖI LƯU FILE: {str(e)}")
+        logging.error(f"❌ LỖI LƯU FILE: {str(e)}")
+
 
 if __name__ == '__main__':
-    # Link danh mục mục tiêu
-    target_category = "https://www.amazon.com/s?k=iphone"
-    # Chạy thử nghiệm
-    scrape_pages(target_category, 1, 20)
+    # url = "https://www.amazon.com/s?k=smartphones"
+    # list_url =[
+    #     "https://www.amazon.com/s?k=desktop+computer",
+    #     "https://www.amazon.com/s?k=electroinc+tablets",
+    #     "https://www.amazon.com/s?k=laptops",
+    #     "https://www.amazon.com/s?k=computers",
+    #     "https://www.amazon.com/s?k=PCs",
+    #     "https://www.amazon.com/s?k=Monitors",
+    # ]
+    list_url = [
+        "https://www.amazon.com/s?k=headphones"
+    ]
+    for url in list_url:
+        scrape_category(url, max_pages=30)
