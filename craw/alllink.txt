@@ -16,4 +16,5 @@ https://www.amazon.com/s?k=headphones
 https://www.amazon.com/s?k=electronics
 
 -- monitor bổ sung
-https://www.amazon.com/s?i=computers&page=2
+https://www.amazon.com/s?i=computers&rh=n%3A1292115011&s=popularity-rank
+https://www.amazon.com/s?k=airpods

@@ -179,8 +179,11 @@ if __name__ == '__main__':
     #     "https://www.amazon.com/s?k=PCs",
     #     "https://www.amazon.com/s?k=Monitors",
     # ]
+    # list_url = [
+    #     "https://www.amazon.com/s?k=headphones"
+    # ]
     list_url = [
-        "https://www.amazon.com/s?k=headphones"
+        "https://www.amazon.com/s?i=computers&rh=n%3A1292115011&s=popularity-rank"
     ]
     for url in list_url:
-        scrape_category(url, max_pages=30)
+        scrape_category(url, max_pages=200)
