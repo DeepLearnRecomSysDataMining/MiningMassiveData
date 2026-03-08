@@ -12,9 +12,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
-#
-
 def init(output_dir='data_amazon'):
     logging.basicConfig(
         level=logging.INFO,

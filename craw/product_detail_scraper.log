@@ -21,3 +21,168 @@
 2026-03-08 17:49:40,680 - INFO - [11/2206] Đang cạo: https://www.amazon.com/HP-Stream-Processor-Graphics-Copilot/dp/B0G2WT12HL
 2026-03-08 17:49:44,196 - INFO -     [Thành công] Đã lưu JSON sản phẩm.
 2026-03-08 17:49:47,849 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)': /session/84ebf477f7ba19e8d78d5d321022f74c
+2026-03-08 17:55:18,704 - INFO - === BẮT ĐẦU FILE: amazon_products.csv ===
+2026-03-08 17:55:18,722 - INFO -     Tiến độ: 0/656 - Còn lại: 656
+2026-03-08 17:55:18,722 - INFO -     >>> ĐỢT 1 (20 link)
+2026-03-08 17:55:18,722 - INFO -         [1/20] Cạo: https://www.amazon.com/Samsung-Smartphone-Unlocked-Manufacturer-Warranty/dp/B0F7K9LFCL
+2026-03-08 17:55:50,937 - INFO -         [2/20] Cạo: https://www.amazon.com/Apple-iPhone-Version-Desert-Titanium/dp/B0DPJMTH4N
+2026-03-08 17:56:00,305 - INFO -         [3/20] Cạo: https://www.amazon.com/Apple-iPhone-14-128GB-Midnight/dp/B0BN72FYFG
+2026-03-08 17:56:10,056 - INFO -         [4/20] Cạo: https://www.amazon.com/Apple-iPhone-13-128GB-Midnight/dp/B09LNW3CY2
+2026-03-08 17:56:19,856 - INFO -         [5/20] Cạo: https://www.amazon.com/VSQAOF-I25-Ultra-Smartphone-Built/dp/B0FQ5H2ZD4
+2026-03-08 17:56:29,722 - INFO -         [6/20] Cạo: https://www.amazon.com/Fadnou-15PROMA-Unlocked-Smartphone-Fingerprint/dp/B0F91RLVD5
+2026-03-08 17:56:40,578 - INFO -         [7/20] Cạo: https://www.amazon.com/Google-Pixel-Gemini-Smartphone-Incredible/dp/B0DVHV7X53
+2026-03-08 17:56:53,161 - INFO -         [8/20] Cạo: https://www.amazon.com/Google-Pixel-Unlocked-Smartphone-Porcelain/dp/B0D7HWPR3J
+2026-03-08 17:57:05,045 - INFO -         [9/20] Cạo: https://www.amazon.com/OnePlus-Dual-SIM-Unlocked-Smartphone-Snapdragon/dp/B0FSCKPM81
+2026-03-08 17:57:17,108 - INFO -         [10/20] Cạo: https://www.amazon.com/Apple-iPhone-256GB-Pacific-Blue/dp/B08PMKDJ28
+2026-03-08 17:57:26,245 - INFO -         [11/20] Cạo: https://www.amazon.com/Motorola-Unlocked-256GB-Camera-Beach/dp/B0D3JGGXBH
+2026-03-08 17:57:38,027 - INFO -         [12/20] Cạo: https://www.amazon.com/Ziroxi-Phone%EF%BC%8Cs22u%EF%BC%8CAndroid-Smartphone-Frequency-2100MHZ%EF%BC%8C6-11/dp/B0CL9RGZCB
+2026-03-08 17:57:47,940 - INFO -         [13/20] Cạo: https://www.amazon.com/Samsung-A36-Unlocked-Smartphone-Manufacturer/dp/B0F1SPJL8J
+2026-03-08 17:57:56,399 - INFO -         [14/20] Cạo: https://www.amazon.com/Pdfbenli-Phone-Unlocked-Screen-Android/dp/B0FQ5PCN6V
+2026-03-08 17:58:03,842 - INFO -         [15/20] Cạo: https://www.amazon.com/Nawfait-15-ProMa-Smartphone-Unlocked/dp/B0F66Y3B2Y
+2026-03-08 17:58:11,256 - INFO -         [16/20] Cạo: https://www.amazon.com/Phone-Unlocked-64g-Silver-Inches/dp/B0FQB3BSHW
+2026-03-08 17:58:18,173 - INFO -         [17/20] Cạo: https://www.amazon.com/Nothing-Phone-Interface-Smartphone-International/dp/B0C61T5JL6
+2026-03-08 17:58:25,744 - INFO -         [18/20] Cạo: https://www.amazon.com/Motorola-Moto-Play-Unlocked-Tapestry/dp/B0FTZZ7LS1
+2026-03-08 17:58:33,199 - INFO -         [19/20] Cạo: https://www.amazon.com/BLKE-Max-Unlocked-Smartphone-Quad-Core/dp/B0FDWHJPY5
+2026-03-08 17:58:40,568 - INFO -         [20/20] Cạo: https://www.amazon.com/VIVAHHX-M15-Unlocked-6-8-inch-Battery/dp/B0G7GT7HQH
+2026-03-08 17:58:47,723 - INFO -     <<< ĐÃ LƯU NỐI ĐUÔI 20 ITEM VÀO amazon_products_details.jsonl
+2026-03-08 17:58:47,723 - INFO -     >>> ĐỢT 2 (20 link)
+2026-03-08 17:58:47,723 - INFO -         [1/20] Cạo: https://www.amazon.com/I16-PROMAX-Unlocked-shortcut-Fingerprint/dp/B0DDVBBSWH
+2026-03-08 17:58:58,578 - INFO -         [2/20] Cạo: https://www.amazon.com/Samsung-Unlocked-Smartphone-Lavender-Bluetooth/dp/B0FDD5TDP1
+2026-03-08 17:59:07,841 - INFO -         [3/20] Cạo: https://www.amazon.com/AENBUSLM-Machine-Auto-Focus-Glue-Upgraded-Engraving/dp/B0FG2SH8LP
+2026-03-08 17:59:16,358 - INFO -         [4/20] Cạo: https://www.amazon.com/Galaxy-S21-Ultra-5G-SM-G998UZKAXAA/dp/B0939K5M9Q
+2026-03-08 17:59:26,170 - INFO -         [5/20] Cạo: https://www.amazon.com/Apple-iPhone-Version-Unlocked-Renewed/dp/B0FV5GJLXQ
+2026-03-08 17:59:35,222 - INFO -         [6/20] Cạo: https://www.amazon.com/Apple-iPhone-512GB-Blue-Titanium/dp/B0CMZGJG3Q
+2026-03-08 17:59:43,688 - INFO -         [7/20] Cạo: https://www.amazon.com/Apple-iPhone-512GB-Natural-Titanium/dp/B0CMZFYDTM
+2026-03-08 17:59:52,871 - INFO -         [8/20] Cạo: https://www.amazon.com/Google-Pixel-Smartphone-Assistant-Fast-Charging/dp/B0FFTR9DST
+2026-03-08 18:00:03,901 - INFO -         [9/20] Cạo: https://www.amazon.com/Apple-iPhone-XS-Fully-Unlocked/dp/B07K4V35TJ
+2026-03-08 18:00:15,205 - INFO -         [10/20] Cạo: https://www.amazon.com/Compatible-iPhone-14-Pro-Unlocked/dp/B0DKK25634
+2026-03-08 18:00:23,499 - INFO -         [11/20] Cạo: https://www.amazon.com/Apple-iPhone-Fully-Unlocked-256/dp/B07TJBCC7H
+2026-03-08 18:00:33,652 - INFO -         [12/20] Cạo: https://www.amazon.com/Google-Pixel-Smartphone-Fast-Charging-Lemongrass/dp/B0FFTQFHQV
+2026-03-08 18:00:44,626 - INFO -         [13/20] Cạo: https://www.amazon.com/VSQAOF-16PROMA-Unlocked-Smartphone-Fingerprint/dp/B0F7LQWG1Q
+2026-03-08 18:00:55,442 - INFO -         [14/20] Cạo: https://www.amazon.com/Samsung-Galaxy-Note-10-SM-N970F/dp/B07WFHPZ2D
+2026-03-08 18:01:05,507 - INFO -         [15/20] Cạo: https://www.amazon.com/SAMSUNG-Unlocked-Smartphone-Expandable-Security/dp/B0CN1QSH8Q
+2026-03-08 18:01:16,318 - INFO -         [16/20] Cạo: https://www.amazon.com/SAMSUNG-Factory-Unlocked-Smartphone-Adaptive/dp/B0BLP3ZRSJ
+2026-03-08 18:01:28,257 - INFO -         [17/20] Cạo: https://www.amazon.com/Motorola-razr-Unlocked-Camera-Midnight/dp/B0D23P28XX
+2026-03-08 18:01:39,170 - INFO -         [18/20] Cạo: https://www.amazon.com/Fadnou-I16-Unlocked-Smartphone-Fingerprint/dp/B0DKZ38CJN
+2026-03-08 18:01:46,304 - INFO -         [19/20] Cạo: https://www.amazon.com/BLKE-Smartphone-Smallest-Unlocked-Students/dp/B0FX2Z51PV
+2026-03-08 18:01:53,689 - INFO -         [20/20] Cạo: https://www.amazon.com/Recording-Wireless-Mirroring-Brightness-Compatible/dp/B0FJ8HXYCN
+2026-03-08 18:02:01,221 - INFO -     <<< ĐÃ LƯU NỐI ĐUÔI 20 ITEM VÀO amazon_products_details.jsonl
+2026-03-08 18:02:01,221 - INFO -     >>> ĐỢT 3 (20 link)
+2026-03-08 18:02:01,221 - INFO -         [1/20] Cạo: https://www.amazon.com/Cable-iPhone-Charger-Charging-AirPods/dp/B0DTHRKR68
+2026-03-08 18:02:08,829 - INFO -         [2/20] Cạo: https://www.amazon.com/Google-Pixel-XL-Black-Unlocked/dp/B07YMG37J4
+2026-03-08 18:02:17,271 - INFO -         [3/20] Cạo: https://www.amazon.com/Apple-iPhone-Max-256GB-Gold/dp/B07WHKDGL4
+2026-03-08 18:02:24,361 - INFO -         [4/20] Cạo: https://www.amazon.com/LG-G6-Unlocked-T-Mobile-Exclusive/dp/B07D2JL7TS
+2026-03-08 18:02:31,398 - INFO -         [5/20] Cạo: https://www.amazon.com/Apple-iPhone-64GB-Unlocked-Silver/dp/B0D2ZFH253
+2026-03-08 18:02:38,863 - INFO -         [6/20] Cạo: https://www.amazon.com/MKSD-V5-7-18-X-X-T-Mobile-Vodafone/dp/B0DTTVPJWV
+2026-03-08 18:02:45,604 - INFO -         [7/20] Cạo: https://www.amazon.com/Tracfone-Apple-iPhone-Prepaid-Smartphone/dp/B09SBRDNHH
+2026-03-08 18:02:52,558 - INFO -         [8/20] Cạo: https://www.amazon.com/Motorola-Unlocked-256GB-Camera-Eclipse/dp/B0C9RX9F94
+2026-03-08 18:03:00,730 - INFO -         [9/20] Cạo: https://www.amazon.com/Compatible-iPhone-11-Pro-Max/dp/B0DKK1KYDQ
+2026-03-08 18:03:08,569 - INFO -         [10/20] Cạo: https://www.amazon.com/OEJBK-16PROMA-Smartphone-Upgrade-Tempered/dp/B0F2N5CZ21
+2026-03-08 18:03:19,178 - INFO -         [11/20] Cạo: https://www.amazon.com/QPWOEIB-Smartphone-Unlocked-Display-Endurance/dp/B0FQ6776XQ
+2026-03-08 18:03:26,934 - INFO -         [12/20] Cạo: https://www.amazon.com/Motorola-battery-Unlocked-Camera-Nebula/dp/B098TXKW8K
+2026-03-08 18:03:39,629 - INFO -         [13/20] Cạo: https://www.amazon.com/Google-Pixel-Unlocked-Smartphone-Advanced/dp/B0CGTJJRHY
+2026-03-08 18:03:50,334 - INFO -         [14/20] Cạo: https://www.amazon.com/SAMSUNG-Unlocked-Smartphone-Infinity-V-Expandable/dp/B09V87YTC9
+2026-03-08 18:04:01,997 - INFO -         [15/20] Cạo: https://www.amazon.com/Cutwif-Smartphone-Smallest-Definition-Unlocked/dp/B0CMQHXFY4
+2026-03-08 18:04:13,018 - INFO -         [16/20] Cạo: https://www.amazon.com/Power-Battery1-Unlocked-Motorola-Camera/dp/B084D89DBF
+2026-03-08 18:04:23,361 - INFO -         [17/20] Cạo: https://www.amazon.com/Ulefone-22000mAh-Battery-Unlocked-Smartphone/dp/B0CJNSJ8M5
+2026-03-08 18:04:38,092 - INFO -         [18/20] Cạo: https://www.amazon.com/Samsung-Unlocked-Smartphone-Expandable-Infinite/dp/B09SM24S8C
+2026-03-08 18:04:47,831 - INFO -         [19/20] Cạo: https://www.amazon.com/NUU-T-Mobile-Teenagers-Octa-Core-Unlocked/dp/B0DGP9TS6Y
+2026-03-08 18:05:03,960 - INFO -         [20/20] Cạo: https://www.amazon.com/OSCAL-Android-Phone-128GB-Fingerprint/dp/B0F9TFL9Z5
+2026-03-08 18:05:17,278 - INFO -     <<< ĐÃ LƯU NỐI ĐUÔI 20 ITEM VÀO amazon_products_details.jsonl
+2026-03-08 18:05:17,278 - INFO -     >>> ĐỢT 4 (20 link)
+2026-03-08 18:05:17,279 - INFO -         [1/20] Cạo: https://www.amazon.com/Motorola-Moto-3rd-Generation-Unlocked/dp/B00ZQVSKSM
+2026-03-08 18:05:28,251 - INFO -         [2/20] Cạo: https://www.amazon.com/Motorola-Stylus-Battery-Unlocked-Twilight/dp/B0CBNLS6BD
+2026-03-08 18:05:39,342 - INFO -         [3/20] Cạo: https://www.amazon.com/Smartphone-Unlocked-Premium-Student-Cellphone/dp/B0CWXVBMGR
+2026-03-08 18:05:50,294 - INFO -         [4/20] Cạo: https://www.amazon.com/Smartphone-Unlocked-Premium-Student-Cellphone/dp/B0CGLLDSBC
+2026-03-08 18:06:01,057 - INFO -         [5/20] Cạo: https://www.amazon.com/CP5-iPhone%EF%BC%8CBack-iPhone%EF%BC%8CContent-Essentials%EF%BC%8CMagnetic-Vlogging/dp/B0G5N2WBZ6
+2026-03-08 18:06:10,086 - INFO -         [6/20] Cạo: https://www.amazon.com/Helucidy-Better-Compatible-iPhone-Classroom/dp/B0FQJ7TGCL
+2026-03-08 18:06:19,141 - INFO -         [7/20] Cạo: https://www.amazon.com/Blackberry-BBA100-2-Unlocked-International-Warranty/dp/B01MFD57MC
+2026-03-08 18:06:28,383 - INFO -         [8/20] Cạo: https://www.amazon.com/LIVELY-Jitterbug-Phones-Smartphone-Seniors/dp/B0CH964JZ8
+2026-03-08 18:06:40,187 - INFO -         [9/20] Cạo: https://www.amazon.com/AGM-Waterproof-Drop-Proof-Powerful-T-Mobile/dp/B0DNG2181P
+2026-03-08 18:06:50,405 - INFO -         [10/20] Cạo: https://www.amazon.com/OtterBox-Symmetry-Leather-Embroidery-MagSafe/dp/B0FG59V2ZK
+2026-03-08 18:06:59,736 - INFO -         [11/20] Cạo: https://www.amazon.com/Samsung-Galaxy-S5-White-16GB/dp/B00IZ1XJ3Q
+2026-03-08 18:07:08,608 - INFO -         [12/20] Cạo: https://www.amazon.com/Blackberry-Classic-T-Mobile-Qwerty-Smartphone/dp/B017C2TJ3W
+2026-03-08 18:07:17,688 - INFO -         [13/20] Cạo: https://www.amazon.com/Samsung-Galaxy-Black-Verizon-Wireless/dp/B01CJ3SCN2
+2026-03-08 18:07:27,890 - INFO -         [14/20] Cạo: https://www.amazon.com/darkFlash-Streaming-Radiator-Compatible-DK-GS/dp/B0FPVCTTPC
+2026-03-08 18:07:37,884 - INFO -         [15/20] Cạo: https://www.amazon.com/WAVEBLOCK-Reduction-Scientifically-Lab-Tested-5G-Shield/dp/B0BQ6QCCVP
+2026-03-08 18:07:48,520 - INFO -         [16/20] Cạo: https://www.amazon.com/Shimbol-CP5-Selfie-Monitor-Android/dp/B0FV81L2B9
+2026-03-08 18:07:58,924 - INFO -         [17/20] Cạo: https://www.amazon.com/RecorderGear-PR200-Bluetooth-Recording-Recorder/dp/B01CIATFB4
+2026-03-08 18:08:08,341 - INFO -         [18/20] Cạo: https://www.amazon.com/Dilwe-Smartphone-2-5Inch-Cellphone-Students/dp/B0BD5S2V4Y
+2026-03-08 18:08:18,395 - INFO -         [19/20] Cạo: https://www.amazon.com/Samsung-Galaxy-64GB-Verizon-Wireless/dp/B06Y3HCFZT
+2026-03-08 18:08:28,984 - INFO -         [20/20] Cạo: https://www.amazon.com/Motorola-Dual-SIM-Unlocked-Smartphone-Midnight/dp/B0CF2PV74C
+2026-03-08 18:08:38,633 - INFO -     <<< ĐÃ LƯU NỐI ĐUÔI 20 ITEM VÀO amazon_products_details.jsonl
+2026-03-08 18:08:38,633 - INFO -     >>> ĐỢT 5 (20 link)
+2026-03-08 18:08:38,633 - INFO -         [1/20] Cạo: https://www.amazon.com/Cuifati-Mobile-Phone-Android-Students/dp/B0BJLBWHCB
+2026-03-08 18:08:47,768 - INFO -         [2/20] Cạo: https://www.amazon.com/Vihibii-iPhone-Blocking-Protect-Shockproof/dp/B0FL23P6MY
+2026-03-08 18:08:57,247 - INFO -         [3/20] Cạo: https://www.amazon.com/Shimbol-CP5-Ultra-Black-Compatible/dp/B0FV8BMNG7
+2026-03-08 18:09:06,846 - INFO -         [4/20] Cạo: https://www.amazon.com/Samsung-Galaxy-S6-Black-Sapphire/dp/B00V5LZXCS
+2026-03-08 18:09:17,515 - INFO -         [5/20] Cạo: https://www.amazon.com/Asuwish-Tempered-Protector-Leather-Blocking/dp/B0FJDKV98C
+2026-03-08 18:09:26,245 - INFO -         [6/20] Cạo: https://www.amazon.com/Google-Pixel-Orange-64GB-Unlocked/dp/B07YMHGW9X
+2026-03-08 18:09:36,810 - INFO -         [7/20] Cạo: https://www.amazon.com/SIXBOX-iPhone-17-Pro-Protection/dp/B0FHKBQDML
+2026-03-08 18:09:47,561 - INFO -         [8/20] Cạo: https://www.amazon.com/OtterBox-Universe-Modular-Swappable-iPhone/dp/B095XJD1B5
+2026-03-08 18:09:55,922 - INFO -         [9/20] Cạo: https://www.amazon.com/ZMVDJZ-Replacement-iPhone-Titanium-Waterproof/dp/B0D6VZCW81
+2026-03-08 18:10:04,553 - INFO -         [10/20] Cạo: https://www.amazon.com/MYBAT-PRO-Compatible-Shockproof-360%C2%B0Rotating/dp/B0FNJXPSX1
+2026-03-08 18:10:14,116 - INFO -         [11/20] Cạo: https://www.amazon.com/Apple-iPhone-5C-Sprint-Green/dp/B00F3IIVV4
+2026-03-08 18:10:23,161 - INFO -         [12/20] Cạo: https://www.amazon.com/DefenderShield-Protection-iPhone-14-Pro/dp/B0BLW93Q4F
+2026-03-08 18:10:32,487 - INFO -         [13/20] Cạo: https://www.amazon.com/Protector-Crossbody-Detachable-Compatible-Gold/dp/B0FLXBY9JZ
+2026-03-08 18:10:41,845 - INFO -         [14/20] Cạo: https://www.amazon.com/OtterBox-Detachable-Wallet-Separately-MagSafe/dp/B0BCL5VH14
+2026-03-08 18:10:51,443 - INFO -         [15/20] Cạo: https://www.amazon.com/Protector-Blocking-iPhone13promax-Phone13Max-iPhone13/dp/B0FJDJB6LQ
+2026-03-08 18:10:59,845 - INFO -         [16/20] Cạo: https://www.amazon.com/Asuwish-Tempered-Protector-Crossbody-iPhone12mini/dp/B0FLNYXKCF
+2026-03-08 18:11:07,702 - INFO -         [17/20] Cạo: https://www.amazon.com/Cool-Screen-iPhone-Quality-Black/dp/B0C2D1FVDQ
+2026-03-08 18:11:15,969 - INFO -         [18/20] Cạo: https://www.amazon.com/Vihibii-Protector-Kickstand-Military-Protection/dp/B0GG8CSJ9H
+2026-03-08 18:11:24,126 - INFO -         [19/20] Cạo: https://www.amazon.com/Asuwish-Protector-Leather-Blocking-17ProMax/dp/B0FJDHHWFL
+2026-03-08 18:11:37,017 - INFO -         [20/20] Cạo: https://www.amazon.com/OtterBox-Detachable-Wallet-Separately-MagSafe/dp/B0BCL7B4FZ
+2026-03-08 18:11:45,569 - INFO -     <<< ĐÃ LƯU NỐI ĐUÔI 20 ITEM VÀO amazon_products_details.jsonl
+2026-03-08 18:11:45,569 - INFO -     >>> ĐỢT 6 (20 link)
+2026-03-08 18:11:45,570 - INFO -         [1/20] Cạo: https://www.amazon.com/Asuwish-Tempered-Protector-Leather-Blocking/dp/B0FJD73B14
+2026-03-08 18:11:53,738 - INFO -         [2/20] Cạo: https://www.amazon.com/Asuwish-Protector-Kickstand-Compatible-iPhone12promax/dp/B0FWXVJ3L6
+2026-03-08 18:12:01,860 - INFO -         [3/20] Cạo: https://www.amazon.com/Asuwish-Protector-Crossbody-Lanyard-Blocking/dp/B0FVSVR5L1
+2026-03-08 18:12:10,157 - INFO -         [4/20] Cạo: https://www.amazon.com/Pilaru-iPhone-Plus-Case-Plus-Purple/dp/B0FX3VM3NL
+2026-03-08 18:12:21,605 - INFO -         [5/20] Cạo: https://www.amazon.com/IceSword-Shockproof-Anti-Scratch-Microfiber-Protective/dp/B09DK5KVYR
+2026-03-08 18:12:30,095 - INFO -         [6/20] Cạo: https://www.amazon.com/IceSword-Protective-Anti-Scratch-Microfiber-Professional/dp/B09DG61FGF
+2026-03-08 18:12:38,521 - INFO -         [7/20] Cạo: https://www.amazon.com/Cool-Screen-iPhone-Quality-Black/dp/B0C2D1F6V2
+2026-03-08 18:12:45,326 - INFO -         [8/20] Cạo: https://www.amazon.com/Pilaru-iPhone-Pro-Max-Case/dp/B0FX9GSFFL
+2026-03-08 18:12:52,791 - INFO -         [9/20] Cạo: https://www.amazon.com/Wallet-Credit-Protection-Compatible-Smartphones/dp/B07WJ1BBBL
+2026-03-08 18:13:00,189 - INFO -         [10/20] Cạo: https://www.amazon.com/Yuntunele-Back-Replacement-Carriers-Professional/dp/B0F99MYFNV
+2026-03-08 18:13:08,303 - INFO -         [11/20] Cạo: https://www.amazon.com/ABUSVEX-Replacement-Waterproof-Pre-Installed-15/dp/B0G93NK5Q9
+2026-03-08 18:13:16,154 - INFO -         [12/20] Cạo: https://www.amazon.com/Elizabeth-James-Compatible-MagSafe-iPhone/dp/B0DZCPWVVQ
+2026-03-08 18:13:24,171 - INFO -         [13/20] Cạo: https://www.amazon.com/Samsung-Galaxy-S6-Edge-Sprint/dp/B0134TVCHI
+2026-03-08 18:13:33,717 - INFO -         [14/20] Cạo: https://www.amazon.com/KNYPT-iPhone16-Crossbody-Blocking-Kickstand/dp/B0F9S3TC5J
+2026-03-08 18:13:44,856 - INFO -         [15/20] Cạo: https://www.amazon.com/Wireless-Vlogging-Monitor-Magnetic-Compatible/dp/B0GLFVWP2N
+2026-03-08 18:13:52,444 - INFO -         [16/20] Cạo: https://www.amazon.com/Yuntunele-Back-Replacement-Compatible-Professional/dp/B0FPF5H5Z1
+2026-03-08 18:14:00,924 - INFO -         [17/20] Cạo: https://www.amazon.com/ABUSVEX-Replacement-Pre-Installed-iPhone-Plus/dp/B0G5N91BN7
+2026-03-08 18:14:09,145 - INFO -         [18/20] Cạo: https://www.amazon.com/Cachitto-Smartphone-Notebook-Compatible-Prevention/dp/B0FDVGSSGV
+2026-03-08 18:14:16,438 - INFO -         [19/20] Cạo: https://www.amazon.com/Nation-Wallet-Compatible-iPhone-Holder/dp/B0G2529759
+2026-03-08 18:14:23,958 - INFO -         [20/20] Cạo: https://www.amazon.com/Premium-Protection-Compatible-Protector-Anti-Fingerprint/dp/B0G565B2QK
+2026-03-08 18:14:31,588 - INFO -     <<< ĐÃ LƯU NỐI ĐUÔI 20 ITEM VÀO amazon_products_details.jsonl
+2026-03-08 18:14:31,589 - INFO -     >>> ĐỢT 7 (20 link)
+2026-03-08 18:14:31,589 - INFO -         [1/20] Cạo: https://www.amazon.com/Vanguard-Crystal-Clear-Military-Grade-Protection-Protector/dp/B0FQ2X71N5
+2026-03-08 18:14:40,955 - INFO -         [2/20] Cạo: https://www.amazon.com/Vihibii-Blocking-Compatible-Military-Protection/dp/B0GK1D1K3Q
+2026-03-08 18:14:48,446 - INFO -         [3/20] Cạo: https://www.amazon.com/Vihibii-Non-Yellowing-Transparent-Compatible-Shockproof/dp/B0GJ5DQC7F
+2026-03-08 18:14:55,261 - INFO -         [4/20] Cạo: https://www.amazon.com/Protector-Leather-Blocking-iPhone14Plus-iPhone14/dp/B0FJDR7WDG
+2026-03-08 18:15:03,094 - INFO -         [5/20] Cạo: https://www.amazon.com/Vihibii-Blocking-Adjustable-Compatible-Silicone/dp/B0GJBT213C
+2026-03-08 18:15:09,605 - INFO -         [6/20] Cạo: https://www.amazon.com/Vihibii-Blocking-Adjustable-Compatible-Silicone/dp/B0GJZF9VVH
+2026-03-08 18:15:15,731 - INFO -         [7/20] Cạo: https://www.amazon.com/Yofukashino-02-Nanausa-Nazuna-Smartphone-Compatible/dp/B0FP4PTB3L
+2026-03-08 18:15:21,962 - INFO -         [8/20] Cạo: https://www.amazon.com/London-Street-English-Compatible-Kickstand/dp/B0FR2JHCJ2
+2026-03-08 18:15:28,858 - INFO -         [9/20] Cạo: https://www.amazon.com/Piano-Pattern-Compatible-iPhone-Kickstand/dp/B0FQ39SGYR
+2026-03-08 18:15:35,787 - INFO -         [10/20] Cạo: https://www.amazon.com/ZOZDOKG-Protection-Compatible-Translucent-Shockproof/dp/B0FHDNPYR6
+2026-03-08 18:15:43,039 - INFO -         [11/20] Cạo: https://www.amazon.com/Black-Rock-Robust-Suitable-Transparent/dp/B0BFDJY2L6
+2026-03-08 18:15:49,942 - INFO -         [12/20] Cạo: https://www.amazon.com/Cool-Screen-iPhone-Quality-Black/dp/B0C2CVXP35
+2026-03-08 18:15:56,673 - INFO -         [13/20] Cạo: https://www.amazon.com/Dreem-Shockproof-Detachable-Compatible-Protection/dp/B0CGF58B3L
+2026-03-08 18:16:08,331 - INFO -         [14/20] Cạo: https://www.amazon.com/Silicone-Lipstick-Adhesive-Compatible-Smartphones/dp/B0G4WPP1QK
+2026-03-08 18:16:15,424 - INFO -         [15/20] Cạo: https://www.amazon.com/DOB-SECHS-Silicone-Lip-Holder/dp/B0DTCSD6KB
+2026-03-08 18:16:22,493 - INFO -         [16/20] Cạo: https://www.amazon.com/BlackBerry-BBD100-1-Single-SIM-Unlocked-Smartphone/dp/B077486W98
+2026-03-08 18:16:29,344 - INFO -         [17/20] Cạo: https://www.amazon.com/Compatible-MagSafe%EF%BC%8CCommuter-Adjustable-Protection-180%C2%B0Rotatable/dp/B0GBW2CCQS
+2026-03-08 18:16:37,117 - INFO -         [18/20] Cạo: https://www.amazon.com/Satechi-Magnetic-Magsafe-Wallet-FindAll/dp/B0FJQ4VNND
+2026-03-08 18:16:45,015 - INFO -         [19/20] Cạo: https://www.amazon.com/DUEDUE-Compatible-Shockproof-Anti-Scratch-Microfiber/dp/B0FM3S5KZ2
+2026-03-08 18:16:52,586 - INFO -         [20/20] Cạo: https://www.amazon.com/Wovelli-DIY-Stickers-Collage-iPhone/dp/B0FLF2XGCH
+2026-03-08 18:17:00,270 - INFO -     <<< ĐÃ LƯU NỐI ĐUÔI 20 ITEM VÀO amazon_products_details.jsonl
+2026-03-08 18:17:00,270 - INFO -     >>> ĐỢT 8 (20 link)
+2026-03-08 18:17:00,270 - INFO -         [1/20] Cạo: https://www.amazon.com/Vihibii-Adjustable-Fade-Resistant-Magnetic-Silicone/dp/B0GJ5DLWGG
+2026-03-08 18:17:07,202 - INFO -         [2/20] Cạo: https://www.amazon.com/Holder-Leather-Pocket-Wallet-Android/dp/B0D54MQZRZ
+2026-03-08 18:17:15,281 - INFO -         [3/20] Cạo: https://www.amazon.com/Flying-Unicorm-Compatible-iPhone-Kickstand/dp/B0FR2JFX56
+2026-03-08 18:17:22,843 - INFO -         [4/20] Cạo: https://www.amazon.com/LG-Unlocked-Smartphone-LG-M151-Gray/dp/B06XR71QH2
+2026-03-08 18:17:29,932 - INFO -         [5/20] Cạo: https://www.amazon.com/Stylus-battery-Unlocked-Motorola-Twilight/dp/B09PFC2DVD
+2026-03-08 18:17:37,418 - INFO -         [6/20] Cạo: https://www.amazon.com/ABUSVEX-Replacement-iPhone-Pro-Pre-Installed/dp/B0G65FT5K7
+2026-03-08 18:17:42,113 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)': /session/6264250230828fe77610ee4dcdbf2828
+2026-03-08 18:17:46,216 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001B471C72D50>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/6264250230828fe77610ee4dcdbf2828
