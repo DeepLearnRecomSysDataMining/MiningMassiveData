@@ -1,0 +1,23 @@
+2026-03-08 17:47:48,730 - INFO - [1/2206] Đang cạo: https://www.amazon.com/TORRAS-iPhone-17-Pro-Max/dp/B0FGCJLNDM
+2026-03-08 17:48:09,904 - INFO -     [Thành công] Đã lưu JSON sản phẩm.
+2026-03-08 17:48:14,905 - INFO - [2/2206] Đang cạo: https://www.amazon.com/Android-Cellular-Octa-Core-MTK8786-T-Mobile/dp/B0F1FQCL1R
+2026-03-08 17:48:19,964 - INFO -     [Thành công] Đã lưu JSON sản phẩm.
+2026-03-08 17:48:24,965 - INFO - [3/2206] Đang cạo: https://www.amazon.com/Bose-QuietComfort-Bluetooth-Headphones-Cancelling/dp/B0FDKQ2FG6
+2026-03-08 17:48:31,227 - INFO -     [Thành công] Đã lưu JSON sản phẩm.
+2026-03-08 17:48:36,228 - INFO - [4/2206] Đang cạo: https://www.amazon.com/Razer-Kraken-Wired-Gaming-Headset/dp/B0BSJYM8FF
+2026-03-08 17:48:41,115 - INFO -     [Thành công] Đã lưu JSON sản phẩm.
+2026-03-08 17:48:46,115 - INFO - [5/2206] Đang cạo: https://www.amazon.com/UMIDIGI-G3-MAX-Ultra-Clear-Smartphone/dp/B0C3B5TGR4
+2026-03-08 17:48:50,847 - INFO -     [Thành công] Đã lưu JSON sản phẩm.
+2026-03-08 17:48:55,848 - INFO - [6/2206] Đang cạo: https://www.amazon.com/Dell-Optiplex-7070-Computer-Internal/dp/B0D74NCHSC
+2026-03-08 17:48:59,336 - INFO -     [Thành công] Đã lưu JSON sản phẩm.
+2026-03-08 17:49:04,336 - INFO - [7/2206] Đang cạo: https://www.amazon.com/Dell-OptiPlex-5040-SFF-Bluetooth/dp/B0FKMPRLBB
+2026-03-08 17:49:07,549 - INFO -     [Thành công] Đã lưu JSON sản phẩm.
+2026-03-08 17:49:12,550 - INFO - [8/2206] Đang cạo: https://www.amazon.com/HP-i5-12450H-GeForce-Keyboard-Performance/dp/B0DJ3L37TY
+2026-03-08 17:49:16,113 - INFO -     [Thành công] Đã lưu JSON sản phẩm.
+2026-03-08 17:49:21,114 - INFO - [9/2206] Đang cạo: https://www.amazon.com/VEVOR-Storage-Material-Wall-Mounted-Classroom/dp/B0BF9FJ2QB
+2026-03-08 17:49:25,615 - INFO -     [Thành công] Đã lưu JSON sản phẩm.
+2026-03-08 17:49:30,616 - INFO - [10/2206] Đang cạo: https://www.amazon.com/Alienware-16-Aurora-Laptop-AC16250-16-inch/dp/B0FBHXJG7K
+2026-03-08 17:49:35,679 - INFO -     [Thành công] Đã lưu JSON sản phẩm.
+2026-03-08 17:49:40,680 - INFO - [11/2206] Đang cạo: https://www.amazon.com/HP-Stream-Processor-Graphics-Copilot/dp/B0G2WT12HL
+2026-03-08 17:49:44,196 - INFO -     [Thành công] Đã lưu JSON sản phẩm.
+2026-03-08 17:49:47,849 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)': /session/84ebf477f7ba19e8d78d5d321022f74c
