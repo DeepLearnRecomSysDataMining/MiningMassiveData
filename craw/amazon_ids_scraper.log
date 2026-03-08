@@ -1,0 +1,163 @@
+2026-03-08 14:59:12,088 - INFO - BẮT ĐẦU CẠO DỮ LIỆU TỪ TRANG 1 ĐẾN 20
+2026-03-08 14:59:12,089 - INFO - --- Đang truy cập trang 1 ---
+2026-03-08 14:59:12,089 - INFO - URL: https://www.amazon.com/s?k=iphone&page=1
+2026-03-08 14:59:14,177 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 14:59:14,189 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 14:59:14,190 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 14:59:18,358 - INFO -     [Xử lý] Tìm thấy 16 thẻ chứa ASIN tiềm năng.
+2026-03-08 14:59:19,217 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 14:59:19,218 - INFO - Đã thu thập tổng cộng 16 sản phẩm sau trang 1.
+2026-03-08 14:59:24,218 - INFO - --- Đang truy cập trang 2 ---
+2026-03-08 14:59:24,219 - INFO - URL: https://www.amazon.com/s?k=iphone&page=2
+2026-03-08 14:59:25,964 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 14:59:25,975 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 14:59:25,975 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 14:59:30,039 - INFO -     [Xử lý] Tìm thấy 18 thẻ chứa ASIN tiềm năng.
+2026-03-08 14:59:30,563 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 14:59:30,563 - INFO - Đã thu thập tổng cộng 32 sản phẩm sau trang 2.
+2026-03-08 14:59:35,563 - INFO - --- Đang truy cập trang 3 ---
+2026-03-08 14:59:35,564 - INFO - URL: https://www.amazon.com/s?k=iphone&page=3
+2026-03-08 14:59:37,323 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 14:59:37,331 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 14:59:37,331 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 14:59:41,386 - INFO -     [Xử lý] Tìm thấy 18 thẻ chứa ASIN tiềm năng.
+2026-03-08 14:59:41,939 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 14:59:41,939 - INFO - Đã thu thập tổng cộng 48 sản phẩm sau trang 3.
+2026-03-08 14:59:46,939 - INFO - --- Đang truy cập trang 4 ---
+2026-03-08 14:59:46,940 - INFO - URL: https://www.amazon.com/s?k=iphone&page=4
+2026-03-08 14:59:48,777 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 14:59:48,786 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 14:59:48,786 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 14:59:52,854 - INFO -     [Xử lý] Tìm thấy 18 thẻ chứa ASIN tiềm năng.
+2026-03-08 14:59:53,301 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 14:59:53,301 - INFO - Đã thu thập tổng cộng 64 sản phẩm sau trang 4.
+2026-03-08 14:59:58,302 - INFO - --- Đang truy cập trang 5 ---
+2026-03-08 14:59:58,303 - INFO - URL: https://www.amazon.com/s?k=iphone&page=5
+2026-03-08 14:59:59,957 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 14:59:59,963 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 14:59:59,963 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 15:00:04,022 - INFO -     [Xử lý] Tìm thấy 18 thẻ chứa ASIN tiềm năng.
+2026-03-08 15:00:04,564 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 15:00:04,564 - INFO - Đã thu thập tổng cộng 80 sản phẩm sau trang 5.
+2026-03-08 15:00:09,565 - INFO - --- Đang truy cập trang 6 ---
+2026-03-08 15:00:09,565 - INFO - URL: https://www.amazon.com/s?k=iphone&page=6
+2026-03-08 15:00:11,136 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 15:00:11,142 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 15:00:11,142 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 15:00:15,203 - INFO -     [Xử lý] Tìm thấy 18 thẻ chứa ASIN tiềm năng.
+2026-03-08 15:00:15,703 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 15:00:15,703 - INFO - Đã thu thập tổng cộng 96 sản phẩm sau trang 6.
+2026-03-08 15:00:20,703 - INFO - --- Đang truy cập trang 7 ---
+2026-03-08 15:00:20,704 - INFO - URL: https://www.amazon.com/s?k=iphone&page=7
+2026-03-08 15:00:23,387 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 15:00:23,407 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 15:00:23,407 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 15:00:27,473 - INFO -     [Xử lý] Tìm thấy 18 thẻ chứa ASIN tiềm năng.
+2026-03-08 15:00:28,803 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 15:00:28,803 - INFO - Đã thu thập tổng cộng 112 sản phẩm sau trang 7.
+2026-03-08 15:00:34,027 - INFO - --- Đang truy cập trang 8 ---
+2026-03-08 15:00:34,027 - INFO - URL: https://www.amazon.com/s?k=iphone&page=8
+2026-03-08 15:00:36,407 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 15:00:36,432 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 15:00:36,432 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 15:00:40,516 - INFO -     [Xử lý] Tìm thấy 18 thẻ chứa ASIN tiềm năng.
+2026-03-08 15:00:41,813 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 15:00:41,813 - INFO - Đã thu thập tổng cộng 128 sản phẩm sau trang 8.
+2026-03-08 15:00:46,813 - INFO - --- Đang truy cập trang 9 ---
+2026-03-08 15:00:46,814 - INFO - URL: https://www.amazon.com/s?k=iphone&page=9
+2026-03-08 15:00:48,614 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 15:00:48,631 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 15:00:48,631 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 15:00:52,660 - INFO -     [Xử lý] Tìm thấy 18 thẻ chứa ASIN tiềm năng.
+2026-03-08 15:00:53,086 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 15:00:53,087 - INFO - Đã thu thập tổng cộng 144 sản phẩm sau trang 9.
+2026-03-08 15:00:58,088 - INFO - --- Đang truy cập trang 10 ---
+2026-03-08 15:00:58,088 - INFO - URL: https://www.amazon.com/s?k=iphone&page=10
+2026-03-08 15:01:00,123 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 15:01:00,141 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 15:01:00,142 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 15:01:04,197 - INFO -     [Xử lý] Tìm thấy 18 thẻ chứa ASIN tiềm năng.
+2026-03-08 15:01:05,448 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 15:01:05,448 - INFO - Đã thu thập tổng cộng 160 sản phẩm sau trang 10.
+2026-03-08 15:01:10,449 - INFO - --- Đang truy cập trang 11 ---
+2026-03-08 15:01:10,449 - INFO - URL: https://www.amazon.com/s?k=iphone&page=11
+2026-03-08 15:01:12,552 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 15:01:12,580 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 15:01:12,580 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 15:01:16,658 - INFO -     [Xử lý] Tìm thấy 18 thẻ chứa ASIN tiềm năng.
+2026-03-08 15:01:17,931 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 15:01:17,932 - INFO - Đã thu thập tổng cộng 176 sản phẩm sau trang 11.
+2026-03-08 15:01:22,932 - INFO - --- Đang truy cập trang 12 ---
+2026-03-08 15:01:22,933 - INFO - URL: https://www.amazon.com/s?k=iphone&page=12
+2026-03-08 15:01:25,032 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 15:01:25,068 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 15:01:25,068 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 15:01:29,136 - INFO -     [Xử lý] Tìm thấy 18 thẻ chứa ASIN tiềm năng.
+2026-03-08 15:01:29,687 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 15:01:29,687 - INFO - Đã thu thập tổng cộng 192 sản phẩm sau trang 12.
+2026-03-08 15:01:34,687 - INFO - --- Đang truy cập trang 13 ---
+2026-03-08 15:01:34,688 - INFO - URL: https://www.amazon.com/s?k=iphone&page=13
+2026-03-08 15:01:36,317 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 15:01:36,323 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 15:01:36,323 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 15:01:40,381 - INFO -     [Xử lý] Tìm thấy 18 thẻ chứa ASIN tiềm năng.
+2026-03-08 15:01:41,009 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 15:01:41,009 - INFO - Đã thu thập tổng cộng 208 sản phẩm sau trang 13.
+2026-03-08 15:01:46,010 - INFO - --- Đang truy cập trang 14 ---
+2026-03-08 15:01:46,010 - INFO - URL: https://www.amazon.com/s?k=iphone&page=14
+2026-03-08 15:01:47,738 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 15:01:47,747 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 15:01:47,747 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 15:01:51,828 - INFO -     [Xử lý] Tìm thấy 18 thẻ chứa ASIN tiềm năng.
+2026-03-08 15:01:53,162 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 15:01:53,162 - INFO - Đã thu thập tổng cộng 224 sản phẩm sau trang 14.
+2026-03-08 15:01:58,163 - INFO - --- Đang truy cập trang 15 ---
+2026-03-08 15:01:58,163 - INFO - URL: https://www.amazon.com/s?k=iphone&page=15
+2026-03-08 15:02:00,253 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 15:02:00,272 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 15:02:00,272 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 15:02:04,337 - INFO -     [Xử lý] Tìm thấy 18 thẻ chứa ASIN tiềm năng.
+2026-03-08 15:02:05,615 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 15:02:05,615 - INFO - Đã thu thập tổng cộng 240 sản phẩm sau trang 15.
+2026-03-08 15:02:10,616 - INFO - --- Đang truy cập trang 16 ---
+2026-03-08 15:02:10,616 - INFO - URL: https://www.amazon.com/s?k=iphone&page=16
+2026-03-08 15:02:12,460 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 15:02:12,473 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 15:02:12,474 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 15:02:16,540 - INFO -     [Xử lý] Tìm thấy 18 thẻ chứa ASIN tiềm năng.
+2026-03-08 15:02:17,563 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 15:02:17,563 - INFO - Đã thu thập tổng cộng 256 sản phẩm sau trang 16.
+2026-03-08 15:02:22,564 - INFO - --- Đang truy cập trang 17 ---
+2026-03-08 15:02:22,564 - INFO - URL: https://www.amazon.com/s?k=iphone&page=17
+2026-03-08 15:02:24,794 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 15:02:24,803 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 15:02:24,804 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 15:02:28,889 - INFO -     [Xử lý] Tìm thấy 18 thẻ chứa ASIN tiềm năng.
+2026-03-08 15:02:29,956 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 15:02:29,957 - INFO - Đã thu thập tổng cộng 272 sản phẩm sau trang 17.
+2026-03-08 15:02:34,958 - INFO - --- Đang truy cập trang 18 ---
+2026-03-08 15:02:34,958 - INFO - URL: https://www.amazon.com/s?k=iphone&page=18
+2026-03-08 15:02:36,889 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 15:02:36,917 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 15:02:36,917 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 15:02:40,976 - INFO -     [Xử lý] Tìm thấy 18 thẻ chứa ASIN tiềm năng.
+2026-03-08 15:02:42,207 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 15:02:42,207 - INFO - Đã thu thập tổng cộng 288 sản phẩm sau trang 18.
+2026-03-08 15:02:47,208 - INFO - --- Đang truy cập trang 19 ---
+2026-03-08 15:02:47,209 - INFO - URL: https://www.amazon.com/s?k=iphone&page=19
+2026-03-08 15:02:49,129 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 15:02:49,164 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 15:02:49,164 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 15:02:53,237 - INFO -     [Xử lý] Tìm thấy 18 thẻ chứa ASIN tiềm năng.
+2026-03-08 15:02:54,278 - INFO -     [Hoàn tất] Trích xuất thành công 16 sản phẩm (Đã loại trùng).
+2026-03-08 15:02:54,278 - INFO - Đã thu thập tổng cộng 304 sản phẩm sau trang 19.
+2026-03-08 15:02:59,279 - INFO - --- Đang truy cập trang 20 ---
+2026-03-08 15:02:59,279 - INFO - URL: https://www.amazon.com/s?k=iphone&page=20
+2026-03-08 15:03:01,109 - INFO -     [Đang đợi phần tử] Tìm kiếm thẻ div[role='listitem']...
+2026-03-08 15:03:01,134 - INFO -     [Thành công] Đã tìm thấy danh sách sản phẩm.
+2026-03-08 15:03:01,135 - INFO -     [Cuộn trang] Đang cuộn để load dữ liệu ẩn (Lazy load)...
+2026-03-08 15:03:05,194 - INFO -     [Xử lý] Tìm thấy 4 thẻ chứa ASIN tiềm năng.
+2026-03-08 15:03:05,402 - INFO -     [Hoàn tất] Trích xuất thành công 2 sản phẩm (Đã loại trùng).
+2026-03-08 15:03:05,402 - INFO - Đã thu thập tổng cộng 306 sản phẩm sau trang 20.
+2026-03-08 15:03:10,403 - INFO - Đang đóng trình duyệt và lưu dữ liệu...
+2026-03-08 15:03:12,781 - INFO - SUCCESS: THÀNH CÔNG: Đã lưu 182 sản phẩm vào: data_amazon\amazon_product_links.csv
