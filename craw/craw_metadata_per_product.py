@@ -12,18 +12,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-def init(output_dir='data_amazon'):
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s',
-        handlers=[
-            logging.FileHandler("product_detail_scraper.log", encoding='utf-8'),
-            logging.StreamHandler()
-        ]
-    )
-    os.makedirs(output_dir, exist_ok=True)
-
-
 def get_chrome_driver():
     options = Options()
     options.add_argument("--headless")
@@ -36,14 +24,12 @@ def get_chrome_driver():
     driver.set_page_load_timeout(60)
     return driver
 
-
 def safe_get_text(parent, selector, attr="innerText"):
     try:
         element = parent.find_element(By.CSS_SELECTOR, selector)
         return element.get_attribute(attr).strip()
     except NoSuchElementException:
         return None
-
 
 def extract_product_details(driver, url):
     try:
@@ -167,37 +153,28 @@ def process_csv_files(source_dir):
             for i in range(0, len(urls_to_scrape), batch_size):
                 current_batch_urls = urls_to_scrape[i: i + batch_size]
                 batch_results = []
-
                 logging.info(f"    >>> ĐỢT {i // batch_size + 1} ({len(current_batch_urls)} link)")
 
                 for idx, url in enumerate(current_batch_urls):
                     logging.info(f"        [{idx + 1}/{len(current_batch_urls)}] Cạo: {url}")
-
                     try:
                         driver.get(url)
                         product_data = extract_product_details(driver, url)
-
                         if product_data == "CAPTCHA":
                             logging.critical("    [!!!] CHẶN CAPTCHA - DỪNG CHƯƠNG TRÌNH.")
                             save_batch_to_jsonl(batch_results, json_path)
                             return
-
                         if product_data:
                             batch_results.append(product_data)
                     except Exception as e:
                         logging.error(f"        [Lỗi Duyệt] {url}: {e}")
-
                     time.sleep(4)  # Delay an toàn chống bot
-
                 if batch_results:
                     save_batch_to_jsonl(batch_results, json_path)
                     logging.info(f"    <<< ĐÃ LƯU NỐI ĐUÔI {len(batch_results)} ITEM VÀO {json_name}")
-
     finally:
         driver.quit()
         logging.info("=== KẾT THÚC QUÁ TRÌNH ===")
 
-
 if __name__ == "__main__":
-    init()
-    process_csv_files('data_amazon')
+    process_csv_files('data_amazon_split')
