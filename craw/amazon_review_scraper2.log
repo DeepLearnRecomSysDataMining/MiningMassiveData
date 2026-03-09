@@ -1,0 +1,614 @@
+2026-03-09 02:32:21,037 - INFO - >>> Đang mở Amazon. Vui lòng đăng nhập tài khoản...
+2026-03-09 02:32:43,593 - INFO - === ĐANG XỬ LÝ FILE: amazon_batch_20.csv ===
+2026-03-09 02:32:43,598 - INFO -     📊 Tổng: 100 | Đã xong: 0 | Cần làm: 100
+2026-03-09 02:32:43,598 - INFO -     [1/100] Đang lấy review cho ASIN: B0F3MMK1J4
+2026-03-09 02:32:49,926 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:32:51,927 - INFO -     [2/100] Đang lấy review cho ASIN: B0G53VCGQB
+2026-03-09 02:32:57,711 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:32:59,711 - INFO -     [3/100] Đang lấy review cho ASIN: B0FC9DZR6W
+2026-03-09 02:33:05,743 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:33:07,746 - INFO -     [4/100] Đang lấy review cho ASIN: B0CPFYVPBG
+2026-03-09 02:33:13,634 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:33:15,635 - INFO -     [5/100] Đang lấy review cho ASIN: B0CV28KKKK
+2026-03-09 02:33:20,150 - INFO -       ✅ Đã lưu 2 review.
+2026-03-09 02:33:22,151 - INFO -     [6/100] Đang lấy review cho ASIN: B0CYCDTZ6G
+2026-03-09 02:33:28,297 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:33:30,298 - INFO -     [7/100] Đang lấy review cho ASIN: B0DFMCG3C2
+2026-03-09 02:33:37,168 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:33:39,169 - INFO -     [8/100] Đang lấy review cho ASIN: B0C6Y89H47
+2026-03-09 02:33:44,735 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:33:46,735 - INFO -     [9/100] Đang lấy review cho ASIN: B07T5SY43L
+2026-03-09 02:33:52,426 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:33:54,427 - INFO -     [10/100] Đang lấy review cho ASIN: B0FTZSXPLY
+2026-03-09 02:33:59,332 - INFO -       ✅ Đã lưu 3 review.
+2026-03-09 02:34:01,332 - INFO -     [11/100] Đang lấy review cho ASIN: B00C5H5DN0
+2026-03-09 02:34:07,257 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:34:09,258 - INFO -     [12/100] Đang lấy review cho ASIN: B0DSPLKKZV
+2026-03-09 02:34:15,040 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:34:17,041 - INFO -     [13/100] Đang lấy review cho ASIN: B0G5Z5N274
+2026-03-09 02:34:22,118 - INFO -       ✅ Đã lưu 4 review.
+2026-03-09 02:34:24,118 - INFO -     [14/100] Đang lấy review cho ASIN: B0CJQ7V6M8
+2026-03-09 02:34:30,302 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:34:32,303 - INFO -     [15/100] Đang lấy review cho ASIN: B0CXS73LRP
+2026-03-09 02:34:37,997 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:34:39,998 - INFO -     [16/100] Đang lấy review cho ASIN: B08LBR1DL4
+2026-03-09 02:34:45,774 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:34:47,774 - INFO -     [17/100] Đang lấy review cho ASIN: B0DHFR5Z7G
+2026-03-09 02:34:53,928 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:34:55,929 - INFO -     [18/100] Đang lấy review cho ASIN: B0GP9F7MY4
+2026-03-09 02:35:15,015 - INFO -       ℹ️ ASIN này hiện không có review hiển thị.
+2026-03-09 02:35:17,016 - INFO -     [19/100] Đang lấy review cho ASIN: B0FCMWRMHV
+2026-03-09 02:35:22,387 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:35:24,387 - INFO -     [20/100] Đang lấy review cho ASIN: B0GF4672H9
+2026-03-09 02:35:28,703 - INFO -       ✅ Đã lưu 1 review.
+2026-03-09 02:35:30,704 - INFO -     [21/100] Đang lấy review cho ASIN: B0G399ZBVB
+2026-03-09 02:35:37,224 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:35:39,225 - INFO -     [22/100] Đang lấy review cho ASIN: B0FGL2HSFH
+2026-03-09 02:35:45,490 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:35:47,491 - INFO -     [23/100] Đang lấy review cho ASIN: B084RF63FK
+2026-03-09 02:35:53,390 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:35:55,391 - INFO -     [24/100] Đang lấy review cho ASIN: B07L8P6D2S
+2026-03-09 02:36:01,582 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:36:03,582 - INFO -     [25/100] Đang lấy review cho ASIN: B07WCV632L
+2026-03-09 02:36:09,657 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:36:11,658 - INFO -     [26/100] Đang lấy review cho ASIN: B0D4B57XR7
+2026-03-09 02:36:17,531 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:36:19,532 - INFO -     [27/100] Đang lấy review cho ASIN: B009S750LA
+2026-03-09 02:36:25,962 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:36:27,963 - INFO -     [28/100] Đang lấy review cho ASIN: B0DQ19YC9H
+2026-03-09 02:36:34,046 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:36:36,047 - INFO -     [29/100] Đang lấy review cho ASIN: B08DNTVY8Y
+2026-03-09 02:36:41,768 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:36:43,769 - INFO -     [30/100] Đang lấy review cho ASIN: B01N2YFO5Z
+2026-03-09 02:36:49,712 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:36:51,713 - INFO -     [31/100] Đang lấy review cho ASIN: B0CL66GVJ5
+2026-03-09 02:36:57,817 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:36:59,818 - INFO -     [32/100] Đang lấy review cho ASIN: B08HDGBF7P
+2026-03-09 02:37:06,089 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:37:08,090 - INFO -     [33/100] Đang lấy review cho ASIN: B0FPXFYG17
+2026-03-09 02:37:14,886 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:37:16,887 - INFO -     [34/100] Đang lấy review cho ASIN: B0F87G2YZD
+2026-03-09 02:37:22,762 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:37:24,763 - INFO -     [35/100] Đang lấy review cho ASIN: B0DGPT759H
+2026-03-09 02:37:30,615 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:37:32,616 - INFO -     [36/100] Đang lấy review cho ASIN: B0DQ9KDKT2
+2026-03-09 02:37:39,230 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:37:41,231 - INFO -     [37/100] Đang lấy review cho ASIN: B0G4P697M8
+2026-03-09 02:37:47,323 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:37:49,324 - INFO -     [38/100] Đang lấy review cho ASIN: B0C1HCDNN3
+2026-03-09 02:37:55,644 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:37:57,645 - INFO -     [39/100] Đang lấy review cho ASIN: B086RMFY3V
+2026-03-09 02:38:03,997 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:38:05,997 - INFO -     [40/100] Đang lấy review cho ASIN: B07D1L34VD
+2026-03-09 02:38:12,100 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:38:14,101 - INFO -     [41/100] Đang lấy review cho ASIN: B097FZG8QQ
+2026-03-09 02:38:20,255 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:38:22,256 - INFO -     [42/100] Đang lấy review cho ASIN: B0DT44HPT3
+2026-03-09 02:38:28,706 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:38:30,707 - INFO -     [43/100] Đang lấy review cho ASIN: B0CXS85ZS4
+2026-03-09 02:38:37,251 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:38:39,252 - INFO -     [44/100] Đang lấy review cho ASIN: B0G2LDW4XW
+2026-03-09 02:38:45,512 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:38:47,513 - INFO -     [45/100] Đang lấy review cho ASIN: B0FLL3L9JG
+2026-03-09 02:38:52,624 - INFO -       ✅ Đã lưu 4 review.
+2026-03-09 02:38:54,625 - INFO -     [46/100] Đang lấy review cho ASIN: B0F8HLJ9L9
+2026-03-09 02:39:00,866 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:39:02,867 - INFO -     [47/100] Đang lấy review cho ASIN: B0D1DWXRPT
+2026-03-09 02:39:08,637 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:39:10,637 - INFO -     [48/100] Đang lấy review cho ASIN: B0DBW1D1DS
+2026-03-09 02:39:16,668 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:39:18,669 - INFO -     [49/100] Đang lấy review cho ASIN: B0FDVYVDF9
+2026-03-09 02:39:25,197 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:39:27,197 - INFO -     [50/100] Đang lấy review cho ASIN: B09ZRXPBZC
+2026-03-09 02:39:32,351 - INFO -       ✅ Đã lưu 4 review.
+2026-03-09 02:39:34,351 - INFO -     [51/100] Đang lấy review cho ASIN: B0BTSFVMLV
+2026-03-09 02:39:40,623 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:39:42,624 - INFO -     [52/100] Đang lấy review cho ASIN: B0DPQGYK1S
+2026-03-09 02:39:48,860 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:39:50,861 - INFO -     [53/100] Đang lấy review cho ASIN: B0FKVKB6M2
+2026-03-09 02:39:56,499 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:39:58,500 - INFO -     [54/100] Đang lấy review cho ASIN: B0FRJM6FLR
+2026-03-09 02:40:03,139 - INFO -       ✅ Đã lưu 1 review.
+2026-03-09 02:40:05,139 - INFO -     [55/100] Đang lấy review cho ASIN: B0C7BMXV18
+2026-03-09 02:40:12,260 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:40:14,260 - INFO -     [56/100] Đang lấy review cho ASIN: B07YX5NKK2
+2026-03-09 02:40:20,357 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:40:22,358 - INFO -     [57/100] Đang lấy review cho ASIN: B0D9ZRL5RF
+2026-03-09 02:40:28,337 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:40:30,338 - INFO -     [58/100] Đang lấy review cho ASIN: B075Z7X75W
+2026-03-09 02:40:36,403 - INFO -       ✅ Đã lưu 6 review.
+2026-03-09 02:40:38,403 - INFO -     [59/100] Đang lấy review cho ASIN: B0BB7ZRYTT
+2026-03-09 02:40:42,782 - INFO -       ✅ Đã lưu 1 review.
+2026-03-09 02:40:44,782 - INFO -     [60/100] Đang lấy review cho ASIN: B08J4JRRCT
+2026-03-09 02:40:50,860 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:40:52,861 - INFO -     [61/100] Đang lấy review cho ASIN: B09NCGQSY9
+2026-03-09 02:40:59,343 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:41:01,345 - INFO -     [62/100] Đang lấy review cho ASIN: B09D914618
+2026-03-09 02:41:07,599 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:41:09,600 - INFO -     [63/100] Đang lấy review cho ASIN: B097NXN7RF
+2026-03-09 02:41:14,703 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:41:16,704 - INFO -     [64/100] Đang lấy review cho ASIN: B00B21TLQU
+2026-03-09 02:41:22,711 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:41:24,711 - INFO -     [65/100] Đang lấy review cho ASIN: B0GKF8K19Q
+2026-03-09 02:41:43,686 - INFO -       ℹ️ ASIN này hiện không có review hiển thị.
+2026-03-09 02:41:45,687 - INFO -     [66/100] Đang lấy review cho ASIN: B0FHLN6M8Y
+2026-03-09 02:42:05,110 - INFO -       ℹ️ ASIN này hiện không có review hiển thị.
+2026-03-09 02:42:07,110 - INFO -     [67/100] Đang lấy review cho ASIN: B078HSKBG3
+2026-03-09 02:42:13,405 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:42:15,405 - INFO -     [68/100] Đang lấy review cho ASIN: B0FPFVLT57
+2026-03-09 02:42:20,012 - INFO -       ✅ Đã lưu 1 review.
+2026-03-09 02:42:22,013 - INFO -     [69/100] Đang lấy review cho ASIN: B07N337VZP
+2026-03-09 02:42:41,277 - INFO -       ℹ️ ASIN này hiện không có review hiển thị.
+2026-03-09 02:42:43,278 - INFO -     [70/100] Đang lấy review cho ASIN: B07W6ZCLP3
+2026-03-09 02:42:47,921 - INFO -       ✅ Đã lưu 3 review.
+2026-03-09 02:42:49,922 - INFO -     [71/100] Đang lấy review cho ASIN: B01IWOCCOW
+2026-03-09 02:42:56,079 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:42:58,080 - INFO -     [72/100] Đang lấy review cho ASIN: B0DYNJZ54W
+2026-03-09 02:43:04,136 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:43:06,137 - INFO -     [73/100] Đang lấy review cho ASIN: B0DHJD894W
+2026-03-09 02:43:11,972 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:43:13,973 - INFO -     [74/100] Đang lấy review cho ASIN: B0FR547FXH
+2026-03-09 02:43:20,325 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:43:22,326 - INFO -     [75/100] Đang lấy review cho ASIN: B0FF7L83XD
+2026-03-09 02:43:28,188 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:43:30,189 - INFO -     [76/100] Đang lấy review cho ASIN: B0CFKLK9JY
+2026-03-09 02:43:35,897 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:43:37,897 - INFO -     [77/100] Đang lấy review cho ASIN: B0G3T4KCTR
+2026-03-09 02:43:44,549 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:43:46,550 - INFO -     [78/100] Đang lấy review cho ASIN: B017UIR9F8
+2026-03-09 02:43:52,754 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:43:54,754 - INFO -     [79/100] Đang lấy review cho ASIN: B0D4ZL4RV2
+2026-03-09 02:44:00,099 - INFO -       ✅ Đã lưu 5 review.
+2026-03-09 02:44:02,100 - INFO -     [80/100] Đang lấy review cho ASIN: B0DW5N14GV
+2026-03-09 02:44:21,635 - INFO -       ℹ️ ASIN này hiện không có review hiển thị.
+2026-03-09 02:44:23,636 - INFO -     [81/100] Đang lấy review cho ASIN: B0CMXK5QDD
+2026-03-09 02:44:28,999 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:44:31,000 - INFO -     [82/100] Đang lấy review cho ASIN: B01GE9QWB6
+2026-03-09 02:44:37,577 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:44:39,577 - INFO -     [83/100] Đang lấy review cho ASIN: B0D8PPK8HD
+2026-03-09 02:44:45,820 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:44:47,821 - INFO -     [84/100] Đang lấy review cho ASIN: B0CWTR4WG5
+2026-03-09 02:44:53,947 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:44:55,948 - INFO -     [85/100] Đang lấy review cho ASIN: B092CP8ZH4
+2026-03-09 02:45:01,788 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:45:03,789 - INFO -     [86/100] Đang lấy review cho ASIN: B09LYF2ST7
+2026-03-09 02:45:09,995 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:45:11,996 - INFO -     [87/100] Đang lấy review cho ASIN: B0G64H1QX7
+2026-03-09 02:45:18,125 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:45:20,125 - INFO -     [88/100] Đang lấy review cho ASIN: B0CCZ26B5V
+2026-03-09 02:45:26,140 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:45:28,141 - INFO -     [89/100] Đang lấy review cho ASIN: B08WM3LMJF
+2026-03-09 02:45:33,404 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:45:35,405 - INFO -     [90/100] Đang lấy review cho ASIN: B0BS1QCFHX
+2026-03-09 02:45:41,550 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:45:43,551 - INFO -     [91/100] Đang lấy review cho ASIN: B0D4Z9C562
+2026-03-09 02:45:49,590 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:45:51,591 - INFO -     [92/100] Đang lấy review cho ASIN: B0BS1RT9S2
+2026-03-09 02:45:57,364 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:45:59,365 - INFO -     [93/100] Đang lấy review cho ASIN: B0BS1PRC4L
+2026-03-09 02:46:05,043 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:46:07,044 - INFO -     [94/100] Đang lấy review cho ASIN: B0FDKQ2FG6
+2026-03-09 02:46:12,688 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:46:14,689 - INFO -     [95/100] Đang lấy review cho ASIN: B0G4W9HX8K
+2026-03-09 02:46:20,696 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:46:22,696 - INFO -     [96/100] Đang lấy review cho ASIN: B01N6ZJH96
+2026-03-09 02:46:28,466 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:46:30,508 - INFO -     [97/100] Đang lấy review cho ASIN: B09BF64J55
+2026-03-09 02:46:35,827 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:46:37,827 - INFO -     [98/100] Đang lấy review cho ASIN: B0CT9XTKKM
+2026-03-09 02:46:43,218 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:46:45,219 - INFO -     [99/100] Đang lấy review cho ASIN: B0C3W4MNN1
+2026-03-09 02:46:50,746 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:46:52,747 - INFO -     [100/100] Đang lấy review cho ASIN: B0CCZ1SQ8G
+2026-03-09 02:46:59,160 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:47:01,161 - INFO - === ĐANG XỬ LÝ FILE: amazon_batch_21.csv ===
+2026-03-09 02:47:01,167 - INFO -     📊 Tổng: 100 | Đã xong: 0 | Cần làm: 100
+2026-03-09 02:47:01,167 - INFO -     [1/100] Đang lấy review cho ASIN: B000UXZQ42
+2026-03-09 02:47:07,314 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:47:09,315 - INFO -     [2/100] Đang lấy review cho ASIN: B0DMP36MVC
+2026-03-09 02:47:15,498 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:47:17,499 - INFO -     [3/100] Đang lấy review cho ASIN: B0F3PQHWTZ
+2026-03-09 02:47:23,533 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:47:25,534 - INFO -     [4/100] Đang lấy review cho ASIN: B0CFV9XR2Q
+2026-03-09 02:47:31,206 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:47:33,207 - INFO -     [5/100] Đang lấy review cho ASIN: B0F3CSBK89
+2026-03-09 02:47:39,006 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:47:41,007 - INFO -     [6/100] Đang lấy review cho ASIN: B000AJIF4E
+2026-03-09 02:47:47,170 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:47:49,171 - INFO -     [7/100] Đang lấy review cho ASIN: B08WM3LJQB
+2026-03-09 02:47:55,138 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:47:57,139 - INFO -     [8/100] Đang lấy review cho ASIN: B0CWVX1GNX
+2026-03-09 02:48:02,578 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:48:04,578 - INFO -     [9/100] Đang lấy review cho ASIN: B0D9KRNWGC
+2026-03-09 02:48:10,554 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:48:12,555 - INFO -     [10/100] Đang lấy review cho ASIN: B0F9KFMJBQ
+2026-03-09 02:48:18,361 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:48:20,361 - INFO -     [11/100] Đang lấy review cho ASIN: B00HVLUR86
+2026-03-09 02:48:25,633 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:48:27,634 - INFO -     [12/100] Đang lấy review cho ASIN: B0D1VN2VB7
+2026-03-09 02:48:33,172 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:48:35,172 - INFO -     [13/100] Đang lấy review cho ASIN: B0GFW2BVLG
+2026-03-09 02:48:41,339 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:48:43,341 - INFO -     [14/100] Đang lấy review cho ASIN: B08MVGF24M
+2026-03-09 02:48:48,783 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:48:50,784 - INFO -     [15/100] Đang lấy review cho ASIN: B09XS7JWHH
+2026-03-09 02:48:57,109 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:48:59,110 - INFO -     [16/100] Đang lấy review cho ASIN: B0CSXV3GK4
+2026-03-09 02:49:06,163 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:49:08,164 - INFO -     [17/100] Đang lấy review cho ASIN: B09BW1QVVT
+2026-03-09 02:49:13,942 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:49:15,943 - INFO -     [18/100] Đang lấy review cho ASIN: B0CT6D6Q27
+2026-03-09 02:49:21,946 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:49:23,947 - INFO -     [19/100] Đang lấy review cho ASIN: B01DWH77GC
+2026-03-09 02:49:30,453 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:49:32,453 - INFO -     [20/100] Đang lấy review cho ASIN: B0BMLXSNG8
+2026-03-09 02:49:38,474 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:49:40,475 - INFO -     [21/100] Đang lấy review cho ASIN: B0FK4K5Z37
+2026-03-09 02:49:45,312 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:49:47,312 - INFO -     [22/100] Đang lấy review cho ASIN: B09KGLRF8J
+2026-03-09 02:49:52,812 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:49:54,813 - INFO -     [23/100] Đang lấy review cho ASIN: B09BVXT8TJ
+2026-03-09 02:50:01,286 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:50:03,287 - INFO -     [24/100] Đang lấy review cho ASIN: B0D5HG7TC3
+2026-03-09 02:50:09,100 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:50:11,100 - INFO -     [25/100] Đang lấy review cho ASIN: B0DB96KTGL
+2026-03-09 02:50:17,203 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:50:19,204 - INFO -     [26/100] Đang lấy review cho ASIN: B08629PFFQ
+2026-03-09 02:50:25,329 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:50:27,329 - INFO -     [27/100] Đang lấy review cho ASIN: B0DLKB5V35
+2026-03-09 02:50:32,929 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:50:34,930 - INFO -     [28/100] Đang lấy review cho ASIN: B0FGYFDPNP
+2026-03-09 02:50:40,639 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:50:42,640 - INFO -     [29/100] Đang lấy review cho ASIN: B0DX2LNZ68
+2026-03-09 02:50:48,332 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:50:50,333 - INFO -     [30/100] Đang lấy review cho ASIN: B0DGJC52FP
+2026-03-09 02:50:56,520 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:50:58,520 - INFO -     [31/100] Đang lấy review cho ASIN: B0CQ1HP3RX
+2026-03-09 02:51:04,695 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:51:06,695 - INFO -     [32/100] Đang lấy review cho ASIN: B0BQPW9R9H
+2026-03-09 02:51:12,538 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:51:14,539 - INFO -     [33/100] Đang lấy review cho ASIN: B00HVLUQW8
+2026-03-09 02:51:19,998 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:51:21,999 - INFO -     [34/100] Đang lấy review cho ASIN: B0B7P9R373
+2026-03-09 02:51:28,228 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:51:30,229 - INFO -     [35/100] Đang lấy review cho ASIN: B09ZK2QWD1
+2026-03-09 02:51:36,395 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:51:38,396 - INFO -     [36/100] Đang lấy review cho ASIN: B0CHFLP687
+2026-03-09 02:51:44,392 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:51:46,393 - INFO -     [37/100] Đang lấy review cho ASIN: B0CZPLV566
+2026-03-09 02:51:52,813 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:51:54,814 - INFO -     [38/100] Đang lấy review cho ASIN: B0C8PWSW7T
+2026-03-09 02:52:00,978 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:52:02,979 - INFO -     [39/100] Đang lấy review cho ASIN: B076M3B85S
+2026-03-09 02:52:22,845 - INFO -       ℹ️ ASIN này hiện không có review hiển thị.
+2026-03-09 02:52:24,846 - INFO -     [40/100] Đang lấy review cho ASIN: B0DSK2MB15
+2026-03-09 02:52:30,867 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:52:32,867 - INFO -     [41/100] Đang lấy review cho ASIN: B0F2N1YCQ3
+2026-03-09 02:52:38,938 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:52:40,939 - INFO -     [42/100] Đang lấy review cho ASIN: B07QNZC9V5
+2026-03-09 02:52:46,353 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:52:48,354 - INFO -     [43/100] Đang lấy review cho ASIN: B0FWJY183S
+2026-03-09 02:52:54,477 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:52:56,477 - INFO -     [44/100] Đang lấy review cho ASIN: B00JG2WRUO
+2026-03-09 02:53:02,541 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:53:04,542 - INFO -     [45/100] Đang lấy review cho ASIN: B00004SY4H
+2026-03-09 02:53:10,248 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:53:12,249 - INFO -     [46/100] Đang lấy review cho ASIN: B08X1R3K8N
+2026-03-09 02:53:19,185 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:53:21,186 - INFO -     [47/100] Đang lấy review cho ASIN: B0CQ1CVW3Z
+2026-03-09 02:53:26,961 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:53:28,962 - INFO -     [48/100] Đang lấy review cho ASIN: B08B477BHS
+2026-03-09 02:53:35,041 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:53:37,046 - INFO -     [49/100] Đang lấy review cho ASIN: B0C3BV19Q3
+2026-03-09 02:53:43,231 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:53:45,231 - INFO -     [50/100] Đang lấy review cho ASIN: B07RFNZYJZ
+2026-03-09 02:53:51,272 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:53:53,273 - INFO -     [51/100] Đang lấy review cho ASIN: B0DWCLTRVM
+2026-03-09 02:53:59,009 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:54:01,010 - INFO -     [52/100] Đang lấy review cho ASIN: B0CDC4X65Q
+2026-03-09 02:54:06,953 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:54:08,953 - INFO -     [53/100] Đang lấy review cho ASIN: B0C7QR4QNP
+2026-03-09 02:54:14,926 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:54:16,927 - INFO -     [54/100] Đang lấy review cho ASIN: B09YLFHFDW
+2026-03-09 02:54:23,775 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:54:25,776 - INFO -     [55/100] Đang lấy review cho ASIN: B0BTYCJXBK
+2026-03-09 02:54:31,687 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:54:33,688 - INFO -     [56/100] Đang lấy review cho ASIN: B0B8Q4CR52
+2026-03-09 02:54:39,831 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:54:41,832 - INFO -     [57/100] Đang lấy review cho ASIN: B07MRMHML9
+2026-03-09 02:54:47,768 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:54:49,769 - INFO -     [58/100] Đang lấy review cho ASIN: B0CTBCDD6D
+2026-03-09 02:54:55,658 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:54:57,659 - INFO -     [59/100] Đang lấy review cho ASIN: B07HH1QSLB
+2026-03-09 02:55:03,724 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:55:05,725 - INFO -     [60/100] Đang lấy review cho ASIN: B006T9ZKAQ
+2026-03-09 02:55:12,509 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:55:14,510 - INFO -     [61/100] Đang lấy review cho ASIN: B0BTLVHMHW
+2026-03-09 02:55:20,558 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:55:22,559 - INFO -     [62/100] Đang lấy review cho ASIN: B0CF3LHQSM
+2026-03-09 02:55:28,459 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:55:30,460 - INFO -     [63/100] Đang lấy review cho ASIN: B09NNBBY8F
+2026-03-09 02:55:36,797 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:55:38,798 - INFO -     [64/100] Đang lấy review cho ASIN: B0FH5YWH7B
+2026-03-09 02:55:44,324 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:55:46,324 - INFO -     [65/100] Đang lấy review cho ASIN: B09XZZQK6Q
+2026-03-09 02:55:52,377 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:55:54,377 - INFO -     [66/100] Đang lấy review cho ASIN: B0CGXTF225
+2026-03-09 02:56:00,413 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:56:02,413 - INFO -     [67/100] Đang lấy review cho ASIN: B0BSJYM8FF
+2026-03-09 02:56:08,539 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:56:10,540 - INFO -     [68/100] Đang lấy review cho ASIN: B0DNTLYK6Z
+2026-03-09 02:56:16,986 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:56:18,987 - INFO -     [69/100] Đang lấy review cho ASIN: B00HVLUR18
+2026-03-09 02:56:24,839 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:56:26,839 - INFO -     [70/100] Đang lấy review cho ASIN: B01KOE8DKU
+2026-03-09 02:56:32,996 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:56:34,996 - INFO -     [71/100] Đang lấy review cho ASIN: B075F6TB7F
+2026-03-09 02:56:41,402 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 02:56:43,403 - INFO -     [72/100] Đang lấy review cho ASIN: B01L1IIF1A
+2026-03-09 02:56:47,108 - WARNING -     ⚠️ PHÁT HIỆN CHẶN/LOGOUT. Vui lòng xử lý trên trình duyệt.
+2026-03-09 06:16:28,977 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:16:30,978 - INFO -     [73/100] Đang lấy review cho ASIN: B0DDPQD9JH
+2026-03-09 06:16:37,043 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:16:39,044 - INFO -     [74/100] Đang lấy review cho ASIN: B0C9L8ZR6Q
+2026-03-09 06:16:45,130 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:16:47,130 - INFO -     [75/100] Đang lấy review cho ASIN: B0B8QMW657
+2026-03-09 06:16:52,671 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:16:54,671 - INFO -     [76/100] Đang lấy review cho ASIN: B0DH689JGY
+2026-03-09 06:17:00,643 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:17:02,644 - INFO -     [77/100] Đang lấy review cho ASIN: B074NBSF9N
+2026-03-09 06:17:08,817 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:17:10,818 - INFO -     [78/100] Đang lấy review cho ASIN: B08KKBSDTY
+2026-03-09 06:17:16,705 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:17:18,706 - INFO -     [79/100] Đang lấy review cho ASIN: B0D9ZQTZ8N
+2026-03-09 06:17:24,494 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:17:26,495 - INFO -     [80/100] Đang lấy review cho ASIN: B0B94139D6
+2026-03-09 06:17:32,182 - INFO -       ✅ Đã lưu 6 review.
+2026-03-09 06:17:34,183 - INFO -     [81/100] Đang lấy review cho ASIN: B0DKLSDY5L
+2026-03-09 06:17:38,875 - INFO -       ✅ Đã lưu 1 review.
+2026-03-09 06:17:40,876 - INFO -     [82/100] Đang lấy review cho ASIN: B0BZSH7RWR
+2026-03-09 06:17:46,936 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:17:48,937 - INFO -     [83/100] Đang lấy review cho ASIN: B08R8DT7X6
+2026-03-09 06:17:54,490 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:17:56,490 - INFO -     [84/100] Đang lấy review cho ASIN: B0DGHMNQ5Z
+2026-03-09 06:18:02,112 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:18:04,112 - INFO -     [85/100] Đang lấy review cho ASIN: B0B75MQJQR
+2026-03-09 06:18:09,931 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:18:11,932 - INFO -     [86/100] Đang lấy review cho ASIN: B09QNNDPYZ
+2026-03-09 06:18:18,281 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:18:20,281 - INFO -     [87/100] Đang lấy review cho ASIN: B09NRK5668
+2026-03-09 06:18:26,041 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:18:28,042 - INFO -     [88/100] Đang lấy review cho ASIN: B01EF5DBZ6
+2026-03-09 06:18:33,921 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:18:35,922 - INFO -     [89/100] Đang lấy review cho ASIN: B0D17TFVTF
+2026-03-09 06:18:42,009 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:18:44,009 - INFO -     [90/100] Đang lấy review cho ASIN: B081415GCS
+2026-03-09 06:18:50,119 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:18:52,120 - INFO -     [91/100] Đang lấy review cho ASIN: B0BKPRTRXK
+2026-03-09 06:18:58,004 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:19:00,005 - INFO -     [92/100] Đang lấy review cho ASIN: B0FJ3ZR3B6
+2026-03-09 06:19:06,256 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:19:08,257 - INFO -     [93/100] Đang lấy review cho ASIN: B0CX1TJXKV
+2026-03-09 06:19:13,897 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:19:15,898 - INFO -     [94/100] Đang lấy review cho ASIN: B00NJ2M33I
+2026-03-09 06:19:21,820 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:19:23,821 - INFO -     [95/100] Đang lấy review cho ASIN: B0D9R4GYTN
+2026-03-09 06:19:29,942 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:19:31,943 - INFO -     [96/100] Đang lấy review cho ASIN: B0865Y4HY9
+2026-03-09 06:19:37,974 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:19:39,974 - INFO -     [97/100] Đang lấy review cho ASIN: B07PZ5K12G
+2026-03-09 06:19:45,984 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:19:47,985 - INFO -     [98/100] Đang lấy review cho ASIN: B07K5214NZ
+2026-03-09 06:19:54,053 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:19:56,053 - INFO -     [99/100] Đang lấy review cho ASIN: B0DZD82GTF
+2026-03-09 06:20:01,871 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:20:03,871 - INFO -     [100/100] Đang lấy review cho ASIN: B0CFCQVZS6
+2026-03-09 06:20:09,787 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:20:11,788 - INFO - === ĐANG XỬ LÝ FILE: amazon_batch_22.csv ===
+2026-03-09 06:20:11,795 - INFO -     📊 Tổng: 100 | Đã xong: 0 | Cần làm: 100
+2026-03-09 06:20:11,795 - INFO -     [1/100] Đang lấy review cho ASIN: B0CS2MFXRS
+2026-03-09 06:20:17,436 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:20:19,437 - INFO -     [2/100] Đang lấy review cho ASIN: B0BRPR38JR
+2026-03-09 06:20:24,415 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:20:26,416 - INFO -     [3/100] Đang lấy review cho ASIN: B09ZXXYRKY
+2026-03-09 06:20:32,377 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:20:34,378 - INFO -     [4/100] Đang lấy review cho ASIN: B09SKWGH62
+2026-03-09 06:20:40,630 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:20:42,631 - INFO -     [5/100] Đang lấy review cho ASIN: B099M8312J
+2026-03-09 06:20:47,784 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:20:49,785 - INFO -     [6/100] Đang lấy review cho ASIN: B0001ARCFA
+2026-03-09 06:20:55,713 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:20:57,715 - INFO -     [7/100] Đang lấy review cho ASIN: B07NF1FRNH
+2026-03-09 06:21:04,030 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:21:06,031 - INFO -     [8/100] Đang lấy review cho ASIN: B0BCFKG49M
+2026-03-09 06:21:12,185 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:21:14,186 - INFO -     [9/100] Đang lấy review cho ASIN: B0DTRW94T7
+2026-03-09 06:21:20,014 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:21:22,015 - INFO -     [10/100] Đang lấy review cho ASIN: B00SAYCXWG
+2026-03-09 06:21:27,955 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:21:29,956 - INFO -     [11/100] Đang lấy review cho ASIN: B0CD1F3WCC
+2026-03-09 06:21:35,724 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:21:37,725 - INFO -     [12/100] Đang lấy review cho ASIN: B0C1QQYP53
+2026-03-09 06:21:43,327 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:21:45,327 - INFO -     [13/100] Đang lấy review cho ASIN: B0D83FB8KH
+2026-03-09 06:21:51,432 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:21:53,433 - INFO -     [14/100] Đang lấy review cho ASIN: B0BN83VTRH
+2026-03-09 06:21:59,515 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:22:01,516 - INFO -     [15/100] Đang lấy review cho ASIN: B0CBLLJTTN
+2026-03-09 06:22:07,099 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:22:09,100 - INFO -     [16/100] Đang lấy review cho ASIN: B07DXP45Q7
+2026-03-09 06:22:14,775 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:22:16,776 - INFO -     [17/100] Đang lấy review cho ASIN: B09VGD1GVC
+2026-03-09 06:22:22,473 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:22:24,474 - INFO -     [18/100] Đang lấy review cho ASIN: B0CLLJC6QC
+2026-03-09 06:22:30,384 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:22:32,385 - INFO -     [19/100] Đang lấy review cho ASIN: B08PXXHBDX
+2026-03-09 06:22:38,219 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:22:40,220 - INFO -     [20/100] Đang lấy review cho ASIN: B0DFDT1TWC
+2026-03-09 06:22:45,894 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:22:47,894 - INFO -     [21/100] Đang lấy review cho ASIN: B0CFSD4TSQ
+2026-03-09 06:22:53,715 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:22:55,716 - INFO -     [22/100] Đang lấy review cho ASIN: B0FSQFPYHJ
+2026-03-09 06:23:01,896 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:23:03,897 - INFO -     [23/100] Đang lấy review cho ASIN: B07ZF8T63K
+2026-03-09 06:23:09,929 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:23:11,930 - INFO -     [24/100] Đang lấy review cho ASIN: B085899TQ9
+2026-03-09 06:23:18,041 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:23:20,043 - INFO -     [25/100] Đang lấy review cho ASIN: B08G1ZBKGP
+2026-03-09 06:23:26,212 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:23:28,214 - INFO -     [26/100] Đang lấy review cho ASIN: B0CFGVDDH6
+2026-03-09 06:23:34,374 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:23:36,375 - INFO -     [27/100] Đang lấy review cho ASIN: B0FM4BRQ5W
+2026-03-09 06:23:42,325 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:23:44,326 - INFO -     [28/100] Đang lấy review cho ASIN: B09QZDHB6M
+2026-03-09 06:23:50,537 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:23:52,538 - INFO -     [29/100] Đang lấy review cho ASIN: B0B6GHW1SX
+2026-03-09 06:23:58,362 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:24:00,363 - INFO -     [30/100] Đang lấy review cho ASIN: B0GG53SPJC
+2026-03-09 06:24:06,157 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:24:08,158 - INFO -     [31/100] Đang lấy review cho ASIN: B0GCH8VJQQ
+2026-03-09 06:24:14,019 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:24:16,020 - INFO -     [32/100] Đang lấy review cho ASIN: B0BRT1ZN7Q
+2026-03-09 06:24:22,114 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:24:24,115 - INFO -     [33/100] Đang lấy review cho ASIN: B0C1GTXY5S
+2026-03-09 06:24:30,054 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:24:32,054 - INFO -     [34/100] Đang lấy review cho ASIN: B0CH1LT68Z
+2026-03-09 06:24:37,985 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:24:39,986 - INFO -     [35/100] Đang lấy review cho ASIN: B00DCXWXEI
+2026-03-09 06:24:45,969 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:24:47,970 - INFO -     [36/100] Đang lấy review cho ASIN: B0F94381P4
+2026-03-09 06:24:53,852 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:24:55,853 - INFO -     [37/100] Đang lấy review cho ASIN: B09S3VWMX6
+2026-03-09 06:25:01,688 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:25:03,689 - INFO -     [38/100] Đang lấy review cho ASIN: B0F45CTLMM
+2026-03-09 06:25:09,465 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:25:11,466 - INFO -     [39/100] Đang lấy review cho ASIN: B07XT3LLT6
+2026-03-09 06:25:16,977 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:25:18,978 - INFO -     [40/100] Đang lấy review cho ASIN: B0D3746YW8
+2026-03-09 06:25:24,981 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:25:26,982 - INFO -     [41/100] Đang lấy review cho ASIN: B0CYHGTMNH
+2026-03-09 06:25:32,670 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:25:34,671 - INFO -     [42/100] Đang lấy review cho ASIN: B089FTMVM5
+2026-03-09 06:25:40,298 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:25:42,299 - INFO -     [43/100] Đang lấy review cho ASIN: B06XSJV5B9
+2026-03-09 06:25:48,211 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:25:50,212 - INFO -     [44/100] Đang lấy review cho ASIN: B0FJ3VXF3Q
+2026-03-09 06:25:55,694 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:25:57,696 - INFO -     [45/100] Đang lấy review cho ASIN: B07MCND66X
+2026-03-09 06:26:03,356 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:26:05,357 - INFO -     [46/100] Đang lấy review cho ASIN: B0FH5QDTBQ
+2026-03-09 06:26:11,125 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:26:13,126 - INFO -     [47/100] Đang lấy review cho ASIN: B0FQVDTSQP
+2026-03-09 06:26:19,096 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:26:21,097 - INFO -     [48/100] Đang lấy review cho ASIN: B095BV8R27
+2026-03-09 06:26:27,592 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:26:29,593 - INFO -     [49/100] Đang lấy review cho ASIN: B01H6GUCCQ
+2026-03-09 06:26:35,882 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:26:37,883 - INFO -     [50/100] Đang lấy review cho ASIN: B08W8T6HWZ
+2026-03-09 06:26:44,095 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:26:46,095 - INFO -     [51/100] Đang lấy review cho ASIN: B0BG7BYG3M
+2026-03-09 06:26:51,918 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:26:53,918 - INFO -     [52/100] Đang lấy review cho ASIN: B0F8MP6H9S
+2026-03-09 06:27:00,199 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:27:02,199 - INFO -     [53/100] Đang lấy review cho ASIN: B08ZR34S9T
+2026-03-09 06:27:08,232 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:27:10,233 - INFO -     [54/100] Đang lấy review cho ASIN: B0CQKN4QYY
+2026-03-09 06:27:16,298 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:27:18,298 - INFO -     [55/100] Đang lấy review cho ASIN: B08PY9LYQ8
+2026-03-09 06:27:24,277 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:27:26,278 - INFO -     [56/100] Đang lấy review cho ASIN: B009S332TQ
+2026-03-09 06:27:32,020 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:27:34,020 - INFO -     [57/100] Đang lấy review cho ASIN: B0D3KKP8GL
+2026-03-09 06:27:39,915 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:27:41,916 - INFO -     [58/100] Đang lấy review cho ASIN: B0D8L7K9QR
+2026-03-09 06:27:47,881 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:27:49,882 - INFO -     [59/100] Đang lấy review cho ASIN: B0FSRMZ4G7
+2026-03-09 06:27:56,300 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:27:58,301 - INFO -     [60/100] Đang lấy review cho ASIN: B0FCNSPN13
+2026-03-09 06:28:04,358 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:28:06,358 - INFO -     [61/100] Đang lấy review cho ASIN: B09FKGJ1CB
+2026-03-09 06:28:12,246 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:28:14,246 - INFO -     [62/100] Đang lấy review cho ASIN: B0FHB7NBL5
+2026-03-09 06:28:20,493 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:28:22,494 - INFO -     [63/100] Đang lấy review cho ASIN: B07N8H8RKC
+2026-03-09 06:28:28,080 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:28:30,080 - INFO -     [64/100] Đang lấy review cho ASIN: B0F9XDMT1Y
+2026-03-09 06:28:36,067 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:28:38,068 - INFO -     [65/100] Đang lấy review cho ASIN: B09VX61D9Z
+2026-03-09 06:28:57,320 - INFO -       ℹ️ ASIN này hiện không có review hiển thị.
+2026-03-09 06:28:59,321 - INFO -     [66/100] Đang lấy review cho ASIN: B00BA62CSG
+2026-03-09 06:29:04,304 - INFO -       ✅ Đã lưu 1 review.
+2026-03-09 06:29:06,305 - INFO -     [67/100] Đang lấy review cho ASIN: B000MGBQ9G
+2026-03-09 06:29:25,797 - INFO -       ℹ️ ASIN này hiện không có review hiển thị.
+2026-03-09 06:29:27,798 - INFO -     [68/100] Đang lấy review cho ASIN: B0DFZW57K8
+2026-03-09 06:29:32,511 - INFO -       ✅ Đã lưu 3 review.
+2026-03-09 06:29:34,511 - INFO -     [69/100] Đang lấy review cho ASIN: 1734531029
+2026-03-09 06:29:39,876 - INFO -       ✅ Đã lưu 4 review.
+2026-03-09 06:29:41,877 - INFO -     [70/100] Đang lấy review cho ASIN: B07XLGWPZK
+2026-03-09 06:30:01,401 - INFO -       ℹ️ ASIN này hiện không có review hiển thị.
+2026-03-09 06:30:03,402 - INFO -     [71/100] Đang lấy review cho ASIN: B07TDS4SG1
+2026-03-09 06:30:09,269 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:30:11,270 - INFO -     [72/100] Đang lấy review cho ASIN: B08GBZFRN3
+2026-03-09 06:30:17,599 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:30:19,599 - INFO -     [73/100] Đang lấy review cho ASIN: B0CGWDRZ2W
+2026-03-09 06:30:25,561 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:30:27,562 - INFO -     [74/100] Đang lấy review cho ASIN: B09VC5JFQQ
+2026-03-09 06:30:33,435 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:30:35,435 - INFO -     [75/100] Đang lấy review cho ASIN: B0G6JZJBF3
+2026-03-09 06:30:41,632 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:30:43,632 - INFO -     [76/100] Đang lấy review cho ASIN: B08LMJS1TR
+2026-03-09 06:30:49,617 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:30:51,618 - INFO -     [77/100] Đang lấy review cho ASIN: B0DLGD52P4
+2026-03-09 06:30:57,645 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:30:59,646 - INFO -     [78/100] Đang lấy review cho ASIN: B0CSZXFS73
+2026-03-09 06:31:05,773 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:31:07,774 - INFO -     [79/100] Đang lấy review cho ASIN: B07X2LQRCF
+2026-03-09 06:31:13,411 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:31:15,412 - INFO -     [80/100] Đang lấy review cho ASIN: B07PK11GBX
+2026-03-09 06:31:21,575 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:31:23,576 - INFO -     [81/100] Đang lấy review cho ASIN: B08LVZBN6Q
+2026-03-09 06:31:29,549 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:31:31,550 - INFO -     [82/100] Đang lấy review cho ASIN: B0F7M3YLVS
+2026-03-09 06:31:37,408 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:31:39,408 - INFO -     [83/100] Đang lấy review cho ASIN: B0F76DDBXC
+2026-03-09 06:31:45,229 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:31:47,230 - INFO -     [84/100] Đang lấy review cho ASIN: B000EBBJ6Y
+2026-03-09 06:31:52,880 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:31:54,881 - INFO -     [85/100] Đang lấy review cho ASIN: B0D9P67CLM
+2026-03-09 06:32:00,584 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:32:02,584 - INFO -     [86/100] Đang lấy review cho ASIN: B0CYFGWSMY
+2026-03-09 06:32:08,808 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:32:10,809 - INFO -     [87/100] Đang lấy review cho ASIN: B004OFS6WG
+2026-03-09 06:32:16,804 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:32:18,805 - INFO -     [88/100] Đang lấy review cho ASIN: B07VT1Z7DV
+2026-03-09 06:32:24,919 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:32:26,920 - INFO -     [89/100] Đang lấy review cho ASIN: B0BQL64T6K
+2026-03-09 06:32:32,772 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:32:34,773 - INFO -     [90/100] Đang lấy review cho ASIN: B0DPPRKVYQ
+2026-03-09 06:32:40,298 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:32:42,299 - INFO -     [91/100] Đang lấy review cho ASIN: B0D7VLPWNH
+2026-03-09 06:32:48,608 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:32:50,609 - INFO -     [92/100] Đang lấy review cho ASIN: B07KCKWGSG
+2026-03-09 06:32:55,657 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:32:57,658 - INFO -     [93/100] Đang lấy review cho ASIN: B0C33XXS56
+2026-03-09 06:33:03,998 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:33:05,999 - INFO -     [94/100] Đang lấy review cho ASIN: B0CM6VTJGM
+2026-03-09 06:33:11,877 - INFO -       ✅ Đã lưu 8 review.
+2026-03-09 06:33:13,878 - INFO -     [95/100] Đang lấy review cho ASIN: B0B349KKSV
+2026-03-09 06:33:17,812 - WARNING -     ⚠️ PHÁT HIỆN CHẶN/LOGOUT. Vui lòng xử lý trên trình duyệt.
+2026-03-09 06:38:03,389 - INFO -       ℹ️ ASIN này hiện không có review hiển thị.
+2026-03-09 06:38:05,389 - INFO -     [96/100] Đang lấy review cho ASIN: 0240515781
+2026-03-09 06:38:09,018 - WARNING -     ⚠️ PHÁT HIỆN CHẶN/LOGOUT. Vui lòng xử lý trên trình duyệt.
+2026-03-09 06:38:32,941 - INFO -       ℹ️ ASIN này hiện không có review hiển thị.
+2026-03-09 06:38:34,943 - INFO -     [97/100] Đang lấy review cho ASIN: B076TF7ZZW
+2026-03-09 06:38:53,664 - INFO -       ℹ️ ASIN này hiện không có review hiển thị.
+2026-03-09 06:38:55,665 - INFO -     [98/100] Đang lấy review cho ASIN: B0FQBTKW5K
+2026-03-09 06:39:14,316 - INFO -       ℹ️ ASIN này hiện không có review hiển thị.
+2026-03-09 06:39:16,317 - INFO -     [99/100] Đang lấy review cho ASIN: B00OP93VI0
+2026-03-09 06:39:34,935 - INFO -       ℹ️ ASIN này hiện không có review hiển thị.
+2026-03-09 06:39:36,936 - INFO -     [100/100] Đang lấy review cho ASIN: B0C2HQCLGH
+2026-03-09 06:39:55,610 - INFO -       ℹ️ ASIN này hiện không có review hiển thị.
+2026-03-09 06:39:57,611 - INFO - === ĐANG XỬ LÝ FILE: amazon_batch_23.csv ===
+2026-03-09 06:39:57,615 - INFO -     📊 Tổng: 6 | Đã xong: 0 | Cần làm: 6
+2026-03-09 06:39:57,615 - INFO -     [1/6] Đang lấy review cho ASIN: B0DJ8RRKVX
+2026-03-09 06:40:02,875 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)': /session/5ade48d0ed130349d97be42d5dcc654e
