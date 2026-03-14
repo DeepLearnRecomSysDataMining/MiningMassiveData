@@ -1,0 +1,20 @@
+--Nhóm điện thoại
+https://www.amazon.com/s?k=iphone
+https://www.amazon.com/s?k=phones
+https://www.amazon.com/s?k=smartphones
+
+--nhóm máy tính và máy tính bảng
+https://www.amazon.com/s?k=desktop+computer
+https://www.amazon.com/s?k=electroinc+tablets
+https://www.amazon.com/s?k=laptops
+https://www.amazon.com/s?k=computers
+https://www.amazon.com/s?k=PCs
+https://www.amazon.com/s?k=Monitors
+
+-- nhóm đồ điện, phụ kiện đi kèm
+https://www.amazon.com/s?k=headphones
+https://www.amazon.com/s?k=electronics
+
+-- monitor bổ sung
+https://www.amazon.com/s?i=computers&rh=n%3A1292115011&s=popularity-rank
+https://www.amazon.com/s?k=airpods
