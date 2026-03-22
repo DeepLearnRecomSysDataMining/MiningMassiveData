@@ -12,7 +12,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-def init(output_dir='data_amazon_split'):
+def init(output_dir='data_amazon_metadata'):
     for handler in logging.root.handlers[:]:
         logging.root.removeHandler(handler)
     log_formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s', datefmt='%H:%M:%S')
@@ -82,7 +82,6 @@ def get_identifiers(container, page_source, url):
         parent_asin = parent_match.group(1)
     return current_asin, parent_asin
 
-
 def get_images(page_source, container):
     """Trích xuất danh sách hình ảnh (Hi-res và Gallery)"""
     images = []
@@ -108,7 +107,6 @@ def get_images(page_source, container):
                 hi_res = re.sub(r'\._[A-Z0-9, ]+_\.', '.', src)
                 images.append({"thumb": src, "large": hi_res, "variant": "MAIN", "hi_res": hi_res})
     return images
-
 
 def get_product_description(container):
     """Lấy nội dung mô tả sản phẩm"""
@@ -240,70 +238,86 @@ def extract_product_details(driver, url, main_category):
 # ==========================================
 # 4. TIẾN TRÌNH XỬ LÝ (THEO CHUNK 20)
 # ==========================================
-def process_amazon_metadata(source_dir, manual_category, start_file_index=0):
-    abs_dir = init(source_dir)
-    all_files = os.listdir(abs_dir)
-    csv_files = [f for f in all_files if f.lower().endswith('.csv') and 'amazon_batch_' in f]
-    csv_files.sort(key=lambda f: int(re.findall(r'\d+', f)[0]))
-
+def process_amazon_metadata(source_dir, categories_dict):
+    init(source_dir)
     jsonl_path = os.path.abspath('metadata')
     os.makedirs(jsonl_path, exist_ok=True)
-    logging.info(f"Hệ thống khởi tạo thành công. Thư mục: {jsonl_path}")
-
-    if not csv_files:
-        logging.error("❌ Không tìm thấy file CSV!")
-        return
+    logging.info(f"🚀 Hệ thống khởi tạo thành công. Kết quả sẽ lưu tại: {jsonl_path}")
 
     driver = get_chrome_driver()
-
-    # THIẾT LẬP VÙNG US NGAY SAU KHI MỞ TRÌNH DUYỆT
     set_us_location(driver)
-
     CHUNK_SIZE = 20
 
     try:
-        for idx_file, file_name in enumerate(csv_files[start_file_index:]):
-            current_file_pos = start_file_index + idx_file
-            full_csv_path = os.path.join(abs_dir, file_name)
+        for manual_category, file_name in categories_dict.items():
+            full_csv_path = os.path.join(source_dir, file_name)
+
+            # Kiểm tra file tồn tại
+            if not os.path.exists(full_csv_path):
+                logging.warning(f"⚠️ Bỏ qua: Không tìm thấy file {file_name} cho danh mục {manual_category}")
+                continue
 
             save_name = f"{manual_category.replace(' ', '_').lower()}_details.jsonl"
             full_json_path = os.path.join(jsonl_path, save_name)
 
-            logging.info(f"📂 [FILE {current_file_pos}/{len(csv_files) - 1}] {file_name}")
+            logging.info(f"📂 ĐANG XỬ LÝ DANH MỤC: {manual_category.upper()} | File: {file_name}")
+
+            # Đọc CSV
             df = pd.read_csv(full_csv_path, low_memory=False)
+            if 'url' not in df.columns:
+                logging.error(f"❌ File {file_name} thiếu cột 'url'. Bỏ qua.")
+                continue
+
             urls = df['url'].dropna().unique().tolist()
+            logging.info(f"🔎 Tìm thấy {len(urls)} URL duy nhất.")
 
             batch_results = []
             for idx, url in enumerate(urls):
                 logging.info(f"   🔹 [{idx + 1}/{len(urls)}] Cào URL: {url}")
+
+                # Gọi hàm trích xuất chi tiết (Đã bao gồm Expand và lấy Details)
                 data = extract_product_details(driver, url, manual_category)
 
                 if data == "CAPTCHA":
+                    # Lưu lại những gì đã cào được trước khi dừng
                     if batch_results:
                         with open(full_json_path, 'a', encoding='utf-8') as f:
                             for item in batch_results:
                                 f.write(json.dumps(item, ensure_ascii=False) + "\n")
-                    logging.critical("🛑 DỪNG DO CAPTCHA.")
-                    return
+                    logging.critical("🛑 DỪNG TOÀN BỘ DO DÍNH CAPTCHA. Hãy kiểm tra trình duyệt hoặc đổi IP.")
+                    return  # Dừng toàn bộ chương trình
 
                 if data:
                     batch_results.append(data)
 
+                # Cơ chế xả dữ liệu định kỳ (Dump to file) để tiết kiệm RAM và an toàn dữ liệu
                 if len(batch_results) >= CHUNK_SIZE or idx == len(urls) - 1:
                     if batch_results:
                         with open(full_json_path, 'a', encoding='utf-8') as f:
                             for item in batch_results:
                                 f.write(json.dumps(item, ensure_ascii=False) + "\n")
-                        logging.info(f"💾 Đã xả {len(batch_results)} items xuống file.")
+                        logging.info(f"💾 Đã ghi {len(batch_results)} items vào {save_name}")
                         batch_results = []
 
-                time.sleep(1)
+                # Nghỉ ngắn giữa các sản phẩm để tránh bị quét
+                time.sleep(1.5)
+
+            logging.info(f"✅ Hoàn tất danh mục: {manual_category}")
 
     finally:
         driver.quit()
-        logging.info("🏁 HOÀN TẤT.")
+        logging.info("🏁 QUY TRÌNH HOÀN TẤT.")
 
 
 if __name__ == "__main__":
-    MY_CAT = "Smartphone"
-    process_amazon_metadata('data_amazon_split', MY_CAT, start_file_index=2)
+    # Cấu hình danh mục và file tương ứng
+    TARGET_CATEGORIES = {
+        "Smartphone": "smartphone_products.csv",
+        "Tablets": "tablets_products.csv",
+        "Headphone": "headphone_products.csv",
+        "Laptop": "laptop_products.csv",
+        "Computer": "computer_products.csv"
+    }
+
+    # source_dir là thư mục chứa các file csv link của bạn
+    process_amazon_metadata('data_amazon_links', TARGET_CATEGORIES)
