@@ -12,10 +12,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
-# ==========================================
-# 1. CẤU HÌNH LOGGING
-# ==========================================
 def init(output_dir='data_amazon_split'):
     for handler in logging.root.handlers[:]:
         logging.root.removeHandler(handler)
@@ -33,9 +29,6 @@ def init(output_dir='data_amazon_split'):
     logging.info(f"Hệ thống khởi tạo thành công. Thư mục: {abs_path}")
     return abs_path
 
-# ==========================================
-# 2. KHỞI TẠO DRIVER & THIẾT LẬP VÙNG (NEW)
-# ==========================================
 def get_chrome_driver():
     options = Options()
     options.add_argument("--headless")
@@ -75,7 +68,6 @@ def safe_get_text(parent, selector):
         return parent.find_element(By.CSS_SELECTOR, selector).get_attribute("innerText").strip()
     except:
         return None
-
 
 def get_identifiers(container, page_source, url):
     """Tách ASIN và Parent ASIN"""
