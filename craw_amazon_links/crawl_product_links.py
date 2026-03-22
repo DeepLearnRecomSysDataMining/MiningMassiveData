@@ -4,6 +4,7 @@ import os
 import logging
 import sys
 import re
+import pandas as pd
 from selenium import webdriver
 from selenium.common import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
@@ -11,24 +12,21 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
-def init(output_dir='data_amazon'):
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s',
-        handlers=[
-            logging.FileHandler("amazon_deep_scraper.log", encoding='utf-8'),
-            logging.StreamHandler()
-        ]
-    )
+def init(output_dir='data_amazon_split'):
+    if not logging.getLogger().hasHandlers():
+        logging.basicConfig(
+            level=logging.INFO,
+            format='%(asctime)s - %(levelname)s - %(message)s',
+            handlers=[
+                logging.FileHandler("amazon_deep_scraper.log", encoding='utf-8'),
+                logging.StreamHandler()
+            ]
+        )
     try:
         os.makedirs(output_dir, exist_ok=True)
-        # for subdir in ["raw", "processed"]:
-        #     os.makedirs(os.path.join(output_dir, subdir), exist_ok=True)
     except Exception as e:
         logging.error(f"Lỗi khởi tạo: {str(e)}")
         sys.exit(1)
-
 
 def get_chrome_driver():
     options = Options()
@@ -41,149 +39,252 @@ def get_chrome_driver():
     driver = webdriver.Chrome(options=options)
     return driver
 
-
 def get_high_res_img(url):
     if not url: return url
     return re.sub(r'\._AC_.*_\.', '.', url)
 
-
-def extract_product_data(driver):
+def extract_product_data(driver, category_name):
     products = []
-    logging.info("    [Bắt đầu trích xuất] Đang phân tích nội dung trang...")
-
     try:
         wait = WebDriverWait(driver, 15)
-        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[role='listitem']")))
-
-        # Cuộn trang để load ảnh
-        logging.info("    [Cuộn trang] Đang kích hoạt Lazy load...")
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[data-asin]")))
         for i in range(1, 4):
             driver.execute_script(f"window.scrollTo(0, document.body.scrollHeight * {i / 3});")
             time.sleep(1.5)
-
-        items = driver.find_elements(By.CSS_SELECTOR, "div[role='listitem'][data-asin]")
-        logging.info(f"    [Xử lý] Tìm thấy {len(items)} thẻ sản phẩm.")
+        items = driver.find_elements(By.CSS_SELECTOR, "div[data-asin]")
 
         for item in items:
             asin = item.get_attribute("data-asin")
-            if not asin: continue
-
+            if not asin:
+                continue
             try:
-                # Tìm link
                 link_tag = item.find_element(By.CSS_SELECTOR, "a.a-link-normal[href*='/dp/']")
                 href = link_tag.get_attribute("href")
                 clean_href = href.split("/ref=")[0] if "/ref=" in href else href
-
-                # Tìm ảnh
                 img_tag = item.find_element(By.CSS_SELECTOR, "img.s-image")
                 img_url = get_high_res_img(img_tag.get_attribute("src"))
-
-                products.append({'asin': asin, 'url': clean_href, 'image_url': img_url})
+                products.append({
+                    'asin': asin,
+                    'url': clean_href,
+                    'image_url': img_url,
+                    'category': category_name
+                })
             except NoSuchElementException:
-                logging.debug(f"        [Bỏ qua] ASIN {asin} là nội dung quảng cáo không chuẩn.")
                 continue
-
-        logging.info(f"    [Thành công] Đã lấy được {len(products)} item từ trang này.")
-        return products
-
+        unique_on_page = list({v['asin']: v for v in products}.values())
+        logging.info(f"    Đã lấy được thêm {len(unique_on_page)} ASIN")
+        return unique_on_page
     except TimeoutException:
-        logging.error("    [Lỗi Timeout] Không tìm thấy danh sách sản phẩm sau 15s.")
+        logging.error("    [Lỗi Timeout] Không tìm thấy danh sách sản phẩm.")
         return []
 
-
-def scrape_category(base_url, max_pages=20):
-    init()
-    driver = get_chrome_driver()
-    all_results = []
-
-    try:
-        current_url = base_url
-        for p in range(1, max_pages + 1):
-            logging.info(f"TRANG {p}: Đang tải dữ liệu...")
-            logging.info(f"URL: {current_url}")
-
-            driver.get(current_url)
-
-            if "captcha" in driver.page_source.lower() or "automated access" in driver.page_source:
-                logging.error("    [CHẶN BOT] Amazon đã phát hiện và chặn Captcha.")
-                break
-
-            data = extract_product_data(driver)
-            if not data:
-                logging.warning("    [Thông báo] Trang trống hoặc bị lỗi load.")
-                break
-
-            all_results.extend(data)
-
-            # Tìm nút Next
-            try:
-                next_btn = driver.find_element(By.CSS_SELECTOR, "a.s-pagination-next")
-                current_url = next_btn.get_attribute("href")
-                logging.info(f"    [Phân trang] Đã tìm thấy nút Next cho trang {p + 1}.")
-                time.sleep(5)
-            except NoSuchElementException:
-                logging.info("    [Kết thúc] Đã tới trang cuối cùng hiển thị.")
-                break
-    finally:
-        driver.quit()
-        save_to_csv(all_results)
-
-
-import pandas as pd
-
-
-def save_to_csv(data):
+def save_to_csv(data, category_name, output_dir):
     if not data:
-        logging.warning("Không có dữ liệu mới để lưu.")
         return
+    safe_name = category_name.replace(' ', '_').lower()
+    file_path = os.path.join(output_dir, f"{safe_name}_products.csv")
 
-    file_path = os.path.join('data_amazon', 'amazon_products_3.csv')
-    fieldnames = ['asin', 'url', 'image_url']
-
-    new_df = pd.DataFrame(data)
+    fieldnames = ['asin', 'url', 'image_url', 'category']
+    new_df = pd.DataFrame(data, columns=fieldnames)
     new_df.drop_duplicates(subset=['asin'], keep='first', inplace=True)
 
     if os.path.exists(file_path) and os.stat(file_path).st_size > 0:
-        logging.info(f"    [Xử lý tệp lớn] Đang lọc trùng lặp với dữ liệu cũ...")
         try:
-            existing_asins = pd.read_csv(file_path, usecols=['asin'], dtype={'asin': str})['asin'].values
-            existing_asins_set = set(existing_asins)
-            # Lọc: Chỉ giữ lại những dòng mà ASIN chưa tồn tại trong file
-            new_df = new_df[~new_df['asin'].isin(existing_asins_set)]
-            del existing_asins_set
+            # Chỉ đọc cột ASIN để tiết kiệm RAM
+            existing_asins = pd.read_csv(file_path, usecols=['asin'], dtype={'asin': str})['asin'].unique()
+            existing_set = set(existing_asins)
+            # Chỉ giữ lại những dòng có ASIN chưa từng xuất hiện trong file
+            new_df = new_df[~new_df['asin'].isin(existing_set)]
         except Exception as e:
-            logging.error(f"    [Lỗi] Không thể đọc cột ASIN từ file cũ: {str(e)}")
-    if new_df.empty:
-        logging.info("    [Thông báo] Tất cả sản phẩm đều đã tồn tại trong file (sau khi lọc triệu dòng).")
-        return
+            logging.error(f"    [Lỗi lọc trùng] {str(e)}")
 
-    # Bước 3: Ghi nối tiếp (mode='a')
+    if new_df.empty:
+        logging.info(f"    [Thông báo] Không có sản phẩm mới nào cho danh mục {category_name}.")
+        return
     try:
-        # header=False nếu file đã có dữ liệu để tránh lặp lại tiêu đề ở giữa file
         file_exists = os.path.exists(file_path) and os.stat(file_path).st_size > 0
         new_df.to_csv(file_path, mode='a', index=False, header=not file_exists, encoding='utf-8')
-
-        logging.info(
-            f"✅ THÀNH CÔNG: Đã nối thêm {len(new_df)} dòng mới vào tệp {len(new_df)} dòng.")
+        logging.info(f"✅ Đã lưu {len(new_df)} sản phẩm mới vào {file_path}")
     except Exception as e:
-        logging.error(f"❌ LỖI LƯU FILE: {str(e)}")
+        logging.error(f"❌ LỖI GHI FILE: {str(e)}")
 
+def scrape_category(category_name, url_list, max_pages_per_url=20):
+    init(output_dir='data_amazon_links')
+    driver = get_chrome_driver()
+    output_dir = 'data_amazon_links'
+
+    try:
+        for base_url in url_list:
+            current_url = base_url
+            logging.info(f"🚀 BẮT ĐẦU: Danh mục {category_name.upper()}")
+
+            for p in range(1, max_pages_per_url + 1):
+                logging.info(f"  Trang {p} | URL: {current_url}...")
+                driver.get(current_url)
+                if "captcha" in driver.page_source.lower():
+                    logging.error("  [CHẶN] Bị dính Captcha.")
+                    break
+                page_data = extract_product_data(driver, category_name)
+                if not page_data:
+                    break
+                save_to_csv(page_data, category_name, output_dir)
+
+                try:
+                    next_btn = driver.find_element(By.CSS_SELECTOR, "a.s-pagination-next")
+                    current_url = next_btn.get_attribute("href")
+                    time.sleep(5)
+                except NoSuchElementException:
+                    logging.info("  [Hết trang] Không thấy nút Next.")
+                    break
+    finally:
+        driver.quit()
 
 if __name__ == '__main__':
-    # url = "https://www.amazon.com/s?k=smartphones"
-    # list_url =[
-    #     "https://www.amazon.com/s?k=desktop+computer",
-    #     "https://www.amazon.com/s?k=electroinc+tablets",
-    #     "https://www.amazon.com/s?k=laptops",
-    #     "https://www.amazon.com/s?k=computers",
-    #     "https://www.amazon.com/s?k=PCs",
-    #     "https://www.amazon.com/s?k=Monitors",
-    # ]
-    # list_url = [
-    #     "https://www.amazon.com/s?k=headphones"
-    # ]
-    list_url = [
-        "https://www.amazon.com/s?i=computers&rh=n%3A1292115011&s=popularity-rank&page=77&qid=1772983695&xpid=XuAJbB_eWGBRg&ref=sr_pg_76"
-    ]
-    for url in list_url:
-        scrape_category(url, max_pages=200)
+    categories_config = {
+        "Smartphone": [
+            # "https://www.amazon.com/s?k=iphone",
+            # "https://www.amazon.com/s?k=phones",
+            # "https://www.amazon.com/s?k=smartphones",
+            # "https://www.amazon.com/s?k=smartphone+samsung",
+            "https://www.amazon.com/s?k=samsung+z+fold",
+            "https://www.amazon.com/s?k=smartphones+motorola",
+            "https://www.amazon.com/s?k=smartphone+apple",
+            "https://www.amazon.com/s?k=smartphones+xiaomi",
+            "https://www.amazon.com/s?k=blackberry+smartphones",
+            "https://www.amazon.com/s?k=smartphones+redmi",
+            "https://www.amazon.com/s?k=smartphones+realme",
+            "https://www.amazon.com/s?k=smartphones+oppo",
+            "https://www.amazon.com/s?k=vivo+smartphones"
+        ],
+        "Tablets": [
+            "https://www.amazon.com/s?k=tablets",
+            "https://www.amazon.com/s?k=tablets+samsung",
+            "https://www.amazon.com/s?k=tablets+apple",
+            "https://www.amazon.com/s?k=tablets+amazon",
+            "https://www.amazon.com/s?k=tablets+lenovo",
+            "https://www.amazon.com/s?k=tablets+microsoft",
+            "https://www.amazon.com/s?k=tablets+google",
+            "https://www.amazon.com/s?k=tablets+asus",
+            "https://www.amazon.com/s?k=tablets+hp",
+            "https://www.amazon.com/s?k=tablets+dell",
+            "https://www.amazon.com/s?k=tablets+xiaomi",
+            "https://www.amazon.com/s?k=tablets+acer",
+            "https://www.amazon.com/s?k=tablets+lg",
+            "https://www.amazon.com/s?k=tablets+sony",
+            "https://www.amazon.com/s?k=tablets+msi",
+            "https://www.amazon.com/s?k=ipad"
+        ],
+        "Headphone": [
+            "https://www.amazon.com/s?k=headphones",
+            "https://www.amazon.com/s?k=earphones",
+            "https://www.amazon.com/s?k=earphones+wireless",
+            "https://www.amazon.com/s?k=airpods"
+        ],
+        "Laptop": [
+            "https://www.amazon.com/s?k=laptops",
+            "https://www.amazon.com/s?k=laptops+hp",
+            "https://www.amazon.com/s?k=laptops+dell",
+            "https://www.amazon.com/s?k=laptops+lenovo",
+            "https://www.amazon.com/s?k=surface+laptop",
+            "https://www.amazon.com/s?k=macbook+apple",
+            "https://www.amazon.com/s?k=laptops+asus",
+            "https://www.amazon.com/s?k=laptops+acer",
+            "https://www.amazon.com/s?k=laptops+samsung",
+            "https://www.amazon.com/s?k=laptops+microsoft",
+            "https://www.amazon.com/s?k=laptops+msi",
+            "https://www.amazon.com/s?k=laptops+LG"
+        ],
+        "Computer": [
+            "https://www.amazon.com/s?k=computers+hp",
+            "https://www.amazon.com/s?k=computers+dell",
+            "https://www.amazon.com/s?k=computers+lenovo",
+            "https://www.amazon.com/s?k=computers+asus",
+            "https://www.amazon.com/s?k=computers+acer",
+            "https://www.amazon.com/s?k=computers+microsoft",
+            "https://www.amazon.com/s?k=computers+samsung",
+            "https://www.amazon.com/s?k=computers+msi",
+            "https://www.amazon.com/s?k=computers+razer",
+            "https://www.amazon.com/s?k=computers+lg",
+            "https://www.amazon.com/s?k=computers+gigabyte",
+            "https://www.amazon.com/s?k=computers+panasonic",
+            "https://www.amazon.com/s?k=computers+fujitsu",
+            "https://www.amazon.com/s?k=computers+intel"
+        ],
+        "Desktop": [
+            "https://www.amazon.com/s?k=desktop+computer",
+            "https://www.amazon.com/s?k=desktop+computer+dell",
+            "https://www.amazon.com/s?k=desktop+computer+hp",
+            "https://www.amazon.com/s?k=desktop+computer+lenovo",
+            "https://www.amazon.com/s?k=desktop+computer+apple",
+            "https://www.amazon.com/s?k=desktop+computer+asus",
+            "https://www.amazon.com/s?k=desktop+computer+acer",
+            "https://www.amazon.com/s?k=desktop+computer+msi",
+            "https://www.amazon.com/s?k=desktop+computer+intel"
+        ],
+        "CPU": [
+            "https://www.amazon.com/s?k=cpu",
+            "https://www.amazon.com/s?k=cpu+amd",
+            "https://www.amazon.com/s?k=cpu+intel",
+            "https://www.amazon.com/s?k=cpu+apple",
+            "https://www.amazon.com/s?k=cpu+samsung",
+            "https://www.amazon.com/s?k=cpu+seagate",
+            "https://www.amazon.com/s?k=cpu+dell",
+            "https://www.amazon.com/s?k=cpu+hp",
+            "https://www.amazon.com/s?k=cpu+asus",
+            "https://www.amazon.com/s?k=cpu+lenovo",
+            "https://www.amazon.com/s?k=cpu+corsair",
+            "https://www.amazon.com/s?k=cpu+msi",
+            "https://www.amazon.com/s?k=cpu+thermalright",
+            "https://www.amazon.com/s?k=cpu+acer",
+            "https://www.amazon.com/s?k=cpu+gigabyte",
+            "https://www.amazon.com/s?k=cpu+ibm",
+            "https://www.amazon.com/s?k=cpu+razer"
+        ],
+        "PC": [
+            "https://www.amazon.com/s?k=PCs",
+            "https://www.amazon.com/s?k=PCs+dell",
+            "https://www.amazon.com/s?k=PCs+hp",
+            "https://www.amazon.com/s?k=PCs+lenovo",
+            "https://www.amazon.com/s?k=PCs+asus",
+            "https://www.amazon.com/s?k=PCs+apple",
+            "https://www.amazon.com/s?k=PCs+msi",
+            "https://www.amazon.com/s?k=PCs+acer",
+            "https://www.amazon.com/s?k=PCs+cyberpowerpc",
+            "https://www.amazon.com/s?k=PCs+intel",
+            "https://www.amazon.com/s?k=PCs+gigabyte"
+        ],
+        "GPU": [
+            "https://www.amazon.com/s?k=gpu",
+            "https://www.amazon.com/s?k=gpu+asus",
+            "https://www.amazon.com/s?k=gpu+msi",
+            "https://www.amazon.com/s?k=gpu+gigabyte",
+            "https://www.amazon.com/s?k=gpu+amd",
+            "https://www.amazon.com/s?k=gpu+intel",
+            "https://www.amazon.com/s?k=gpu+hp",
+            "https://www.amazon.com/s?k=gpu+nvidia"
+        ],
+        "Monitor": [
+            "https://www.amazon.com/s?k=monitor",
+            "https://www.amazon.com/s?k=monitor+dell",
+            "https://www.amazon.com/s?k=monitor+ktc",
+            "https://www.amazon.com/s?k=monitor+samsung",
+            "https://www.amazon.com/s?k=monitor+asus",
+            "https://www.amazon.com/s?k=monitor+lg",
+            "https://www.amazon.com/s?k=monitor+acer",
+            "https://www.amazon.com/s?k=monitor+hp",
+            "https://www.amazon.com/s?k=monitor+msi",
+            "https://www.amazon.com/s?k=monitor+benq",
+            "https://www.amazon.com/s?k=monitor+sceptre",
+            "https://www.amazon.com/s?k=monitor+aoc",
+            "https://www.amazon.com/s?k=monitor+lenovo",
+            "https://www.amazon.com/s?k=monitor+viewsonic",
+            "https://www.amazon.com/s?k=monitor+gigabyte",
+            "https://www.amazon.com/s?k=monitor+sony",
+            "https://www.amazon.com/s?k=monitor+xiaomi",
+            "https://www.amazon.com/s?k=monitor+philips"
+        ]
+    }
+
+    # Chạy vòng lặp cho từng category
+    for cat_name, urls in categories_config.items():
+        scrape_category(cat_name, urls, max_pages_per_url=10)
