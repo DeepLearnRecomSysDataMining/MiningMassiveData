@@ -1,0 +1,80 @@
+17:47:01 [INFO] Hệ thống khởi tạo thành công. Thư mục: D:\Hoctap_Code_PrivateProject\MiningMassiveData\crawl_amazon_metadata\data_amazon_links
+17:47:01 [INFO] 🚀 Hệ thống khởi tạo thành công. Kết quả sẽ lưu tại: D:\Hoctap_Code_PrivateProject\MiningMassiveData\crawl_amazon_metadata\metadata
+17:47:04 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+17:47:13 [INFO] ✅ Đã chuyển vùng thành công.
+17:47:13 [INFO] 📂 ĐANG XỬ LÝ DANH MỤC: SMARTPHONE | File: smartphone_products.csv
+17:47:13 [INFO] 🔎 Tìm thấy 1730 URL duy nhất.
+17:47:13 [INFO]    🔹 [1/1730] Cào URL: https://www.amazon.com/Apple-iPhone-15-128GB-Black/dp/B0CMPMY9ZZ
+17:47:32 [INFO]       ✅ DONE: B0CMPMY9ZZ | 5 ảnh | 57 specs
+17:47:34 [INFO]    🔹 [2/1730] Cào URL: https://www.amazon.com/Apple-iPhone-14-128GB-Midnight/dp/B0BN72FYFG
+17:47:46 [INFO]       ✅ DONE: B0BN72FYFG | 4 ảnh | 47 specs
+17:47:48 [INFO]    🔹 [3/1730] Cào URL: https://www.amazon.com/Apple-iPhone-12-64GB-Black/dp/B08PP5MSVB
+17:48:05 [INFO]       ✅ DONE: B08PP5MSVB | 5 ảnh | 48 specs
+17:48:06 [INFO]    🔹 [4/1730] Cào URL: https://www.amazon.com/Apple-iPhone-128GB-eSIM-Black/dp/B0F4RM7Y2L
+17:48:26 [INFO]       ✅ DONE: B0F4RM7Y2L | 5 ảnh | 47 specs
+17:48:27 [INFO]    🔹 [5/1730] Cào URL: https://www.amazon.com/Apple-iPhone-Version-Desert-Titanium/dp/B0DHJ9SCJ4
+17:48:41 [INFO]       ✅ DONE: B0DHJ9SCJ4 | 7 ảnh | 44 specs
+17:48:42 [INFO]    🔹 [6/1730] Cào URL: https://www.amazon.com/Apple-iPhone-16-Version-128GB/dp/B0DHJH2GZL
+17:48:59 [INFO]       ✅ DONE: B0DHJH2GZL | 5 ảnh | 42 specs
+17:49:00 [INFO]    🔹 [7/1730] Cào URL: https://www.amazon.com/Apple-iPhone-Version-128GB-Ultramarine/dp/B0DPDQLH55
+17:49:17 [INFO]       ✅ DONE: B0DPDQLH55 | 1 ảnh | 44 specs
+17:49:18 [INFO]    🔹 [8/1730] Cào URL: https://www.amazon.com/Apple-iPhone-16-Version-Ultramarine/dp/B0DHJGKNT1
+17:49:35 [INFO]       ✅ DONE: B0DHJGKNT1 | 1 ảnh | 42 specs
+17:49:37 [INFO]    🔹 [9/1730] Cào URL: https://www.amazon.com/Apple-Natural-Titanium-Verizon-Renewed/dp/B0DN1K9THC
+17:49:50 [INFO]       ✅ DONE: B0DN1K9THC | 7 ảnh | 25 specs
+17:49:51 [INFO]    🔹 [10/1730] Cào URL: https://www.amazon.com/Apple-iPhone-Version-Desert-Titanium/dp/B0DPJMTH4N
+17:50:04 [INFO]       ✅ DONE: B0DPJMTH4N | 7 ảnh | 27 specs
+17:50:06 [INFO]    🔹 [11/1730] Cào URL: https://www.amazon.com/Apple-iPhone-Pro-256GB-Gold/dp/B08BHHRZQG
+17:50:19 [INFO]       ✅ DONE: B08BHHRZQG | 7 ảnh | 35 specs
+17:50:21 [INFO]    🔹 [12/1730] Cào URL: https://www.amazon.com/Apple-iPhone-Purple-Renewed-Premium/dp/B0BYLMFTBY
+17:50:34 [INFO]       ✅ DONE: B0BYLMFTBY | 5 ảnh | 25 specs
+17:50:36 [INFO]    🔹 [13/1730] Cào URL: https://www.amazon.com/Apple-iPhone-5C-Sprint-Green/dp/B00F3IIVV4
+17:50:47 [INFO]       ✅ DONE: B00F3IIVV4 | 1 ảnh | 27 specs
+17:50:49 [INFO]    🔹 [14/1730] Cào URL: https://www.amazon.com/Camera-Module-Replacement-Compatible-Original/dp/B0GSX92HRY
+17:50:58 [INFO]       ✅ DONE: B0GSX92HRY | 1 ảnh | 16 specs
+17:50:59 [INFO]    🔹 [15/1730] Cào URL: https://www.amazon.com/Apple-iPhone-Fully-Unlocked-256/dp/B07TJBCC7H
+17:51:14 [INFO]       ✅ DONE: B07TJBCC7H | 2 ảnh | 35 specs
+17:51:16 [INFO]    🔹 [16/1730] Cào URL: https://www.amazon.com/Apple-iPhone-SE-64GB-Red/dp/B08FG7X36T
+17:51:26 [INFO]       ✅ DONE: B08FG7X36T | 6 ảnh | 21 specs
+17:51:27 [INFO]    🔹 [17/1730] Cào URL: https://www.amazon.com/Apple-iPhone-XS-Fully-Unlocked/dp/B07K4V35TJ
+17:51:42 [INFO]       ✅ DONE: B07K4V35TJ | 5 ảnh | 38 specs
+17:51:43 [INFO]    🔹 [18/1730] Cào URL: https://www.amazon.com/Apple-iPhone-256GB-Pacific-Blue/dp/B08PMKDJ28
+17:51:56 [INFO]       ✅ DONE: B08PMKDJ28 | 7 ảnh | 24 specs
+17:51:57 [INFO]    🔹 [19/1730] Cào URL: https://www.amazon.com/Apple-iPhone-Max-256GB-Gold/dp/B07WHKDGL4
+17:52:08 [INFO]       ✅ DONE: B07WHKDGL4 | 4 ảnh | 26 specs
+17:52:09 [INFO]    🔹 [20/1730] Cào URL: https://www.amazon.com/Compatible-iPhone-14-Pro-Unlocked/dp/B0DKK25634
+17:52:21 [INFO]       ✅ DONE: B0DKK25634 | 2 ảnh | 40 specs
+17:52:21 [INFO] 💾 Đã ghi 20 items vào smartphone_details.jsonl
+17:52:23 [INFO]    🔹 [21/1730] Cào URL: https://www.amazon.com/Tracfone-Apple-iPhone-Prepaid-Smartphone/dp/B09SBRDNHH
+17:52:37 [INFO]       ✅ DONE: B09SBRDNHH | 4 ảnh | 57 specs
+17:52:39 [INFO]    🔹 [22/1730] Cào URL: https://www.amazon.com/Compatible-iPhone-11-Pro-Max/dp/B0DKK1KYDQ
+17:52:49 [INFO]       ✅ DONE: B0DKK1KYDQ | 2 ảnh | 24 specs
+17:52:51 [INFO]    🔹 [23/1730] Cào URL: https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SW3XXP
+17:53:07 [INFO]       ✅ DONE: B0G4SW3XXP | 7 ảnh | 37 specs
+17:53:08 [INFO]    🔹 [24/1730] Cào URL: https://www.amazon.com/Samsung-International-SM-A165F-Factory-Unlocked/dp/B0DM1S54MZ
+17:53:23 [INFO]       ✅ DONE: B0DM1S54MZ | 7 ảnh | 49 specs
+17:53:25 [INFO]    🔹 [25/1730] Cào URL: https://www.amazon.com/Samsung-Unlocked-Smartphone-Processor-Immersive/dp/B0G4SYN2QC
+17:53:48 [INFO]       ✅ DONE: B0G4SYN2QC | 7 ảnh | 37 specs
+17:53:49 [INFO]    🔹 [26/1730] Cào URL: https://www.amazon.com/SAMSUNG-International-SM-A165F-DS-Unlocked/dp/B0DT4T8D65
+17:54:06 [INFO]       ✅ DONE: B0DT4T8D65 | 1 ảnh | 47 specs
+17:54:08 [INFO]    🔹 [27/1730] Cào URL: https://www.amazon.com/Samsung-High-Res-Charging-Expandable-Manufacturer/dp/B0FXY1DZ78
+17:54:26 [INFO]       ✅ DONE: B0FXY1DZ78 | 7 ảnh | 56 specs
+17:54:28 [INFO]    🔹 [28/1730] Cào URL: https://www.amazon.com/Samsung-High-Res-Charging-Expandable-Manufacturer/dp/B0FXY18C1J
+17:54:45 [INFO]       ✅ DONE: B0FXY18C1J | 7 ảnh | 54 specs
+17:54:46 [INFO]    🔹 [29/1730] Cào URL: https://www.amazon.com/Samsung-Smartphone-Unlocked-Res-Camera-Warranty/dp/B0FG1THCD7
+17:55:03 [INFO]       ✅ DONE: B0FG1THCD7 | 7 ảnh | 51 specs
+17:55:05 [INFO]    🔹 [30/1730] Cào URL: https://www.amazon.com/Samsung-A36-Smartphone-Connectivity-Performance/dp/B0DXHKH86B
+17:55:23 [INFO]       ✅ DONE: B0DXHKH86B | 7 ảnh | 54 specs
+17:55:24 [INFO]    🔹 [31/1730] Cào URL: https://www.amazon.com/SAMSUNG-Resistant-International-Unlocked-T-Mobile/dp/B0F49DQKT8
+17:55:40 [INFO]       ✅ DONE: B0F49DQKT8 | 5 ảnh | 46 specs
+17:55:41 [INFO]    🔹 [32/1730] Cào URL: https://www.amazon.com/Motorola-Unlocked-256GB-Camera-Beach/dp/B0D3JGGXBH
+17:55:58 [INFO]       ✅ DONE: B0D3JGGXBH | 7 ảnh | 55 specs
+17:55:59 [INFO]    🔹 [33/1730] Cào URL: https://www.amazon.com/Moto-Play-Unlocked-Camera-Sapphire/dp/B0CP6DDN1H
+17:56:19 [INFO]       ✅ DONE: B0CP6DDN1H | 7 ảnh | 57 specs
+17:56:20 [INFO]    🔹 [34/1730] Cào URL: https://www.amazon.com/SAMSUNG-Resistant-Unlocked-International-DS/dp/B0DNRFGBQ4
+17:56:37 [INFO]       ✅ DONE: B0DNRFGBQ4 | 7 ảnh | 47 specs
+17:56:39 [INFO]    🔹 [35/1730] Cào URL: https://www.amazon.com/Moto-Unlocked-128GB-Camera-Forest/dp/B0DNRK51QQ
+17:56:58 [INFO]       ✅ DONE: B0DNRK51QQ | 7 ảnh | 51 specs
+17:56:59 [INFO]    🔹 [36/1730] Cào URL: https://www.amazon.com/Verizon-Prepaid-Motorola-Unlocked-Smartphone/dp/B0FNSVBZ22
+17:57:18 [INFO]       ✅ DONE: B0FNSVBZ22 | 6 ảnh | 52 specs
+17:57:20 [INFO]    🔹 [37/1730] Cào URL: https://www.amazon.com/Google-Pixel-Gemini-Smartphone-Incredible/dp/B0DVHV7X53
