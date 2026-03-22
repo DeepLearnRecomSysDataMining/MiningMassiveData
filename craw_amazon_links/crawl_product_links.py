@@ -119,7 +119,7 @@ def scrape_category(category_name, url_list, max_pages_per_url=20):
             logging.info(f"🚀 BẮT ĐẦU: Danh mục {category_name.upper()}")
 
             for p in range(1, max_pages_per_url + 1):
-                logging.info(f"  Trang {p} | URL: {current_url[:60]}...")
+                logging.info(f"  Trang {p} | URL: {current_url}...")
                 driver.get(current_url)
                 if "captcha" in driver.page_source.lower():
                     logging.error("  [CHẶN] Bị dính Captcha.")
@@ -142,10 +142,10 @@ def scrape_category(category_name, url_list, max_pages_per_url=20):
 if __name__ == '__main__':
     categories_config = {
         "Smartphone": [
-            "https://www.amazon.com/s?k=iphone",
-            "https://www.amazon.com/s?k=phones",
-            "https://www.amazon.com/s?k=smartphones",
-            "https://www.amazon.com/s?k=smartphone+samsung",
+            # "https://www.amazon.com/s?k=iphone",
+            # "https://www.amazon.com/s?k=phones",
+            # "https://www.amazon.com/s?k=smartphones",
+            # "https://www.amazon.com/s?k=smartphone+samsung",
             "https://www.amazon.com/s?k=samsung+z+fold",
             "https://www.amazon.com/s?k=smartphones+motorola",
             "https://www.amazon.com/s?k=smartphone+apple",
@@ -287,4 +287,4 @@ if __name__ == '__main__':
 
     # Chạy vòng lặp cho từng category
     for cat_name, urls in categories_config.items():
-        scrape_category(cat_name, urls, max_pages_per_url=20)
+        scrape_category(cat_name, urls, max_pages_per_url=10)
