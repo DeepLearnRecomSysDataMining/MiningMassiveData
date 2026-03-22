@@ -119,7 +119,7 @@ def scrape_category(category_name, url_list, max_pages_per_url=20):
             logging.info(f"🚀 BẮT ĐẦU: Danh mục {category_name.upper()}")
 
             for p in range(1, max_pages_per_url + 1):
-                logging.info(f"  Trang {p} | URL: {current_url}...")
+                logging.info(f"  Trang {p} | URL: {current_url}")
                 driver.get(current_url)
                 if "captcha" in driver.page_source.lower():
                     logging.error("  [CHẶN] Bị dính Captcha.")

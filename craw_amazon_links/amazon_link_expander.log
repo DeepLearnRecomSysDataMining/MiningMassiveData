@@ -1,0 +1,834 @@
+2026-03-22 15:48:42,862 [INFO] 📂 ĐANG XỬ LÝ DANH MỤC: SMARTPHONE (File: smartphone_products.csv)
+2026-03-22 15:48:42,895 [INFO] 🔹 [1/1541] Mở rộng từ: https://www.amazon.com/Apple-iPhone-15-128GB-Black...
+2026-03-22 15:48:57,567 [INFO]         🔍 Tìm thấy 6 cụm Carousel.
+2026-03-22 15:49:17,256 [ERROR]       ❌ Lỗi xử lý trang: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by t
+2026-03-22 15:49:19,257 [INFO] 🔹 [2/1541] Mở rộng từ: https://www.amazon.com/Apple-iPhone-14-128GB-Midni...
+2026-03-22 15:49:23,368 [WARNING] Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020AE30D7390>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/ff59e60aab5455b8fb377eb14686766f/url
+2026-03-22 15:50:31,806 [INFO] 📂 ĐANG XỬ LÝ DANH MỤC: SMARTPHONE (File: smartphone_products.csv)
+2026-03-22 15:50:31,819 [INFO] 🔹 [1/1541] Mở rộng từ: https://www.amazon.com/Apple-iPhone-15-128GB-Black/dp/B0CMPMY9ZZ
+2026-03-22 15:51:02,052 [INFO]         🔍 Tìm thấy 6 cụm Carousel.
+2026-03-22 15:51:21,000 [INFO] 🔹 [2/1541] Mở rộng từ: https://www.amazon.com/Apple-iPhone-14-128GB-Midnight/dp/B0BN72FYFG
+2026-03-22 15:51:38,851 [INFO]         🔍 Tìm thấy 6 cụm Carousel.
+2026-03-22 15:51:46,057 [ERROR]       ❌ Lỗi xử lý trang: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by t
+2026-03-22 15:59:12,459 [INFO] 📂 DANH MỤC: SMARTPHONE
+2026-03-22 15:59:12,471 [INFO] 🔹 [1/1541] Đang vét từ: https://www.amazon.com/Apple-iPhone-15-128GB-Black/dp/B0CMPM...
+2026-03-22 15:59:36,692 [INFO] 📂 DANH MỤC: SMARTPHONE
+2026-03-22 15:59:36,704 [INFO] 🔹 [1/1541] Đang vét từ: https://www.amazon.com/Apple-iPhone-15-128GB-Black/dp/B0CMPMY9ZZ...
+2026-03-22 15:59:43,675 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 15:59:55,929 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:00:05,474 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:00:13,513 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:00:22,199 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:00:30,564 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:00:32,983 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:00:33,983 [INFO] 🔹 [2/1541] Đang vét từ: https://www.amazon.com/Apple-iPhone-14-128GB-Midnight/dp/B0BN72FYFG...
+2026-03-22 16:00:47,264 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:00:55,598 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:01:03,158 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:01:10,532 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:01:18,528 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:01:26,689 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:01:28,789 [INFO]         ✅ Tổng kết trang: 4 ASIN duy nhất (data-asin: 24, csa-id: 0)
+2026-03-22 16:01:29,790 [INFO] 🔹 [3/1541] Đang vét từ: https://www.amazon.com/Apple-iPhone-12-64GB-Black/dp/B08PP5MSVB...
+2026-03-22 16:01:36,000 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:01:44,503 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:01:53,441 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:02:01,092 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:02:09,247 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:02:17,569 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:02:20,359 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:02:21,360 [INFO] 🔹 [4/1541] Đang vét từ: https://www.amazon.com/Apple-iPhone-128GB-eSIM-Black/dp/B0F4RM7Y2L...
+2026-03-22 16:02:24,281 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:02:32,955 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:02:41,606 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:02:49,805 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:02:58,705 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:03:08,828 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:03:13,654 [INFO]         ✅ Tổng kết trang: 4 ASIN duy nhất (data-asin: 24, csa-id: 0)
+2026-03-22 16:03:14,655 [INFO] 🔹 [5/1541] Đang vét từ: https://www.amazon.com/Apple-iPhone-Version-Desert-Titanium/dp/B0DHJ9SCJ4...
+2026-03-22 16:03:20,133 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:03:31,959 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:03:42,725 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:03:52,434 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:04:01,987 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:04:12,072 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:04:16,280 [INFO]         ✅ Tổng kết trang: 4 ASIN duy nhất (data-asin: 24, csa-id: 0)
+2026-03-22 16:04:17,280 [INFO] 🔹 [6/1541] Đang vét từ: https://www.amazon.com/Apple-iPhone-16-Version-128GB/dp/B0DHJH2GZL...
+2026-03-22 16:04:21,016 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:04:33,065 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:04:44,417 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:04:53,546 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:05:03,756 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:05:14,172 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:05:19,477 [INFO]         ✅ Tổng kết trang: 4 ASIN duy nhất (data-asin: 24, csa-id: 0)
+2026-03-22 16:05:20,478 [INFO] 🔹 [7/1541] Đang vét từ: https://www.amazon.com/Apple-iPhone-Version-128GB-Ultramarine/dp/B0DPDQLH55...
+2026-03-22 16:05:24,055 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:05:25,905 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:05:37,557 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:05:46,600 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:05:56,362 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:06:06,488 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:06:11,971 [INFO]         ✅ Tổng kết trang: 4 ASIN duy nhất (data-asin: 24, csa-id: 0)
+2026-03-22 16:06:12,973 [INFO] 🔹 [8/1541] Đang vét từ: https://www.amazon.com/Apple-iPhone-16-Version-Ultramarine/dp/B0DHJGKNT1...
+2026-03-22 16:06:16,822 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:06:18,920 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:06:30,842 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:06:40,644 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:06:50,696 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:07:01,305 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:07:06,875 [INFO]         ✅ Tổng kết trang: 4 ASIN duy nhất (data-asin: 24, csa-id: 0)
+2026-03-22 16:07:07,876 [INFO] 🔹 [9/1541] Đang vét từ: https://www.amazon.com/Apple-Natural-Titanium-Verizon-Renewed/dp/B0DN1K9THC...
+2026-03-22 16:07:13,361 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:07:27,037 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:07:37,872 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:07:48,628 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:08:01,281 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:08:13,398 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:08:19,287 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:08:20,288 [INFO] 🔹 [10/1541] Đang vét từ: https://www.amazon.com/Apple-iPhone-Version-Desert-Titanium/dp/B0DPJMTH4N...
+2026-03-22 16:08:24,060 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:08:26,461 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:08:38,380 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:08:47,933 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:08:58,210 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:09:08,961 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:09:14,329 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:09:15,330 [INFO] 🔹 [11/1541] Đang vét từ: https://www.amazon.com/Apple-iPhone-Pro-256GB-Gold/dp/B08BHHRZQG...
+2026-03-22 16:09:19,612 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:09:32,755 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:09:45,154 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:09:54,406 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:10:04,874 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:10:15,259 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:10:20,702 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:10:21,703 [INFO] 🔹 [12/1541] Đang vét từ: https://www.amazon.com/Apple-iPhone-Purple-Renewed-Premium/dp/B0BYLMFTBY...
+2026-03-22 16:10:25,388 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 16:10:36,841 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:10:46,809 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:10:57,353 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:11:08,162 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:11:13,005 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:11:14,006 [INFO] 🔹 [13/1541] Đang vét từ: https://www.amazon.com/Apple-iPhone-5C-Sprint-Green/dp/B00F3IIVV4...
+2026-03-22 16:11:17,654 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 16:11:20,231 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:11:31,403 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:11:40,089 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:11:49,336 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:11:53,357 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 25, csa-id: 0)
+2026-03-22 16:11:54,358 [INFO] 🔹 [14/1541] Đang vét từ: https://www.amazon.com/Camera-Module-Replacement-Compatible-Original/dp/B0GSX92HRY...
+2026-03-22 16:11:56,591 [INFO]         [Carousel] Phát hiện 0 cụm trượt ngang trên trang.
+2026-03-22 16:11:58,163 [INFO]         ✅ Tổng kết trang: 0 ASIN duy nhất (data-asin: 0, csa-id: 0)
+2026-03-22 16:11:59,164 [INFO] 🔹 [15/1541] Đang vét từ: https://www.amazon.com/Apple-iPhone-Fully-Unlocked-256/dp/B07TJBCC7H...
+2026-03-22 16:12:02,750 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 16:12:15,062 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:12:25,689 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:12:35,252 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:12:45,254 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:12:50,320 [INFO]         ✅ Tổng kết trang: 6 ASIN duy nhất (data-asin: 26, csa-id: 0)
+2026-03-22 16:12:51,321 [INFO] 🔹 [16/1541] Đang vét từ: https://www.amazon.com/Apple-iPhone-SE-64GB-Red/dp/B08FG7X36T...
+2026-03-22 16:12:54,068 [INFO]         [Carousel] Phát hiện 3 cụm trượt ngang trên trang.
+2026-03-22 16:13:04,525 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:13:13,481 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:13:23,821 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:13:27,094 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:13:28,095 [INFO] 🔹 [17/1541] Đang vét từ: https://www.amazon.com/Apple-iPhone-XS-Fully-Unlocked/dp/B07K4V35TJ...
+2026-03-22 16:13:32,564 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:13:47,166 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:14:01,924 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:14:12,093 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:14:22,152 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:14:32,286 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:14:38,599 [INFO]         ✅ Tổng kết trang: 10 ASIN duy nhất (data-asin: 35, csa-id: 0)
+2026-03-22 16:14:39,600 [INFO] 🔹 [18/1541] Đang vét từ: https://www.amazon.com/Apple-iPhone-256GB-Pacific-Blue/dp/B08PMKDJ28...
+2026-03-22 16:14:43,451 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:14:55,333 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:15:06,599 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:15:16,410 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:15:27,062 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:15:37,560 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:15:41,980 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:15:42,981 [INFO] 🔹 [19/1541] Đang vét từ: https://www.amazon.com/Apple-iPhone-Max-256GB-Gold/dp/B07WHKDGL4...
+2026-03-22 16:15:45,363 [INFO]         [Carousel] Phát hiện 3 cụm trượt ngang trên trang.
+2026-03-22 16:15:55,887 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:16:03,635 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:16:11,977 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:16:13,858 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:16:14,859 [INFO] 🔹 [20/1541] Đang vét từ: https://www.amazon.com/Compatible-iPhone-14-Pro-Unlocked/dp/B0DKK25634...
+2026-03-22 16:16:17,833 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 16:16:26,674 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:16:28,667 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:16:37,692 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:16:46,729 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:16:49,943 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:16:50,011 [INFO] 💾 FILE UPDATE: smartphone_products.csv | Thêm mới: 46 | Tổng: 1587
+2026-03-22 16:16:51,013 [INFO] 🔹 [21/1541] Đang vét từ: https://www.amazon.com/Tracfone-Apple-iPhone-Prepaid-Smartphone/dp/B09SBRDNHH...
+2026-03-22 16:16:54,416 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 16:17:03,693 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:17:14,621 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:17:23,691 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:17:33,398 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:17:37,426 [INFO]         ✅ Tổng kết trang: 6 ASIN duy nhất (data-asin: 31, csa-id: 0)
+2026-03-22 16:17:38,427 [INFO] 🔹 [22/1541] Đang vét từ: https://www.amazon.com/Compatible-iPhone-11-Pro-Max/dp/B0DKK1KYDQ...
+2026-03-22 16:17:41,683 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 16:17:50,730 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:18:02,049 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:18:11,019 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:18:20,962 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:18:24,791 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:18:25,791 [INFO] 🔹 [23/1541] Đang vét từ: https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SW3XXP...
+2026-03-22 16:18:30,377 [INFO]         [Carousel] Phát hiện 11 cụm trượt ngang trên trang.
+2026-03-22 16:18:41,096 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:18:51,371 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:18:58,983 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:19:06,612 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:19:14,332 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:19:21,994 [INFO]           + Hoàn tất Carousel #6
+2026-03-22 16:19:29,734 [INFO]           + Hoàn tất Carousel #7
+2026-03-22 16:19:37,404 [INFO]           + Hoàn tất Carousel #8
+2026-03-22 16:19:46,857 [INFO]           + Hoàn tất Carousel #9
+2026-03-22 16:19:59,420 [INFO]           + Hoàn tất Carousel #10
+2026-03-22 16:20:09,148 [INFO]           + Hoàn tất Carousel #11
+2026-03-22 16:20:12,274 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:20:13,275 [INFO] 🔹 [24/1541] Đang vét từ: https://www.amazon.com/Samsung-International-SM-A165F-Factory-Unlocked/dp/B0DM1S54MZ...
+2026-03-22 16:20:16,351 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:20:25,059 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:20:34,009 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:20:41,733 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:20:50,023 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:20:58,892 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:21:02,910 [INFO]         ✅ Tổng kết trang: 8 ASIN duy nhất (data-asin: 33, csa-id: 0)
+2026-03-22 16:21:03,911 [INFO] 🔹 [25/1541] Đang vét từ: https://www.amazon.com/Samsung-Unlocked-Smartphone-Processor-Immersive/dp/B0G4SYN2QC...
+2026-03-22 16:21:08,398 [INFO]         [Carousel] Phát hiện 11 cụm trượt ngang trên trang.
+2026-03-22 16:21:16,947 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:21:24,733 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:21:31,972 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:21:39,216 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:21:46,444 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:21:53,724 [INFO]           + Hoàn tất Carousel #6
+2026-03-22 16:22:01,363 [INFO]           + Hoàn tất Carousel #7
+2026-03-22 16:22:08,597 [INFO]           + Hoàn tất Carousel #8
+2026-03-22 16:22:16,190 [INFO]           + Hoàn tất Carousel #9
+2026-03-22 16:22:24,914 [INFO]           + Hoàn tất Carousel #10
+2026-03-22 16:22:33,286 [INFO]           + Hoàn tất Carousel #11
+2026-03-22 16:22:35,838 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:22:36,838 [INFO] 🔹 [26/1541] Đang vét từ: https://www.amazon.com/SAMSUNG-International-SM-A165F-DS-Unlocked/dp/B0DT4T8D65...
+2026-03-22 16:22:39,733 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 16:22:49,481 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:22:57,538 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:23:05,947 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:23:15,254 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:23:19,302 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:23:20,302 [INFO] 🔹 [27/1541] Đang vét từ: https://www.amazon.com/Samsung-High-Res-Charging-Expandable-Manufacturer/dp/B0FXY1DZ78...
+2026-03-22 16:23:23,348 [INFO]         [Carousel] Phát hiện 7 cụm trượt ngang trên trang.
+2026-03-22 16:23:31,052 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:23:38,877 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:23:46,107 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:23:53,411 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:24:00,727 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:24:11,564 [INFO]           + Hoàn tất Carousel #6
+2026-03-22 16:24:12,996 [INFO]           + Hoàn tất Carousel #7
+2026-03-22 16:24:19,077 [INFO]         ✅ Tổng kết trang: 9 ASIN duy nhất (data-asin: 34, csa-id: 0)
+2026-03-22 16:24:20,078 [INFO] 🔹 [28/1541] Đang vét từ: https://www.amazon.com/Samsung-High-Res-Charging-Expandable-Manufacturer/dp/B0FXY18C1J...
+2026-03-22 16:24:24,740 [INFO]         [Carousel] Phát hiện 9 cụm trượt ngang trên trang.
+2026-03-22 16:24:37,620 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:24:45,468 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:24:53,116 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:25:00,726 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:25:08,421 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:25:16,020 [INFO]           + Hoàn tất Carousel #6
+2026-03-22 16:25:25,722 [INFO]           + Hoàn tất Carousel #7
+2026-03-22 16:25:35,755 [INFO]           + Hoàn tất Carousel #8
+2026-03-22 16:25:37,205 [INFO]           + Hoàn tất Carousel #9
+2026-03-22 16:25:42,004 [INFO]         ✅ Tổng kết trang: 7 ASIN duy nhất (data-asin: 32, csa-id: 0)
+2026-03-22 16:25:43,005 [INFO] 🔹 [29/1541] Đang vét từ: https://www.amazon.com/Samsung-Smartphone-Unlocked-Res-Camera-Warranty/dp/B0FG1THCD7...
+2026-03-22 16:25:47,614 [INFO]         [Carousel] Phát hiện 10 cụm trượt ngang trên trang.
+2026-03-22 16:25:57,843 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:26:09,196 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:26:16,461 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:26:23,868 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:26:31,551 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:26:38,877 [INFO]           + Hoàn tất Carousel #6
+2026-03-22 16:26:46,654 [INFO]           + Hoàn tất Carousel #7
+2026-03-22 16:26:55,645 [INFO]           + Hoàn tất Carousel #8
+2026-03-22 16:27:03,887 [INFO]           + Hoàn tất Carousel #9
+2026-03-22 16:27:12,311 [INFO]           + Hoàn tất Carousel #10
+2026-03-22 16:27:14,534 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:27:15,535 [INFO] 🔹 [30/1541] Đang vét từ: https://www.amazon.com/Samsung-A36-Smartphone-Connectivity-Performance/dp/B0DXHKH86B...
+2026-03-22 16:27:18,020 [INFO]         [Carousel] Phát hiện 9 cụm trượt ngang trên trang.
+2026-03-22 16:27:26,115 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:27:33,335 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:27:40,644 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:27:48,282 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:27:55,835 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:28:03,378 [INFO]           + Hoàn tất Carousel #6
+2026-03-22 16:28:12,644 [INFO]           + Hoàn tất Carousel #7
+2026-03-22 16:28:23,427 [INFO]           + Hoàn tất Carousel #8
+2026-03-22 16:28:34,043 [INFO]           + Hoàn tất Carousel #9
+2026-03-22 16:28:40,149 [INFO]         ✅ Tổng kết trang: 7 ASIN duy nhất (data-asin: 32, csa-id: 0)
+2026-03-22 16:28:41,149 [INFO] 🔹 [31/1541] Đang vét từ: https://www.amazon.com/SAMSUNG-Resistant-International-Unlocked-T-Mobile/dp/B0F49DQKT8...
+2026-03-22 16:28:45,956 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:29:00,886 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:29:14,974 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:29:25,058 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:29:35,622 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:29:46,095 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:29:53,498 [INFO]         ✅ Tổng kết trang: 9 ASIN duy nhất (data-asin: 34, csa-id: 0)
+2026-03-22 16:29:54,498 [INFO] 🔹 [32/1541] Đang vét từ: https://www.amazon.com/Motorola-Unlocked-256GB-Camera-Beach/dp/B0D3JGGXBH...
+2026-03-22 16:29:58,141 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 16:30:08,549 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:30:18,179 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:30:30,213 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:30:41,908 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:30:46,903 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:30:47,904 [INFO] 🔹 [33/1541] Đang vét từ: https://www.amazon.com/Moto-Play-Unlocked-Camera-Sapphire/dp/B0CP6DDN1H...
+2026-03-22 16:30:53,276 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:31:03,648 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:31:16,243 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:31:26,990 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:31:37,023 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:31:47,139 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:31:53,451 [INFO]         ✅ Tổng kết trang: 9 ASIN duy nhất (data-asin: 34, csa-id: 0)
+2026-03-22 16:31:54,452 [INFO] 🔹 [34/1541] Đang vét từ: https://www.amazon.com/SAMSUNG-Resistant-Unlocked-International-DS/dp/B0DNRFGBQ4...
+2026-03-22 16:31:58,932 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:32:12,562 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:32:27,516 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:32:36,863 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:32:46,751 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:32:56,769 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:33:02,676 [INFO]         ✅ Tổng kết trang: 10 ASIN duy nhất (data-asin: 35, csa-id: 0)
+2026-03-22 16:33:03,677 [INFO] 🔹 [35/1541] Đang vét từ: https://www.amazon.com/Moto-Unlocked-128GB-Camera-Forest/dp/B0DNRK51QQ...
+2026-03-22 16:33:08,147 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:33:18,138 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:33:27,752 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:33:38,145 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:33:47,993 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:33:57,841 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:34:02,793 [INFO]         ✅ Tổng kết trang: 6 ASIN duy nhất (data-asin: 31, csa-id: 0)
+2026-03-22 16:34:03,794 [INFO] 🔹 [36/1541] Đang vét từ: https://www.amazon.com/Verizon-Prepaid-Motorola-Unlocked-Smartphone/dp/B0FNSVBZ22...
+2026-03-22 16:34:06,634 [INFO]         [Carousel] Phát hiện 3 cụm trượt ngang trên trang.
+2026-03-22 16:34:16,624 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:34:25,962 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:34:35,503 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:34:40,351 [INFO]         ✅ Tổng kết trang: 7 ASIN duy nhất (data-asin: 27, csa-id: 0)
+2026-03-22 16:34:41,351 [INFO] 🔹 [37/1541] Đang vét từ: https://www.amazon.com/Google-Pixel-Gemini-Smartphone-Incredible/dp/B0DVHV7X53...
+2026-03-22 16:34:45,714 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:34:55,709 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:35:03,345 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:35:10,897 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:35:21,348 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:35:33,148 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:35:37,642 [INFO]         ✅ Tổng kết trang: 0 ASIN duy nhất (data-asin: 0, csa-id: 0)
+2026-03-22 16:35:38,643 [INFO] 🔹 [38/1541] Đang vét từ: https://www.amazon.com/Tracfone-Motorola-Activation-Promotion-1500Min/dp/B0FTG3Z4YT...
+2026-03-22 16:35:41,977 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 16:35:51,568 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:36:01,733 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:36:12,848 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:36:14,062 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:36:18,166 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:36:19,166 [INFO] 🔹 [39/1541] Đang vét từ: https://www.amazon.com/OnePlus-Dual-SIM-Unlocked-Smartphone-Snapdragon/dp/B0FSCRCDYC...
+2026-03-22 16:36:23,439 [INFO]         [Carousel] Phát hiện 6 cụm trượt ngang trên trang.
+2026-03-22 16:36:33,499 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:36:43,908 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:36:51,513 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:37:01,532 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:37:11,847 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:37:21,755 [INFO]           + Hoàn tất Carousel #6
+2026-03-22 16:37:26,579 [INFO]         ✅ Tổng kết trang: 10 ASIN duy nhất (data-asin: 35, csa-id: 0)
+2026-03-22 16:37:27,580 [INFO] 🔹 [40/1541] Đang vét từ: https://www.amazon.com/Samsung-TOSAS156VC64PWP-Processor-Wireless-Smartphone/dp/B0F6R3NG7Y...
+2026-03-22 16:37:31,353 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:37:41,592 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:37:53,854 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:38:03,056 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:38:04,506 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:38:05,658 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:38:09,728 [INFO]         ✅ Tổng kết trang: 8 ASIN duy nhất (data-asin: 11, csa-id: 0)
+2026-03-22 16:38:09,793 [INFO] 💾 FILE UPDATE: smartphone_products.csv | Thêm mới: 62 | Tổng: 1649
+2026-03-22 16:38:10,794 [INFO] 🔹 [41/1541] Đang vét từ: https://www.amazon.com/Stylus-Unlocked-256GB-Camera-Caramel/dp/B0D1ZFS9GH...
+2026-03-22 16:38:15,143 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:38:24,296 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:38:33,897 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:38:43,470 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:38:53,192 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:39:03,526 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:39:08,406 [INFO]         ✅ Tổng kết trang: 8 ASIN duy nhất (data-asin: 33, csa-id: 0)
+2026-03-22 16:39:09,406 [INFO] 🔹 [42/1541] Đang vét từ: https://www.amazon.com/Power-Unlocked-128GB-Camera-Midnight/dp/B0CT6BQV81...
+2026-03-22 16:39:13,891 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:39:24,506 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:39:33,916 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:39:44,390 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:39:54,385 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:40:04,504 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:40:10,201 [INFO]         ✅ Tổng kết trang: 10 ASIN duy nhất (data-asin: 35, csa-id: 0)
+2026-03-22 16:40:11,202 [INFO] 🔹 [43/1541] Đang vét từ: https://www.amazon.com/Smartphone-Unlocked-Processor-Manufacturer-Silverblue/dp/B0DP3CP2SY...
+2026-03-22 16:40:16,087 [INFO]         [Carousel] Phát hiện 10 cụm trượt ngang trên trang.
+2026-03-22 16:40:26,470 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:40:35,519 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:40:43,048 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:40:50,698 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:40:58,279 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:41:05,969 [INFO]           + Hoàn tất Carousel #6
+2026-03-22 16:41:13,602 [INFO]           + Hoàn tất Carousel #7
+2026-03-22 16:41:24,135 [INFO]           + Hoàn tất Carousel #8
+2026-03-22 16:41:34,702 [INFO]           + Hoàn tất Carousel #9
+2026-03-22 16:41:46,070 [INFO]           + Hoàn tất Carousel #10
+2026-03-22 16:41:51,542 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:41:52,543 [INFO] 🔹 [44/1541] Đang vét từ: https://www.amazon.com/SAMSUNG-Version-SM-A065M-DS-Unlocked/dp/B0DNLLMVBX...
+2026-03-22 16:41:56,532 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:42:06,677 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:42:20,278 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:42:29,358 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:42:38,896 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:42:40,112 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:42:44,617 [INFO]         ✅ Tổng kết trang: 6 ASIN duy nhất (data-asin: 31, csa-id: 0)
+2026-03-22 16:42:45,618 [INFO] 🔹 [45/1541] Đang vét từ: https://www.amazon.com/BLU-Unlocked-Display-Android-Warranty/dp/B0FMYX276H...
+2026-03-22 16:42:49,856 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 16:43:04,406 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:43:13,846 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:43:24,231 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:43:35,193 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:43:39,289 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:43:40,289 [INFO] 🔹 [46/1541] Đang vét từ: https://www.amazon.com/Samsung-Smartphone-Unlocked-Manufacturer-Warranty/dp/B0F7K3TVTP...
+2026-03-22 16:43:44,254 [INFO]         [Carousel] Phát hiện 10 cụm trượt ngang trên trang.
+2026-03-22 16:43:53,843 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:44:03,693 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:44:11,341 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:44:18,904 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:44:26,502 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:44:34,266 [INFO]           + Hoàn tất Carousel #6
+2026-03-22 16:44:41,929 [INFO]           + Hoàn tất Carousel #7
+2026-03-22 16:44:52,399 [INFO]           + Hoàn tất Carousel #8
+2026-03-22 16:45:03,264 [INFO]           + Hoàn tất Carousel #9
+2026-03-22 16:45:04,860 [INFO]           + Hoàn tất Carousel #10
+2026-03-22 16:45:09,220 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:45:10,220 [INFO] 🔹 [47/1541] Đang vét từ: https://www.amazon.com/SAMSUNG-Resistant-International-Unlocked-T-Mobile/dp/B0F493SPV4...
+2026-03-22 16:45:14,453 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:45:25,365 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:45:37,579 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:45:46,245 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:45:56,569 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:46:06,065 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:46:11,142 [INFO]         ✅ Tổng kết trang: 6 ASIN duy nhất (data-asin: 31, csa-id: 0)
+2026-03-22 16:46:12,143 [INFO] 🔹 [48/1541] Đang vét từ: https://www.amazon.com/SAMSUNG-Unlocked-Smartphone-Charging-Expandable/dp/B0DLHNWHRF...
+2026-03-22 16:46:16,980 [INFO]         [Carousel] Phát hiện 10 cụm trượt ngang trên trang.
+2026-03-22 16:46:26,509 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:46:39,428 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:46:47,070 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:46:54,695 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:47:02,169 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:47:09,636 [INFO]           + Hoàn tất Carousel #6
+2026-03-22 16:47:17,203 [INFO]           + Hoàn tất Carousel #7
+2026-03-22 16:47:26,456 [INFO]           + Hoàn tất Carousel #8
+2026-03-22 16:47:36,622 [INFO]           + Hoàn tất Carousel #9
+2026-03-22 16:47:47,130 [INFO]           + Hoàn tất Carousel #10
+2026-03-22 16:47:52,407 [INFO]         ✅ Tổng kết trang: 10 ASIN duy nhất (data-asin: 35, csa-id: 0)
+2026-03-22 16:47:53,408 [INFO] 🔹 [49/1541] Đang vét từ: https://www.amazon.com/SAMSUNG-Resistant-International-Unlocked-T-Mobile/dp/B0F29YZ3MF...
+2026-03-22 16:47:57,520 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:48:11,036 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:48:25,336 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:48:35,132 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:48:46,449 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:48:56,234 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:49:00,793 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:49:01,793 [INFO] 🔹 [50/1541] Đang vét từ: https://www.amazon.com/BLU-All-Day-Battery-Unlocked-Warranty/dp/B0CP4FMLBT...
+2026-03-22 16:49:06,058 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 16:49:16,154 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:49:26,325 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:49:36,278 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:49:46,384 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:49:50,291 [INFO]         ✅ Tổng kết trang: 6 ASIN duy nhất (data-asin: 31, csa-id: 0)
+2026-03-22 16:49:51,292 [INFO] 🔹 [51/1541] Đang vét từ: https://www.amazon.com/TracFone-Motorola-Activation-Promotion-Smartphone/dp/B0F7M5FSRT...
+2026-03-22 16:49:55,785 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:50:08,619 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:50:17,526 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:50:27,675 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:50:37,552 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:50:46,656 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:50:51,869 [INFO]         ✅ Tổng kết trang: 10 ASIN duy nhất (data-asin: 35, csa-id: 0)
+2026-03-22 16:50:52,870 [INFO] 🔹 [52/1541] Đang vét từ: https://www.amazon.com/Samsung-Dual-SIM-Unlocked-Android-Smartphone/dp/B0CRWT7WF1...
+2026-03-22 16:50:56,662 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:51:10,417 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:51:20,026 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:51:29,754 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:51:39,885 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:51:48,970 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:51:53,218 [INFO]         ✅ Tổng kết trang: 8 ASIN duy nhất (data-asin: 33, csa-id: 0)
+2026-03-22 16:51:54,219 [INFO] 🔹 [53/1541] Đang vét từ: https://www.amazon.com/Panasonic-Link2Cell-Bluetooth-Recording-Answering/dp/B0BTFHM2GZ...
+2026-03-22 16:51:58,451 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:52:06,888 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:52:17,004 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:52:25,858 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:52:35,799 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:52:46,312 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:52:51,636 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:52:52,637 [INFO] 🔹 [54/1541] Đang vét từ: https://www.amazon.com/Motorola-Unlocked-Camera-Pantone-Cabaret/dp/B0F2G65NZP...
+2026-03-22 16:52:56,624 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:53:05,489 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:53:16,609 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:53:25,609 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:53:35,931 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:53:45,812 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:53:50,912 [INFO]         ✅ Tổng kết trang: 9 ASIN duy nhất (data-asin: 34, csa-id: 0)
+2026-03-22 16:53:51,913 [INFO] 🔹 [55/1541] Đang vét từ: https://www.amazon.com/Panasonic-Answering-Bilingual-High-Contrast-Expandable/dp/B0BZFXBS38...
+2026-03-22 16:53:54,895 [INFO]         [Carousel] Phát hiện 3 cụm trượt ngang trên trang.
+2026-03-22 16:54:03,482 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:54:11,375 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:54:21,491 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:54:25,866 [INFO]         ✅ Tổng kết trang: 0 ASIN duy nhất (data-asin: 0, csa-id: 0)
+2026-03-22 16:54:26,867 [INFO] 🔹 [56/1541] Đang vét từ: https://www.amazon.com/Samsung-Smartphone-Unlocked-Manufacturer-Warranty/dp/B0FB48RFL5...
+2026-03-22 16:54:30,638 [INFO]         [Carousel] Phát hiện 9 cụm trượt ngang trên trang.
+2026-03-22 16:54:40,310 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:54:48,732 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:54:56,497 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:55:04,058 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:55:11,764 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:55:19,367 [INFO]           + Hoàn tất Carousel #6
+2026-03-22 16:55:29,055 [INFO]           + Hoàn tất Carousel #7
+2026-03-22 16:55:39,985 [INFO]           + Hoàn tất Carousel #8
+2026-03-22 16:55:41,447 [INFO]           + Hoàn tất Carousel #9
+2026-03-22 16:55:45,835 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:55:46,836 [INFO] 🔹 [57/1541] Đang vét từ: https://www.amazon.com/SAMSUNG-SM-A165M-DS-Unlocked-International/dp/B0DNGJKT14...
+2026-03-22 16:55:51,093 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:56:00,717 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:56:12,492 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:56:21,064 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:56:30,763 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:56:39,907 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:56:44,115 [INFO]         ✅ Tổng kết trang: 10 ASIN duy nhất (data-asin: 35, csa-id: 0)
+2026-03-22 16:56:45,116 [INFO] 🔹 [58/1541] Đang vét từ: https://www.amazon.com/Samsung-Unlocked-International-T-Mobile-Verizon/dp/B0FKNRD1XD...
+2026-03-22 16:56:48,945 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:57:01,877 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:57:15,486 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:57:25,162 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:57:34,696 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:57:44,575 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:57:49,398 [INFO]         ✅ Tổng kết trang: 8 ASIN duy nhất (data-asin: 28, csa-id: 0)
+2026-03-22 16:57:50,399 [INFO] 🔹 [59/1541] Đang vét từ: https://www.amazon.com/AT-BL102-2-2-Handset-Answering-Unsurpassed/dp/B086QB7WZ1...
+2026-03-22 16:57:57,751 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 16:58:06,326 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:58:15,346 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:58:24,340 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:58:33,770 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:58:43,479 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:58:48,032 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 16:58:49,033 [INFO] 🔹 [60/1541] Đang vét từ: https://www.amazon.com/Google-Pixel-Unlocked-Smartphone-Advanced/dp/B0D7HWJDQM...
+2026-03-22 16:58:54,400 [INFO]         [Carousel] Phát hiện 6 cụm trượt ngang trên trang.
+2026-03-22 16:59:05,822 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 16:59:13,451 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 16:59:21,045 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 16:59:31,278 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 16:59:42,123 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 16:59:54,356 [INFO]           + Hoàn tất Carousel #6
+2026-03-22 16:59:59,051 [INFO]         ✅ Tổng kết trang: 4 ASIN duy nhất (data-asin: 24, csa-id: 0)
+2026-03-22 16:59:59,100 [INFO] 💾 FILE UPDATE: smartphone_products.csv | Thêm mới: 52 | Tổng: 1701
+2026-03-22 17:00:00,101 [INFO] 🔹 [61/1541] Đang vét từ: https://www.amazon.com/SAMSUNG-Galaxy-Unlocked-Global-DS/dp/B0CRFB8HW4...
+2026-03-22 17:00:03,562 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:00:16,614 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:00:26,501 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:00:36,322 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:00:46,144 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:00:55,786 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:01:00,901 [INFO]         ✅ Tổng kết trang: 7 ASIN duy nhất (data-asin: 32, csa-id: 0)
+2026-03-22 17:01:01,902 [INFO] 🔹 [62/1541] Đang vét từ: https://www.amazon.com/Yealink-T54W-Accounts-4-3-Inch-Dual-Port/dp/B07ND62JJM...
+2026-03-22 17:01:06,740 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:01:15,396 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:01:23,121 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:01:30,621 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:01:38,385 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:01:48,092 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:01:51,190 [INFO]         ✅ Tổng kết trang: 8 ASIN duy nhất (data-asin: 33, csa-id: 0)
+2026-03-22 17:01:52,191 [INFO] 🔹 [63/1541] Đang vét từ: https://www.amazon.com/AT-4-Handset-Expandable-Answering-Speakerphone/dp/B0DYV232GT...
+2026-03-22 17:01:56,355 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:02:06,305 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:02:17,692 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:02:26,181 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:02:36,584 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:02:46,969 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:02:51,259 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:02:52,260 [INFO] 🔹 [64/1541] Đang vét từ: https://www.amazon.com/VTech-CS6529-4B-4-Handset-Expandable-Wall-Mountable/dp/B01A9KBCQG...
+2026-03-22 17:02:56,048 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:03:08,390 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:03:20,505 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:03:30,288 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:03:39,885 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:03:49,303 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:03:54,435 [INFO]         ✅ Tổng kết trang: 6 ASIN duy nhất (data-asin: 31, csa-id: 0)
+2026-03-22 17:03:55,436 [INFO] 🔹 [65/1541] Đang vét từ: https://www.amazon.com/VTech-IS8151-5-Answering-Bluetooth-Expandable/dp/B086R819LS...
+2026-03-22 17:03:59,338 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:04:09,264 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:04:20,895 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:04:30,534 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:04:40,812 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:04:50,964 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:04:55,361 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:04:56,362 [INFO] 🔹 [66/1541] Đang vét từ: https://www.amazon.com/AT-5-Handset-Answering-One-Touch-Conference/dp/B0DT9PWJYW...
+2026-03-22 17:04:59,955 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:05:08,431 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:05:17,654 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:05:26,964 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:05:36,969 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:05:47,109 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:05:51,638 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:05:52,638 [INFO] 🔹 [67/1541] Đang vét từ: https://www.amazon.com/Nothing-Unlocked-Snapdragon-Interface-Smartphone/dp/B0F9XZ9KDM...
+2026-03-22 17:05:59,520 [INFO]         [Carousel] Phát hiện 10 cụm trượt ngang trên trang.
+2026-03-22 17:06:11,023 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:06:18,545 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:06:26,143 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:06:33,666 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:06:41,311 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:06:49,024 [INFO]           + Hoàn tất Carousel #6
+2026-03-22 17:06:56,678 [INFO]           + Hoàn tất Carousel #7
+2026-03-22 17:07:06,163 [INFO]           + Hoàn tất Carousel #8
+2026-03-22 17:07:18,255 [INFO]           + Hoàn tất Carousel #9
+2026-03-22 17:07:30,175 [INFO]           + Hoàn tất Carousel #10
+2026-03-22 17:07:35,761 [INFO]         ✅ Tổng kết trang: 8 ASIN duy nhất (data-asin: 33, csa-id: 0)
+2026-03-22 17:07:36,762 [INFO] 🔹 [68/1541] Đang vét từ: https://www.amazon.com/Panasonic-KX-TGE633M-Expandable-Cordless-Answering/dp/B07JMHLP7B...
+2026-03-22 17:07:40,649 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:07:49,937 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:08:00,958 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:08:09,738 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:08:19,811 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:08:29,764 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:08:34,026 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:08:35,026 [INFO] 🔹 [69/1541] Đang vét từ: https://www.amazon.com/VTech-3-Handset-Full-Duplex-Speakerphone-VG232-3/dp/B0D8765X3Q...
+2026-03-22 17:08:38,800 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:08:48,336 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:08:59,575 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:09:08,901 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:09:18,994 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:09:29,120 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:09:33,153 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:09:34,154 [INFO] 🔹 [70/1541] Đang vét từ: https://www.amazon.com/Motorola-Unlocked-256GB-Camera-Midnight/dp/B0D2JB6HP5...
+2026-03-22 17:09:38,081 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:09:47,967 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:09:56,715 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:10:06,835 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:10:18,214 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:10:28,170 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:10:32,688 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:10:33,689 [INFO] 🔹 [71/1541] Đang vét từ: https://www.amazon.com/Google-Pixel-Unlocked-Smartphone-Ultrawide/dp/B09HJZPFDD...
+2026-03-22 17:10:40,207 [INFO]         [Carousel] Phát hiện 6 cụm trượt ngang trên trang.
+2026-03-22 17:10:50,010 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:10:57,667 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:11:05,343 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:11:14,796 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:11:25,794 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:11:36,465 [INFO]           + Hoàn tất Carousel #6
+2026-03-22 17:11:41,337 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:11:42,338 [INFO] 🔹 [72/1541] Đang vét từ: https://www.amazon.com/Motorola-razr-2024-Unlocked-Camera/dp/B0D2JF3KHS...
+2026-03-22 17:11:46,488 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:11:55,854 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:12:04,969 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:12:14,444 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:12:24,184 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:12:33,810 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:12:38,759 [INFO]         ✅ Tổng kết trang: 6 ASIN duy nhất (data-asin: 31, csa-id: 0)
+2026-03-22 17:12:39,760 [INFO] 🔹 [73/1541] Đang vét từ: https://www.amazon.com/Samsung-Galaxy-A26-SM-A266U-Smartphone/dp/B0F8NMJFR8...
+2026-03-22 17:12:43,411 [INFO]         [Carousel] Phát hiện 3 cụm trượt ngang trên trang.
+2026-03-22 17:12:55,870 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:13:05,128 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:13:14,820 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:13:18,699 [INFO]         ✅ Tổng kết trang: 9 ASIN duy nhất (data-asin: 34, csa-id: 0)
+2026-03-22 17:13:19,704 [INFO] 🔹 [74/1541] Đang vét từ: https://www.amazon.com/Verizon-Prepaid-Alcatel-Smartphone-Long-Lasting/dp/B0FX95T727...
+2026-03-22 17:13:22,527 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 17:13:32,894 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:13:41,769 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:13:51,648 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:13:52,817 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:13:56,235 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:13:57,236 [INFO] 🔹 [75/1541] Đang vét từ: https://www.amazon.com/Samsung-Unlocked-Compatible-SM-A176B-DS/dp/B0FNGVYRVQ...
+2026-03-22 17:14:00,974 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:14:14,257 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:14:27,333 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:14:37,161 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:14:46,848 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:14:55,657 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:15:00,796 [INFO]         ✅ Tổng kết trang: 9 ASIN duy nhất (data-asin: 29, csa-id: 0)
+2026-03-22 17:15:01,797 [INFO] 🔹 [76/1541] Đang vét từ: https://www.amazon.com/Snapdragon-Water-Resistant-Unlocked-T-Mobile-SM-G986U1/dp/B09TN9RXFW...
+2026-03-22 17:15:05,381 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:15:14,785 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:15:26,082 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:15:35,462 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:15:45,600 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:15:55,587 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:16:00,116 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:16:01,117 [INFO] 🔹 [77/1541] Đang vét từ: https://www.amazon.com/VTech-VG131-11-DECT-Cordless-Phone/dp/B0CTQDMHBH...
+2026-03-22 17:16:05,078 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:16:13,719 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:16:25,600 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:16:35,009 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:16:44,603 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:16:54,731 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:16:59,564 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:17:00,565 [INFO] 🔹 [78/1541] Đang vét từ: https://www.amazon.com/BLU-Unlocked-Infinity-Display-Warranty/dp/B0FKKRW77S...
+2026-03-22 17:17:04,043 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 17:17:13,311 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:17:24,684 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:17:33,432 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:17:43,075 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:17:46,600 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:17:47,601 [INFO] 🔹 [79/1541] Đang vét từ: https://www.amazon.com/BlackBerry-Unlocked-Android-Smartphone-T-Mobile/dp/B07D7TJQ83...
+2026-03-22 17:17:51,004 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 17:18:01,705 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:18:10,709 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:18:20,033 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:18:29,531 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:18:32,941 [INFO]         ✅ Tổng kết trang: 6 ASIN duy nhất (data-asin: 31, csa-id: 0)
+2026-03-22 17:18:33,942 [INFO] 🔹 [80/1541] Đang vét từ: https://www.amazon.com/TCL-NXTPAPER-T-Mobile-Smartphone-Paper-Like/dp/B0GGGQDY9H...
+2026-03-22 17:18:38,380 [INFO]         [Carousel] Phát hiện 8 cụm trượt ngang trên trang.
+2026-03-22 17:18:48,305 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:18:58,175 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:19:05,763 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:19:13,735 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:19:21,178 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:19:30,179 [INFO]           + Hoàn tất Carousel #6
+2026-03-22 17:19:39,445 [INFO]           + Hoàn tất Carousel #7
+2026-03-22 17:19:40,789 [INFO]           + Hoàn tất Carousel #8
+2026-03-22 17:19:44,574 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 25, csa-id: 0)
+2026-03-22 17:19:44,619 [INFO] 💾 FILE UPDATE: smartphone_products.csv | Thêm mới: 29 | Tổng: 1730
+2026-03-22 17:19:45,620 [INFO] 🔹 [81/1541] Đang vét từ: https://www.amazon.com/Google-Pixel-128GB-Unlocked-Smartphone/dp/B0CF7D27XD...
+2026-03-22 17:19:49,294 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:20:01,820 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:20:14,657 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:20:23,941 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:20:33,339 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:20:34,635 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:20:39,651 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 25, csa-id: 0)
+2026-03-22 17:20:40,652 [INFO] 🔹 [82/1541] Đang vét từ: https://www.amazon.com/Verizon-Prepaid-Motorola-Moto-Sapphire/dp/B0F6G9LJQB...
+2026-03-22 17:20:44,758 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 17:20:54,436 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:21:05,898 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:21:14,917 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:21:24,605 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:21:28,842 [INFO]         ✅ Tổng kết trang: 8 ASIN duy nhất (data-asin: 33, csa-id: 0)
+2026-03-22 17:21:29,843 [INFO] 🔹 [83/1541] Đang vét từ: https://www.amazon.com/Xiaomi-A5-Tmobile-25028RN03L-Midnight/dp/B0F3BC9VCY...
+2026-03-22 17:21:33,007 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 17:21:42,436 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:21:51,656 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:22:01,133 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:22:02,257 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:22:06,807 [INFO]         ✅ Tổng kết trang: 6 ASIN duy nhất (data-asin: 31, csa-id: 0)
+2026-03-22 17:22:07,808 [INFO] 🔹 [84/1541] Đang vét từ: https://www.amazon.com/Nokia-Unlocked-Smartphone-6-67-Inch-Charcoal/dp/B09DJ2P1SF...
+2026-03-22 17:22:11,376 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 17:22:24,861 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:22:34,138 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:22:44,937 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:22:55,821 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:23:00,726 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:23:01,726 [INFO] 🔹 [85/1541] Đang vét từ: https://www.amazon.com/Motorola-XT2437-2-International-Unlocked-Compatible/dp/B0DTFJHXN5...
+2026-03-22 17:23:05,047 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:23:13,749 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:23:22,336 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:23:31,077 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:23:40,531 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:23:41,734 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:23:45,446 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:23:46,447 [INFO] 🔹 [86/1541] Đang vét từ: https://www.amazon.com/Xiaomi-Note-14-Tmobile-Midnight/dp/B0DRCX34LQ...
+2026-03-22 17:23:50,498 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 17:24:04,713 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:24:13,644 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:24:23,984 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:24:25,214 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:24:30,725 [INFO]         ✅ Tổng kết trang: 10 ASIN duy nhất (data-asin: 35, csa-id: 0)
+2026-03-22 17:24:31,725 [INFO] 🔹 [87/1541] Đang vét từ: https://www.amazon.com/VTech-DS6151-2-Cordless-Business-Answering/dp/B07BZV9DST...
+2026-03-22 17:24:35,567 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:24:44,320 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:24:54,284 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:25:02,913 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:25:12,277 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:25:13,551 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:25:17,453 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:25:18,454 [INFO] 🔹 [88/1541] Đang vét từ: https://www.amazon.com/S22-Flip-Touchscreen-Resistant-Compatible/dp/B0DK99QFDV...
+2026-03-22 17:25:23,997 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:25:35,820 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:25:47,610 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:25:56,722 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:26:07,350 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:26:17,826 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:26:22,033 [INFO]         ✅ Tổng kết trang: 6 ASIN duy nhất (data-asin: 31, csa-id: 0)
+2026-03-22 17:26:23,034 [INFO] 🔹 [89/1541] Đang vét từ: https://www.amazon.com/Panasonic-2-Line-Corded-Cordless-Handsets/dp/B00NCUVOB4...
+2026-03-22 17:26:27,234 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:26:36,357 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:26:48,036 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:26:56,723 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:27:06,587 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:27:16,007 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:27:20,591 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:27:21,592 [INFO] 🔹 [90/1541] Đang vét từ: https://www.amazon.com/Motorola-battery-Unlocked-Camera-Nebula/dp/B098TXKW8K...
+2026-03-22 17:27:28,112 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:27:38,691 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:27:48,013 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:27:57,971 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:28:07,833 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:28:18,588 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:28:23,921 [INFO]         ✅ Tổng kết trang: 4 ASIN duy nhất (data-asin: 24, csa-id: 0)
+2026-03-22 17:28:24,922 [INFO] 🔹 [91/1541] Đang vét từ: https://www.amazon.com/Motorola-Dual-SIM-Factory-Unlocked-Smartphone/dp/B0DTTX4S8B...
+2026-03-22 17:28:27,668 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 17:28:36,232 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:28:44,442 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:28:53,811 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:28:55,185 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:28:58,654 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:28:59,655 [INFO] 🔹 [92/1541] Đang vét từ: https://www.amazon.com/Panasonic-Cordless-Flashing-Favorites-Flashlight/dp/B0CZ9V51TK...
+2026-03-22 17:29:03,505 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:29:14,752 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:29:23,638 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:29:32,677 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:29:42,383 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:29:52,520 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:29:57,298 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:29:58,299 [INFO] 🔹 [93/1541] Đang vét từ: https://www.amazon.com/Motorola-Dual-SIM-Factory-Unlocked-Smartphone/dp/B0DQ2NX9HX...
+2026-03-22 17:30:01,767 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 17:30:10,881 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:30:20,317 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:30:29,463 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:30:38,353 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:30:42,006 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 25, csa-id: 0)
+2026-03-22 17:30:43,007 [INFO] 🔹 [94/1541] Đang vét từ: https://www.amazon.com/Battery-Unlocked-AMOLED-Version-Warranty/dp/B0D897WH4K...
+2026-03-22 17:30:45,807 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 17:30:57,465 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:31:06,865 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:31:17,068 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:31:27,146 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:31:31,615 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:31:32,616 [INFO] 🔹 [95/1541] Đang vét từ: https://www.amazon.com/BLU-All-Day-Unlocked-Infinity-Warranty/dp/B0DG9P7J9T...
+2026-03-22 17:31:36,824 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:31:47,948 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:32:00,387 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:32:09,379 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:32:19,463 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:32:28,888 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:32:34,239 [INFO]         ✅ Tổng kết trang: 6 ASIN duy nhất (data-asin: 31, csa-id: 0)
+2026-03-22 17:32:35,240 [INFO] 🔹 [96/1541] Đang vét từ: https://www.amazon.com/BLU-All-Day-Battery-Unlocked-Display/dp/B0DGWM3C9Y...
+2026-03-22 17:32:39,238 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:32:48,451 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:32:58,961 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:33:07,703 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:33:17,234 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:33:18,412 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:33:22,259 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:33:23,260 [INFO] 🔹 [97/1541] Đang vét từ: https://www.amazon.com/Nokia-Android-Unlocked-Smartphone-6-52-Inch/dp/B0C2T3CDGJ...
+2026-03-22 17:33:26,377 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:33:38,748 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:33:48,263 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:33:57,822 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:34:07,585 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:34:08,730 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:34:13,054 [INFO]         ✅ Tổng kết trang: 10 ASIN duy nhất (data-asin: 35, csa-id: 0)
+2026-03-22 17:34:14,055 [INFO] 🔹 [98/1541] Đang vét từ: https://www.amazon.com/Motorola-XT2429-1-Unlocked-Display-Storage/dp/B0DK4DLLW5...
+2026-03-22 17:34:18,919 [INFO]         [Carousel] Phát hiện 4 cụm trượt ngang trên trang.
+2026-03-22 17:34:28,275 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:34:36,957 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:34:45,942 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:34:55,508 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:34:59,099 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:35:00,100 [INFO] 🔹 [99/1541] Đang vét từ: https://www.amazon.com/VTech-Cordless-Answering-Bluetooth-Expandable/dp/B0BPG5KQZ6...
+2026-03-22 17:35:05,123 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:35:14,382 [INFO]           + Hoàn tất Carousel #1
+2026-03-22 17:35:24,808 [INFO]           + Hoàn tất Carousel #2
+2026-03-22 17:35:32,809 [INFO]           + Hoàn tất Carousel #3
+2026-03-22 17:35:40,751 [INFO]           + Hoàn tất Carousel #4
+2026-03-22 17:35:48,625 [INFO]           + Hoàn tất Carousel #5
+2026-03-22 17:35:50,758 [INFO]         ✅ Tổng kết trang: 5 ASIN duy nhất (data-asin: 30, csa-id: 0)
+2026-03-22 17:35:51,758 [INFO] 🔹 [100/1541] Đang vét từ: https://www.amazon.com/AT-EL51303-Full-Duplex-Speakerphone-Phonebook/dp/B0BF8C19NJ...
+2026-03-22 17:35:54,799 [INFO]         [Carousel] Phát hiện 5 cụm trượt ngang trên trang.
+2026-03-22 17:35:59,796 [WARNING] Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)': /session/7431bf050e2a04d30e7c40a5834816c4
