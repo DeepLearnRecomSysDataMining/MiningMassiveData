@@ -1,4 +1,5 @@
 import json
+import random
 import time
 import os
 import logging
@@ -11,6 +12,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+import undetected_chromedriver as uc
 
 def init(output_dir='data_amazon_metadata'):
     for handler in logging.root.handlers[:]:
@@ -34,13 +37,22 @@ def get_chrome_driver():
     options.add_argument("--headless")
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=1920,1080")
-    options.add_argument("--disable-blink-features=AutomationControlled")
-    options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    options.add_argument("--incognito")  # Dùng ẩn danh để tránh lưu session lỗi
+
+    # 1. KHÔNG dùng các dòng này với undetected-chromedriver:
+    # options.add_experimental_option("excludeSwitches", ["enable-automation"]) <-- XÓA DÒNG NÀY
+    # options.add_argument("--disable-blink-features=AutomationControlled") <-- UC ĐÃ TỰ LÀM RỒI
+
     options.add_argument(
         "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36")
-    driver = webdriver.Chrome(options=options)
+
+    # driver = webdriver.Chrome(options=options)
+    # driver.set_page_load_timeout(60)
+    # driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+
+    driver = uc.Chrome(options=options)
     driver.set_page_load_timeout(60)
-    driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+
     return driver
 
 def set_us_location(driver, zip_code="10001"):
@@ -246,51 +258,53 @@ def process_amazon_metadata(source_dir, categories_dict):
 
     driver = get_chrome_driver()
     set_us_location(driver)
-    CHUNK_SIZE = 20
+    CHUNK_SIZE = 10
 
     try:
         for manual_category, file_name in categories_dict.items():
             full_csv_path = os.path.join(source_dir, file_name)
-
-            # Kiểm tra file tồn tại
             if not os.path.exists(full_csv_path):
                 logging.warning(f"⚠️ Bỏ qua: Không tìm thấy file {file_name} cho danh mục {manual_category}")
                 continue
-
             save_name = f"{manual_category.replace(' ', '_').lower()}_details.jsonl"
             full_json_path = os.path.join(jsonl_path, save_name)
-
             logging.info(f"📂 ĐANG XỬ LÝ DANH MỤC: {manual_category.upper()} | File: {file_name}")
 
-            # Đọc CSV
             df = pd.read_csv(full_csv_path, low_memory=False)
             if 'url' not in df.columns:
                 logging.error(f"❌ File {file_name} thiếu cột 'url'. Bỏ qua.")
                 continue
-
             urls = df['url'].dropna().unique().tolist()
             logging.info(f"🔎 Tìm thấy {len(urls)} URL duy nhất.")
 
             batch_results = []
             for idx, url in enumerate(urls):
-                logging.info(f"   🔹 [{idx + 1}/{len(urls)}] Cào URL: {url}")
+                if idx < 434:
+                    continue
 
-                # Gọi hàm trích xuất chi tiết (Đã bao gồm Expand và lấy Details)
-                data = extract_product_details(driver, url, manual_category)
+                success = False
+                retry_count = 0
+                data=None
 
-                if data == "CAPTCHA":
-                    # Lưu lại những gì đã cào được trước khi dừng
-                    if batch_results:
-                        with open(full_json_path, 'a', encoding='utf-8') as f:
-                            for item in batch_results:
-                                f.write(json.dumps(item, ensure_ascii=False) + "\n")
-                    logging.critical("🛑 DỪNG TOÀN BỘ DO DÍNH CAPTCHA. Hãy kiểm tra trình duyệt hoặc đổi IP.")
-                    return  # Dừng toàn bộ chương trình
+                while retry_count < 2:
+                    logging.info(f"   🔹 [{idx + 1}/{len(urls)}] Cào URL: {url} lần thứ {retry_count+1}")
+                    # Gọi hàm trích xuất chi tiết (Đã bao gồm Expand và lấy Details)
+                    data = extract_product_details(driver, url, manual_category)
+                    if data == "CAPTCHA":
+                        logging.warning("⚠️ Dính CAPTCHA! Đang khởi động lại trình duyệt...")
+                        driver.quit()
+                        time.sleep(random.uniform(3,5))  # Nghỉ 1 phút trước khi đổi driver mới
+                        driver = get_chrome_driver()
+                        time.sleep(2)
+                        set_us_location(driver)
+                        retry_count += 1
+                    else:
+                        success = True
+                        break
 
-                if data:
+                if data and data != "CAPTCHA":
                     batch_results.append(data)
 
-                # Cơ chế xả dữ liệu định kỳ (Dump to file) để tiết kiệm RAM và an toàn dữ liệu
                 if len(batch_results) >= CHUNK_SIZE or idx == len(urls) - 1:
                     if batch_results:
                         with open(full_json_path, 'a', encoding='utf-8') as f:
@@ -299,11 +313,9 @@ def process_amazon_metadata(source_dir, categories_dict):
                         logging.info(f"💾 Đã ghi {len(batch_results)} items vào {save_name}")
                         batch_results = []
 
-                # Nghỉ ngắn giữa các sản phẩm để tránh bị quét
-                time.sleep(1.5)
+                time.sleep(random.uniform(3.0, 5.0))
 
             logging.info(f"✅ Hoàn tất danh mục: {manual_category}")
-
     finally:
         driver.quit()
         logging.info("🏁 QUY TRÌNH HOÀN TẤT.")
@@ -313,10 +325,10 @@ if __name__ == "__main__":
     # Cấu hình danh mục và file tương ứng
     TARGET_CATEGORIES = {
         "Smartphone": "smartphone_products.csv",
-        "Tablets": "tablets_products.csv",
-        "Headphone": "headphone_products.csv",
-        "Laptop": "laptop_products.csv",
-        "Computer": "computer_products.csv"
+        # "Tablets": "tablets_products.csv",
+        # "Headphone": "headphone_products.csv",
+        # "Laptop": "laptop_products.csv",
+        # "Computer": "computer_products.csv"
     }
 
     # source_dir là thư mục chứa các file csv link của bạn
