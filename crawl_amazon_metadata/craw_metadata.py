@@ -279,7 +279,7 @@ def process_amazon_metadata(source_dir, categories_dict):
 
             batch_results = []
             for idx, url in enumerate(urls):
-                if idx < 434:
+                if idx >= 841:
                     continue
 
                 success = False
@@ -324,11 +324,13 @@ def process_amazon_metadata(source_dir, categories_dict):
 if __name__ == "__main__":
     # Cấu hình danh mục và file tương ứng
     TARGET_CATEGORIES = {
-        "Smartphone": "smartphone_products.csv",
+        # "Smartphone": "smartphone_products.csv",
         # "Tablets": "tablets_products.csv",
         # "Headphone": "headphone_products.csv",
         # "Laptop": "laptop_products.csv",
         # "Computer": "computer_products.csv"
+        # "GPU": "gpu_products.csv"
+        "CPU": "cpu_products.csv"
     }
 
     # source_dir là thư mục chứa các file csv link của bạn
