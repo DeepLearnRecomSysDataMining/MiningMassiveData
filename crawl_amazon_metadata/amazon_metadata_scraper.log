@@ -7255,3 +7255,932 @@
 02:04:40 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
 02:04:43 [INFO]    🔹 [404/3078] Cào URL: https://www.amazon.com/Intel-Celeron-Desktop-Processor-LGA1200/dp/B086MW76F8 lần thứ 1
 02:04:45 [WARNING]       [!] Không tìm thấy dp-container tại: https://www.amazon.com/Intel-Celeron-Desktop-Processor-LGA1200/dp/B086MW76F8
+11:48:55 [INFO] Hệ thống khởi tạo thành công. Thư mục: D:\Hoctap_Code_PrivateProject\MiningMassiveData\crawl_amazon_metadata\data_amazon_links
+11:48:56 [INFO] 🚀 Hệ thống khởi tạo thành công. Kết quả sẽ lưu tại: D:\Hoctap_Code_PrivateProject\MiningMassiveData\crawl_amazon_metadata\metadata
+11:48:56 [WARNING] could not detect version_main.therefore, we are assuming it is chrome 108 or higher
+11:48:56 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+11:49:12 [WARNING] ⚠️ Không thể tự động đổi vùng. Giá có thể vẫn là VND.
+11:49:12 [INFO] 📂 ĐANG XỬ LÝ DANH MỤC: CPU | File: cpu_products.csv
+11:49:12 [INFO] 🔎 Tìm thấy 3078 URL duy nhất.
+11:49:12 [INFO]    🔹 [404/3078] Cào URL: https://www.amazon.com/Intel-Celeron-Desktop-Processor-LGA1200/dp/B086MW76F8 lần thứ 1
+11:49:21 [INFO]       ✅ DONE: B086MW76F8 | 2 ảnh | 20 specs
+11:49:24 [INFO]    🔹 [405/3078] Cào URL: https://www.amazon.com/Intel-i5-6500-Desktop-Processor-SR2L6/dp/B07PBX9636 lần thứ 1
+11:49:31 [INFO]       ✅ DONE: B07PBX9636 | 4 ảnh | 18 specs
+11:49:34 [INFO]    🔹 [406/3078] Cào URL: https://www.amazon.com/Intel-i3-10320-Desktop-Processor-LGA1200/dp/B086M4KSMW lần thứ 1
+11:49:44 [INFO]       ✅ DONE: B086M4KSMW | 4 ảnh | 20 specs
+11:49:47 [INFO]    🔹 [407/3078] Cào URL: https://www.amazon.com/Intel-i3-10105F-4-Core-Processor-3-70GHz/dp/B092CCJ2GZ lần thứ 1
+11:49:57 [INFO]       ✅ DONE: B092CCJ2GZ | 4 ảnh | 20 specs
+11:50:01 [INFO]    🔹 [408/3078] Cào URL: https://www.amazon.com/Intel-I7-6700T-2-80GHZ-SKT1151-CM8066201920202/dp/B015XEWPDC lần thứ 1
+11:50:10 [INFO]       ✅ DONE: B015XEWPDC | 1 ảnh | 19 specs
+11:50:14 [INFO]    🔹 [409/3078] Cào URL: https://www.amazon.com/Intel-i5-8600K-Desktop-Processor-unlocked/dp/B0759FKH8K lần thứ 1
+11:50:23 [INFO]       ✅ DONE: B0759FKH8K | 5 ảnh | 21 specs
+11:50:28 [INFO]    🔹 [410/3078] Cào URL: https://www.amazon.com/iBUYPOWER-Desktop-GeForce-Computer-Keyboard/dp/B0FMXWR39P lần thứ 1
+11:50:47 [INFO]       ✅ DONE: B0FMXWR39P | 7 ảnh | 63 specs
+11:50:52 [INFO]    🔹 [411/3078] Cào URL: https://www.amazon.com/Intel-BX8070110100F-i3-10100F-3-6GHz-LGA1200/dp/B08LKJPR5X lần thứ 1
+11:51:02 [INFO]       ✅ DONE: B08LKJPR5X | 4 ảnh | 21 specs
+11:51:06 [INFO]    🔹 [412/3078] Cào URL: https://www.amazon.com/Intel-E5-2699-SR2JS-22-Core-Processor/dp/B08M8Z7BHD lần thứ 1
+11:51:15 [INFO]       ✅ DONE: B08M8Z7BHD | 1 ảnh | 16 specs
+11:51:20 [INFO]    🔹 [413/3078] Cào URL: https://www.amazon.com/Intel-Core-i7-7700T-Quad-core-Processor/dp/B01N6NY1YJ lần thứ 1
+11:51:36 [INFO]       ✅ DONE: B01N6NY1YJ | 2 ảnh | 18 specs
+11:51:36 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+11:51:39 [INFO]    🔹 [414/3078] Cào URL: https://www.amazon.com/Intel-i3-13100-Desktop-Processor-P-cores/dp/B0BQ6CTTMK lần thứ 1
+11:51:50 [INFO]       ✅ DONE: B0BQ6CTTMK | 5 ảnh | 21 specs
+11:51:54 [INFO]    🔹 [415/3078] Cào URL: https://www.amazon.com/Intel-CM8068403358913-Core-I5-8400t-Prcsr/dp/B079FYL3S2 lần thứ 1
+11:52:02 [INFO]       ✅ DONE: B079FYL3S2 | 1 ảnh | 16 specs
+11:52:06 [INFO]    🔹 [416/3078] Cào URL: https://www.amazon.com/Intel-Core-i5-4570T-Dual-core-Processor/dp/B00HB8JSU2 lần thứ 1
+11:52:16 [INFO]       ✅ DONE: B00HB8JSU2 | 1 ảnh | 19 specs
+11:52:20 [INFO]    🔹 [417/3078] Cào URL: https://www.amazon.com/Intel-i7-3770K-Quad-Core-Processor-Cache/dp/B007X1JM30 lần thứ 1
+11:52:29 [INFO]       ✅ DONE: B007X1JM30 | 1 ảnh | 11 specs
+11:52:33 [INFO]    🔹 [418/3078] Cào URL: https://www.amazon.com/Intel-Q9550-Processor-2-83GHz-1333MHz/dp/B00OVALJ0U lần thứ 1
+11:52:43 [INFO]       ✅ DONE: B00OVALJ0U | 1 ảnh | 17 specs
+11:52:47 [INFO]    🔹 [419/3078] Cào URL: https://www.amazon.com/Intel-Pentium-Dual-Core-Processor-Cache/dp/B008IDLHE4 lần thứ 1
+11:52:56 [INFO]       ✅ DONE: B008IDLHE4 | 1 ảnh | 20 specs
+11:52:59 [INFO]    🔹 [420/3078] Cào URL: https://www.amazon.com/Intel-i3-4130-FCLGA-Processor-BX80646I34130/dp/B00EUUKVXM lần thứ 1
+11:53:59 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/Intel-i3-4130-FCLGA-Processor-BX80646I34130/dp/B00EUUKVXM: Message: timeout: Timed out receiving message from renderer: 59.581
+  (Session info: chrome=146.0.76
+11:54:03 [INFO]    🔹 [421/3078] Cào URL: https://www.amazon.com/acer-N60-640-UR22-i7-14700F-Processor-Graphics/dp/B0FMYW6Y33 lần thứ 1
+11:54:25 [INFO]       ✅ DONE: B0FMYW6Y33 | 7 ảnh | 57 specs
+11:54:28 [INFO]    🔹 [422/3078] Cào URL: https://www.amazon.com/Intel-3-16GHz-1333MHz-Socket-Dual-Core/dp/B007MSP2GA lần thứ 1
+11:54:36 [INFO]       ✅ DONE: B007MSP2GA | 1 ảnh | 15 specs
+11:54:40 [INFO]    🔹 [423/3078] Cào URL: https://www.amazon.com/Intel-Q6700-2-66-Quad-Core/dp/B002LHPIYS lần thứ 1
+11:54:48 [INFO]       ✅ DONE: B002LHPIYS | 1 ảnh | 14 specs
+11:54:52 [INFO]    🔹 [424/3078] Cào URL: https://www.amazon.com/Intel-Processor-E5-2650-BX80635E52650V2-Cache/dp/B00F29LG1G lần thứ 1
+11:55:03 [INFO]       ✅ DONE: B00F29LG1G | 2 ảnh | 20 specs
+11:55:03 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+11:55:08 [INFO]    🔹 [425/3078] Cào URL: https://www.amazon.com/MSI-B760-Motherboard-Supports-Processors/dp/B0C15THTK7 lần thứ 1
+11:55:21 [INFO]       ✅ DONE: B0C15THTK7 | 7 ảnh | 33 specs
+11:55:25 [INFO]    🔹 [426/3078] Cào URL: https://www.amazon.com/Intel-LGA115x-CPU-Heatsink-E97379-003/dp/B01MSD39CN lần thứ 1
+11:55:33 [INFO]       ✅ DONE: B01MSD39CN | 5 ảnh | 12 specs
+11:55:38 [INFO]    🔹 [427/3078] Cào URL: https://www.amazon.com/ASUS-ROG-Z890-ThunderboltTM-Overclocking/dp/B0DGWRK1PN lần thứ 1
+11:55:54 [INFO]       ✅ DONE: B0DGWRK1PN | 7 ảnh | 31 specs
+11:55:58 [INFO]    🔹 [428/3078] Cào URL: https://www.amazon.com/Intel-Cooler-LGA1150-1155-E97378-001/dp/B00BQ1C4SS lần thứ 1
+11:56:07 [INFO]       ✅ DONE: B00BQ1C4SS | 7 ảnh | 16 specs
+11:56:10 [INFO]    🔹 [429/3078] Cào URL: https://www.amazon.com/ASUS-Intel%C2%AE13th-Motherboard-Type-C-ThunderboltTM/dp/B0BG6NVPVG lần thứ 1
+11:56:24 [INFO]       ✅ DONE: B0BG6NVPVG | 7 ảnh | 33 specs
+11:56:28 [INFO]    🔹 [430/3078] Cào URL: https://www.amazon.com/MSI-PRO-B760M-P-DDR4-Motherboard/dp/B0BZ9T4KF6 lần thứ 1
+11:56:41 [INFO]       ✅ DONE: B0BZ9T4KF6 | 7 ảnh | 32 specs
+11:56:46 [INFO]    🔹 [431/3078] Cào URL: https://www.amazon.com/Intel-E97379-003-Connector-Aluminum-Heatsink/dp/B01LWMGRX6 lần thứ 1
+11:56:55 [INFO]       ✅ DONE: B01LWMGRX6 | 6 ảnh | 15 specs
+11:56:58 [INFO]    🔹 [432/3078] Cào URL: https://www.amazon.com/ASUS-B760M-AYW-D4-II-Motherboard/dp/B0FP3MRTC1 lần thứ 1
+11:57:08 [INFO]       ✅ DONE: B0FP3MRTC1 | 7 ảnh | 28 specs
+11:57:12 [INFO]    🔹 [433/3078] Cào URL: https://www.amazon.com/K69237-001-Copper-LGA115X-Aluminum-Heatsink/dp/B08PCF843C lần thứ 1
+11:57:22 [INFO]       ✅ DONE: B08PCF843C | 1 ảnh | 16 specs
+11:57:26 [INFO]    🔹 [434/3078] Cào URL: https://www.amazon.com/GIGABYTE-Z790-Q-Flash-EZ-Latch-Motherboard/dp/B0BH9DXY38 lần thứ 1
+11:57:41 [INFO]       ✅ DONE: B0BH9DXY38 | 6 ảnh | 33 specs
+11:57:41 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+11:57:45 [INFO]    🔹 [435/3078] Cào URL: https://www.amazon.com/Intel-E97379-001-Connector-Aluminum-Heatsink/dp/B004XJNC0O lần thứ 1
+11:57:54 [INFO]       ✅ DONE: B004XJNC0O | 7 ảnh | 16 specs
+11:57:58 [INFO]    🔹 [436/3078] Cào URL: https://www.amazon.com/Noctua-NH-D9DX-Premium-LGA2011-LGA1356/dp/B00PIPCGWC lần thứ 1
+11:58:08 [INFO]       ✅ DONE: B00PIPCGWC | 3 ảnh | 17 specs
+11:58:12 [INFO]    🔹 [437/3078] Cào URL: https://www.amazon.com/Heatsink-Compatible-Intel-E97379-003-Connector/dp/B0FWCFY8XQ lần thứ 1
+11:58:23 [INFO]       ✅ DONE: B0FWCFY8XQ | 7 ảnh | 14 specs
+11:58:26 [INFO]    🔹 [438/3078] Cào URL: https://www.amazon.com/MSI-H610M-G-Motherboard-Intel-Socket/dp/B09PX326Q8 lần thứ 1
+11:58:41 [INFO]       ✅ DONE: B09PX326Q8 | 7 ảnh | 35 specs
+11:58:45 [INFO]    🔹 [439/3078] Cào URL: https://www.amazon.com/ASUS-TUF-Intel%C2%AE12th-Motherboard-Thunderbolt/dp/B0BQD58D96 lần thứ 1
+11:58:58 [INFO]       ✅ DONE: B0BQD58D96 | 7 ảnh | 33 specs
+11:59:01 [INFO]    🔹 [440/3078] Cào URL: https://www.amazon.com/Noctua-NH-U9-DX-4677-Premium-LGA4677/dp/B0BSXPH519 lần thứ 1
+11:59:10 [INFO]       ✅ DONE: B0BSXPH519 | 5 ảnh | 17 specs
+11:59:13 [INFO]    🔹 [441/3078] Cào URL: https://www.amazon.com/Cooler-Master-Low-Profile-Anodized-Aluminum/dp/B0BB88471Y lần thứ 1
+11:59:24 [INFO]       ✅ DONE: B0BB88471Y | 7 ảnh | 20 specs
+11:59:28 [INFO]    🔹 [442/3078] Cào URL: https://www.amazon.com/ARCTIC-Alpine-Connector-Continuous-Operation/dp/B09SHW7N48 lần thứ 1
+11:59:38 [INFO]       ✅ DONE: B09SHW7N48 | 7 ảnh | 19 specs
+11:59:42 [INFO]    🔹 [443/3078] Cào URL: https://www.amazon.com/Noctua-NH-L9i-17xx-Premium-Low-Profile-LGA1700/dp/B09HCLB7M3 lần thứ 1
+11:59:51 [INFO]       ✅ DONE: B09HCLB7M3 | 5 ảnh | 13 specs
+11:59:55 [INFO]    🔹 [444/3078] Cào URL: https://www.amazon.com/Noctua-NH-L9i-Premium-Low-profile-LGA115x/dp/B009VCAJ7W lần thứ 1
+12:00:08 [INFO]       ✅ DONE: B009VCAJ7W | 6 ảnh | 18 specs
+12:00:08 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:00:13 [INFO]    🔹 [445/3078] Cào URL: https://www.amazon.com/Thermalright-CORE-360-White-inchMagnet-Absorbent/dp/B0DK3KPLZC lần thứ 1
+12:00:26 [INFO]       ✅ DONE: B0DK3KPLZC | 7 ảnh | 15 specs
+12:00:30 [INFO]    🔹 [446/3078] Cào URL: https://www.amazon.com/CORSAIR-iCUE-Elite-Water-Block/dp/B0CDHD7SQR lần thứ 1
+12:00:42 [INFO]       ✅ DONE: B0CDHD7SQR | 7 ảnh | 14 specs
+12:00:45 [INFO]    🔹 [447/3078] Cào URL: https://www.amazon.com/Cooler-Master-Cooling-System-Sockets/dp/B0B9C82TG9 lần thứ 1
+12:00:56 [INFO]       ✅ DONE: B0B9C82TG9 | 7 ảnh | 18 specs
+12:01:00 [INFO]    🔹 [448/3078] Cào URL: https://www.amazon.com/Noctua-NH-L9i-17xx-chromax-Black-Premium-Low-Profile/dp/B09HCHYMJM lần thứ 1
+12:01:10 [INFO]       ✅ DONE: B09HCHYMJM | 6 ảnh | 18 specs
+12:01:14 [INFO]    🔹 [449/3078] Cào URL: https://www.amazon.com/Cooler-Master-RR-I71C-20PC-R1-Anodized-Aluminum/dp/B07H1VZ11F lần thứ 1
+12:01:26 [INFO]       ✅ DONE: B07H1VZ11F | 7 ảnh | 20 specs
+12:01:31 [INFO]    🔹 [450/3078] Cào URL: https://www.amazon.com/Thermalright-240-ARGB-V4-Performance/dp/B0DHZ5HGYP lần thứ 1
+12:01:44 [INFO]       ✅ DONE: B0DHZ5HGYP | 7 ảnh | 15 specs
+12:01:49 [INFO]    🔹 [451/3078] Cào URL: https://www.amazon.com/Thermalright-Peerless-Assassin-heatpipe-Technology/dp/B0FQ5MF5D5 lần thứ 1
+12:02:02 [INFO]       ✅ DONE: B0FQ5MF5D5 | 6 ảnh | 14 specs
+12:02:05 [INFO]    🔹 [452/3078] Cào URL: https://www.amazon.com/Thermalright-PRO-360-ARGB-High-Performance/dp/B0DK3JRJG1 lần thứ 1
+12:02:17 [INFO]       ✅ DONE: B0DK3JRJG1 | 7 ảnh | 15 specs
+12:02:21 [INFO]    🔹 [453/3078] Cào URL: https://www.amazon.com/Thermaltake-ASTRIA-Compatible-Cooling-CL-P120-CA12SW/dp/B0D4X3BKFG lần thứ 1
+12:02:31 [INFO]       ✅ DONE: B0D4X3BKFG | 6 ảnh | 18 specs
+12:02:36 [INFO]    🔹 [454/3078] Cào URL: https://www.amazon.com/Noctua-NH-L9i-chromax-black-Premium-Low-Profile/dp/B07Y892M38 lần thứ 1
+12:02:49 [INFO]       ✅ DONE: B07Y892M38 | 7 ảnh | 16 specs
+12:02:49 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:02:53 [INFO]    🔹 [455/3078] Cào URL: https://www.amazon.com/Thermalright-Peerless-Assassin-Radiator-Resolving/dp/B0GCZV21C7 lần thứ 1
+12:03:02 [INFO]       ✅ DONE: B0GCZV21C7 | 7 ảnh | 13 specs
+12:03:06 [INFO]    🔹 [456/3078] Cào URL: https://www.amazon.com/Thermalright-LGA1700-BCF-V2-Corrective-LGA1700/dp/B0CS8WQYZW lần thứ 1
+12:03:16 [INFO]       ✅ DONE: B0CS8WQYZW | 6 ảnh | 11 specs
+12:03:19 [INFO]    🔹 [457/3078] Cào URL: https://www.amazon.com/Thermalright-AXP-90-X53-Profile-TL-9015/dp/B09CGWN1M7 lần thứ 1
+12:03:31 [INFO]       ✅ DONE: B09CGWN1M7 | 7 ảnh | 17 specs
+12:03:36 [INFO]    🔹 [458/3078] Cào URL: https://www.amazon.com/Thermalright-Peerless-Assassin-Heatpipes-Magnetic/dp/B0FD3XQ143 lần thứ 1
+12:03:47 [INFO]       ✅ DONE: B0FD3XQ143 | 5 ảnh | 12 specs
+12:03:51 [INFO]    🔹 [459/3078] Cào URL: https://www.amazon.com/Thermalright-Assassin-Heatpipes-TL-C12CW-S-Bearing/dp/B09ZHMF187 lần thứ 1
+12:04:03 [INFO]       ✅ DONE: B09ZHMF187 | 7 ảnh | 16 specs
+12:04:08 [INFO]    🔹 [460/3078] Cào URL: https://www.amazon.com/Thermalright-120-ARGB-Black-Infinite/dp/B0FDG7J74F lần thứ 1
+12:04:17 [INFO]       ✅ DONE: B0FDG7J74F | 7 ảnh | 15 specs
+12:04:20 [INFO]    🔹 [461/3078] Cào URL: https://www.amazon.com/Thermalright-Assassin-Digital-2000RPM-Heatpipes/dp/B0DMVTYYDB lần thứ 1
+12:04:32 [INFO]       ✅ DONE: B0DMVTYYDB | 7 ảnh | 15 specs
+12:04:37 [INFO]    🔹 [462/3078] Cào URL: https://www.amazon.com/Thermal-Grizzly-Optimized-Pressure-Performance/dp/B0DKPG6KLC lần thứ 1
+12:04:48 [INFO]       ✅ DONE: B0DKPG6KLC | 7 ảnh | 14 specs
+12:04:52 [INFO]    🔹 [463/3078] Cào URL: https://www.amazon.com/Cooler-Master-MasterLiquid-Chamber-MLA-D24M-A18PC-R1/dp/B07CRGC899 lần thứ 1
+12:05:05 [INFO]       ✅ DONE: B07CRGC899 | 7 ảnh | 20 specs
+12:05:09 [INFO]    🔹 [464/3078] Cào URL: https://www.amazon.com/Thermalright-LGA1851-CPU-Contact-Frame/dp/B0DP9F1DZM lần thứ 1
+12:05:19 [INFO]       ✅ DONE: B0DP9F1DZM | 7 ảnh | 12 specs
+12:05:19 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:05:23 [INFO]    🔹 [465/3078] Cào URL: https://www.amazon.com/Thermalright-Phantom-EVO-Technilogy-Bearing/dp/B0CL8Z43L8 lần thứ 1
+12:05:35 [INFO]       ✅ DONE: B0CL8Z43L8 | 7 ảnh | 17 specs
+12:05:40 [INFO]    🔹 [466/3078] Cào URL: https://www.amazon.com/Thermalright-Peerless-Assassin-Digital-Black/dp/B0FD6LY7MC lần thứ 1
+12:05:51 [INFO]       ✅ DONE: B0FD6LY7MC | 6 ảnh | 16 specs
+12:05:55 [INFO]    🔹 [467/3078] Cào URL: https://www.amazon.com/Thermalright-PRO-360-Black-360mm-inchMagnet-Absorbent/dp/B0DK3D238Q lần thứ 1
+12:06:09 [INFO]       ✅ DONE: B0DK3D238Q | 7 ảnh | 14 specs
+12:06:12 [INFO]    🔹 [468/3078] Cào URL: https://www.amazon.com/Thermalright-Assassin-Digital-HeatPipes-Heatsink/dp/B0DMVYXB2W lần thứ 1
+12:06:22 [INFO]       ✅ DONE: B0DMVYXB2W | 6 ảnh | 15 specs
+12:06:25 [INFO]    🔹 [469/3078] Cào URL: https://www.amazon.com/Thermalright-Phantom-Digital-Magnetic-Attraction-Digital/dp/B0FHPQBMMD lần thứ 1
+12:06:34 [INFO]       ✅ DONE: B0FHPQBMMD | 7 ảnh | 15 specs
+12:06:38 [INFO]    🔹 [470/3078] Cào URL: https://www.amazon.com/Cooler-Master-Hyper-Spectrum-CPU/dp/B0BR5B1S3G lần thứ 1
+12:06:49 [INFO]       ✅ DONE: B0BR5B1S3G | 7 ảnh | 19 specs
+12:06:53 [INFO]    🔹 [471/3078] Cào URL: https://www.amazon.com/Thermalright-BCF-Correction-Screwdriver-Generation/dp/B0DMW1GX8C lần thứ 1
+12:07:02 [INFO]       ✅ DONE: B0DMW1GX8C | 7 ảnh | 10 specs
+12:07:06 [INFO]    🔹 [472/3078] Cào URL: https://www.amazon.com/Thermalright-Cooler-LM-AXP90-Profile-Quiet/dp/B08S6XM69Q lần thứ 1
+12:07:18 [INFO]       ✅ DONE: B08S6XM69Q | 7 ảnh | 17 specs
+12:07:21 [INFO]    🔹 [473/3078] Cào URL: https://www.amazon.com/Thermalright-EVO-Heatsink-Magnetic-Resolution/dp/B0FQCD4HD4 lần thứ 1
+12:07:31 [INFO]       ✅ DONE: B0FQCD4HD4 | 7 ảnh | 15 specs
+12:07:35 [INFO]    🔹 [474/3078] Cào URL: https://www.amazon.com/Thermalright-Generation-Anti-Bending-Correction-Installation/dp/B0B5Q34SZ1 lần thứ 1
+12:07:44 [INFO]       ✅ DONE: B0B5Q34SZ1 | 7 ảnh | 12 specs
+12:07:44 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:07:48 [INFO]    🔹 [475/3078] Cào URL: https://www.amazon.com/Thermalright-Peerless-TL-C12W-S-Aluminium-Technology/dp/B09S38B3JV lần thứ 1
+12:08:02 [INFO]       ✅ DONE: B09S38B3JV | 7 ảnh | 16 specs
+12:08:05 [INFO]    🔹 [476/3078] Cào URL: https://www.amazon.com/Thermalright-AXP120-X67-Profile-TL-C12015W-S-AM5Intel/dp/B09ZL5VKBR lần thứ 1
+12:08:18 [INFO]       ✅ DONE: B09ZL5VKBR | 7 ảnh | 16 specs
+12:08:21 [INFO]    🔹 [477/3078] Cào URL: https://www.amazon.com/Thermalright-Assassin-Vision-Digital-Cooler/dp/B0DN1MKFPH lần thứ 1
+12:08:36 [INFO]       ✅ DONE: B0DN1MKFPH | 7 ảnh | 15 specs
+12:08:40 [INFO]    🔹 [478/3078] Cào URL: https://www.amazon.com/Thermalright-AXP90-X47-Profile-Heatsink-TL-9015B/dp/B097DTKLRC lần thứ 1
+12:08:53 [INFO]       ✅ DONE: B097DTKLRC | 7 ảnh | 18 specs
+12:08:58 [INFO]    🔹 [479/3078] Cào URL: https://www.amazon.com/Thermalright-Peerless-Assassin-Technology-1500RPM/dp/B0DB861CFX lần thứ 1
+12:09:09 [INFO]       ✅ DONE: B0DB861CFX | 7 ảnh | 17 specs
+12:09:13 [INFO]    🔹 [480/3078] Cào URL: https://www.amazon.com/Thermalright-AXP-90-Profile-Cooler-TL-9015/dp/B09CGXPVC1 lần thứ 1
+12:09:24 [INFO]       ✅ DONE: B09CGXPVC1 | 7 ảnh | 17 specs
+12:09:28 [INFO]    🔹 [481/3078] Cào URL: https://www.amazon.com/Thermalright-Frozen-Vision-240-Black-Liquid/dp/B0D1KN4BB3 lần thứ 1
+12:09:39 [INFO]       ✅ DONE: B0D1KN4BB3 | 7 ảnh | 16 specs
+12:09:42 [INFO]    🔹 [482/3078] Cào URL: https://www.amazon.com/CR1400-Heat-Pipes-Removable-Bending-Lighting/dp/B0953JH8WR lần thứ 1
+12:09:54 [INFO]       ✅ DONE: B0953JH8WR | 7 ảnh | 14 specs
+12:09:57 [INFO]    🔹 [483/3078] Cào URL: https://www.amazon.com/Thermalright-Peerless-Assassin-Digital-Black/dp/B0DQ5TH4LY lần thứ 1
+12:10:09 [INFO]       ✅ DONE: B0DQ5TH4LY | 7 ảnh | 16 specs
+12:10:14 [INFO]    🔹 [484/3078] Cào URL: https://www.amazon.com/Thermalright-Cooling-Bearings-LGA1150-Desktop/dp/B0CCNTC39Y lần thứ 1
+12:10:24 [INFO]       ✅ DONE: B0CCNTC39Y | 7 ảnh | 17 specs
+12:10:24 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:10:28 [INFO]    🔹 [485/3078] Cào URL: https://www.amazon.com/Thermalright-Frozen-Prism-240-Black/dp/B0BWD59L4K lần thứ 1
+12:10:39 [INFO]       ✅ DONE: B0BWD59L4K | 7 ảnh | 17 specs
+12:10:44 [INFO]    🔹 [486/3078] Cào URL: https://www.amazon.com/Thermalright-1700-SS2-Mounting-Coolers-Platform/dp/B09LTQYNSL lần thứ 1
+12:10:51 [INFO]       ✅ DONE: B09LTQYNSL | 5 ảnh | 11 specs
+12:10:56 [INFO]    🔹 [487/3078] Cào URL: https://www.amazon.com/Thermalright-LGA1700-BCF-Anti-Bending-Full-Fitting-Installation/dp/B0BRRLDNK1 lần thứ 1
+12:11:06 [INFO]       ✅ DONE: B0BRRLDNK1 | 7 ảnh | 14 specs
+12:11:10 [INFO]    🔹 [488/3078] Cào URL: https://www.amazon.com/Thermalright-Cooler-TL-C12C-Bearing-LGA1700/dp/B09XWKQ2KS lần thứ 1
+12:11:22 [INFO]       ✅ DONE: B09XWKQ2KS | 7 ảnh | 16 specs
+12:11:26 [INFO]    🔹 [489/3078] Cào URL: https://www.amazon.com/Thermalright-Assassin-EVO-1850RPM-Bearing/dp/B0CNXF7XH5 lần thứ 1
+12:11:36 [INFO]       ✅ DONE: B0CNXF7XH5 | 7 ảnh | 17 specs
+12:11:39 [INFO]    🔹 [490/3078] Cào URL: https://www.amazon.com/Thermalright-LGA1700-BCF-Anti-Bending-Full-Fitting-Installation/dp/B0BQF13FK1 lần thứ 1
+12:11:49 [INFO]       ✅ DONE: B0BQF13FK1 | 6 ảnh | 14 specs
+12:11:54 [INFO]    🔹 [491/3078] Cào URL: https://www.amazon.com/Thermalright-Anti-Bending-Retrofit-Generation-Black/dp/B0B811J7D9 lần thứ 1
+12:12:02 [INFO]       ✅ DONE: B0B811J7D9 | 7 ảnh | 9 specs
+12:12:06 [INFO]    🔹 [492/3078] Cào URL: https://www.amazon.com/Apple-24-inch-Storage-English-Renewed/dp/B0C15XQWTQ lần thứ 1
+12:12:20 [INFO]       ✅ DONE: B0C15XQWTQ | 3 ảnh | 48 specs
+12:12:24 [INFO]    🔹 [493/3078] Cào URL: https://www.amazon.com/Apple-iMac-Retina-Display-10-Core/dp/B0DWV6P5H6 lần thứ 1
+12:12:35 [INFO]       ✅ DONE: B0DWV6P5H6 | 7 ảnh | 28 specs
+12:12:40 [INFO]    🔹 [494/3078] Cào URL: https://www.amazon.com/Apple-2024-Desktop-Computer-10%E2%80%91core/dp/B0DM71MW6Z lần thứ 1
+12:12:46 [INFO]       ✅ DONE: B0DM71MW6Z | 7 ảnh | 2 specs
+12:12:46 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:12:49 [INFO]    🔹 [495/3078] Cào URL: https://www.amazon.com/Apple-MacBook-Laptop-12-core-16-core/dp/B0DLHY2BJ6 lần thứ 1
+12:12:56 [INFO]       ✅ DONE: B0DLHY2BJ6 | 7 ảnh | 7 specs
+12:12:59 [INFO]    🔹 [496/3078] Cào URL: https://www.amazon.com/Apple-Retina-Display-English-Keyboards/dp/B0933JDNVW lần thứ 1
+12:13:12 [INFO]       ✅ DONE: B0933JDNVW | 7 ảnh | 46 specs
+12:13:17 [INFO]    🔹 [497/3078] Cào URL: https://www.amazon.com/Apple-Retina-Display-English-Keyboards/dp/B0DPPJ8Z6M lần thứ 1
+12:13:23 [INFO]       ✅ DONE: B0DPPJ8Z6M | 7 ảnh | 6 specs
+12:13:27 [INFO]    🔹 [498/3078] Cào URL: https://www.amazon.com/Kroteaup-Desktop-Computer-i7-4770-3-4GHz-Windows/dp/B0FW4N61K8 lần thứ 1
+12:13:41 [INFO]       ✅ DONE: B0FW4N61K8 | 7 ảnh | 44 specs
+12:13:45 [INFO]    🔹 [499/3078] Cào URL: https://www.amazon.com/Apple-MacBook-Chip-10-Core-Late/dp/B0FZXV7GS5 lần thứ 1
+12:13:55 [INFO]       ✅ DONE: B0FZXV7GS5 | 7 ảnh | 31 specs
+12:13:58 [INFO]    🔹 [500/3078] Cào URL: https://www.amazon.com/Apple-Display-2021-English-Keyboards/dp/B0DQ2N1PL5 lần thứ 1
+12:14:04 [INFO]       ✅ DONE: B0DQ2N1PL5 | 7 ảnh | 5 specs
+12:14:07 [INFO]    🔹 [501/3078] Cào URL: https://www.amazon.com/Apple-iPhone-128GB-eSIM-Black/dp/B0F4RM7Y2L lần thứ 1
+12:14:23 [INFO]       ✅ DONE: B0F4RM7Y2L | 5 ảnh | 47 specs
+12:14:26 [INFO]    🔹 [502/3078] Cào URL: https://www.amazon.com/Apple-MacBook-16-2-Chip-Late/dp/B0DNRCC4M6 lần thứ 1
+12:14:33 [INFO]       ✅ DONE: B0DNRCC4M6 | 7 ảnh | 7 specs
+12:14:36 [INFO]    🔹 [503/3078] Cào URL: https://www.amazon.com/Apple-MacBook-Chip-10-Core-Late/dp/B0FZXZ942V lần thứ 1
+12:14:46 [INFO]       ✅ DONE: B0FZXZ942V | 7 ảnh | 31 specs
+12:14:50 [INFO]    🔹 [504/3078] Cào URL: https://www.amazon.com/Apple-Retina-Display-English-Keyboards/dp/B0DQ8NSQXP lần thứ 1
+12:14:56 [INFO]       ✅ DONE: B0DQ8NSQXP | 6 ảnh | 5 specs
+12:14:56 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:15:01 [INFO]    🔹 [505/3078] Cào URL: https://www.amazon.com/Dell-OptiPlex-7040-Processor-Bluetooth/dp/B0BN2399P3 lần thứ 1
+12:15:16 [INFO]       ✅ DONE: B0BN2399P3 | 3 ảnh | 50 specs
+12:15:19 [INFO]    🔹 [506/3078] Cào URL: https://www.amazon.com/Apple-MacBook-10-Core-Midnight-Adapter/dp/B0F67GD2LY lần thứ 1
+12:15:29 [INFO]       ✅ DONE: B0F67GD2LY | 7 ảnh | 29 specs
+12:15:33 [INFO]    🔹 [507/3078] Cào URL: https://www.amazon.com/Apple-MacBook-14-inch-10%E2%80%91core-16%E2%80%91core/dp/B09JQWSQK7 lần thứ 1
+12:15:51 [INFO]       ✅ DONE: B09JQWSQK7 | 7 ảnh | 71 specs
+12:15:56 [INFO]    🔹 [508/3078] Cào URL: https://www.amazon.com/Apple-MacBook-15-3-10-Core-Early/dp/B0F67RLYJL lần thứ 1
+12:16:02 [INFO]       ✅ DONE: B0F67RLYJL | 7 ảnh | 6 specs
+12:16:06 [INFO]    🔹 [509/3078] Cào URL: https://www.amazon.com/Apple-MacBook-16-2-14-Core-20-Core/dp/B0DNR9VWXC lần thứ 1
+12:16:12 [INFO]       ✅ DONE: B0DNR9VWXC | 7 ảnh | 6 specs
+12:16:16 [INFO]    🔹 [510/3078] Cào URL: https://www.amazon.com/Apple-2024-MacBook-Laptop-10%E2%80%91core/dp/B0DP3KYZDV lần thứ 1
+12:16:27 [INFO]       ✅ DONE: B0DP3KYZDV | 7 ảnh | 27 specs
+12:16:32 [INFO]    🔹 [511/3078] Cào URL: https://www.amazon.com/Apple-2022-MacBook-chip-Storage/dp/B0BSB21FHK lần thứ 1
+12:16:42 [INFO]       ✅ DONE: B0BSB21FHK | 7 ảnh | 30 specs
+12:16:46 [INFO]    🔹 [512/3078] Cào URL: https://www.amazon.com/Dell-OptiPlex-7040-Bit-Multi-Language-Supports/dp/B07GNDFSB8 lần thứ 1
+12:17:02 [INFO]       ✅ DONE: B07GNDFSB8 | 5 ảnh | 65 specs
+12:17:07 [INFO]    🔹 [513/3078] Cào URL: https://www.amazon.com/Apple-2024-MacBook-15-inch-Laptop/dp/B0DM7121DG lần thứ 1
+12:17:13 [INFO]       ✅ DONE: B0DM7121DG | 7 ảnh | 2 specs
+12:17:17 [INFO]    🔹 [514/3078] Cào URL: https://www.amazon.com/Apple-2022-MacBook-512GB-Storage/dp/B0BSB1BGZZ lần thứ 1
+12:17:28 [INFO]       ✅ DONE: B0BSB1BGZZ | 7 ảnh | 30 specs
+12:17:28 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:17:32 [INFO]    🔹 [515/3078] Cào URL: https://www.amazon.com/Apple-2024-Desktop-Computer-8-core/dp/B0DL75531G lần thứ 1
+12:17:39 [INFO]       ✅ DONE: B0DL75531G | 7 ảnh | 7 specs
+12:17:43 [INFO]    🔹 [516/3078] Cào URL: https://www.amazon.com/Apple-2024-Desktop-Computer-10-core/dp/B0DL6S84XS lần thứ 1
+12:17:50 [INFO]       ✅ DONE: B0DL6S84XS | 7 ảnh | 7 specs
+12:17:54 [INFO]    🔹 [517/3078] Cào URL: https://www.amazon.com/Apple-2024-Desktop-Computer-10-core/dp/B0DL6NCGNC lần thứ 1
+12:18:01 [INFO]       ✅ DONE: B0DL6NCGNC | 7 ảnh | 7 specs
+12:18:05 [INFO]    🔹 [518/3078] Cào URL: https://www.amazon.com/Apple-2025-MacBook-Laptop-10%E2%80%91core/dp/B0FWD623D1 lần thứ 1
+12:18:12 [INFO]       ✅ DONE: B0FWD623D1 | 7 ảnh | 7 specs
+12:18:16 [INFO]    🔹 [519/3078] Cào URL: https://www.amazon.com/Apple-2025-MacBook-Laptop-10%E2%80%91core/dp/B0FWD7QF6M lần thứ 1
+12:18:24 [INFO]       ✅ DONE: B0FWD7QF6M | 7 ảnh | 7 specs
+12:18:27 [INFO]    🔹 [520/3078] Cào URL: https://www.amazon.com/Apple-MacBook-English-Renewed-Premium/dp/B0D6GBG4ZB lần thứ 1
+12:18:44 [INFO]       ✅ DONE: B0D6GBG4ZB | 1 ảnh | 58 specs
+12:18:49 [INFO]    🔹 [521/3078] Cào URL: https://www.amazon.com/Dell-Optiplex-7060-Computer-Professional/dp/B0CKWMBWMV lần thứ 1
+12:19:04 [INFO]       ✅ DONE: B0CKWMBWMV | 5 ảnh | 61 specs
+12:19:07 [INFO]    🔹 [522/3078] Cào URL: https://www.amazon.com/Apple-13-inch-Intelligence-Display-Cellular/dp/B0DZ9G3YW5 lần thứ 1
+12:19:12 [INFO]       ✅ DONE: B0DZ9G3YW5 | 6 ảnh | 3 specs
+12:19:17 [INFO]    🔹 [523/3078] Cào URL: https://www.amazon.com/Apple-MacBook-16-inch-10%E2%80%91core-16%E2%80%91core/dp/B0B8GD25Q2 lần thứ 1
+12:19:21 [INFO]       ✅ DONE: B0B8GD25Q2 | 1 ảnh | 3 specs
+12:19:25 [INFO]    🔹 [524/3078] Cào URL: https://www.amazon.com/Apple-iPhone-XS-Fully-Unlocked/dp/B07K4V35TJ lần thứ 1
+12:19:37 [INFO]       ✅ DONE: B07K4V35TJ | 5 ảnh | 38 specs
+12:19:37 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:19:41 [INFO]    🔹 [525/3078] Cào URL: https://www.amazon.com/PUTORSEN-Bracket-Adjustable-Desktop-Computer/dp/B0FQP5HTYH lần thứ 1
+12:19:50 [INFO]       ✅ DONE: B0FQP5HTYH | 7 ảnh | 17 specs
+12:19:53 [INFO]    🔹 [526/3078] Cào URL: https://www.amazon.com/Apple-MacBook-14-inch-10%E2%80%91core-16%E2%80%91core/dp/B0B8FRXLCQ lần thứ 1
+12:19:59 [INFO]       ✅ DONE: B0B8FRXLCQ | 1 ảnh | 3 specs
+12:20:03 [INFO]    🔹 [527/3078] Cào URL: https://www.amazon.com/Apple-MacBook-14-inch-10%E2%80%91core-16%E2%80%91core/dp/B0B8GDTB63 lần thứ 1
+12:20:09 [INFO]       ✅ DONE: B0B8GDTB63 | 1 ảnh | 3 specs
+12:20:13 [INFO]    🔹 [528/3078] Cào URL: https://www.amazon.com/Mount-Plus-Medical-Options-Compatible/dp/B0DYNXLLXJ lần thứ 1
+12:20:21 [INFO]       ✅ DONE: B0DYNXLLXJ | 7 ảnh | 10 specs
+12:20:24 [INFO]    🔹 [529/3078] Cào URL: https://www.amazon.com/Dell-Optiplex-3020-SFF-Desktop/dp/B075WYN1JL lần thứ 1
+12:20:40 [INFO]       ✅ DONE: B075WYN1JL | 7 ảnh | 61 specs
+12:20:44 [INFO]    🔹 [530/3078] Cào URL: https://www.amazon.com/HP-ProDesk-600-G1-SFF/dp/B07BCGW85X lần thứ 1
+12:21:01 [INFO]       ✅ DONE: B07BCGW85X | 1 ảnh | 65 specs
+12:21:05 [INFO]    🔹 [531/3078] Cào URL: https://www.amazon.com/610-0069-922-9953-610-0056-922-9557-BAKA0812R2UP001/dp/B07KPGKPQK lần thứ 1
+12:21:12 [INFO]       ✅ DONE: B07KPGKPQK | 4 ảnh | 14 specs
+12:21:16 [INFO]    🔹 [532/3078] Cào URL: https://www.amazon.com/Adamanta-Memory-Maverick-PC3-10600-Registered/dp/B06XHVTD2B lần thứ 1
+12:21:23 [INFO]       ✅ DONE: B06XHVTD2B | 1 ảnh | 10 specs
+12:21:26 [INFO]    🔹 [533/3078] Cào URL: https://www.amazon.com/Adamanta-Memory-Maverick-PC3-10600-Unbuffered/dp/B06XWHNB5L lần thứ 1
+12:21:34 [INFO]       ✅ DONE: B06XWHNB5L | 1 ảnh | 13 specs
+12:21:37 [INFO]    🔹 [534/3078] Cào URL: https://www.amazon.com/2-7GHz-2-93GHz-2-9GHz-3-1GHz-3-2GHz/dp/B00VN1U9NS lần thứ 1
+12:21:46 [INFO]       ✅ DONE: B00VN1U9NS | 1 ảnh | 15 specs
+12:21:46 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:21:49 [INFO]    🔹 [535/3078] Cào URL: https://www.amazon.com/Intel-Compute-Computer-Processor-BOXSTK1AW32SC/dp/B01AZC4NHS lần thứ 1
+12:22:04 [INFO]       ✅ DONE: B01AZC4NHS | 6 ảnh | 62 specs
+12:22:09 [INFO]    🔹 [536/3078] Cào URL: https://www.amazon.com/Odyson-3-2GHz-i3-550-Processor-Replacement/dp/B075FDXDJS lần thứ 1
+12:22:16 [INFO]       ✅ DONE: B075FDXDJS | 2 ảnh | 9 specs
+12:22:19 [INFO]    🔹 [537/3078] Cào URL: https://www.amazon.com/Adamanta-Memory-Upgrade-PC3-10600-Registered/dp/B06XJ923DG lần thứ 1
+12:22:24 [INFO]       ✅ DONE: B06XJ923DG | 1 ảnh | 10 specs
+12:22:29 [INFO]    🔹 [538/3078] Cào URL: https://www.amazon.com/Replacement-Cooling-Apple-A1842-MG50050V1-C102-S9A/dp/B0DGPRTM7C lần thứ 1
+12:22:36 [INFO]       ✅ DONE: B0DGPRTM7C | 4 ảnh | 11 specs
+12:22:40 [INFO]    🔹 [539/3078] Cào URL: https://www.amazon.com/Glintique-Cooling-Cooler-Apple-Desktop/dp/B0D79HHLN2 lần thứ 1
+12:22:46 [INFO]       ✅ DONE: B0D79HHLN2 | 5 ảnh | 5 specs
+12:22:50 [INFO]    🔹 [540/3078] Cào URL: https://www.amazon.com/Android-2002-2007-Wireless-Navigation-Bluetooth/dp/B0CZDBHLN3 lần thứ 1
+12:23:00 [INFO]       ✅ DONE: B0CZDBHLN3 | 7 ảnh | 23 specs
+12:23:04 [INFO]    🔹 [541/3078] Cào URL: https://www.amazon.com/Cooling-923-01471-Replacment-MacBook-2016-2019/dp/B0DQ4N5FFF lần thứ 1
+12:23:11 [INFO]       ✅ DONE: B0DQ4N5FFF | 6 ảnh | 11 specs
+12:23:15 [INFO]    🔹 [542/3078] Cào URL: https://www.amazon.com/Cooling-Apple-A1470-Capsule-MG60121V1-C01U-S9A/dp/B01M7N4CQJ lần thứ 1
+12:23:22 [INFO]       ✅ DONE: B01M7N4CQJ | 1 ảnh | 12 specs
+12:23:27 [INFO]    🔹 [543/3078] Cào URL: https://www.amazon.com/Willhom-Replacement-A2348-610-00416-02-610-00416/dp/B0DZHJNRK5 lần thứ 1
+12:23:35 [INFO]       ✅ DONE: B0DZHJNRK5 | 2 ảnh | 15 specs
+12:23:39 [INFO]    🔹 [544/3078] Cào URL: https://www.amazon.com/Glintique-Laptop-Cooler-MacBook-Cooling/dp/B0D79KBMJP lần thứ 1
+12:23:45 [INFO]       ✅ DONE: B0D79KBMJP | 6 ảnh | 8 specs
+12:23:45 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:23:49 [INFO]    🔹 [545/3078] Cào URL: https://www.amazon.com/elago-Compatible-Bar2016-2018-Retina2012-2015-ClassicWhite/dp/B07JCPNXLM lần thứ 1
+12:23:59 [INFO]       ✅ DONE: B07JCPNXLM | 6 ảnh | 20 specs
+12:24:03 [INFO]    🔹 [546/3078] Cào URL: https://www.amazon.com/Z-one-Replacement-Cooling-DFS451512MC0T-3-Wire/dp/B07Q2P96R6 lần thứ 1
+12:24:11 [INFO]       ✅ DONE: B07Q2P96R6 | 2 ảnh | 9 specs
+12:24:14 [INFO]    🔹 [547/3078] Cào URL: https://www.amazon.com/Samsung-Galaxy-Expand-Battery-Note-Taking/dp/B0FF5H3CRK lần thứ 1
+12:24:33 [INFO]       ✅ DONE: B0FF5H3CRK | 7 ảnh | 44 specs
+12:24:37 [INFO]    🔹 [548/3078] Cào URL: https://www.amazon.com/SAMSUNG-Smartphone-Processor-ProScaler-Manufacturer/dp/B0DYVMVZSY lần thứ 1
+12:24:55 [INFO]       ✅ DONE: B0DYVMVZSY | 7 ảnh | 54 specs
+12:24:59 [INFO]    🔹 [549/3078] Cào URL: https://www.amazon.com/Interactive-Whiteboard-Compatible-AndroidTM-LH86WAFWLGCXZA/dp/B0FNRWHJ2W lần thứ 1
+12:25:12 [INFO]       ✅ DONE: B0FNRWHJ2W | 7 ảnh | 37 specs
+12:25:17 [INFO]    🔹 [550/3078] Cào URL: https://www.amazon.com/SAMSUNG-860-PRO-SSD-1TB/dp/B078211KCN lần thứ 1
+12:25:31 [INFO]       ✅ DONE: B078211KCN | 7 ảnh | 34 specs
+12:25:35 [INFO]    🔹 [551/3078] Cào URL: https://www.amazon.com/SAMSUNG-Unlocked-DS-LightGray-SM-A566EZAATPA/dp/B0F1GD6THV lần thứ 1
+12:25:52 [INFO]       ✅ DONE: B0F1GD6THV | 1 ảnh | 49 specs
+12:25:55 [INFO]    🔹 [552/3078] Cào URL: https://www.amazon.com/Samsung-Galaxy-America-SM-X400-SM-X400NZAAGTO/dp/B0FNX96NVL lần thứ 1
+12:26:11 [INFO]       ✅ DONE: B0FNX96NVL | 7 ảnh | 44 specs
+12:26:15 [INFO]    🔹 [553/3078] Cào URL: https://www.amazon.com/SAMSUNG-Factory-Unlocked-Smartphone-Adaptive/dp/B0BLP4J9RR lần thứ 1
+12:26:32 [INFO]       ✅ DONE: B0BLP4J9RR | 7 ảnh | 55 specs
+12:26:37 [INFO]    🔹 [554/3078] Cào URL: https://www.amazon.com/Samsung-Unlocked-Compatible-T-Mobile-SM-A176BZBPGTO/dp/B0FPS631M9 lần thứ 1
+12:26:53 [INFO]       ✅ DONE: B0FPS631M9 | 3 ảnh | 41 specs
+12:26:53 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:26:58 [INFO]    🔹 [555/3078] Cào URL: https://www.amazon.com/Samsung-Unlocked-SM-A366E-DS-SM-A366EZKGTPA/dp/B0F1GHDC44 lần thứ 1
+12:27:15 [INFO]       ✅ DONE: B0F1GHDC44 | 1 ảnh | 50 specs
+12:27:19 [INFO]    🔹 [556/3078] Cào URL: https://www.amazon.com/SAMSUNG-Tmobile-Unlocked-SM-A366E-SM-A366EZKDTPA/dp/B0F1H346ZG lần thứ 1
+12:27:35 [INFO]       ✅ DONE: B0F1H346ZG | 2 ảnh | 47 specs
+12:27:39 [INFO]    🔹 [557/3078] Cào URL: https://www.amazon.com/Unlocked-SM-A366E-DS-Lavender-SM-A366ELVGTPA/dp/B0F1GVR3DG lần thứ 1
+12:27:56 [INFO]       ✅ DONE: B0F1GVR3DG | 1 ảnh | 46 specs
+12:27:59 [INFO]    🔹 [558/3078] Cào URL: https://www.amazon.com/Samsung-SM-X110-Factory-Unlocked-International/dp/B0CK7Z4TX4 lần thứ 1
+12:28:15 [INFO]       ✅ DONE: B0CK7Z4TX4 | 1 ảnh | 48 specs
+12:28:19 [INFO]    🔹 [559/3078] Cào URL: https://www.amazon.com/Samsung-Display-Processor-Operating-NP950XCJ-K01US/dp/B085D26L2J lần thứ 1
+12:28:38 [INFO]       ✅ DONE: B085D26L2J | 7 ảnh | 77 specs
+12:28:42 [INFO]    🔹 [560/3078] Cào URL: https://www.amazon.com/SAMSUNG-Unlocked-SM-A366E-DS-SM-A366EZAGTPA/dp/B0F1GZ5Z2S lần thứ 1
+12:29:00 [INFO]       ✅ DONE: B0F1GZ5Z2S | 1 ảnh | 42 specs
+12:29:03 [INFO]    🔹 [561/3078] Cào URL: https://www.amazon.com/Samsung-Unlocked-Smartphone-High-Res-American/dp/B0F56F4F2L lần thứ 1
+12:29:20 [INFO]       ✅ DONE: B0F56F4F2L | 3 ảnh | 53 specs
+12:29:25 [INFO]    🔹 [562/3078] Cào URL: https://www.amazon.com/Samsung-M471A2K43DB1-CTD-2666MHz-PC4-21300-Laptops/dp/B0946XG1GB lần thứ 1
+12:29:34 [INFO]       ✅ DONE: B0946XG1GB | 2 ảnh | 14 specs
+12:29:38 [INFO]    🔹 [563/3078] Cào URL: https://www.amazon.com/SAMSUNG-A36-5G-Unlocked-SM-A366EZADTPA/dp/B0F1HGHMJV lần thứ 1
+12:29:54 [INFO]       ✅ DONE: B0F1HGHMJV | 1 ảnh | 48 specs
+12:29:57 [INFO]    🔹 [564/3078] Cào URL: https://www.amazon.com/Samsung-4800MHz-PC5-38400-Non-ECC-Computer/dp/B0DTJH3FZS lần thứ 1
+12:30:06 [INFO]       ✅ DONE: B0DTJH3FZS | 1 ảnh | 16 specs
+12:30:06 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:30:10 [INFO]    🔹 [565/3078] Cào URL: https://www.amazon.com/Samsung-1600MHz-PC3-12800-Non-ECC-240-Pin/dp/B0DX8772V5 lần thứ 1
+12:30:21 [INFO]       ✅ DONE: B0DX8772V5 | 1 ảnh | 16 specs
+12:30:25 [INFO]    🔹 [566/3078] Cào URL: https://www.amazon.com/SAMSUNG-Factory-Unlocked-Smartphone-Adaptive/dp/B0BLP3K28S lần thứ 1
+12:30:44 [INFO]       ✅ DONE: B0BLP3K28S | 7 ảnh | 54 specs
+12:30:47 [INFO]    🔹 [567/3078] Cào URL: https://www.amazon.com/darkFlash-Streaming-Radiator-Compatible-DK-GS/dp/B0FPVCTTPC lần thứ 1
+12:30:57 [INFO]       ✅ DONE: B0FPVCTTPC | 7 ảnh | 14 specs
+12:31:02 [INFO]    🔹 [568/3078] Cào URL: https://www.amazon.com/Samsung-Galaxy-America-Market-SM-X620/dp/B0F8D99BQ6 lần thứ 1
+12:31:16 [INFO]       ✅ DONE: B0F8D99BQ6 | 1 ảnh | 46 specs
+12:31:19 [INFO]    🔹 [569/3078] Cào URL: https://www.amazon.com/Samsung-5600MHz-PC5-44800-Non-ECC-Computer/dp/B0DTJF39QH lần thứ 1
+12:31:28 [INFO]       ✅ DONE: B0DTJF39QH | 1 ảnh | 17 specs
+12:31:32 [INFO]    🔹 [570/3078] Cào URL: https://www.amazon.com/Samsung-SO-DIMM-PC3L-12800S-1600MHz-M471B5273CH0-YK0/dp/B00CV5GWHC lần thứ 1
+12:31:41 [INFO]       ✅ DONE: B00CV5GWHC | 3 ảnh | 17 specs
+12:31:44 [INFO]    🔹 [571/3078] Cào URL: https://www.amazon.com/total-wireless-Samsung-Prepaid-Smartphone/dp/B0F7M26DLP lần thứ 1
+12:32:01 [INFO]       ✅ DONE: B0F7M26DLP | 7 ảnh | 48 specs
+12:32:04 [INFO]    🔹 [572/3078] Cào URL: https://www.amazon.com/HUANMEFANG-NP730QCJ-K01US-NP730QCJ-K02US-BA31-00201A-ND65C24-19G07/dp/B0D12B66S2 lần thứ 1
+12:32:10 [INFO]       ✅ DONE: B0D12B66S2 | 3 ảnh | 10 specs
+12:32:14 [INFO]    🔹 [573/3078] Cào URL: https://www.amazon.com/Samsung-Galaxy-America-Market-SM-X520/dp/B0F8DFWSHF lần thứ 1
+12:32:27 [INFO]       ✅ DONE: B0F8DFWSHF | 1 ảnh | 47 specs
+12:32:30 [INFO]    🔹 [574/3078] Cào URL: https://www.amazon.com/QUETTERLEE-Replacement-LE52A856S1MXX-KDB04112HB-G203-KDB04112HB-X02/dp/B09BV3SZCX lần thứ 1
+12:32:38 [INFO]       ✅ DONE: B09BV3SZCX | 3 ảnh | 10 specs
+12:32:38 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:32:43 [INFO]    🔹 [575/3078] Cào URL: https://www.amazon.com/SAMSUNG-870-QVO-SATA-MZ-77Q1T0B/dp/B089C73T72 lần thứ 1
+12:32:56 [INFO]       ✅ DONE: B089C73T72 | 2 ảnh | 33 specs
+12:33:01 [INFO]    🔹 [576/3078] Cào URL: https://www.amazon.com/SAMSUNG-PCIe-Internal-Gaming-MZ-V8P1T0B/dp/B08GLX7TNT lần thứ 1
+12:33:13 [INFO]       ✅ DONE: B08GLX7TNT | 7 ảnh | 33 specs
+12:33:18 [INFO]    🔹 [577/3078] Cào URL: https://www.amazon.com/Samsung-Touch-Portable-SSD-MU-PC1T0K/dp/B082YGLNGR lần thứ 1
+12:33:29 [INFO]       ✅ DONE: B082YGLNGR | 7 ảnh | 31 specs
+12:33:34 [INFO]    🔹 [578/3078] Cào URL: https://www.amazon.com/Samsung-970-PRO-Internal-MZ-V7P1T0BW/dp/B07BYHGNB5 lần thứ 1
+12:33:45 [INFO]       ✅ DONE: B07BYHGNB5 | 7 ảnh | 33 specs
+12:33:49 [INFO]    🔹 [579/3078] Cào URL: https://www.amazon.com/Samsung-Electronics-Smartphone-Pro-Grade-SM-G991UZAAXAA/dp/B08N2FRMPN lần thứ 1
+12:34:05 [INFO]       ✅ DONE: B08N2FRMPN | 7 ảnh | 61 specs
+12:34:08 [INFO]    🔹 [580/3078] Cào URL: https://www.amazon.com/Samsung-Inch-SATA-Internal-Gray/dp/B07L3CLM2B lần thứ 1
+12:34:19 [INFO]       ✅ DONE: B07L3CLM2B | 7 ảnh | 31 specs
+12:34:23 [INFO]    🔹 [581/3078] Cào URL: https://www.amazon.com/total-wireless-Samsung-Smartphone-64GB/dp/B0DWV5GSKM lần thứ 1
+12:34:37 [INFO]       ✅ DONE: B0DWV5GSKM | 7 ảnh | 45 specs
+12:34:41 [INFO]    🔹 [582/3078] Cào URL: https://www.amazon.com/SAMSUNG-M393B2G70BH0-YH9-16GB-2RX4-PC3L-10600R/dp/B00BL5P0M6 lần thứ 1
+12:34:49 [INFO]       ✅ DONE: B00BL5P0M6 | 1 ảnh | 14 specs
+12:34:53 [INFO]    🔹 [583/3078] Cào URL: https://www.amazon.com/QUETTERLEE-Replacement-NP930QCG-K01US-BAPC0404R5HY003-BAPC0404R5HY004/dp/B0BJYVML2H lần thứ 1
+12:34:59 [INFO]       ✅ DONE: B0BJYVML2H | 3 ảnh | 11 specs
+12:35:02 [INFO]    🔹 [584/3078] Cào URL: https://www.amazon.com/Samsung-SM-G960F-5-8-inches-Factory-Unlocked/dp/B07C8LDKSL lần thứ 1
+12:35:15 [INFO]       ✅ DONE: B07C8LDKSL | 5 ảnh | 51 specs
+12:35:15 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:35:19 [INFO]    🔹 [585/3078] Cào URL: https://www.amazon.com/Samsung-Factory-Unlocked-Smartphone-Pro-Grade/dp/B08FYV84JT lần thứ 1
+12:35:33 [INFO]       ✅ DONE: B08FYV84JT | 6 ảnh | 45 specs
+12:35:37 [INFO]    🔹 [586/3078] Cào URL: https://www.amazon.com/CAQL-NP530U3C-NP535U3C-NP532U3C-KDB0505HA/dp/B085RLTPP3 lần thứ 1
+12:35:43 [INFO]       ✅ DONE: B085RLTPP3 | 2 ảnh | 11 specs
+12:35:46 [INFO]    🔹 [587/3078] Cào URL: https://www.amazon.com/Enterprise-Unlocked-Biometric-Security-SM-T577UZKDN14/dp/B08T7RMRY9 lần thứ 1
+12:36:01 [INFO]       ✅ DONE: B08T7RMRY9 | 7 ảnh | 56 specs
+12:36:04 [INFO]    🔹 [588/3078] Cào URL: https://www.amazon.com/CAQL-NP770Z5E-NP780Z5E-NP870Z5E-NP880Z5E/dp/B085R9BCZ2 lần thứ 1
+12:36:10 [INFO]       ✅ DONE: B085R9BCZ2 | 1 ảnh | 8 specs
+12:36:15 [INFO]    🔹 [589/3078] Cào URL: https://www.amazon.com/Samsung-PC3-10600-1333MHz-Unbuffered-M378B5273CH0-CH9/dp/B00A8MWR2E lần thứ 1
+12:36:24 [INFO]       ✅ DONE: B00A8MWR2E | 4 ảnh | 15 specs
+12:36:28 [INFO]    🔹 [590/3078] Cào URL: https://www.amazon.com/Samsung-Memory-M393B2G70QH0-YK0-Registered-1-35V/dp/B00K8RQZWW lần thứ 1
+12:36:36 [INFO]       ✅ DONE: B00K8RQZWW | 1 ảnh | 17 specs
+12:36:40 [INFO]    🔹 [591/3078] Cào URL: https://www.amazon.com/Samsung-Celeron-Processor-Gigabit-XE350XBA-K02US/dp/B0875VM7MN lần thứ 1
+12:36:55 [INFO]       ✅ DONE: B0875VM7MN | 7 ảnh | 72 specs
+12:36:59 [INFO]    🔹 [592/3078] Cào URL: https://www.amazon.com/SAMSUNG-10600-SODIMM-LAPTOP-MEMORY/dp/B0067GGPXC lần thứ 1
+12:37:07 [INFO]       ✅ DONE: B0067GGPXC | 2 ảnh | 16 specs
+12:37:11 [INFO]    🔹 [593/3078] Cào URL: https://www.amazon.com/Samsung-QBB-Quantum-Processor-Signage/dp/B0C6NNXZY2 lần thứ 1
+12:37:16 [INFO]       ✅ DONE: B0C6NNXZY2 | 7 ảnh | 7 specs
+12:37:20 [INFO]    🔹 [594/3078] Cào URL: https://www.amazon.com/ZHAWULEEFB-Replacement-Cooling-NP550XDE-NS65C16-21J12/dp/B0BRTWHVX1 lần thứ 1
+12:37:26 [INFO]       ✅ DONE: B0BRTWHVX1 | 2 ảnh | 8 specs
+12:37:26 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:37:29 [INFO]    🔹 [595/3078] Cào URL: https://www.amazon.com/Samsung-DDR2-PC2-6400-240-Pin-Major/dp/B0050D6KXI lần thứ 1
+12:37:37 [INFO]       ✅ DONE: B0050D6KXI | 2 ảnh | 18 specs
+12:37:41 [INFO]    🔹 [596/3078] Cào URL: https://www.amazon.com/Cooling-XE700T1C-XE700T1A-KDP0505HA-BA31-00134A/dp/B09CGTN1K6 lần thứ 1
+12:37:47 [INFO]       ✅ DONE: B09CGTN1K6 | 4 ảnh | 13 specs
+12:37:51 [INFO]    🔹 [597/3078] Cào URL: https://www.amazon.com/Samsung-Memory-M378A2K43BB1-CPB-16GB-Unbuffered/dp/B017XBRUBU lần thứ 1
+12:37:58 [INFO]       ✅ DONE: B017XBRUBU | 4 ảnh | 16 specs
+12:38:03 [INFO]    🔹 [598/3078] Cào URL: https://www.amazon.com/ZDE-70x22x1mm-Heatsinks-Conductive-Raspberry/dp/B0DK9BQYTG lần thứ 1
+12:38:09 [INFO]       ✅ DONE: B0DK9BQYTG | 6 ảnh | 8 specs
+12:38:13 [INFO]    🔹 [599/3078] Cào URL: https://www.amazon.com/NP905S3G-NP915S3G-NP910S3G-KDB0505HCA05-VA31-01002A/dp/B0991SVS8H lần thứ 1
+12:38:20 [INFO]       ✅ DONE: B0991SVS8H | 4 ảnh | 14 specs
+12:38:23 [INFO]    🔹 [600/3078] Cào URL: https://www.amazon.com/Samsung-PC4-19200-2400MHz-Compatible-ProLiant/dp/B081TGL1WB lần thứ 1
+12:38:31 [INFO]       ✅ DONE: B081TGL1WB | 2 ảnh | 16 specs
+12:38:35 [INFO]    🔹 [601/3078] Cào URL: https://www.amazon.com/Replacement-DP700A3D-DP700A7D-BA31-00133A-KSB0705HA-CD56/dp/B0FDWQBYQG lần thứ 1
+12:38:41 [INFO]       ✅ DONE: B0FDWQBYQG | 4 ảnh | 10 specs
+12:38:44 [INFO]    🔹 [602/3078] Cào URL: https://www.amazon.com/Replacement-NP730QCJ-K01US-NP730QCJ-K02US-ND65C24-19G07-BA31-00201A/dp/B0GL6H72H9 lần thứ 1
+12:38:51 [INFO]       ✅ DONE: B0GL6H72H9 | 7 ảnh | 12 specs
+12:38:54 [INFO]    🔹 [603/3078] Cào URL: https://www.amazon.com/NP900X3B-NP900X3C-NP900X3G-BA31-00121A-BA31-00122A/dp/B09FYHRJXR lần thứ 1
+12:39:00 [INFO]       ✅ DONE: B09FYHRJXR | 2 ảnh | 8 specs
+12:39:04 [INFO]    🔹 [604/3078] Cào URL: https://www.amazon.com/Adamanta-Upgrade-Compatible-Display-PC4-19200/dp/B079V1BL6B lần thứ 1
+12:39:13 [INFO]       ✅ DONE: B079V1BL6B | 4 ảnh | 15 specs
+12:39:13 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:39:17 [INFO]    🔹 [605/3078] Cào URL: https://www.amazon.com/Samsung-PC4-21300-2666MHz-Compatible-ProLiant/dp/B081THD7QV lần thứ 1
+12:39:25 [INFO]       ✅ DONE: B081THD7QV | 2 ảnh | 15 specs
+12:39:30 [INFO]    🔹 [606/3078] Cào URL: https://www.amazon.com/Samsung-DDR4-2400-Server-Memory-M393A1K43BB0-CRC/dp/B07GDLHV14 lần thứ 1
+12:39:36 [INFO]       ✅ DONE: B07GDLHV14 | 1 ảnh | 15 specs
+12:39:39 [INFO]    🔹 [607/3078] Cào URL: https://www.amazon.com/Samsung-BA31-00135A-Fan-Cpu/dp/B00O8N1PA4 lần thứ 1
+12:39:44 [INFO]       ✅ DONE: B00O8N1PA4 | 1 ảnh | 7 specs
+12:39:49 [INFO]    🔹 [608/3078] Cào URL: https://www.amazon.com/ZHAWULEEFB-Replacement-NP950QCG-BA31-00198A-ND75C33-19E11/dp/B0BMQ24MDS lần thứ 1
+12:39:55 [INFO]       ✅ DONE: B0BMQ24MDS | 2 ảnh | 10 specs
+12:39:58 [INFO]    🔹 [609/3078] Cào URL: https://www.amazon.com/Gametown-Cooling-Samsung-XE700T1C-Replacement/dp/B016BIKJ32 lần thứ 1
+12:40:04 [INFO]       ✅ DONE: B016BIKJ32 | 3 ảnh | 6 specs
+12:40:07 [INFO]    🔹 [610/3078] Cào URL: https://www.amazon.com/Samsung-M391A1G43EB1-CPB-8GB-DDR4-2133-UDIMM/dp/B074F489DP lần thứ 1
+12:40:14 [INFO]       ✅ DONE: B074F489DP | 1 ảnh | 14 specs
+12:40:19 [INFO]    🔹 [611/3078] Cào URL: https://www.amazon.com/POBRIDA-NP950XDB-KA2US-NP950XDB-KB1US-NP950XDB-KC5US-NP950XDB-KC3US/dp/B0D4HHRYXG lần thứ 1
+12:40:24 [INFO]       ✅ DONE: B0D4HHRYXG | 3 ảnh | 6 specs
+12:40:28 [INFO]    🔹 [612/3078] Cào URL: https://www.amazon.com/Samsung-DDR3-1600-Server-Memory-M393B1G73QH0-YK0/dp/B00MVXL9WC lần thứ 1
+12:40:36 [INFO]       ✅ DONE: B00MVXL9WC | 3 ảnh | 17 specs
+12:40:41 [INFO]    🔹 [613/3078] Cào URL: https://www.amazon.com/BestParts-Genuine-Cooling-Replacement-NP550XDE/dp/B0CRVLJFQW lần thứ 1
+12:40:47 [INFO]       ✅ DONE: B0CRVLJFQW | 4 ảnh | 12 specs
+12:40:51 [INFO]    🔹 [614/3078] Cào URL: https://www.amazon.com/Samsung-M393A1K43BB1-CTD6Y-21300-Memory-Module/dp/B08L9CWN7S lần thứ 1
+12:40:59 [INFO]       ✅ DONE: B08L9CWN7S | 2 ảnh | 15 specs
+12:40:59 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:41:04 [INFO]    🔹 [615/3078] Cào URL: https://www.amazon.com/Power4Laptops-Compatible-Samsung-Style-DP515A2G/dp/B078NCKSHC lần thứ 1
+12:41:09 [INFO]       ✅ DONE: B078NCKSHC | 1 ảnh | 7 specs
+12:41:14 [INFO]    🔹 [616/3078] Cào URL: https://www.amazon.com/ZHAWULEEFB-Replacement-NP750XDA-NP750XDAZ-DFS5K22B15673A/dp/B0FS12XX1C lần thứ 1
+12:41:20 [INFO]       ✅ DONE: B0FS12XX1C | 2 ảnh | 10 specs
+12:41:23 [INFO]    🔹 [617/3078] Cào URL: https://www.amazon.com/Replacement-UE55HU8500T-UE55HU8500TXXU-UN55HU8550F-UN55HU9000F/dp/B0DR2SWWZ9 lần thứ 1
+12:41:30 [INFO]       ✅ DONE: B0DR2SWWZ9 | 3 ảnh | 13 specs
+12:41:35 [INFO]    🔹 [618/3078] Cào URL: https://www.amazon.com/BDWZNLA-Cooling-NP550XDA-NP350XCR-BNA107S5H-N00P/dp/B0CY2898TV lần thứ 1
+12:41:40 [INFO]       ✅ DONE: B0CY2898TV | 3 ảnh | 11 specs
+12:41:44 [INFO]    🔹 [619/3078] Cào URL: https://www.amazon.com/Gametown%C2%AE-NP530U3C-NP535U3C-NP540U3C-BA31-00125A/dp/B010AO6JYG lần thứ 1
+12:41:49 [INFO]       ✅ DONE: B010AO6JYG | 4 ảnh | 7 specs
+12:41:53 [INFO]    🔹 [620/3078] Cào URL: https://www.amazon.com/NP-QX311-NP-QX311-S03-NP-QX511-PC3-10600-Tech/dp/B00VRQVPHI lần thứ 1
+12:42:01 [INFO]       ✅ DONE: B00VRQVPHI | 1 ảnh | 15 specs
+12:42:06 [INFO]    🔹 [621/3078] Cào URL: https://www.amazon.com/Supermicro-Certified-MEM-DR416LA-ER29-Samsung-M393A2K40DB2-CVF/dp/B09RG3Z7G8 lần thứ 1
+12:42:12 [INFO]       ✅ DONE: B09RG3Z7G8 | 2 ảnh | 9 specs
+12:42:16 [INFO]    🔹 [622/3078] Cào URL: https://www.amazon.com/OYSTERBOY-KDB04112HB-Cooling-Compatible-Samsung/dp/B0FHPMFMCW lần thứ 1
+12:42:22 [INFO]       ✅ DONE: B0FHPMFMCW | 1 ảnh | 14 specs
+12:42:27 [INFO]    🔹 [623/3078] Cào URL: https://www.amazon.com/Glintique-SAMSUNG-NP535U3C-KSB0705HA-Glintique-001/dp/B0D79JGB8F lần thứ 1
+12:42:33 [INFO]       ✅ DONE: B0D79JGB8F | 1 ảnh | 5 specs
+12:42:36 [INFO]    🔹 [624/3078] Cào URL: https://www.amazon.com/Glintique-Laptop-Cooling-Samsung-Glintique-001/dp/B0D79H84XS lần thứ 1
+12:42:41 [INFO]       ✅ DONE: B0D79H84XS | 1 ảnh | 5 specs
+12:42:41 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:42:46 [INFO]    🔹 [625/3078] Cào URL: https://www.amazon.com/KIKIFAN-RDM5015S-505015MM-Processor-Heatsink/dp/B0CP84X966 lần thứ 1
+12:42:53 [INFO]       ✅ DONE: B0CP84X966 | 4 ảnh | 14 specs
+12:42:57 [INFO]    🔹 [626/3078] Cào URL: https://www.amazon.com/Glintique-Notebook-NP3445VC-NP355V4X-Glintique-001/dp/B0D79GYPNL lần thứ 1
+12:43:01 [INFO]       ✅ DONE: B0D79GYPNL | 3 ảnh | 5 specs
+12:43:06 [INFO]    🔹 [627/3078] Cào URL: https://www.amazon.com/Glintique-cooling-Notebook-SAMSUNG-Glintique-001/dp/B0D79HN3T8 lần thứ 1
+12:43:11 [INFO]       ✅ DONE: B0D79HN3T8 | 3 ảnh | 5 specs
+12:43:15 [INFO]    🔹 [628/3078] Cào URL: https://www.amazon.com/Glintique-Notebook-DFS470805WL0T-BA81-09713B-Glintique-001/dp/B0D79HVLL6 lần thứ 1
+12:43:20 [INFO]       ✅ DONE: B0D79HVLL6 | 2 ảnh | 5 specs
+12:43:25 [INFO]    🔹 [629/3078] Cào URL: https://www.amazon.com/Glintique-Notebook-NP300E43-NP305V4Z-T02CN-Glintique-001/dp/B0D79HWZMB lần thứ 1
+12:43:31 [INFO]       ✅ DONE: B0D79HWZMB | 4 ảnh | 5 specs
+12:43:35 [INFO]    🔹 [630/3078] Cào URL: https://www.amazon.com/Glintique-Notebook-BA31-00157A-DFS200405080T-Glintique-001/dp/B0D79J3XDN lần thứ 1
+12:43:40 [INFO]       ✅ DONE: B0D79J3XDN | 1 ảnh | 5 specs
+12:43:44 [INFO]    🔹 [631/3078] Cào URL: https://www.amazon.com/Glintique-cooling-Notebook-SAMSUNG-Glintique-001/dp/B0D79J67YR lần thứ 1
+12:43:51 [INFO]       ✅ DONE: B0D79J67YR | 3 ảnh | 5 specs
+12:43:54 [INFO]    🔹 [632/3078] Cào URL: https://www.amazon.com/Glintique-cooling-Notebook-SAMSUNG-Glintique-001/dp/B0D79HF1F6 lần thứ 1
+12:44:00 [INFO]       ✅ DONE: B0D79HF1F6 | 4 ảnh | 5 specs
+12:44:04 [INFO]    🔹 [633/3078] Cào URL: https://www.amazon.com/Glintique-Notebook-NP355V5C-S02-BA31-001328-Glintique-001/dp/B0D79H9GMB lần thứ 1
+12:44:09 [INFO]       ✅ DONE: B0D79H9GMB | 3 ảnh | 5 specs
+12:44:13 [INFO]    🔹 [634/3078] Cào URL: https://www.amazon.com/Glintique-NP350E7C-NP350V5C-DC28000BMS0-Glintique-001/dp/B0D79KN25Z lần thứ 1
+12:44:18 [INFO]       ✅ DONE: B0D79KN25Z | 1 ảnh | 5 specs
+12:44:18 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:44:21 [INFO]    🔹 [635/3078] Cào URL: https://www.amazon.com/Glintique-cooling-Notebook-SAMSUNG-Glintique-001/dp/B0D79K9YW8 lần thứ 1
+12:44:26 [INFO]       ✅ DONE: B0D79K9YW8 | 3 ảnh | 5 specs
+12:44:31 [INFO]    🔹 [636/3078] Cào URL: https://www.amazon.com/Glintique-Notebook-NP300E4A-NP300V4A-Glintique-001/dp/B0D79K1SH5 lần thứ 1
+12:44:36 [INFO]       ✅ DONE: B0D79K1SH5 | 5 ảnh | 5 specs
+12:44:40 [INFO]    🔹 [637/3078] Cào URL: https://www.amazon.com/Glintique-SAMSUNG-laptop-cooling-Glintique-001/dp/B0D79HLN2C lần thứ 1
+12:44:45 [INFO]       ✅ DONE: B0D79HLN2C | 2 ảnh | 5 specs
+12:44:49 [INFO]    🔹 [638/3078] Cào URL: https://www.amazon.com/Glintique-Notebook-NP780Z5E-S01UB-DFS501105FR0T-Glintique-001/dp/B0D79HLXS1 lần thứ 1
+12:44:54 [INFO]       ✅ DONE: B0D79HLXS1 | 2 ảnh | 5 specs
+12:44:59 [INFO]    🔹 [639/3078] Cào URL: https://www.amazon.com/Replacement-Samsung-NP940X3L-Cooling-BA31-00160A/dp/B07T5CC1B1 lần thứ 1
+12:45:05 [INFO]       ✅ DONE: B07T5CC1B1 | 3 ảnh | 9 specs
+12:45:08 [INFO]    🔹 [640/3078] Cào URL: https://www.amazon.com/Glintique-cooling-Notebook-SAMSUNG-Glintique-001/dp/B0D79K5S6B lần thứ 1
+12:45:13 [INFO]       ✅ DONE: B0D79K5S6B | 4 ảnh | 5 specs
+12:45:17 [INFO]    🔹 [641/3078] Cào URL: https://www.amazon.com/Glintique-Notebook-NP670Z5E-NP780Z5E-Glintique-001/dp/B0D79HXZ55 lần thứ 1
+12:45:22 [INFO]       ✅ DONE: B0D79HXZ55 | 2 ảnh | 5 specs
+12:45:25 [INFO]    🔹 [642/3078] Cào URL: https://www.amazon.com/Glintique-heatsink-Radiator-Notebook-KSB0705HA-AK1Y/dp/B0D79J353C lần thứ 1
+12:45:31 [INFO]       ✅ DONE: B0D79J353C | 3 ảnh | 5 specs
+12:45:34 [INFO]    🔹 [643/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-X22-A00B/dp/B00CO4QJN2 lần thứ 1
+12:45:39 [INFO]       ✅ DONE: B00CO4QJN2 | 1 ảnh | 5 specs
+12:45:42 [INFO]    🔹 [644/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-X22-A007-X22-A008-X22-A009/dp/B00CO4QHAC lần thứ 1
+12:45:47 [INFO]       ✅ DONE: B00CO4QHAC | 1 ảnh | 5 specs
+12:45:47 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:45:51 [INFO]    🔹 [645/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-X22-A001/dp/B00CO4QEKK lần thứ 1
+12:45:56 [INFO]       ✅ DONE: B00CO4QEKK | 1 ảnh | 4 specs
+12:46:00 [INFO]    🔹 [646/3078] Cào URL: https://www.amazon.com/Power4Laptops-Compatible-Laptop-Samsung-530U4E/dp/B01MQ4OEF0 lần thứ 1
+12:46:06 [INFO]       ✅ DONE: B01MQ4OEF0 | 1 ảnh | 9 specs
+12:46:10 [INFO]    🔹 [647/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-X22-A002-X22-A003-X22-A004/dp/B00CO4QF4A lần thứ 1
+12:46:15 [INFO]       ✅ DONE: B00CO4QF4A | 1 ảnh | 6 specs
+12:46:20 [INFO]    🔹 [648/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-X22-A005/dp/B00CO4QGCQ lần thứ 1
+12:46:24 [INFO]       ✅ DONE: B00CO4QGCQ | 1 ảnh | 4 specs
+12:46:28 [INFO]    🔹 [649/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-530U4E/dp/B01M7161TF lần thứ 1
+12:46:33 [INFO]       ✅ DONE: B01M7161TF | 1 ảnh | 5 specs
+12:46:36 [INFO]    🔹 [650/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-X22-A00A/dp/B00CO4QJ00 lần thứ 1
+12:46:42 [INFO]       ✅ DONE: B00CO4QJ00 | 1 ảnh | 6 specs
+12:46:45 [INFO]    🔹 [651/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-X22-A00C-X22-Aura-X22-T000/dp/B00CO4QK2C lần thứ 1
+12:46:50 [INFO]       ✅ DONE: B00CO4QK2C | 1 ảnh | 6 specs
+12:46:54 [INFO]    🔹 [652/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP500R5K/dp/B077P394BY lần thứ 1
+12:46:59 [INFO]       ✅ DONE: B077P394BY | 1 ảnh | 4 specs
+12:47:04 [INFO]    🔹 [653/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-X22-T001/dp/B00CO4QM16 lần thứ 1
+12:47:09 [INFO]       ✅ DONE: B00CO4QM16 | 1 ảnh | 4 specs
+12:47:12 [INFO]    🔹 [654/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-X22-A003/dp/B00CO4QFGS lần thứ 1
+12:47:17 [INFO]       ✅ DONE: B00CO4QFGS | 1 ảnh | 4 specs
+12:47:17 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:47:21 [INFO]    🔹 [655/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-X22-A000/dp/B00CO4QE3C lần thứ 1
+12:47:26 [INFO]       ✅ DONE: B00CO4QE3C | 1 ảnh | 4 specs
+12:47:30 [INFO]    🔹 [656/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-Chronos/dp/B075HWNQTQ lần thứ 1
+12:47:35 [INFO]       ✅ DONE: B075HWNQTQ | 1 ảnh | 6 specs
+12:47:39 [INFO]    🔹 [657/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R730-JB01DE/dp/B075HWRDC6 lần thứ 1
+12:47:44 [INFO]       ✅ DONE: B075HWRDC6 | 1 ảnh | 5 specs
+12:47:49 [INFO]    🔹 [658/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R780-JS01/dp/B075HWGSHR lần thứ 1
+12:47:54 [INFO]       ✅ DONE: B075HWGSHR | 1 ảnh | 5 specs
+12:47:57 [INFO]    🔹 [659/3078] Cào URL: https://www.amazon.com/Head-Case-Designs-Compatible-Samsung/dp/B0F1M6T6RT lần thứ 1
+12:48:05 [INFO]       ✅ DONE: B0F1M6T6RT | 7 ảnh | 11 specs
+12:48:10 [INFO]    🔹 [660/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-X22-A004/dp/B00CO4QFWC lần thứ 1
+12:48:15 [INFO]       ✅ DONE: B00CO4QFWC | 1 ảnh | 4 specs
+12:48:19 [INFO]    🔹 [661/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-X22-Aura/dp/B00CO4QKHW lần thứ 1
+12:48:24 [INFO]       ✅ DONE: B00CO4QKHW | 1 ảnh | 4 specs
+12:48:28 [INFO]    🔹 [662/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP535U4E/dp/B01MDQPL46 lần thứ 1
+12:48:34 [INFO]       ✅ DONE: B01MDQPL46 | 1 ảnh | 6 specs
+12:48:38 [INFO]    🔹 [663/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Laptop-Compatible-Samsung/dp/B078439X1B lần thứ 1
+12:48:43 [INFO]       ✅ DONE: B078439X1B | 1 ảnh | 4 specs
+12:48:48 [INFO]    🔹 [664/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-X22-T000/dp/B00CO4QLGW lần thứ 1
+12:48:53 [INFO]       ✅ DONE: B00CO4QLGW | 1 ảnh | 4 specs
+12:48:53 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:48:57 [INFO]    🔹 [665/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Laptop-Compatible-Samsung/dp/B00CO4QDKG lần thứ 1
+12:49:01 [INFO]       ✅ DONE: B00CO4QDKG | 1 ảnh | 4 specs
+12:49:05 [INFO]    🔹 [666/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R780-EBMDE/dp/B075HXJL8M lần thứ 1
+12:49:10 [INFO]       ✅ DONE: B075HXJL8M | 1 ảnh | 5 specs
+12:49:15 [INFO]    🔹 [667/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP900X3L/dp/B075HVXBBS lần thứ 1
+12:49:21 [INFO]       ✅ DONE: B075HVXBBS | 1 ảnh | 6 specs
+12:49:25 [INFO]    🔹 [668/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-X22-Pro/dp/B00CO4QKXQ lần thứ 1
+12:49:31 [INFO]       ✅ DONE: B00CO4QKXQ | 1 ảnh | 4 specs
+12:49:35 [INFO]    🔹 [669/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-X22-A006/dp/B00CO4QGSK lần thứ 1
+12:49:40 [INFO]       ✅ DONE: B00CO4QGSK | 1 ảnh | 4 specs
+12:49:44 [INFO]    🔹 [670/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R730-JB02/dp/B075HX2TB9 lần thứ 1
+12:49:49 [INFO]       ✅ DONE: B075HX2TB9 | 1 ảnh | 4 specs
+12:49:52 [INFO]    🔹 [671/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-535U4E/dp/B01MQ4QRHO lần thứ 1
+12:49:57 [INFO]       ✅ DONE: B01MQ4QRHO | 1 ảnh | 6 specs
+12:50:01 [INFO]    🔹 [672/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-X22-A008/dp/B00CO4QHU2 lần thứ 1
+12:50:06 [INFO]       ✅ DONE: B00CO4QHU2 | 1 ảnh | 4 specs
+12:50:10 [INFO]    🔹 [673/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-870Z5E-X03DE/dp/B075HWNQVY lần thứ 1
+12:50:15 [INFO]       ✅ DONE: B075HWNQVY | 1 ảnh | 4 specs
+12:50:18 [INFO]    🔹 [674/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP540U4E-K01AU/dp/B01MPWYJ2Z lần thứ 1
+12:50:24 [INFO]       ✅ DONE: B01MPWYJ2Z | 1 ảnh | 8 specs
+12:50:24 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:50:28 [INFO]    🔹 [675/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP540U4E-K01TH/dp/B01M4NIBEQ lần thứ 1
+12:50:33 [INFO]       ✅ DONE: B01M4NIBEQ | 1 ảnh | 7 specs
+12:50:37 [INFO]    🔹 [676/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R780-Hisu/dp/B075HW1682 lần thứ 1
+12:50:41 [INFO]       ✅ DONE: B075HW1682 | 1 ảnh | 4 specs
+12:50:45 [INFO]    🔹 [677/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP880Z5E/dp/B075HWZ3WN lần thứ 1
+12:50:51 [INFO]       ✅ DONE: B075HWZ3WN | 1 ảnh | 5 specs
+12:50:55 [INFO]    🔹 [678/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-X22-K01/dp/B00CO4QD0G lần thứ 1
+12:51:00 [INFO]       ✅ DONE: B00CO4QD0G | 1 ảnh | 4 specs
+12:51:04 [INFO]    🔹 [679/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R780-JT01/dp/B075HWY8D5 lần thứ 1
+12:51:09 [INFO]       ✅ DONE: B075HWY8D5 | 1 ảnh | 4 specs
+12:51:14 [INFO]    🔹 [680/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R780-JS04/dp/B075HWMK3J lần thứ 1
+12:51:18 [INFO]       ✅ DONE: B075HWMK3J | 1 ảnh | 5 specs
+12:51:22 [INFO]    🔹 [681/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP540U4E-K01MY/dp/B01M7163P5 lần thứ 1
+12:51:27 [INFO]       ✅ DONE: B01M7163P5 | 1 ảnh | 7 specs
+12:51:31 [INFO]    🔹 [682/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R730-JA01DE/dp/B075HX2FMH lần thứ 1
+12:51:36 [INFO]       ✅ DONE: B075HX2FMH | 1 ảnh | 6 specs
+12:51:40 [INFO]    🔹 [683/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R730-Nukon/dp/B075HX1TBT lần thứ 1
+12:51:44 [INFO]       ✅ DONE: B075HX1TBT | 1 ảnh | 4 specs
+12:51:49 [INFO]    🔹 [684/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R780-JS0ADE/dp/B075HVS98R lần thứ 1
+12:51:54 [INFO]       ✅ DONE: B075HVS98R | 1 ảnh | 5 specs
+12:51:54 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:51:58 [INFO]    🔹 [685/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP900X5L/dp/B075HWDXLW lần thứ 1
+12:52:03 [INFO]       ✅ DONE: B075HWDXLW | 1 ảnh | 6 specs
+12:52:07 [INFO]    🔹 [686/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-NP540U4E-K04US-NP740U3E-A01UB-NP740U3E-K01UB/dp/B01M8MP497 lần thứ 1
+12:52:12 [INFO]       ✅ DONE: B01M8MP497 | 1 ảnh | 8 specs
+12:52:16 [INFO]    🔹 [687/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R730-JS01DE/dp/B075HVTQ26 lần thứ 1
+12:52:20 [INFO]       ✅ DONE: B075HVTQ26 | 1 ảnh | 4 specs
+12:52:25 [INFO]    🔹 [688/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R730-JB02/dp/B075HW8V9B lần thứ 1
+12:52:29 [INFO]       ✅ DONE: B075HW8V9B | 1 ảnh | 4 specs
+12:52:33 [INFO]    🔹 [689/3078] Cào URL: https://www.amazon.com/Tech-Workstation-Motherboard-Compatible-ATMS312400A25820X1/dp/B07MSC58R1 lần thứ 1
+12:52:41 [INFO]       ✅ DONE: B07MSC58R1 | 2 ảnh | 15 specs
+12:52:45 [INFO]    🔹 [690/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-X22-A009/dp/B00CO4QIH4 lần thứ 1
+12:52:50 [INFO]       ✅ DONE: B00CO4QIH4 | 1 ảnh | 4 specs
+12:52:55 [INFO]    🔹 [691/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-ATIV-Book-NP530U4E/dp/B01M28XRF9 lần thứ 1
+12:53:01 [INFO]       ✅ DONE: B01M28XRF9 | 1 ảnh | 9 specs
+12:53:04 [INFO]    🔹 [692/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R730-Nipon/dp/B075HW861P lần thứ 1
+12:53:09 [INFO]       ✅ DONE: B075HW861P | 1 ảnh | 5 specs
+12:53:13 [INFO]    🔹 [693/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-740U3E/dp/B01MDQPLN6 lần thứ 1
+12:53:19 [INFO]       ✅ DONE: B01MDQPLN6 | 1 ảnh | 7 specs
+12:53:23 [INFO]    🔹 [694/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R730-Ninta/dp/B075HX2DL6 lần thứ 1
+12:53:29 [INFO]       ✅ DONE: B075HX2DL6 | 1 ảnh | 6 specs
+12:53:29 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:53:32 [INFO]    🔹 [695/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-740U3C/dp/B01MQ4WRO0 lần thứ 1
+12:53:37 [INFO]       ✅ DONE: B01MQ4WRO0 | 1 ảnh | 6 specs
+12:53:41 [INFO]    🔹 [696/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP500R5H/dp/B077PB6H7L lần thứ 1
+12:53:46 [INFO]       ✅ DONE: B077PB6H7L | 1 ảnh | 4 specs
+12:53:51 [INFO]    🔹 [697/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R730-EBMDE/dp/B075HWJPCL lần thứ 1
+12:53:56 [INFO]       ✅ DONE: B075HWJPCL | 1 ảnh | 4 specs
+12:53:59 [INFO]    🔹 [698/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-RF411/dp/B017A1TZ1G lần thứ 1
+12:54:04 [INFO]       ✅ DONE: B017A1TZ1G | 1 ảnh | 5 specs
+12:54:08 [INFO]    🔹 [699/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP530U4E/dp/B01M8MP7JO lần thứ 1
+12:54:13 [INFO]       ✅ DONE: B01M8MP7JO | 1 ảnh | 8 specs
+12:54:17 [INFO]    🔹 [700/3078] Cào URL: https://www.amazon.com/Power4Laptops-Compatible-ATIV-Book-535U4E/dp/B01M68EV96 lần thứ 1
+12:54:22 [INFO]       ✅ DONE: B01M68EV96 | 1 ảnh | 8 specs
+12:54:25 [INFO]    🔹 [701/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R780-JS02AT/dp/B075HWY2L7 lần thứ 1
+12:54:30 [INFO]       ✅ DONE: B075HWY2L7 | 1 ảnh | 5 specs
+12:54:33 [INFO]    🔹 [702/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-NP-X22-K01-X22-A000-X22-A001/dp/B00CO4QCNY lần thứ 1
+12:54:39 [INFO]       ✅ DONE: B00CO4QCNY | 1 ảnh | 6 specs
+12:54:42 [INFO]    🔹 [703/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP450R5U/dp/B078N59V7P lần thứ 1
+12:54:48 [INFO]       ✅ DONE: B078N59V7P | 1 ảnh | 4 specs
+12:54:51 [INFO]    🔹 [704/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP870Z5E/dp/B075HWMYNZ lần thứ 1
+12:54:56 [INFO]       ✅ DONE: B075HWMYNZ | 1 ảnh | 5 specs
+12:54:56 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:55:00 [INFO]    🔹 [705/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-ATIV-Book-540U4E/dp/B01MFC3CJY lần thứ 1
+12:55:05 [INFO]       ✅ DONE: B01MFC3CJY | 1 ảnh | 5 specs
+12:55:08 [INFO]    🔹 [706/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R780-JS02AU/dp/B075HWQ633 lần thứ 1
+12:55:13 [INFO]       ✅ DONE: B075HWQ633 | 1 ảnh | 5 specs
+12:55:17 [INFO]    🔹 [707/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-740U3E/dp/B01M7161TL lần thứ 1
+12:55:22 [INFO]       ✅ DONE: B01M7161TL | 1 ảnh | 6 specs
+12:55:26 [INFO]    🔹 [708/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Laptop-Compatible-Samsung/dp/B075HWSSSC lần thứ 1
+12:55:31 [INFO]       ✅ DONE: B075HWSSSC | 1 ảnh | 5 specs
+12:55:35 [INFO]    🔹 [709/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R730-JB04IT/dp/B075HWSHFC lần thứ 1
+12:55:40 [INFO]       ✅ DONE: B075HWSHFC | 1 ảnh | 5 specs
+12:55:45 [INFO]    🔹 [710/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP450R5U/dp/B078N58BN6 lần thứ 1
+12:55:50 [INFO]       ✅ DONE: B078N58BN6 | 1 ảnh | 8 specs
+12:55:53 [INFO]    🔹 [711/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP870Z5E-X01HS/dp/B075HXCR99 lần thứ 1
+12:55:58 [INFO]       ✅ DONE: B075HXCR99 | 1 ảnh | 4 specs
+12:56:01 [INFO]    🔹 [712/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R730-JT01DE/dp/B075HX5S7R lần thứ 1
+12:56:06 [INFO]       ✅ DONE: B075HX5S7R | 1 ảnh | 4 specs
+12:56:10 [INFO]    🔹 [713/3078] Cào URL: https://www.amazon.com/Power4Laptops-NP740U3E-A01-NP740U3E-A01FR-NP740U3E-A02-NP740U3E-A02SE/dp/B01M5FPEY6 lần thứ 1
+12:56:16 [INFO]       ✅ DONE: B01M5FPEY6 | 1 ảnh | 7 specs
+12:56:19 [INFO]    🔹 [714/3078] Cào URL: https://www.amazon.com/Power4Laptops-Compatible-740U3C-740U3E-S02DE-NP740U3C/dp/B01M5FPBI9 lần thứ 1
+12:56:24 [INFO]       ✅ DONE: B01M5FPBI9 | 1 ảnh | 6 specs
+12:56:24 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:56:28 [INFO]    🔹 [715/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R780-JT01US/dp/B075HXVYC2 lần thứ 1
+12:56:32 [INFO]       ✅ DONE: B075HXVYC2 | 1 ảnh | 4 specs
+12:56:37 [INFO]    🔹 [716/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R780-JS0BDE/dp/B075HX2GX3 lần thứ 1
+12:56:42 [INFO]       ✅ DONE: B075HX2GX3 | 1 ảnh | 4 specs
+12:56:46 [INFO]    🔹 [717/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R730-JT01UA/dp/B075HVX9P6 lần thứ 1
+12:56:51 [INFO]       ✅ DONE: B075HVX9P6 | 1 ảnh | 4 specs
+12:56:56 [INFO]    🔹 [718/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP900X3L/dp/B075HVXB5W lần thứ 1
+12:57:01 [INFO]       ✅ DONE: B075HVXB5W | 1 ảnh | 6 specs
+12:57:05 [INFO]    🔹 [719/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP740U3E-S01/dp/B01M9FD3YU lần thứ 1
+12:57:11 [INFO]       ✅ DONE: B01M9FD3YU | 1 ảnh | 6 specs
+12:57:16 [INFO]    🔹 [720/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP740U3E-X01/dp/B01M31LTXW lần thứ 1
+12:57:21 [INFO]       ✅ DONE: B01M31LTXW | 1 ảnh | 5 specs
+12:57:24 [INFO]    🔹 [721/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP740U3E-K01UB/dp/B01M4NIBCX lần thứ 1
+12:57:29 [INFO]       ✅ DONE: B01M4NIBCX | 1 ảnh | 5 specs
+12:57:33 [INFO]    🔹 [722/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP870Z5E-X01CL/dp/B075HX5VZS lần thứ 1
+12:57:38 [INFO]       ✅ DONE: B075HX5VZS | 1 ảnh | 4 specs
+12:57:42 [INFO]    🔹 [723/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R730-JS03ES/dp/B075HXCRB6 lần thứ 1
+12:57:48 [INFO]       ✅ DONE: B075HXCRB6 | 1 ảnh | 4 specs
+12:57:51 [INFO]    🔹 [724/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R730-JT01BE/dp/B075HX94Y8 lần thứ 1
+12:57:56 [INFO]       ✅ DONE: B075HX94Y8 | 1 ảnh | 4 specs
+12:57:56 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:58:00 [INFO]    🔹 [725/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R730-JB08DE/dp/B075HX2JRC lần thứ 1
+12:58:05 [INFO]       ✅ DONE: B075HX2JRC | 1 ảnh | 5 specs
+12:58:09 [INFO]    🔹 [726/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R780-JT03/dp/B075HWJ6L6 lần thứ 1
+12:58:14 [INFO]       ✅ DONE: B075HWJ6L6 | 1 ảnh | 4 specs
+12:58:17 [INFO]    🔹 [727/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R730-JS01/dp/B075HWFXTS lần thứ 1
+12:58:22 [INFO]       ✅ DONE: B075HWFXTS | 1 ảnh | 4 specs
+12:58:25 [INFO]    🔹 [728/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R780-JS01CA/dp/B075HVZPT8 lần thứ 1
+12:58:30 [INFO]       ✅ DONE: B075HVZPT8 | 1 ảnh | 4 specs
+12:58:34 [INFO]    🔹 [729/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R730-JA02UK/dp/B075HVX1GG lần thứ 1
+12:58:38 [INFO]       ✅ DONE: B075HVX1GG | 1 ảnh | 5 specs
+12:58:42 [INFO]    🔹 [730/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R780-JT01/dp/B075HVPHC7 lần thứ 1
+12:58:49 [INFO]       ✅ DONE: B075HVPHC7 | 1 ảnh | 4 specs
+12:58:52 [INFO]    🔹 [731/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP740U3E-S01ES/dp/B01MCY1125 lần thứ 1
+12:58:57 [INFO]       ✅ DONE: B01MCY1125 | 1 ảnh | 6 specs
+12:59:01 [INFO]    🔹 [732/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP740U3E-A01FR/dp/B01M68EWDZ lần thứ 1
+12:59:07 [INFO]       ✅ DONE: B01M68EWDZ | 1 ảnh | 5 specs
+12:59:11 [INFO]    🔹 [733/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R730-JA01/dp/B075HWRFP2 lần thứ 1
+12:59:16 [INFO]       ✅ DONE: B075HWRFP2 | 1 ảnh | 6 specs
+12:59:20 [INFO]    🔹 [734/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R780-JS09DE/dp/B075HWGSHN lần thứ 1
+12:59:25 [INFO]       ✅ DONE: B075HWGSHN | 1 ảnh | 4 specs
+12:59:25 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+12:59:30 [INFO]    🔹 [735/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R730-JT02/dp/B075HW32Z2 lần thứ 1
+12:59:35 [INFO]       ✅ DONE: B075HW32Z2 | 1 ảnh | 6 specs
+12:59:40 [INFO]    🔹 [736/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R730-JT05DE/dp/B075HW4PTR lần thứ 1
+12:59:44 [INFO]       ✅ DONE: B075HW4PTR | 1 ảnh | 4 specs
+12:59:47 [INFO]    🔹 [737/3078] Cào URL: https://www.amazon.com/Power4Laptops-NP-R470-NP-R518-DA01UA-NP-R518-DA02UA-NP-R518-DA04UA/dp/B019OLC83C lần thứ 1
+12:59:53 [INFO]       ✅ DONE: B019OLC83C | 1 ảnh | 5 specs
+12:59:56 [INFO]    🔹 [738/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP740U3E-S01FR/dp/B01MQ4QRIE lần thứ 1
+13:00:01 [INFO]       ✅ DONE: B01MQ4QRIE | 1 ảnh | 9 specs
+13:00:05 [INFO]    🔹 [739/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP740U3E-S01PL/dp/B01M8MP3YK lần thứ 1
+13:00:10 [INFO]       ✅ DONE: B01M8MP3YK | 1 ảnh | 5 specs
+13:00:15 [INFO]    🔹 [740/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R730-JT06/dp/B075HWJLK4 lần thứ 1
+13:00:20 [INFO]       ✅ DONE: B075HWJLK4 | 1 ảnh | 6 specs
+13:00:24 [INFO]    🔹 [741/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-RF410-S02HK/dp/B017A1RG1C lần thứ 1
+13:00:29 [INFO]       ✅ DONE: B017A1RG1C | 1 ảnh | 5 specs
+13:00:32 [INFO]    🔹 [742/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP740U3E-S01UK/dp/B01MFC4J33 lần thứ 1
+13:00:37 [INFO]       ✅ DONE: B01MFC4J33 | 1 ảnh | 5 specs
+13:00:40 [INFO]    🔹 [743/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-740U3E-S02DE/dp/B01M4NJH4F lần thứ 1
+13:00:46 [INFO]       ✅ DONE: B01M4NJH4F | 1 ảnh | 7 specs
+13:00:49 [INFO]    🔹 [744/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP740U3E-S01DE/dp/B01M31M031 lần thứ 1
+13:00:55 [INFO]       ✅ DONE: B01M31M031 | 1 ảnh | 6 specs
+13:00:55 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+13:00:58 [INFO]    🔹 [745/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R730-JA03UK/dp/B075HW3F4M lần thứ 1
+13:01:03 [INFO]       ✅ DONE: B075HW3F4M | 1 ảnh | 4 specs
+13:01:08 [INFO]    🔹 [746/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R730-JT05/dp/B075HVPWGR lần thứ 1
+13:01:12 [INFO]       ✅ DONE: B075HVPWGR | 1 ảnh | 4 specs
+13:01:16 [INFO]    🔹 [747/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP870Z5G-X02UK/dp/B075HY8NS1 lần thứ 1
+13:01:21 [INFO]       ✅ DONE: B075HY8NS1 | 1 ảnh | 4 specs
+13:01:26 [INFO]    🔹 [748/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP740U3E/dp/B01M3UB5TC lần thứ 1
+13:01:31 [INFO]       ✅ DONE: B01M3UB5TC | 1 ảnh | 7 specs
+13:01:36 [INFO]    🔹 [749/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R730-BMDE/dp/B075HXGBH8 lần thứ 1
+13:01:41 [INFO]       ✅ DONE: B075HXGBH8 | 1 ảnh | 4 specs
+13:01:44 [INFO]    🔹 [750/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP740U3E-A02/dp/B01M5FPKGC lần thứ 1
+13:01:50 [INFO]       ✅ DONE: B01M5FPKGC | 1 ảnh | 6 specs
+13:01:53 [INFO]    🔹 [751/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP740U3E-S01AU/dp/B01MQ14ZB1 lần thứ 1
+13:01:58 [INFO]       ✅ DONE: B01MQ14ZB1 | 1 ảnh | 7 specs
+13:02:02 [INFO]    🔹 [752/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP740U3E-S02IT/dp/B01M3UB6MU lần thứ 1
+13:02:07 [INFO]       ✅ DONE: B01M3UB6MU | 1 ảnh | 5 specs
+13:02:11 [INFO]    🔹 [753/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R730-JT09/dp/B075HVZH94 lần thứ 1
+13:02:16 [INFO]       ✅ DONE: B075HVZH94 | 1 ảnh | 4 specs
+13:02:21 [INFO]    🔹 [754/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP740U3E-S02/dp/B01M5FPBIP lần thứ 1
+13:02:27 [INFO]       ✅ DONE: B01M5FPBIP | 1 ảnh | 5 specs
+13:02:27 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+13:02:31 [INFO]    🔹 [755/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-R730-JA06DE/dp/B075HX1QHS lần thứ 1
+13:02:36 [INFO]       ✅ DONE: B075HX1QHS | 1 ảnh | 4 specs
+13:02:41 [INFO]    🔹 [756/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R730CE-JT04/dp/B075HWPTJZ lần thứ 1
+13:02:46 [INFO]       ✅ DONE: B075HWPTJZ | 1 ảnh | 4 specs
+13:02:49 [INFO]    🔹 [757/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R730-JB0/dp/B075HW1SY5 lần thứ 1
+13:02:54 [INFO]       ✅ DONE: B075HW1SY5 | 1 ảnh | 4 specs
+13:02:58 [INFO]    🔹 [758/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP780Z5E-S01UB/dp/B075HX1HY4 lần thứ 1
+13:03:03 [INFO]       ✅ DONE: B075HX1HY4 | 1 ảnh | 6 specs
+13:03:08 [INFO]    🔹 [759/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP740U3E-A02SE/dp/B01MQ4ISE3 lần thứ 1
+13:03:13 [INFO]       ✅ DONE: B01MQ4ISE3 | 1 ảnh | 7 specs
+13:03:16 [INFO]    🔹 [760/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Laptop-Compatible-Samsung/dp/B075HW9VM9 lần thứ 1
+13:03:21 [INFO]       ✅ DONE: B075HW9VM9 | 1 ảnh | 6 specs
+13:03:24 [INFO]    🔹 [761/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R780-JS0ADE/dp/B075HW3LQG lần thứ 1
+13:03:31 [INFO]       ✅ DONE: B075HW3LQG | 1 ảnh | 4 specs
+13:03:35 [INFO]    🔹 [762/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R780-JS06IT/dp/B075HVX6ZQ lần thứ 1
+13:03:40 [INFO]       ✅ DONE: B075HVX6ZQ | 1 ảnh | 4 specs
+13:03:44 [INFO]    🔹 [763/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R730-JB03UK/dp/B075HVX1G4 lần thứ 1
+13:03:49 [INFO]       ✅ DONE: B075HVX1G4 | 1 ảnh | 4 specs
+13:03:53 [INFO]    🔹 [764/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R780-JS08UK/dp/B075HWWGGG lần thứ 1
+13:03:58 [INFO]       ✅ DONE: B075HWWGGG | 1 ảnh | 4 specs
+13:03:58 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+13:04:02 [INFO]    🔹 [765/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R780-JS02UA/dp/B075HWKHXV lần thứ 1
+13:04:07 [INFO]       ✅ DONE: B075HWKHXV | 1 ảnh | 4 specs
+13:04:10 [INFO]    🔹 [766/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-RF410-S05SG/dp/B017A1RJMI lần thứ 1
+13:04:15 [INFO]       ✅ DONE: B017A1RJMI | 1 ảnh | 5 specs
+13:04:18 [INFO]    🔹 [767/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP880Z5E-X03IN/dp/B075HVX1SZ lần thứ 1
+13:04:23 [INFO]       ✅ DONE: B075HVX1SZ | 1 ảnh | 4 specs
+13:04:28 [INFO]    🔹 [768/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R730-JS03DE/dp/B075HX4NB1 lần thứ 1
+13:04:33 [INFO]       ✅ DONE: B075HX4NB1 | 1 ảnh | 4 specs
+13:04:37 [INFO]    🔹 [769/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-NP740U3E-S02FR-NP740U3E-S02IT-NP740U3E-S02UK/dp/B01MQ4XOJL lần thứ 1
+13:04:42 [INFO]       ✅ DONE: B01MQ4XOJL | 1 ảnh | 6 specs
+13:04:46 [INFO]    🔹 [770/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R730-JA07DE/dp/B075HWZNVS lần thứ 1
+13:04:52 [INFO]       ✅ DONE: B075HWZNVS | 1 ảnh | 4 specs
+13:04:56 [INFO]    🔹 [771/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Laptop-Compatible-Samsung/dp/B075HW8TJV lần thứ 1
+13:05:02 [INFO]       ✅ DONE: B075HW8TJV | 1 ảnh | 4 specs
+13:05:05 [INFO]    🔹 [772/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R780-JTBRDE/dp/B075HW881F lần thứ 1
+13:05:11 [INFO]       ✅ DONE: B075HW881F | 1 ảnh | 4 specs
+13:05:15 [INFO]    🔹 [773/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R730-JT05/dp/B075HVZ7FZ lần thứ 1
+13:05:20 [INFO]       ✅ DONE: B075HVZ7FZ | 1 ảnh | 4 specs
+13:05:25 [INFO]    🔹 [774/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R780-JS03DE/dp/B075HVXM4N lần thứ 1
+13:05:30 [INFO]       ✅ DONE: B075HVXM4N | 1 ảnh | 4 specs
+13:05:30 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+13:05:35 [INFO]    🔹 [775/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP880Z5E-X02UK/dp/B075HVVZHM lần thứ 1
+13:05:40 [INFO]       ✅ DONE: B075HVVZHM | 1 ảnh | 4 specs
+13:05:43 [INFO]    🔹 [776/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP740U3E-S02DE/dp/B01MQ4JBYP lần thứ 1
+13:05:48 [INFO]       ✅ DONE: B01MQ4JBYP | 1 ảnh | 5 specs
+13:05:53 [INFO]    🔹 [777/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R730-JS06DE/dp/B075HXFRJY lần thứ 1
+13:05:58 [INFO]       ✅ DONE: B075HXFRJY | 1 ảnh | 4 specs
+13:06:03 [INFO]    🔹 [778/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R780-JS05UK/dp/B075HW636N lần thứ 1
+13:06:08 [INFO]       ✅ DONE: B075HW636N | 1 ảnh | 4 specs
+13:06:13 [INFO]    🔹 [779/3078] Cào URL: https://www.amazon.com/Power4Laptops-Replacement-Compatible-Samsung-NP-R780-JT02CN/dp/B075HW3ZC4 lần thứ 1
+13:06:18 [INFO]       ✅ DONE: B075HW3ZC4 | 1 ảnh | 4 specs
+13:06:22 [INFO]    🔹 [780/3078] Cào URL: https://www.amazon.com/Seagate-BarraCuda-Internal-Drive-3-5-Inch/dp/B07H289S7C lần thứ 1
+13:06:34 [INFO]       ✅ DONE: B07H289S7C | 7 ảnh | 33 specs
+13:06:38 [INFO]    🔹 [781/3078] Cào URL: https://www.amazon.com/Seagate-IronWolf-Internal-Hard-Drive/dp/B084ZV4DXB lần thứ 1
+13:06:51 [INFO]       ✅ DONE: B084ZV4DXB | 7 ảnh | 34 specs
+13:06:54 [INFO]    🔹 [782/3078] Cào URL: https://www.amazon.com/Seagate-BarraCuda-Internal-Drive-3-5-Inch/dp/B07D99KFPK lần thứ 1
+13:07:07 [INFO]       ✅ DONE: B07D99KFPK | 7 ảnh | 35 specs
+13:07:11 [INFO]    🔹 [783/3078] Cào URL: https://www.amazon.com/Seagate-Desktop-HDD-Hard-Drive/dp/B01KALOV08 lần thứ 1
+13:07:21 [INFO]       ✅ DONE: B01KALOV08 | 2 ảnh | 32 specs
+13:07:25 [INFO]    🔹 [784/3078] Cào URL: https://www.amazon.com/Seagate-128MB-3-5-Inch-Enterprise-ST4000NM0035/dp/B01CG0DD1E lần thứ 1
+13:07:37 [INFO]       ✅ DONE: B01CG0DD1E | 2 ảnh | 32 specs
+13:07:37 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+13:07:40 [INFO]    🔹 [785/3078] Cào URL: https://www.amazon.com/Seagate-Expansion-Desktop-External-Drive/dp/B093BSR3H4 lần thứ 1
+13:07:53 [INFO]       ✅ DONE: B093BSR3H4 | 7 ảnh | 36 specs
+13:07:56 [INFO]    🔹 [786/3078] Cào URL: https://www.amazon.com/Seagate-Laptop-2-5-Inch-Internal-ST1000LM035/dp/B01C4W29XC lần thứ 1
+13:08:07 [INFO]       ✅ DONE: B01C4W29XC | 5 ảnh | 30 specs
+13:08:11 [INFO]    🔹 [787/3078] Cào URL: https://www.amazon.com/Seagate-FireCuda-Accelerated-Performance-ST2000LX001/dp/B01M1NHCZT lần thứ 1
+13:08:22 [INFO]       ✅ DONE: B01M1NHCZT | 5 ảnh | 33 specs
+13:08:26 [INFO]    🔹 [788/3078] Cào URL: https://www.amazon.com/Seagate-FireCuda-Gaming-Accelerated-Performance/dp/B07H2549QS lần thứ 1
+13:08:37 [INFO]       ✅ DONE: B07H2549QS | 7 ảnh | 33 specs
+13:08:40 [INFO]    🔹 [789/3078] Cào URL: https://www.amazon.com/Seagate-Barracuda-1TB-Internal-ZP1000CV3A001/dp/B08LB5LQ65 lần thứ 1
+13:08:52 [INFO]       ✅ DONE: B08LB5LQ65 | 7 ảnh | 33 specs
+13:08:56 [INFO]    🔹 [790/3078] Cào URL: https://www.amazon.com/Seagate-Skyhawk-Surveillance-Hard-Drive/dp/B07H28M89D lần thứ 1
+13:09:07 [INFO]       ✅ DONE: B07H28M89D | 7 ảnh | 35 specs
+13:09:12 [INFO]    🔹 [791/3078] Cào URL: https://www.amazon.com/Seagate-BarraCuda-Internal-3-5-Inch-ST4000DM005/dp/B01LNJBA50 lần thứ 1
+13:09:23 [INFO]       ✅ DONE: B01LNJBA50 | 6 ảnh | 32 specs
+13:09:28 [INFO]    🔹 [792/3078] Cào URL: https://www.amazon.com/Seagate-Laptop-2-5-Inch-Internal-ST1000LM035/dp/B06XRZ8GB9 lần thứ 1
+13:09:38 [INFO]       ✅ DONE: B06XRZ8GB9 | 3 ảnh | 26 specs
+13:09:41 [INFO]    🔹 [793/3078] Cào URL: https://www.amazon.com/Seagate-BarraCuda-128MB-2-5-Inch-Internal/dp/B07D99KFPL lần thứ 1
+13:09:52 [INFO]       ✅ DONE: B07D99KFPL | 4 ảnh | 32 specs
+13:09:56 [INFO]    🔹 [794/3078] Cào URL: https://www.amazon.com/Seagate-Bulk-ST4000NM0033-Constellation-ES-3/dp/B00B3N18MW lần thứ 1
+13:10:06 [INFO]       ✅ DONE: B00B3N18MW | 1 ảnh | 29 specs
+13:10:06 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+13:10:10 [INFO]    🔹 [795/3078] Cào URL: https://www.amazon.com/Seagate-Constellation-2-HDD-ST91000640SS-Internal-Enterprise/dp/B00724D7AM lần thứ 1
+13:10:21 [INFO]       ✅ DONE: B00724D7AM | 3 ảnh | 30 specs
+13:10:24 [INFO]    🔹 [796/3078] Cào URL: https://www.amazon.com/Seagate-BarraCuda-Internal-Drive-2-5-Inch/dp/B07H28QRKN lần thứ 1
+13:10:35 [INFO]       ✅ DONE: B07H28QRKN | 7 ảnh | 34 specs
+13:10:39 [INFO]    🔹 [797/3078] Cào URL: https://www.amazon.com/Seagate-BarraCuda-Internal-3-5-Inch-ST2000DM006/dp/B01IEKG402 lần thứ 1
+13:10:49 [INFO]       ✅ DONE: B01IEKG402 | 7 ảnh | 31 specs
+13:10:53 [INFO]    🔹 [798/3078] Cào URL: https://www.amazon.com/ST1000DM003-1ER162-301-CC45-Seagate-Renewed/dp/B08643PJ1F lần thứ 1
+13:11:02 [INFO]       ✅ DONE: B08643PJ1F | 1 ảnh | 25 specs
+13:11:05 [INFO]    🔹 [799/3078] Cào URL: https://www.amazon.com/Seagate-Barracuda-7200-12-Internal-ST3500413AS/dp/B004TLIEHC lần thứ 1
+13:11:15 [INFO]       ✅ DONE: B004TLIEHC | 5 ảnh | 30 specs
+13:11:20 [INFO]    🔹 [800/3078] Cào URL: https://www.amazon.com/QNAP-TS-216G-24ST-US-Cortex-A55-Quad-Core-Preconfigured/dp/B0GM21R9G3 lần thứ 1
+13:11:27 [INFO]       ✅ DONE: B0GM21R9G3 | 7 ảnh | 10 specs
+13:11:30 [INFO]    🔹 [801/3078] Cào URL: https://www.amazon.com/Seagate-Ultra-Touch-External-Drive/dp/B0BN4DXRC6 lần thứ 1
+13:11:42 [INFO]       ✅ DONE: B0BN4DXRC6 | 7 ảnh | 31 specs
+13:11:45 [INFO]    🔹 [802/3078] Cào URL: https://www.amazon.com/Seagate-Constellation-7200RPM-Internal-ST500NM0001/dp/B005I4LOSA lần thứ 1
+13:11:55 [INFO]       ✅ DONE: B005I4LOSA | 2 ảnh | 27 specs
+13:11:59 [INFO]    🔹 [803/3078] Cào URL: https://www.amazon.com/Seagate-ST4000NM0033-Constellation-Internal-Drive/dp/B07HFRYJC6 lần thứ 1
+13:12:08 [INFO]       ✅ DONE: B07HFRYJC6 | 6 ảnh | 29 specs
+13:12:13 [INFO]    🔹 [804/3078] Cào URL: https://www.amazon.com/Seagate-ST9450404SS-SAS-6Gb-Certified-Refurbished/dp/B07HGVNH81 lần thứ 1
+13:12:20 [INFO]       ✅ DONE: B07HGVNH81 | 1 ảnh | 17 specs
+13:12:20 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+13:12:24 [INFO]    🔹 [805/3078] Cào URL: https://www.amazon.com/Seagate-Desktop-7200RPM-Internal-ST3500641AS-RK/dp/B000EY5F5C lần thứ 1
+13:12:35 [INFO]       ✅ DONE: B000EY5F5C | 3 ảnh | 28 specs
+13:12:40 [INFO]    🔹 [806/3078] Cào URL: https://www.amazon.com/Seagate-ST3146855LC-Rotational-Certified-Refurbished/dp/B07HGFN7JB lần thứ 1
+13:12:49 [INFO]       ✅ DONE: B07HGFN7JB | 1 ảnh | 17 specs
+13:12:53 [INFO]    🔹 [807/3078] Cào URL: https://www.amazon.com/Seagate-FireCuda-Accelerated-Performance-ST1000LX015/dp/B01LWRTRZU lần thứ 1
+13:13:04 [INFO]       ✅ DONE: B01LWRTRZU | 4 ảnh | 33 specs
+13:13:08 [INFO]    🔹 [808/3078] Cào URL: https://www.amazon.com/Barracuda-Internal-Hard-Drive-Sata/dp/B0792T3F8N lần thứ 1
+13:13:17 [INFO]       ✅ DONE: B0792T3F8N | 1 ảnh | 23 specs
+13:13:21 [INFO]    🔹 [809/3078] Cào URL: https://www.amazon.com/Seagate-BarraCuda-Internal-Drive-3-5-Inch/dp/B07D9C7SQH lần thứ 1
+13:13:33 [INFO]       ✅ DONE: B07D9C7SQH | 7 ảnh | 35 specs
+13:13:37 [INFO]    🔹 [810/3078] Cào URL: https://www.amazon.com/Seagate-IronWolf-Internal-Hard-Drive/dp/B09NHV3CK9 lần thứ 1
+13:13:49 [INFO]       ✅ DONE: B09NHV3CK9 | 7 ảnh | 33 specs
+13:13:52 [INFO]    🔹 [811/3078] Cào URL: https://www.amazon.com/Seagate-FireCuda-Internal-Solid-State/dp/B0CWHG39CD lần thứ 1
+13:14:03 [INFO]       ✅ DONE: B0CWHG39CD | 4 ảnh | 29 specs
+13:14:06 [INFO]    🔹 [812/3078] Cào URL: https://www.amazon.com/Seagate-Drive-PlayStation-Portable-External/dp/B071LPMSN1 lần thứ 1
+13:14:18 [INFO]       ✅ DONE: B071LPMSN1 | 7 ảnh | 31 specs
+13:14:21 [INFO]    🔹 [813/3078] Cào URL: https://www.amazon.com/Seagate-Constellation-ST4000NM0033-Internal-Enterprise/dp/B07RH7F14P lần thứ 1
+13:14:31 [INFO]       ✅ DONE: B07RH7F14P | 5 ảnh | 27 specs
+13:14:34 [INFO]    🔹 [814/3078] Cào URL: https://www.amazon.com/Seagate-Momentus-Solid-Hybrid-ST95005620AS/dp/B003NSBF32 lần thứ 1
+13:14:44 [INFO]       ✅ DONE: B003NSBF32 | 5 ảnh | 27 specs
+13:14:44 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+13:14:48 [INFO]    🔹 [815/3078] Cào URL: https://www.amazon.com/Seagate-128MB-3-5-Inch-Enterprise-ST1000NM0008/dp/B01N76CZII lần thứ 1
+13:14:59 [INFO]       ✅ DONE: B01N76CZII | 2 ảnh | 32 specs
+13:15:02 [INFO]    🔹 [816/3078] Cào URL: https://www.amazon.com/Seagate-XF1440-Capacity-Optimized-ST1920KN0001/dp/B01KI2CTTO lần thứ 1
+13:15:11 [INFO]       ✅ DONE: B01KI2CTTO | 3 ảnh | 25 specs
+13:15:15 [INFO]    🔹 [817/3078] Cào URL: https://www.amazon.com/Seagate-SkyHawk-Surveillance-Hard-Drive/dp/B086YXF658 lần thứ 1
+13:15:25 [INFO]       ✅ DONE: B086YXF658 | 1 ảnh | 29 specs
+13:15:29 [INFO]    🔹 [818/3078] Cào URL: https://www.amazon.com/Seagate-Enterprise-ST4000NM0035-Certified-Refurbished/dp/B07ND69ZVP lần thứ 1
+13:15:39 [INFO]       ✅ DONE: B07ND69ZVP | 6 ảnh | 30 specs
+13:15:43 [INFO]    🔹 [819/3078] Cào URL: https://www.amazon.com/Seagate-Constellation-ST91000640SS-Certified-Refurbished/dp/B07H9HZ38T lần thứ 1
+13:15:52 [INFO]       ✅ DONE: B07H9HZ38T | 4 ảnh | 23 specs
+13:15:57 [INFO]    🔹 [820/3078] Cào URL: https://www.amazon.com/Seagate-Internal-Hard-Drive-ST6000NM0044/dp/B00JJIEET2 lần thứ 1
+13:16:06 [INFO]       ✅ DONE: B00JJIEET2 | 3 ảnh | 26 specs
+13:16:09 [INFO]    🔹 [821/3078] Cào URL: https://www.amazon.com/Seagate-Barracuda-ST500DM002-Internal-Drive/dp/B005EE5P84 lần thứ 1
+13:16:21 [INFO]       ✅ DONE: B005EE5P84 | 5 ảnh | 32 specs
+13:16:26 [INFO]    🔹 [822/3078] Cào URL: https://www.amazon.com/Seagate-Pipeline-500GB-5900RPM-Internal/dp/B0969174B9 lần thứ 1
+13:16:35 [INFO]       ✅ DONE: B0969174B9 | 4 ảnh | 25 specs
+13:16:39 [INFO]    🔹 [823/3078] Cào URL: https://www.amazon.com/Seagate-Desktop-3-5-Inch-Internal-ST1000DM003/dp/B005T3GRNW lần thứ 1
+13:16:50 [INFO]       ✅ DONE: B005T3GRNW | 4 ảnh | 31 specs
+13:16:54 [INFO]    🔹 [824/3078] Cào URL: https://www.amazon.com/Seagate-BarraCuda-3-5-Inch-Internal-ST4000DM004/dp/B0713R3Y6F lần thứ 1
+13:17:03 [INFO]       ✅ DONE: B0713R3Y6F | 6 ảnh | 28 specs
+13:17:03 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+13:17:07 [INFO]    🔹 [825/3078] Cào URL: https://www.amazon.com/Seagate-Desktop-3-5-Inch-Internal-ST1000DM003/dp/B07KPQVD5R lần thứ 1
+13:17:17 [INFO]       ✅ DONE: B07KPQVD5R | 2 ảnh | 29 specs
+13:17:22 [INFO]    🔹 [826/3078] Cào URL: https://www.amazon.com/Seagate-500GB-BarraCuda-2-5-Inch-Internal/dp/B07D9698HW lần thứ 1
+13:17:37 [INFO]       ✅ DONE: B07D9698HW | 4 ảnh | 31 specs
+13:17:42 [INFO]    🔹 [827/3078] Cào URL: https://www.amazon.com/Seagate-ST6000NM0024-128MB-3-5IN-ENCRYPTION/dp/B00MCEJ3OG lần thứ 1
+13:17:51 [INFO]       ✅ DONE: B00MCEJ3OG | 1 ảnh | 24 specs
+13:17:54 [INFO]    🔹 [828/3078] Cào URL: https://www.amazon.com/Seagate-BarraCuda-Internal-3-5-Inch-ST3000DM008/dp/B01IEKG4NE lần thứ 1
+13:18:04 [INFO]       ✅ DONE: B01IEKG4NE | 7 ảnh | 27 specs
+13:18:08 [INFO]    🔹 [829/3078] Cào URL: https://www.amazon.com/Seagate-Expansion-Desktop-External-STEB6000403/dp/B07CX8QBG4 lần thứ 1
+13:18:18 [INFO]       ✅ DONE: B07CX8QBG4 | 7 ảnh | 31 specs
+13:18:22 [INFO]    🔹 [830/3078] Cào URL: https://www.amazon.com/Seagate-Video-Internal-Hard-Drive/dp/B00KQ4Q70C lần thứ 1
+13:18:33 [INFO]       ✅ DONE: B00KQ4Q70C | 4 ảnh | 29 specs
+13:18:37 [INFO]    🔹 [831/3078] Cào URL: https://www.amazon.com/Seagate-FireCuda-Gaming-External-Drive/dp/B08Y1QZP47 lần thứ 1
+13:18:49 [INFO]       ✅ DONE: B08Y1QZP47 | 7 ảnh | 35 specs
+13:18:52 [INFO]    🔹 [832/3078] Cào URL: https://www.amazon.com/Seagate-Shuri-FireCuda-External-HDD/dp/B0BFT9B5ZG lần thứ 1
+13:19:05 [INFO]       ✅ DONE: B0BFT9B5ZG | 6 ảnh | 32 specs
+13:19:09 [INFO]    🔹 [833/3078] Cào URL: https://www.amazon.com/Seagate-Barracuda-Internal-3-5-Inch-ST6000DM003/dp/B075WX2TKM lần thứ 1
+13:19:20 [INFO]       ✅ DONE: B075WX2TKM | 1 ảnh | 31 specs
+13:19:23 [INFO]    🔹 [834/3078] Cào URL: https://www.amazon.com/Seagate-Skyhawk-Surveillance-Hard-Drive/dp/B07H231394 lần thứ 1
+13:19:35 [INFO]       ✅ DONE: B07H231394 | 7 ảnh | 33 specs
+13:19:35 [INFO] 💾 Đã ghi 10 items vào cpu_details.jsonl
+13:19:39 [INFO]    🔹 [835/3078] Cào URL: https://www.amazon.com/Seagate-Barracuda-Internal-Drive-Performance/dp/B01IA9H22Q lần thứ 1
+13:19:49 [INFO]       ✅ DONE: B01IA9H22Q | 6 ảnh | 33 specs
+13:19:52 [INFO]    🔹 [836/3078] Cào URL: https://www.amazon.com/Seagate-Barracuda-3-5-Inch-Internal-ST8000DM004/dp/B07JKJ4J93 lần thứ 1
+13:20:02 [INFO]       ✅ DONE: B07JKJ4J93 | 7 ảnh | 30 specs
+13:20:07 [INFO]    🔹 [837/3078] Cào URL: https://www.amazon.com/Seagate-BarraCuda-Internal-Drive-3-5-Inch/dp/B07H23SP77 lần thứ 1
+13:20:16 [INFO]       ✅ DONE: B07H23SP77 | 7 ảnh | 31 specs
+13:20:20 [INFO]    🔹 [838/3078] Cào URL: https://www.amazon.com/Seagate-Basic-Portable-Drive-mircoUSB3-0/dp/B081VG3RXV lần thứ 1
+13:20:30 [INFO]       ✅ DONE: B081VG3RXV | 2 ảnh | 36 specs
+13:20:33 [INFO]    🔹 [839/3078] Cào URL: https://www.amazon.com/Seagate-Expansion-Desktop-External-Drive/dp/B092R599W5 lần thứ 1
+13:20:39 [INFO]       ✅ DONE: B092R599W5 | 6 ảnh | 0 specs
+13:20:44 [INFO]    🔹 [840/3078] Cào URL: https://www.amazon.com/Seagate-Expansion-Portable-Special-External/dp/B07XTP6P9J lần thứ 1
+13:20:54 [INFO]       ✅ DONE: B07XTP6P9J | 5 ảnh | 32 specs
+13:20:58 [INFO]    🔹 [841/3078] Cào URL: https://www.amazon.com/Seagate-Expansion-Portable-External-Drive/dp/B09BLH7LLJ lần thứ 1
+13:21:08 [INFO]       ✅ DONE: B09BLH7LLJ | 7 ảnh | 28 specs
+13:21:11 [INFO] ✅ Hoàn tất danh mục: CPU
+13:21:12 [INFO] 🏁 QUY TRÌNH HOÀN TẤT.
