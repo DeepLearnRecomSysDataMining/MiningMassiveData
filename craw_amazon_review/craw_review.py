@@ -40,7 +40,7 @@ def get_chrome_driver():
     options.add_argument(
         "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36")
 
-    driver = uc.Chrome(options=options)
+    driver = uc.Chrome(options=options, version_main=146)
     driver.set_page_load_timeout(60)
     return driver
 
@@ -184,7 +184,8 @@ def process_amazon_metadata(source_dir, categories_dict):
             # Bạn có thể dùng slice để test: urls[:10]
             for idx, url in enumerate(urls):
                 # Ví dụ bạn muốn resume từ vị trí nhất định
-                # if idx < 100: continue
+                if idx < 1046:
+                    continue
 
                 retry_count = 0
                 data_list = None
@@ -220,7 +221,9 @@ def process_amazon_metadata(source_dir, categories_dict):
 if __name__ == "__main__":
     # Cấu hình danh mục và file csv link tương ứng
     TARGET_CATEGORIES = {
-        "Smartphone": "smartphone_products.csv",
+        #"Smartphone": "smartphone_products.csv",
+        #"Desktop": "desktop_products.csv"
+        "CPU": "cpu_products.csv"
     }
 
     # Thư mục chứa các file csv link ban đầu

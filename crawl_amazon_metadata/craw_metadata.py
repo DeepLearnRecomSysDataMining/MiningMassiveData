@@ -320,7 +320,6 @@ def process_amazon_metadata(source_dir, categories_dict):
         driver.quit()
         logging.info("🏁 QUY TRÌNH HOÀN TẤT.")
 
-
 if __name__ == "__main__":
     # Cấu hình danh mục và file tương ứng
     TARGET_CATEGORIES = {
