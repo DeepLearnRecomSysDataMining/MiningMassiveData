@@ -153,6 +153,7 @@ def expand_amazon_links(source_dir, categories_dict):
                     driver.quit()
                     time.sleep(3)
                     driver = get_chrome_driver()
+                    idx += 1
                     continue
                 if results:
                     temp_items.extend(results)
@@ -173,7 +174,7 @@ if __name__ == "__main__":
     TARGET_CATEGORIES = {
         # "Smartphone": "smartphone_products.csv",
         # "Desktop": "desktop_products.csv"
-        "CPU": "cpu_products.csv",
+        # "CPU": "cpu_products.csv",
         "PC": "pc_products.csv",
         # "GPU": "gpu_products.csv",
         # "Monitor": "monitor_products.csv"
