@@ -140,6 +140,12 @@ categories_config = {
         "https://www.amazon.com/s?k=monitor+sony",
         "https://www.amazon.com/s?k=monitor+xiaomi",
         "https://www.amazon.com/s?k=monitor+philips"
+    ],
+    "Television": [
+        "https://www.amazon.com/s?k=television&rh=n%3A21513596011%2Cp_123%3A46655&dc&ds=v1%3A3e0YC%2FEu8CvklxZQa1t45CbBe69VhYCW%2BDQndso5VrU&crid=T927QM2MXJP5&qid=1774529937&rnid=85457740011&sprefix=tele%2Caps%2C378",
+        "https://www.amazon.com/s?k=television&rh=n%3A21513596011%2Cp_123%3A46658&dc&ds=v1%3AIMIwX8bqzUcKp6lUdHFnJ4uapcln5Ujvnyrjb9yZlHI&crid=T927QM2MXJP5&qid=1774530087&rnid=85457740011&sprefix=tele%2Caps%2C378",
+        "https://www.amazon.com/s?k=television&rh=n%3A21513596011%2Cp_123%3A237204&dc&crid=T927QM2MXJP5&qid=1774530138&rnid=85457740011&sprefix=tele%2Caps%2C378&ds=v1%3A5OcjXVqGn3tg%2F4MWu1%2FGEX1qhPT%2FepRxMMprKURqfF8",
+        "https://www.amazon.com/s?k=television&rh=n%3A21513596011%2Cp_123%3A254407&dc&ds=v1%3ACejlLSBokrVArhL8yvADQX%2B7k%2B3cxVcUmt5B%2F82ik6w&crid=T927QM2MXJP5&qid=1774530235&rnid=85457740011&sprefix=tele%2Caps%2C378"
     ]
 }
 
