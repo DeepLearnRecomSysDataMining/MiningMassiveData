@@ -19,7 +19,7 @@ def init(output_dir='data_amazon_metadata'):
     for handler in logging.root.handlers[:]:
         logging.root.removeHandler(handler)
     log_formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s', datefmt='%H:%M:%S')
-    file_handler = logging.FileHandler("amazon_metadata_scraper.log", encoding='utf-8')
+    file_handler = logging.FileHandler("amazon_metadata_scraper_2.log", encoding='utf-8')
     file_handler.setFormatter(log_formatter)
     stream_handler = logging.StreamHandler(sys.stdout)
     stream_handler.setFormatter(log_formatter)
@@ -50,7 +50,7 @@ def get_chrome_driver():
     # driver.set_page_load_timeout(60)
     # driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
 
-    driver = uc.Chrome(options=options)
+    driver = uc.Chrome(options=options, version_main=146)
     driver.set_page_load_timeout(60)
 
     return driver
@@ -279,8 +279,8 @@ def process_amazon_metadata(source_dir, categories_dict):
 
             batch_results = []
             for idx, url in enumerate(urls):
-                if idx < 403 or idx >= 841:
-                    continue
+                # if idx < 403 or idx >= 841:
+                #     continue
 
                 success = False
                 retry_count = 0
@@ -293,7 +293,7 @@ def process_amazon_metadata(source_dir, categories_dict):
                     if data == "CAPTCHA":
                         logging.warning("⚠️ Dính CAPTCHA! Đang khởi động lại trình duyệt...")
                         driver.quit()
-                        time.sleep(random.uniform(3,5))  # Nghỉ 1 phút trước khi đổi driver mới
+                        time.sleep(2)  # Nghỉ 1 phút trước khi đổi driver mới
                         driver = get_chrome_driver()
                         time.sleep(2)
                         set_us_location(driver)
@@ -323,13 +323,29 @@ def process_amazon_metadata(source_dir, categories_dict):
 if __name__ == "__main__":
     # Cấu hình danh mục và file tương ứng
     TARGET_CATEGORIES = {
-        # "Smartphone": "smartphone_products.csv",
-        # "Tablets": "tablets_products.csv",
+        # "Computer": "computer_products.csv",
+        # "CPU": "cpu_products.csv",
+        # "Desktop": "desktop_products.csv",
+        # "GPU": "gpu_products.csv",
         # "Headphone": "headphone_products.csv",
         # "Laptop": "laptop_products.csv",
-        # "Computer": "computer_products.csv"
-        # "GPU": "gpu_products.csv"
-        "CPU": "cpu_products.csv"
+        # "Monitor": "monitor_products.csv",
+        # "PC": "pc_products.csv",
+        # "Smartphone": "smartphone_products.csv",
+        # "Tablets": "tablets_products.csv",
+        "Television": "television_products.csv",
+
+        "Computer": "computer_products_2.csv",
+        "CPU": "cpu_products_2.csv",
+        "Desktop": "desktop_products_2.csv",
+        "GPU": "gpu_products_2.csv",
+        "Headphone": "headphone_products_2.csv",
+        # "Laptop": "laptop_products_2.csv",
+        # "Monitor": "monitor_products_2.csv",
+        # "PC": "pc_products_2.csv",
+        # "Smartphone": "smartphone_products_2.csv",
+        # "Tablets": "tablets_products_2.csv",
+        # "Television": "television_products_2.csv",
     }
 
     # source_dir là thư mục chứa các file csv link của bạn

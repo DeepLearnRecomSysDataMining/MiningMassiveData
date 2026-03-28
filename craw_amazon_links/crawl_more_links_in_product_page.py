@@ -182,7 +182,7 @@ if __name__ == "__main__":
         # "Computer": "computer_products.csv",
         # "Headphone": "headphone_products.csv",
         # "Laptop": "laptop_products.csv",
-        "Tablets": "tablets_products.csv"
+        # "Tablets": "tablets_products.csv"
     }
 
     expand_amazon_links(SOURCE_FOLDER, TARGET_CATEGORIES)
