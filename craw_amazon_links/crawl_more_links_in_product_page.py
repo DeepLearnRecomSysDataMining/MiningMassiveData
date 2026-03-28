@@ -141,7 +141,7 @@ def expand_amazon_links(source_dir, categories_dict):
             urls = df_original['url'].dropna().unique().tolist()
 
             temp_items = []
-            idx = 0
+            idx = 1160
             while idx < len(urls):
                 url = urls[idx]
                 logging.info(f"🔹 [{idx + 1}/{len(urls)}] Đang vét từ: {url}")
@@ -175,9 +175,14 @@ if __name__ == "__main__":
         # "Smartphone": "smartphone_products.csv",
         # "Desktop": "desktop_products.csv"
         # "CPU": "cpu_products.csv",
-        "PC": "pc_products.csv",
+        # "PC": "pc_products.csv",
         # "GPU": "gpu_products.csv",
         # "Monitor": "monitor_products.csv"
+
+        # "Computer": "computer_products.csv",
+        # "Headphone": "headphone_products.csv",
+        # "Laptop": "laptop_products.csv",
+        "Tablets": "tablets_products.csv"
     }
 
     expand_amazon_links(SOURCE_FOLDER, TARGET_CATEGORIES)
