@@ -1,0 +1,17 @@
+14:47:31 [INFO] Hệ thống khởi tạo thành công. Thư mục: D:\Hoctap_Code_PrivateProject\MiningMassiveData\crawl_amazon_metadata\data_amazon_links
+14:47:31 [INFO] 🚀 Hệ thống khởi tạo thành công. Kết quả sẽ lưu tại: D:\Hoctap_Code_PrivateProject\MiningMassiveData\crawl_amazon_metadata\metadata
+14:47:35 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+14:47:52 [INFO] Hệ thống khởi tạo thành công. Thư mục: D:\Hoctap_Code_PrivateProject\MiningMassiveData\crawl_amazon_metadata\data_amazon_links
+14:47:52 [INFO] 🚀 Hệ thống khởi tạo thành công. Kết quả sẽ lưu tại: D:\Hoctap_Code_PrivateProject\MiningMassiveData\crawl_amazon_metadata\metadata
+14:47:59 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+14:49:51 [INFO] Hệ thống khởi tạo thành công. Thư mục: D:\Hoctap_Code_PrivateProject\MiningMassiveData\crawl_amazon_metadata\data_amazon_links
+14:49:51 [INFO] 🚀 Hệ thống khởi tạo thành công. Kết quả sẽ lưu tại: D:\Hoctap_Code_PrivateProject\MiningMassiveData\crawl_amazon_metadata\metadata
+14:49:56 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+14:50:05 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+14:50:23 [INFO] ✅ Đã chuyển vùng thành công.
+14:50:23 [INFO] 📂 ĐANG XỬ LÝ DANH MỤC: TELEVISION | File: television_products.csv
+14:50:23 [INFO] 🔎 Tìm thấy 220 URL duy nhất.
+14:50:23 [INFO]    🔹 [1/220] Cào URL: https://www.amazon.com/Samsung-50-Inch-Processor-MetalStream-Security/dp/B0DXMT6YD4 lần thứ 1
+14:50:59 [INFO]       ✅ DONE: B0DXMT6YD4 | 7 ảnh | 69 specs
+14:51:03 [INFO]    🔹 [2/220] Cào URL: https://www.amazon.com/Samsung-65-Inch-Processor-MetalStream-Security/dp/B0DXMWL3RW lần thứ 1
+14:51:05 [INFO] 🏁 QUY TRÌNH HOÀN TẤT.
