@@ -184,9 +184,14 @@ def process_amazon_metadata(source_dir, categories_dict):
             # Bạn có thể dùng slice để test: urls[:10]
             for idx, url in enumerate(urls):
                 # Ví dụ bạn muốn resume từ vị trí nhất định
+<<<<<<< HEAD
                 if manual_category == "Desktop":
                     if idx < 496:
                         continue
+=======
+                if idx < 1046:
+                    continue
+>>>>>>> 005b1863e9ed4f15150197d7b1df378b0f6c1508
 
                 retry_count = 0
                 data_list = None
@@ -232,6 +237,7 @@ if __name__ == "__main__":
         # "PC": "pc_products.csv",
         # "Smartphone": "smartphone_products.csv",
         # "Tablets": "tablets_products.csv",
+<<<<<<< HEAD
         # "Television": "television_products.csv",
 
         # "Computer": "computer_products_2.csv",
@@ -241,6 +247,17 @@ if __name__ == "__main__":
         "Headphone": "headphone_products_2.csv",
         "Laptop": "laptop_products_2.csv",
         "Monitor": "monitor_products_2.csv",
+=======
+        "Television": "television_products.csv",
+
+        "Computer": "computer_products_2.csv",
+        "CPU": "cpu_products_2.csv",
+        "Desktop": "desktop_products_2.csv",
+        "GPU": "gpu_products_2.csv",
+        "Headphone": "headphone_products_2.csv",
+        # "Laptop": "laptop_products_2.csv",
+        # "Monitor": "monitor_products_2.csv",
+>>>>>>> 005b1863e9ed4f15150197d7b1df378b0f6c1508
         # "PC": "pc_products_2.csv",
         # "Smartphone": "smartphone_products_2.csv",
         # "Tablets": "tablets_products_2.csv",

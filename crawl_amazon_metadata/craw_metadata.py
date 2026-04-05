@@ -279,7 +279,11 @@ def process_amazon_metadata(source_dir, categories_dict):
 
             batch_results = []
             for idx, url in enumerate(urls):
+<<<<<<< HEAD
                 # if idx < 6407:
+=======
+                # if idx < 403 or idx >= 841:
+>>>>>>> 005b1863e9ed4f15150197d7b1df378b0f6c1508
                 #     continue
 
                 success = False
@@ -335,6 +339,7 @@ if __name__ == "__main__":
         # "Tablets": "tablets_products.csv",
         # "Television": "television_products.csv",
 
+<<<<<<< HEAD
         # "Computer": "computer_products_2.csv",
         "CPU": "cpu_products_2.csv",
         "Desktop": "desktop_products_2.csv",
@@ -342,6 +347,15 @@ if __name__ == "__main__":
         "Headphone": "headphone_products_2.csv",
         "Laptop": "laptop_products_2.csv",
         "Monitor": "monitor_products_2.csv",
+=======
+        "Computer": "computer_products_2.csv",
+        "CPU": "cpu_products_2.csv",
+        "Desktop": "desktop_products_2.csv",
+        # "GPU": "gpu_products_2.csv",
+        # "Headphone": "headphone_products_2.csv",
+        # "Laptop": "laptop_products_2.csv",
+        # "Monitor": "monitor_products_2.csv",
+>>>>>>> 005b1863e9ed4f15150197d7b1df378b0f6c1508
         # "PC": "pc_products_2.csv",
         # "Smartphone": "smartphone_products_2.csv",
         # "Tablets": "tablets_products_2.csv",

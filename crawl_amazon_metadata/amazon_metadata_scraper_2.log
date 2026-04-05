@@ -12527,6 +12527,7 @@ Stack
 19:10:03 [INFO]       ✅ DONE: B0GS4SF7MD | 7 ảnh | 14 specs
 19:10:07 [INFO]    🔹 [5724/9259] Cào URL: https://www.amazon.com/dp/B0G4VPH5Y9 lần thứ 1
 19:10:07 [INFO] 🏁 QUY TRÌNH HOÀN TẤT.
+<<<<<<< HEAD
 22:48:20 [INFO] Hệ thống khởi tạo thành công. Thư mục: D:\Hoctap_Code_PrivateProject\MiningMassiveData\crawl_amazon_metadata\data_amazon_links
 22:48:20 [INFO] 🚀 Hệ thống khởi tạo thành công. Kết quả sẽ lưu tại: D:\Hoctap_Code_PrivateProject\MiningMassiveData\crawl_amazon_metadata\metadata
 22:48:22 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
@@ -20590,3 +20591,5 @@ Stack
 06:29:56 [INFO]       ✅ DONE: B00U8IV5PI | 4 ảnh | 32 specs
 06:30:01 [INFO]    🔹 [1170/4090] Cào URL: https://www.amazon.com/dp/B09SBNSFR5 lần thứ 1
 06:30:05 [INFO] 🏁 QUY TRÌNH HOÀN TẤT.
+=======
+>>>>>>> 005b1863e9ed4f15150197d7b1df378b0f6c1508
