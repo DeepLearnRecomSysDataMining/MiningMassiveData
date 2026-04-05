@@ -93,6 +93,7 @@ def collect_related_links(driver, url, category_name):
             return "CAPTCHA"
         wait = WebDriverWait(driver, 10)
         container = wait.until(EC.presence_of_element_located((By.ID, "dp-container")))
+<<<<<<< HEAD
 
         try:
             # Tìm div id="ppd" bên trong container
@@ -107,6 +108,10 @@ def collect_related_links(driver, url, category_name):
 
         # final_items = extract_asins_from_visible_dom(container, category_name)
         # all_page_items.update(final_items)
+=======
+        final_items = extract_asins_from_visible_dom(container, category_name)
+        all_page_items.update(final_items)
+>>>>>>> 005b1863e9ed4f15150197d7b1df378b0f6c1508
         asin_list = list(all_page_items.keys())
         logging.info(f"        ✅ Lấy được {len(asin_list)} ASIN: {', '.join(asin_list)}")
         return list(all_page_items.values())
@@ -153,11 +158,16 @@ def expand_amazon_links(source_dir, categories_dict):
             urls = df_original['url'].dropna().unique().tolist()
 
             temp_items = []
+<<<<<<< HEAD
             idx = 0
             while idx < len(urls):
                 if idx >= 1400:
                     break
 
+=======
+            idx = 1160
+            while idx < len(urls):
+>>>>>>> 005b1863e9ed4f15150197d7b1df378b0f6c1508
                 url = urls[idx]
                 logging.info(f"🔹 [{idx + 1}/{len(urls)}] Đang vét từ: {url}")
 
@@ -187,6 +197,7 @@ if __name__ == "__main__":
     SOURCE_FOLDER = 'data_amazon_links'
 
     TARGET_CATEGORIES = {
+<<<<<<< HEAD
         # "Computer": "computer_products.csv",
         # "CPU": "cpu_products.csv",
         "Desktop": "desktop_products.csv",
@@ -198,6 +209,19 @@ if __name__ == "__main__":
         # "Smartphone": "smartphone_products.csv",
         # "Tablets": "tablets_products.csv",
         # "Television": "television_products.csv"
+=======
+        # "Smartphone": "smartphone_products.csv",
+        # "Desktop": "desktop_products.csv"
+        # "CPU": "cpu_products.csv",
+        # "PC": "pc_products.csv",
+        # "GPU": "gpu_products.csv",
+        # "Monitor": "monitor_products.csv"
+
+        # "Computer": "computer_products.csv",
+        # "Headphone": "headphone_products.csv",
+        # "Laptop": "laptop_products.csv",
+        # "Tablets": "tablets_products.csv"
+>>>>>>> 005b1863e9ed4f15150197d7b1df378b0f6c1508
     }
 
     expand_amazon_links(SOURCE_FOLDER, TARGET_CATEGORIES)
