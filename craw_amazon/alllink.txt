@@ -1,0 +1,299 @@
+categories_config = {
+        "Smartphone": {
+            "Apple": [
+                "https://www.amazon.com/s?k=iphone",
+                "https://www.amazon.com/s?k=smartphone+apple"
+            ],
+            "Samsung": [
+                "https://www.amazon.com/s?k=smartphone+samsung",
+                "https://www.amazon.com/s?k=samsung+z+fold"
+            ],
+            "Motorola": "https://www.amazon.com/s?k=smartphones+motorola",
+            "Xiaomi": "https://www.amazon.com/s?k=smartphones+xiaomi",
+            "Blackberry": "https://www.amazon.com/s?k=blackberry+smartphones",
+            "Redmi": "https://www.amazon.com/s?k=smartphones+redmi",
+            "Realme": "https://www.amazon.com/s?k=smartphones+realme",
+            "Oppo": "https://www.amazon.com/s?k=smartphones+oppo",
+            "Vivo": "https://www.amazon.com/s?k=vivo+smartphones"
+        },
+        "Tablets": {
+            "General": "https://www.amazon.com/s?k=tablets",
+            "Samsung": "https://www.amazon.com/s?k=tablets+samsung",
+            "Apple": [
+                "https://www.amazon.com/s?k=tablets+apple",
+                "https://www.amazon.com/s?k=ipad"
+            ],
+            "Amazon": "https://www.amazon.com/s?k=tablets+amazon",
+            "Lenovo": "https://www.amazon.com/s?k=tablets+lenovo",
+            "Microsoft": "https://www.amazon.com/s?k=tablets+microsoft",
+            "Google": "https://www.amazon.com/s?k=tablets+google",
+            "Asus": "https://www.amazon.com/s?k=tablets+asus",
+            "HP": "https://www.amazon.com/s?k=tablets+hp",
+            "Dell": "https://www.amazon.com/s?k=tablets+dell",
+            "Xiaomi": "https://www.amazon.com/s?k=tablets+xiaomi",
+            "Acer": "https://www.amazon.com/s?k=tablets+acer",
+            "LG": "https://www.amazon.com/s?k=tablets+lg",
+            "Sony": "https://www.amazon.com/s?k=tablets+sony",
+            "MSI": "https://www.amazon.com/s?k=tablets+msi"
+        },
+        "Headphone": {
+            "General": [
+                "https://www.amazon.com/s?k=headphones",
+                "https://www.amazon.com/s?k=earphones",
+                "https://www.amazon.com/s?k=earphones+wireless"
+            ],
+            "Apple": "https://www.amazon.com/s?k=airpods"
+        },
+        "Laptop": {
+            "General": "https://www.amazon.com/s?k=laptops",
+            "HP": "https://www.amazon.com/s?k=laptops+hp",
+            "Dell": "https://www.amazon.com/s?k=laptops+dell",
+            "Lenovo": "https://www.amazon.com/s?k=laptops+lenovo",
+            "Microsoft": "https://www.amazon.com/s?k=surface+laptop",
+            "Apple": "https://www.amazon.com/s?k=macbook+apple",
+            "Asus": "https://www.amazon.com/s?k=laptops+asus",
+            "Acer": "https://www.amazon.com/s?k=laptops+acer",
+            "Samsung": "https://www.amazon.com/s?k=laptops+samsung",
+            "MSI": "https://www.amazon.com/s?k=laptops+msi",
+            "LG": "https://www.amazon.com/s?k=laptops+LG"
+        },
+        "Computer": {
+            "HP": "https://www.amazon.com/s?k=computers+hp",
+            "Dell": "https://www.amazon.com/s?k=computers+dell",
+            "Lenovo": "https://www.amazon.com/s?k=computers+lenovo",
+            "Asus": "https://www.amazon.com/s?k=computers+asus",
+            "Acer": "https://www.amazon.com/s?k=computers+acer",
+            "Microsoft": "https://www.amazon.com/s?k=computers+microsoft",
+            "Samsung": "https://www.amazon.com/s?k=computers+samsung",
+            "MSI": "https://www.amazon.com/s?k=computers+msi",
+            "Razer": "https://www.amazon.com/s?k=computers+razer",
+            "LG": "https://www.amazon.com/s?k=computers+lg",
+            "Gigabyte": "https://www.amazon.com/s?k=computers+gigabyte",
+            "Panasonic": "https://www.amazon.com/s?k=computers+panasonic",
+            "Fujitsu": "https://www.amazon.com/s?k=computers+fujitsu",
+            "Intel": "https://www.amazon.com/s?k=computers+intel"
+        },
+        "Desktop": {
+            "General": "https://www.amazon.com/s?k=desktop+computer",
+            "Dell": "https://www.amazon.com/s?k=desktop+computer+dell",
+            "HP": "https://www.amazon.com/s?k=desktop+computer+hp",
+            "Lenovo": "https://www.amazon.com/s?k=desktop+computer+lenovo",
+            "Apple": "https://www.amazon.com/s?k=desktop+computer+apple",
+            "Asus": "https://www.amazon.com/s?k=desktop+computer+asus",
+            "Acer": "https://www.amazon.com/s?k=desktop+computer+acer",
+            "MSI": "https://www.amazon.com/s?k=desktop+computer+msi",
+            "Intel": "https://www.amazon.com/s?k=desktop+computer+intel"
+        },
+        "CPU": {
+            "General": "https://www.amazon.com/s?k=cpu",
+            "AMD": "https://www.amazon.com/s?k=cpu+amd",
+            "Intel": "https://www.amazon.com/s?k=cpu+intel",
+            "Apple": "https://www.amazon.com/s?k=cpu+apple",
+            "Samsung": "https://www.amazon.com/s?k=cpu+samsung",
+            "Seagate": "https://www.amazon.com/s?k=cpu+seagate",
+            "Dell": "https://www.amazon.com/s?k=cpu+dell",
+            "HP": "https://www.amazon.com/s?k=cpu+hp",
+            "Asus": "https://www.amazon.com/s?k=cpu+asus",
+            "Lenovo": "https://www.amazon.com/s?k=cpu+lenovo",
+            "Corsair": "https://www.amazon.com/s?k=cpu+corsair",
+            "MSI": "https://www.amazon.com/s?k=cpu+msi",
+            "Thermalright": "https://www.amazon.com/s?k=cpu+thermalright",
+            "Acer": "https://www.amazon.com/s?k=cpu+acer",
+            "Gigabyte": "https://www.amazon.com/s?k=cpu+gigabyte",
+            "IBM": "https://www.amazon.com/s?k=cpu+ibm",
+            "Razer": "https://www.amazon.com/s?k=cpu+razer"
+        },
+        "PC": {
+            "General": "https://www.amazon.com/s?k=PCs",
+            "Dell": "https://www.amazon.com/s?k=PCs+dell",
+            "HP": "https://www.amazon.com/s?k=PCs+hp",
+            "Lenovo": "https://www.amazon.com/s?k=PCs+lenovo",
+            "Asus": "https://www.amazon.com/s?k=PCs+asus",
+            "Apple": "https://www.amazon.com/s?k=PCs+apple",
+            "MSI": "https://www.amazon.com/s?k=PCs+msi",
+            "Acer": "https://www.amazon.com/s?k=PCs+acer",
+            "Cyberpowerpc": "https://www.amazon.com/s?k=PCs+cyberpowerpc",
+            "Intel": "https://www.amazon.com/s?k=PCs+intel",
+            "Gigabyte": "https://www.amazon.com/s?k=PCs+gigabyte"
+        },
+        "GPU": {
+            "General": "https://www.amazon.com/s?k=gpu",
+            "Asus": "https://www.amazon.com/s?k=gpu+asus",
+            "MSI": "https://www.amazon.com/s?k=gpu+msi",
+            "Gigabyte": "https://www.amazon.com/s?k=gpu+gigabyte",
+            "AMD": "https://www.amazon.com/s?k=gpu+amd",
+            "Intel": "https://www.amazon.com/s?k=gpu+intel",
+            "HP": "https://www.amazon.com/s?k=gpu+hp",
+            "Nvidia": "https://www.amazon.com/s?k=gpu+nvidia"
+        },
+        "Monitor": {
+            "General": "https://www.amazon.com/s?k=monitor",
+            "Dell": "https://www.amazon.com/s?k=monitor+dell",
+            "KTC": "https://www.amazon.com/s?k=monitor+ktc",
+            "Samsung": "https://www.amazon.com/s?k=monitor+samsung",
+            "Asus": "https://www.amazon.com/s?k=monitor+asus",
+            "LG": "https://www.amazon.com/s?k=monitor+lg",
+            "Acer": "https://www.amazon.com/s?k=monitor+acer",
+            "HP": "https://www.amazon.com/s?k=monitor+hp",
+            "MSI": "https://www.amazon.com/s?k=monitor+msi",
+            "BenQ": "https://www.amazon.com/s?k=monitor+benq",
+            "Sceptre": "https://www.amazon.com/s?k=monitor+sceptre",
+            "AOC": "https://www.amazon.com/s?k=monitor+aoc",
+            "Lenovo": "https://www.amazon.com/s?k=monitor+lenovo",
+            "Viewsonic": "https://www.amazon.com/s?k=monitor+viewsonic",
+            "Gigabyte": "https://www.amazon.com/s?k=monitor+gigabyte",
+            "Sony": "https://www.amazon.com/s?k=monitor+sony",
+            "Xiaomi": "https://www.amazon.com/s?k=monitor+xiaomi",
+            "Philips": "https://www.amazon.com/s?k=monitor+philips"
+        },
+        "Television": {
+            "Samsung": "http://amazon.com/s?k=television&rh=n%3A21513596011%2Cp_123%3A46655&dc&ds=v1%3A%2F%2FossqlT2SOmGRGMBTF89Cg8X8GapsisZDKTK6DZtQ8&crid=1FCI4YSERO5S4&qid=1775986498&rnid=85457740011&sprefix=%2Caps%2C481&ref=sr_nr_p_123_1",
+            "LG": "https://www.amazon.com/s?k=television&rh=n%3A21513596011%2Cp_123%3A46658&dc&ds=v1%3AIMIwX8bqzUcKp6lUdHFnJ4uapcln5Ujvnyrjb9yZlHI&crid=T927QM2MXJP5&qid=1774530087&rnid=85457740011&sprefix=tele%2Caps%2C378",
+            "Sony": "https://www.amazon.com/s?k=television&rh=n%3A21513596011%2Cp_123%3A237204&dc&crid=T927QM2MXJP5&qid=1774530138&rnid=85457740011&sprefix=tele%2Caps%2C378&ds=v1%3A5OcjXVqGn3tg%2F4MWu1%2FGEX1qhPT%2FepRxMMprKURqfF8",
+            "Panasonic": "https://www.amazon.com/s?k=television&rh=n%3A21513596011%2Cp_123%3A254407&dc&ds=v1%3ACejlLSBokrVArhL8yvADQX%2B7k%2B3cxVcUmt5B%2F82ik6w&crid=T927QM2MXJP5&qid=1774530235&rnid=85457740011&sprefix=tele%2Caps%2C378"
+        }
+    }
+
+--Nhóm điện thoại
+https://www.amazon.com/s?k=iphone
+https://www.amazon.com/s?k=phones
+https://www.amazon.com/s?k=smartphones
+https://www.amazon.com/s?k=smartphone+samsung
+https://www.amazon.com/s?k=samsung+z+fold
+https://www.amazon.com/s?k=smartphones+motorola
+https://www.amazon.com/s?k=smartphone+apple
+https://www.amazon.com/s?k=smartphones+xiaomi
+https://www.amazon.com/s?k=blackberry+smartphones
+https://www.amazon.com/s?k=smartphones+redmi
+https://www.amazon.com/s?k=smartphones+realme
+https://www.amazon.com/s?k=smartphones+oppo
+https://www.amazon.com/s?k=vivo+smartphones
+
+--Nhóm Tablets
+https://www.amazon.com/s?k=tablets
+https://www.amazon.com/s?k=tablets+samsung
+https://www.amazon.com/s?k=tablets+apple
+https://www.amazon.com/s?k=tablets+amazon
+https://www.amazon.com/s?k=tablets+lenovo
+https://www.amazon.com/s?k=tablets+microsoft
+https://www.amazon.com/s?k=tablets+google
+https://www.amazon.com/s?k=tablets+asus
+https://www.amazon.com/s?k=tablets+hp
+https://www.amazon.com/s?k=tablets+dell
+https://www.amazon.com/s?k=tablets+xiaomi
+https://www.amazon.com/s?k=tablets+acer
+https://www.amazon.com/s?k=tablets+lg
+https://www.amazon.com/s?k=tablets+sony
+https://www.amazon.com/s?k=tablets+msi
+https://www.amazon.com/s?k=ipad
+
+--headphone+earphone
+https://www.amazon.com/s?k=headphones
+https://www.amazon.com/s?k=earphones
+https://www.amazon.com/s?k=earphones+wireless
+https://www.amazon.com/s?k=airpods
+
+
+--Laptop
+https://www.amazon.com/s?k=laptops
+https://www.amazon.com/s?k=laptops+hp
+https://www.amazon.com/s?k=laptops+dell
+https://www.amazon.com/s?k=laptops+lenovo
+https://www.amazon.com/s?k=surface+laptop
+https://www.amazon.com/s?k=macbook+apple
+https://www.amazon.com/s?k=laptops+asus
+https://www.amazon.com/s?k=laptops+acer
+https://www.amazon.com/s?k=laptops+samsung
+https://www.amazon.com/s?k=laptops+microsoft
+https://www.amazon.com/s?k=laptops+msi
+https://www.amazon.com/s?k=laptops+LG
+
+--Computer
+https://www.amazon.com/s?k=computers+hp
+https://www.amazon.com/s?k=computers+dell
+https://www.amazon.com/s?k=computers+lenovo
+https://www.amazon.com/s?k=computers+asus
+https://www.amazon.com/s?k=computers+acer
+https://www.amazon.com/s?k=computers+microsoft
+https://www.amazon.com/s?k=computers+samsung
+https://www.amazon.com/s?k=computers+msi
+https://www.amazon.com/s?k=computers+razer
+https://www.amazon.com/s?k=computers+lg
+https://www.amazon.com/s?k=computers+gigabyte
+https://www.amazon.com/s?k=computers+panasonic
+https://www.amazon.com/s?k=computers+fujitsu
+https://www.amazon.com/s?k=computers+intel
+
+--Desktop
+https://www.amazon.com/s?k=desktop+computer
+https://www.amazon.com/s?k=desktop+computer+dell
+https://www.amazon.com/s?k=desktop+computer+hp
+https://www.amazon.com/s?k=desktop+computer+lenovo
+https://www.amazon.com/s?k=desktop+computer+apple
+https://www.amazon.com/s?k=desktop+computer+asus
+https://www.amazon.com/s?k=desktop+computer+acer
+https://www.amazon.com/s?k=desktop+computer+msi
+https://www.amazon.com/s?k=desktop+computer+intel
+
+--CPU
+https://www.amazon.com/s?k=cpu
+https://www.amazon.com/s?k=cpu+amd
+https://www.amazon.com/s?k=cpu+intel
+https://www.amazon.com/s?k=cpu+apple
+https://www.amazon.com/s?k=cpu+samsung
+https://www.amazon.com/s?k=cpu+seagate
+https://www.amazon.com/s?k=cpu+dell
+https://www.amazon.com/s?k=cpu+hp
+https://www.amazon.com/s?k=cpu+asus
+https://www.amazon.com/s?k=cpu+lenovo
+https://www.amazon.com/s?k=cpu+corsair
+https://www.amazon.com/s?k=cpu+msi
+https://www.amazon.com/s?k=cpu+thermalright
+https://www.amazon.com/s?k=cpu+acer
+https://www.amazon.com/s?k=cpu+gigabyte
+https://www.amazon.com/s?k=cpu+ibm
+https://www.amazon.com/s?k=cpu+razer
+
+--PC
+https://www.amazon.com/s?k=PCs
+https://www.amazon.com/s?k=PCs+dell
+https://www.amazon.com/s?k=PCs+hp
+https://www.amazon.com/s?k=PCs+lenovo
+https://www.amazon.com/s?k=PCs+asus
+https://www.amazon.com/s?k=PCs+apple
+https://www.amazon.com/s?k=PCs+msi
+https://www.amazon.com/s?k=PCs+acer
+https://www.amazon.com/s?k=PCs+cyberpowerpc
+https://www.amazon.com/s?k=PCs+intel
+https://www.amazon.com/s?k=PCs+gigabyte
+
+--GPU
+https://www.amazon.com/s?k=gpu
+https://www.amazon.com/s?k=gpu+asus
+https://www.amazon.com/s?k=gpu+msi
+https://www.amazon.com/s?k=gpu+gigabyte
+https://www.amazon.com/s?k=gpu+amd
+https://www.amazon.com/s?k=gpu+intel
+https://www.amazon.com/s?k=gpu+hp
+https://www.amazon.com/s?k=gpu+nvidia
+
+-- monitor
+https://www.amazon.com/s?k=monitor
+https://www.amazon.com/s?k=monitor+dell
+https://www.amazon.com/s?k=monitor+ktc
+https://www.amazon.com/s?k=monitor+samsung
+https://www.amazon.com/s?k=monitor+asus
+https://www.amazon.com/s?k=monitor+lg
+https://www.amazon.com/s?k=monitor+acer
+https://www.amazon.com/s?k=monitor+hp
+https://www.amazon.com/s?k=monitor+msi
+https://www.amazon.com/s?k=monitor+benq
+https://www.amazon.com/s?k=monitor+sceptre
+https://www.amazon.com/s?k=monitor+aoc
+https://www.amazon.com/s?k=monitor+lenovo
+https://www.amazon.com/s?k=monitor+viewsonic
+https://www.amazon.com/s?k=monitor+gigabyte
+https://www.amazon.com/s?k=monitor+sony
+https://www.amazon.com/s?k=monitor+xiaomi
+https://www.amazon.com/s?k=monitor+philips
+
