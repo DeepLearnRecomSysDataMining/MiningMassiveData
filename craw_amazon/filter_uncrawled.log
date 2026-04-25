@@ -1,0 +1,26 @@
+2026-04-15 09:30:59,667 [INFO] 📂 Đang tải dữ liệu từ 8 file .jsonl...
+2026-04-15 09:30:59,697 [INFO]     - cpu_details_1.jsonl: Nạp 830 ASIN.
+2026-04-15 09:30:59,780 [INFO]     - cpu_details_1_p2.jsonl: Nạp 2225 ASIN.
+2026-04-15 09:30:59,875 [INFO]     - desktop_details.jsonl: Nạp 1539 ASIN.
+2026-04-15 09:30:59,921 [INFO]     - gpu_details.jsonl: Nạp 1095 ASIN.
+2026-04-15 09:31:00,107 [INFO]     - monitor_details.jsonl: Nạp 4265 ASIN.
+2026-04-15 09:31:00,209 [INFO]     - pc_details.jsonl: Nạp 1882 ASIN.
+2026-04-15 09:31:00,313 [INFO]     - smartphone_details.jsonl: Nạp 1736 ASIN.
+2026-04-15 09:31:00,325 [INFO]     - television_details.jsonl: Nạp 219 ASIN.
+2026-04-15 09:31:00,325 [INFO] ✅ TỔNG CỘNG: Đã nạp 10496 ASIN duy nhất đã cạo thành công.
+2026-04-15 09:31:00,328 [INFO] 
+🚀 BẮT ĐẦU LỌC 11 FILE CSV...
+2026-04-15 09:31:00,379 [INFO]     👉 computer_integrated.csv: Gốc có 1973 -> Đã cạo 325 -> Còn lại 1648 lưu vào uncrawled
+2026-04-15 09:31:00,403 [INFO]     👉 cpu_integrated.csv: Gốc có 2005 -> Đã cạo 727 -> Còn lại 1278 lưu vào uncrawled
+2026-04-15 09:31:00,422 [INFO]     👉 desktop_integrated.csv: Gốc có 1096 -> Đã cạo 251 -> Còn lại 845 lưu vào uncrawled
+2026-04-15 09:31:00,438 [INFO]     👉 gpu_integrated.csv: Gốc có 628 -> Đã cạo 195 -> Còn lại 433 lưu vào uncrawled
+2026-04-15 09:31:00,453 [INFO]     👉 headphone_integrated.csv: Gốc có 522 -> Đã cạo 7 -> Còn lại 515 lưu vào uncrawled
+2026-04-15 09:31:00,476 [INFO]     👉 laptop_integrated.csv: Gốc có 1493 -> Đã cạo 119 -> Còn lại 1374 lưu vào uncrawled
+2026-04-15 09:31:00,498 [INFO]     👉 monitor_integrated.csv: Gốc có 1392 -> Đã cạo 645 -> Còn lại 747 lưu vào uncrawled
+2026-04-15 09:31:00,523 [INFO]     👉 pc_integrated.csv: Gốc có 1641 -> Đã cạo 470 -> Còn lại 1171 lưu vào uncrawled
+2026-04-15 09:31:00,546 [INFO]     👉 smartphone_integrated.csv: Gốc có 1553 -> Đã cạo 339 -> Còn lại 1214 lưu vào uncrawled
+2026-04-15 09:31:00,571 [INFO]     👉 tablets_integrated.csv: Gốc có 1487 -> Đã cạo 84 -> Còn lại 1403 lưu vào uncrawled
+2026-04-15 09:31:00,585 [INFO]     👉 television_integrated.csv: Gốc có 495 -> Đã cạo 121 -> Còn lại 374 lưu vào uncrawled
+2026-04-15 09:31:00,586 [INFO] 
+🏁 HOÀN TẤT!
+2026-04-15 09:31:00,586 [INFO] 📊 THỐNG KÊ: Tổng sản phẩm ban đầu: 14285 | Đã lọc bỏ: 3283 | Cần cạo tiếp: 11002

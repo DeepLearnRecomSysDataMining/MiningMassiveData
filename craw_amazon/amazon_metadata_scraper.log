@@ -1,0 +1,2566 @@
+23:30:50 [INFO] Hệ thống khởi tạo thành công. Thư mục: D:\Hoctap_Code_PrivateProject\MiningMassiveData\craw_amazon\uncrawled
+23:30:50 [INFO] 🚀 Hệ thống khởi tạo thành công. Kết quả sẽ lưu tại: D:\Hoctap_Code_PrivateProject\MiningMassiveData\craw_amazon\metadata
+23:30:54 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+23:31:03 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+23:31:10 [INFO] ✅ Đã chuyển vùng thành công.
+23:31:10 [INFO] 📂 ĐANG XỬ LÝ DANH MỤC: ALL | File: ALL_UNCRAWLED_MERGED.csv
+23:31:10 [INFO] 🔎 Tìm thấy 8563 URL duy nhất.
+23:31:10 [INFO]    🔹 [1/8563] Cào URL: https://www.amazon.com/dp/B0DC6KMWJS lần thứ 1
+23:31:22 [INFO]       ✅ DONE: B0DC6KMWJS | 7 ảnh | 71 specs
+23:31:27 [INFO]    🔹 [2/8563] Cào URL: https://www.amazon.com/dp/B0G5P8Q4LR lần thứ 1
+23:31:36 [INFO]       ✅ DONE: B0G5P8Q4LR | 7 ảnh | 51 specs
+23:31:39 [INFO]    🔹 [3/8563] Cào URL: https://www.amazon.com/dp/B0FR1P4Q3H lần thứ 1
+23:31:52 [INFO]       ✅ DONE: B0FR1P4Q3H | 7 ảnh | 52 specs
+23:31:56 [INFO]    🔹 [4/8563] Cào URL: https://www.amazon.com/dp/B0GFCPZ446 lần thứ 1
+23:32:12 [INFO]       ✅ DONE: B0GFCPZ446 | 7 ảnh | 47 specs
+23:32:16 [INFO]    🔹 [5/8563] Cào URL: https://www.amazon.com/dp/B0G6HGWG1M lần thứ 1
+23:32:29 [INFO]       ✅ DONE: B0G6HGWG1M | 7 ảnh | 35 specs
+23:32:32 [INFO]    🔹 [6/8563] Cào URL: https://www.amazon.com/dp/B0G6HKGLHN lần thứ 1
+23:32:45 [INFO]       ✅ DONE: B0G6HKGLHN | 7 ảnh | 35 specs
+23:32:48 [INFO]    🔹 [7/8563] Cào URL: https://www.amazon.com/dp/B0G6GQWC9V lần thứ 1
+23:33:02 [INFO]       ✅ DONE: B0G6GQWC9V | 7 ảnh | 48 specs
+23:33:07 [INFO]    🔹 [8/8563] Cào URL: https://www.amazon.com/dp/B0G6GTB3C6 lần thứ 1
+23:33:20 [INFO]       ✅ DONE: B0G6GTB3C6 | 7 ảnh | 48 specs
+23:33:24 [INFO]    🔹 [9/8563] Cào URL: https://www.amazon.com/dp/B0G6HGXJ8Z lần thứ 1
+23:33:36 [INFO]       ✅ DONE: B0G6HGXJ8Z | 7 ảnh | 35 specs
+23:33:40 [INFO]    🔹 [10/8563] Cào URL: https://www.amazon.com/dp/B0G6GMCPWZ lần thứ 1
+23:33:54 [INFO]       ✅ DONE: B0G6GMCPWZ | 7 ảnh | 44 specs
+23:33:54 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:33:58 [INFO]    🔹 [11/8563] Cào URL: https://www.amazon.com/dp/B0G6HPNW1K lần thứ 1
+23:34:15 [INFO]       ✅ DONE: B0G6HPNW1K | 7 ảnh | 64 specs
+23:34:20 [INFO]    🔹 [12/8563] Cào URL: https://www.amazon.com/dp/B0G6GM1Y8G lần thứ 1
+23:34:32 [INFO]       ✅ DONE: B0G6GM1Y8G | 7 ảnh | 34 specs
+23:34:36 [INFO]    🔹 [13/8563] Cào URL: https://www.amazon.com/dp/B0G62VSJZ9 lần thứ 1
+23:34:37 [WARNING] ⚠️ Dính CAPTCHA! Đang khởi động lại trình duyệt...
+23:34:44 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+23:34:53 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+23:35:01 [INFO] ✅ Đã chuyển vùng thành công.
+23:35:01 [INFO]    🔹 [13/8563] Cào URL: https://www.amazon.com/dp/B0G62VSJZ9 lần thứ 2
+23:35:02 [WARNING] ⚠️ Dính CAPTCHA! Đang khởi động lại trình duyệt...
+23:35:06 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+23:35:16 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+23:35:24 [INFO] ✅ Đã chuyển vùng thành công.
+23:35:27 [INFO]    🔹 [14/8563] Cào URL: https://www.amazon.com/dp/B0G228KLHV lần thứ 1
+23:35:42 [INFO]       ✅ DONE: B0G228KLHV | 7 ảnh | 52 specs
+23:35:46 [INFO]    🔹 [15/8563] Cào URL: https://www.amazon.com/dp/B0GSQ6STKV lần thứ 1
+23:35:58 [INFO]       ✅ DONE: B0GSQ6STKV | 7 ảnh | 52 specs
+23:36:03 [INFO]    🔹 [16/8563] Cào URL: https://www.amazon.com/dp/B0G6YM5X89 lần thứ 1
+23:36:18 [INFO]       ✅ DONE: B0G6YM5X89 | 7 ảnh | 53 specs
+23:36:22 [INFO]    🔹 [17/8563] Cào URL: https://www.amazon.com/dp/B0GSVLNMBK lần thứ 1
+23:36:35 [INFO]       ✅ DONE: B0GSVLNMBK | 7 ảnh | 65 specs
+23:36:39 [INFO]    🔹 [18/8563] Cào URL: https://www.amazon.com/dp/B0GQXVLNZW lần thứ 1
+23:36:55 [INFO]       ✅ DONE: B0GQXVLNZW | 7 ảnh | 56 specs
+23:36:59 [INFO]    🔹 [19/8563] Cào URL: https://www.amazon.com/dp/B0G4B33S9P lần thứ 1
+23:37:12 [INFO]       ✅ DONE: B0G4B33S9P | 7 ảnh | 52 specs
+23:37:17 [INFO]    🔹 [20/8563] Cào URL: https://www.amazon.com/dp/B0GH6NZ9MD lần thứ 1
+23:37:32 [INFO]       ✅ DONE: B0GH6NZ9MD | 7 ảnh | 49 specs
+23:37:36 [INFO]    🔹 [21/8563] Cào URL: https://www.amazon.com/dp/B0GGR1P79W lần thứ 1
+23:37:49 [INFO]       ✅ DONE: B0GGR1P79W | 7 ảnh | 57 specs
+23:37:49 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:37:53 [INFO]    🔹 [22/8563] Cào URL: https://www.amazon.com/dp/B0GH5WK6ZM lần thứ 1
+23:38:07 [INFO]       ✅ DONE: B0GH5WK6ZM | 7 ảnh | 50 specs
+23:38:11 [INFO]    🔹 [23/8563] Cào URL: https://www.amazon.com/dp/B0GL9QXB1D lần thứ 1
+23:38:22 [INFO]       ✅ DONE: B0GL9QXB1D | 7 ảnh | 33 specs
+23:38:25 [INFO]    🔹 [24/8563] Cào URL: https://www.amazon.com/dp/B0GRQ3WJM8 lần thứ 1
+23:38:40 [INFO]       ✅ DONE: B0GRQ3WJM8 | 7 ảnh | 58 specs
+23:38:44 [INFO]    🔹 [25/8563] Cào URL: https://www.amazon.com/dp/B0G4Q97KLH lần thứ 1
+23:39:00 [INFO]       ✅ DONE: B0G4Q97KLH | 7 ảnh | 67 specs
+23:39:04 [INFO]    🔹 [26/8563] Cào URL: https://www.amazon.com/dp/B0G3Q48SVJ lần thứ 1
+23:39:19 [INFO]       ✅ DONE: B0G3Q48SVJ | 7 ảnh | 55 specs
+23:39:23 [INFO]    🔹 [27/8563] Cào URL: https://www.amazon.com/dp/B0GRPX9GY8 lần thứ 1
+23:39:37 [INFO]       ✅ DONE: B0GRPX9GY8 | 7 ảnh | 58 specs
+23:39:41 [INFO]    🔹 [28/8563] Cào URL: https://www.amazon.com/dp/B0GRPSCTV7 lần thứ 1
+23:39:56 [INFO]       ✅ DONE: B0GRPSCTV7 | 7 ảnh | 57 specs
+23:40:01 [INFO]    🔹 [29/8563] Cào URL: https://www.amazon.com/dp/B0GRPV7HRY lần thứ 1
+23:40:15 [INFO]       ✅ DONE: B0GRPV7HRY | 7 ảnh | 58 specs
+23:40:19 [INFO]    🔹 [30/8563] Cào URL: https://www.amazon.com/dp/B0GRQ4B6DX lần thứ 1
+23:40:34 [INFO]       ✅ DONE: B0GRQ4B6DX | 7 ảnh | 58 specs
+23:40:39 [INFO]    🔹 [31/8563] Cào URL: https://www.amazon.com/dp/B0FT942PNG lần thứ 1
+23:40:52 [INFO]       ✅ DONE: B0FT942PNG | 7 ảnh | 59 specs
+23:40:52 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:40:56 [INFO]    🔹 [32/8563] Cào URL: https://www.amazon.com/dp/B0GDRXCMKQ lần thứ 1
+23:41:10 [INFO]       ✅ DONE: B0GDRXCMKQ | 7 ảnh | 56 specs
+23:41:14 [INFO]    🔹 [33/8563] Cào URL: https://www.amazon.com/dp/B0GDR69P3B lần thứ 1
+23:41:27 [INFO]       ✅ DONE: B0GDR69P3B | 7 ảnh | 56 specs
+23:41:31 [INFO]    🔹 [34/8563] Cào URL: https://www.amazon.com/dp/B0FKCX6Q3B lần thứ 1
+23:41:44 [INFO]       ✅ DONE: B0FKCX6Q3B | 7 ảnh | 56 specs
+23:41:49 [INFO]    🔹 [35/8563] Cào URL: https://www.amazon.com/dp/B0FLD52JDH lần thứ 1
+23:42:02 [INFO]       ✅ DONE: B0FLD52JDH | 6 ảnh | 29 specs
+23:42:06 [INFO]    🔹 [36/8563] Cào URL: https://www.amazon.com/dp/B0FKCW36YX lần thứ 1
+23:42:20 [INFO]       ✅ DONE: B0FKCW36YX | 7 ảnh | 55 specs
+23:42:24 [INFO]    🔹 [37/8563] Cào URL: https://www.amazon.com/dp/B0FKD82C51 lần thứ 1
+23:42:37 [INFO]       ✅ DONE: B0FKD82C51 | 7 ảnh | 56 specs
+23:42:40 [INFO]    🔹 [38/8563] Cào URL: https://www.amazon.com/dp/B0FKD57CRK lần thứ 1
+23:42:53 [INFO]       ✅ DONE: B0FKD57CRK | 7 ảnh | 54 specs
+23:42:56 [INFO]    🔹 [39/8563] Cào URL: https://www.amazon.com/dp/B0FKDDT2GF lần thứ 1
+23:43:10 [INFO]       ✅ DONE: B0FKDDT2GF | 7 ảnh | 57 specs
+23:43:15 [INFO]    🔹 [40/8563] Cào URL: https://www.amazon.com/dp/B0G771XYNV lần thứ 1
+23:43:29 [INFO]       ✅ DONE: B0G771XYNV | 7 ảnh | 47 specs
+23:43:32 [INFO]    🔹 [41/8563] Cào URL: https://www.amazon.com/dp/B0GVDTBJ92 lần thứ 1
+23:43:44 [INFO]       ✅ DONE: B0GVDTBJ92 | 7 ảnh | 46 specs
+23:43:44 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:43:48 [INFO]    🔹 [42/8563] Cào URL: https://www.amazon.com/dp/B0GVDQK1D4 lần thứ 1
+23:44:00 [INFO]       ✅ DONE: B0GVDQK1D4 | 7 ảnh | 44 specs
+23:44:03 [INFO]    🔹 [43/8563] Cào URL: https://www.amazon.com/dp/B0GVDSW8KN lần thứ 1
+23:44:12 [INFO]       ✅ DONE: B0GVDSW8KN | 7 ảnh | 28 specs
+23:44:16 [INFO]    🔹 [44/8563] Cào URL: https://www.amazon.com/dp/B0GVDQFSDR lần thứ 1
+23:44:24 [INFO]       ✅ DONE: B0GVDQFSDR | 7 ảnh | 27 specs
+23:44:29 [INFO]    🔹 [45/8563] Cào URL: https://www.amazon.com/dp/B09SBQ61BG lần thứ 1
+23:44:39 [INFO]       ✅ DONE: B09SBQ61BG | 4 ảnh | 32 specs
+23:44:43 [INFO]    🔹 [46/8563] Cào URL: https://www.amazon.com/dp/B0G5NZQ2F7 lần thứ 1
+23:44:57 [INFO]       ✅ DONE: B0G5NZQ2F7 | 7 ảnh | 50 specs
+23:45:01 [INFO]    🔹 [47/8563] Cào URL: https://www.amazon.com/dp/B0CZL2SLCJ lần thứ 1
+23:45:17 [INFO]       ✅ DONE: B0CZL2SLCJ | 7 ảnh | 59 specs
+23:45:21 [INFO]    🔹 [48/8563] Cào URL: https://www.amazon.com/dp/B0FPD6TTYY lần thứ 1
+23:45:35 [INFO]       ✅ DONE: B0FPD6TTYY | 7 ảnh | 52 specs
+23:45:39 [INFO]    🔹 [49/8563] Cào URL: https://www.amazon.com/dp/B0FPDBC6KH lần thứ 1
+23:45:53 [INFO]       ✅ DONE: B0FPDBC6KH | 7 ảnh | 53 specs
+23:45:56 [INFO]    🔹 [50/8563] Cào URL: https://www.amazon.com/dp/B0G4VMLBKP lần thứ 1
+23:46:10 [INFO]       ✅ DONE: B0G4VMLBKP | 7 ảnh | 52 specs
+23:46:14 [INFO]    🔹 [51/8563] Cào URL: https://www.amazon.com/dp/B0C3RPLW47 lần thứ 1
+23:46:31 [INFO]       ✅ DONE: B0C3RPLW47 | 5 ảnh | 97 specs
+23:46:31 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:46:35 [INFO]    🔹 [52/8563] Cào URL: https://www.amazon.com/dp/B0DXL6SQJ1 lần thứ 1
+23:46:49 [INFO]       ✅ DONE: B0DXL6SQJ1 | 7 ảnh | 54 specs
+23:46:52 [INFO]    🔹 [53/8563] Cào URL: https://www.amazon.com/dp/B0DV5RMTVZ lần thứ 1
+23:47:06 [INFO]       ✅ DONE: B0DV5RMTVZ | 7 ảnh | 55 specs
+23:47:11 [INFO]    🔹 [54/8563] Cào URL: https://www.amazon.com/dp/B0DV5QSCV1 lần thứ 1
+23:47:23 [INFO]       ✅ DONE: B0DV5QSCV1 | 7 ảnh | 54 specs
+23:47:28 [INFO]    🔹 [55/8563] Cào URL: https://www.amazon.com/dp/B0DV5R3Y6B lần thứ 1
+23:47:41 [INFO]       ✅ DONE: B0DV5R3Y6B | 7 ảnh | 59 specs
+23:47:46 [INFO]    🔹 [56/8563] Cào URL: https://www.amazon.com/dp/B0F6LVRLFQ lần thứ 1
+23:47:59 [INFO]       ✅ DONE: B0F6LVRLFQ | 7 ảnh | 54 specs
+23:48:04 [INFO]    🔹 [57/8563] Cào URL: https://www.amazon.com/dp/B0CQ5KBKT4 lần thứ 1
+23:48:19 [INFO]       ✅ DONE: B0CQ5KBKT4 | 7 ảnh | 77 specs
+23:48:22 [INFO]    🔹 [58/8563] Cào URL: https://www.amazon.com/dp/B0CW632VB9 lần thứ 1
+23:48:39 [INFO]       ✅ DONE: B0CW632VB9 | 4 ảnh | 93 specs
+23:48:44 [INFO]    🔹 [59/8563] Cào URL: https://www.amazon.com/dp/B0DSGJZW9Q lần thứ 1
+23:48:57 [INFO]       ✅ DONE: B0DSGJZW9Q | 7 ảnh | 45 specs
+23:49:01 [INFO]    🔹 [60/8563] Cào URL: https://www.amazon.com/dp/B0DSGJRGM1 lần thứ 1
+23:49:15 [INFO]       ✅ DONE: B0DSGJRGM1 | 7 ảnh | 58 specs
+23:49:20 [INFO]    🔹 [61/8563] Cào URL: https://www.amazon.com/dp/B0DQVNBW42 lần thứ 1
+23:49:34 [INFO]       ✅ DONE: B0DQVNBW42 | 7 ảnh | 58 specs
+23:49:34 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:49:39 [INFO]    🔹 [62/8563] Cào URL: https://www.amazon.com/dp/B0DQVP24BP lần thứ 1
+23:49:52 [INFO]       ✅ DONE: B0DQVP24BP | 7 ảnh | 47 specs
+23:49:56 [INFO]    🔹 [63/8563] Cào URL: https://www.amazon.com/dp/B0DSGKC1C9 lần thứ 1
+23:50:09 [INFO]       ✅ DONE: B0DSGKC1C9 | 7 ảnh | 48 specs
+23:50:12 [INFO]    🔹 [64/8563] Cào URL: https://www.amazon.com/dp/B0DPXMH199 lần thứ 1
+23:50:28 [INFO]       ✅ DONE: B0DPXMH199 | 7 ảnh | 63 specs
+23:50:31 [INFO]    🔹 [65/8563] Cào URL: https://www.amazon.com/dp/B0G1CFZQ1Y lần thứ 1
+23:50:43 [INFO]       ✅ DONE: B0G1CFZQ1Y | 7 ảnh | 37 specs
+23:50:47 [INFO]    🔹 [66/8563] Cào URL: https://www.amazon.com/dp/B0G1XQLV25 lần thứ 1
+23:51:03 [INFO]       ✅ DONE: B0G1XQLV25 | 7 ảnh | 54 specs
+23:51:06 [INFO]    🔹 [67/8563] Cào URL: https://www.amazon.com/dp/B0D951M4F8 lần thứ 1
+23:51:23 [INFO]       ✅ DONE: B0D951M4F8 | 7 ảnh | 79 specs
+23:51:27 [INFO]    🔹 [68/8563] Cào URL: https://www.amazon.com/dp/B0F9VVMG1D lần thứ 1
+23:51:42 [INFO]       ✅ DONE: B0F9VVMG1D | 7 ảnh | 59 specs
+23:51:45 [INFO]    🔹 [69/8563] Cào URL: https://www.amazon.com/dp/B0F8HFK8QV lần thứ 1
+23:52:07 [INFO]       ✅ DONE: B0F8HFK8QV | 7 ảnh | 91 specs
+23:52:11 [INFO]    🔹 [70/8563] Cào URL: https://www.amazon.com/dp/B0F9VW9M7B lần thứ 1
+23:52:21 [INFO]       ✅ DONE: B0F9VW9M7B | 7 ảnh | 29 specs
+23:52:26 [INFO]    🔹 [71/8563] Cào URL: https://www.amazon.com/dp/B0F9VVQS3G lần thứ 1
+23:52:38 [INFO]       ✅ DONE: B0F9VVQS3G | 7 ảnh | 29 specs
+23:52:38 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:52:42 [INFO]    🔹 [72/8563] Cào URL: https://www.amazon.com/dp/B0GWS11SW4 lần thứ 1
+23:52:54 [INFO]       ✅ DONE: B0GWS11SW4 | 7 ảnh | 42 specs
+23:52:58 [INFO]    🔹 [73/8563] Cào URL: https://www.amazon.com/dp/B0GWHV4Q2H lần thứ 1
+23:53:09 [INFO]       ✅ DONE: B0GWHV4Q2H | 7 ảnh | 47 specs
+23:53:13 [INFO]    🔹 [74/8563] Cào URL: https://www.amazon.com/dp/B0F8HKXMLL lần thứ 1
+23:53:33 [INFO]       ✅ DONE: B0F8HKXMLL | 7 ảnh | 89 specs
+23:53:38 [INFO]    🔹 [75/8563] Cào URL: https://www.amazon.com/dp/B0F97HR6GT lần thứ 1
+23:53:58 [INFO]       ✅ DONE: B0F97HR6GT | 4 ảnh | 90 specs
+23:54:03 [INFO]    🔹 [76/8563] Cào URL: https://www.amazon.com/dp/B0F8HBY5TC lần thứ 1
+23:54:24 [INFO]       ✅ DONE: B0F8HBY5TC | 7 ảnh | 89 specs
+23:54:28 [INFO]    🔹 [77/8563] Cào URL: https://www.amazon.com/dp/B0F9VV7QMZ lần thứ 1
+23:54:40 [INFO]       ✅ DONE: B0F9VV7QMZ | 7 ảnh | 28 specs
+23:54:43 [INFO]    🔹 [78/8563] Cào URL: https://www.amazon.com/dp/B09SVSBVP1 lần thứ 1
+23:55:02 [INFO]       ✅ DONE: B09SVSBVP1 | 7 ảnh | 84 specs
+23:55:06 [INFO]    🔹 [79/8563] Cào URL: https://www.amazon.com/dp/B0C5S8626M lần thứ 1
+23:55:26 [INFO]       ✅ DONE: B0C5S8626M | 7 ảnh | 86 specs
+23:55:30 [INFO]    🔹 [80/8563] Cào URL: https://www.amazon.com/dp/B0FBW6DH7V lần thứ 1
+23:55:46 [INFO]       ✅ DONE: B0FBW6DH7V | 7 ảnh | 55 specs
+23:55:50 [INFO]    🔹 [81/8563] Cào URL: https://www.amazon.com/dp/B0GKFK9W2L lần thứ 1
+23:56:03 [INFO]       ✅ DONE: B0GKFK9W2L | 7 ảnh | 68 specs
+23:56:03 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:56:08 [INFO]    🔹 [82/8563] Cào URL: https://www.amazon.com/dp/B0GKG3KZKZ lần thứ 1
+23:56:24 [INFO]       ✅ DONE: B0GKG3KZKZ | 7 ảnh | 67 specs
+23:56:28 [INFO]    🔹 [83/8563] Cào URL: https://www.amazon.com/dp/B0GKFJYZLS lần thứ 1
+23:56:44 [INFO]       ✅ DONE: B0GKFJYZLS | 7 ảnh | 68 specs
+23:56:48 [INFO]    🔹 [84/8563] Cào URL: https://www.amazon.com/dp/B0G3Y3Q5TX lần thứ 1
+23:56:49 [WARNING] ⚠️ Dính CAPTCHA! Đang khởi động lại trình duyệt...
+23:56:56 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+23:57:05 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+23:57:21 [WARNING] ⚠️ Không thể tự động đổi vùng. Giá có thể vẫn là VND.
+23:57:21 [INFO]    🔹 [84/8563] Cào URL: https://www.amazon.com/dp/B0G3Y3Q5TX lần thứ 2
+23:57:22 [WARNING] ⚠️ Dính CAPTCHA! Đang khởi động lại trình duyệt...
+23:57:29 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+23:57:38 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+23:57:54 [WARNING] ⚠️ Không thể tự động đổi vùng. Giá có thể vẫn là VND.
+23:57:58 [INFO]    🔹 [85/8563] Cào URL: https://www.amazon.com/dp/B0FS1V6XZD lần thứ 1
+23:58:19 [INFO]       ✅ DONE: B0FS1V6XZD | 7 ảnh | 73 specs
+23:58:24 [INFO]    🔹 [86/8563] Cào URL: https://www.amazon.com/dp/B0FSQT4PTK lần thứ 1
+23:58:43 [INFO]       ✅ DONE: B0FSQT4PTK | 7 ảnh | 57 specs
+23:58:47 [INFO]    🔹 [87/8563] Cào URL: https://www.amazon.com/dp/B0G141XNX8 lần thứ 1
+23:59:01 [INFO]       ✅ DONE: B0G141XNX8 | 7 ảnh | 53 specs
+23:59:04 [INFO]    🔹 [88/8563] Cào URL: https://www.amazon.com/dp/B0CP4DV16W lần thứ 1
+23:59:19 [INFO]       ✅ DONE: B0CP4DV16W | 1 ảnh | 76 specs
+23:59:23 [INFO]    🔹 [89/8563] Cào URL: https://www.amazon.com/dp/B0CV62HBRG lần thứ 1
+23:59:39 [INFO]       ✅ DONE: B0CV62HBRG | 7 ảnh | 76 specs
+23:59:43 [INFO]    🔹 [90/8563] Cào URL: https://www.amazon.com/dp/B0FXHXB878 lần thứ 1
+23:59:58 [INFO]       ✅ DONE: B0FXHXB878 | 4 ảnh | 55 specs
+00:00:01 [INFO]    🔹 [91/8563] Cào URL: https://www.amazon.com/dp/B0FWVB6T9C lần thứ 1
+00:00:15 [INFO]       ✅ DONE: B0FWVB6T9C | 4 ảnh | 55 specs
+00:00:18 [INFO]    🔹 [92/8563] Cào URL: https://www.amazon.com/dp/B0C1TFHV51 lần thứ 1
+00:00:32 [INFO]       ✅ DONE: B0C1TFHV51 | 7 ảnh | 57 specs
+00:00:32 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:00:36 [INFO]    🔹 [93/8563] Cào URL: https://www.amazon.com/dp/B0C1TGD3NL lần thứ 1
+00:00:51 [INFO]       ✅ DONE: B0C1TGD3NL | 7 ảnh | 65 specs
+00:00:55 [INFO]    🔹 [94/8563] Cào URL: https://www.amazon.com/dp/B0GN7Z2FNN lần thứ 1
+00:01:08 [INFO]       ✅ DONE: B0GN7Z2FNN | 7 ảnh | 45 specs
+00:01:12 [INFO]    🔹 [95/8563] Cào URL: https://www.amazon.com/dp/B0CH4LHSF3 lần thứ 1
+00:01:28 [INFO]       ✅ DONE: B0CH4LHSF3 | 6 ảnh | 64 specs
+00:01:31 [INFO]    🔹 [96/8563] Cào URL: https://www.amazon.com/dp/B0GN6GKQD4 lần thứ 1
+00:01:41 [INFO]       ✅ DONE: B0GN6GKQD4 | 7 ảnh | 30 specs
+00:01:45 [INFO]    🔹 [97/8563] Cào URL: https://www.amazon.com/dp/B0GN8F4VCX lần thứ 1
+00:01:56 [INFO]       ✅ DONE: B0GN8F4VCX | 7 ảnh | 30 specs
+00:02:01 [INFO]    🔹 [98/8563] Cào URL: https://www.amazon.com/dp/B0GWMGRCWG lần thứ 1
+00:02:10 [INFO]       ✅ DONE: B0GWMGRCWG | 7 ảnh | 30 specs
+00:02:14 [INFO]    🔹 [99/8563] Cào URL: https://www.amazon.com/dp/B0GQRG2M9L lần thứ 1
+00:02:27 [INFO]       ✅ DONE: B0GQRG2M9L | 7 ảnh | 41 specs
+00:02:32 [INFO]    🔹 [100/8563] Cào URL: https://www.amazon.com/dp/B0GQR5492X lần thứ 1
+00:02:45 [INFO]       ✅ DONE: B0GQR5492X | 7 ảnh | 41 specs
+00:02:49 [INFO]    🔹 [101/8563] Cào URL: https://www.amazon.com/dp/B0GGKMKZ7S lần thứ 1
+00:03:02 [INFO]       ✅ DONE: B0GGKMKZ7S | 5 ảnh | 46 specs
+00:03:06 [INFO]    🔹 [102/8563] Cào URL: https://www.amazon.com/dp/B0GGKSGSQM lần thứ 1
+00:03:19 [INFO]       ✅ DONE: B0GGKSGSQM | 6 ảnh | 46 specs
+00:03:19 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:03:24 [INFO]    🔹 [103/8563] Cào URL: https://www.amazon.com/dp/B0G5P5PD8H lần thứ 1
+00:03:35 [INFO]       ✅ DONE: B0G5P5PD8H | 7 ảnh | 25 specs
+00:03:39 [INFO]    🔹 [104/8563] Cào URL: https://www.amazon.com/dp/B0G5P9BSNC lần thứ 1
+00:03:53 [INFO]       ✅ DONE: B0G5P9BSNC | 7 ảnh | 52 specs
+00:03:57 [INFO]    🔹 [105/8563] Cào URL: https://www.amazon.com/dp/B0G5NVS67H lần thứ 1
+00:04:11 [INFO]       ✅ DONE: B0G5NVS67H | 7 ảnh | 52 specs
+00:04:16 [INFO]    🔹 [106/8563] Cào URL: https://www.amazon.com/dp/B0G5NZHRSC lần thứ 1
+00:04:29 [INFO]       ✅ DONE: B0G5NZHRSC | 7 ảnh | 52 specs
+00:04:32 [INFO]    🔹 [107/8563] Cào URL: https://www.amazon.com/dp/B0G5PD1WFT lần thứ 1
+00:04:46 [INFO]       ✅ DONE: B0G5PD1WFT | 7 ảnh | 51 specs
+00:04:50 [INFO]    🔹 [108/8563] Cào URL: https://www.amazon.com/dp/B0G5P8JP2Z lần thứ 1
+00:05:03 [INFO]       ✅ DONE: B0G5P8JP2Z | 7 ảnh | 51 specs
+00:05:07 [INFO]    🔹 [109/8563] Cào URL: https://www.amazon.com/dp/B0G66MVN1H lần thứ 1
+00:05:20 [INFO]       ✅ DONE: B0G66MVN1H | 7 ảnh | 51 specs
+00:05:23 [INFO]    🔹 [110/8563] Cào URL: https://www.amazon.com/dp/B0CGD7T1XM lần thứ 1
+00:05:38 [INFO]       ✅ DONE: B0CGD7T1XM | 7 ảnh | 78 specs
+00:05:43 [INFO]    🔹 [111/8563] Cào URL: https://www.amazon.com/dp/B0G66T7FN4 lần thứ 1
+00:05:58 [INFO]       ✅ DONE: B0G66T7FN4 | 2 ảnh | 75 specs
+00:06:01 [INFO]    🔹 [112/8563] Cào URL: https://www.amazon.com/dp/B09DB2MG5M lần thứ 1
+00:06:16 [INFO]       ✅ DONE: B09DB2MG5M | 2 ảnh | 75 specs
+00:06:16 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:06:21 [INFO]    🔹 [113/8563] Cào URL: https://www.amazon.com/dp/B0G66TVKKY lần thứ 1
+00:06:37 [INFO]       ✅ DONE: B0G66TVKKY | 7 ảnh | 52 specs
+00:06:42 [INFO]    🔹 [114/8563] Cào URL: https://www.amazon.com/dp/B0FZTPPX5S lần thứ 1
+00:06:53 [INFO]       ✅ DONE: B0FZTPPX5S | 7 ảnh | 39 specs
+00:06:58 [INFO]    🔹 [115/8563] Cào URL: https://www.amazon.com/dp/B0FKHJPW8D lần thứ 1
+00:07:11 [INFO]       ✅ DONE: B0FKHJPW8D | 6 ảnh | 50 specs
+00:07:14 [INFO]    🔹 [116/8563] Cào URL: https://www.amazon.com/dp/B0G67PB8HM lần thứ 1
+00:07:27 [INFO]       ✅ DONE: B0G67PB8HM | 7 ảnh | 47 specs
+00:07:31 [INFO]    🔹 [117/8563] Cào URL: https://www.amazon.com/dp/B0G66T1X91 lần thứ 1
+00:07:44 [INFO]       ✅ DONE: B0G66T1X91 | 7 ảnh | 45 specs
+00:07:47 [INFO]    🔹 [118/8563] Cào URL: https://www.amazon.com/dp/B0G679GRFL lần thứ 1
+00:07:59 [INFO]       ✅ DONE: B0G679GRFL | 7 ảnh | 47 specs
+00:08:04 [INFO]    🔹 [119/8563] Cào URL: https://www.amazon.com/dp/B0G67M8B4C lần thứ 1
+00:08:17 [INFO]       ✅ DONE: B0G67M8B4C | 7 ảnh | 46 specs
+00:08:20 [INFO]    🔹 [120/8563] Cào URL: https://www.amazon.com/dp/B0G679ZCW3 lần thứ 1
+00:08:33 [INFO]       ✅ DONE: B0G679ZCW3 | 7 ảnh | 46 specs
+00:08:37 [INFO]    🔹 [121/8563] Cào URL: https://www.amazon.com/dp/B0G66VXLQ2 lần thứ 1
+00:08:50 [INFO]       ✅ DONE: B0G66VXLQ2 | 7 ảnh | 43 specs
+00:08:54 [INFO]    🔹 [122/8563] Cào URL: https://www.amazon.com/dp/B0G66W2V79 lần thứ 1
+00:09:06 [INFO]       ✅ DONE: B0G66W2V79 | 7 ảnh | 46 specs
+00:09:06 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:09:11 [INFO]    🔹 [123/8563] Cào URL: https://www.amazon.com/dp/B0GQR31BLV lần thứ 1
+00:09:25 [INFO]       ✅ DONE: B0GQR31BLV | 7 ảnh | 54 specs
+00:09:29 [INFO]    🔹 [124/8563] Cào URL: https://www.amazon.com/dp/B0GQQR7F8G lần thứ 1
+00:09:44 [INFO]       ✅ DONE: B0GQQR7F8G | 7 ảnh | 55 specs
+00:09:49 [INFO]    🔹 [125/8563] Cào URL: https://www.amazon.com/dp/B08NHSPCR6 lần thứ 1
+00:10:06 [INFO]       ✅ DONE: B08NHSPCR6 | 7 ảnh | 73 specs
+00:10:11 [INFO]    🔹 [126/8563] Cào URL: https://www.amazon.com/dp/B09BWR8TMP lần thứ 1
+00:10:28 [INFO]       ✅ DONE: B09BWR8TMP | 5 ảnh | 72 specs
+00:10:32 [INFO]    🔹 [127/8563] Cào URL: https://www.amazon.com/dp/B0DZ3129MH lần thứ 1
+00:10:46 [INFO]       ✅ DONE: B0DZ3129MH | 7 ảnh | 53 specs
+00:10:50 [INFO]    🔹 [128/8563] Cào URL: https://www.amazon.com/dp/B0GH63ZCR1 lần thứ 1
+00:11:06 [INFO]       ✅ DONE: B0GH63ZCR1 | 7 ảnh | 57 specs
+00:11:10 [INFO]    🔹 [129/8563] Cào URL: https://www.amazon.com/dp/B0FSDMTMXJ lần thứ 1
+00:11:21 [INFO]       ✅ DONE: B0FSDMTMXJ | 7 ảnh | 31 specs
+00:11:25 [INFO]    🔹 [130/8563] Cào URL: https://www.amazon.com/dp/B0FSDNCZPD lần thứ 1
+00:11:38 [INFO]       ✅ DONE: B0FSDNCZPD | 7 ảnh | 45 specs
+00:11:43 [INFO]    🔹 [131/8563] Cào URL: https://www.amazon.com/dp/B0G6XNGSX6 lần thứ 1
+00:11:56 [INFO]       ✅ DONE: B0G6XNGSX6 | 7 ảnh | 45 specs
+00:12:00 [INFO]    🔹 [132/8563] Cào URL: https://www.amazon.com/dp/B0FSDLTWKM lần thứ 1
+00:12:12 [INFO]       ✅ DONE: B0FSDLTWKM | 7 ảnh | 45 specs
+00:12:12 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:12:16 [INFO]    🔹 [133/8563] Cào URL: https://www.amazon.com/dp/B0FSDMY9Y1 lần thứ 1
+00:12:29 [INFO]       ✅ DONE: B0FSDMY9Y1 | 7 ảnh | 44 specs
+00:12:33 [INFO]    🔹 [134/8563] Cào URL: https://www.amazon.com/dp/B0G57SF9MW lần thứ 1
+00:12:47 [INFO]       ✅ DONE: B0G57SF9MW | 7 ảnh | 54 specs
+00:12:52 [INFO]    🔹 [135/8563] Cào URL: https://www.amazon.com/dp/B0F4GD28JM lần thứ 1
+00:13:06 [INFO]       ✅ DONE: B0F4GD28JM | 7 ảnh | 60 specs
+00:13:10 [INFO]    🔹 [136/8563] Cào URL: https://www.amazon.com/dp/B0FMHJ8HPR lần thứ 1
+00:13:21 [INFO]       ✅ DONE: B0FMHJ8HPR | 7 ảnh | 58 specs
+00:13:25 [INFO]    🔹 [137/8563] Cào URL: https://www.amazon.com/dp/B0FMHHY4GZ lần thứ 1
+00:13:36 [INFO]       ✅ DONE: B0FMHHY4GZ | 7 ảnh | 57 specs
+00:13:40 [INFO]    🔹 [138/8563] Cào URL: https://www.amazon.com/dp/B0FMHTQG1Z lần thứ 1
+00:13:52 [INFO]       ✅ DONE: B0FMHTQG1Z | 2 ảnh | 58 specs
+00:13:55 [INFO]    🔹 [139/8563] Cào URL: https://www.amazon.com/dp/B0G5NSVGLX lần thứ 1
+00:14:08 [INFO]       ✅ DONE: B0G5NSVGLX | 7 ảnh | 51 specs
+00:14:13 [INFO]    🔹 [140/8563] Cào URL: https://www.amazon.com/dp/B0GKFPBQ8G lần thứ 1
+00:14:27 [INFO]       ✅ DONE: B0GKFPBQ8G | 7 ảnh | 68 specs
+00:14:30 [INFO]    🔹 [141/8563] Cào URL: https://www.amazon.com/dp/B0GKG7M8TP lần thứ 1
+00:14:45 [INFO]       ✅ DONE: B0GKG7M8TP | 7 ảnh | 68 specs
+00:14:49 [INFO]    🔹 [142/8563] Cào URL: https://www.amazon.com/dp/B0GKGD16Z6 lần thứ 1
+00:15:03 [INFO]       ✅ DONE: B0GKGD16Z6 | 7 ảnh | 68 specs
+00:15:03 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:15:07 [INFO]    🔹 [143/8563] Cào URL: https://www.amazon.com/dp/B0GLRTSD35 lần thứ 1
+00:15:19 [INFO]       ✅ DONE: B0GLRTSD35 | 7 ảnh | 58 specs
+00:15:22 [INFO]    🔹 [144/8563] Cào URL: https://www.amazon.com/dp/B0GCC43R92 lần thứ 1
+00:15:36 [INFO]       ✅ DONE: B0GCC43R92 | 6 ảnh | 61 specs
+00:15:39 [INFO]    🔹 [145/8563] Cào URL: https://www.amazon.com/dp/B0GDS1M6D5 lần thứ 1
+00:15:53 [INFO]       ✅ DONE: B0GDS1M6D5 | 6 ảnh | 59 specs
+00:15:57 [INFO]    🔹 [146/8563] Cào URL: https://www.amazon.com/dp/B0GRD5TXSG lần thứ 1
+00:16:13 [INFO]       ✅ DONE: B0GRD5TXSG | 7 ảnh | 91 specs
+00:16:17 [INFO]    🔹 [147/8563] Cào URL: https://www.amazon.com/dp/B0GRCYGT8G lần thứ 1
+00:16:29 [INFO]       ✅ DONE: B0GRCYGT8G | 7 ảnh | 92 specs
+00:16:33 [INFO]    🔹 [148/8563] Cào URL: https://www.amazon.com/dp/B085ZV99X1 lần thứ 1
+00:16:44 [INFO]       ✅ DONE: B085ZV99X1 | 7 ảnh | 55 specs
+00:16:48 [INFO]    🔹 [149/8563] Cào URL: https://www.amazon.com/dp/B0CTPJ4NNC lần thứ 1
+00:16:58 [INFO]       ✅ DONE: B0CTPJ4NNC | 7 ảnh | 60 specs
+00:17:02 [INFO]    🔹 [150/8563] Cào URL: https://www.amazon.com/dp/B0GKZDZHLL lần thứ 1
+00:17:12 [INFO]       ✅ DONE: B0GKZDZHLL | 7 ảnh | 38 specs
+00:17:17 [INFO]    🔹 [151/8563] Cào URL: https://www.amazon.com/dp/B0G2K2K87Y lần thứ 1
+00:17:28 [INFO]       ✅ DONE: B0G2K2K87Y | 7 ảnh | 54 specs
+00:17:31 [INFO]    🔹 [152/8563] Cào URL: https://www.amazon.com/dp/B085ZW2DXC lần thứ 1
+00:17:41 [INFO]       ✅ DONE: B085ZW2DXC | 7 ảnh | 56 specs
+00:17:41 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:17:45 [INFO]    🔹 [153/8563] Cào URL: https://www.amazon.com/dp/B0DNLDKY3S lần thứ 1
+00:17:55 [INFO]       ✅ DONE: B0DNLDKY3S | 4 ảnh | 59 specs
+00:17:59 [INFO]    🔹 [154/8563] Cào URL: https://www.amazon.com/dp/B0D5HZVQDL lần thứ 1
+00:18:17 [INFO]       ✅ DONE: B0D5HZVQDL | 7 ảnh | 88 specs
+00:18:22 [INFO]    🔹 [155/8563] Cào URL: https://www.amazon.com/dp/B0FZF1HQF3 lần thứ 1
+00:18:32 [INFO]       ✅ DONE: B0FZF1HQF3 | 4 ảnh | 48 specs
+00:18:36 [INFO]    🔹 [156/8563] Cào URL: https://www.amazon.com/dp/B0GTMVJWZY lần thứ 1
+00:18:48 [INFO]       ✅ DONE: B0GTMVJWZY | 4 ảnh | 59 specs
+00:18:51 [INFO]    🔹 [157/8563] Cào URL: https://www.amazon.com/dp/B09XK9LHG5 lần thứ 1
+00:19:02 [INFO]       ✅ DONE: B09XK9LHG5 | 6 ảnh | 66 specs
+00:19:05 [INFO]    🔹 [158/8563] Cào URL: https://www.amazon.com/dp/B09NP61C3J lần thứ 1
+00:19:17 [INFO]       ✅ DONE: B09NP61C3J | 7 ảnh | 75 specs
+00:19:21 [INFO]    🔹 [159/8563] Cào URL: https://www.amazon.com/dp/B0GR9Y259K lần thứ 1
+00:19:33 [INFO]       ✅ DONE: B0GR9Y259K | 1 ảnh | 52 specs
+00:19:37 [INFO]    🔹 [160/8563] Cào URL: https://www.amazon.com/dp/B0GR9PQYF4 lần thứ 1
+00:19:49 [INFO]       ✅ DONE: B0GR9PQYF4 | 1 ảnh | 52 specs
+00:19:54 [INFO]    🔹 [161/8563] Cào URL: https://www.amazon.com/dp/B0G6W6KMR5 lần thứ 1
+00:20:07 [INFO]       ✅ DONE: B0G6W6KMR5 | 7 ảnh | 61 specs
+00:20:12 [INFO]    🔹 [162/8563] Cào URL: https://www.amazon.com/dp/B0G6WCSCL3 lần thứ 1
+00:20:26 [INFO]       ✅ DONE: B0G6WCSCL3 | 7 ảnh | 61 specs
+00:20:26 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:20:30 [INFO]    🔹 [163/8563] Cào URL: https://www.amazon.com/dp/B0G6W6X9RC lần thứ 1
+00:20:44 [INFO]       ✅ DONE: B0G6W6X9RC | 7 ảnh | 60 specs
+00:20:49 [INFO]    🔹 [164/8563] Cào URL: https://www.amazon.com/dp/B07V9VZ36L lần thứ 1
+00:21:05 [INFO]       ✅ DONE: B07V9VZ36L | 7 ảnh | 88 specs
+00:21:08 [INFO]    🔹 [165/8563] Cào URL: https://www.amazon.com/dp/B0F2TM49KQ lần thứ 1
+00:21:24 [INFO]       ✅ DONE: B0F2TM49KQ | 7 ảnh | 70 specs
+00:21:28 [INFO]    🔹 [166/8563] Cào URL: https://www.amazon.com/dp/B0FDY4QW8H lần thứ 1
+00:21:45 [INFO]       ✅ DONE: B0FDY4QW8H | 7 ảnh | 69 specs
+00:21:48 [INFO]    🔹 [167/8563] Cào URL: https://www.amazon.com/dp/B0F2TL5JT9 lần thứ 1
+00:22:05 [INFO]       ✅ DONE: B0F2TL5JT9 | 7 ảnh | 69 specs
+00:22:08 [INFO]    🔹 [168/8563] Cào URL: https://www.amazon.com/dp/B0F3P5NF56 lần thứ 1
+00:22:25 [INFO]       ✅ DONE: B0F3P5NF56 | 7 ảnh | 69 specs
+00:22:28 [INFO]    🔹 [169/8563] Cào URL: https://www.amazon.com/dp/B0G6Z7LZN1 lần thứ 1
+00:22:41 [INFO]       ✅ DONE: B0G6Z7LZN1 | 7 ảnh | 47 specs
+00:22:44 [INFO]    🔹 [170/8563] Cào URL: https://www.amazon.com/dp/B0G6YSFQJ4 lần thứ 1
+00:22:58 [INFO]       ✅ DONE: B0G6YSFQJ4 | 7 ảnh | 46 specs
+00:23:03 [INFO]    🔹 [171/8563] Cào URL: https://www.amazon.com/dp/B0G6Z4Q1GZ lần thứ 1
+00:23:17 [INFO]       ✅ DONE: B0G6Z4Q1GZ | 7 ảnh | 47 specs
+00:23:22 [INFO]    🔹 [172/8563] Cào URL: https://www.amazon.com/dp/B0GTNNK1WY lần thứ 1
+00:23:34 [INFO]       ✅ DONE: B0GTNNK1WY | 6 ảnh | 42 specs
+00:23:34 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:23:37 [INFO]    🔹 [173/8563] Cào URL: https://www.amazon.com/dp/B0GTNTNQTZ lần thứ 1
+00:23:52 [INFO]       ✅ DONE: B0GTNTNQTZ | 6 ảnh | 42 specs
+00:23:55 [INFO]    🔹 [174/8563] Cào URL: https://www.amazon.com/dp/B0DPWF4FDT lần thứ 1
+00:24:09 [INFO]       ✅ DONE: B0DPWF4FDT | 5 ảnh | 58 specs
+00:24:12 [INFO]    🔹 [175/8563] Cào URL: https://www.amazon.com/dp/B0GGQMTS27 lần thứ 1
+00:24:26 [INFO]       ✅ DONE: B0GGQMTS27 | 6 ảnh | 53 specs
+00:24:31 [INFO]    🔹 [176/8563] Cào URL: https://www.amazon.com/dp/B0FLKGXB1M lần thứ 1
+00:24:44 [INFO]       ✅ DONE: B0FLKGXB1M | 7 ảnh | 59 specs
+00:24:48 [INFO]    🔹 [177/8563] Cào URL: https://www.amazon.com/dp/B0BZ1KTW4F lần thứ 1
+00:25:03 [INFO]       ✅ DONE: B0BZ1KTW4F | 7 ảnh | 61 specs
+00:25:08 [INFO]    🔹 [178/8563] Cào URL: https://www.amazon.com/dp/B0G26NM1Z4 lần thứ 1
+00:25:20 [INFO]       ✅ DONE: B0G26NM1Z4 | 5 ảnh | 50 specs
+00:25:25 [INFO]    🔹 [179/8563] Cào URL: https://www.amazon.com/dp/B0B783JD9H lần thứ 1
+00:25:42 [INFO]       ✅ DONE: B0B783JD9H | 7 ảnh | 85 specs
+00:25:46 [INFO]    🔹 [180/8563] Cào URL: https://www.amazon.com/dp/B0FLKK9C54 lần thứ 1
+00:26:01 [INFO]       ✅ DONE: B0FLKK9C54 | 7 ảnh | 59 specs
+00:26:05 [INFO]    🔹 [181/8563] Cào URL: https://www.amazon.com/dp/B0CZ56BHPV lần thứ 1
+00:26:27 [INFO]       ✅ DONE: B0CZ56BHPV | 7 ảnh | 75 specs
+00:26:31 [INFO]    🔹 [182/8563] Cào URL: https://www.amazon.com/dp/B0D1KS5VX9 lần thứ 1
+00:26:53 [INFO]       ✅ DONE: B0D1KS5VX9 | 7 ảnh | 85 specs
+00:26:53 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:26:57 [INFO]    🔹 [183/8563] Cào URL: https://www.amazon.com/dp/B0CRZFMPSV lần thứ 1
+00:27:17 [INFO]       ✅ DONE: B0CRZFMPSV | 7 ảnh | 78 specs
+00:27:22 [INFO]    🔹 [184/8563] Cào URL: https://www.amazon.com/dp/B09R6FNNS1 lần thứ 1
+00:27:41 [INFO]       ✅ DONE: B09R6FNNS1 | 7 ảnh | 78 specs
+00:27:44 [INFO]    🔹 [185/8563] Cào URL: https://www.amazon.com/dp/B0DTVQN7KM lần thứ 1
+00:27:59 [INFO]       ✅ DONE: B0DTVQN7KM | 7 ảnh | 56 specs
+00:28:02 [INFO]    🔹 [186/8563] Cào URL: https://www.amazon.com/dp/B0F167PYK7 lần thứ 1
+00:28:20 [INFO]       ✅ DONE: B0F167PYK7 | 7 ảnh | 74 specs
+00:28:24 [INFO]    🔹 [187/8563] Cào URL: https://www.amazon.com/dp/B0FCTFGTPY lần thứ 1
+00:28:42 [INFO]       ✅ DONE: B0FCTFGTPY | 7 ảnh | 75 specs
+00:28:47 [INFO]    🔹 [188/8563] Cào URL: https://www.amazon.com/dp/B0G11WY59L lần thứ 1
+00:29:05 [INFO]       ✅ DONE: B0G11WY59L | 7 ảnh | 77 specs
+00:29:09 [INFO]    🔹 [189/8563] Cào URL: https://www.amazon.com/dp/B0CKTLMVZ1 lần thứ 1
+00:29:24 [INFO]       ✅ DONE: B0CKTLMVZ1 | 7 ảnh | 58 specs
+00:29:28 [INFO]    🔹 [190/8563] Cào URL: https://www.amazon.com/dp/B0BS1V7ZZB lần thứ 1
+00:29:44 [INFO]       ✅ DONE: B0BS1V7ZZB | 7 ảnh | 49 specs
+00:29:48 [INFO]    🔹 [191/8563] Cào URL: https://www.amazon.com/dp/B0CKTLMVZJ lần thứ 1
+00:30:03 [INFO]       ✅ DONE: B0CKTLMVZJ | 7 ảnh | 58 specs
+00:30:07 [INFO]    🔹 [192/8563] Cào URL: https://www.amazon.com/dp/B0CKTNQW2K lần thứ 1
+00:30:23 [INFO]       ✅ DONE: B0CKTNQW2K | 6 ảnh | 62 specs
+00:30:23 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:30:28 [INFO]    🔹 [193/8563] Cào URL: https://www.amazon.com/dp/B0FYFSK2S1 lần thứ 1
+00:30:45 [INFO]       ✅ DONE: B0FYFSK2S1 | 7 ảnh | 54 specs
+00:30:49 [INFO]    🔹 [194/8563] Cào URL: https://www.amazon.com/dp/B0FNDVRYB5 lần thứ 1
+00:31:08 [INFO]       ✅ DONE: B0FNDVRYB5 | 7 ảnh | 75 specs
+00:31:12 [INFO]    🔹 [195/8563] Cào URL: https://www.amazon.com/dp/B0GQB584HJ lần thứ 1
+00:31:23 [INFO]       ✅ DONE: B0GQB584HJ | 7 ảnh | 34 specs
+00:31:28 [INFO]    🔹 [196/8563] Cào URL: https://www.amazon.com/dp/B0GD19SY3G lần thứ 1
+00:31:42 [INFO]       ✅ DONE: B0GD19SY3G | 7 ảnh | 54 specs
+00:31:45 [INFO]    🔹 [197/8563] Cào URL: https://www.amazon.com/dp/B0FNDRY43F lần thứ 1
+00:32:04 [INFO]       ✅ DONE: B0FNDRY43F | 7 ảnh | 75 specs
+00:32:08 [INFO]    🔹 [198/8563] Cào URL: https://www.amazon.com/dp/B0GRZ78683 lần thứ 1
+00:32:23 [INFO]       ✅ DONE: B0GRZ78683 | 7 ảnh | 60 specs
+00:32:27 [INFO]    🔹 [199/8563] Cào URL: https://www.amazon.com/dp/B08NXR95GQ lần thứ 1
+00:32:42 [INFO]       ✅ DONE: B08NXR95GQ | 7 ảnh | 56 specs
+00:32:46 [INFO]    🔹 [200/8563] Cào URL: https://www.amazon.com/dp/B0GV2W65CQ lần thứ 1
+00:33:02 [INFO]       ✅ DONE: B0GV2W65CQ | 7 ảnh | 75 specs
+00:33:07 [INFO]    🔹 [201/8563] Cào URL: https://www.amazon.com/dp/B0CC95C2YJ lần thứ 1
+00:33:22 [INFO]       ✅ DONE: B0CC95C2YJ | 7 ảnh | 79 specs
+00:33:27 [INFO]    🔹 [202/8563] Cào URL: https://www.amazon.com/dp/B0GV3CTQVK lần thứ 1
+00:33:42 [INFO]       ✅ DONE: B0GV3CTQVK | 7 ảnh | 75 specs
+00:33:42 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:33:46 [INFO]    🔹 [203/8563] Cào URL: https://www.amazon.com/dp/B0GV33G58X lần thứ 1
+00:34:05 [INFO]       ✅ DONE: B0GV33G58X | 7 ảnh | 73 specs
+00:34:10 [INFO]    🔹 [204/8563] Cào URL: https://www.amazon.com/dp/B0GS27L5F4 lần thứ 1
+00:34:25 [INFO]       ✅ DONE: B0GS27L5F4 | 7 ảnh | 55 specs
+00:34:28 [INFO]    🔹 [205/8563] Cào URL: https://www.amazon.com/dp/B0GTLFDQR2 lần thứ 1
+00:34:43 [INFO]       ✅ DONE: B0GTLFDQR2 | 6 ảnh | 53 specs
+00:34:47 [INFO]    🔹 [206/8563] Cào URL: https://www.amazon.com/dp/B0GTL24V3V lần thứ 1
+00:35:01 [INFO]       ✅ DONE: B0GTL24V3V | 6 ảnh | 51 specs
+00:35:05 [INFO]    🔹 [207/8563] Cào URL: https://www.amazon.com/dp/B0GRFL1CCG lần thứ 1
+00:35:17 [INFO]       ✅ DONE: B0GRFL1CCG | 7 ảnh | 47 specs
+00:35:21 [INFO]    🔹 [208/8563] Cào URL: https://www.amazon.com/dp/B0GRG19BDP lần thứ 1
+00:35:33 [INFO]       ✅ DONE: B0GRG19BDP | 7 ảnh | 27 specs
+00:35:38 [INFO]    🔹 [209/8563] Cào URL: https://www.amazon.com/dp/B0GRFN2R51 lần thứ 1
+00:35:53 [INFO]       ✅ DONE: B0GRFN2R51 | 7 ảnh | 44 specs
+00:35:57 [INFO]    🔹 [210/8563] Cào URL: https://www.amazon.com/dp/B0C46MSDSZ lần thứ 1
+00:36:11 [INFO]       ✅ DONE: B0C46MSDSZ | 6 ảnh | 45 specs
+00:36:15 [INFO]    🔹 [211/8563] Cào URL: https://www.amazon.com/dp/B0GBZXGJMR lần thứ 1
+00:36:28 [INFO]       ✅ DONE: B0GBZXGJMR | 7 ảnh | 47 specs
+00:36:33 [INFO]    🔹 [212/8563] Cào URL: https://www.amazon.com/dp/B09WXZV2T2 lần thứ 1
+00:36:52 [INFO]       ✅ DONE: B09WXZV2T2 | 6 ảnh | 82 specs
+00:36:52 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:36:55 [INFO]    🔹 [213/8563] Cào URL: https://www.amazon.com/dp/B0F4KBQQK7 lần thứ 1
+00:37:13 [INFO]       ✅ DONE: B0F4KBQQK7 | 7 ảnh | 83 specs
+00:37:17 [INFO]    🔹 [214/8563] Cào URL: https://www.amazon.com/dp/B0FV3X9LFR lần thứ 1
+00:37:31 [INFO]       ✅ DONE: B0FV3X9LFR | 5 ảnh | 55 specs
+00:37:35 [INFO]    🔹 [215/8563] Cào URL: https://www.amazon.com/dp/B0FH2BLQJW lần thứ 1
+00:37:48 [INFO]       ✅ DONE: B0FH2BLQJW | 7 ảnh | 47 specs
+00:37:51 [INFO]    🔹 [216/8563] Cào URL: https://www.amazon.com/dp/B0FLKJSDZ9 lần thứ 1
+00:38:05 [INFO]       ✅ DONE: B0FLKJSDZ9 | 5 ảnh | 57 specs
+00:38:08 [INFO]    🔹 [217/8563] Cào URL: https://www.amazon.com/dp/B0DJ7537Y7 lần thứ 1
+00:38:25 [INFO]       ✅ DONE: B0DJ7537Y7 | 7 ảnh | 64 specs
+00:38:29 [INFO]    🔹 [218/8563] Cào URL: https://www.amazon.com/dp/B0DKT3CL4R lần thứ 1
+00:38:44 [INFO]       ✅ DONE: B0DKT3CL4R | 7 ảnh | 53 specs
+00:38:47 [INFO]    🔹 [219/8563] Cào URL: https://www.amazon.com/dp/B0F4KBGJ1Q lần thứ 1
+00:39:02 [INFO]       ✅ DONE: B0F4KBGJ1Q | 7 ảnh | 51 specs
+00:39:06 [INFO]    🔹 [220/8563] Cào URL: https://www.amazon.com/dp/B0D58RNGKY lần thứ 1
+00:39:21 [INFO]       ✅ DONE: B0D58RNGKY | 5 ảnh | 60 specs
+00:39:25 [INFO]    🔹 [221/8563] Cào URL: https://www.amazon.com/dp/B0D2NPRG4Y lần thứ 1
+00:39:35 [INFO]       ✅ DONE: B0D2NPRG4Y | 4 ảnh | 26 specs
+00:39:39 [INFO]    🔹 [222/8563] Cào URL: https://www.amazon.com/dp/B0GNSM8QZR lần thứ 1
+00:39:53 [INFO]       ✅ DONE: B0GNSM8QZR | 7 ảnh | 48 specs
+00:39:53 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:39:57 [INFO]    🔹 [223/8563] Cào URL: https://www.amazon.com/dp/B0GNSRT33T lần thứ 1
+00:40:12 [INFO]       ✅ DONE: B0GNSRT33T | 7 ảnh | 45 specs
+00:40:15 [INFO]    🔹 [224/8563] Cào URL: https://www.amazon.com/dp/B0GNT31KMD lần thứ 1
+00:40:29 [INFO]       ✅ DONE: B0GNT31KMD | 7 ảnh | 47 specs
+00:40:34 [INFO]    🔹 [225/8563] Cào URL: https://www.amazon.com/dp/B0GNSMZXQR lần thứ 1
+00:40:47 [INFO]       ✅ DONE: B0GNSMZXQR | 7 ảnh | 48 specs
+00:40:52 [INFO]    🔹 [226/8563] Cào URL: https://www.amazon.com/dp/B0C46N4JD9 lần thứ 1
+00:41:07 [INFO]       ✅ DONE: B0C46N4JD9 | 5 ảnh | 57 specs
+00:41:11 [INFO]    🔹 [227/8563] Cào URL: https://www.amazon.com/dp/B0CY21B22S lần thứ 1
+00:41:24 [INFO]       ✅ DONE: B0CY21B22S | 7 ảnh | 53 specs
+00:41:29 [INFO]    🔹 [228/8563] Cào URL: https://www.amazon.com/dp/B0F138JG7Y lần thứ 1
+00:41:42 [INFO]       ✅ DONE: B0F138JG7Y | 7 ảnh | 59 specs
+00:41:47 [INFO]    🔹 [229/8563] Cào URL: https://www.amazon.com/dp/B0G5Y6PND9 lần thứ 1
+00:42:02 [INFO]       ✅ DONE: B0G5Y6PND9 | 7 ảnh | 42 specs
+00:42:06 [INFO]    🔹 [230/8563] Cào URL: https://www.amazon.com/dp/B0GHRG9DHM lần thứ 1
+00:42:19 [INFO]       ✅ DONE: B0GHRG9DHM | 7 ảnh | 41 specs
+00:42:23 [INFO]    🔹 [231/8563] Cào URL: https://www.amazon.com/dp/B0GWD2W5LM lần thứ 1
+00:42:36 [INFO]       ✅ DONE: B0GWD2W5LM | 7 ảnh | 40 specs
+00:42:41 [INFO]    🔹 [232/8563] Cào URL: https://www.amazon.com/dp/B0C9M15BS4 lần thứ 1
+00:42:57 [INFO]       ✅ DONE: B0C9M15BS4 | 7 ảnh | 66 specs
+00:42:57 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:43:02 [INFO]    🔹 [233/8563] Cào URL: https://www.amazon.com/dp/B0FL7GMWQK lần thứ 1
+00:43:25 [INFO]       ✅ DONE: B0FL7GMWQK | 7 ảnh | 56 specs
+00:43:30 [INFO]    🔹 [234/8563] Cào URL: https://www.amazon.com/dp/B0F6Y44V4P lần thứ 1
+00:43:43 [INFO]       ✅ DONE: B0F6Y44V4P | 7 ảnh | 38 specs
+00:43:48 [INFO]    🔹 [235/8563] Cào URL: https://www.amazon.com/dp/B0G6MQQDGB lần thứ 1
+00:44:01 [INFO]       ✅ DONE: B0G6MQQDGB | 7 ảnh | 52 specs
+00:44:06 [INFO]    🔹 [236/8563] Cào URL: https://www.amazon.com/dp/B0BJST2J8G lần thứ 1
+00:44:22 [INFO]       ✅ DONE: B0BJST2J8G | 7 ảnh | 64 specs
+00:44:27 [INFO]    🔹 [237/8563] Cào URL: https://www.amazon.com/dp/B07TJ94DZW lần thứ 1
+00:44:42 [INFO]       ✅ DONE: B07TJ94DZW | 7 ảnh | 67 specs
+00:44:46 [INFO]    🔹 [238/8563] Cào URL: https://www.amazon.com/dp/B0872K4XCJ lần thứ 1
+00:45:02 [INFO]       ✅ DONE: B0872K4XCJ | 7 ảnh | 74 specs
+00:45:06 [INFO]    🔹 [239/8563] Cào URL: https://www.amazon.com/dp/B0DBZ5SL9T lần thứ 1
+00:45:21 [INFO]       ✅ DONE: B0DBZ5SL9T | 7 ảnh | 56 specs
+00:45:24 [INFO]    🔹 [240/8563] Cào URL: https://www.amazon.com/dp/B07FFHM9T8 lần thứ 1
+00:45:40 [INFO]       ✅ DONE: B07FFHM9T8 | 4 ảnh | 46 specs
+00:45:45 [INFO]    🔹 [241/8563] Cào URL: https://www.amazon.com/dp/B09XJ22L5L lần thứ 1
+00:45:58 [INFO]       ✅ DONE: B09XJ22L5L | 7 ảnh | 45 specs
+00:46:01 [INFO]    🔹 [242/8563] Cào URL: https://www.amazon.com/dp/B09XL96Q3B lần thứ 1
+00:46:14 [INFO]       ✅ DONE: B09XL96Q3B | 7 ảnh | 40 specs
+00:46:14 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:46:18 [INFO]    🔹 [243/8563] Cào URL: https://www.amazon.com/dp/B09GLQ1GP9 lần thứ 1
+00:46:32 [INFO]       ✅ DONE: B09GLQ1GP9 | 7 ảnh | 45 specs
+00:46:37 [INFO]    🔹 [244/8563] Cào URL: https://www.amazon.com/dp/B0868LTYYP lần thứ 1
+00:46:50 [INFO]       ✅ DONE: B0868LTYYP | 7 ảnh | 39 specs
+00:46:54 [INFO]    🔹 [245/8563] Cào URL: https://www.amazon.com/dp/B09GNCQXZC lần thứ 1
+00:47:07 [INFO]       ✅ DONE: B09GNCQXZC | 7 ảnh | 43 specs
+00:47:11 [INFO]    🔹 [246/8563] Cào URL: https://www.amazon.com/dp/B0FR9KVFQQ lần thứ 1
+00:47:26 [INFO]       ✅ DONE: B0FR9KVFQQ | 1 ảnh | 58 specs
+00:47:29 [INFO]    🔹 [247/8563] Cào URL: https://www.amazon.com/dp/B0GHPYYRYY lần thứ 1
+00:47:43 [INFO]       ✅ DONE: B0GHPYYRYY | 7 ảnh | 58 specs
+00:47:47 [INFO]    🔹 [248/8563] Cào URL: https://www.amazon.com/dp/B0GHPC447Z lần thứ 1
+00:48:01 [INFO]       ✅ DONE: B0GHPC447Z | 7 ảnh | 59 specs
+00:48:05 [INFO]    🔹 [249/8563] Cào URL: https://www.amazon.com/dp/B0GHPG7SS5 lần thứ 1
+00:48:20 [INFO]       ✅ DONE: B0GHPG7SS5 | 7 ảnh | 60 specs
+00:48:25 [INFO]    🔹 [250/8563] Cào URL: https://www.amazon.com/dp/B0FBGTN83S lần thứ 1
+00:48:43 [INFO]       ✅ DONE: B0FBGTN83S | 7 ảnh | 77 specs
+00:48:48 [INFO]    🔹 [251/8563] Cào URL: https://www.amazon.com/dp/B0G8JZ6TN9 lần thứ 1
+00:49:05 [INFO]       ✅ DONE: B0G8JZ6TN9 | 7 ảnh | 73 specs
+00:49:10 [INFO]    🔹 [252/8563] Cào URL: https://www.amazon.com/dp/B0GTRTMF61 lần thứ 1
+00:49:22 [INFO]       ✅ DONE: B0GTRTMF61 | 7 ảnh | 50 specs
+00:49:22 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:49:26 [INFO]    🔹 [253/8563] Cào URL: https://www.amazon.com/dp/B0GTRYNC78 lần thứ 1
+00:49:38 [INFO]       ✅ DONE: B0GTRYNC78 | 7 ảnh | 36 specs
+00:49:43 [INFO]    🔹 [254/8563] Cào URL: https://www.amazon.com/dp/B0GTRTBRFN lần thứ 1
+00:49:56 [INFO]       ✅ DONE: B0GTRTBRFN | 7 ảnh | 49 specs
+00:50:00 [INFO]    🔹 [255/8563] Cào URL: https://www.amazon.com/dp/B0D37XRCZZ lần thứ 1
+00:50:14 [INFO]       ✅ DONE: B0D37XRCZZ | 6 ảnh | 50 specs
+00:50:18 [INFO]    🔹 [256/8563] Cào URL: https://www.amazon.com/dp/B0BLGCBVSR lần thứ 1
+00:50:31 [INFO]       ✅ DONE: B0BLGCBVSR | 7 ảnh | 55 specs
+00:50:36 [INFO]    🔹 [257/8563] Cào URL: https://www.amazon.com/dp/B0B9X759Z8 lần thứ 1
+00:50:51 [INFO]       ✅ DONE: B0B9X759Z8 | 7 ảnh | 48 specs
+00:50:54 [INFO]    🔹 [258/8563] Cào URL: https://www.amazon.com/dp/B0B9X86QLT lần thứ 1
+00:51:08 [INFO]       ✅ DONE: B0B9X86QLT | 7 ảnh | 48 specs
+00:51:13 [INFO]    🔹 [259/8563] Cào URL: https://www.amazon.com/dp/B0G259FTWL lần thứ 1
+00:51:29 [INFO]       ✅ DONE: B0G259FTWL | 7 ảnh | 46 specs
+00:51:32 [INFO]    🔹 [260/8563] Cào URL: https://www.amazon.com/dp/B0G6FX1NLY lần thứ 1
+00:51:46 [INFO]       ✅ DONE: B0G6FX1NLY | 7 ảnh | 57 specs
+00:51:50 [INFO]    🔹 [261/8563] Cào URL: https://www.amazon.com/dp/B0CK9JSM3G lần thứ 1
+00:52:07 [INFO]       ✅ DONE: B0CK9JSM3G | 7 ảnh | 79 specs
+00:52:10 [INFO]    🔹 [262/8563] Cào URL: https://www.amazon.com/dp/B0F2MLQPL3 lần thứ 1
+00:52:25 [INFO]       ✅ DONE: B0F2MLQPL3 | 6 ảnh | 41 specs
+00:52:25 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:52:29 [INFO]    🔹 [263/8563] Cào URL: https://www.amazon.com/dp/B0F79C6DGR lần thứ 1
+00:52:54 [INFO]       ✅ DONE: B0F79C6DGR | 5 ảnh | 57 specs
+00:52:57 [INFO]    🔹 [264/8563] Cào URL: https://www.amazon.com/dp/B0CK9FQXWR lần thứ 1
+00:53:15 [INFO]       ✅ DONE: B0CK9FQXWR | 7 ảnh | 79 specs
+00:53:18 [INFO]    🔹 [265/8563] Cào URL: https://www.amazon.com/dp/B0G3CYM56S lần thứ 1
+00:53:34 [INFO]       ✅ DONE: B0G3CYM56S | 7 ảnh | 79 specs
+00:53:38 [INFO]    🔹 [266/8563] Cào URL: https://www.amazon.com/dp/B0CQM3HK33 lần thứ 1
+00:53:57 [INFO]       ✅ DONE: B0CQM3HK33 | 7 ảnh | 88 specs
+00:54:01 [INFO]    🔹 [267/8563] Cào URL: https://www.amazon.com/dp/B0GQZL272Q lần thứ 1
+00:54:18 [INFO]       ✅ DONE: B0GQZL272Q | 7 ảnh | 69 specs
+00:54:22 [INFO]    🔹 [268/8563] Cào URL: https://www.amazon.com/dp/B0G5YF5V51 lần thứ 1
+00:54:40 [INFO]       ✅ DONE: B0G5YF5V51 | 7 ảnh | 78 specs
+00:54:43 [INFO]    🔹 [269/8563] Cào URL: https://www.amazon.com/dp/B0GQNZTQR4 lần thứ 1
+00:55:04 [INFO]       ✅ DONE: B0GQNZTQR4 | 7 ảnh | 69 specs
+00:55:09 [INFO]    🔹 [270/8563] Cào URL: https://www.amazon.com/dp/B0GQRKDK13 lần thứ 1
+00:55:29 [INFO]       ✅ DONE: B0GQRKDK13 | 7 ảnh | 66 specs
+00:55:33 [INFO]    🔹 [271/8563] Cào URL: https://www.amazon.com/dp/B0GDQB44JK lần thứ 1
+00:55:49 [INFO]       ✅ DONE: B0GDQB44JK | 7 ảnh | 74 specs
+00:55:53 [INFO]    🔹 [272/8563] Cào URL: https://www.amazon.com/dp/B0GDWK489Q lần thứ 1
+00:56:09 [INFO]       ✅ DONE: B0GDWK489Q | 7 ảnh | 74 specs
+00:56:09 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:56:12 [INFO]    🔹 [273/8563] Cào URL: https://www.amazon.com/dp/B0GRVL7HHD lần thứ 1
+00:56:26 [INFO]       ✅ DONE: B0GRVL7HHD | 7 ảnh | 49 specs
+00:56:31 [INFO]    🔹 [274/8563] Cào URL: https://www.amazon.com/dp/B0GRV82HPC lần thứ 1
+00:56:42 [INFO]       ✅ DONE: B0GRV82HPC | 7 ảnh | 29 specs
+00:56:45 [INFO]    🔹 [275/8563] Cào URL: https://www.amazon.com/dp/B09R6CWMSN lần thứ 1
+00:56:56 [INFO]       ✅ DONE: B09R6CWMSN | 7 ảnh | 29 specs
+00:56:59 [INFO]    🔹 [276/8563] Cào URL: https://www.amazon.com/dp/B089Q5MJ2K lần thứ 1
+00:57:17 [INFO]       ✅ DONE: B089Q5MJ2K | 7 ảnh | 59 specs
+00:57:20 [INFO]    🔹 [277/8563] Cào URL: https://www.amazon.com/dp/B09MD1RRP2 lần thứ 1
+00:57:34 [INFO]       ✅ DONE: B09MD1RRP2 | 7 ảnh | 53 specs
+00:57:38 [INFO]    🔹 [278/8563] Cào URL: https://www.amazon.com/dp/B0G4FPGSXR lần thứ 1
+00:57:59 [INFO]       ✅ DONE: B0G4FPGSXR | 7 ảnh | 78 specs
+00:58:02 [INFO]    🔹 [279/8563] Cào URL: https://www.amazon.com/dp/B0GTLRW5DD lần thứ 1
+00:58:18 [INFO]       ✅ DONE: B0GTLRW5DD | 7 ảnh | 42 specs
+00:58:23 [INFO]    🔹 [280/8563] Cào URL: https://www.amazon.com/dp/B0GTLLVV6W lần thứ 1
+00:58:39 [INFO]       ✅ DONE: B0GTLLVV6W | 7 ảnh | 42 specs
+00:58:43 [INFO]    🔹 [281/8563] Cào URL: https://www.amazon.com/dp/B0GHP4R1VW lần thứ 1
+00:58:43 [WARNING] ⚠️ Dính CAPTCHA! Đang khởi động lại trình duyệt...
+00:58:48 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+00:58:58 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+00:59:11 [INFO] ✅ Đã chuyển vùng thành công.
+00:59:11 [INFO]    🔹 [281/8563] Cào URL: https://www.amazon.com/dp/B0GHP4R1VW lần thứ 2
+00:59:12 [WARNING] ⚠️ Dính CAPTCHA! Đang khởi động lại trình duyệt...
+00:59:16 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+00:59:26 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+00:59:40 [INFO] ✅ Đã chuyển vùng thành công.
+00:59:45 [INFO]    🔹 [282/8563] Cào URL: https://www.amazon.com/dp/B0FZDFMBDQ lần thứ 1
+00:59:45 [WARNING] ⚠️ Dính CAPTCHA! Đang khởi động lại trình duyệt...
+00:59:50 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+00:59:59 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+01:00:10 [INFO] ✅ Đã chuyển vùng thành công.
+01:00:10 [INFO]    🔹 [282/8563] Cào URL: https://www.amazon.com/dp/B0FZDFMBDQ lần thứ 2
+01:00:11 [WARNING] ⚠️ Dính CAPTCHA! Đang khởi động lại trình duyệt...
+01:00:18 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+01:00:28 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+01:00:39 [INFO] ✅ Đã chuyển vùng thành công.
+01:00:43 [INFO]    🔹 [283/8563] Cào URL: https://www.amazon.com/dp/B08M31LGSQ lần thứ 1
+01:00:57 [INFO]       ✅ DONE: B08M31LGSQ | 3 ảnh | 43 specs
+01:01:01 [INFO]    🔹 [284/8563] Cào URL: https://www.amazon.com/dp/B08HDKN6YX lần thứ 1
+01:01:19 [INFO]       ✅ DONE: B08HDKN6YX | 7 ảnh | 60 specs
+01:01:19 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+01:01:23 [INFO]    🔹 [285/8563] Cào URL: https://www.amazon.com/dp/B0GH2MD3D9 lần thứ 1
+01:01:45 [INFO]       ✅ DONE: B0GH2MD3D9 | 7 ảnh | 51 specs
+01:01:49 [INFO]    🔹 [286/8563] Cào URL: https://www.amazon.com/dp/B0G6KDK77L lần thứ 1
+01:02:06 [INFO]       ✅ DONE: B0G6KDK77L | 7 ảnh | 64 specs
+01:02:11 [INFO]    🔹 [287/8563] Cào URL: https://www.amazon.com/dp/B0GQLH5XVF lần thứ 1
+01:02:24 [INFO]       ✅ DONE: B0GQLH5XVF | 7 ảnh | 30 specs
+01:02:28 [INFO]    🔹 [288/8563] Cào URL: https://www.amazon.com/dp/B0GLT2YNBY lần thứ 1
+01:02:44 [INFO]       ✅ DONE: B0GLT2YNBY | 7 ảnh | 49 specs
+01:02:49 [INFO]    🔹 [289/8563] Cào URL: https://www.amazon.com/dp/B0GMKPHGBL lần thứ 1
+01:03:04 [INFO]       ✅ DONE: B0GMKPHGBL | 7 ảnh | 51 specs
+01:03:07 [INFO]    🔹 [290/8563] Cào URL: https://www.amazon.com/dp/B0GMKRQSSJ lần thứ 1
+01:03:23 [INFO]       ✅ DONE: B0GMKRQSSJ | 7 ảnh | 51 specs
+01:03:28 [INFO]    🔹 [291/8563] Cào URL: https://www.amazon.com/dp/B0GWKJ56G3 lần thứ 1
+01:03:39 [INFO]       ✅ DONE: B0GWKJ56G3 | 7 ảnh | 30 specs
+01:03:44 [INFO]    🔹 [292/8563] Cào URL: https://www.amazon.com/dp/B0G337XKCJ lần thứ 1
+01:04:00 [INFO]       ✅ DONE: B0G337XKCJ | 7 ảnh | 64 specs
+01:04:05 [INFO]    🔹 [293/8563] Cào URL: https://www.amazon.com/dp/B0GDDXQ1QT lần thứ 1
+01:04:19 [INFO]       ✅ DONE: B0GDDXQ1QT | 7 ảnh | 50 specs
+01:04:23 [INFO]    🔹 [294/8563] Cào URL: https://www.amazon.com/dp/B0GG8YT52G lần thứ 1
+01:04:37 [INFO]       ✅ DONE: B0GG8YT52G | 7 ảnh | 50 specs
+01:04:37 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+01:04:42 [INFO]    🔹 [295/8563] Cào URL: https://www.amazon.com/dp/B0GG8H84RD lần thứ 1
+01:04:58 [INFO]       ✅ DONE: B0GG8H84RD | 7 ảnh | 51 specs
+01:05:02 [INFO]    🔹 [296/8563] Cào URL: https://www.amazon.com/dp/B0GG8Y8XWG lần thứ 1
+01:05:16 [INFO]       ✅ DONE: B0GG8Y8XWG | 7 ảnh | 51 specs
+01:05:21 [INFO]    🔹 [297/8563] Cào URL: https://www.amazon.com/dp/B0GG93DWC5 lần thứ 1
+01:05:35 [INFO]       ✅ DONE: B0GG93DWC5 | 7 ảnh | 50 specs
+01:05:39 [INFO]    🔹 [298/8563] Cào URL: https://www.amazon.com/dp/B0GG9CY3MV lần thứ 1
+01:05:53 [INFO]       ✅ DONE: B0GG9CY3MV | 7 ảnh | 49 specs
+01:05:58 [INFO]    🔹 [299/8563] Cào URL: https://www.amazon.com/dp/B0DZCJMH37 lần thứ 1
+01:06:18 [INFO]       ✅ DONE: B0DZCJMH37 | 7 ảnh | 66 specs
+01:06:21 [INFO]    🔹 [300/8563] Cào URL: https://www.amazon.com/dp/B0DZCLZW2C lần thứ 1
+01:06:39 [INFO]       ✅ DONE: B0DZCLZW2C | 7 ảnh | 64 specs
+01:06:42 [INFO]    🔹 [301/8563] Cào URL: https://www.amazon.com/dp/B0DZCGVZ1C lần thứ 1
+01:06:59 [INFO]       ✅ DONE: B0DZCGVZ1C | 7 ảnh | 50 specs
+01:07:02 [INFO]    🔹 [302/8563] Cào URL: https://www.amazon.com/dp/B0FSNSNPWB lần thứ 1
+01:07:16 [INFO]       ✅ DONE: B0FSNSNPWB | 7 ảnh | 52 specs
+01:07:20 [INFO]    🔹 [303/8563] Cào URL: https://www.amazon.com/dp/B0GBTDQ891 lần thứ 1
+01:07:38 [INFO]       ✅ DONE: B0GBTDQ891 | 7 ảnh | 61 specs
+01:07:41 [INFO]    🔹 [304/8563] Cào URL: https://www.amazon.com/dp/B0G1YCS68V lần thứ 1
+01:07:56 [INFO]       ✅ DONE: B0G1YCS68V | 6 ảnh | 54 specs
+01:07:56 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+01:08:00 [INFO]    🔹 [305/8563] Cào URL: https://www.amazon.com/dp/B0GTJT45HH lần thứ 1
+01:08:23 [INFO]       ✅ DONE: B0GTJT45HH | 7 ảnh | 88 specs
+01:08:27 [INFO]    🔹 [306/8563] Cào URL: https://www.amazon.com/dp/B0GTJYSFF2 lần thứ 1
+01:08:46 [INFO]       ✅ DONE: B0GTJYSFF2 | 7 ảnh | 88 specs
+01:08:51 [INFO]    🔹 [307/8563] Cào URL: https://www.amazon.com/dp/B0GTK32MDR lần thứ 1
+01:09:09 [INFO]       ✅ DONE: B0GTK32MDR | 7 ảnh | 88 specs
+01:09:14 [INFO]    🔹 [308/8563] Cào URL: https://www.amazon.com/dp/B0CQB84CTP lần thứ 1
+01:09:32 [INFO]       ✅ DONE: B0CQB84CTP | 7 ảnh | 75 specs
+01:09:37 [INFO]    🔹 [309/8563] Cào URL: https://www.amazon.com/dp/B0G5QRJQST lần thứ 1
+01:09:51 [INFO]       ✅ DONE: B0G5QRJQST | 6 ảnh | 52 specs
+01:09:56 [INFO]    🔹 [310/8563] Cào URL: https://www.amazon.com/dp/B0CF63MF26 lần thứ 1
+01:10:12 [INFO]       ✅ DONE: B0CF63MF26 | 7 ảnh | 62 specs
+01:10:15 [INFO]    🔹 [311/8563] Cào URL: https://www.amazon.com/dp/B0CF67DYV9 lần thứ 1
+01:10:32 [INFO]       ✅ DONE: B0CF67DYV9 | 7 ảnh | 64 specs
+01:10:35 [INFO]    🔹 [312/8563] Cào URL: https://www.amazon.com/dp/B0F5NNFQTV lần thứ 1
+01:10:52 [INFO]       ✅ DONE: B0F5NNFQTV | 7 ảnh | 58 specs
+01:10:55 [INFO]    🔹 [313/8563] Cào URL: https://www.amazon.com/dp/B0F5NMMFN4 lần thứ 1
+01:11:17 [INFO]       ✅ DONE: B0F5NMMFN4 | 7 ảnh | 58 specs
+01:11:22 [INFO]    🔹 [314/8563] Cào URL: https://www.amazon.com/dp/B0F5NNHXQ1 lần thứ 1
+01:11:37 [INFO]       ✅ DONE: B0F5NNHXQ1 | 7 ảnh | 58 specs
+01:11:37 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+01:11:40 [INFO]    🔹 [315/8563] Cào URL: https://www.amazon.com/dp/B0GQ24QN9V lần thứ 1
+01:11:59 [INFO]       ✅ DONE: B0GQ24QN9V | 7 ảnh | 34 specs
+01:12:04 [INFO]    🔹 [316/8563] Cào URL: https://www.amazon.com/dp/B0GNLVGJZ2 lần thứ 1
+01:12:20 [INFO]       ✅ DONE: B0GNLVGJZ2 | 7 ảnh | 34 specs
+01:12:23 [INFO]    🔹 [317/8563] Cào URL: https://www.amazon.com/dp/B0F3R3ZG6H lần thứ 1
+01:12:39 [INFO]       ✅ DONE: B0F3R3ZG6H | 3 ảnh | 74 specs
+01:12:43 [INFO]    🔹 [318/8563] Cào URL: https://www.amazon.com/dp/B0GQRLZB3R lần thứ 1
+01:13:04 [INFO]       ✅ DONE: B0GQRLZB3R | 7 ảnh | 68 specs
+01:13:07 [INFO]    🔹 [319/8563] Cào URL: https://www.amazon.com/dp/B0GQRH4GJX lần thứ 1
+01:13:25 [INFO]       ✅ DONE: B0GQRH4GJX | 7 ảnh | 59 specs
+01:13:28 [INFO]    🔹 [320/8563] Cào URL: https://www.amazon.com/dp/B0FCJBCB9Y lần thứ 1
+01:13:44 [INFO]       ✅ DONE: B0FCJBCB9Y | 7 ảnh | 57 specs
+01:13:49 [INFO]    🔹 [321/8563] Cào URL: https://www.amazon.com/dp/B0DDSRDFRY lần thứ 1
+01:14:07 [INFO]       ✅ DONE: B0DDSRDFRY | 7 ảnh | 75 specs
+01:14:10 [INFO]    🔹 [322/8563] Cào URL: https://www.amazon.com/dp/B0CW85XCD8 lần thứ 1
+01:14:27 [INFO]       ✅ DONE: B0CW85XCD8 | 7 ảnh | 72 specs
+01:14:32 [INFO]    🔹 [323/8563] Cào URL: https://www.amazon.com/dp/B0DXDJRBSR lần thứ 1
+01:14:48 [INFO]       ✅ DONE: B0DXDJRBSR | 7 ảnh | 55 specs
+01:14:51 [INFO]    🔹 [324/8563] Cào URL: https://www.amazon.com/dp/B0DVB2Q17L lần thứ 1
+01:15:05 [INFO]       ✅ DONE: B0DVB2Q17L | 7 ảnh | 55 specs
+01:15:05 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+01:15:09 [INFO]    🔹 [325/8563] Cào URL: https://www.amazon.com/dp/B0D3JLHQ8K lần thứ 1
+01:15:29 [INFO]       ✅ DONE: B0D3JLHQ8K | 6 ảnh | 78 specs
+01:15:33 [INFO]    🔹 [326/8563] Cào URL: https://www.amazon.com/dp/B0DTC5N26L lần thứ 1
+01:15:50 [INFO]       ✅ DONE: B0DTC5N26L | 7 ảnh | 58 specs
+01:15:53 [INFO]    🔹 [327/8563] Cào URL: https://www.amazon.com/dp/B0DVC4C5XV lần thứ 1
+01:16:08 [INFO]       ✅ DONE: B0DVC4C5XV | 7 ảnh | 54 specs
+01:16:12 [INFO]    🔹 [328/8563] Cào URL: https://www.amazon.com/dp/B0DVBWGM56 lần thứ 1
+01:16:26 [INFO]       ✅ DONE: B0DVBWGM56 | 7 ảnh | 55 specs
+01:16:31 [INFO]    🔹 [329/8563] Cào URL: https://www.amazon.com/dp/B0FDGJFN1N lần thứ 1
+01:16:47 [INFO]       ✅ DONE: B0FDGJFN1N | 7 ảnh | 59 specs
+01:16:51 [INFO]    🔹 [330/8563] Cào URL: https://www.amazon.com/dp/B0GSZ9P4L6 lần thứ 1
+01:17:06 [INFO]       ✅ DONE: B0GSZ9P4L6 | 7 ảnh | 48 specs
+01:17:10 [INFO]    🔹 [331/8563] Cào URL: https://www.amazon.com/dp/B0GSZ71XNP lần thứ 1
+01:17:24 [INFO]       ✅ DONE: B0GSZ71XNP | 7 ảnh | 27 specs
+01:17:28 [INFO]    🔹 [332/8563] Cào URL: https://www.amazon.com/dp/B0GSZL9N68 lần thứ 1
+01:17:41 [INFO]       ✅ DONE: B0GSZL9N68 | 7 ảnh | 27 specs
+01:17:45 [INFO]    🔹 [333/8563] Cào URL: https://www.amazon.com/dp/B0DT1NZWQF lần thứ 1
+01:18:03 [INFO]       ✅ DONE: B0DT1NZWQF | 7 ảnh | 50 specs
+01:18:07 [INFO]    🔹 [334/8563] Cào URL: https://www.amazon.com/dp/B0DT1LZJK3 lần thứ 1
+01:18:26 [INFO]       ✅ DONE: B0DT1LZJK3 | 7 ảnh | 63 specs
+01:18:26 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+01:18:30 [INFO]    🔹 [335/8563] Cào URL: https://www.amazon.com/dp/B0DT1MCQX9 lần thứ 1
+01:18:49 [INFO]       ✅ DONE: B0DT1MCQX9 | 7 ảnh | 64 specs
+01:18:54 [INFO]    🔹 [336/8563] Cào URL: https://www.amazon.com/dp/B0GT91R7CJ lần thứ 1
+01:19:05 [INFO]       ✅ DONE: B0GT91R7CJ | 7 ảnh | 29 specs
+01:19:09 [INFO]    🔹 [337/8563] Cào URL: https://www.amazon.com/dp/B0GT8XNJ7X lần thứ 1
+01:19:21 [INFO]       ✅ DONE: B0GT8XNJ7X | 7 ảnh | 29 specs
+01:19:25 [INFO]    🔹 [338/8563] Cào URL: https://www.amazon.com/dp/B0GKR1XCNY lần thứ 1
+01:19:43 [INFO]       ✅ DONE: B0GKR1XCNY | 7 ảnh | 59 specs
+01:19:47 [INFO]    🔹 [339/8563] Cào URL: https://www.amazon.com/dp/B0GDWWW3Z4 lần thứ 1
+01:20:03 [INFO]       ✅ DONE: B0GDWWW3Z4 | 7 ảnh | 61 specs
+01:20:08 [INFO]    🔹 [340/8563] Cào URL: https://www.amazon.com/dp/B0GDWMZNYW lần thứ 1
+01:20:24 [INFO]       ✅ DONE: B0GDWMZNYW | 7 ảnh | 59 specs
+01:20:27 [INFO]    🔹 [341/8563] Cào URL: https://www.amazon.com/dp/B0FSG9TTPB lần thứ 1
+01:20:44 [INFO]       ✅ DONE: B0FSG9TTPB | 7 ảnh | 64 specs
+01:20:47 [INFO]    🔹 [342/8563] Cào URL: https://www.amazon.com/dp/B0GKR1XQ3F lần thứ 1
+01:21:05 [INFO]       ✅ DONE: B0GKR1XQ3F | 7 ảnh | 57 specs
+01:21:08 [INFO]    🔹 [343/8563] Cào URL: https://www.amazon.com/dp/B0GDXHD2RP lần thứ 1
+01:21:24 [INFO]       ✅ DONE: B0GDXHD2RP | 7 ảnh | 64 specs
+01:21:27 [INFO]    🔹 [344/8563] Cào URL: https://www.amazon.com/dp/B0GDXF98HP lần thứ 1
+01:21:44 [INFO]       ✅ DONE: B0GDXF98HP | 7 ảnh | 61 specs
+01:21:44 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+01:21:47 [INFO]    🔹 [345/8563] Cào URL: https://www.amazon.com/dp/B0FK4TVBFS lần thứ 1
+01:22:07 [INFO]       ✅ DONE: B0FK4TVBFS | 7 ảnh | 59 specs
+01:22:12 [INFO]    🔹 [346/8563] Cào URL: https://www.amazon.com/dp/B0FSGCYC4S lần thứ 1
+01:22:27 [INFO]       ✅ DONE: B0FSGCYC4S | 7 ảnh | 64 specs
+01:22:32 [INFO]    🔹 [347/8563] Cào URL: https://www.amazon.com/dp/B0G6GLNJXZ lần thứ 1
+01:22:51 [INFO]       ✅ DONE: B0G6GLNJXZ | 7 ảnh | 64 specs
+01:22:55 [INFO]    🔹 [348/8563] Cào URL: https://www.amazon.com/dp/B0D3JCPJGY lần thứ 1
+01:23:13 [INFO]       ✅ DONE: B0D3JCPJGY | 6 ảnh | 76 specs
+01:23:17 [INFO]    🔹 [349/8563] Cào URL: https://www.amazon.com/dp/B0D3JLLSMM lần thứ 1
+01:23:33 [INFO]       ✅ DONE: B0D3JLLSMM | 6 ảnh | 76 specs
+01:23:37 [INFO]    🔹 [350/8563] Cào URL: https://www.amazon.com/dp/B0D3JLKD2H lần thứ 1
+01:23:54 [INFO]       ✅ DONE: B0D3JLKD2H | 6 ảnh | 76 specs
+01:23:57 [INFO]    🔹 [351/8563] Cào URL: https://www.amazon.com/dp/B0FC8QQ9DN lần thứ 1
+01:24:14 [INFO]       ✅ DONE: B0FC8QQ9DN | 7 ảnh | 58 specs
+01:24:18 [INFO]    🔹 [352/8563] Cào URL: https://www.amazon.com/dp/B0CWB3QTGF lần thứ 1
+01:24:36 [INFO]       ✅ DONE: B0CWB3QTGF | 7 ảnh | 67 specs
+01:24:40 [INFO]    🔹 [353/8563] Cào URL: https://www.amazon.com/dp/B0FC2DDMD4 lần thứ 1
+01:24:59 [INFO]       ✅ DONE: B0FC2DDMD4 | 7 ảnh | 62 specs
+01:25:02 [INFO]    🔹 [354/8563] Cào URL: https://www.amazon.com/dp/B0FC96P4NN lần thứ 1
+01:25:19 [INFO]       ✅ DONE: B0FC96P4NN | 7 ảnh | 56 specs
+01:25:19 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+01:25:23 [INFO]    🔹 [355/8563] Cào URL: https://www.amazon.com/dp/B0FC9CZNH2 lần thứ 1
+01:25:41 [INFO]       ✅ DONE: B0FC9CZNH2 | 7 ảnh | 57 specs
+01:25:45 [INFO]    🔹 [356/8563] Cào URL: https://www.amazon.com/dp/B0F258Z23V lần thứ 1
+01:25:46 [WARNING] ⚠️ Dính CAPTCHA! Đang khởi động lại trình duyệt...
+01:25:51 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+01:26:00 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+01:26:13 [INFO] ✅ Đã chuyển vùng thành công.
+01:26:13 [INFO]    🔹 [356/8563] Cào URL: https://www.amazon.com/dp/B0F258Z23V lần thứ 2
+01:26:14 [WARNING] ⚠️ Dính CAPTCHA! Đang khởi động lại trình duyệt...
+01:26:18 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+01:26:28 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+01:26:41 [INFO] ✅ Đã chuyển vùng thành công.
+01:26:45 [INFO]    🔹 [357/8563] Cào URL: https://www.amazon.com/dp/B0CRR6YQ6N lần thứ 1
+01:27:02 [INFO]       ✅ DONE: B0CRR6YQ6N | 7 ảnh | 73 specs
+01:27:07 [INFO]    🔹 [358/8563] Cào URL: https://www.amazon.com/dp/B0GL23P4F3 lần thứ 1
+01:27:21 [INFO]       ✅ DONE: B0GL23P4F3 | 6 ảnh | 41 specs
+01:27:25 [INFO]    🔹 [359/8563] Cào URL: https://www.amazon.com/dp/B0D7SK7H8N lần thứ 1
+01:27:43 [INFO]       ✅ DONE: B0D7SK7H8N | 7 ảnh | 76 specs
+01:27:48 [INFO]    🔹 [360/8563] Cào URL: https://www.amazon.com/dp/B0GQT4TL26 lần thứ 1
+01:28:04 [INFO]       ✅ DONE: B0GQT4TL26 | 7 ảnh | 55 specs
+01:28:09 [INFO]    🔹 [361/8563] Cào URL: https://www.amazon.com/dp/B0GQSSPLZR lần thứ 1
+01:28:24 [INFO]       ✅ DONE: B0GQSSPLZR | 7 ảnh | 53 specs
+01:28:29 [INFO]    🔹 [362/8563] Cào URL: https://www.amazon.com/dp/B08TZX74L9 lần thứ 1
+01:28:44 [INFO]       ✅ DONE: B08TZX74L9 | 7 ảnh | 61 specs
+01:28:49 [INFO]    🔹 [363/8563] Cào URL: https://www.amazon.com/dp/B0GQST1C61 lần thứ 1
+01:29:04 [INFO]       ✅ DONE: B0GQST1C61 | 7 ảnh | 51 specs
+01:29:08 [INFO]    🔹 [364/8563] Cào URL: https://www.amazon.com/dp/B0DS6N7VBC lần thứ 1
+01:29:23 [INFO]       ✅ DONE: B0DS6N7VBC | 7 ảnh | 55 specs
+01:29:27 [INFO]    🔹 [365/8563] Cào URL: https://www.amazon.com/dp/B0G5R7S83R lần thứ 1
+01:29:40 [INFO]       ✅ DONE: B0G5R7S83R | 6 ảnh | 54 specs
+01:29:40 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+01:29:44 [INFO]    🔹 [366/8563] Cào URL: https://www.amazon.com/dp/B0D7VM7CJZ lần thứ 1
+01:30:04 [INFO]       ✅ DONE: B0D7VM7CJZ | 7 ảnh | 68 specs
+01:30:07 [INFO]    🔹 [367/8563] Cào URL: https://www.amazon.com/dp/B0GHR7KZKM lần thứ 1
+01:30:23 [INFO]       ✅ DONE: B0GHR7KZKM | 7 ảnh | 48 specs
+01:30:27 [INFO]    🔹 [368/8563] Cào URL: https://www.amazon.com/dp/B08NC4BZVZ lần thứ 1
+01:30:43 [INFO]       ✅ DONE: B08NC4BZVZ | 7 ảnh | 53 specs
+01:30:47 [INFO]    🔹 [369/8563] Cào URL: https://www.amazon.com/dp/B0GHQWQL3J lần thứ 1
+01:31:01 [INFO]       ✅ DONE: B0GHQWQL3J | 7 ảnh | 49 specs
+01:31:05 [INFO]    🔹 [370/8563] Cào URL: https://www.amazon.com/dp/B0BWNZ3Y3P lần thứ 1
+01:31:22 [INFO]       ✅ DONE: B0BWNZ3Y3P | 7 ảnh | 85 specs
+01:31:27 [INFO]    🔹 [371/8563] Cào URL: https://www.amazon.com/dp/B0G5R4YB28 lần thứ 1
+01:31:41 [INFO]       ✅ DONE: B0G5R4YB28 | 7 ảnh | 53 specs
+01:31:46 [INFO]    🔹 [372/8563] Cào URL: https://www.amazon.com/dp/B0CQMW5QP8 lần thứ 1
+01:32:03 [INFO]       ✅ DONE: B0CQMW5QP8 | 7 ảnh | 68 specs
+01:32:07 [INFO]    🔹 [373/8563] Cào URL: https://www.amazon.com/dp/B0G1CM9F6H lần thứ 1
+01:32:20 [INFO]       ✅ DONE: B0G1CM9F6H | 7 ảnh | 52 specs
+01:32:25 [INFO]    🔹 [374/8563] Cào URL: https://www.amazon.com/dp/B0CQN41Q6V lần thứ 1
+01:32:41 [INFO]       ✅ DONE: B0CQN41Q6V | 7 ảnh | 71 specs
+01:32:44 [INFO]    🔹 [375/8563] Cào URL: https://www.amazon.com/dp/B0CQN3FDH5 lần thứ 1
+01:33:02 [INFO]       ✅ DONE: B0CQN3FDH5 | 4 ảnh | 81 specs
+01:33:02 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+01:33:05 [INFO]    🔹 [376/8563] Cào URL: https://www.amazon.com/dp/B0GGVD14F4 lần thứ 1
+01:33:20 [INFO]       ✅ DONE: B0GGVD14F4 | 7 ảnh | 59 specs
+01:33:23 [INFO]    🔹 [377/8563] Cào URL: https://www.amazon.com/dp/B0G51RPSZ5 lần thứ 1
+01:33:36 [INFO]       ✅ DONE: B0G51RPSZ5 | 7 ảnh | 36 specs
+01:33:39 [INFO]    🔹 [378/8563] Cào URL: https://www.amazon.com/dp/B0FX41YZ2D lần thứ 1
+01:33:54 [INFO]       ✅ DONE: B0FX41YZ2D | 7 ảnh | 59 specs
+01:33:58 [INFO]    🔹 [379/8563] Cào URL: https://www.amazon.com/dp/B0FX3Z2B72 lần thứ 1
+01:34:08 [INFO]       ✅ DONE: B0FX3Z2B72 | 7 ảnh | 28 specs
+01:34:12 [INFO]    🔹 [380/8563] Cào URL: https://www.amazon.com/dp/B0FX3XFYMP lần thứ 1
+01:34:22 [INFO]       ✅ DONE: B0FX3XFYMP | 7 ảnh | 28 specs
+01:34:26 [INFO]    🔹 [381/8563] Cào URL: https://www.amazon.com/dp/B0FX3XVZZS lần thứ 1
+01:34:38 [INFO]       ✅ DONE: B0FX3XVZZS | 7 ảnh | 28 specs
+01:34:42 [INFO]    🔹 [382/8563] Cào URL: https://www.amazon.com/dp/B0FX3Y6717 lần thứ 1
+01:34:54 [INFO]       ✅ DONE: B0FX3Y6717 | 7 ảnh | 37 specs
+01:34:59 [INFO]    🔹 [383/8563] Cào URL: https://www.amazon.com/dp/B07VZBFTG9 lần thứ 1
+01:35:11 [INFO]       ✅ DONE: B07VZBFTG9 | 1 ảnh | 48 specs
+01:35:16 [INFO]    🔹 [384/8563] Cào URL: https://www.amazon.com/dp/B0FKLTGV98 lần thứ 1
+01:35:30 [INFO]       ✅ DONE: B0FKLTGV98 | 7 ảnh | 49 specs
+01:35:35 [INFO]    🔹 [385/8563] Cào URL: https://www.amazon.com/dp/B0FSL1YG84 lần thứ 1
+01:35:49 [INFO]       ✅ DONE: B0FSL1YG84 | 7 ảnh | 47 specs
+01:35:49 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+01:35:53 [INFO]    🔹 [386/8563] Cào URL: https://www.amazon.com/dp/B0D7VNR1CL lần thứ 1
+01:36:12 [INFO]       ✅ DONE: B0D7VNR1CL | 7 ảnh | 73 specs
+01:36:15 [INFO]    🔹 [387/8563] Cào URL: https://www.amazon.com/dp/B0FKM12YWJ lần thứ 1
+01:36:29 [INFO]       ✅ DONE: B0FKM12YWJ | 7 ảnh | 51 specs
+01:36:34 [INFO]    🔹 [388/8563] Cào URL: https://www.amazon.com/dp/B0DR28D6NK lần thứ 1
+01:36:48 [INFO]       ✅ DONE: B0DR28D6NK | 7 ảnh | 51 specs
+01:36:53 [INFO]    🔹 [389/8563] Cào URL: https://www.amazon.com/dp/B07KF1TC9T lần thứ 1
+01:37:12 [INFO]       ✅ DONE: B07KF1TC9T | 7 ảnh | 89 specs
+01:37:17 [INFO]    🔹 [390/8563] Cào URL: https://www.amazon.com/dp/B0FGYGBY3C lần thứ 1
+01:37:30 [INFO]       ✅ DONE: B0FGYGBY3C | 7 ảnh | 42 specs
+01:37:34 [INFO]    🔹 [391/8563] Cào URL: https://www.amazon.com/dp/B081GMHQLR lần thứ 1
+01:37:53 [INFO]       ✅ DONE: B081GMHQLR | 1 ảnh | 82 specs
+01:37:57 [INFO]    🔹 [392/8563] Cào URL: https://www.amazon.com/dp/B0CPKSZ8VL lần thứ 1
+01:38:14 [INFO]       ✅ DONE: B0CPKSZ8VL | 7 ảnh | 78 specs
+01:38:17 [INFO]    🔹 [393/8563] Cào URL: https://www.amazon.com/dp/B0GL1T4JRR lần thứ 1
+01:38:30 [INFO]       ✅ DONE: B0GL1T4JRR | 7 ảnh | 48 specs
+01:38:33 [INFO]    🔹 [394/8563] Cào URL: https://www.amazon.com/dp/B0DJNSB4F2 lần thứ 1
+01:38:47 [INFO]       ✅ DONE: B0DJNSB4F2 | 7 ảnh | 51 specs
+01:38:50 [INFO]    🔹 [395/8563] Cào URL: https://www.amazon.com/dp/B0FT7ZF6H3 lần thứ 1
+01:39:03 [INFO]       ✅ DONE: B0FT7ZF6H3 | 7 ảnh | 51 specs
+01:39:03 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+01:39:06 [INFO]    🔹 [396/8563] Cào URL: https://www.amazon.com/dp/B0DCW8BGL1 lần thứ 1
+01:39:25 [INFO]       ✅ DONE: B0DCW8BGL1 | 7 ảnh | 77 specs
+01:39:29 [INFO]    🔹 [397/8563] Cào URL: https://www.amazon.com/dp/B0CDQTSSTR lần thứ 1
+01:39:49 [INFO]       ✅ DONE: B0CDQTSSTR | 7 ảnh | 73 specs
+01:39:52 [INFO]    🔹 [398/8563] Cào URL: https://www.amazon.com/dp/B0CDQVXTT6 lần thứ 1
+01:40:10 [INFO]       ✅ DONE: B0CDQVXTT6 | 7 ảnh | 68 specs
+01:40:14 [INFO]    🔹 [399/8563] Cào URL: https://www.amazon.com/dp/B0CDQRQRDS lần thứ 1
+01:40:31 [INFO]       ✅ DONE: B0CDQRQRDS | 7 ảnh | 71 specs
+01:40:35 [INFO]    🔹 [400/8563] Cào URL: https://www.amazon.com/dp/B0DZP7HZS8 lần thứ 1
+01:40:50 [INFO]       ✅ DONE: B0DZP7HZS8 | 6 ảnh | 54 specs
+01:40:53 [INFO]    🔹 [401/8563] Cào URL: https://www.amazon.com/dp/B0G2LNHSZB lần thứ 1
+01:40:54 [WARNING] ⚠️ Dính CAPTCHA! Đang khởi động lại trình duyệt...
+01:40:58 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+01:41:10 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+01:41:20 [INFO] ✅ Đã chuyển vùng thành công.
+01:41:20 [INFO]    🔹 [401/8563] Cào URL: https://www.amazon.com/dp/B0G2LNHSZB lần thứ 2
+01:41:22 [WARNING] ⚠️ Dính CAPTCHA! Đang khởi động lại trình duyệt...
+01:41:26 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+01:41:33 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+01:41:44 [INFO] ✅ Đã chuyển vùng thành công.
+01:41:48 [INFO]    🔹 [402/8563] Cào URL: https://www.amazon.com/dp/B0GK1DQ7WN lần thứ 1
+01:42:07 [INFO]       ✅ DONE: B0GK1DQ7WN | 7 ảnh | 53 specs
+01:42:11 [INFO]    🔹 [403/8563] Cào URL: https://www.amazon.com/dp/B0GLJZK3P3 lần thứ 1
+01:42:28 [INFO]       ✅ DONE: B0GLJZK3P3 | 6 ảnh | 63 specs
+01:42:33 [INFO]    🔹 [404/8563] Cào URL: https://www.amazon.com/dp/B0GP9GGWC2 lần thứ 1
+01:42:49 [INFO]       ✅ DONE: B0GP9GGWC2 | 7 ảnh | 69 specs
+01:42:52 [INFO]    🔹 [405/8563] Cào URL: https://www.amazon.com/dp/B0GQBGFCJ8 lần thứ 1
+01:43:05 [INFO]       ✅ DONE: B0GQBGFCJ8 | 7 ảnh | 34 specs
+01:43:08 [INFO]    🔹 [406/8563] Cào URL: https://www.amazon.com/dp/B0GS9YV9F5 lần thứ 1
+01:43:23 [INFO]       ✅ DONE: B0GS9YV9F5 | 7 ảnh | 46 specs
+01:43:23 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+01:43:28 [INFO]    🔹 [407/8563] Cào URL: https://www.amazon.com/dp/B0G7JK41TG lần thứ 1
+01:43:45 [INFO]       ✅ DONE: B0G7JK41TG | 7 ảnh | 53 specs
+01:43:49 [INFO]    🔹 [408/8563] Cào URL: https://www.amazon.com/dp/B08P1YC33B lần thứ 1
+01:44:04 [INFO]       ✅ DONE: B08P1YC33B | 7 ảnh | 64 specs
+01:44:09 [INFO]    🔹 [409/8563] Cào URL: https://www.amazon.com/dp/B0DJH9WBLW lần thứ 1
+01:44:29 [INFO]       ✅ DONE: B0DJH9WBLW | 7 ảnh | 77 specs
+01:44:34 [INFO]    🔹 [410/8563] Cào URL: https://www.amazon.com/dp/B0GSYND3QQ lần thứ 1
+01:44:53 [INFO]       ✅ DONE: B0GSYND3QQ | 7 ảnh | 48 specs
+01:44:57 [INFO]    🔹 [411/8563] Cào URL: https://www.amazon.com/dp/B0FLK5FFNT lần thứ 1
+01:45:15 [INFO]       ✅ DONE: B0FLK5FFNT | 7 ảnh | 52 specs
+01:45:20 [INFO]    🔹 [412/8563] Cào URL: https://www.amazon.com/dp/B0GJD4BJHT lần thứ 1
+01:45:34 [INFO]       ✅ DONE: B0GJD4BJHT | 7 ảnh | 51 specs
+01:45:38 [INFO]    🔹 [413/8563] Cào URL: https://www.amazon.com/dp/B0DCP92GLB lần thứ 1
+01:45:51 [INFO]       ✅ DONE: B0DCP92GLB | 7 ảnh | 38 specs
+01:45:55 [INFO]    🔹 [414/8563] Cào URL: https://www.amazon.com/dp/B0GQRW7JR8 lần thứ 1
+01:46:07 [INFO]       ✅ DONE: B0GQRW7JR8 | 7 ảnh | 65 specs
+01:46:11 [INFO]    🔹 [415/8563] Cào URL: https://www.amazon.com/dp/B0FLK2BSRJ lần thứ 1
+01:46:26 [INFO]       ✅ DONE: B0FLK2BSRJ | 7 ảnh | 64 specs
+01:46:30 [INFO]    🔹 [416/8563] Cào URL: https://www.amazon.com/dp/B0FB9MC5TR lần thứ 1
+01:46:44 [INFO]       ✅ DONE: B0FB9MC5TR | 7 ảnh | 65 specs
+01:46:44 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+01:46:48 [INFO]    🔹 [417/8563] Cào URL: https://www.amazon.com/dp/B0FN9C4Y3H lần thứ 1
+01:47:01 [INFO]       ✅ DONE: B0FN9C4Y3H | 7 ảnh | 53 specs
+01:47:05 [INFO]    🔹 [418/8563] Cào URL: https://www.amazon.com/dp/B0FN8TX8MX lần thứ 1
+01:47:16 [INFO]       ✅ DONE: B0FN8TX8MX | 7 ảnh | 64 specs
+01:47:21 [INFO]    🔹 [419/8563] Cào URL: https://www.amazon.com/dp/B0FSGQS2SS lần thứ 1
+01:47:35 [INFO]       ✅ DONE: B0FSGQS2SS | 7 ảnh | 51 specs
+01:47:38 [INFO]    🔹 [420/8563] Cào URL: https://www.amazon.com/dp/B0GJTHVWKP lần thứ 1
+01:47:51 [INFO]       ✅ DONE: B0GJTHVWKP | 7 ảnh | 52 specs
+01:47:56 [INFO]    🔹 [421/8563] Cào URL: https://www.amazon.com/dp/B0GJTF557B lần thứ 1
+01:48:08 [INFO]       ✅ DONE: B0GJTF557B | 7 ảnh | 50 specs
+01:48:12 [INFO]    🔹 [422/8563] Cào URL: https://www.amazon.com/dp/B0GJTFHLCS lần thứ 1
+01:48:25 [INFO]       ✅ DONE: B0GJTFHLCS | 7 ảnh | 50 specs
+01:48:28 [INFO]    🔹 [423/8563] Cào URL: https://www.amazon.com/dp/B0GJTGXK71 lần thứ 1
+01:48:41 [INFO]       ✅ DONE: B0GJTGXK71 | 7 ảnh | 51 specs
+01:48:44 [INFO]    🔹 [424/8563] Cào URL: https://www.amazon.com/dp/B0GGGVJNZ5 lần thứ 1
+01:48:59 [INFO]       ✅ DONE: B0GGGVJNZ5 | 7 ảnh | 47 specs
+01:49:04 [INFO]    🔹 [425/8563] Cào URL: https://www.amazon.com/dp/B0CJGNTXPY lần thứ 1
+01:49:18 [INFO]       ✅ DONE: B0CJGNTXPY | 7 ảnh | 64 specs
+01:49:23 [INFO]    🔹 [426/8563] Cào URL: https://www.amazon.com/dp/B0BXRD41GM lần thứ 1
+01:49:38 [INFO]       ✅ DONE: B0BXRD41GM | 7 ảnh | 79 specs
+01:49:38 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+01:49:41 [INFO]    🔹 [427/8563] Cào URL: https://www.amazon.com/dp/B0GMWR2DV5 lần thứ 1
+01:49:56 [INFO]       ✅ DONE: B0GMWR2DV5 | 7 ảnh | 60 specs
+01:50:00 [INFO]    🔹 [428/8563] Cào URL: https://www.amazon.com/dp/B0GMWVNR3T lần thứ 1
+01:50:15 [INFO]       ✅ DONE: B0GMWVNR3T | 7 ảnh | 60 specs
+01:50:19 [INFO]    🔹 [429/8563] Cào URL: https://www.amazon.com/dp/B0GMWZLGNQ lần thứ 1
+01:50:33 [INFO]       ✅ DONE: B0GMWZLGNQ | 7 ảnh | 58 specs
+01:50:37 [INFO]    🔹 [430/8563] Cào URL: https://www.amazon.com/dp/B0GMWY2P9C lần thứ 1
+01:50:50 [INFO]       ✅ DONE: B0GMWY2P9C | 7 ảnh | 59 specs
+01:50:54 [INFO]    🔹 [431/8563] Cào URL: https://www.amazon.com/dp/B0DB67YDVX lần thứ 1
+01:51:11 [INFO]       ✅ DONE: B0DB67YDVX | 6 ảnh | 83 specs
+01:51:16 [INFO]    🔹 [432/8563] Cào URL: https://www.amazon.com/dp/B0DB66L7WY lần thứ 1
+01:51:31 [INFO]       ✅ DONE: B0DB66L7WY | 6 ảnh | 74 specs
+01:51:35 [INFO]    🔹 [433/8563] Cào URL: https://www.amazon.com/dp/B0CLH8YRTG lần thứ 1
+01:51:48 [INFO]       ✅ DONE: B0CLH8YRTG | 6 ảnh | 73 specs
+01:51:52 [INFO]    🔹 [434/8563] Cào URL: https://www.amazon.com/dp/B0CLHCMWWX lần thứ 1
+01:52:06 [INFO]       ✅ DONE: B0CLHCMWWX | 6 ảnh | 79 specs
+01:52:10 [INFO]    🔹 [435/8563] Cào URL: https://www.amazon.com/dp/B0CLHBW7DT lần thứ 1
+01:52:23 [INFO]       ✅ DONE: B0CLHBW7DT | 6 ảnh | 75 specs
+01:52:27 [INFO]    🔹 [436/8563] Cào URL: https://www.amazon.com/dp/B09TD1QN39 lần thứ 1
+01:52:43 [INFO]       ✅ DONE: B09TD1QN39 | 7 ảnh | 82 specs
+01:52:43 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+01:52:47 [INFO]    🔹 [437/8563] Cào URL: https://www.amazon.com/dp/B0GPS4FN3F lần thứ 1
+01:52:59 [INFO]       ✅ DONE: B0GPS4FN3F | 7 ảnh | 44 specs
+01:53:04 [INFO]    🔹 [438/8563] Cào URL: https://www.amazon.com/dp/B0GMT1TLVP lần thứ 1
+01:53:16 [INFO]       ✅ DONE: B0GMT1TLVP | 7 ảnh | 54 specs
+01:53:21 [INFO]    🔹 [439/8563] Cào URL: https://www.amazon.com/dp/B0DT7QHR3F lần thứ 1
+01:53:36 [INFO]       ✅ DONE: B0DT7QHR3F | 7 ảnh | 54 specs
+01:53:41 [INFO]    🔹 [440/8563] Cào URL: https://www.amazon.com/dp/B0GMS4ZCRK lần thứ 1
+01:53:53 [INFO]       ✅ DONE: B0GMS4ZCRK | 7 ảnh | 52 specs
+01:53:57 [INFO]    🔹 [441/8563] Cào URL: https://www.amazon.com/dp/B0GBZ2MVGP lần thứ 1
+01:54:08 [INFO]       ✅ DONE: B0GBZ2MVGP | 7 ảnh | 52 specs
+01:54:11 [INFO]    🔹 [442/8563] Cào URL: https://www.amazon.com/dp/B0GC173533 lần thứ 1
+01:54:21 [INFO]       ✅ DONE: B0GC173533 | 7 ảnh | 53 specs
+01:54:25 [INFO]    🔹 [443/8563] Cào URL: https://www.amazon.com/dp/B0GMSVS8S8 lần thứ 1
+01:54:37 [INFO]       ✅ DONE: B0GMSVS8S8 | 7 ảnh | 40 specs
+01:54:42 [INFO]    🔹 [444/8563] Cào URL: https://www.amazon.com/dp/B0GBZQ36X3 lần thứ 1
+01:54:54 [INFO]       ✅ DONE: B0GBZQ36X3 | 7 ảnh | 54 specs
+01:54:58 [INFO]    🔹 [445/8563] Cào URL: https://www.amazon.com/dp/B0GBZ4NHDY lần thứ 1
+01:55:11 [INFO]       ✅ DONE: B0GBZ4NHDY | 7 ảnh | 52 specs
+01:55:15 [INFO]    🔹 [446/8563] Cào URL: https://www.amazon.com/dp/B0DW1FVPK8 lần thứ 1
+01:55:31 [INFO]       ✅ DONE: B0DW1FVPK8 | 7 ảnh | 62 specs
+01:55:31 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+01:55:36 [INFO]    🔹 [447/8563] Cào URL: https://www.amazon.com/dp/B0G9CTCNC1 lần thứ 1
+01:55:49 [INFO]       ✅ DONE: B0G9CTCNC1 | 7 ảnh | 51 specs
+01:55:54 [INFO]    🔹 [448/8563] Cào URL: https://www.amazon.com/dp/B0DT7PJ4MJ lần thứ 1
+01:56:08 [INFO]       ✅ DONE: B0DT7PJ4MJ | 7 ảnh | 59 specs
+01:56:12 [INFO]    🔹 [449/8563] Cào URL: https://www.amazon.com/dp/B0GHBVXZS1 lần thứ 1
+01:56:24 [INFO]       ✅ DONE: B0GHBVXZS1 | 7 ảnh | 48 specs
+01:56:28 [INFO]    🔹 [450/8563] Cào URL: https://www.amazon.com/dp/B0GHBVZPVT lần thứ 1
+01:56:40 [INFO]       ✅ DONE: B0GHBVZPVT | 7 ảnh | 48 specs
+01:56:45 [INFO]    🔹 [451/8563] Cào URL: https://www.amazon.com/dp/B0GH9VVH5B lần thứ 1
+01:56:57 [INFO]       ✅ DONE: B0GH9VVH5B | 7 ảnh | 47 specs
+01:57:01 [INFO]    🔹 [452/8563] Cào URL: https://www.amazon.com/dp/B0GHB9ZFCZ lần thứ 1
+01:57:12 [INFO]       ✅ DONE: B0GHB9ZFCZ | 7 ảnh | 45 specs
+01:57:16 [INFO]    🔹 [453/8563] Cào URL: https://www.amazon.com/dp/B0GHBZMMWB lần thứ 1
+01:57:25 [INFO]       ✅ DONE: B0GHBZMMWB | 7 ảnh | 47 specs
+01:57:29 [INFO]    🔹 [454/8563] Cào URL: https://www.amazon.com/dp/B0GHB8P42Y lần thứ 1
+01:57:39 [INFO]       ✅ DONE: B0GHB8P42Y | 7 ảnh | 46 specs
+01:57:42 [INFO]    🔹 [455/8563] Cào URL: https://www.amazon.com/dp/B0GHBVTGM3 lần thứ 1
+01:57:53 [INFO]       ✅ DONE: B0GHBVTGM3 | 7 ảnh | 45 specs
+01:57:56 [INFO]    🔹 [456/8563] Cào URL: https://www.amazon.com/dp/B0DSLHKSQX lần thứ 1
+01:58:07 [INFO]       ✅ DONE: B0DSLHKSQX | 7 ảnh | 51 specs
+01:58:07 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+01:58:11 [INFO]    🔹 [457/8563] Cào URL: https://www.amazon.com/dp/B0CX1GF3RF lần thứ 1
+01:58:25 [INFO]       ✅ DONE: B0CX1GF3RF | 7 ảnh | 68 specs
+01:58:30 [INFO]    🔹 [458/8563] Cào URL: https://www.amazon.com/dp/B0FHPRX53T lần thứ 1
+01:58:43 [INFO]       ✅ DONE: B0FHPRX53T | 7 ảnh | 61 specs
+01:58:48 [INFO]    🔹 [459/8563] Cào URL: https://www.amazon.com/dp/B0FFQG56LC lần thứ 1
+01:58:59 [INFO]       ✅ DONE: B0FFQG56LC | 7 ảnh | 72 specs
+01:59:02 [INFO]    🔹 [460/8563] Cào URL: https://www.amazon.com/dp/B0DGLSB5NC lần thứ 1
+01:59:19 [INFO]       ✅ DONE: B0DGLSB5NC | 7 ảnh | 90 specs
+01:59:23 [INFO]    🔹 [461/8563] Cào URL: https://www.amazon.com/dp/B0DSLFZRH4 lần thứ 1
+01:59:35 [INFO]       ✅ DONE: B0DSLFZRH4 | 7 ảnh | 51 specs
+01:59:39 [INFO]    🔹 [462/8563] Cào URL: https://www.amazon.com/dp/B0DJH4XLBS lần thứ 1
+01:59:51 [INFO]       ✅ DONE: B0DJH4XLBS | 7 ảnh | 54 specs
+01:59:55 [INFO]    🔹 [463/8563] Cào URL: https://www.amazon.com/dp/B07QQB7552 lần thứ 1
+02:00:10 [INFO]       ✅ DONE: B07QQB7552 | 7 ảnh | 96 specs
+02:00:13 [INFO]    🔹 [464/8563] Cào URL: https://www.amazon.com/dp/B0GS88D3WK lần thứ 1
+02:00:25 [INFO]       ✅ DONE: B0GS88D3WK | 7 ảnh | 51 specs
+02:00:28 [INFO]    🔹 [465/8563] Cào URL: https://www.amazon.com/dp/B0CRDCFNHW lần thứ 1
+02:00:46 [INFO]       ✅ DONE: B0CRDCFNHW | 7 ảnh | 71 specs
+02:00:50 [INFO]    🔹 [466/8563] Cào URL: https://www.amazon.com/dp/B0D9X2BZQ4 lần thứ 1
+02:01:07 [INFO]       ✅ DONE: B0D9X2BZQ4 | 7 ảnh | 73 specs
+02:01:07 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+02:01:12 [INFO]    🔹 [467/8563] Cào URL: https://www.amazon.com/dp/B09LC9JWW8 lần thứ 1
+02:01:30 [INFO]       ✅ DONE: B09LC9JWW8 | 7 ảnh | 80 specs
+02:01:34 [INFO]    🔹 [468/8563] Cào URL: https://www.amazon.com/dp/B0FG1VZ355 lần thứ 1
+02:01:52 [INFO]       ✅ DONE: B0FG1VZ355 | 7 ảnh | 54 specs
+02:01:55 [INFO]    🔹 [469/8563] Cào URL: https://www.amazon.com/dp/B0G24VLNHL lần thứ 1
+02:02:13 [INFO]       ✅ DONE: B0G24VLNHL | 7 ảnh | 48 specs
+02:02:17 [INFO]    🔹 [470/8563] Cào URL: https://www.amazon.com/dp/B0FG1T8C1F lần thứ 1
+02:02:36 [INFO]       ✅ DONE: B0FG1T8C1F | 7 ảnh | 55 specs
+02:02:40 [INFO]    🔹 [471/8563] Cào URL: https://www.amazon.com/dp/B0FG1WMXYB lần thứ 1
+02:03:04 [INFO]       ✅ DONE: B0FG1WMXYB | 7 ảnh | 55 specs
+02:03:07 [INFO]    🔹 [472/8563] Cào URL: https://www.amazon.com/dp/B0FG1TXRQ1 lần thứ 1
+02:03:42 [INFO]       ✅ DONE: B0FG1TXRQ1 | 7 ảnh | 55 specs
+02:03:46 [INFO]    🔹 [473/8563] Cào URL: https://www.amazon.com/dp/B0FMXLDC3X lần thứ 1
+02:04:05 [INFO]       ✅ DONE: B0FMXLDC3X | 7 ảnh | 54 specs
+02:04:09 [INFO]    🔹 [474/8563] Cào URL: https://www.amazon.com/dp/B0FMXCXKJ7 lần thứ 1
+02:04:31 [INFO]       ✅ DONE: B0FMXCXKJ7 | 7 ảnh | 54 specs
+02:04:36 [INFO]    🔹 [475/8563] Cào URL: https://www.amazon.com/dp/B0FMXXMFP5 lần thứ 1
+02:04:55 [INFO]       ✅ DONE: B0FMXXMFP5 | 7 ảnh | 54 specs
+02:04:59 [INFO]    🔹 [476/8563] Cào URL: https://www.amazon.com/dp/B0GCZZ2CKB lần thứ 1
+02:05:16 [INFO]       ✅ DONE: B0GCZZ2CKB | 7 ảnh | 50 specs
+02:05:16 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+02:05:20 [INFO]    🔹 [477/8563] Cào URL: https://www.amazon.com/dp/B0DW24Z28P lần thứ 1
+02:05:36 [INFO]       ✅ DONE: B0DW24Z28P | 7 ảnh | 65 specs
+02:05:41 [INFO]    🔹 [478/8563] Cào URL: https://www.amazon.com/dp/B0CRCVJFQM lần thứ 1
+02:05:59 [INFO]       ✅ DONE: B0CRCVJFQM | 7 ảnh | 70 specs
+02:06:04 [INFO]    🔹 [479/8563] Cào URL: https://www.amazon.com/dp/B0DZZVLF6N lần thứ 1
+02:06:22 [INFO]       ✅ DONE: B0DZZVLF6N | 7 ảnh | 57 specs
+02:06:26 [INFO]    🔹 [480/8563] Cào URL: https://www.amazon.com/dp/B0CRD2YLLC lần thứ 1
+02:06:43 [INFO]       ✅ DONE: B0CRD2YLLC | 7 ảnh | 68 specs
+02:06:47 [INFO]    🔹 [481/8563] Cào URL: https://www.amazon.com/dp/B0FY7L624Y lần thứ 1
+02:07:01 [INFO]       ✅ DONE: B0FY7L624Y | 7 ảnh | 59 specs
+02:07:06 [INFO]    🔹 [482/8563] Cào URL: https://www.amazon.com/dp/B0FY7NKKQH lần thứ 1
+02:07:19 [INFO]       ✅ DONE: B0FY7NKKQH | 7 ảnh | 59 specs
+02:07:24 [INFO]    🔹 [483/8563] Cào URL: https://www.amazon.com/dp/B0FY7KWTJY lần thứ 1
+02:07:37 [INFO]       ✅ DONE: B0FY7KWTJY | 7 ảnh | 58 specs
+02:07:41 [INFO]    🔹 [484/8563] Cào URL: https://www.amazon.com/dp/B0GJRVJGL4 lần thứ 1
+02:07:54 [INFO]       ✅ DONE: B0GJRVJGL4 | 7 ảnh | 43 specs
+02:07:58 [INFO]    🔹 [485/8563] Cào URL: https://www.amazon.com/dp/B0GJRWLX6X lần thứ 1
+02:08:09 [INFO]       ✅ DONE: B0GJRWLX6X | 7 ảnh | 43 specs
+02:08:14 [INFO]    🔹 [486/8563] Cào URL: https://www.amazon.com/dp/B0GJRYKJMS lần thứ 1
+02:08:23 [INFO]       ✅ DONE: B0GJRYKJMS | 7 ảnh | 41 specs
+02:08:23 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+02:08:28 [INFO]    🔹 [487/8563] Cào URL: https://www.amazon.com/dp/B0GJRMGJJL lần thứ 1
+02:08:31 [WARNING]       [!] Không tìm thấy dp-container tại: https://www.amazon.com/dp/B0GJRMGJJL
+20:45:55 [INFO] Hệ thống khởi tạo thành công. Thư mục: D:\Hoctap_Code_PrivateProject\MiningMassiveData\craw_amazon\uncrawled
+20:45:55 [INFO] 🚀 Hệ thống khởi tạo thành công. Kết quả sẽ lưu tại: D:\Hoctap_Code_PrivateProject\MiningMassiveData\craw_amazon\metadata
+20:46:02 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+20:46:09 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+20:46:17 [INFO] ✅ Đã chuyển vùng thành công.
+20:46:17 [INFO] 📂 ĐANG XỬ LÝ DANH MỤC: ALL | File: ALL_UNCRAWLED_MERGED.csv
+20:46:17 [INFO] 🔎 Tìm thấy 8563 URL duy nhất.
+20:46:17 [INFO]    🔹 [487/8563] Cào URL: https://www.amazon.com/dp/B0GJRMGJJL lần thứ 1
+20:46:30 [INFO]       ✅ DONE: B0GJRMGJJL | 7 ảnh | 43 specs
+20:46:35 [INFO]    🔹 [488/8563] Cào URL: https://www.amazon.com/dp/B0GJS1Z843 lần thứ 1
+20:46:47 [INFO]       ✅ DONE: B0GJS1Z843 | 7 ảnh | 46 specs
+20:46:51 [INFO]    🔹 [489/8563] Cào URL: https://www.amazon.com/dp/B0GJS1QCPD lần thứ 1
+20:47:03 [INFO]       ✅ DONE: B0GJS1QCPD | 7 ảnh | 41 specs
+20:47:06 [INFO]    🔹 [490/8563] Cào URL: https://www.amazon.com/dp/B0GJS5D1PD lần thứ 1
+20:47:18 [INFO]       ✅ DONE: B0GJS5D1PD | 7 ảnh | 41 specs
+20:47:21 [INFO]    🔹 [491/8563] Cào URL: https://www.amazon.com/dp/B0GFB8N1V3 lần thứ 1
+20:47:34 [INFO]       ✅ DONE: B0GFB8N1V3 | 7 ảnh | 50 specs
+20:47:39 [INFO]    🔹 [492/8563] Cào URL: https://www.amazon.com/dp/B0GFB426LJ lần thứ 1
+20:47:52 [INFO]       ✅ DONE: B0GFB426LJ | 7 ảnh | 51 specs
+20:47:56 [INFO]    🔹 [493/8563] Cào URL: https://www.amazon.com/dp/B0GF9YPJ87 lần thứ 1
+20:48:09 [INFO]       ✅ DONE: B0GF9YPJ87 | 7 ảnh | 49 specs
+20:48:12 [INFO]    🔹 [494/8563] Cào URL: https://www.amazon.com/dp/B0GFB1XF8Q lần thứ 1
+20:48:25 [INFO]       ✅ DONE: B0GFB1XF8Q | 7 ảnh | 49 specs
+20:48:29 [INFO]    🔹 [495/8563] Cào URL: https://www.amazon.com/dp/B0GF9XHZ3D lần thứ 1
+20:48:41 [INFO]       ✅ DONE: B0GF9XHZ3D | 7 ảnh | 50 specs
+20:48:45 [INFO]    🔹 [496/8563] Cào URL: https://www.amazon.com/dp/B0GF9YZLP9 lần thứ 1
+20:48:57 [INFO]       ✅ DONE: B0GF9YZLP9 | 7 ảnh | 48 specs
+20:48:57 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+20:49:00 [INFO]    🔹 [497/8563] Cào URL: https://www.amazon.com/dp/B0GF9VKW5P lần thứ 1
+20:49:13 [INFO]       ✅ DONE: B0GF9VKW5P | 7 ảnh | 49 specs
+20:49:17 [INFO]    🔹 [498/8563] Cào URL: https://www.amazon.com/dp/B0DTWBM95H lần thứ 1
+20:49:35 [INFO]       ✅ DONE: B0DTWBM95H | 7 ảnh | 54 specs
+20:49:39 [INFO]    🔹 [499/8563] Cào URL: https://www.amazon.com/dp/B0DTW26PXY lần thứ 1
+20:49:57 [INFO]       ✅ DONE: B0DTW26PXY | 7 ảnh | 65 specs
+20:50:01 [INFO]    🔹 [500/8563] Cào URL: https://www.amazon.com/dp/B0GPZY9R6Y lần thứ 1
+20:50:11 [INFO]       ✅ DONE: B0GPZY9R6Y | 7 ảnh | 56 specs
+20:50:15 [INFO]    🔹 [501/8563] Cào URL: https://www.amazon.com/dp/B0GPZN9DJT lần thứ 1
+20:50:29 [INFO]       ✅ DONE: B0GPZN9DJT | 7 ảnh | 56 specs
+20:50:33 [INFO]    🔹 [502/8563] Cào URL: https://www.amazon.com/dp/B0GPZYKL8T lần thứ 1
+20:50:46 [INFO]       ✅ DONE: B0GPZYKL8T | 7 ảnh | 56 specs
+20:50:51 [INFO]    🔹 [503/8563] Cào URL: https://www.amazon.com/dp/B0FLNDQ34T lần thứ 1
+20:51:06 [INFO]       ✅ DONE: B0FLNDQ34T | 7 ảnh | 57 specs
+20:51:09 [INFO]    🔹 [504/8563] Cào URL: https://www.amazon.com/dp/B0FH9NMSZQ lần thứ 1
+20:51:33 [INFO]       ✅ DONE: B0FH9NMSZQ | 7 ảnh | 62 specs
+20:51:37 [INFO]    🔹 [505/8563] Cào URL: https://www.amazon.com/dp/B0FHB2T2TS lần thứ 1
+20:51:54 [INFO]       ✅ DONE: B0FHB2T2TS | 7 ảnh | 62 specs
+20:51:58 [INFO]    🔹 [506/8563] Cào URL: https://www.amazon.com/dp/B0FHB2YL8R lần thứ 1
+20:52:16 [INFO]       ✅ DONE: B0FHB2YL8R | 7 ảnh | 58 specs
+20:52:16 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+20:52:20 [INFO]    🔹 [507/8563] Cào URL: https://www.amazon.com/dp/B0FHB2LS29 lần thứ 1
+20:52:38 [INFO]       ✅ DONE: B0FHB2LS29 | 7 ảnh | 60 specs
+20:52:42 [INFO]    🔹 [508/8563] Cào URL: https://www.amazon.com/dp/B0FHB2J7JX lần thứ 1
+20:52:59 [INFO]       ✅ DONE: B0FHB2J7JX | 7 ảnh | 56 specs
+20:53:03 [INFO]    🔹 [509/8563] Cào URL: https://www.amazon.com/dp/B0FHB4X17T lần thứ 1
+20:53:21 [INFO]       ✅ DONE: B0FHB4X17T | 7 ảnh | 57 specs
+20:53:25 [INFO]    🔹 [510/8563] Cào URL: https://www.amazon.com/dp/B0FHB4NZB1 lần thứ 1
+20:53:42 [INFO]       ✅ DONE: B0FHB4NZB1 | 7 ảnh | 56 specs
+20:53:46 [INFO]    🔹 [511/8563] Cào URL: https://www.amazon.com/dp/B0FHB1YW3G lần thứ 1
+20:54:03 [INFO]       ✅ DONE: B0FHB1YW3G | 7 ảnh | 57 specs
+20:54:07 [INFO]    🔹 [512/8563] Cào URL: https://www.amazon.com/dp/B0FHB2X8HX lần thứ 1
+20:54:23 [INFO]       ✅ DONE: B0FHB2X8HX | 7 ảnh | 57 specs
+20:54:27 [INFO]    🔹 [513/8563] Cào URL: https://www.amazon.com/dp/B0FHB4NZB3 lần thứ 1
+20:54:44 [INFO]       ✅ DONE: B0FHB4NZB3 | 7 ảnh | 57 specs
+20:54:48 [INFO]    🔹 [514/8563] Cào URL: https://www.amazon.com/dp/B0FHB5G25C lần thứ 1
+20:55:04 [INFO]       ✅ DONE: B0FHB5G25C | 7 ảnh | 57 specs
+20:55:09 [INFO]    🔹 [515/8563] Cào URL: https://www.amazon.com/dp/B0FHB3YGXJ lần thứ 1
+20:55:26 [INFO]       ✅ DONE: B0FHB3YGXJ | 7 ảnh | 57 specs
+20:55:30 [INFO]    🔹 [516/8563] Cào URL: https://www.amazon.com/dp/B0FHB3LKYP lần thứ 1
+20:55:46 [INFO]       ✅ DONE: B0FHB3LKYP | 7 ảnh | 58 specs
+20:55:46 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+20:55:51 [INFO]    🔹 [517/8563] Cào URL: https://www.amazon.com/dp/B0FHB5SMLH lần thứ 1
+20:56:09 [INFO]       ✅ DONE: B0FHB5SMLH | 7 ảnh | 57 specs
+20:56:13 [INFO]    🔹 [518/8563] Cào URL: https://www.amazon.com/dp/B0F68RH487 lần thứ 1
+20:56:29 [INFO]       ✅ DONE: B0F68RH487 | 6 ảnh | 55 specs
+20:56:33 [INFO]    🔹 [519/8563] Cào URL: https://www.amazon.com/dp/B0GJHWT71C lần thứ 1
+20:56:49 [INFO]       ✅ DONE: B0GJHWT71C | 4 ảnh | 49 specs
+20:56:53 [INFO]    🔹 [520/8563] Cào URL: https://www.amazon.com/dp/B0CRD43GY6 lần thứ 1
+20:57:13 [INFO]       ✅ DONE: B0CRD43GY6 | 7 ảnh | 81 specs
+20:57:17 [INFO]    🔹 [521/8563] Cào URL: https://www.amazon.com/dp/B0G6D41845 lần thứ 1
+20:57:31 [INFO]       ✅ DONE: B0G6D41845 | 7 ảnh | 47 specs
+20:57:35 [INFO]    🔹 [522/8563] Cào URL: https://www.amazon.com/dp/B0FLNTBHTQ lần thứ 1
+20:57:51 [INFO]       ✅ DONE: B0FLNTBHTQ | 7 ảnh | 61 specs
+20:57:55 [INFO]    🔹 [523/8563] Cào URL: https://www.amazon.com/dp/B0DRVQZ9C6 lần thứ 1
+20:58:11 [INFO]       ✅ DONE: B0DRVQZ9C6 | 7 ảnh | 75 specs
+20:58:15 [INFO]    🔹 [524/8563] Cào URL: https://www.amazon.com/dp/B0G6DGFGRW lần thứ 1
+20:58:30 [INFO]       ✅ DONE: B0G6DGFGRW | 7 ảnh | 46 specs
+20:58:33 [INFO]    🔹 [525/8563] Cào URL: https://www.amazon.com/dp/B0G6D4YSNJ lần thứ 1
+20:58:48 [INFO]       ✅ DONE: B0G6D4YSNJ | 7 ảnh | 47 specs
+20:58:52 [INFO]    🔹 [526/8563] Cào URL: https://www.amazon.com/dp/B0G1YFT26X lần thứ 1
+20:59:06 [INFO]       ✅ DONE: B0G1YFT26X | 7 ảnh | 46 specs
+20:59:06 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+20:59:10 [INFO]    🔹 [527/8563] Cào URL: https://www.amazon.com/dp/B0G24STSP4 lần thứ 1
+20:59:24 [INFO]       ✅ DONE: B0G24STSP4 | 7 ảnh | 45 specs
+20:59:28 [INFO]    🔹 [528/8563] Cào URL: https://www.amazon.com/dp/B0G6D6X8C6 lần thứ 1
+20:59:42 [INFO]       ✅ DONE: B0G6D6X8C6 | 7 ảnh | 47 specs
+20:59:46 [INFO]    🔹 [529/8563] Cào URL: https://www.amazon.com/dp/B0G1Y9ZRY9 lần thứ 1
+20:59:59 [INFO]       ✅ DONE: B0G1Y9ZRY9 | 7 ảnh | 48 specs
+21:00:02 [INFO]    🔹 [530/8563] Cào URL: https://www.amazon.com/dp/B0GGMHD1K2 lần thứ 1
+21:00:16 [INFO]       ✅ DONE: B0GGMHD1K2 | 7 ảnh | 47 specs
+21:00:20 [INFO]    🔹 [531/8563] Cào URL: https://www.amazon.com/dp/B0F2BCYVQ9 lần thứ 1
+21:00:37 [INFO]       ✅ DONE: B0F2BCYVQ9 | 7 ảnh | 58 specs
+21:00:40 [INFO]    🔹 [532/8563] Cào URL: https://www.amazon.com/dp/B0D3FMJJ4P lần thứ 1
+21:00:58 [INFO]       ✅ DONE: B0D3FMJJ4P | 7 ảnh | 61 specs
+21:01:02 [INFO]    🔹 [533/8563] Cào URL: https://www.amazon.com/dp/B0BNJLQVG6 lần thứ 1
+21:01:18 [INFO]       ✅ DONE: B0BNJLQVG6 | 7 ảnh | 69 specs
+21:01:22 [INFO]    🔹 [534/8563] Cào URL: https://www.amazon.com/dp/B0F2BBJWCH lần thứ 1
+21:01:39 [INFO]       ✅ DONE: B0F2BBJWCH | 7 ảnh | 61 specs
+21:01:43 [INFO]    🔹 [535/8563] Cào URL: https://www.amazon.com/dp/B0F2PD3C8X lần thứ 1
+21:01:59 [INFO]       ✅ DONE: B0F2PD3C8X | 7 ảnh | 53 specs
+21:02:03 [INFO]    🔹 [536/8563] Cào URL: https://www.amazon.com/dp/B0F1H12JH3 lần thứ 1
+21:02:19 [INFO]       ✅ DONE: B0F1H12JH3 | 7 ảnh | 63 specs
+21:02:19 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+21:02:23 [INFO]    🔹 [537/8563] Cào URL: https://www.amazon.com/dp/B0GTG6WGLR lần thứ 1
+21:02:37 [INFO]       ✅ DONE: B0GTG6WGLR | 7 ảnh | 56 specs
+21:02:41 [INFO]    🔹 [538/8563] Cào URL: https://www.amazon.com/dp/B0DTWF99QB lần thứ 1
+21:02:57 [INFO]       ✅ DONE: B0DTWF99QB | 7 ảnh | 50 specs
+21:03:02 [INFO]    🔹 [539/8563] Cào URL: https://www.amazon.com/dp/B0F2BCD9C6 lần thứ 1
+21:03:18 [INFO]       ✅ DONE: B0F2BCD9C6 | 7 ảnh | 62 specs
+21:03:22 [INFO]    🔹 [540/8563] Cào URL: https://www.amazon.com/dp/B0DRN4P63N lần thứ 1
+21:03:35 [INFO]       ✅ DONE: B0DRN4P63N | 7 ảnh | 48 specs
+21:03:38 [INFO]    🔹 [541/8563] Cào URL: https://www.amazon.com/dp/B0DTNK957S lần thứ 1
+21:03:51 [INFO]       ✅ DONE: B0DTNK957S | 7 ảnh | 48 specs
+21:03:56 [INFO]    🔹 [542/8563] Cào URL: https://www.amazon.com/dp/B0GRGDP5C3 lần thứ 1
+21:04:09 [INFO]       ✅ DONE: B0GRGDP5C3 | 7 ảnh | 52 specs
+21:04:12 [INFO]    🔹 [543/8563] Cào URL: https://www.amazon.com/dp/B0G8F83YX7 lần thứ 1
+21:04:27 [INFO]       ✅ DONE: B0G8F83YX7 | 7 ảnh | 52 specs
+21:04:30 [INFO]    🔹 [544/8563] Cào URL: https://www.amazon.com/dp/B0G8FBT1M5 lần thứ 1
+21:04:44 [INFO]       ✅ DONE: B0G8FBT1M5 | 7 ảnh | 50 specs
+21:04:48 [INFO]    🔹 [545/8563] Cào URL: https://www.amazon.com/dp/B0G8FN4XTV lần thứ 1
+21:05:03 [INFO]       ✅ DONE: B0G8FN4XTV | 7 ảnh | 48 specs
+21:05:08 [INFO]    🔹 [546/8563] Cào URL: https://www.amazon.com/dp/B0GD7M1SNG lần thứ 1
+21:05:19 [INFO]       ✅ DONE: B0GD7M1SNG | 7 ảnh | 50 specs
+21:05:19 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+21:05:24 [INFO]    🔹 [547/8563] Cào URL: https://www.amazon.com/dp/B0F11447PL lần thứ 1
+21:05:39 [INFO]       ✅ DONE: B0F11447PL | 7 ảnh | 59 specs
+21:05:43 [INFO]    🔹 [548/8563] Cào URL: https://www.amazon.com/dp/B0F1C36V7Q lần thứ 1
+21:05:57 [INFO]       ✅ DONE: B0F1C36V7Q | 7 ảnh | 64 specs
+21:06:01 [INFO]    🔹 [549/8563] Cào URL: https://www.amazon.com/dp/B0G1P1B2TG lần thứ 1
+21:06:15 [INFO]       ✅ DONE: B0G1P1B2TG | 7 ảnh | 59 specs
+21:06:20 [INFO]    🔹 [550/8563] Cào URL: https://www.amazon.com/dp/B0C487TWST lần thứ 1
+21:06:34 [INFO]       ✅ DONE: B0C487TWST | 7 ảnh | 64 specs
+21:06:38 [INFO]    🔹 [551/8563] Cào URL: https://www.amazon.com/dp/B0DW1SBBXT lần thứ 1
+21:06:52 [INFO]       ✅ DONE: B0DW1SBBXT | 7 ảnh | 57 specs
+21:06:56 [INFO]    🔹 [552/8563] Cào URL: https://www.amazon.com/dp/B0FG1VV1RF lần thứ 1
+21:07:10 [INFO]       ✅ DONE: B0FG1VV1RF | 7 ảnh | 55 specs
+21:07:13 [INFO]    🔹 [553/8563] Cào URL: https://www.amazon.com/dp/B0FG1VB9S2 lần thứ 1
+21:07:29 [INFO]       ✅ DONE: B0FG1VB9S2 | 7 ảnh | 54 specs
+21:07:34 [INFO]    🔹 [554/8563] Cào URL: https://www.amazon.com/dp/B0FG1WYP8Y lần thứ 1
+21:07:50 [INFO]       ✅ DONE: B0FG1WYP8Y | 7 ảnh | 54 specs
+21:07:55 [INFO]    🔹 [555/8563] Cào URL: https://www.amazon.com/dp/B0FG1WLG77 lần thứ 1
+21:08:13 [INFO]       ✅ DONE: B0FG1WLG77 | 7 ảnh | 54 specs
+21:08:17 [INFO]    🔹 [556/8563] Cào URL: https://www.amazon.com/dp/B0FR9F61D4 lần thứ 1
+21:08:36 [INFO]       ✅ DONE: B0FR9F61D4 | 7 ảnh | 69 specs
+21:08:36 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+21:08:40 [INFO]    🔹 [557/8563] Cào URL: https://www.amazon.com/dp/B0GPSN95VK lần thứ 1
+21:08:54 [INFO]       ✅ DONE: B0GPSN95VK | 7 ảnh | 52 specs
+21:08:58 [INFO]    🔹 [558/8563] Cào URL: https://www.amazon.com/dp/B0GSDLKQ8J lần thứ 1
+21:08:58 [WARNING] ⚠️ Dính CAPTCHA! Đang khởi động lại trình duyệt...
+21:09:10 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+21:09:18 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+21:09:29 [INFO] ✅ Đã chuyển vùng thành công.
+21:09:29 [INFO]    🔹 [558/8563] Cào URL: https://www.amazon.com/dp/B0GSDLKQ8J lần thứ 2
+21:09:29 [WARNING] ⚠️ Dính CAPTCHA! Đang khởi động lại trình duyệt...
+21:09:41 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+21:09:49 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+21:09:59 [INFO] ✅ Đã chuyển vùng thành công.
+21:10:02 [INFO]    🔹 [559/8563] Cào URL: https://www.amazon.com/dp/B0DFJ3C764 lần thứ 1
+21:10:22 [INFO]       ✅ DONE: B0DFJ3C764 | 7 ảnh | 88 specs
+21:10:27 [INFO]    🔹 [560/8563] Cào URL: https://www.amazon.com/dp/B0CRDCXRK2 lần thứ 1
+21:10:47 [INFO]       ✅ DONE: B0CRDCXRK2 | 7 ảnh | 83 specs
+21:10:50 [INFO]    🔹 [561/8563] Cào URL: https://www.amazon.com/dp/B0DW1ZPQXX lần thứ 1
+21:11:09 [INFO]       ✅ DONE: B0DW1ZPQXX | 7 ảnh | 57 specs
+21:11:14 [INFO]    🔹 [562/8563] Cào URL: https://www.amazon.com/dp/B09LRF5KCJ lần thứ 1
+21:11:23 [INFO]       ✅ DONE: B09LRF5KCJ | 7 ảnh | 21 specs
+21:11:27 [INFO]    🔹 [563/8563] Cào URL: https://www.amazon.com/dp/B0D71ZS9WM lần thứ 1
+21:11:44 [INFO]       ✅ DONE: B0D71ZS9WM | 7 ảnh | 60 specs
+21:11:47 [INFO]    🔹 [564/8563] Cào URL: https://www.amazon.com/dp/B08W95QDTC lần thứ 1
+21:12:04 [INFO]       ✅ DONE: B08W95QDTC | 1 ảnh | 64 specs
+21:12:08 [INFO]    🔹 [565/8563] Cào URL: https://www.amazon.com/dp/B0D72D7XK9 lần thứ 1
+21:12:23 [INFO]       ✅ DONE: B0D72D7XK9 | 7 ảnh | 58 specs
+21:12:27 [INFO]    🔹 [566/8563] Cào URL: https://www.amazon.com/dp/B0DYY2Z1FF lần thứ 1
+21:12:41 [INFO]       ✅ DONE: B0DYY2Z1FF | 7 ảnh | 61 specs
+21:12:45 [INFO]    🔹 [567/8563] Cào URL: https://www.amazon.com/dp/B0CRDB8G1G lần thứ 1
+21:13:03 [INFO]       ✅ DONE: B0CRDB8G1G | 7 ảnh | 84 specs
+21:13:03 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+21:13:06 [INFO]    🔹 [568/8563] Cào URL: https://www.amazon.com/dp/B0CRDF25TQ lần thứ 1
+21:13:23 [INFO]       ✅ DONE: B0CRDF25TQ | 7 ảnh | 65 specs
+21:13:28 [INFO]    🔹 [569/8563] Cào URL: https://www.amazon.com/dp/B0F37XHSPL lần thứ 1
+21:13:45 [INFO]       ✅ DONE: B0F37XHSPL | 7 ảnh | 54 specs
+21:13:49 [INFO]    🔹 [570/8563] Cào URL: https://www.amazon.com/dp/B0DZZBGNJN lần thứ 1
+21:14:06 [INFO]       ✅ DONE: B0DZZBGNJN | 7 ảnh | 54 specs
+21:14:10 [INFO]    🔹 [571/8563] Cào URL: https://www.amazon.com/dp/B07YXZ1CP3 lần thứ 1
+21:14:29 [INFO]       ✅ DONE: B07YXZ1CP3 | 7 ảnh | 73 specs
+21:14:33 [INFO]    🔹 [572/8563] Cào URL: https://www.amazon.com/dp/B0GPXS413Z lần thứ 1
+21:14:48 [INFO]       ✅ DONE: B0GPXS413Z | 7 ảnh | 64 specs
+21:14:52 [INFO]    🔹 [573/8563] Cào URL: https://www.amazon.com/dp/B0GKP72XSQ lần thứ 1
+21:15:07 [INFO]       ✅ DONE: B0GKP72XSQ | 7 ảnh | 58 specs
+21:15:11 [INFO]    🔹 [574/8563] Cào URL: https://www.amazon.com/dp/B0GPY2WB37 lần thứ 1
+21:15:25 [INFO]       ✅ DONE: B0GPY2WB37 | 7 ảnh | 51 specs
+21:15:29 [INFO]    🔹 [575/8563] Cào URL: https://www.amazon.com/dp/B0GPY2MX3G lần thứ 1
+21:15:44 [INFO]       ✅ DONE: B0GPY2MX3G | 7 ảnh | 64 specs
+21:15:48 [INFO]    🔹 [576/8563] Cào URL: https://www.amazon.com/dp/B0FJFSZ8RB lần thứ 1
+21:16:04 [INFO]       ✅ DONE: B0FJFSZ8RB | 7 ảnh | 72 specs
+21:16:09 [INFO]    🔹 [577/8563] Cào URL: https://www.amazon.com/dp/B0FPWWP83J lần thứ 1
+21:16:24 [INFO]       ✅ DONE: B0FPWWP83J | 7 ảnh | 70 specs
+21:16:24 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+21:16:28 [INFO]    🔹 [578/8563] Cào URL: https://www.amazon.com/dp/B0GHMRQ8KN lần thứ 1
+21:16:44 [INFO]       ✅ DONE: B0GHMRQ8KN | 7 ảnh | 71 specs
+21:16:49 [INFO]    🔹 [579/8563] Cào URL: https://www.amazon.com/dp/B0G76F9MK6 lần thứ 1
+21:17:02 [INFO]       ✅ DONE: B0G76F9MK6 | 7 ảnh | 43 specs
+21:17:05 [INFO]    🔹 [580/8563] Cào URL: https://www.amazon.com/dp/B0G75CZ8CR lần thứ 1
+21:17:18 [INFO]       ✅ DONE: B0G75CZ8CR | 7 ảnh | 43 specs
+21:17:23 [INFO]    🔹 [581/8563] Cào URL: https://www.amazon.com/dp/B0G76TD5SR lần thứ 1
+21:17:36 [INFO]       ✅ DONE: B0G76TD5SR | 7 ảnh | 43 specs
+21:17:39 [INFO]    🔹 [582/8563] Cào URL: https://www.amazon.com/dp/B0G75W2H29 lần thứ 1
+21:17:52 [INFO]       ✅ DONE: B0G75W2H29 | 7 ảnh | 43 specs
+21:17:55 [INFO]    🔹 [583/8563] Cào URL: https://www.amazon.com/dp/B0G767W998 lần thứ 1
+21:18:08 [INFO]       ✅ DONE: B0G767W998 | 7 ảnh | 43 specs
+21:18:12 [INFO]    🔹 [584/8563] Cào URL: https://www.amazon.com/dp/B0G75Z3764 lần thứ 1
+21:18:24 [INFO]       ✅ DONE: B0G75Z3764 | 7 ảnh | 43 specs
+21:18:28 [INFO]    🔹 [585/8563] Cào URL: https://www.amazon.com/dp/B0G766BBD2 lần thứ 1
+21:18:39 [INFO]       ✅ DONE: B0G766BBD2 | 7 ảnh | 26 specs
+21:18:43 [INFO]    🔹 [586/8563] Cào URL: https://www.amazon.com/dp/B0G64CCGLW lần thứ 1
+21:18:58 [INFO]       ✅ DONE: B0G64CCGLW | 7 ảnh | 52 specs
+21:19:02 [INFO]    🔹 [587/8563] Cào URL: https://www.amazon.com/dp/B0G63PKH8W lần thứ 1
+21:19:17 [INFO]       ✅ DONE: B0G63PKH8W | 7 ảnh | 53 specs
+21:19:17 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+21:19:22 [INFO]    🔹 [588/8563] Cào URL: https://www.amazon.com/dp/B0G643BW41 lần thứ 1
+21:19:37 [INFO]       ✅ DONE: B0G643BW41 | 7 ảnh | 47 specs
+21:19:42 [INFO]    🔹 [589/8563] Cào URL: https://www.amazon.com/dp/B0G68X9Q5D lần thứ 1
+21:19:57 [INFO]       ✅ DONE: B0G68X9Q5D | 7 ảnh | 47 specs
+21:20:02 [INFO]    🔹 [590/8563] Cào URL: https://www.amazon.com/dp/B0FF49JYYK lần thứ 1
+21:20:17 [INFO]       ✅ DONE: B0FF49JYYK | 7 ảnh | 53 specs
+21:20:21 [INFO]    🔹 [591/8563] Cào URL: https://www.amazon.com/dp/B09V1LKTPH lần thứ 1
+21:20:40 [INFO]       ✅ DONE: B09V1LKTPH | 7 ảnh | 65 specs
+21:20:43 [INFO]    🔹 [592/8563] Cào URL: https://www.amazon.com/dp/B0DFCWF6WV lần thứ 1
+21:21:00 [INFO]       ✅ DONE: B0DFCWF6WV | 7 ảnh | 65 specs
+21:21:03 [INFO]    🔹 [593/8563] Cào URL: https://www.amazon.com/dp/B0D81CM8SF lần thứ 1
+21:21:20 [INFO]       ✅ DONE: B0D81CM8SF | 7 ảnh | 65 specs
+21:21:24 [INFO]    🔹 [594/8563] Cào URL: https://www.amazon.com/dp/B0FT3NRVL6 lần thứ 1
+21:21:42 [INFO]       ✅ DONE: B0FT3NRVL6 | 7 ảnh | 56 specs
+21:21:45 [INFO]    🔹 [595/8563] Cào URL: https://www.amazon.com/dp/B0DTB4R3VP lần thứ 1
+21:22:02 [INFO]       ✅ DONE: B0DTB4R3VP | 7 ảnh | 61 specs
+21:22:06 [INFO]    🔹 [596/8563] Cào URL: https://www.amazon.com/dp/B0CM8JSG4G lần thứ 1
+21:22:23 [INFO]       ✅ DONE: B0CM8JSG4G | 7 ảnh | 73 specs
+21:22:28 [INFO]    🔹 [597/8563] Cào URL: https://www.amazon.com/dp/B0DNLLXTTB lần thứ 1
+21:22:48 [INFO]       ✅ DONE: B0DNLLXTTB | 7 ảnh | 78 specs
+21:22:48 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+21:22:52 [INFO]    🔹 [598/8563] Cào URL: https://www.amazon.com/dp/B0CV5ZSR17 lần thứ 1
+21:23:14 [INFO]       ✅ DONE: B0CV5ZSR17 | 7 ảnh | 82 specs
+21:23:19 [INFO]    🔹 [599/8563] Cào URL: https://www.amazon.com/dp/B0FNCS7KF1 lần thứ 1
+21:23:34 [INFO]       ✅ DONE: B0FNCS7KF1 | 7 ảnh | 53 specs
+21:23:37 [INFO]    🔹 [600/8563] Cào URL: https://www.amazon.com/dp/B0FNCRCY3Y lần thứ 1
+21:23:52 [INFO]       ✅ DONE: B0FNCRCY3Y | 7 ảnh | 56 specs
+21:23:56 [INFO]    🔹 [601/8563] Cào URL: https://www.amazon.com/dp/B0D33NC672 lần thứ 1
+21:24:15 [INFO]       ✅ DONE: B0D33NC672 | 7 ảnh | 66 specs
+21:24:18 [INFO]    🔹 [602/8563] Cào URL: https://www.amazon.com/dp/B0DVCDZBWV lần thứ 1
+21:24:38 [INFO]       ✅ DONE: B0DVCDZBWV | 7 ảnh | 62 specs
+21:24:41 [INFO]    🔹 [603/8563] Cào URL: https://www.amazon.com/dp/B0GFFY1XWN lần thứ 1
+21:24:57 [INFO]       ✅ DONE: B0GFFY1XWN | 7 ảnh | 51 specs
+21:25:00 [INFO]    🔹 [604/8563] Cào URL: https://www.amazon.com/dp/B0GFFW9Z35 lần thứ 1
+21:25:15 [INFO]       ✅ DONE: B0GFFW9Z35 | 7 ảnh | 48 specs
+21:25:19 [INFO]    🔹 [605/8563] Cào URL: https://www.amazon.com/dp/B0GGH91TJM lần thứ 1
+21:25:32 [INFO]       ✅ DONE: B0GGH91TJM | 6 ảnh | 41 specs
+21:25:36 [INFO]    🔹 [606/8563] Cào URL: https://www.amazon.com/dp/B0GMRLJK7M lần thứ 1
+21:25:49 [INFO]       ✅ DONE: B0GMRLJK7M | 6 ảnh | 46 specs
+21:25:52 [INFO]    🔹 [607/8563] Cào URL: https://www.amazon.com/dp/B0GMRLMRKN lần thứ 1
+21:26:05 [INFO]       ✅ DONE: B0GMRLMRKN | 6 ảnh | 46 specs
+21:26:05 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+21:26:08 [INFO]    🔹 [608/8563] Cào URL: https://www.amazon.com/dp/B0GMR8W1GW lần thứ 1
+21:26:22 [INFO]       ✅ DONE: B0GMR8W1GW | 6 ảnh | 46 specs
+21:26:27 [INFO]    🔹 [609/8563] Cào URL: https://www.amazon.com/dp/B0DKP4QKCM lần thứ 1
+21:26:45 [INFO]       ✅ DONE: B0DKP4QKCM | 7 ảnh | 67 specs
+21:26:48 [INFO]    🔹 [610/8563] Cào URL: https://www.amazon.com/dp/B0CQLN6BF1 lần thứ 1
+21:27:10 [INFO]       ✅ DONE: B0CQLN6BF1 | 7 ảnh | 89 specs
+21:27:14 [INFO]    🔹 [611/8563] Cào URL: https://www.amazon.com/dp/B0G1YN5ML9 lần thứ 1
+21:27:28 [INFO]       ✅ DONE: B0G1YN5ML9 | 7 ảnh | 48 specs
+21:27:31 [INFO]    🔹 [612/8563] Cào URL: https://www.amazon.com/dp/B0G1XJV7MT lần thứ 1
+21:27:45 [INFO]       ✅ DONE: B0G1XJV7MT | 7 ảnh | 50 specs
+21:27:49 [INFO]    🔹 [613/8563] Cào URL: https://www.amazon.com/dp/B0FCRVL3DF lần thứ 1
+21:28:02 [INFO]       ✅ DONE: B0FCRVL3DF | 7 ảnh | 51 specs
+21:28:06 [INFO]    🔹 [614/8563] Cào URL: https://www.amazon.com/dp/B088FYSDRH lần thứ 1
+21:28:22 [INFO]       ✅ DONE: B088FYSDRH | 7 ảnh | 89 specs
+21:28:27 [INFO]    🔹 [615/8563] Cào URL: https://www.amazon.com/dp/B0BL86VM7F lần thứ 1
+21:28:44 [INFO]       ✅ DONE: B0BL86VM7F | 7 ảnh | 84 specs
+21:28:48 [INFO]    🔹 [616/8563] Cào URL: https://www.amazon.com/dp/B084BT98MF lần thứ 1
+21:29:03 [INFO]       ✅ DONE: B084BT98MF | 5 ảnh | 64 specs
+21:29:07 [INFO]    🔹 [617/8563] Cào URL: https://www.amazon.com/dp/B09S3HNMHF lần thứ 1
+21:29:29 [INFO]       ✅ DONE: B09S3HNMHF | 7 ảnh | 94 specs
+21:29:29 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+21:29:34 [INFO]    🔹 [618/8563] Cào URL: https://www.amazon.com/dp/B0FXH6J4KV lần thứ 1
+21:29:47 [INFO]       ✅ DONE: B0FXH6J4KV | 7 ảnh | 49 specs
+21:29:51 [INFO]    🔹 [619/8563] Cào URL: https://www.amazon.com/dp/B0FPT6P2Q3 lần thứ 1
+21:30:06 [INFO]       ✅ DONE: B0FPT6P2Q3 | 7 ảnh | 57 specs
+21:30:10 [INFO]    🔹 [620/8563] Cào URL: https://www.amazon.com/dp/B0FQGNHYX4 lần thứ 1
+21:30:23 [INFO]       ✅ DONE: B0FQGNHYX4 | 7 ảnh | 46 specs
+21:30:28 [INFO]    🔹 [621/8563] Cào URL: https://www.amazon.com/dp/B0FL8YTZVP lần thứ 1
+21:30:42 [INFO]       ✅ DONE: B0FL8YTZVP | 7 ảnh | 48 specs
+21:30:46 [INFO]    🔹 [622/8563] Cào URL: https://www.amazon.com/dp/B0DFV7ZJWC lần thứ 1
+21:31:07 [INFO]       ✅ DONE: B0DFV7ZJWC | 7 ảnh | 83 specs
+21:31:12 [INFO]    🔹 [623/8563] Cào URL: https://www.amazon.com/dp/B0DT4YZBXZ lần thứ 1
+21:31:27 [INFO]       ✅ DONE: B0DT4YZBXZ | 7 ảnh | 56 specs
+21:31:32 [INFO]    🔹 [624/8563] Cào URL: https://www.amazon.com/dp/B0DTNT38SC lần thứ 1
+21:31:45 [INFO]       ✅ DONE: B0DTNT38SC | 7 ảnh | 48 specs
+21:31:50 [INFO]    🔹 [625/8563] Cào URL: https://www.amazon.com/dp/B0FRKNHFC2 lần thứ 1
+21:32:04 [INFO]       ✅ DONE: B0FRKNHFC2 | 7 ảnh | 51 specs
+21:32:09 [INFO]    🔹 [626/8563] Cào URL: https://www.amazon.com/dp/B0FGBWHNCW lần thứ 1
+21:32:22 [INFO]       ✅ DONE: B0FGBWHNCW | 7 ảnh | 51 specs
+21:32:26 [INFO]    🔹 [627/8563] Cào URL: https://www.amazon.com/dp/B0FRN8GDKR lần thứ 1
+21:32:41 [INFO]       ✅ DONE: B0FRN8GDKR | 7 ảnh | 53 specs
+21:32:41 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+21:32:46 [INFO]    🔹 [628/8563] Cào URL: https://www.amazon.com/dp/B0FKVJSSLV lần thứ 1
+21:32:59 [INFO]       ✅ DONE: B0FKVJSSLV | 7 ảnh | 50 specs
+21:33:04 [INFO]    🔹 [629/8563] Cào URL: https://www.amazon.com/dp/B0FMC1PTFF lần thứ 1
+21:33:20 [INFO]       ✅ DONE: B0FMC1PTFF | 7 ảnh | 52 specs
+21:33:24 [INFO]    🔹 [630/8563] Cào URL: https://www.amazon.com/dp/B09HVC79PC lần thứ 1
+21:33:42 [INFO]       ✅ DONE: B09HVC79PC | 7 ảnh | 72 specs
+21:33:45 [INFO]    🔹 [631/8563] Cào URL: https://www.amazon.com/dp/B0BS4HRL8L lần thứ 1
+21:34:02 [INFO]       ✅ DONE: B0BS4HRL8L | 7 ảnh | 71 specs
+21:34:06 [INFO]    🔹 [632/8563] Cào URL: https://www.amazon.com/dp/B0GGZDK6F4 lần thứ 1
+21:34:20 [INFO]       ✅ DONE: B0GGZDK6F4 | 7 ảnh | 53 specs
+21:34:24 [INFO]    🔹 [633/8563] Cào URL: https://www.amazon.com/dp/B0GGZD5G7T lần thứ 1
+21:34:36 [INFO]       ✅ DONE: B0GGZD5G7T | 7 ảnh | 47 specs
+21:34:39 [INFO]    🔹 [634/8563] Cào URL: https://www.amazon.com/dp/B0GQWCGX54 lần thứ 1
+21:34:52 [INFO]       ✅ DONE: B0GQWCGX54 | 7 ảnh | 52 specs
+21:34:56 [INFO]    🔹 [635/8563] Cào URL: https://www.amazon.com/dp/B0GMYJ5G3M lần thứ 1
+21:35:07 [INFO]       ✅ DONE: B0GMYJ5G3M | 7 ảnh | 48 specs
+21:35:12 [INFO]    🔹 [636/8563] Cào URL: https://www.amazon.com/dp/B0GMY88L1D lần thứ 1
+21:35:25 [INFO]       ✅ DONE: B0GMY88L1D | 7 ảnh | 51 specs
+21:35:28 [INFO]    🔹 [637/8563] Cào URL: https://www.amazon.com/dp/B0GMYSZ1B8 lần thứ 1
+21:35:40 [INFO]       ✅ DONE: B0GMYSZ1B8 | 7 ảnh | 49 specs
+21:35:41 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+21:35:44 [INFO]    🔹 [638/8563] Cào URL: https://www.amazon.com/dp/B0GMYFZQ9G lần thứ 1
+21:35:58 [INFO]       ✅ DONE: B0GMYFZQ9G | 7 ảnh | 49 specs
+21:36:02 [INFO]    🔹 [639/8563] Cào URL: https://www.amazon.com/dp/B0GQW8C51F lần thứ 1
+21:36:15 [INFO]       ✅ DONE: B0GQW8C51F | 7 ảnh | 48 specs
+21:36:18 [INFO]    🔹 [640/8563] Cào URL: https://www.amazon.com/dp/B0GQKYZMFH lần thứ 1
+21:36:32 [INFO]       ✅ DONE: B0GQKYZMFH | 7 ảnh | 51 specs
+21:36:35 [INFO]    🔹 [641/8563] Cào URL: https://www.amazon.com/dp/B0GQWC8M5W lần thứ 1
+21:36:48 [INFO]       ✅ DONE: B0GQWC8M5W | 7 ảnh | 50 specs
+21:36:53 [INFO]    🔹 [642/8563] Cào URL: https://www.amazon.com/dp/B0F8P2KW7W lần thứ 1
+21:37:09 [INFO]       ✅ DONE: B0F8P2KW7W | 7 ảnh | 70 specs
+21:37:13 [INFO]    🔹 [643/8563] Cào URL: https://www.amazon.com/dp/B08VKNVDDR lần thứ 1
+21:37:32 [INFO]       ✅ DONE: B08VKNVDDR | 7 ảnh | 90 specs
+21:37:36 [INFO]    🔹 [644/8563] Cào URL: https://www.amazon.com/dp/B0G3BK1PXZ lần thứ 1
+21:37:50 [INFO]       ✅ DONE: B0G3BK1PXZ | 7 ảnh | 52 specs
+21:37:53 [INFO]    🔹 [645/8563] Cào URL: https://www.amazon.com/dp/B0F8MW4WD7 lần thứ 1
+21:38:06 [INFO]       ✅ DONE: B0F8MW4WD7 | 7 ảnh | 51 specs
+21:38:10 [INFO]    🔹 [646/8563] Cào URL: https://www.amazon.com/dp/B0F8MX9G7W lần thứ 1
+21:38:22 [INFO]       ✅ DONE: B0F8MX9G7W | 7 ảnh | 52 specs
+21:38:26 [INFO]    🔹 [647/8563] Cào URL: https://www.amazon.com/dp/B0F8MVK8RS lần thứ 1
+21:38:38 [INFO]       ✅ DONE: B0F8MVK8RS | 7 ảnh | 52 specs
+21:38:38 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+21:38:43 [INFO]    🔹 [648/8563] Cào URL: https://www.amazon.com/dp/B08LBZRVLG lần thứ 1
+21:39:01 [INFO]       ✅ DONE: B08LBZRVLG | 7 ảnh | 81 specs
+21:39:05 [INFO]    🔹 [649/8563] Cào URL: https://www.amazon.com/dp/B0F6YNNTWN lần thứ 1
+21:39:23 [INFO]       ✅ DONE: B0F6YNNTWN | 7 ảnh | 53 specs
+21:39:27 [INFO]    🔹 [650/8563] Cào URL: https://www.amazon.com/dp/B0F6YN1H9W lần thứ 1
+21:39:44 [INFO]       ✅ DONE: B0F6YN1H9W | 7 ảnh | 49 specs
+21:39:47 [INFO]    🔹 [651/8563] Cào URL: https://www.amazon.com/dp/B0F6YPJR9Y lần thứ 1
+21:40:03 [INFO]       ✅ DONE: B0F6YPJR9Y | 7 ảnh | 49 specs
+21:40:06 [INFO]    🔹 [652/8563] Cào URL: https://www.amazon.com/dp/B0F6YPRY8F lần thứ 1
+21:40:22 [INFO]       ✅ DONE: B0F6YPRY8F | 7 ảnh | 49 specs
+21:40:27 [INFO]    🔹 [653/8563] Cào URL: https://www.amazon.com/dp/B0F6YNGZZZ lần thứ 1
+21:40:44 [INFO]       ✅ DONE: B0F6YNGZZZ | 7 ảnh | 49 specs
+21:40:49 [INFO]    🔹 [654/8563] Cào URL: https://www.amazon.com/dp/B0F6YQBBY5 lần thứ 1
+21:41:05 [INFO]       ✅ DONE: B0F6YQBBY5 | 7 ảnh | 49 specs
+21:41:08 [INFO]    🔹 [655/8563] Cào URL: https://www.amazon.com/dp/B0FJFK9DRQ lần thứ 1
+21:41:23 [INFO]       ✅ DONE: B0FJFK9DRQ | 7 ảnh | 44 specs
+21:41:27 [INFO]    🔹 [656/8563] Cào URL: https://www.amazon.com/dp/B0GPPNJXJ9 lần thứ 1
+21:41:39 [INFO]       ✅ DONE: B0GPPNJXJ9 | 7 ảnh | 49 specs
+21:41:43 [INFO]    🔹 [657/8563] Cào URL: https://www.amazon.com/dp/B0GPPKN4Q1 lần thứ 1
+21:41:56 [INFO]       ✅ DONE: B0GPPKN4Q1 | 7 ảnh | 50 specs
+21:41:56 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+21:42:01 [INFO]    🔹 [658/8563] Cào URL: https://www.amazon.com/dp/B0GPPMM2W9 lần thứ 1
+21:42:14 [INFO]       ✅ DONE: B0GPPMM2W9 | 7 ảnh | 49 specs
+21:42:17 [INFO]    🔹 [659/8563] Cào URL: https://www.amazon.com/dp/B0GPPVNTBK lần thứ 1
+21:42:30 [INFO]       ✅ DONE: B0GPPVNTBK | 7 ảnh | 48 specs
+21:42:35 [INFO]    🔹 [660/8563] Cào URL: https://www.amazon.com/dp/B0GPPRXSQ7 lần thứ 1
+21:42:47 [INFO]       ✅ DONE: B0GPPRXSQ7 | 7 ảnh | 52 specs
+21:42:52 [INFO]    🔹 [661/8563] Cào URL: https://www.amazon.com/dp/B0GPQJ2YXK lần thứ 1
+21:43:05 [INFO]       ✅ DONE: B0GPQJ2YXK | 7 ảnh | 48 specs
+21:43:08 [INFO]    🔹 [662/8563] Cào URL: https://www.amazon.com/dp/B0GS98FHRD lần thứ 1
+21:43:22 [INFO]       ✅ DONE: B0GS98FHRD | 7 ảnh | 51 specs
+21:43:26 [INFO]    🔹 [663/8563] Cào URL: https://www.amazon.com/dp/B0DJCQMT6T lần thứ 1
+21:43:39 [INFO]       ✅ DONE: B0DJCQMT6T | 7 ảnh | 50 specs
+21:43:44 [INFO]    🔹 [664/8563] Cào URL: https://www.amazon.com/dp/B08488CGYV lần thứ 1
+21:44:02 [INFO]       ✅ DONE: B08488CGYV | 7 ảnh | 85 specs
+21:44:07 [INFO]    🔹 [665/8563] Cào URL: https://www.amazon.com/dp/B0DQL1G1Z5 lần thứ 1
+21:44:25 [INFO]       ✅ DONE: B0DQL1G1Z5 | 7 ảnh | 74 specs
+21:44:28 [INFO]    🔹 [666/8563] Cào URL: https://www.amazon.com/dp/B0CGD4D2Y8 lần thứ 1
+21:44:45 [INFO]       ✅ DONE: B0CGD4D2Y8 | 7 ảnh | 68 specs
+21:44:48 [INFO]    🔹 [667/8563] Cào URL: https://www.amazon.com/dp/B0G9W9589M lần thứ 1
+21:45:02 [INFO]       ✅ DONE: B0G9W9589M | 7 ảnh | 47 specs
+21:45:02 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+21:45:07 [INFO]    🔹 [668/8563] Cào URL: https://www.amazon.com/dp/B0G9WD3LDW lần thứ 1
+21:45:21 [INFO]       ✅ DONE: B0G9WD3LDW | 7 ảnh | 47 specs
+21:45:25 [INFO]    🔹 [669/8563] Cào URL: https://www.amazon.com/dp/B0G9X77WXS lần thứ 1
+21:45:37 [INFO]       ✅ DONE: B0G9X77WXS | 7 ảnh | 48 specs
+21:45:42 [INFO]    🔹 [670/8563] Cào URL: https://www.amazon.com/dp/B0G9WPMTG5 lần thứ 1
+21:45:55 [INFO]       ✅ DONE: B0G9WPMTG5 | 7 ảnh | 48 specs
+21:46:00 [INFO]    🔹 [671/8563] Cào URL: https://www.amazon.com/dp/B0G9WCZH8G lần thứ 1
+21:46:14 [INFO]       ✅ DONE: B0G9WCZH8G | 7 ảnh | 46 specs
+21:46:19 [INFO]    🔹 [672/8563] Cào URL: https://www.amazon.com/dp/B0G9V3XS2Q lần thứ 1
+21:46:32 [INFO]       ✅ DONE: B0G9V3XS2Q | 7 ảnh | 47 specs
+21:46:36 [INFO]    🔹 [673/8563] Cào URL: https://www.amazon.com/dp/B0G9VHX5JX lần thứ 1
+21:46:49 [INFO]       ✅ DONE: B0G9VHX5JX | 7 ảnh | 48 specs
+21:46:54 [INFO]    🔹 [674/8563] Cào URL: https://www.amazon.com/dp/B0G9X6H9Y3 lần thứ 1
+21:47:07 [INFO]       ✅ DONE: B0G9X6H9Y3 | 7 ảnh | 47 specs
+21:47:11 [INFO]    🔹 [675/8563] Cào URL: https://www.amazon.com/dp/B0CX2PS48B lần thứ 1
+21:47:30 [INFO]       ✅ DONE: B0CX2PS48B | 7 ảnh | 92 specs
+21:47:34 [INFO]    🔹 [676/8563] Cào URL: https://www.amazon.com/dp/B0CZPK5JNL lần thứ 1
+21:47:52 [INFO]       ✅ DONE: B0CZPK5JNL | 7 ảnh | 88 specs
+21:47:56 [INFO]    🔹 [677/8563] Cào URL: https://www.amazon.com/dp/B0CXY573W9 lần thứ 1
+21:48:15 [INFO]       ✅ DONE: B0CXY573W9 | 7 ảnh | 86 specs
+21:48:15 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+21:48:18 [INFO]    🔹 [678/8563] Cào URL: https://www.amazon.com/dp/B0G338RSLP lần thứ 1
+21:48:28 [INFO]       ✅ DONE: B0G338RSLP | 7 ảnh | 29 specs
+21:48:32 [INFO]    🔹 [679/8563] Cào URL: https://www.amazon.com/dp/B0F28NP3WL lần thứ 1
+21:48:47 [INFO]       ✅ DONE: B0F28NP3WL | 7 ảnh | 46 specs
+21:48:52 [INFO]    🔹 [680/8563] Cào URL: https://www.amazon.com/dp/B07F3TQ6DQ lần thứ 1
+21:48:58 [INFO]       ✅ DONE: B07F3TQ6DQ | 7 ảnh | 0 specs
+21:49:03 [INFO]    🔹 [681/8563] Cào URL: https://www.amazon.com/dp/B07F3SNQT5 lần thứ 1
+21:49:09 [INFO]       ✅ DONE: B07F3SNQT5 | 7 ảnh | 0 specs
+21:49:14 [INFO]    🔹 [682/8563] Cào URL: https://www.amazon.com/dp/B0DGVQMGBB lần thứ 1
+21:49:20 [INFO]       ✅ DONE: B0DGVQMGBB | 3 ảnh | 0 specs
+21:49:24 [INFO]    🔹 [683/8563] Cào URL: https://www.amazon.com/dp/B0FJ7LQ847 lần thứ 1
+21:49:43 [INFO]       ✅ DONE: B0FJ7LQ847 | 7 ảnh | 57 specs
+21:49:46 [INFO]    🔹 [684/8563] Cào URL: https://www.amazon.com/dp/B0FJ7L453K lần thứ 1
+21:50:04 [INFO]       ✅ DONE: B0FJ7L453K | 7 ảnh | 59 specs
+21:50:08 [INFO]    🔹 [685/8563] Cào URL: https://www.amazon.com/dp/B0FJ7LTNRP lần thứ 1
+21:50:26 [INFO]       ✅ DONE: B0FJ7LTNRP | 7 ảnh | 59 specs
+21:50:29 [INFO]    🔹 [686/8563] Cào URL: https://www.amazon.com/dp/B0FJ7LKVG3 lần thứ 1
+21:50:47 [INFO]       ✅ DONE: B0FJ7LKVG3 | 7 ảnh | 58 specs
+21:50:51 [INFO]    🔹 [687/8563] Cào URL: https://www.amazon.com/dp/B0FJ7LFR7X lần thứ 1
+21:51:10 [INFO]       ✅ DONE: B0FJ7LFR7X | 7 ảnh | 58 specs
+21:51:10 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+21:51:14 [INFO]    🔹 [688/8563] Cào URL: https://www.amazon.com/dp/B0CXL6B4QF lần thứ 1
+21:51:35 [INFO]       ✅ DONE: B0CXL6B4QF | 7 ảnh | 87 specs
+21:51:38 [INFO]    🔹 [689/8563] Cào URL: https://www.amazon.com/dp/B0CXKV9TSN lần thứ 1
+21:51:59 [INFO]       ✅ DONE: B0CXKV9TSN | 7 ảnh | 80 specs
+21:52:03 [INFO]    🔹 [690/8563] Cào URL: https://www.amazon.com/dp/B0CXL8D3ZV lần thứ 1
+21:52:23 [INFO]       ✅ DONE: B0CXL8D3ZV | 7 ảnh | 78 specs
+21:52:27 [INFO]    🔹 [691/8563] Cào URL: https://www.amazon.com/dp/B0FTT67B8T lần thứ 1
+21:52:40 [INFO]       ✅ DONE: B0FTT67B8T | 1 ảnh | 52 specs
+21:52:45 [INFO]    🔹 [692/8563] Cào URL: https://www.amazon.com/dp/B0GGHN8HH2 lần thứ 1
+21:52:58 [INFO]       ✅ DONE: B0GGHN8HH2 | 2 ảnh | 62 specs
+21:53:03 [INFO]    🔹 [693/8563] Cào URL: https://www.amazon.com/dp/B0F79T4W2L lần thứ 1
+21:53:18 [INFO]       ✅ DONE: B0F79T4W2L | 5 ảnh | 55 specs
+21:53:23 [INFO]    🔹 [694/8563] Cào URL: https://www.amazon.com/dp/B0FQ5M5GXC lần thứ 1
+21:53:30 [INFO]       ✅ DONE: B0FQ5M5GXC | 7 ảnh | 12 specs
+21:53:35 [INFO]    🔹 [695/8563] Cào URL: https://www.amazon.com/dp/B0CDJ6Y8SQ lần thứ 1
+21:53:57 [INFO]       ✅ DONE: B0CDJ6Y8SQ | 7 ảnh | 76 specs
+21:54:02 [INFO]    🔹 [696/8563] Cào URL: https://www.amazon.com/dp/B0CDKDS8KL lần thứ 1
+21:54:21 [INFO]       ✅ DONE: B0CDKDS8KL | 7 ảnh | 75 specs
+21:54:25 [INFO]    🔹 [697/8563] Cào URL: https://www.amazon.com/dp/B0CDJCWNRN lần thứ 1
+21:54:43 [INFO]       ✅ DONE: B0CDJCWNRN | 7 ảnh | 64 specs
+21:54:43 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+21:54:47 [INFO]    🔹 [698/8563] Cào URL: https://www.amazon.com/dp/B0F9YXXXLM lần thứ 1
+21:55:03 [INFO]       ✅ DONE: B0F9YXXXLM | 7 ảnh | 69 specs
+21:55:07 [INFO]    🔹 [699/8563] Cào URL: https://www.amazon.com/dp/B0CXKY7JYZ lần thứ 1
+21:55:28 [INFO]       ✅ DONE: B0CXKY7JYZ | 7 ảnh | 79 specs
+21:55:31 [INFO]    🔹 [700/8563] Cào URL: https://www.amazon.com/dp/B0DN2YY381 lần thứ 1
+21:55:46 [INFO]       ✅ DONE: B0DN2YY381 | 7 ảnh | 41 specs
+21:55:49 [INFO]    🔹 [701/8563] Cào URL: https://www.amazon.com/dp/B0G3VGBMQL lần thứ 1
+21:56:05 [INFO]       ✅ DONE: B0G3VGBMQL | 7 ảnh | 66 specs
+21:56:09 [INFO]    🔹 [702/8563] Cào URL: https://www.amazon.com/dp/B0G1Y8F6K5 lần thứ 1
+21:56:25 [INFO]       ✅ DONE: B0G1Y8F6K5 | 7 ảnh | 68 specs
+21:56:28 [INFO]    🔹 [703/8563] Cào URL: https://www.amazon.com/dp/B0DK5148K6 lần thứ 1
+21:56:48 [INFO]       ✅ DONE: B0DK5148K6 | 7 ảnh | 89 specs
+21:56:53 [INFO]    🔹 [704/8563] Cào URL: https://www.amazon.com/dp/B07NRQWCLK lần thứ 1
+21:57:08 [INFO]       ✅ DONE: B07NRQWCLK | 7 ảnh | 50 specs
+21:57:13 [INFO]    🔹 [705/8563] Cào URL: https://www.amazon.com/dp/B0CNLHKSC2 lần thứ 1
+21:57:22 [INFO]       ✅ DONE: B0CNLHKSC2 | 7 ảnh | 13 specs
+21:57:25 [INFO]    🔹 [706/8563] Cào URL: https://www.amazon.com/dp/B0FYNRYR29 lần thứ 1
+21:57:40 [INFO]       ✅ DONE: B0FYNRYR29 | 7 ảnh | 38 specs
+21:57:45 [INFO]    🔹 [707/8563] Cào URL: https://www.amazon.com/dp/B0DMT7XHF3 lần thứ 1
+21:58:02 [INFO]       ✅ DONE: B0DMT7XHF3 | 7 ảnh | 72 specs
+21:58:02 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+21:58:06 [INFO]    🔹 [708/8563] Cào URL: https://www.amazon.com/dp/B0BBM7RGS5 lần thứ 1
+21:58:18 [INFO]       ✅ DONE: B0BBM7RGS5 | 7 ảnh | 22 specs
+21:58:21 [INFO]    🔹 [709/8563] Cào URL: https://www.amazon.com/dp/B07MFT3Z61 lần thứ 1
+21:58:32 [INFO]       ✅ DONE: B07MFT3Z61 | 7 ảnh | 22 specs
+21:58:37 [INFO]    🔹 [710/8563] Cào URL: https://www.amazon.com/dp/B0GTYKQKJH lần thứ 1
+21:58:57 [INFO]       ✅ DONE: B0GTYKQKJH | 7 ảnh | 61 specs
+21:59:01 [INFO]    🔹 [711/8563] Cào URL: https://www.amazon.com/dp/B0C8171GTK lần thứ 1
+21:59:19 [INFO]       ✅ DONE: B0C8171GTK | 7 ảnh | 90 specs
+21:59:23 [INFO]    🔹 [712/8563] Cào URL: https://www.amazon.com/dp/B0GTYKTPCB lần thứ 1
+21:59:43 [INFO]       ✅ DONE: B0GTYKTPCB | 7 ảnh | 69 specs
+21:59:48 [INFO]    🔹 [713/8563] Cào URL: https://www.amazon.com/dp/B0GTYBXBKX lần thứ 1
+22:00:07 [INFO]       ✅ DONE: B0GTYBXBKX | 7 ảnh | 61 specs
+22:00:11 [INFO]    🔹 [714/8563] Cào URL: https://www.amazon.com/dp/B0GTYCKC2K lần thứ 1
+22:00:30 [INFO]       ✅ DONE: B0GTYCKC2K | 7 ảnh | 61 specs
+22:00:33 [INFO]    🔹 [715/8563] Cào URL: https://www.amazon.com/dp/B0DV6KNHM7 lần thứ 1
+22:00:49 [INFO]       ✅ DONE: B0DV6KNHM7 | 6 ảnh | 57 specs
+22:00:53 [INFO]    🔹 [716/8563] Cào URL: https://www.amazon.com/dp/B0F1CNWGRG lần thứ 1
+22:01:04 [INFO]       ✅ DONE: B0F1CNWGRG | 7 ảnh | 15 specs
+22:01:08 [INFO]    🔹 [717/8563] Cào URL: https://www.amazon.com/dp/B0G4XJBNHY lần thứ 1
+22:01:23 [INFO]       ✅ DONE: B0G4XJBNHY | 6 ảnh | 52 specs
+22:01:23 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+22:01:27 [INFO]    🔹 [718/8563] Cào URL: https://www.amazon.com/dp/B0CXL1GV9Z lần thứ 1
+22:01:47 [INFO]       ✅ DONE: B0CXL1GV9Z | 7 ảnh | 82 specs
+22:01:52 [INFO]    🔹 [719/8563] Cào URL: https://www.amazon.com/dp/B0CXKWPR3V lần thứ 1
+22:02:11 [INFO]       ✅ DONE: B0CXKWPR3V | 6 ảnh | 78 specs
+22:02:14 [INFO]    🔹 [720/8563] Cào URL: https://www.amazon.com/dp/B0CXL68236 lần thứ 1
+22:02:36 [INFO]       ✅ DONE: B0CXL68236 | 7 ảnh | 89 specs
+22:02:40 [INFO]    🔹 [721/8563] Cào URL: https://www.amazon.com/dp/B0CXL21K6M lần thứ 1
+22:03:02 [INFO]       ✅ DONE: B0CXL21K6M | 6 ảnh | 85 specs
+22:03:06 [INFO]    🔹 [722/8563] Cào URL: https://www.amazon.com/dp/B0FJHHZJZ3 lần thứ 1
+22:03:24 [INFO]       ✅ DONE: B0FJHHZJZ3 | 7 ảnh | 73 specs
+22:03:27 [INFO]    🔹 [723/8563] Cào URL: https://www.amazon.com/dp/B0FJH4J3FC lần thứ 1
+22:03:45 [INFO]       ✅ DONE: B0FJH4J3FC | 7 ảnh | 73 specs
+22:03:50 [INFO]    🔹 [724/8563] Cào URL: https://www.amazon.com/dp/B0FJGH9ZKP lần thứ 1
+22:04:08 [INFO]       ✅ DONE: B0FJGH9ZKP | 7 ảnh | 74 specs
+22:04:13 [INFO]    🔹 [725/8563] Cào URL: https://www.amazon.com/dp/B0FJGGNRCK lần thứ 1
+22:04:32 [INFO]       ✅ DONE: B0FJGGNRCK | 7 ảnh | 73 specs
+22:04:35 [INFO]    🔹 [726/8563] Cào URL: https://www.amazon.com/dp/B0FL7CRBPN lần thứ 1
+22:04:47 [INFO]       ✅ DONE: B0FL7CRBPN | 6 ảnh | 29 specs
+22:04:51 [INFO]    🔹 [727/8563] Cào URL: https://www.amazon.com/dp/B0G46Q4V97 lần thứ 1
+22:05:05 [INFO]       ✅ DONE: B0G46Q4V97 | 7 ảnh | 47 specs
+22:05:05 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+22:05:10 [INFO]    🔹 [728/8563] Cào URL: https://www.amazon.com/dp/B0G3ZS9JSH lần thứ 1
+22:05:27 [INFO]       ✅ DONE: B0G3ZS9JSH | 6 ảnh | 48 specs
+22:05:30 [INFO]    🔹 [729/8563] Cào URL: https://www.amazon.com/dp/B0FL7CKLNJ lần thứ 1
+22:05:44 [INFO]       ✅ DONE: B0FL7CKLNJ | 6 ảnh | 46 specs
+22:05:49 [INFO]    🔹 [730/8563] Cào URL: https://www.amazon.com/dp/B0FLCG7L4F lần thứ 1
+22:06:03 [INFO]       ✅ DONE: B0FLCG7L4F | 7 ảnh | 46 specs
+22:06:08 [INFO]    🔹 [731/8563] Cào URL: https://www.amazon.com/dp/B0FL7FNGY7 lần thứ 1
+22:06:22 [INFO]       ✅ DONE: B0FL7FNGY7 | 6 ảnh | 35 specs
+22:06:26 [INFO]    🔹 [732/8563] Cào URL: https://www.amazon.com/dp/B0FLCHZZ5C lần thứ 1
+22:06:37 [INFO]       ✅ DONE: B0FLCHZZ5C | 6 ảnh | 29 specs
+22:06:41 [INFO]    🔹 [733/8563] Cào URL: https://www.amazon.com/dp/B0FLBX3QD1 lần thứ 1
+22:06:52 [INFO]       ✅ DONE: B0FLBX3QD1 | 7 ảnh | 29 specs
+22:06:57 [INFO]    🔹 [734/8563] Cào URL: https://www.amazon.com/dp/B0FC41FRHX lần thứ 1
+22:07:12 [INFO]       ✅ DONE: B0FC41FRHX | 6 ảnh | 52 specs
+22:07:17 [INFO]    🔹 [735/8563] Cào URL: https://www.amazon.com/dp/B0F9FWF7Z1 lần thứ 1
+22:07:31 [INFO]       ✅ DONE: B0F9FWF7Z1 | 6 ảnh | 51 specs
+22:07:35 [INFO]    🔹 [736/8563] Cào URL: https://www.amazon.com/dp/B0CVJFR8ZC lần thứ 1
+22:07:50 [INFO]       ✅ DONE: B0CVJFR8ZC | 1 ảnh | 70 specs
+22:07:53 [INFO]    🔹 [737/8563] Cào URL: https://www.amazon.com/dp/B0F5JWPCT9 lần thứ 1
+22:08:07 [INFO]       ✅ DONE: B0F5JWPCT9 | 6 ảnh | 52 specs
+22:08:07 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+22:08:12 [INFO]    🔹 [738/8563] Cào URL: https://www.amazon.com/dp/B09FD2XGMK lần thứ 1
+22:08:27 [INFO]       ✅ DONE: B09FD2XGMK | 6 ảnh | 76 specs
+22:08:32 [INFO]    🔹 [739/8563] Cào URL: https://www.amazon.com/dp/B0F5Y3MN5W lần thứ 1
+22:08:46 [INFO]       ✅ DONE: B0F5Y3MN5W | 6 ảnh | 53 specs
+22:08:49 [INFO]    🔹 [740/8563] Cào URL: https://www.amazon.com/dp/B0DZ4XWMS1 lần thứ 1
+22:09:06 [INFO]       ✅ DONE: B0DZ4XWMS1 | 7 ảnh | 52 specs
+22:09:10 [INFO]    🔹 [741/8563] Cào URL: https://www.amazon.com/dp/B0DZ4NT67T lần thứ 1
+22:09:25 [INFO]       ✅ DONE: B0DZ4NT67T | 7 ảnh | 46 specs
+22:09:29 [INFO]    🔹 [742/8563] Cào URL: https://www.amazon.com/dp/B0DZ5BWLP5 lần thứ 1
+22:09:45 [INFO]       ✅ DONE: B0DZ5BWLP5 | 7 ảnh | 43 specs
+22:09:48 [INFO]    🔹 [743/8563] Cào URL: https://www.amazon.com/dp/B0DNRKT2NV lần thứ 1
+22:10:04 [INFO]       ✅ DONE: B0DNRKT2NV | 7 ảnh | 73 specs
+22:10:08 [INFO]    🔹 [744/8563] Cào URL: https://www.amazon.com/dp/B0C1TVRDXX lần thứ 1
+22:10:25 [INFO]       ✅ DONE: B0C1TVRDXX | 7 ảnh | 86 specs
+22:10:30 [INFO]    🔹 [745/8563] Cào URL: https://www.amazon.com/dp/B0F5M133D8 lần thứ 1
+22:10:45 [INFO]       ✅ DONE: B0F5M133D8 | 7 ảnh | 55 specs
+22:10:50 [INFO]    🔹 [746/8563] Cào URL: https://www.amazon.com/dp/B0C7V6RPXL lần thứ 1
+22:11:09 [INFO]       ✅ DONE: B0C7V6RPXL | 7 ảnh | 81 specs
+22:11:14 [INFO]    🔹 [747/8563] Cào URL: https://www.amazon.com/dp/B0CVM9WLCW lần thứ 1
+22:11:30 [INFO]       ✅ DONE: B0CVM9WLCW | 7 ảnh | 64 specs
+22:11:30 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+22:11:34 [INFO]    🔹 [748/8563] Cào URL: https://www.amazon.com/dp/B0GSRN4ZVM lần thứ 1
+22:11:47 [INFO]       ✅ DONE: B0GSRN4ZVM | 7 ảnh | 36 specs
+22:11:52 [INFO]    🔹 [749/8563] Cào URL: https://www.amazon.com/dp/B0FKB55ZXD lần thứ 1
+22:12:05 [INFO]       ✅ DONE: B0FKB55ZXD | 7 ảnh | 52 specs
+22:12:10 [INFO]    🔹 [750/8563] Cào URL: https://www.amazon.com/dp/B09QFWRSV7 lần thứ 1
+22:12:23 [INFO]       ✅ DONE: B09QFWRSV7 | 7 ảnh | 55 specs
+22:12:28 [INFO]    🔹 [751/8563] Cào URL: https://www.amazon.com/dp/B0FQP5T6PK lần thứ 1
+22:12:40 [INFO]       ✅ DONE: B0FQP5T6PK | 7 ảnh | 40 specs
+22:12:45 [INFO]    🔹 [752/8563] Cào URL: https://www.amazon.com/dp/B0F941Z6QQ lần thứ 1
+22:12:58 [INFO]       ✅ DONE: B0F941Z6QQ | 7 ảnh | 41 specs
+22:13:03 [INFO]    🔹 [753/8563] Cào URL: https://www.amazon.com/dp/B0CCV3HMS3 lần thứ 1
+22:13:15 [INFO]       ✅ DONE: B0CCV3HMS3 | 7 ảnh | 37 specs
+22:13:19 [INFO]    🔹 [754/8563] Cào URL: https://www.amazon.com/dp/B0FG2ZRP4X lần thứ 1
+22:13:31 [INFO]       ✅ DONE: B0FG2ZRP4X | 7 ảnh | 45 specs
+22:13:34 [INFO]    🔹 [755/8563] Cào URL: https://www.amazon.com/dp/B0FG2WDZW6 lần thứ 1
+22:13:47 [INFO]       ✅ DONE: B0FG2WDZW6 | 7 ảnh | 40 specs
+22:13:50 [INFO]    🔹 [756/8563] Cào URL: https://www.amazon.com/dp/B0FFMSSFJ6 lần thứ 1
+22:14:02 [INFO]       ✅ DONE: B0FFMSSFJ6 | 7 ảnh | 40 specs
+22:14:06 [INFO]    🔹 [757/8563] Cào URL: https://www.amazon.com/dp/B0GRCS36CZ lần thứ 1
+22:14:22 [INFO]       ✅ DONE: B0GRCS36CZ | 7 ảnh | 92 specs
+22:14:22 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+22:14:27 [INFO]    🔹 [758/8563] Cào URL: https://www.amazon.com/dp/B0FKTPWWN1 lần thứ 1
+22:14:41 [INFO]       ✅ DONE: B0FKTPWWN1 | 7 ảnh | 55 specs
+22:14:45 [INFO]    🔹 [759/8563] Cào URL: https://www.amazon.com/dp/B0FKTRCNLM lần thứ 1
+22:14:58 [INFO]       ✅ DONE: B0FKTRCNLM | 7 ảnh | 52 specs
+22:15:02 [INFO]    🔹 [760/8563] Cào URL: https://www.amazon.com/dp/B0FKTQWT34 lần thứ 1
+22:15:15 [INFO]       ✅ DONE: B0FKTQWT34 | 7 ảnh | 53 specs
+22:15:19 [INFO]    🔹 [761/8563] Cào URL: https://www.amazon.com/dp/B0FKTQMHRH lần thứ 1
+22:15:33 [INFO]       ✅ DONE: B0FKTQMHRH | 7 ảnh | 58 specs
+22:15:37 [INFO]    🔹 [762/8563] Cào URL: https://www.amazon.com/dp/B0FKTPH6LZ lần thứ 1
+22:15:50 [INFO]       ✅ DONE: B0FKTPH6LZ | 7 ảnh | 55 specs
+22:15:54 [INFO]    🔹 [763/8563] Cào URL: https://www.amazon.com/dp/B0FW5TZ68Z lần thứ 1
+22:16:07 [INFO]       ✅ DONE: B0FW5TZ68Z | 7 ảnh | 56 specs
+22:16:12 [INFO]    🔹 [764/8563] Cào URL: https://www.amazon.com/dp/B0FKTSGQMC lần thứ 1
+22:16:25 [INFO]       ✅ DONE: B0FKTSGQMC | 7 ảnh | 55 specs
+22:16:28 [INFO]    🔹 [765/8563] Cào URL: https://www.amazon.com/dp/B0FMJ8LY4M lần thứ 1
+22:16:50 [INFO]       ✅ DONE: B0FMJ8LY4M | 7 ảnh | 74 specs
+22:16:54 [INFO]    🔹 [766/8563] Cào URL: https://www.amazon.com/dp/B0D425FHN1 lần thứ 1
+22:17:10 [INFO]       ✅ DONE: B0D425FHN1 | 3 ảnh | 80 specs
+22:17:15 [INFO]    🔹 [767/8563] Cào URL: https://www.amazon.com/dp/B0FMJC4SYH lần thứ 1
+22:17:36 [INFO]       ✅ DONE: B0FMJC4SYH | 7 ảnh | 75 specs
+22:17:36 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+22:17:39 [INFO]    🔹 [768/8563] Cào URL: https://www.amazon.com/dp/B0FMJ6B88K lần thứ 1
+22:18:00 [INFO]       ✅ DONE: B0FMJ6B88K | 7 ảnh | 73 specs
+22:18:03 [INFO]    🔹 [769/8563] Cào URL: https://www.amazon.com/dp/B0GV6HPPLG lần thứ 1
+22:18:23 [INFO]       ✅ DONE: B0GV6HPPLG | 7 ảnh | 63 specs
+22:18:28 [INFO]    🔹 [770/8563] Cào URL: https://www.amazon.com/dp/B0FMJ849S3 lần thứ 1
+22:18:48 [INFO]       ✅ DONE: B0FMJ849S3 | 7 ảnh | 72 specs
+22:18:52 [INFO]    🔹 [771/8563] Cào URL: https://www.amazon.com/dp/B0FMJC492F lần thứ 1
+22:19:13 [INFO]       ✅ DONE: B0FMJC492F | 7 ảnh | 73 specs
+22:19:16 [INFO]    🔹 [772/8563] Cào URL: https://www.amazon.com/dp/B0FMJ6JCV8 lần thứ 1
+22:19:37 [INFO]       ✅ DONE: B0FMJ6JCV8 | 7 ảnh | 73 specs
+22:19:41 [INFO]    🔹 [773/8563] Cào URL: https://www.amazon.com/dp/B0FMJ8Y2FN lần thứ 1
+22:20:01 [INFO]       ✅ DONE: B0FMJ8Y2FN | 7 ảnh | 73 specs
+22:20:05 [INFO]    🔹 [774/8563] Cào URL: https://www.amazon.com/dp/B09G1SQ3WV lần thứ 1
+22:20:18 [INFO]       ✅ DONE: B09G1SQ3WV | 7 ảnh | 48 specs
+22:20:21 [INFO]    🔹 [775/8563] Cào URL: https://www.amazon.com/dp/B0GJRKZK7Z lần thứ 1
+22:20:38 [INFO]       ✅ DONE: B0GJRKZK7Z | 7 ảnh | 88 specs
+22:20:42 [INFO]    🔹 [776/8563] Cào URL: https://www.amazon.com/dp/B0GM3KFNT8 lần thứ 1
+22:21:02 [INFO]       ✅ DONE: B0GM3KFNT8 | 7 ảnh | 63 specs
+22:21:05 [INFO]    🔹 [777/8563] Cào URL: https://www.amazon.com/dp/B0C54DD8PP lần thứ 1
+22:21:29 [INFO]       ✅ DONE: B0C54DD8PP | 6 ảnh | 77 specs
+22:21:29 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+22:21:34 [INFO]    🔹 [778/8563] Cào URL: https://www.amazon.com/dp/B0GM39MPF6 lần thứ 1
+22:21:56 [INFO]       ✅ DONE: B0GM39MPF6 | 7 ảnh | 71 specs
+22:22:00 [INFO]    🔹 [779/8563] Cào URL: https://www.amazon.com/dp/B0FMQL4DFG lần thứ 1
+22:22:21 [INFO]       ✅ DONE: B0FMQL4DFG | 7 ảnh | 72 specs
+22:22:25 [INFO]    🔹 [780/8563] Cào URL: https://www.amazon.com/dp/B0FZ8D6538 lần thứ 1
+22:22:45 [INFO]       ✅ DONE: B0FZ8D6538 | 7 ảnh | 70 specs
+22:22:50 [INFO]    🔹 [781/8563] Cào URL: https://www.amazon.com/dp/B0G1JRQP49 lần thứ 1
+22:23:11 [INFO]       ✅ DONE: B0G1JRQP49 | 7 ảnh | 72 specs
+22:23:16 [INFO]    🔹 [782/8563] Cào URL: https://www.amazon.com/dp/B0G4HYM1MV lần thứ 1
+22:23:36 [INFO]       ✅ DONE: B0G4HYM1MV | 7 ảnh | 71 specs
+22:23:41 [INFO]    🔹 [783/8563] Cào URL: https://www.amazon.com/dp/B0FMQJ4T2W lần thứ 1
+22:24:01 [INFO]       ✅ DONE: B0FMQJ4T2W | 7 ảnh | 72 specs
+22:24:05 [INFO]    🔹 [784/8563] Cào URL: https://www.amazon.com/dp/B0CR7YVVR8 lần thứ 1
+22:24:24 [INFO]       ✅ DONE: B0CR7YVVR8 | 7 ảnh | 92 specs
+22:24:29 [INFO]    🔹 [785/8563] Cào URL: https://www.amazon.com/dp/B0CYZ7Q1SC lần thứ 1
+22:24:46 [INFO]       ✅ DONE: B0CYZ7Q1SC | 7 ảnh | 85 specs
+22:24:50 [INFO]    🔹 [786/8563] Cào URL: https://www.amazon.com/dp/B0CYYYLMPW lần thứ 1
+22:25:08 [INFO]       ✅ DONE: B0CYYYLMPW | 7 ảnh | 86 specs
+22:25:12 [INFO]    🔹 [787/8563] Cào URL: https://www.amazon.com/dp/B0CYZLQ5Q3 lần thứ 1
+22:25:29 [INFO]       ✅ DONE: B0CYZLQ5Q3 | 7 ảnh | 84 specs
+22:25:29 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+22:25:34 [INFO]    🔹 [788/8563] Cào URL: https://www.amazon.com/dp/B0CYZD9PXQ lần thứ 1
+22:25:51 [INFO]       ✅ DONE: B0CYZD9PXQ | 7 ảnh | 84 specs
+22:25:54 [INFO]    🔹 [789/8563] Cào URL: https://www.amazon.com/dp/B0CYZG8FMF lần thứ 1
+22:26:11 [INFO]       ✅ DONE: B0CYZG8FMF | 7 ảnh | 83 specs
+22:26:14 [INFO]    🔹 [790/8563] Cào URL: https://www.amazon.com/dp/B0FHS6GNR3 lần thứ 1
+22:26:26 [INFO]       ✅ DONE: B0FHS6GNR3 | 4 ảnh | 27 specs
+22:26:30 [INFO]    🔹 [791/8563] Cào URL: https://www.amazon.com/dp/B0FYCFZ9HV lần thứ 1
+22:26:48 [INFO]       ✅ DONE: B0FYCFZ9HV | 7 ảnh | 61 specs
+22:26:52 [INFO]    🔹 [792/8563] Cào URL: https://www.amazon.com/dp/B0CG1HZWL6 lần thứ 1
+22:27:06 [INFO]       ✅ DONE: B0CG1HZWL6 | 6 ảnh | 49 specs
+22:27:10 [INFO]    🔹 [793/8563] Cào URL: https://www.amazon.com/dp/B07P211Q4R lần thứ 1
+22:27:20 [INFO]       ✅ DONE: B07P211Q4R | 7 ảnh | 25 specs
+22:27:23 [INFO]    🔹 [794/8563] Cào URL: https://www.amazon.com/dp/B0B9SH8NFB lần thứ 1
+22:27:39 [INFO]       ✅ DONE: B0B9SH8NFB | 7 ảnh | 59 specs
+22:27:42 [INFO]    🔹 [795/8563] Cào URL: https://www.amazon.com/dp/B0DWZXNCRT lần thứ 1
+22:27:55 [INFO]       ✅ DONE: B0DWZXNCRT | 4 ảnh | 41 specs
+22:28:00 [INFO]    🔹 [796/8563] Cào URL: https://www.amazon.com/dp/B08SLWSF34 lần thứ 1
+22:28:14 [INFO]       ✅ DONE: B08SLWSF34 | 7 ảnh | 47 specs
+22:28:18 [INFO]    🔹 [797/8563] Cào URL: https://www.amazon.com/dp/B0G5424XSW lần thứ 1
+22:28:31 [INFO]       ✅ DONE: B0G5424XSW | 4 ảnh | 37 specs
+22:28:31 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+22:28:35 [INFO]    🔹 [798/8563] Cào URL: https://www.amazon.com/dp/B07FRNPVQN lần thứ 1
+22:28:49 [INFO]       ✅ DONE: B07FRNPVQN | 6 ảnh | 46 specs
+22:28:53 [INFO]    🔹 [799/8563] Cào URL: https://www.amazon.com/dp/B0G15RS318 lần thứ 1
+22:29:08 [INFO]       ✅ DONE: B0G15RS318 | 7 ảnh | 59 specs
+22:29:13 [INFO]    🔹 [800/8563] Cào URL: https://www.amazon.com/dp/B0C5MY92JF lần thứ 1
+22:29:27 [INFO]       ✅ DONE: B0C5MY92JF | 7 ảnh | 64 specs
+22:29:32 [INFO]    🔹 [801/8563] Cào URL: https://www.amazon.com/dp/B0DN2P7CRB lần thứ 1
+22:29:45 [INFO]       ✅ DONE: B0DN2P7CRB | 7 ảnh | 36 specs
+22:29:49 [INFO]    🔹 [802/8563] Cào URL: https://www.amazon.com/dp/B0BK2CQ7LG lần thứ 1
+22:30:04 [INFO]       ✅ DONE: B0BK2CQ7LG | 7 ảnh | 51 specs
+22:30:07 [INFO]    🔹 [803/8563] Cào URL: https://www.amazon.com/dp/B0DN2WMLWZ lần thứ 1
+22:30:21 [INFO]       ✅ DONE: B0DN2WMLWZ | 7 ảnh | 40 specs
+22:30:25 [INFO]    🔹 [804/8563] Cào URL: https://www.amazon.com/dp/B0FC5SHZ45 lần thứ 1
+22:30:42 [INFO]       ✅ DONE: B0FC5SHZ45 | 7 ảnh | 70 specs
+22:30:46 [INFO]    🔹 [805/8563] Cào URL: https://www.amazon.com/dp/B0FC5W4HHH lần thứ 1
+22:31:04 [INFO]       ✅ DONE: B0FC5W4HHH | 7 ảnh | 74 specs
+22:31:08 [INFO]    🔹 [806/8563] Cào URL: https://www.amazon.com/dp/B0FC5WV2BC lần thứ 1
+22:31:26 [INFO]       ✅ DONE: B0FC5WV2BC | 7 ảnh | 71 specs
+22:31:30 [INFO]    🔹 [807/8563] Cào URL: https://www.amazon.com/dp/B0FC5N118W lần thứ 1
+22:31:48 [INFO]       ✅ DONE: B0FC5N118W | 7 ảnh | 71 specs
+22:31:48 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+22:31:53 [INFO]    🔹 [808/8563] Cào URL: https://www.amazon.com/dp/B07J215RPT lần thứ 1
+22:32:15 [INFO]       ✅ DONE: B07J215RPT | 7 ảnh | 89 specs
+22:32:19 [INFO]    🔹 [809/8563] Cào URL: https://www.amazon.com/dp/B0D49LLNH8 lần thứ 1
+22:32:34 [INFO]       ✅ DONE: B0D49LLNH8 | 7 ảnh | 60 specs
+22:32:39 [INFO]    🔹 [810/8563] Cào URL: https://www.amazon.com/dp/B0DT9JD4WN lần thứ 1
+22:32:53 [INFO]       ✅ DONE: B0DT9JD4WN | 7 ảnh | 57 specs
+22:32:58 [INFO]    🔹 [811/8563] Cào URL: https://www.amazon.com/dp/B0DT9C4NNL lần thứ 1
+22:33:12 [INFO]       ✅ DONE: B0DT9C4NNL | 7 ảnh | 58 specs
+22:33:15 [INFO]    🔹 [812/8563] Cào URL: https://www.amazon.com/dp/B0DT8WMXFW lần thứ 1
+22:33:30 [INFO]       ✅ DONE: B0DT8WMXFW | 7 ảnh | 58 specs
+22:33:34 [INFO]    🔹 [813/8563] Cào URL: https://www.amazon.com/dp/B0DT99BL1D lần thứ 1
+22:33:49 [INFO]       ✅ DONE: B0DT99BL1D | 7 ảnh | 58 specs
+22:33:52 [INFO]    🔹 [814/8563] Cào URL: https://www.amazon.com/dp/B0D6W1GQ6X lần thứ 1
+22:34:08 [INFO]       ✅ DONE: B0D6W1GQ6X | 7 ảnh | 73 specs
+22:34:11 [INFO]    🔹 [815/8563] Cào URL: https://www.amazon.com/dp/B0FT24K25L lần thứ 1
+22:34:25 [INFO]       ✅ DONE: B0FT24K25L | 7 ảnh | 53 specs
+22:34:29 [INFO]    🔹 [816/8563] Cào URL: https://www.amazon.com/dp/B0FT7GM52J lần thứ 1
+22:34:42 [INFO]       ✅ DONE: B0FT7GM52J | 7 ảnh | 50 specs
+22:34:45 [INFO]    🔹 [817/8563] Cào URL: https://www.amazon.com/dp/B0FVLZ23QK lần thứ 1
+22:34:59 [INFO]       ✅ DONE: B0FVLZ23QK | 7 ảnh | 47 specs
+22:34:59 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+22:35:03 [INFO]    🔹 [818/8563] Cào URL: https://www.amazon.com/dp/B0FZJJS8NP lần thứ 1
+22:35:23 [INFO]       ✅ DONE: B0FZJJS8NP | 7 ảnh | 67 specs
+22:35:28 [INFO]    🔹 [819/8563] Cào URL: https://www.amazon.com/dp/B0GG2CPM1K lần thứ 1
+22:35:42 [INFO]       ✅ DONE: B0GG2CPM1K | 7 ảnh | 38 specs
+22:35:45 [INFO]    🔹 [820/8563] Cào URL: https://www.amazon.com/dp/B0G4WBD45V lần thứ 1
+22:36:04 [INFO]       ✅ DONE: B0G4WBD45V | 7 ảnh | 67 specs
+22:36:09 [INFO]    🔹 [821/8563] Cào URL: https://www.amazon.com/dp/B0CR45SCD7 lần thứ 1
+22:36:25 [INFO]       ✅ DONE: B0CR45SCD7 | 7 ảnh | 66 specs
+22:36:28 [INFO]    🔹 [822/8563] Cào URL: https://www.amazon.com/dp/B0FQV4N3Y8 lần thứ 1
+22:36:42 [INFO]       ✅ DONE: B0FQV4N3Y8 | 7 ảnh | 52 specs
+22:36:46 [INFO]    🔹 [823/8563] Cào URL: https://www.amazon.com/dp/B09851XH2D lần thứ 1
+22:37:02 [INFO]       ✅ DONE: B09851XH2D | 5 ảnh | 73 specs
+22:37:05 [INFO]    🔹 [824/8563] Cào URL: https://www.amazon.com/dp/B0GLXJ95SG lần thứ 1
+22:37:23 [INFO]       ✅ DONE: B0GLXJ95SG | 7 ảnh | 63 specs
+22:37:27 [INFO]    🔹 [825/8563] Cào URL: https://www.amazon.com/dp/B0GNCW7KXL lần thứ 1
+22:37:40 [INFO]       ✅ DONE: B0GNCW7KXL | 7 ảnh | 41 specs
+22:37:45 [INFO]    🔹 [826/8563] Cào URL: https://www.amazon.com/dp/B0GNCF2QHX lần thứ 1
+22:37:58 [INFO]       ✅ DONE: B0GNCF2QHX | 7 ảnh | 41 specs
+22:38:03 [INFO]    🔹 [827/8563] Cào URL: https://www.amazon.com/dp/B0GND82D5T lần thứ 1
+22:38:17 [INFO]       ✅ DONE: B0GND82D5T | 7 ảnh | 49 specs
+22:38:17 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+22:38:21 [INFO]    🔹 [828/8563] Cào URL: https://www.amazon.com/dp/B0GML5ZP6Q lần thứ 1
+22:38:36 [INFO]       ✅ DONE: B0GML5ZP6Q | 7 ảnh | 49 specs
+22:38:40 [INFO]    🔹 [829/8563] Cào URL: https://www.amazon.com/dp/B0GNCYF4B5 lần thứ 1
+22:38:52 [INFO]       ✅ DONE: B0GNCYF4B5 | 7 ảnh | 32 specs
+22:38:56 [INFO]    🔹 [830/8563] Cào URL: https://www.amazon.com/dp/B0GNDDBRCC lần thứ 1
+22:39:11 [INFO]       ✅ DONE: B0GNDDBRCC | 7 ảnh | 47 specs
+22:39:15 [INFO]    🔹 [831/8563] Cào URL: https://www.amazon.com/dp/B0GQCYWCXW lần thứ 1
+22:39:29 [INFO]       ✅ DONE: B0GQCYWCXW | 7 ảnh | 49 specs
+22:39:33 [INFO]    🔹 [832/8563] Cào URL: https://www.amazon.com/dp/B0CR3LP1XC lần thứ 1
+22:39:47 [INFO]       ✅ DONE: B0CR3LP1XC | 7 ảnh | 54 specs
+22:39:51 [INFO]    🔹 [833/8563] Cào URL: https://www.amazon.com/dp/B0D2W14QQT lần thứ 1
+22:40:12 [INFO]       ✅ DONE: B0D2W14QQT | 7 ảnh | 88 specs
+22:40:17 [INFO]    🔹 [834/8563] Cào URL: https://www.amazon.com/dp/B0CHF4B3ZJ lần thứ 1
+22:40:34 [INFO]       ✅ DONE: B0CHF4B3ZJ | 7 ảnh | 75 specs
+22:40:39 [INFO]    🔹 [835/8563] Cào URL: https://www.amazon.com/dp/B0GRZZ6KLD lần thứ 1
+22:40:56 [INFO]       ✅ DONE: B0GRZZ6KLD | 7 ảnh | 71 specs
+22:41:00 [INFO]    🔹 [836/8563] Cào URL: https://www.amazon.com/dp/B0D9P7Z33B lần thứ 1
+22:41:26 [INFO]       ✅ DONE: B0D9P7Z33B | 7 ảnh | 77 specs
+22:41:30 [INFO]    🔹 [837/8563] Cào URL: https://www.amazon.com/dp/B07G54S6VC lần thứ 1
+22:41:47 [INFO]       ✅ DONE: B07G54S6VC | 7 ảnh | 84 specs
+22:41:47 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+22:41:51 [INFO]    🔹 [838/8563] Cào URL: https://www.amazon.com/dp/B0GRZYM8P6 lần thứ 1
+22:42:08 [INFO]       ✅ DONE: B0GRZYM8P6 | 7 ảnh | 70 specs
+22:42:12 [INFO]    🔹 [839/8563] Cào URL: https://www.amazon.com/dp/B0GRZX4BZG lần thứ 1
+22:42:28 [INFO]       ✅ DONE: B0GRZX4BZG | 7 ảnh | 70 specs
+22:42:33 [INFO]    🔹 [840/8563] Cào URL: https://www.amazon.com/dp/B0BX7KSS8L lần thứ 1
+22:42:51 [INFO]       ✅ DONE: B0BX7KSS8L | 7 ảnh | 91 specs
+22:42:56 [INFO]    🔹 [841/8563] Cào URL: https://www.amazon.com/dp/B0BYK9SZB8 lần thứ 1
+22:43:14 [INFO]       ✅ DONE: B0BYK9SZB8 | 7 ảnh | 74 specs
+22:43:18 [INFO]    🔹 [842/8563] Cào URL: https://www.amazon.com/dp/B0CHMHRRYR lần thứ 1
+22:43:35 [INFO]       ✅ DONE: B0CHMHRRYR | 7 ảnh | 83 specs
+22:43:38 [INFO]    🔹 [843/8563] Cào URL: https://www.amazon.com/dp/B0CPLCRXNP lần thứ 1
+22:43:52 [INFO]       ✅ DONE: B0CPLCRXNP | 7 ảnh | 53 specs
+22:43:56 [INFO]    🔹 [844/8563] Cào URL: https://www.amazon.com/dp/B07XQQS439 lần thứ 1
+22:44:14 [INFO]       ✅ DONE: B07XQQS439 | 7 ảnh | 85 specs
+22:44:18 [INFO]    🔹 [845/8563] Cào URL: https://www.amazon.com/dp/B0GSVWWDLN lần thứ 1
+22:44:35 [INFO]       ✅ DONE: B0GSVWWDLN | 7 ảnh | 55 specs
+22:44:38 [INFO]    🔹 [846/8563] Cào URL: https://www.amazon.com/dp/B0DWSG1N27 lần thứ 1
+22:44:55 [INFO]       ✅ DONE: B0DWSG1N27 | 7 ảnh | 57 specs
+22:44:59 [INFO]    🔹 [847/8563] Cào URL: https://www.amazon.com/dp/B0GSJYJF6L lần thứ 1
+22:45:15 [INFO]       ✅ DONE: B0GSJYJF6L | 7 ảnh | 65 specs
+22:45:15 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+22:45:19 [INFO]    🔹 [848/8563] Cào URL: https://www.amazon.com/dp/B0GSVSPFFX lần thứ 1
+22:45:36 [INFO]       ✅ DONE: B0GSVSPFFX | 7 ảnh | 54 specs
+22:45:39 [INFO]    🔹 [849/8563] Cào URL: https://www.amazon.com/dp/B0BM4ZQL2F lần thứ 1
+22:45:55 [INFO]       ✅ DONE: B0BM4ZQL2F | 3 ảnh | 69 specs
+22:45:59 [INFO]    🔹 [850/8563] Cào URL: https://www.amazon.com/dp/B0BPJT2KD8 lần thứ 1
+22:46:19 [INFO]       ✅ DONE: B0BPJT2KD8 | 5 ảnh | 79 specs
+22:46:22 [INFO]    🔹 [851/8563] Cào URL: https://www.amazon.com/dp/B0DSLNMY6M lần thứ 1
+22:46:48 [INFO]       ✅ DONE: B0DSLNMY6M | 7 ảnh | 70 specs
+22:46:51 [INFO]    🔹 [852/8563] Cào URL: https://www.amazon.com/dp/B0BPJH95NH lần thứ 1
+22:47:09 [INFO]       ✅ DONE: B0BPJH95NH | 7 ảnh | 79 specs
+22:47:13 [INFO]    🔹 [853/8563] Cào URL: https://www.amazon.com/dp/B0BRNNS3RN lần thứ 1
+22:47:32 [INFO]       ✅ DONE: B0BRNNS3RN | 7 ảnh | 73 specs
+22:47:35 [INFO]    🔹 [854/8563] Cào URL: https://www.amazon.com/dp/B0BPJT3FXZ lần thứ 1
+22:47:54 [INFO]       ✅ DONE: B0BPJT3FXZ | 7 ảnh | 81 specs
+22:47:59 [INFO]    🔹 [855/8563] Cào URL: https://www.amazon.com/dp/B0BPJ6Y9S3 lần thứ 1
+22:48:18 [INFO]       ✅ DONE: B0BPJ6Y9S3 | 7 ảnh | 71 specs
+22:48:23 [INFO]    🔹 [856/8563] Cào URL: https://www.amazon.com/dp/B0BPJNJZZF lần thứ 1
+22:48:42 [INFO]       ✅ DONE: B0BPJNJZZF | 7 ảnh | 84 specs
+22:48:46 [INFO]    🔹 [857/8563] Cào URL: https://www.amazon.com/dp/B0DWS7PR4L lần thứ 1
+22:49:04 [INFO]       ✅ DONE: B0DWS7PR4L | 7 ảnh | 58 specs
+22:49:04 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+22:49:08 [INFO]    🔹 [858/8563] Cào URL: https://www.amazon.com/dp/B0DWSDWS6R lần thứ 1
+22:49:26 [INFO]       ✅ DONE: B0DWSDWS6R | 7 ảnh | 57 specs
+22:49:30 [INFO]    🔹 [859/8563] Cào URL: https://www.amazon.com/dp/B0DGLYQZQK lần thứ 1
+22:49:49 [INFO]       ✅ DONE: B0DGLYQZQK | 7 ảnh | 72 specs
+22:49:53 [INFO]    🔹 [860/8563] Cào URL: https://www.amazon.com/dp/B0DVCBFJM7 lần thứ 1
+22:50:12 [INFO]       ✅ DONE: B0DVCBFJM7 | 7 ảnh | 69 specs
+22:50:17 [INFO]    🔹 [861/8563] Cào URL: https://www.amazon.com/dp/B0DVCDC2NN lần thứ 1
+22:50:36 [INFO]       ✅ DONE: B0DVCDC2NN | 7 ảnh | 71 specs
+22:50:40 [INFO]    🔹 [862/8563] Cào URL: https://www.amazon.com/dp/B07XW266D9 lần thứ 1
+22:51:02 [INFO]       ✅ DONE: B07XW266D9 | 7 ảnh | 87 specs
+22:51:06 [INFO]    🔹 [863/8563] Cào URL: https://www.amazon.com/dp/B08V1ZMRZL lần thứ 1
+22:51:26 [INFO]       ✅ DONE: B08V1ZMRZL | 7 ảnh | 79 specs
+22:51:29 [INFO]    🔹 [864/8563] Cào URL: https://www.amazon.com/dp/B07XL4JDQW lần thứ 1
+22:51:51 [INFO]       ✅ DONE: B07XL4JDQW | 7 ảnh | 93 specs
+22:51:55 [INFO]    🔹 [865/8563] Cào URL: https://www.amazon.com/dp/B0D2VYN4V8 lần thứ 1
+22:52:07 [INFO]       ✅ DONE: B0D2VYN4V8 | 7 ảnh | 44 specs
+22:52:11 [INFO]    🔹 [866/8563] Cào URL: https://www.amazon.com/dp/B0CH45KQGY lần thứ 1
+22:52:29 [INFO]       ✅ DONE: B0CH45KQGY | 7 ảnh | 74 specs
+22:52:33 [INFO]    🔹 [867/8563] Cào URL: https://www.amazon.com/dp/B0FF7GCZQG lần thứ 1
+22:52:45 [INFO]       ✅ DONE: B0FF7GCZQG | 7 ảnh | 45 specs
+22:52:45 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+22:52:50 [INFO]    🔹 [868/8563] Cào URL: https://www.amazon.com/dp/B0FF6T5N88 lần thứ 1
+22:52:59 [INFO]       ✅ DONE: B0FF6T5N88 | 7 ảnh | 21 specs
+22:53:04 [INFO]    🔹 [869/8563] Cào URL: https://www.amazon.com/dp/B0FF6R78MF lần thứ 1
+22:53:16 [INFO]       ✅ DONE: B0FF6R78MF | 7 ảnh | 42 specs
+22:53:20 [INFO]    🔹 [870/8563] Cào URL: https://www.amazon.com/dp/B0G2M3CGCY lần thứ 1
+22:53:36 [INFO]       ✅ DONE: B0G2M3CGCY | 7 ảnh | 68 specs
+22:53:40 [INFO]    🔹 [871/8563] Cào URL: https://www.amazon.com/dp/B0FY6DQTYK lần thứ 1
+22:53:53 [INFO]       ✅ DONE: B0FY6DQTYK | 7 ảnh | 51 specs
+22:53:57 [INFO]    🔹 [872/8563] Cào URL: https://www.amazon.com/dp/B0CQ3VXJ3J lần thứ 1
+22:54:14 [INFO]       ✅ DONE: B0CQ3VXJ3J | 7 ảnh | 67 specs
+22:54:18 [INFO]    🔹 [873/8563] Cào URL: https://www.amazon.com/dp/B0FY6HGQVL lần thứ 1
+22:54:31 [INFO]       ✅ DONE: B0FY6HGQVL | 7 ảnh | 52 specs
+22:54:34 [INFO]    🔹 [874/8563] Cào URL: https://www.amazon.com/dp/B0FY6FR3SQ lần thứ 1
+22:54:46 [INFO]       ✅ DONE: B0FY6FR3SQ | 7 ảnh | 47 specs
+22:54:51 [INFO]    🔹 [875/8563] Cào URL: https://www.amazon.com/dp/B0G25FRW3C lần thứ 1
+22:55:04 [INFO]       ✅ DONE: B0G25FRW3C | 7 ảnh | 51 specs
+22:55:07 [INFO]    🔹 [876/8563] Cào URL: https://www.amazon.com/dp/B08DL4X5R4 lần thứ 1
+22:55:22 [INFO]       ✅ DONE: B08DL4X5R4 | 7 ảnh | 77 specs
+22:55:26 [INFO]    🔹 [877/8563] Cào URL: https://www.amazon.com/dp/B0FVXMHHRP lần thứ 1
+22:55:42 [INFO]       ✅ DONE: B0FVXMHHRP | 7 ảnh | 40 specs
+22:55:42 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+22:55:47 [INFO]    🔹 [878/8563] Cào URL: https://www.amazon.com/dp/B0FVXLPWHM lần thứ 1
+22:56:04 [INFO]       ✅ DONE: B0FVXLPWHM | 7 ảnh | 38 specs
+22:56:08 [INFO]    🔹 [879/8563] Cào URL: https://www.amazon.com/dp/B0FVXRG5W9 lần thứ 1
+22:56:25 [INFO]       ✅ DONE: B0FVXRG5W9 | 7 ảnh | 41 specs
+22:56:29 [INFO]    🔹 [880/8563] Cào URL: https://www.amazon.com/dp/B0DLJN4S1K lần thứ 1
+22:56:45 [INFO]       ✅ DONE: B0DLJN4S1K | 6 ảnh | 76 specs
+22:56:48 [INFO]    🔹 [881/8563] Cào URL: https://www.amazon.com/dp/B0FNN3B3BM lần thứ 1
+22:57:05 [INFO]       ✅ DONE: B0FNN3B3BM | 7 ảnh | 73 specs
+22:57:08 [INFO]    🔹 [882/8563] Cào URL: https://www.amazon.com/dp/B0BL3BXS87 lần thứ 1
+22:57:28 [INFO]       ✅ DONE: B0BL3BXS87 | 7 ảnh | 73 specs
+22:57:32 [INFO]    🔹 [883/8563] Cào URL: https://www.amazon.com/dp/B0GL82JJ5P lần thứ 1
+22:57:45 [INFO]       ✅ DONE: B0GL82JJ5P | 6 ảnh | 37 specs
+22:57:48 [INFO]    🔹 [884/8563] Cào URL: https://www.amazon.com/dp/B0DG42YPLL lần thứ 1
+22:58:07 [INFO]       ✅ DONE: B0DG42YPLL | 7 ảnh | 72 specs
+22:58:10 [INFO]    🔹 [885/8563] Cào URL: https://www.amazon.com/dp/B0D7M9MR7T lần thứ 1
+22:58:26 [INFO]       ✅ DONE: B0D7M9MR7T | 6 ảnh | 72 specs
+22:58:30 [INFO]    🔹 [886/8563] Cào URL: https://www.amazon.com/dp/B0GL87RD91 lần thứ 1
+22:58:42 [INFO]       ✅ DONE: B0GL87RD91 | 6 ảnh | 37 specs
+22:58:46 [INFO]    🔹 [887/8563] Cào URL: https://www.amazon.com/dp/B0DSVKXGX5 lần thứ 1
+22:59:00 [INFO]       ✅ DONE: B0DSVKXGX5 | 6 ảnh | 54 specs
+22:59:00 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+22:59:04 [INFO]    🔹 [888/8563] Cào URL: https://www.amazon.com/dp/B0DQ83HTMG lần thứ 1
+22:59:24 [INFO]       ✅ DONE: B0DQ83HTMG | 7 ảnh | 79 specs
+22:59:29 [INFO]    🔹 [889/8563] Cào URL: https://www.amazon.com/dp/B0DQ82T1NC lần thứ 1
+22:59:47 [INFO]       ✅ DONE: B0DQ82T1NC | 7 ảnh | 76 specs
+22:59:51 [INFO]    🔹 [890/8563] Cào URL: https://www.amazon.com/dp/B0DHXNV9VH lần thứ 1
+23:00:07 [INFO]       ✅ DONE: B0DHXNV9VH | 5 ảnh | 63 specs
+23:00:11 [INFO]    🔹 [891/8563] Cào URL: https://www.amazon.com/dp/B0DHXPZRY7 lần thứ 1
+23:00:27 [INFO]       ✅ DONE: B0DHXPZRY7 | 7 ảnh | 63 specs
+23:00:31 [INFO]    🔹 [892/8563] Cào URL: https://www.amazon.com/dp/B0DHXPJB8S lần thứ 1
+23:00:46 [INFO]       ✅ DONE: B0DHXPJB8S | 7 ảnh | 63 specs
+23:00:50 [INFO]    🔹 [893/8563] Cào URL: https://www.amazon.com/dp/B0DHXMKPSB lần thứ 1
+23:01:05 [INFO]       ✅ DONE: B0DHXMKPSB | 6 ảnh | 63 specs
+23:01:08 [INFO]    🔹 [894/8563] Cào URL: https://www.amazon.com/dp/B0G7V2NDYV lần thứ 1
+23:01:23 [INFO]       ✅ DONE: B0G7V2NDYV | 7 ảnh | 52 specs
+23:01:26 [INFO]    🔹 [895/8563] Cào URL: https://www.amazon.com/dp/B09X5LRJXF lần thứ 1
+23:01:43 [INFO]       ✅ DONE: B09X5LRJXF | 7 ảnh | 89 specs
+23:01:47 [INFO]    🔹 [896/8563] Cào URL: https://www.amazon.com/dp/B0G7VW96ZK lần thứ 1
+23:02:00 [INFO]       ✅ DONE: B0G7VW96ZK | 7 ảnh | 52 specs
+23:02:04 [INFO]    🔹 [897/8563] Cào URL: https://www.amazon.com/dp/B0G7VFXRGG lần thứ 1
+23:02:17 [INFO]       ✅ DONE: B0G7VFXRGG | 7 ảnh | 52 specs
+23:02:17 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:02:21 [INFO]    🔹 [898/8563] Cào URL: https://www.amazon.com/dp/B0G7VG8T1K lần thứ 1
+23:02:34 [INFO]       ✅ DONE: B0G7VG8T1K | 7 ảnh | 50 specs
+23:02:38 [INFO]    🔹 [899/8563] Cào URL: https://www.amazon.com/dp/B0F24GHD38 lần thứ 1
+23:02:51 [INFO]       ✅ DONE: B0F24GHD38 | 7 ảnh | 46 specs
+23:02:54 [INFO]    🔹 [900/8563] Cào URL: https://www.amazon.com/dp/B0DM5L79QM lần thứ 1
+23:03:07 [INFO]       ✅ DONE: B0DM5L79QM | 7 ảnh | 56 specs
+23:03:12 [INFO]    🔹 [901/8563] Cào URL: https://www.amazon.com/dp/B0FF645M2Z lần thứ 1
+23:03:21 [INFO]       ✅ DONE: B0FF645M2Z | 7 ảnh | 28 specs
+23:03:26 [INFO]    🔹 [902/8563] Cào URL: https://www.amazon.com/dp/B0FF5ZRZ3P lần thứ 1
+23:03:35 [INFO]       ✅ DONE: B0FF5ZRZ3P | 7 ảnh | 28 specs
+23:03:40 [INFO]    🔹 [903/8563] Cào URL: https://www.amazon.com/dp/B0FF6D1XB3 lần thứ 1
+23:03:49 [INFO]       ✅ DONE: B0FF6D1XB3 | 7 ảnh | 28 specs
+23:03:53 [INFO]    🔹 [904/8563] Cào URL: https://www.amazon.com/dp/B07XQQRCG5 lần thứ 1
+23:04:12 [INFO]       ✅ DONE: B07XQQRCG5 | 7 ảnh | 67 specs
+23:04:16 [INFO]    🔹 [905/8563] Cào URL: https://www.amazon.com/dp/B0GHXYJT98 lần thứ 1
+23:04:32 [INFO]       ✅ DONE: B0GHXYJT98 | 7 ảnh | 61 specs
+23:04:36 [INFO]    🔹 [906/8563] Cào URL: https://www.amazon.com/dp/B0GHXZFMRM lần thứ 1
+23:04:52 [INFO]       ✅ DONE: B0GHXZFMRM | 7 ảnh | 61 specs
+23:04:57 [INFO]    🔹 [907/8563] Cào URL: https://www.amazon.com/dp/B0GHXZ2D32 lần thứ 1
+23:05:12 [INFO]       ✅ DONE: B0GHXZ2D32 | 7 ảnh | 61 specs
+23:05:12 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:05:16 [INFO]    🔹 [908/8563] Cào URL: https://www.amazon.com/dp/B0CH5G6S8W lần thứ 1
+23:05:33 [INFO]       ✅ DONE: B0CH5G6S8W | 7 ảnh | 57 specs
+23:05:37 [INFO]    🔹 [909/8563] Cào URL: https://www.amazon.com/dp/B0FF72BF66 lần thứ 1
+23:05:47 [INFO]       ✅ DONE: B0FF72BF66 | 7 ảnh | 22 specs
+23:05:52 [INFO]    🔹 [910/8563] Cào URL: https://www.amazon.com/dp/B0FF7JBS3Q lần thứ 1
+23:06:01 [INFO]       ✅ DONE: B0FF7JBS3Q | 7 ảnh | 21 specs
+23:06:05 [INFO]    🔹 [911/8563] Cào URL: https://www.amazon.com/dp/B0FF79MJR7 lần thứ 1
+23:06:18 [INFO]       ✅ DONE: B0FF79MJR7 | 7 ảnh | 44 specs
+23:06:23 [INFO]    🔹 [912/8563] Cào URL: https://www.amazon.com/dp/B099MRV2TL lần thứ 1
+23:06:39 [INFO]       ✅ DONE: B099MRV2TL | 7 ảnh | 73 specs
+23:06:44 [INFO]    🔹 [913/8563] Cào URL: https://www.amazon.com/dp/B0FWR3X96G lần thứ 1
+23:06:58 [INFO]       ✅ DONE: B0FWR3X96G | 7 ảnh | 58 specs
+23:07:03 [INFO]    🔹 [914/8563] Cào URL: https://www.amazon.com/dp/B0FWR3SC8S lần thứ 1
+23:07:18 [INFO]       ✅ DONE: B0FWR3SC8S | 7 ảnh | 59 specs
+23:07:22 [INFO]    🔹 [915/8563] Cào URL: https://www.amazon.com/dp/B0FWR5X85Y lần thứ 1
+23:07:37 [INFO]       ✅ DONE: B0FWR5X85Y | 7 ảnh | 46 specs
+23:07:41 [INFO]    🔹 [916/8563] Cào URL: https://www.amazon.com/dp/B0FWR2X4CW lần thứ 1
+23:07:56 [INFO]       ✅ DONE: B0FWR2X4CW | 7 ảnh | 58 specs
+23:08:01 [INFO]    🔹 [917/8563] Cào URL: https://www.amazon.com/dp/B0FWR63ZDZ lần thứ 1
+23:08:16 [INFO]       ✅ DONE: B0FWR63ZDZ | 7 ảnh | 46 specs
+23:08:16 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:08:21 [INFO]    🔹 [918/8563] Cào URL: https://www.amazon.com/dp/B0FWQZMD9P lần thứ 1
+23:08:36 [INFO]       ✅ DONE: B0FWQZMD9P | 7 ảnh | 46 specs
+23:08:40 [INFO]    🔹 [919/8563] Cào URL: https://www.amazon.com/dp/B0FWQZS5LZ lần thứ 1
+23:08:55 [INFO]       ✅ DONE: B0FWQZS5LZ | 7 ảnh | 56 specs
+23:09:00 [INFO]    🔹 [920/8563] Cào URL: https://www.amazon.com/dp/B0FWQZGK1J lần thứ 1
+23:09:15 [INFO]       ✅ DONE: B0FWQZGK1J | 7 ảnh | 58 specs
+23:09:19 [INFO]    🔹 [921/8563] Cào URL: https://www.amazon.com/dp/B0FY298S3K lần thứ 1
+23:09:34 [INFO]       ✅ DONE: B0FY298S3K | 7 ảnh | 68 specs
+23:09:38 [INFO]    🔹 [922/8563] Cào URL: https://www.amazon.com/dp/B0FJ591QKQ lần thứ 1
+23:09:55 [INFO]       ✅ DONE: B0FJ591QKQ | 7 ảnh | 71 specs
+23:09:58 [INFO]    🔹 [923/8563] Cào URL: https://www.amazon.com/dp/B0DP27DF9B lần thứ 1
+23:10:14 [INFO]       ✅ DONE: B0DP27DF9B | 7 ảnh | 74 specs
+23:10:18 [INFO]    🔹 [924/8563] Cào URL: https://www.amazon.com/dp/B0BPJVG5CK lần thứ 1
+23:10:37 [INFO]       ✅ DONE: B0BPJVG5CK | 4 ảnh | 78 specs
+23:10:41 [INFO]    🔹 [925/8563] Cào URL: https://www.amazon.com/dp/B0DS54HPJ9 lần thứ 1
+23:10:58 [INFO]       ✅ DONE: B0DS54HPJ9 | 7 ảnh | 62 specs
+23:11:02 [INFO]    🔹 [926/8563] Cào URL: https://www.amazon.com/dp/B0DS54SYPZ lần thứ 1
+23:11:18 [INFO]       ✅ DONE: B0DS54SYPZ | 7 ảnh | 60 specs
+23:11:22 [INFO]    🔹 [927/8563] Cào URL: https://www.amazon.com/dp/B0DS54KKM5 lần thứ 1
+23:11:38 [INFO]       ✅ DONE: B0DS54KKM5 | 7 ảnh | 61 specs
+23:11:38 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:11:42 [INFO]    🔹 [928/8563] Cào URL: https://www.amazon.com/dp/B0DS54TQ7P lần thứ 1
+23:12:00 [INFO]       ✅ DONE: B0DS54TQ7P | 7 ảnh | 60 specs
+23:12:03 [INFO]    🔹 [929/8563] Cào URL: https://www.amazon.com/dp/B0778F81ZG lần thứ 1
+23:12:21 [INFO]       ✅ DONE: B0778F81ZG | 4 ảnh | 85 specs
+23:12:25 [INFO]    🔹 [930/8563] Cào URL: https://www.amazon.com/dp/B0FM5KN61Q lần thứ 1
+23:12:40 [INFO]       ✅ DONE: B0FM5KN61Q | 6 ảnh | 53 specs
+23:12:45 [INFO]    🔹 [931/8563] Cào URL: https://www.amazon.com/dp/B0FM63BDMF lần thứ 1
+23:12:59 [INFO]       ✅ DONE: B0FM63BDMF | 6 ảnh | 53 specs
+23:13:03 [INFO]    🔹 [932/8563] Cào URL: https://www.amazon.com/dp/B0FM5YK3QL lần thứ 1
+23:13:17 [INFO]       ✅ DONE: B0FM5YK3QL | 6 ảnh | 54 specs
+23:13:21 [INFO]    🔹 [933/8563] Cào URL: https://www.amazon.com/dp/B09J8TK5C3 lần thứ 1
+23:13:37 [INFO]       ✅ DONE: B09J8TK5C3 | 7 ảnh | 87 specs
+23:13:42 [INFO]    🔹 [934/8563] Cào URL: https://www.amazon.com/dp/B09J8SXVT1 lần thứ 1
+23:13:58 [INFO]       ✅ DONE: B09J8SXVT1 | 7 ảnh | 83 specs
+23:14:03 [INFO]    🔹 [935/8563] Cào URL: https://www.amazon.com/dp/B09J8V32X4 lần thứ 1
+23:14:21 [INFO]       ✅ DONE: B09J8V32X4 | 7 ảnh | 87 specs
+23:14:25 [INFO]    🔹 [936/8563] Cào URL: https://www.amazon.com/dp/B0GGHDS6HV lần thứ 1
+23:14:41 [INFO]       ✅ DONE: B0GGHDS6HV | 7 ảnh | 55 specs
+23:14:46 [INFO]    🔹 [937/8563] Cào URL: https://www.amazon.com/dp/B07XL4JHXR lần thứ 1
+23:15:04 [INFO]       ✅ DONE: B07XL4JHXR | 7 ảnh | 81 specs
+23:15:04 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:15:07 [INFO]    🔹 [938/8563] Cào URL: https://www.amazon.com/dp/B0GGHBZCSS lần thứ 1
+23:15:24 [INFO]       ✅ DONE: B0GGHBZCSS | 7 ảnh | 55 specs
+23:15:29 [INFO]    🔹 [939/8563] Cào URL: https://www.amazon.com/dp/B0GGHKDWCV lần thứ 1
+23:15:45 [INFO]       ✅ DONE: B0GGHKDWCV | 7 ảnh | 53 specs
+23:15:49 [INFO]    🔹 [940/8563] Cào URL: https://www.amazon.com/dp/B0GGH66QZJ lần thứ 1
+23:16:05 [INFO]       ✅ DONE: B0GGH66QZJ | 7 ảnh | 55 specs
+23:16:09 [INFO]    🔹 [941/8563] Cào URL: https://www.amazon.com/dp/B0CDQLTQTL lần thứ 1
+23:16:28 [INFO]       ✅ DONE: B0CDQLTQTL | 7 ảnh | 46 specs
+23:16:33 [INFO]    🔹 [942/8563] Cào URL: https://www.amazon.com/dp/B0D9QNVZNQ lần thứ 1
+23:16:48 [INFO]       ✅ DONE: B0D9QNVZNQ | 4 ảnh | 62 specs
+23:16:51 [INFO]    🔹 [943/8563] Cào URL: https://www.amazon.com/dp/B0FVXNGLR2 lần thứ 1
+23:17:07 [INFO]       ✅ DONE: B0FVXNGLR2 | 7 ảnh | 54 specs
+23:17:11 [INFO]    🔹 [944/8563] Cào URL: https://www.amazon.com/dp/B0B3HTDJBV lần thứ 1
+23:17:26 [INFO]       ✅ DONE: B0B3HTDJBV | 7 ảnh | 77 specs
+23:17:30 [INFO]    🔹 [945/8563] Cào URL: https://www.amazon.com/dp/B0FP4Z4H3X lần thứ 1
+23:17:45 [INFO]       ✅ DONE: B0FP4Z4H3X | 7 ảnh | 62 specs
+23:17:49 [INFO]    🔹 [946/8563] Cào URL: https://www.amazon.com/dp/B0FP4Z9SG4 lần thứ 1
+23:18:03 [INFO]       ✅ DONE: B0FP4Z9SG4 | 7 ảnh | 61 specs
+23:18:07 [INFO]    🔹 [947/8563] Cào URL: https://www.amazon.com/dp/B0FP4YMMF6 lần thứ 1
+23:18:22 [INFO]       ✅ DONE: B0FP4YMMF6 | 7 ảnh | 63 specs
+23:18:22 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:18:26 [INFO]    🔹 [948/8563] Cào URL: https://www.amazon.com/dp/B0FHC2QXN7 lần thứ 1
+23:18:39 [INFO]       ✅ DONE: B0FHC2QXN7 | 7 ảnh | 51 specs
+23:18:42 [INFO]    🔹 [949/8563] Cào URL: https://www.amazon.com/dp/B0FF6BQMRC lần thứ 1
+23:18:55 [INFO]       ✅ DONE: B0FF6BQMRC | 7 ảnh | 49 specs
+23:18:59 [INFO]    🔹 [950/8563] Cào URL: https://www.amazon.com/dp/B0FF5ZWV64 lần thứ 1
+23:19:12 [INFO]       ✅ DONE: B0FF5ZWV64 | 7 ảnh | 42 specs
+23:19:16 [INFO]    🔹 [951/8563] Cào URL: https://www.amazon.com/dp/B0FF6PHF7P lần thứ 1
+23:19:29 [INFO]       ✅ DONE: B0FF6PHF7P | 7 ảnh | 48 specs
+23:19:32 [INFO]    🔹 [952/8563] Cào URL: https://www.amazon.com/dp/B099P1YFLL lần thứ 1
+23:19:48 [INFO]       ✅ DONE: B099P1YFLL | 6 ảnh | 91 specs
+23:19:53 [INFO]    🔹 [953/8563] Cào URL: https://www.amazon.com/dp/B0C796HTV4 lần thứ 1
+23:20:05 [INFO]       ✅ DONE: B0C796HTV4 | 5 ảnh | 81 specs
+23:20:10 [INFO]    🔹 [954/8563] Cào URL: https://www.amazon.com/dp/B0GFGBYWBJ lần thứ 1
+23:20:20 [INFO]       ✅ DONE: B0GFGBYWBJ | 5 ảnh | 42 specs
+23:20:24 [INFO]    🔹 [955/8563] Cào URL: https://www.amazon.com/dp/B0GBSRFZ52 lần thứ 1
+23:20:35 [INFO]       ✅ DONE: B0GBSRFZ52 | 7 ảnh | 55 specs
+23:20:39 [INFO]    🔹 [956/8563] Cào URL: https://www.amazon.com/dp/B0GFG9W1P6 lần thứ 1
+23:20:49 [INFO]       ✅ DONE: B0GFG9W1P6 | 5 ảnh | 32 specs
+23:20:52 [INFO]    🔹 [957/8563] Cào URL: https://www.amazon.com/dp/B0GFGFQ9G6 lần thứ 1
+23:21:02 [INFO]       ✅ DONE: B0GFGFQ9G6 | 5 ảnh | 32 specs
+23:21:02 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:21:05 [INFO]    🔹 [958/8563] Cào URL: https://www.amazon.com/dp/B0GFFVR8C6 lần thứ 1
+23:21:17 [INFO]       ✅ DONE: B0GFFVR8C6 | 5 ảnh | 43 specs
+23:21:21 [INFO]    🔹 [959/8563] Cào URL: https://www.amazon.com/dp/B0DG2BFYFF lần thứ 1
+23:21:36 [INFO]       ✅ DONE: B0DG2BFYFF | 7 ảnh | 74 specs
+23:21:40 [INFO]    🔹 [960/8563] Cào URL: https://www.amazon.com/dp/B0GTMHHT57 lần thứ 1
+23:21:54 [INFO]       ✅ DONE: B0GTMHHT57 | 7 ảnh | 60 specs
+23:21:58 [INFO]    🔹 [961/8563] Cào URL: https://www.amazon.com/dp/B0DG2GGVCQ lần thứ 1
+23:22:13 [INFO]       ✅ DONE: B0DG2GGVCQ | 7 ảnh | 75 specs
+23:22:16 [INFO]    🔹 [962/8563] Cào URL: https://www.amazon.com/dp/B0DG2164MJ lần thứ 1
+23:22:31 [INFO]       ✅ DONE: B0DG2164MJ | 7 ảnh | 73 specs
+23:22:35 [INFO]    🔹 [963/8563] Cào URL: https://www.amazon.com/dp/B0DG2164MH lần thứ 1
+23:22:48 [INFO]       ✅ DONE: B0DG2164MH | 7 ảnh | 56 specs
+23:22:52 [INFO]    🔹 [964/8563] Cào URL: https://www.amazon.com/dp/B0DG2H4P24 lần thứ 1
+23:23:05 [INFO]       ✅ DONE: B0DG2H4P24 | 7 ảnh | 55 specs
+23:23:08 [INFO]    🔹 [965/8563] Cào URL: https://www.amazon.com/dp/B0FNQWB25V lần thứ 1
+23:23:21 [INFO]       ✅ DONE: B0FNQWB25V | 7 ảnh | 53 specs
+23:23:25 [INFO]    🔹 [966/8563] Cào URL: https://www.amazon.com/dp/B0FNQR9GD7 lần thứ 1
+23:23:38 [INFO]       ✅ DONE: B0FNQR9GD7 | 7 ảnh | 52 specs
+23:23:41 [INFO]    🔹 [967/8563] Cào URL: https://www.amazon.com/dp/B0FNQRS2V8 lần thứ 1
+23:23:54 [INFO]       ✅ DONE: B0FNQRS2V8 | 7 ảnh | 51 specs
+23:23:54 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:23:58 [INFO]    🔹 [968/8563] Cào URL: https://www.amazon.com/dp/B0FNQT839Z lần thứ 1
+23:24:11 [INFO]       ✅ DONE: B0FNQT839Z | 7 ảnh | 53 specs
+23:24:15 [INFO]    🔹 [969/8563] Cào URL: https://www.amazon.com/dp/B0FNQSLGWR lần thứ 1
+23:24:28 [INFO]       ✅ DONE: B0FNQSLGWR | 7 ảnh | 53 specs
+23:24:31 [INFO]    🔹 [970/8563] Cào URL: https://www.amazon.com/dp/B0CDM83T5M lần thứ 1
+23:24:45 [INFO]       ✅ DONE: B0CDM83T5M | 7 ảnh | 60 specs
+23:24:49 [INFO]    🔹 [971/8563] Cào URL: https://www.amazon.com/dp/B0F8QKDY2S lần thứ 1
+23:25:08 [INFO]       ✅ DONE: B0F8QKDY2S | 7 ảnh | 71 specs
+23:25:13 [INFO]    🔹 [972/8563] Cào URL: https://www.amazon.com/dp/B0CDJ3J447 lần thứ 1
+23:25:26 [INFO]       ✅ DONE: B0CDJ3J447 | 7 ảnh | 63 specs
+23:25:31 [INFO]    🔹 [973/8563] Cào URL: https://www.amazon.com/dp/B0DMWQ4ZGW lần thứ 1
+23:25:46 [INFO]       ✅ DONE: B0DMWQ4ZGW | 7 ảnh | 59 specs
+23:25:51 [INFO]    🔹 [974/8563] Cào URL: https://www.amazon.com/dp/B0DSLS2S9S lần thứ 1
+23:26:04 [INFO]       ✅ DONE: B0DSLS2S9S | 7 ảnh | 48 specs
+23:26:07 [INFO]    🔹 [975/8563] Cào URL: https://www.amazon.com/dp/B0BVSZVZPX lần thứ 1
+23:26:20 [INFO]       ✅ DONE: B0BVSZVZPX | 6 ảnh | 60 specs
+23:26:25 [INFO]    🔹 [976/8563] Cào URL: https://www.amazon.com/dp/B0C4Y9VHVM lần thứ 1
+23:26:39 [INFO]       ✅ DONE: B0C4Y9VHVM | 6 ảnh | 64 specs
+23:26:43 [INFO]    🔹 [977/8563] Cào URL: https://www.amazon.com/dp/B0DBRGLX7S lần thứ 1
+23:26:58 [INFO]       ✅ DONE: B0DBRGLX7S | 6 ảnh | 64 specs
+23:26:58 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:27:02 [INFO]    🔹 [978/8563] Cào URL: https://www.amazon.com/dp/B0DBZGHCJ6 lần thứ 1
+23:27:15 [INFO]       ✅ DONE: B0DBZGHCJ6 | 6 ảnh | 60 specs
+23:27:19 [INFO]    🔹 [979/8563] Cào URL: https://www.amazon.com/dp/B0DBZ3ZLDH lần thứ 1
+23:27:34 [INFO]       ✅ DONE: B0DBZ3ZLDH | 6 ảnh | 64 specs
+23:27:38 [INFO]    🔹 [980/8563] Cào URL: https://www.amazon.com/dp/B0BQYBJL13 lần thứ 1
+23:27:52 [INFO]       ✅ DONE: B0BQYBJL13 | 7 ảnh | 67 specs
+23:27:56 [INFO]    🔹 [981/8563] Cào URL: https://www.amazon.com/dp/B0DBZB7M6J lần thứ 1
+23:28:09 [INFO]       ✅ DONE: B0DBZB7M6J | 6 ảnh | 58 specs
+23:28:13 [INFO]    🔹 [982/8563] Cào URL: https://www.amazon.com/dp/B0DBZ2WGF6 lần thứ 1
+23:28:27 [INFO]       ✅ DONE: B0DBZ2WGF6 | 6 ảnh | 63 specs
+23:28:32 [INFO]    🔹 [983/8563] Cào URL: https://www.amazon.com/dp/B0DBZ7SLH9 lần thứ 1
+23:28:46 [INFO]       ✅ DONE: B0DBZ7SLH9 | 6 ảnh | 61 specs
+23:28:50 [INFO]    🔹 [984/8563] Cào URL: https://www.amazon.com/dp/B0BVSRQV6X lần thứ 1
+23:29:04 [INFO]       ✅ DONE: B0BVSRQV6X | 6 ảnh | 65 specs
+23:29:08 [INFO]    🔹 [985/8563] Cào URL: https://www.amazon.com/dp/B0DTN2RZ1Q lần thứ 1
+23:29:23 [INFO]       ✅ DONE: B0DTN2RZ1Q | 6 ảnh | 77 specs
+23:29:27 [INFO]    🔹 [986/8563] Cào URL: https://www.amazon.com/dp/B0DTN26DYR lần thứ 1
+23:29:43 [INFO]       ✅ DONE: B0DTN26DYR | 7 ảnh | 78 specs
+23:29:48 [INFO]    🔹 [987/8563] Cào URL: https://www.amazon.com/dp/B0FSGJZDNT lần thứ 1
+23:30:03 [INFO]       ✅ DONE: B0FSGJZDNT | 7 ảnh | 74 specs
+23:30:03 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:30:07 [INFO]    🔹 [988/8563] Cào URL: https://www.amazon.com/dp/B0CLHSG3D7 lần thứ 1
+23:30:22 [INFO]       ✅ DONE: B0CLHSG3D7 | 6 ảnh | 79 specs
+23:30:27 [INFO]    🔹 [989/8563] Cào URL: https://www.amazon.com/dp/B0G6GCT4MK lần thứ 1
+23:30:38 [INFO]       ✅ DONE: B0G6GCT4MK | 7 ảnh | 46 specs
+23:30:41 [INFO]    🔹 [990/8563] Cào URL: https://www.amazon.com/dp/B0G6HPBWSP lần thứ 1
+23:30:52 [INFO]       ✅ DONE: B0G6HPBWSP | 7 ảnh | 49 specs
+23:30:55 [INFO]    🔹 [991/8563] Cào URL: https://www.amazon.com/dp/B0G6HD8FFB lần thứ 1
+23:31:06 [INFO]       ✅ DONE: B0G6HD8FFB | 7 ảnh | 38 specs
+23:31:11 [INFO]    🔹 [992/8563] Cào URL: https://www.amazon.com/dp/B0G6HPDJ9C lần thứ 1
+23:31:20 [INFO]       ✅ DONE: B0G6HPDJ9C | 7 ảnh | 38 specs
+23:31:25 [INFO]    🔹 [993/8563] Cào URL: https://www.amazon.com/dp/B0G6GL7ZH5 lần thứ 1
+23:31:37 [INFO]       ✅ DONE: B0G6GL7ZH5 | 7 ảnh | 52 specs
+23:31:41 [INFO]    🔹 [994/8563] Cào URL: https://www.amazon.com/dp/B0G6H1J5B1 lần thứ 1
+23:31:52 [INFO]       ✅ DONE: B0G6H1J5B1 | 7 ảnh | 44 specs
+23:31:56 [INFO]    🔹 [995/8563] Cào URL: https://www.amazon.com/dp/B0G6GJ1GXW lần thứ 1
+23:32:06 [INFO]       ✅ DONE: B0G6GJ1GXW | 7 ảnh | 38 specs
+23:32:10 [INFO]    🔹 [996/8563] Cào URL: https://www.amazon.com/dp/B0CSY75ZCN lần thứ 1
+23:32:29 [INFO]       ✅ DONE: B0CSY75ZCN | 7 ảnh | 86 specs
+23:32:33 [INFO]    🔹 [997/8563] Cào URL: https://www.amazon.com/dp/B0FMZN939B lần thứ 1
+23:32:51 [INFO]       ✅ DONE: B0FMZN939B | 7 ảnh | 86 specs
+23:32:51 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:32:55 [INFO]    🔹 [998/8563] Cào URL: https://www.amazon.com/dp/B0FPGQ32RV lần thứ 1
+23:33:15 [INFO]       ✅ DONE: B0FPGQ32RV | 7 ảnh | 83 specs
+23:33:20 [INFO]    🔹 [999/8563] Cào URL: https://www.amazon.com/dp/B0FPGQYKRX lần thứ 1
+23:33:37 [INFO]       ✅ DONE: B0FPGQYKRX | 7 ảnh | 83 specs
+23:33:42 [INFO]    🔹 [1000/8563] Cào URL: https://www.amazon.com/dp/B0FPGPMC44 lần thứ 1
+23:33:59 [INFO]       ✅ DONE: B0FPGPMC44 | 7 ảnh | 83 specs
+23:34:02 [INFO]    🔹 [1001/8563] Cào URL: https://www.amazon.com/dp/B0FQ4C7WY6 lần thứ 1
+23:34:21 [INFO]       ✅ DONE: B0FQ4C7WY6 | 4 ảnh | 71 specs
+23:34:25 [INFO]    🔹 [1002/8563] Cào URL: https://www.amazon.com/dp/B0F1C9TD3B lần thứ 1
+23:34:41 [INFO]       ✅ DONE: B0F1C9TD3B | 7 ảnh | 59 specs
+23:34:44 [INFO]    🔹 [1003/8563] Cào URL: https://www.amazon.com/dp/B0GBYHNCZ6 lần thứ 1
+23:34:59 [INFO]       ✅ DONE: B0GBYHNCZ6 | 4 ảnh | 49 specs
+23:35:03 [INFO]    🔹 [1004/8563] Cào URL: https://www.amazon.com/dp/B0G48HHJF8 lần thứ 1
+23:35:17 [INFO]       ✅ DONE: B0G48HHJF8 | 6 ảnh | 33 specs
+23:35:20 [INFO]    🔹 [1005/8563] Cào URL: https://www.amazon.com/dp/B0G5F9B8KV lần thứ 1
+23:35:38 [INFO]       ✅ DONE: B0G5F9B8KV | 7 ảnh | 61 specs
+23:35:42 [INFO]    🔹 [1006/8563] Cào URL: https://www.amazon.com/dp/B0G5FMS5P3 lần thứ 1
+23:35:59 [INFO]       ✅ DONE: B0G5FMS5P3 | 7 ảnh | 61 specs
+23:36:02 [INFO]    🔹 [1007/8563] Cào URL: https://www.amazon.com/dp/B0G5FGGTKF lần thứ 1
+23:36:19 [INFO]       ✅ DONE: B0G5FGGTKF | 7 ảnh | 60 specs
+23:36:19 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:36:22 [INFO]    🔹 [1008/8563] Cào URL: https://www.amazon.com/dp/B0G5FP45Y2 lần thứ 1
+23:36:37 [INFO]       ✅ DONE: B0G5FP45Y2 | 7 ảnh | 47 specs
+23:36:42 [INFO]    🔹 [1009/8563] Cào URL: https://www.amazon.com/dp/B0FJDG9T22 lần thứ 1
+23:36:57 [INFO]       ✅ DONE: B0FJDG9T22 | 7 ảnh | 57 specs
+23:37:00 [INFO]    🔹 [1010/8563] Cào URL: https://www.amazon.com/dp/B0FJDGVVGN lần thứ 1
+23:37:15 [INFO]       ✅ DONE: B0FJDGVVGN | 7 ảnh | 55 specs
+23:37:18 [INFO]    🔹 [1011/8563] Cào URL: https://www.amazon.com/dp/B0FJDKD9TK lần thứ 1
+23:37:33 [INFO]       ✅ DONE: B0FJDKD9TK | 7 ảnh | 52 specs
+23:37:37 [INFO]    🔹 [1012/8563] Cào URL: https://www.amazon.com/dp/B0FJLL7BKR lần thứ 1
+23:37:52 [INFO]       ✅ DONE: B0FJLL7BKR | 7 ảnh | 54 specs
+23:37:55 [INFO]    🔹 [1013/8563] Cào URL: https://www.amazon.com/dp/B0FJLGCGVL lần thứ 1
+23:38:10 [INFO]       ✅ DONE: B0FJLGCGVL | 7 ảnh | 52 specs
+23:38:14 [INFO]    🔹 [1014/8563] Cào URL: https://www.amazon.com/dp/B0FJLL7X6F lần thứ 1
+23:38:28 [INFO]       ✅ DONE: B0FJLL7X6F | 7 ảnh | 54 specs
+23:38:32 [INFO]    🔹 [1015/8563] Cào URL: https://www.amazon.com/dp/B0DFJ3SYJK lần thứ 1
+23:38:46 [INFO]       ✅ DONE: B0DFJ3SYJK | 6 ảnh | 59 specs
+23:38:51 [INFO]    🔹 [1016/8563] Cào URL: https://www.amazon.com/dp/B0DFK4V2CZ lần thứ 1
+23:39:05 [INFO]       ✅ DONE: B0DFK4V2CZ | 6 ảnh | 54 specs
+23:39:10 [INFO]    🔹 [1017/8563] Cào URL: https://www.amazon.com/dp/B0DGB7C5T2 lần thứ 1
+23:39:25 [INFO]       ✅ DONE: B0DGB7C5T2 | 7 ảnh | 60 specs
+23:39:25 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:39:29 [INFO]    🔹 [1018/8563] Cào URL: https://www.amazon.com/dp/B0DM3R9ZVC lần thứ 1
+23:39:45 [INFO]       ✅ DONE: B0DM3R9ZVC | 7 ảnh | 59 specs
+23:39:50 [INFO]    🔹 [1019/8563] Cào URL: https://www.amazon.com/dp/B0DBRDYF2W lần thứ 1
+23:40:04 [INFO]       ✅ DONE: B0DBRDYF2W | 6 ảnh | 57 specs
+23:40:08 [INFO]    🔹 [1020/8563] Cào URL: https://www.amazon.com/dp/B0DFK79NPN lần thứ 1
+23:40:23 [INFO]       ✅ DONE: B0DFK79NPN | 7 ảnh | 60 specs
+23:40:27 [INFO]    🔹 [1021/8563] Cào URL: https://www.amazon.com/dp/B0DFK1SMB9 lần thứ 1
+23:40:43 [INFO]       ✅ DONE: B0DFK1SMB9 | 7 ảnh | 59 specs
+23:40:46 [INFO]    🔹 [1022/8563] Cào URL: https://www.amazon.com/dp/B0F1DXXMHY lần thứ 1
+23:41:03 [INFO]       ✅ DONE: B0F1DXXMHY | 7 ảnh | 78 specs
+23:41:06 [INFO]    🔹 [1023/8563] Cào URL: https://www.amazon.com/dp/B0DTMK4Z3J lần thứ 1
+23:41:22 [INFO]       ✅ DONE: B0DTMK4Z3J | 7 ảnh | 78 specs
+23:41:25 [INFO]    🔹 [1024/8563] Cào URL: https://www.amazon.com/dp/B0F6QQ77SF lần thứ 1
+23:41:42 [INFO]       ✅ DONE: B0F6QQ77SF | 7 ảnh | 84 specs
+23:41:46 [INFO]    🔹 [1025/8563] Cào URL: https://www.amazon.com/dp/B0BSN8MTX9 lần thứ 1
+23:42:00 [INFO]       ✅ DONE: B0BSN8MTX9 | 7 ảnh | 64 specs
+23:42:03 [INFO]    🔹 [1026/8563] Cào URL: https://www.amazon.com/dp/B0BYS3S76Z lần thứ 1
+23:42:19 [INFO]       ✅ DONE: B0BYS3S76Z | 6 ảnh | 77 specs
+23:42:23 [INFO]    🔹 [1027/8563] Cào URL: https://www.amazon.com/dp/B0BSN73SVM lần thứ 1
+23:42:37 [INFO]       ✅ DONE: B0BSN73SVM | 7 ảnh | 71 specs
+23:42:37 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:42:41 [INFO]    🔹 [1028/8563] Cào URL: https://www.amazon.com/dp/B0FVXW8MRH lần thứ 1
+23:42:54 [INFO]       ✅ DONE: B0FVXW8MRH | 7 ảnh | 52 specs
+23:42:59 [INFO]    🔹 [1029/8563] Cào URL: https://www.amazon.com/dp/B0CBLJ3P5J lần thứ 1
+23:43:13 [INFO]       ✅ DONE: B0CBLJ3P5J | 6 ảnh | 64 specs
+23:43:17 [INFO]    🔹 [1030/8563] Cào URL: https://www.amazon.com/dp/B0CBLH4PR9 lần thứ 1
+23:43:29 [INFO]       ✅ DONE: B0CBLH4PR9 | 6 ảnh | 66 specs
+23:43:33 [INFO]    🔹 [1031/8563] Cào URL: https://www.amazon.com/dp/B0CBLGZFPW lần thứ 1
+23:43:50 [INFO]       ✅ DONE: B0CBLGZFPW | 6 ảnh | 68 specs
+23:43:54 [INFO]    🔹 [1032/8563] Cào URL: https://www.amazon.com/dp/B0GMM3N9PK lần thứ 1
+23:44:07 [INFO]       ✅ DONE: B0GMM3N9PK | 7 ảnh | 48 specs
+23:44:10 [INFO]    🔹 [1033/8563] Cào URL: https://www.amazon.com/dp/B086DVDHNP lần thứ 1
+23:44:27 [INFO]       ✅ DONE: B086DVDHNP | 4 ảnh | 83 specs
+23:44:30 [INFO]    🔹 [1034/8563] Cào URL: https://www.amazon.com/dp/B0GMMC6P35 lần thứ 1
+23:44:44 [INFO]       ✅ DONE: B0GMMC6P35 | 7 ảnh | 50 specs
+23:44:48 [INFO]    🔹 [1035/8563] Cào URL: https://www.amazon.com/dp/B0GMLWCVT2 lần thứ 1
+23:45:01 [INFO]       ✅ DONE: B0GMLWCVT2 | 7 ảnh | 49 specs
+23:45:06 [INFO]    🔹 [1036/8563] Cào URL: https://www.amazon.com/dp/B0GMM9BS6K lần thứ 1
+23:45:19 [INFO]       ✅ DONE: B0GMM9BS6K | 7 ảnh | 48 specs
+23:45:23 [INFO]    🔹 [1037/8563] Cào URL: https://www.amazon.com/dp/B0DJB25PF7 lần thứ 1
+23:45:41 [INFO]       ✅ DONE: B0DJB25PF7 | 7 ảnh | 74 specs
+23:45:41 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:45:45 [INFO]    🔹 [1038/8563] Cào URL: https://www.amazon.com/dp/B0BT3CD75G lần thứ 1
+23:46:05 [INFO]       ✅ DONE: B0BT3CD75G | 7 ảnh | 88 specs
+23:46:09 [INFO]    🔹 [1039/8563] Cào URL: https://www.amazon.com/dp/B0CXV8YGLV lần thứ 1
+23:46:30 [INFO]       ✅ DONE: B0CXV8YGLV | 6 ảnh | 83 specs
+23:46:34 [INFO]    🔹 [1040/8563] Cào URL: https://www.amazon.com/dp/B0FT53751J lần thứ 1
+23:46:54 [INFO]       ✅ DONE: B0FT53751J | 7 ảnh | 79 specs
+23:46:57 [INFO]    🔹 [1041/8563] Cào URL: https://www.amazon.com/dp/B0DTBR9P1Y lần thứ 1
+23:47:12 [INFO]       ✅ DONE: B0DTBR9P1Y | 5 ảnh | 59 specs
+23:47:17 [INFO]    🔹 [1042/8563] Cào URL: https://www.amazon.com/dp/B0D5KGB9ZK lần thứ 1
+23:47:34 [INFO]       ✅ DONE: B0D5KGB9ZK | 7 ảnh | 65 specs
+23:47:38 [INFO]    🔹 [1043/8563] Cào URL: https://www.amazon.com/dp/B0DTBMDKQ3 lần thứ 1
+23:47:52 [INFO]       ✅ DONE: B0DTBMDKQ3 | 5 ảnh | 62 specs
+23:47:56 [INFO]    🔹 [1044/8563] Cào URL: https://www.amazon.com/dp/B0F4WZVR4X lần thứ 1
+23:48:09 [INFO]       ✅ DONE: B0F4WZVR4X | 4 ảnh | 33 specs
+23:48:12 [INFO]    🔹 [1045/8563] Cào URL: https://www.amazon.com/dp/B0CP9YWSYB lần thứ 1
+23:48:30 [INFO]       ✅ DONE: B0CP9YWSYB | 7 ảnh | 73 specs
+23:48:33 [INFO]    🔹 [1046/8563] Cào URL: https://www.amazon.com/dp/B0DDHXGC8P lần thứ 1
+23:48:49 [INFO]       ✅ DONE: B0DDHXGC8P | 6 ảnh | 69 specs
+23:48:54 [INFO]    🔹 [1047/8563] Cào URL: https://www.amazon.com/dp/B0DBRGLHWZ lần thứ 1
+23:49:10 [INFO]       ✅ DONE: B0DBRGLHWZ | 6 ảnh | 69 specs
+23:49:10 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:49:14 [INFO]    🔹 [1048/8563] Cào URL: https://www.amazon.com/dp/B0GBSVTCK7 lần thứ 1
+23:49:29 [INFO]       ✅ DONE: B0GBSVTCK7 | 7 ảnh | 56 specs
+23:49:34 [INFO]    🔹 [1049/8563] Cào URL: https://www.amazon.com/dp/B0G3XKJ37Q lần thứ 1
+23:49:48 [INFO]       ✅ DONE: B0G3XKJ37Q | 7 ảnh | 37 specs
+23:49:52 [INFO]    🔹 [1050/8563] Cào URL: https://www.amazon.com/dp/B0G3XLBZ5D lần thứ 1
+23:50:06 [INFO]       ✅ DONE: B0G3XLBZ5D | 7 ảnh | 38 specs
+23:50:09 [INFO]    🔹 [1051/8563] Cào URL: https://www.amazon.com/dp/B0FPM4SXCM lần thứ 1
+23:50:23 [INFO]       ✅ DONE: B0FPM4SXCM | 7 ảnh | 52 specs
+23:50:27 [INFO]    🔹 [1052/8563] Cào URL: https://www.amazon.com/dp/B0FRSMW525 lần thứ 1
+23:50:43 [INFO]       ✅ DONE: B0FRSMW525 | 7 ảnh | 62 specs
+23:50:47 [INFO]    🔹 [1053/8563] Cào URL: https://www.amazon.com/dp/B0G1TSVH87 lần thứ 1
+23:51:04 [INFO]       ✅ DONE: B0G1TSVH87 | 7 ảnh | 50 specs
+23:51:08 [INFO]    🔹 [1054/8563] Cào URL: https://www.amazon.com/dp/B0G1TP8QWJ lần thứ 1
+23:51:23 [INFO]       ✅ DONE: B0G1TP8QWJ | 7 ảnh | 49 specs
+23:51:27 [INFO]    🔹 [1055/8563] Cào URL: https://www.amazon.com/dp/B0G1TPQ1SS lần thứ 1
+23:51:42 [INFO]       ✅ DONE: B0G1TPQ1SS | 7 ảnh | 62 specs
+23:51:45 [INFO]    🔹 [1056/8563] Cào URL: https://www.amazon.com/dp/B0G1TT163R lần thứ 1
+23:51:59 [INFO]       ✅ DONE: B0G1TT163R | 7 ảnh | 47 specs
+23:52:04 [INFO]    🔹 [1057/8563] Cào URL: https://www.amazon.com/dp/B0FPWXZ6XD lần thứ 1
+23:52:20 [INFO]       ✅ DONE: B0FPWXZ6XD | 7 ảnh | 58 specs
+23:52:20 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:52:24 [INFO]    🔹 [1058/8563] Cào URL: https://www.amazon.com/dp/B0FPWQZBRH lần thứ 1
+23:52:41 [INFO]       ✅ DONE: B0FPWQZBRH | 7 ảnh | 58 specs
+23:52:45 [INFO]    🔹 [1059/8563] Cào URL: https://www.amazon.com/dp/B0FPWGSJLH lần thứ 1
+23:53:01 [INFO]       ✅ DONE: B0FPWGSJLH | 7 ảnh | 58 specs
+23:53:04 [INFO]    🔹 [1060/8563] Cào URL: https://www.amazon.com/dp/B0FPWYD2SN lần thứ 1
+23:53:21 [INFO]       ✅ DONE: B0FPWYD2SN | 7 ảnh | 60 specs
+23:53:25 [INFO]    🔹 [1061/8563] Cào URL: https://www.amazon.com/dp/B0FPWPVXKH lần thứ 1
+23:53:41 [INFO]       ✅ DONE: B0FPWPVXKH | 7 ảnh | 58 specs
+23:53:45 [INFO]    🔹 [1062/8563] Cào URL: https://www.amazon.com/dp/B0FPW9TFDV lần thứ 1
+23:54:01 [INFO]       ✅ DONE: B0FPW9TFDV | 7 ảnh | 58 specs
+23:54:04 [INFO]    🔹 [1063/8563] Cào URL: https://www.amazon.com/dp/B0FPX6NGPL lần thứ 1
+23:54:20 [INFO]       ✅ DONE: B0FPX6NGPL | 7 ảnh | 58 specs
+23:54:24 [INFO]    🔹 [1064/8563] Cào URL: https://www.amazon.com/dp/B0FPWYKPC2 lần thứ 1
+23:54:40 [INFO]       ✅ DONE: B0FPWYKPC2 | 7 ảnh | 58 specs
+23:54:44 [INFO]    🔹 [1065/8563] Cào URL: https://www.amazon.com/dp/B0FPWYNDSK lần thứ 1
+23:55:00 [INFO]       ✅ DONE: B0FPWYNDSK | 7 ảnh | 58 specs
+23:55:04 [INFO]    🔹 [1066/8563] Cào URL: https://www.amazon.com/dp/B0FPWW975F lần thứ 1
+23:55:20 [INFO]       ✅ DONE: B0FPWW975F | 7 ảnh | 58 specs
+23:55:24 [INFO]    🔹 [1067/8563] Cào URL: https://www.amazon.com/dp/B0FPX2KB14 lần thứ 1
+23:55:39 [INFO]       ✅ DONE: B0FPX2KB14 | 7 ảnh | 58 specs
+23:55:39 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:55:42 [INFO]    🔹 [1068/8563] Cào URL: https://www.amazon.com/dp/B0FPWYGPTV lần thứ 1
+23:55:59 [INFO]       ✅ DONE: B0FPWYGPTV | 7 ảnh | 58 specs
+23:56:02 [INFO]    🔹 [1069/8563] Cào URL: https://www.amazon.com/dp/B0FPWY491K lần thứ 1
+23:56:19 [INFO]       ✅ DONE: B0FPWY491K | 7 ảnh | 58 specs
+23:56:23 [INFO]    🔹 [1070/8563] Cào URL: https://www.amazon.com/dp/B0FPWGSJLG lần thứ 1
+23:56:37 [INFO]       ✅ DONE: B0FPWGSJLG | 7 ảnh | 58 specs
+23:56:41 [INFO]    🔹 [1071/8563] Cào URL: https://www.amazon.com/dp/B0FPWK812J lần thứ 1
+23:56:57 [INFO]       ✅ DONE: B0FPWK812J | 7 ảnh | 59 specs
+23:57:02 [INFO]    🔹 [1072/8563] Cào URL: https://www.amazon.com/dp/B0FPX4GQ9X lần thứ 1
+23:57:18 [INFO]       ✅ DONE: B0FPX4GQ9X | 7 ảnh | 59 specs
+23:57:21 [INFO]    🔹 [1073/8563] Cào URL: https://www.amazon.com/dp/B0FQ5T9BSH lần thứ 1
+23:57:36 [INFO]       ✅ DONE: B0FQ5T9BSH | 7 ảnh | 55 specs
+23:57:40 [INFO]    🔹 [1074/8563] Cào URL: https://www.amazon.com/dp/B0FFDDFW47 lần thứ 1
+23:57:55 [INFO]       ✅ DONE: B0FFDDFW47 | 7 ảnh | 41 specs
+23:58:00 [INFO]    🔹 [1075/8563] Cào URL: https://www.amazon.com/dp/B0FQ5V3F4D lần thứ 1
+23:58:16 [INFO]       ✅ DONE: B0FQ5V3F4D | 7 ảnh | 57 specs
+23:58:20 [INFO]    🔹 [1076/8563] Cào URL: https://www.amazon.com/dp/B0FQ5VYQCT lần thứ 1
+23:58:35 [INFO]       ✅ DONE: B0FQ5VYQCT | 7 ảnh | 56 specs
+23:58:40 [INFO]    🔹 [1077/8563] Cào URL: https://www.amazon.com/dp/B0FQ5V59SK lần thứ 1
+23:58:55 [INFO]       ✅ DONE: B0FQ5V59SK | 7 ảnh | 50 specs
+23:58:55 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+23:58:58 [INFO]    🔹 [1078/8563] Cào URL: https://www.amazon.com/dp/B0FQ5R1Z8L lần thứ 1
+23:59:14 [INFO]       ✅ DONE: B0FQ5R1Z8L | 7 ảnh | 54 specs
+23:59:17 [INFO]    🔹 [1079/8563] Cào URL: https://www.amazon.com/dp/B0FQ5RCQ1X lần thứ 1
+23:59:32 [INFO]       ✅ DONE: B0FQ5RCQ1X | 7 ảnh | 54 specs
+23:59:35 [INFO]    🔹 [1080/8563] Cào URL: https://www.amazon.com/dp/B0FQ5WXYXG lần thứ 1
+23:59:50 [INFO]       ✅ DONE: B0FQ5WXYXG | 7 ảnh | 54 specs
+23:59:55 [INFO]    🔹 [1081/8563] Cào URL: https://www.amazon.com/dp/B0FJF27DXD lần thứ 1
+00:00:10 [INFO]       ✅ DONE: B0FJF27DXD | 7 ảnh | 55 specs
+00:00:14 [INFO]    🔹 [1082/8563] Cào URL: https://www.amazon.com/dp/B0FJDGTQYQ lần thứ 1
+00:00:29 [INFO]       ✅ DONE: B0FJDGTQYQ | 7 ảnh | 55 specs
+00:00:33 [INFO]    🔹 [1083/8563] Cào URL: https://www.amazon.com/dp/B0FJD71S9N lần thứ 1
+00:00:49 [INFO]       ✅ DONE: B0FJD71S9N | 7 ảnh | 57 specs
+00:00:53 [INFO]    🔹 [1084/8563] Cào URL: https://www.amazon.com/dp/B0FJDG87DT lần thứ 1
+00:01:08 [INFO]       ✅ DONE: B0FJDG87DT | 7 ảnh | 55 specs
+00:01:12 [INFO]    🔹 [1085/8563] Cào URL: https://www.amazon.com/dp/B0FJF426XH lần thứ 1
+00:01:27 [INFO]       ✅ DONE: B0FJF426XH | 7 ảnh | 53 specs
+00:01:31 [INFO]    🔹 [1086/8563] Cào URL: https://www.amazon.com/dp/B0FJDB82KB lần thứ 1
+00:01:46 [INFO]       ✅ DONE: B0FJDB82KB | 7 ảnh | 53 specs
+00:01:50 [INFO]    🔹 [1087/8563] Cào URL: https://www.amazon.com/dp/B0DQ2LWVNT lần thứ 1
+00:02:04 [INFO]       ✅ DONE: B0DQ2LWVNT | 1 ảnh | 55 specs
+00:02:04 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:02:07 [INFO]    🔹 [1088/8563] Cào URL: https://www.amazon.com/dp/B0F7P4861V lần thứ 1
+00:02:22 [INFO]       ✅ DONE: B0F7P4861V | 6 ảnh | 54 specs
+00:02:25 [INFO]    🔹 [1089/8563] Cào URL: https://www.amazon.com/dp/B0BZHTVHN5 lần thứ 1
+00:02:36 [INFO]       ✅ DONE: B0BZHTVHN5 | 7 ảnh | 20 specs
+00:02:40 [INFO]    🔹 [1090/8563] Cào URL: https://www.amazon.com/dp/B0DQWPZSVS lần thứ 1
+00:02:57 [INFO]       ✅ DONE: B0DQWPZSVS | 7 ảnh | 61 specs
+00:03:00 [INFO]    🔹 [1091/8563] Cào URL: https://www.amazon.com/dp/B0CDJL7N4S lần thứ 1
+00:03:16 [INFO]       ✅ DONE: B0CDJL7N4S | 6 ảnh | 63 specs
+00:03:20 [INFO]    🔹 [1092/8563] Cào URL: https://www.amazon.com/dp/B0BT3FKZ3N lần thứ 1
+00:03:38 [INFO]       ✅ DONE: B0BT3FKZ3N | 7 ảnh | 73 specs
+00:03:42 [INFO]    🔹 [1093/8563] Cào URL: https://www.amazon.com/dp/B0CT4BHS2M lần thứ 1
+00:04:02 [INFO]       ✅ DONE: B0CT4BHS2M | 7 ảnh | 84 specs
+00:04:06 [INFO]    🔹 [1094/8563] Cào URL: https://www.amazon.com/dp/B0G4RF69Z8 lần thứ 1
+00:04:22 [INFO]       ✅ DONE: B0G4RF69Z8 | 7 ảnh | 58 specs
+00:04:27 [INFO]    🔹 [1095/8563] Cào URL: https://www.amazon.com/dp/B0G4RDWKSY lần thứ 1
+00:04:43 [INFO]       ✅ DONE: B0G4RDWKSY | 7 ảnh | 58 specs
+00:04:48 [INFO]    🔹 [1096/8563] Cào URL: https://www.amazon.com/dp/B0G4RBXWLC lần thứ 1
+00:05:04 [INFO]       ✅ DONE: B0G4RBXWLC | 7 ảnh | 58 specs
+00:05:08 [INFO]    🔹 [1097/8563] Cào URL: https://www.amazon.com/dp/B0G4R91PRS lần thứ 1
+00:05:23 [INFO]       ✅ DONE: B0G4R91PRS | 7 ảnh | 46 specs
+00:05:23 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:05:27 [INFO]    🔹 [1098/8563] Cào URL: https://www.amazon.com/dp/B0G4RBD615 lần thứ 1
+00:05:43 [INFO]       ✅ DONE: B0G4RBD615 | 7 ảnh | 46 specs
+00:05:47 [INFO]    🔹 [1099/8563] Cào URL: https://www.amazon.com/dp/B0G4R8SC7B lần thứ 1
+00:06:03 [INFO]       ✅ DONE: B0G4R8SC7B | 7 ảnh | 58 specs
+00:06:07 [INFO]    🔹 [1100/8563] Cào URL: https://www.amazon.com/dp/B0G4RBB3N8 lần thứ 1
+00:06:22 [INFO]       ✅ DONE: B0G4RBB3N8 | 7 ảnh | 46 specs
+00:06:26 [INFO]    🔹 [1101/8563] Cào URL: https://www.amazon.com/dp/B0G4R7GT99 lần thứ 1
+00:06:41 [INFO]       ✅ DONE: B0G4R7GT99 | 7 ảnh | 46 specs
+00:06:46 [INFO]    🔹 [1102/8563] Cào URL: https://www.amazon.com/dp/B0G4RB2TKN lần thứ 1
+00:07:01 [INFO]       ✅ DONE: B0G4RB2TKN | 7 ảnh | 46 specs
+00:07:06 [INFO]    🔹 [1103/8563] Cào URL: https://www.amazon.com/dp/B0G4R92NGL lần thứ 1
+00:07:22 [INFO]       ✅ DONE: B0G4R92NGL | 7 ảnh | 57 specs
+00:07:27 [INFO]    🔹 [1104/8563] Cào URL: https://www.amazon.com/dp/B0G4RCJM85 lần thứ 1
+00:07:42 [INFO]       ✅ DONE: B0G4RCJM85 | 7 ảnh | 46 specs
+00:07:46 [INFO]    🔹 [1105/8563] Cào URL: https://www.amazon.com/dp/B0DQKD9TT2 lần thứ 1
+00:08:02 [INFO]       ✅ DONE: B0DQKD9TT2 | 7 ảnh | 62 specs
+00:08:07 [INFO]    🔹 [1106/8563] Cào URL: https://www.amazon.com/dp/B0FB9DBQ7L lần thứ 1
+00:08:22 [INFO]       ✅ DONE: B0FB9DBQ7L | 7 ảnh | 57 specs
+00:08:26 [INFO]    🔹 [1107/8563] Cào URL: https://www.amazon.com/dp/B0FB99X6GY lần thứ 1
+00:08:40 [INFO]       ✅ DONE: B0FB99X6GY | 7 ảnh | 57 specs
+00:08:40 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:08:44 [INFO]    🔹 [1108/8563] Cào URL: https://www.amazon.com/dp/B0FB9BVZHZ lần thứ 1
+00:08:59 [INFO]       ✅ DONE: B0FB9BVZHZ | 7 ảnh | 54 specs
+00:09:02 [INFO]    🔹 [1109/8563] Cào URL: https://www.amazon.com/dp/B0FB9CJJW2 lần thứ 1
+00:09:17 [INFO]       ✅ DONE: B0FB9CJJW2 | 7 ảnh | 56 specs
+00:09:21 [INFO]    🔹 [1110/8563] Cào URL: https://www.amazon.com/dp/B0FB9CYR95 lần thứ 1
+00:09:35 [INFO]       ✅ DONE: B0FB9CYR95 | 7 ảnh | 52 specs
+00:09:39 [INFO]    🔹 [1111/8563] Cào URL: https://www.amazon.com/dp/B0FB9CXH5H lần thứ 1
+00:09:54 [INFO]       ✅ DONE: B0FB9CXH5H | 7 ảnh | 57 specs
+00:09:57 [INFO]    🔹 [1112/8563] Cào URL: https://www.amazon.com/dp/B0F4X2ZYM2 lần thứ 1
+00:10:10 [INFO]       ✅ DONE: B0F4X2ZYM2 | 4 ảnh | 47 specs
+00:10:15 [INFO]    🔹 [1113/8563] Cào URL: https://www.amazon.com/dp/B0DPDPX636 lần thứ 1
+00:10:32 [INFO]       ✅ DONE: B0DPDPX636 | 7 ảnh | 79 specs
+00:10:36 [INFO]    🔹 [1114/8563] Cào URL: https://www.amazon.com/dp/B0DGLGHPDS lần thứ 1
+00:10:57 [INFO]       ✅ DONE: B0DGLGHPDS | 7 ảnh | 90 specs
+00:11:01 [INFO]    🔹 [1115/8563] Cào URL: https://www.amazon.com/dp/B0DPDN9FWZ lần thứ 1
+00:11:18 [INFO]       ✅ DONE: B0DPDN9FWZ | 7 ảnh | 79 specs
+00:11:23 [INFO]    🔹 [1116/8563] Cào URL: https://www.amazon.com/dp/B0DMZR6QJN lần thứ 1
+00:11:41 [INFO]       ✅ DONE: B0DMZR6QJN | 7 ảnh | 81 specs
+00:11:45 [INFO]    🔹 [1117/8563] Cào URL: https://www.amazon.com/dp/B0DP96D3QQ lần thứ 1
+00:12:02 [INFO]       ✅ DONE: B0DP96D3QQ | 7 ảnh | 80 specs
+00:12:02 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:12:06 [INFO]    🔹 [1118/8563] Cào URL: https://www.amazon.com/dp/B0DPDNR9PF lần thứ 1
+00:12:24 [INFO]       ✅ DONE: B0DPDNR9PF | 7 ảnh | 80 specs
+00:12:28 [INFO]    🔹 [1119/8563] Cào URL: https://www.amazon.com/dp/B0DP95JFFN lần thứ 1
+00:12:45 [INFO]       ✅ DONE: B0DP95JFFN | 7 ảnh | 81 specs
+00:12:50 [INFO]    🔹 [1120/8563] Cào URL: https://www.amazon.com/dp/B0DZWYPMVG lần thứ 1
+00:13:04 [INFO]       ✅ DONE: B0DZWYPMVG | 7 ảnh | 56 specs
+00:13:09 [INFO]    🔹 [1121/8563] Cào URL: https://www.amazon.com/dp/B0CPGZTX6C lần thứ 1
+00:13:20 [INFO]       ✅ DONE: B0CPGZTX6C | 7 ảnh | 14 specs
+00:13:24 [INFO]    🔹 [1122/8563] Cào URL: https://www.amazon.com/dp/B07754PYFK lần thứ 1
+00:13:38 [INFO]       ✅ DONE: B07754PYFK | 7 ảnh | 40 specs
+00:13:43 [INFO]    🔹 [1123/8563] Cào URL: https://www.amazon.com/dp/B081BWMFWP lần thứ 1
+00:13:56 [INFO]       ✅ DONE: B081BWMFWP | 7 ảnh | 31 specs
+00:14:00 [INFO]    🔹 [1124/8563] Cào URL: https://www.amazon.com/dp/B07YQKS4B5 lần thứ 1
+00:14:12 [INFO]       ✅ DONE: B07YQKS4B5 | 7 ảnh | 31 specs
+00:14:17 [INFO]    🔹 [1125/8563] Cào URL: https://www.amazon.com/dp/B0FD7R91SJ lần thứ 1
+00:14:28 [INFO]       ✅ DONE: B0FD7R91SJ | 7 ảnh | 12 specs
+00:14:31 [INFO]    🔹 [1126/8563] Cào URL: https://www.amazon.com/dp/B075N1BYWB lần thứ 1
+00:14:48 [INFO]       ✅ DONE: B075N1BYWB | 6 ảnh | 53 specs
+00:14:51 [INFO]    🔹 [1127/8563] Cào URL: https://www.amazon.com/dp/B09FNX2PLL lần thứ 1
+00:15:09 [INFO]       ✅ DONE: B09FNX2PLL | 7 ảnh | 53 specs
+00:15:09 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:15:13 [INFO]    🔹 [1128/8563] Cào URL: https://www.amazon.com/dp/B0BHFDVLF8 lần thứ 1
+00:15:29 [INFO]       ✅ DONE: B0BHFDVLF8 | 7 ảnh | 35 specs
+00:15:32 [INFO]    🔹 [1129/8563] Cào URL: https://www.amazon.com/dp/B0BBNH61M5 lần thứ 1
+00:15:43 [INFO]       ✅ DONE: B0BBNH61M5 | 7 ảnh | 24 specs
+00:15:46 [INFO]    🔹 [1130/8563] Cào URL: https://www.amazon.com/dp/B0BSMRSFWJ lần thứ 1
+00:15:57 [INFO]       ✅ DONE: B0BSMRSFWJ | 7 ảnh | 29 specs
+00:16:01 [INFO]    🔹 [1131/8563] Cào URL: https://www.amazon.com/dp/B0CT787NLW lần thứ 1
+00:16:14 [INFO]       ✅ DONE: B0CT787NLW | 7 ảnh | 28 specs
+00:16:19 [INFO]    🔹 [1132/8563] Cào URL: https://www.amazon.com/dp/B0CT6G556J lần thứ 1
+00:16:31 [INFO]       ✅ DONE: B0CT6G556J | 7 ảnh | 29 specs
+00:16:36 [INFO]    🔹 [1133/8563] Cào URL: https://www.amazon.com/dp/B0CT6DFXRH lần thứ 1
+00:16:49 [INFO]       ✅ DONE: B0CT6DFXRH | 7 ảnh | 29 specs
+00:16:53 [INFO]    🔹 [1134/8563] Cào URL: https://www.amazon.com/dp/B0G752LK4S lần thứ 1
+00:17:06 [INFO]       ✅ DONE: B0G752LK4S | 7 ảnh | 34 specs
+00:17:09 [INFO]    🔹 [1135/8563] Cào URL: https://www.amazon.com/dp/B09CLWQ45V lần thứ 1
+00:17:25 [INFO]       ✅ DONE: B09CLWQ45V | 7 ảnh | 38 specs
+00:17:29 [INFO]    🔹 [1136/8563] Cào URL: https://www.amazon.com/dp/B0BFJS31G8 lần thứ 1
+00:17:45 [INFO]       ✅ DONE: B0BFJS31G8 | 7 ảnh | 40 specs
+00:17:49 [INFO]    🔹 [1137/8563] Cào URL: https://www.amazon.com/dp/B09PZG4R17 lần thứ 1
+00:18:04 [INFO]       ✅ DONE: B09PZG4R17 | 7 ảnh | 41 specs
+00:18:04 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:18:08 [INFO]    🔹 [1138/8563] Cào URL: https://www.amazon.com/dp/B0FD7TWG5X lần thứ 1
+00:18:15 [INFO]       ✅ DONE: B0FD7TWG5X | 7 ảnh | 11 specs
+00:18:20 [INFO]    🔹 [1139/8563] Cào URL: https://www.amazon.com/dp/B0FD7RM1G8 lần thứ 1
+00:18:27 [INFO]       ✅ DONE: B0FD7RM1G8 | 7 ảnh | 12 specs
+00:18:32 [INFO]    🔹 [1140/8563] Cào URL: https://www.amazon.com/dp/B0B7KKD78B lần thứ 1
+00:18:48 [INFO]       ✅ DONE: B0B7KKD78B | 7 ảnh | 36 specs
+00:18:52 [INFO]    🔹 [1141/8563] Cào URL: https://www.amazon.com/dp/B0CXH14PPD lần thứ 1
+00:19:08 [INFO]       ✅ DONE: B0CXH14PPD | 7 ảnh | 39 specs
+00:19:12 [INFO]    🔹 [1142/8563] Cào URL: https://www.amazon.com/dp/B0CXGTGPZQ lần thứ 1
+00:19:27 [INFO]       ✅ DONE: B0CXGTGPZQ | 7 ảnh | 34 specs
+00:19:31 [INFO]    🔹 [1143/8563] Cào URL: https://www.amazon.com/dp/B094Q1GJSD lần thứ 1
+00:19:45 [INFO]       ✅ DONE: B094Q1GJSD | 7 ảnh | 31 specs
+00:19:49 [INFO]    🔹 [1144/8563] Cào URL: https://www.amazon.com/dp/B0FD7QMFFK lần thứ 1
+00:19:57 [INFO]       ✅ DONE: B0FD7QMFFK | 7 ảnh | 12 specs
+00:20:02 [INFO]    🔹 [1145/8563] Cào URL: https://www.amazon.com/dp/B0FD7QGH4G lần thứ 1
+00:20:10 [INFO]       ✅ DONE: B0FD7QGH4G | 7 ảnh | 11 specs
+00:20:14 [INFO]    🔹 [1146/8563] Cào URL: https://www.amazon.com/dp/B0FQL6QDKD lần thứ 1
+00:20:28 [INFO]       ✅ DONE: B0FQL6QDKD | 7 ảnh | 31 specs
+00:20:33 [INFO]    🔹 [1147/8563] Cào URL: https://www.amazon.com/dp/B0DVCYTV1R lần thứ 1
+00:20:45 [INFO]       ✅ DONE: B0DVCYTV1R | 7 ảnh | 28 specs
+00:20:45 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:20:49 [INFO]    🔹 [1148/8563] Cào URL: https://www.amazon.com/dp/B0FCVF8CCV lần thứ 1
+00:21:03 [INFO]       ✅ DONE: B0FCVF8CCV | 7 ảnh | 25 specs
+00:21:07 [INFO]    🔹 [1149/8563] Cào URL: https://www.amazon.com/dp/B0FJZNJT4G lần thứ 1
+00:21:19 [INFO]       ✅ DONE: B0FJZNJT4G | 7 ảnh | 27 specs
+00:21:24 [INFO]    🔹 [1150/8563] Cào URL: https://www.amazon.com/dp/B0BXBC26X8 lần thứ 1
+00:21:36 [INFO]       ✅ DONE: B0BXBC26X8 | 7 ảnh | 36 specs
+00:21:40 [INFO]    🔹 [1151/8563] Cào URL: https://www.amazon.com/dp/B0F85WRNZG lần thứ 1
+00:21:53 [INFO]       ✅ DONE: B0F85WRNZG | 7 ảnh | 30 specs
+00:21:57 [INFO]    🔹 [1152/8563] Cào URL: https://www.amazon.com/dp/B0CT7D7JVR lần thứ 1
+00:22:10 [INFO]       ✅ DONE: B0CT7D7JVR | 7 ảnh | 29 specs
+00:22:14 [INFO]    🔹 [1153/8563] Cào URL: https://www.amazon.com/dp/B0CT7BK716 lần thứ 1
+00:22:27 [INFO]       ✅ DONE: B0CT7BK716 | 7 ảnh | 28 specs
+00:22:31 [INFO]    🔹 [1154/8563] Cào URL: https://www.amazon.com/dp/B0CTJ5F2FB lần thứ 1
+00:22:45 [INFO]       ✅ DONE: B0CTJ5F2FB | 7 ảnh | 30 specs
+00:22:49 [INFO]    🔹 [1155/8563] Cào URL: https://www.amazon.com/dp/B087C98QJJ lần thứ 1
+00:23:00 [INFO]       ✅ DONE: B087C98QJJ | 5 ảnh | 30 specs
+00:23:04 [INFO]    🔹 [1156/8563] Cào URL: https://www.amazon.com/dp/B0GMLBSSTD lần thứ 1
+00:23:18 [INFO]       ✅ DONE: B0GMLBSSTD | 7 ảnh | 30 specs
+00:23:23 [INFO]    🔹 [1157/8563] Cào URL: https://www.amazon.com/dp/B0GMLD33GY lần thứ 1
+00:23:31 [INFO]       ✅ DONE: B0GMLD33GY | 7 ảnh | 28 specs
+00:23:31 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:23:36 [INFO]    🔹 [1158/8563] Cào URL: https://www.amazon.com/dp/B0BGJT87N2 lần thứ 1
+00:23:47 [INFO]       ✅ DONE: B0BGJT87N2 | 7 ảnh | 34 specs
+00:23:51 [INFO]    🔹 [1159/8563] Cào URL: https://www.amazon.com/dp/B0BGJTLFN5 lần thứ 1
+00:24:02 [INFO]       ✅ DONE: B0BGJTLFN5 | 7 ảnh | 34 specs
+00:24:05 [INFO]    🔹 [1160/8563] Cào URL: https://www.amazon.com/dp/B0FD7VNZ17 lần thứ 1
+00:24:12 [INFO]       ✅ DONE: B0FD7VNZ17 | 7 ảnh | 11 specs
+00:24:15 [INFO]    🔹 [1161/8563] Cào URL: https://www.amazon.com/dp/B0FFQFDZWX lần thứ 1
+00:24:26 [INFO]       ✅ DONE: B0FFQFDZWX | 7 ảnh | 22 specs
+00:24:30 [INFO]    🔹 [1162/8563] Cào URL: https://www.amazon.com/dp/B0DSCS2HC7 lần thứ 1
+00:24:40 [INFO]       ✅ DONE: B0DSCS2HC7 | 7 ảnh | 15 specs
+00:24:44 [INFO]    🔹 [1163/8563] Cào URL: https://www.amazon.com/dp/B0DKB3GQBM lần thứ 1
+00:24:55 [INFO]       ✅ DONE: B0DKB3GQBM | 7 ảnh | 19 specs
+00:24:58 [INFO]    🔹 [1164/8563] Cào URL: https://www.amazon.com/dp/B0DK9ZVGK3 lần thứ 1
+00:25:07 [INFO]       ✅ DONE: B0DK9ZVGK3 | 7 ảnh | 18 specs
+00:25:11 [INFO]    🔹 [1165/8563] Cào URL: https://www.amazon.com/dp/B0CG7HQRCY lần thứ 1
+00:25:24 [INFO]       ✅ DONE: B0CG7HQRCY | 7 ảnh | 32 specs
+00:25:28 [INFO]    🔹 [1166/8563] Cào URL: https://www.amazon.com/dp/B0DVDGC52L lần thứ 1
+00:25:39 [INFO]       ✅ DONE: B0DVDGC52L | 7 ảnh | 31 specs
+00:25:43 [INFO]    🔹 [1167/8563] Cào URL: https://www.amazon.com/dp/B0FCVB8QNR lần thứ 1
+00:25:56 [INFO]       ✅ DONE: B0FCVB8QNR | 7 ảnh | 27 specs
+00:25:56 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:26:00 [INFO]    🔹 [1168/8563] Cào URL: https://www.amazon.com/dp/B0FJZWWZY7 lần thứ 1
+00:26:09 [INFO]       ✅ DONE: B0FJZWWZY7 | 7 ảnh | 27 specs
+00:26:13 [INFO]    🔹 [1169/8563] Cào URL: https://www.amazon.com/dp/B0FNBLG4SD lần thứ 1
+00:26:28 [INFO]       ✅ DONE: B0FNBLG4SD | 7 ảnh | 40 specs
+00:26:33 [INFO]    🔹 [1170/8563] Cào URL: https://www.amazon.com/dp/B0FNBNZPBH lần thứ 1
+00:26:46 [INFO]       ✅ DONE: B0FNBNZPBH | 7 ảnh | 32 specs
+00:26:50 [INFO]    🔹 [1171/8563] Cào URL: https://www.amazon.com/dp/B0FNC1F2MR lần thứ 1
+00:27:03 [INFO]       ✅ DONE: B0FNC1F2MR | 7 ảnh | 37 specs
+00:27:06 [INFO]    🔹 [1172/8563] Cào URL: https://www.amazon.com/dp/B0916N2LPZ lần thứ 1
+00:27:18 [INFO]       ✅ DONE: B0916N2LPZ | 7 ảnh | 33 specs
+00:27:22 [INFO]    🔹 [1173/8563] Cào URL: https://www.amazon.com/dp/B0916MW7CG lần thứ 1
+00:27:33 [INFO]       ✅ DONE: B0916MW7CG | 7 ảnh | 33 specs
+00:27:36 [INFO]    🔹 [1174/8563] Cào URL: https://www.amazon.com/dp/B0BFJSFS7V lần thứ 1
+00:27:46 [INFO]       ✅ DONE: B0BFJSFS7V | 7 ảnh | 32 specs
+00:27:50 [INFO]    🔹 [1175/8563] Cào URL: https://www.amazon.com/dp/B0CHTBSG24 lần thứ 1
+00:28:01 [INFO]       ✅ DONE: B0CHTBSG24 | 7 ảnh | 33 specs
+00:28:06 [INFO]    🔹 [1176/8563] Cào URL: https://www.amazon.com/dp/B0885FJ8CB lần thứ 1
+00:28:16 [INFO]       ✅ DONE: B0885FJ8CB | 7 ảnh | 19 specs
+00:28:19 [INFO]    🔹 [1177/8563] Cào URL: https://www.amazon.com/dp/B0FQLK7BRP lần thứ 1
+00:28:31 [INFO]       ✅ DONE: B0FQLK7BRP | 7 ảnh | 19 specs
+00:28:31 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:28:35 [INFO]    🔹 [1178/8563] Cào URL: https://www.amazon.com/dp/B0FRVQQT58 lần thứ 1
+00:28:48 [INFO]       ✅ DONE: B0FRVQQT58 | 7 ảnh | 18 specs
+00:28:52 [INFO]    🔹 [1179/8563] Cào URL: https://www.amazon.com/dp/B0D7YPD3K8 lần thứ 1
+00:29:03 [INFO]       ✅ DONE: B0D7YPD3K8 | 7 ảnh | 18 specs
+00:29:08 [INFO]    🔹 [1180/8563] Cào URL: https://www.amazon.com/dp/B0DVDDS8LV lần thứ 1
+00:29:19 [INFO]       ✅ DONE: B0DVDDS8LV | 7 ảnh | 18 specs
+00:29:22 [INFO]    🔹 [1181/8563] Cào URL: https://www.amazon.com/dp/B0FCVJBBXM lần thứ 1
+00:29:34 [INFO]       ✅ DONE: B0FCVJBBXM | 7 ảnh | 19 specs
+00:29:39 [INFO]    🔹 [1182/8563] Cào URL: https://www.amazon.com/dp/B0FJZD1568 lần thứ 1
+00:29:50 [INFO]       ✅ DONE: B0FJZD1568 | 7 ảnh | 18 specs
+00:29:53 [INFO]    🔹 [1183/8563] Cào URL: https://www.amazon.com/dp/B0885632M9 lần thứ 1
+00:30:04 [INFO]       ✅ DONE: B0885632M9 | 7 ảnh | 20 specs
+00:30:09 [INFO]    🔹 [1184/8563] Cào URL: https://www.amazon.com/dp/B088539GLT lần thứ 1
+00:30:20 [INFO]       ✅ DONE: B088539GLT | 7 ảnh | 20 specs
+00:30:24 [INFO]    🔹 [1185/8563] Cào URL: https://www.amazon.com/dp/B08HH3FTYT lần thứ 1
+00:30:35 [INFO]       ✅ DONE: B08HH3FTYT | 7 ảnh | 28 specs
+00:30:39 [INFO]    🔹 [1186/8563] Cào URL: https://www.amazon.com/dp/B0BSJYM8FF lần thứ 1
+00:30:49 [INFO]       ✅ DONE: B0BSJYM8FF | 7 ảnh | 44 specs
+00:30:53 [INFO]    🔹 [1187/8563] Cào URL: https://www.amazon.com/dp/B0D54V8N2K lần thứ 1
+00:31:04 [INFO]       ✅ DONE: B0D54V8N2K | 7 ảnh | 37 specs
+00:31:04 [INFO] 💾 Đã ghi 10 items vào all_details.jsonl
+00:31:07 [INFO]    🔹 [1188/8563] Cào URL: https://www.amazon.com/dp/B0FD82VTNC lần thứ 1
+00:31:08 [INFO] 🏁 QUY TRÌNH HOÀN TẤT.

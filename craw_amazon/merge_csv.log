@@ -1,0 +1,33 @@
+2026-04-15 09:35:54,958 [INFO] 🚀 BẮT ĐẦU CHẠY SCRIPT GỘP DỮ LIỆU...
+
+2026-04-15 09:35:54,959 [INFO] 📂 Đang tiến hành gộp 11 file trong thư mục 'uncrawled'...
+2026-04-15 09:35:54,976 [INFO]     - Đọc thành công 'computer_integrated.csv' (1648 dòng)
+2026-04-15 09:35:54,985 [INFO]     - Đọc thành công 'cpu_integrated.csv' (1278 dòng)
+2026-04-15 09:35:54,991 [INFO]     - Đọc thành công 'desktop_integrated.csv' (845 dòng)
+2026-04-15 09:35:54,994 [INFO]     - Đọc thành công 'gpu_integrated.csv' (433 dòng)
+2026-04-15 09:35:54,999 [INFO]     - Đọc thành công 'headphone_integrated.csv' (515 dòng)
+2026-04-15 09:35:55,007 [INFO]     - Đọc thành công 'laptop_integrated.csv' (1374 dòng)
+2026-04-15 09:35:55,012 [INFO]     - Đọc thành công 'monitor_integrated.csv' (747 dòng)
+2026-04-15 09:35:55,021 [INFO]     - Đọc thành công 'pc_integrated.csv' (1171 dòng)
+2026-04-15 09:35:55,027 [INFO]     - Đọc thành công 'smartphone_integrated.csv' (1214 dòng)
+2026-04-15 09:35:55,036 [INFO]     - Đọc thành công 'tablets_integrated.csv' (1403 dòng)
+2026-04-15 09:35:55,039 [INFO]     - Đọc thành công 'television_integrated.csv' (374 dòng)
+2026-04-15 09:35:55,047 [INFO]     ✂️ Đã xóa 2439 dòng ASIN trùng lặp sau khi gộp.
+2026-04-15 09:35:55,090 [INFO] ✅ HOÀN TẤT: Đã gộp thành công vào file 'ALL_UNCRAWLED_MERGED.csv' (Tổng: 8563 dòng).
+
+2026-04-15 09:35:55,091 [INFO] 📂 Đang tiến hành gộp 11 file trong thư mục 'data_integrated'...
+2026-04-15 09:35:55,103 [INFO]     - Đọc thành công 'computer_integrated.csv' (1973 dòng)
+2026-04-15 09:35:55,113 [INFO]     - Đọc thành công 'cpu_integrated.csv' (2005 dòng)
+2026-04-15 09:35:55,119 [INFO]     - Đọc thành công 'desktop_integrated.csv' (1096 dòng)
+2026-04-15 09:35:55,124 [INFO]     - Đọc thành công 'gpu_integrated.csv' (628 dòng)
+2026-04-15 09:35:55,129 [INFO]     - Đọc thành công 'headphone_integrated.csv' (522 dòng)
+2026-04-15 09:35:55,146 [INFO]     - Đọc thành công 'laptop_integrated.csv' (1493 dòng)
+2026-04-15 09:35:55,156 [INFO]     - Đọc thành công 'monitor_integrated.csv' (1392 dòng)
+2026-04-15 09:35:55,166 [INFO]     - Đọc thành công 'pc_integrated.csv' (1641 dòng)
+2026-04-15 09:35:55,180 [INFO]     - Đọc thành công 'smartphone_integrated.csv' (1553 dòng)
+2026-04-15 09:35:55,189 [INFO]     - Đọc thành công 'tablets_integrated.csv' (1487 dòng)
+2026-04-15 09:35:55,194 [INFO]     - Đọc thành công 'television_integrated.csv' (495 dòng)
+2026-04-15 09:35:55,201 [INFO]     ✂️ Đã xóa 3397 dòng ASIN trùng lặp sau khi gộp.
+2026-04-15 09:35:55,320 [INFO] ✅ HOÀN TẤT: Đã gộp thành công vào file 'ALL_INTEGRATED_MERGED.csv' (Tổng: 10888 dòng).
+
+2026-04-15 09:35:55,322 [INFO] 🏁 TOÀN BỘ QUÁ TRÌNH GỘP ĐÃ KẾT THÚC.
