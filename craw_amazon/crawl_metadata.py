@@ -279,7 +279,7 @@ def process_amazon_metadata(source_dir, categories_dict):
 
             batch_results = []
             for idx, url in enumerate(urls):
-                if idx < 1187:
+                if idx < 6434:
                     continue
 
                 success = False
