@@ -6,6 +6,6 @@ craw_amazon_v1/
 .env/
 .env.*
 
-/data
-data/
+/data_small
+data_small/
 

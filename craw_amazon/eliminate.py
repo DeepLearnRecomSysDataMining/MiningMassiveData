@@ -128,5 +128,5 @@ if __name__ == "__main__":
         filter_uncrawled_csvs(CSV_DIR, OUTPUT_DIR, scraped_asins)
     else:
         logging.warning("⚠️ Không có ASIN nào được nạp từ JSONL. Toàn bộ CSV sẽ được sao chép sang thư mục mới.")
-        # Vẫn chạy bộ lọc (lúc này set rỗng, nên nó sẽ giữ lại 100% data)
+        # Vẫn chạy bộ lọc (lúc này set rỗng, nên nó sẽ giữ lại 100% data_small)
         filter_uncrawled_csvs(CSV_DIR, OUTPUT_DIR, scraped_asins)

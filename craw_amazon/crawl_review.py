@@ -93,7 +93,7 @@ def extract_reviews(driver, url, main_category):
             return []
 
         # Tìm các thẻ review đơn lẻ (li.review)
-        cards = review_container.find_elements(By.CSS_SELECTOR, "li[data-hook='review']")
+        cards = review_container.find_elements(By.CSS_SELECTOR, "li[data_small-hook='review']")
         logging.info(f"      📊 Tìm thấy {len(cards)} thẻ review trên trang.")
 
         for card in cards:
@@ -109,25 +109,25 @@ def extract_reviews(driver, url, main_category):
                     pass
 
                 # 2. Rating & Title
-                raw_rating = safe_get_text(card, "i[data-hook='review-star-rating'] span.a-icon-alt")
+                raw_rating = safe_get_text(card, "i[data_small-hook='review-star-rating'] span.a-icon-alt")
                 rating_val = float(raw_rating.split()[0]) if raw_rating else 0.0
 
-                title = safe_get_text(card, "a[data-hook='review-title'] span:last-child") or ""
+                title = safe_get_text(card, "a[data_small-hook='review-title'] span:last-child") or ""
 
                 # 3. Nội dung & Ngày tháng
-                date_str = safe_get_text(card, "span[data-hook='review-date']")
-                content = safe_get_text(card, "span[data-hook='review-body'] span")
+                date_str = safe_get_text(card, "span[data_small-hook='review-date']")
+                content = safe_get_text(card, "span[data_small-hook='review-body'] span")
 
                 # 4. Kiểm tra Verified Purchase
                 is_verified = False
                 try:
-                    if card.find_elements(By.CSS_SELECTOR, "span[data-hook='avp-badge']"):
+                    if card.find_elements(By.CSS_SELECTOR, "span[data_small-hook='avp-badge']"):
                         is_verified = True
                 except:
                     pass
 
                 # 5. Helpful Vote
-                helpful_text = safe_get_text(card, "span[data-hook='helpful-vote-statement']")
+                helpful_text = safe_get_text(card, "span[data_small-hook='helpful-vote-statement']")
                 helpful_count = 0
                 if helpful_text:
                     nums = re.findall(r'\d+', helpful_text.replace(',', ''))

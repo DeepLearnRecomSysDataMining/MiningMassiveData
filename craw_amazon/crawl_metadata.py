@@ -83,7 +83,7 @@ def safe_get_text(parent, selector):
 
 def get_identifiers(container, page_source, url):
     """Tách ASIN và Parent ASIN"""
-    current_asin = container.get_attribute("data-asin")
+    current_asin = container.get_attribute("data_small-asin")
     if not current_asin:
         asin_match = re.search(r'/dp/([A-Z0-9]{10})', url)
         current_asin = asin_match.group(1) if asin_match else "Unknown"
@@ -136,7 +136,7 @@ def get_technical_details(driver, container):
         driver.execute_script( "var el = document.getElementById('prodDetails'); if(el) el.scrollIntoView({block: 'center'});")
         time.sleep(1)
         # 2. Click VẬT LÝ vào tất cả các nút mở rộng. Nhắm vào span chứa hành động hoặc thẻ a có aria-expanded='false'
-        expanders = container.find_elements(By.CSS_SELECTOR, "#prodDetails [data-action='a-expander-toggle'], #prodDetails .a-expander-header")
+        expanders = container.find_elements(By.CSS_SELECTOR, "#prodDetails [data_small-action='a-expander-toggle'], #prodDetails .a-expander-header")
 
         for exp in expanders:
             try:
@@ -148,7 +148,7 @@ def get_technical_details(driver, container):
 
                 if is_expanded == "false" or not is_expanded:
                     driver.execute_script("arguments[0].click();", exp)
-                    time.sleep(0.4)  # Chờ AJAX load data
+                    time.sleep(0.4)  # Chờ AJAX load data_small
             except:
                 continue
     except Exception as e:

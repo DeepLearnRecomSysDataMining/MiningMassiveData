@@ -57,12 +57,12 @@ def get_category_array(driver, base_category_list):
     return categories
 
 def extract_asins_from_visible_dom(container, category_array):
-    """Hàm Helper: Quét các phần tử có data-asin trong một vùng DOM cụ thể"""
+    """Hàm Helper: Quét các phần tử có data_small-asin trong một vùng DOM cụ thể"""
     items = {}
-    elements = container.find_elements(By.XPATH, ".//*[@data-asin]")
+    elements = container.find_elements(By.XPATH, ".//*[@data_small-asin]")
 
     for el in elements:
-        asin = el.get_attribute("data-asin")
+        asin = el.get_attribute("data_small-asin")
         if asin and len(asin) == 10 and asin not in items:
             try:
                 # 1. Lấy Link
@@ -172,7 +172,7 @@ def process_search_page(driver, search_url, base_category_list, output_file):
         return "CAPTCHA_SEARCH"
     try:
         wait = WebDriverWait(driver, 10)
-        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[data-asin]")))
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[data_small-asin]")))
         for i in range(1, 4):
             driver.execute_script(f"window.scrollTo(0, document.body.scrollHeight * {i / 3});")
             time.sleep(1)
@@ -186,11 +186,11 @@ def process_search_page(driver, search_url, base_category_list, output_file):
         except NoSuchElementException:
             logging.info("    [Hết trang] Không tìm thấy nút Next trên trang Search.")
 
-        items = driver.find_elements(By.CSS_SELECTOR, "div[data-asin]")
+        items = driver.find_elements(By.CSS_SELECTOR, "div[data_small-asin]")
         product_urls_to_visit = []
         # Lấy danh sách URL từ kết quả tìm kiếm
         for item in items:
-            asin = item.get_attribute("data-asin")
+            asin = item.get_attribute("data_small-asin")
             if not asin: continue
             try:
                 link_tag = item.find_element(By.CSS_SELECTOR, "a.a-link-normal[href*='/dp/']")

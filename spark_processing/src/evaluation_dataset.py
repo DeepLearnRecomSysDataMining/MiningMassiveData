@@ -1,11 +1,9 @@
 # ============================================================
 # src/evaluation_dataset.py
-# New module to generate the matching dataset (1 true + 99 negatives)
+# Native Spark implementation of Negative Mining (1 True + 99 Negatives)
 # ============================================================
 
-import os
 import logging
-import random
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql import functions as F
 from pyspark.sql.window import Window
@@ -14,104 +12,80 @@ logger = logging.getLogger("evaluation_dataset")
 
 def run_evaluation_generator(spark: SparkSession, item_nodes_path: str, output_path: str, num_candidates: int = 100):
     """
-    Generates evaluation dataset: for each Amazon item, find its VN counterpart (true) 
-    and pick 99 negatives (70% same category, 30% others).
+    Generates evaluation dataset using 100% Native Spark logic.
+    For each Amazon item, find its VN counterpart (true) and pick 99 negatives.
     """
-    logger.info("Bắt đầu tạo bộ dữ liệu Evaluation...")
+    logger.info("Bat dau tao bo du lieu Evaluation (Native Mode)...")
 
-    # 1. Đọc item_nodes
+    # 1. Đọc dữ liệu
     df_items = spark.read.parquet(item_nodes_path)
 
-    # 2. Tách Amazon và VN
-    df_amz = df_items.filter(col("domain") == "amazon").alias("amz")
-    df_vn = df_items.filter(col("domain") == "vn").alias("vn")
-
-    # 3. Join để tìm Ground Truth (khớp theo ASIN)
-    df_ground_truth = df_amz.join(
-        df_vn.select(col("asin").alias("vn_asin"), col("product_id").alias("true_vn_id"), col("category").alias("vn_cat")),
-        col("amz.asin") == col("vn_asin"),
-        "inner"
+    # Tách Amazon (Query) và VN (Candidates)
+    # Chỉ lấy các cột cần thiết để nhẹ bộ nhớ
+    df_amz = df_items.filter(F.col("domain") == "amazon").select(
+        F.col("asin").alias("query_id"),
+        F.col("product_name").alias("query_name"),
+        F.col("full_text").alias("query_text"),
+        F.col("category").alias("query_category"),
+        F.col("parsed_specs").alias("query_specs")
+    )
+    
+    df_vn = df_items.filter(F.col("domain") == "vn").select(
+        F.col("product_id").alias("cand_id"),
+        F.col("asin").alias("cand_asin"),
+        F.col("product_name").alias("cand_name"),
+        F.col("full_text").alias("cand_text"),
+        F.col("category").alias("cand_category"),
+        F.col("parsed_specs").alias("cand_specs")
     )
 
-    if df_ground_truth.count() == 0:
-        logger.warning("Không tìm thấy cặp Amazon-VN nào khớp ASIN!")
+    # 2. Tìm cặp Positive (Ground Truth) dựa trên ASIN
+    df_pos = df_amz.join(df_vn, df_amz.query_id == df_vn.cand_asin, "inner") \
+                   .withColumn("label", F.lit(1))
+                   
+    # Đếm số lượng query có cặp positive
+    query_count = df_pos.select("query_id").distinct().count()
+    if query_count == 0:
+        logger.warning("Khong tim thay cap Amazon-VN nao khop ASIN!")
         return 0
 
-    # 4. Negative Mining Logic
-    # Lấy danh sách tất cả VN IDs theo category
-    vn_catalog = df_vn.select("product_id", "category", "full_text", "parsed_specs").collect()
-    vn_cat_map = {}
-    all_vn_ids = []
-    vn_data_map = {}
-
-    for row in vn_catalog:
-        vid = row['product_id']
-        cat = row['category']
-        all_vn_ids.append(vid)
-        vn_cat_map.setdefault(cat, []).append(vid)
-        vn_data_map[vid] = {
-            "full_text": row['full_text'],
-            "category": row['category'],
-            "parsed_specs": row['parsed_specs']
-        }
-
-    # 5. Xây dựng dataset (sử dụng broadcast hoặc collect nếu data nhỏ, hoặc dùng Spark logic)
-    # Vì logic negative mining khá phức tạp (random sample), ta sẽ dùng UDF hoặc xử lý qua list nếu tập query không quá lớn.
-    # Tuy nhiên để đúng chất Spark, ta sẽ cố gắng dùng join/window hoặc xử lý theo partition.
+    # 3. Tạo Negative Candidates
+    # Để tối ưu, ta không Cross Join toàn bộ (4k x 4k = 16M). 
+    # Ta sẽ lấy ngẫu nhiên một tập các ứng viên VN cho mỗi Query.
     
-    queries = df_ground_truth.select(
-        col("asin").alias("query_id"),
-        col("full_text").alias("query_text"),
-        col("product_name").alias("query_name"),
-        col("parsed_specs").alias("query_specs"),
-        col("category").alias("query_category"),
-        col("true_vn_id")
-    ).collect()
-
-    evaluation_data = []
+    # Lấy 150 ứng viên ngẫu nhiên cho mỗi query để lọc lấy 99 cái
+    # Dùng hàm rand() và Window để chọn ngẫu nhiên
+    window_spec = Window.partitionBy("query_id").orderBy(F.rand())
     
-    for q in queries:
-        true_id = q['true_vn_id']
-        q_cat = q['query_category']
-        
-        same_cat_ids = [vid for vid in vn_cat_map.get(q_cat, []) if vid != true_id]
-        other_cat_ids = [vid for vid in all_vn_ids if vid != true_id and vid not in same_cat_ids]
-        
-        n_hard = min(int(num_candidates * 0.7), len(same_cat_ids))
-        n_easy = (num_candidates - 1) - n_hard
-        
-        if n_easy > len(other_cat_ids):
-            n_easy = len(other_cat_ids)
-            n_hard = (num_candidates - 1) - n_easy
-            
-        if len(same_cat_ids) < n_hard or len(other_cat_ids) < n_easy:
-            continue # Không đủ candidate
-            
-        negatives = random.sample(same_cat_ids, n_hard) + random.sample(other_cat_ids, n_easy)
-        candidate_ids = [true_id] + negatives
-        random.shuffle(candidate_ids)
-        
-        evaluation_data.append({
-            "query_id": q['query_id'],
-            "query_text": q['query_text'],
-            "query_name": q['query_name'],
-            "query_specs": q['query_specs'],
-            "query_category": q_cat,
-            "true_vn_id": true_id,
-            "candidate_ids": candidate_ids,
-            "candidate_texts": [vn_data_map[vid]['full_text'] for vid in candidate_ids],
-            "candidate_categories": [vn_data_map[vid]['category'] for vid in candidate_ids],
-            "candidate_specs": [vn_data_map[vid]['parsed_specs'] for vid in candidate_ids],
-        })
+    # Join Query với toàn bộ VN Catalog nhưng loại bỏ cặp Positive
+    df_all_pairs = df_amz.join(df_vn, df_amz.query_id != df_vn.cand_asin, "inner")
+    
+    # Phân loại Negative: Hard (cùng category) và Easy (khác category)
+    df_negatives = df_all_pairs.withColumn("is_hard", F.when(F.col("query_category") == F.col("cand_category"), 1).otherwise(0)) \
+                               .withColumn("rank", F.row_number().over(window_spec)) \
+                               .filter(F.col("rank") <= (num_candidates - 1)) \
+                               .withColumn("label", F.lit(0))
 
-    if not evaluation_data:
-        logger.warning("Không tạo được bộ dataset nào đủ 100 ứng viên!")
-        return 0
+    # 4. Gộp Positive và Negative
+    # Đưa về cùng schema
+    common_cols = ["query_id", "query_name", "query_text", "query_category", "query_specs", 
+                   "cand_id", "cand_name", "cand_text", "cand_category", "cand_specs", "label"]
+    
+    df_final = df_pos.select(*common_cols).unionByName(df_negatives.select(*common_cols))
 
-    # Chuyển về Spark DataFrame để lưu Parquet
-    df_eval = spark.createDataFrame(evaluation_data)
+    # 5. Group lại thành dạng 1 dòng cho mỗi query (để AI Model dễ đọc)
+    # query_specs là kiểu Map nên không groupBy được, ta dùng first() trong agg
+    df_eval = df_final.groupBy("query_id", "query_name", "query_text", "query_category").agg(
+        F.first("query_specs").alias("query_specs"),
+        F.collect_list("cand_id").alias("candidate_ids"),
+        F.collect_list("cand_text").alias("candidate_texts"),
+        F.collect_list("cand_category").alias("candidate_categories"),
+        F.collect_list("cand_specs").alias("candidate_specs"),
+        F.collect_list("label").alias("labels")
+    )
+
+    # 6. Lưu xuống Parquet (Native hoàn toàn)
     df_eval.write.mode("overwrite").parquet(output_path)
     
-    logger.info(f"Đã tạo {len(evaluation_data)} bộ kiểm thử.")
-    return len(evaluation_data)
-from pyspark.sql.functions import col
+    logger.info(f"Da tao bo kiem thu Native cho {query_count} queries.")
+    return query_count

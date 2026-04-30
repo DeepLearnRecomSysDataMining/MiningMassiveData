@@ -14,8 +14,11 @@ class ClusterConfig:
     MASTER_PORT = "12355"
     
     # Đường dẫn dữ liệu đầu ra từ Spark
-    DATA_PATH = "../output/evaluation_dataset"
-    MODEL_SAVE_PATH = "../output/trained_models"
+    # DATA_PATH = "../output/evaluation_dataset"
+    # MODEL_SAVE_PATH = "../output/trained_models"
+    # TRỎ VÀO Ổ ĐĨA MẠNG DÙNG CHUNG
+    DATA_PATH = "/mnt/shared_data/MiningSparkProcess/output/evaluation_dataset"
+    MODEL_SAVE_PATH = "/mnt/shared_data/MiningSparkProcess/output/trained_models"
 
     # Cấu hình cho từng Baseline
     BASELINES = [

@@ -1,123 +1,113 @@
 # ============================================================
 # src/etl_item_nodes.py
-# Refactored to match MMD_v3 logic
+# Standardizes Amazon and VN metadata into a common schema.
 # ============================================================
 
 import os
+import json
 import logging
 from pyspark.sql import SparkSession, DataFrame
-from pyspark.sql.functions import col, concat_ws, lit, lower, regexp_replace, udf, when
+from pyspark.sql.functions import col, concat_ws, lit, lower, regexp_replace, udf, when, coalesce, array_join, trim, from_json
 from pyspark.sql.types import StringType, MapType, ArrayType
-import ast
+from .file_utils import detect_jsonl_type
 
 logger = logging.getLogger("etl_item_nodes")
 
-# --- UDFs for Text Cleaning and Category Extraction ---
+# --- Helpers ---
+def safe_col(df, col_name, default_val=None):
+    """Returns the column if it exists in df, otherwise returns a literal default value."""
+    if col_name in df.columns:
+        return col(col_name)
+    else:
+        return lit(default_val)
 
-@udf(returnType=StringType())
-def clean_text_udf(val):
-    if val is None: return ""
-    if isinstance(val, list): return " ".join([str(x) for x in val])
-    if isinstance(val, str):
-        if val.startswith('['):
-            try:
-                val_list = ast.literal_eval(val)
-                if isinstance(val_list, list): return " ".join([str(x) for x in val_list])
-            except: pass
-        return val
-    return str(val)
+def spark_standardize(c):
+    """Light cleaning: Space normalization, Trim, Lower. Safe for IDs and Names."""
+    c = coalesce(c.cast("string"), lit(""))
+    c = regexp_replace(c, r"\s+", " ")
+    return lower(trim(c))
 
-@udf(returnType=MapType(StringType(), StringType()))
-def parse_specs_udf(spec_text):
-    specs = {}
-    if isinstance(spec_text, list):
-        for item in spec_text:
-            if '::' in str(item):
-                parts = str(item).split('::', 1)
-                if len(parts) == 2: specs[parts[0].strip().lower()] = parts[1].strip().lower()
-    elif isinstance(spec_text, str) and spec_text.startswith('['):
-        try:
-            items = ast.literal_eval(spec_text)
-            for item in items:
-                if '::' in str(item):
-                    parts = str(item).split('::', 1)
-                    if len(parts) == 2: specs[parts[0].strip().lower()] = parts[1].strip().lower()
-        except: pass
-    elif isinstance(spec_text, dict):
-        for k, v in spec_text.items():
-            specs[str(k).lower()] = str(v).lower()
-    return specs
+def spark_clean_text(c):
+    """Aggressive cleaning: HTML removal, Regex strip, Space normalization, Trim, Lower."""
+    c = coalesce(concat_ws(" ", c), lit(""))
+    # 1. Bo HTML
+    c = regexp_replace(c, r"<[^>]*>", " ")
+    # 2. Bo ky tu dac biet, chi giu chu, so, dau cau (Simplified regex for stability)
+    c = regexp_replace(c, r"[^a-zA-Z0-9\s.,!?àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]", " ")
+    # 3. Chuan hoa khoang trang
+    c = regexp_replace(c, r"\s+", " ")
+    return lower(trim(c))
 
-@udf(returnType=StringType())
-def get_category_udf(breadcrumb, product_name):
-    text = f"{str(breadcrumb)} {str(product_name)}".lower()
-    if any(w in text for w in ['laptop', 'macbook', 'máy tính xách tay']): return 'laptop'
-    elif any(w in text for w in ['điện thoại', 'smartphone', 'iphone', 'dtdd']): return 'smartphone'
-    elif any(w in text for w in ['tivi', 'tv', 'television']): return 'television'
-    elif any(w in text for w in ['tai nghe', 'headphone', 'earphone', 'airpods']): return 'headphone'
-    elif any(w in text for w in ['màn hình', 'monitor']): return 'monitor'
-    elif any(w in text for w in ['để bàn', 'desktop', 'pc', 'máy tính bộ']): return 'desktop'
-    elif any(w in text for w in ['tablet', 'máy tính bảng', 'ipad']): return 'tablet'
-    return 'other'
+def get_category_expr(breadcrumb_col, product_name_col):
+    """Native Spark expression to classify products."""
+    text = lower(concat_ws(" ", breadcrumb_col, product_name_col))
+    return when(text.rlike("laptop|macbook|máy tính xách tay"), "laptop") \
+          .when(text.rlike("điện thoại|smartphone|iphone|dtdd"), "smartphone") \
+          .when(text.rlike("tivi|tv|television"), "television") \
+          .when(text.rlike("tai nghe|headphone|earphone|airpods"), "headphone") \
+          .when(text.rlike("màn hình|monitor"), "monitor") \
+          .when(text.rlike("để bàn|desktop|pc|máy tính bộ"), "desktop") \
+          .when(text.rlike("tablet|máy tính bảng|ipad"), "tablet") \
+          .otherwise("other")
 
-def run_etl_item_nodes(spark: SparkSession, data_dir: str, output_dir: str) -> int:
-    """
-    Standardizes Amazon and VN metadata into a common schema.
-    """
-    logger.info(f"Đang quét metadata từ: {data_dir}")
-
-    # 1. Tìm các file metadata
-    all_files = os.listdir(data_dir)
-    vn_files = [os.path.join(data_dir, f) for f in all_files if ("metadatas" in f and "vn" in f) or ("dmx_metadatas" in f) or ("tgdd_metadatas" in f)]
-    amz_files = [os.path.join(data_dir, f) for f in all_files if ("metadatas" in f and "amazon" in f) or (f == "sample_metadatas.jsonl")]
+def run_etl_item_nodes(spark, data_dir, output_dir):
+    """Main ETL for Metadata files."""
+    logger.info(f"Dang quet metadata tu: {data_dir}")
+    
+    all_jsonl = [os.path.join(data_dir, f) for f in os.listdir(data_dir) if f.endswith(".jsonl")]
+    
+    vn_files = []
+    amz_files = []
+    
+    for f in all_jsonl:
+        ftype = detect_jsonl_type(f)
+        if ftype == "vn_item": vn_files.append(f)
+        elif ftype == "amz_item": amz_files.append(f)
 
     df_final = None
 
-    # 2. Xử lý dữ liệu Việt Nam
+    # 1. Xử lý VN Metadata
     if vn_files:
-        logger.info(f"Đang xử lý {len(vn_files)} file VN metadata...")
-        df_vn = spark.read.json(vn_files)
+        logger.info(f"Dang xu ly {len(vn_files)} file VN metadata:")
+        for f in vn_files: logger.info(f"  -> {os.path.basename(f)}")
+        # Mode DROPMALFORMED de tranh treo may do loi format JSON
+        df_vn = spark.read.option("mode", "DROPMALFORMED").json(vn_files)
         
-        # Mapping fields to standard schema
         df_vn_std = df_vn.select(
-            col("product_id"),
-            col("asin"),
-            clean_text_udf(col("product_name")).alias("product_name"),
-            clean_text_udf(col("specifications")).alias("specs_text"),
-            clean_text_udf(col("description")).alias("desc_text"),
-            lit("").alias("breadcrumb") # VN schema doesn't have breadcrumb in sample
+            spark_standardize(safe_col(df_vn, "product_id")).alias("product_id"),
+            spark_standardize(safe_col(df_vn, "asin")).alias("asin"),
+            spark_standardize(safe_col(df_vn, "productName")).alias("product_name"),
+            spark_clean_text(safe_col(df_vn, "specifications")).alias("specs_text"),
+            spark_clean_text(safe_col(df_vn, "description")).alias("desc_text"),
+            spark_standardize(safe_col(df_vn, "breadcrumb")).alias("breadcrumb")
         ).withColumn(
-            "category", get_category_udf(col("breadcrumb"), col("product_name"))
+            "category", get_category_expr(col("breadcrumb"), col("product_name"))
         ).withColumn(
-            "parsed_specs", parse_specs_udf(col("specs_text"))
-        ).withColumn(
-            "full_text", lower(concat_ws(" ", col("product_name"), col("specs_text"), col("desc_text")))
+            "full_text", concat_ws(" ", col("product_name"), col("specs_text"), col("desc_text"))
         ).withColumn("domain", lit("vn"))
 
-        df_final = df_vn_std.select("product_id", "asin", "product_name", "category", "full_text", "parsed_specs", "domain")
+        df_final = df_vn_std.select("product_id", "asin", "product_name", "category", "full_text", "specs_text", "domain")
 
-    # 3. Xử lý dữ liệu Amazon
+    # 2. Xử lý Amazon Metadata
     if amz_files:
-        logger.info(f"Đang xử lý {len(amz_files)} file Amazon metadata...")
-        df_amz = spark.read.json(amz_files)
+        logger.info(f"Dang xu ly {len(amz_files)} file Amazon metadata:")
+        for f in amz_files: logger.info(f"  -> {os.path.basename(f)}")
+        df_amz = spark.read.option("mode", "DROPMALFORMED").json(amz_files)
         
-        # Amazon schema has different names
         df_amz_std = df_amz.select(
-            col("parent_asin").alias("product_id"), # Use parent_asin as ID
-            col("asin"),
-            clean_text_udf(col("title")).alias("product_name"),
-            clean_text_udf(col("features")).alias("specs_text"),
-            clean_text_udf(col("description")).alias("desc_text"),
-            clean_text_udf(col("main_category")).alias("breadcrumb")
+            spark_standardize(safe_col(df_amz, "parent_asin")).alias("product_id"),
+            spark_standardize(safe_col(df_amz, "asin")).alias("asin"),
+            spark_standardize(safe_col(df_amz, "title")).alias("product_name"),
+            spark_clean_text(safe_col(df_amz, "features")).alias("specs_text"),
+            spark_clean_text(safe_col(df_amz, "description")).alias("desc_text"),
+            spark_standardize(safe_col(df_amz, "main_category")).alias("breadcrumb")
         ).withColumn(
-            "category", get_category_udf(col("breadcrumb"), col("product_name"))
+            "category", get_category_expr(col("breadcrumb"), col("product_name"))
         ).withColumn(
-            "parsed_specs", parse_specs_udf(col("specs_text"))
-        ).withColumn(
-            "full_text", lower(concat_ws(" ", col("product_name"), col("specs_text"), col("desc_text")))
+            "full_text", concat_ws(" ", col("product_name"), col("specs_text"), col("desc_text"))
         ).withColumn("domain", lit("amazon"))
 
-        df_amz_final = df_amz_std.select("product_id", "asin", "product_name", "category", "full_text", "parsed_specs", "domain")
+        df_amz_final = df_amz_std.select("product_id", "asin", "product_name", "category", "full_text", "specs_text", "domain")
         
         if df_final is None:
             df_final = df_amz_final
@@ -125,16 +115,24 @@ def run_etl_item_nodes(spark: SparkSession, data_dir: str, output_dir: str) -> i
             df_final = df_final.unionByName(df_amz_final)
 
     if df_final is None:
-        logger.warning("Không tìm thấy file metadata nào!")
+        logger.warning("Khong tim thay file metadata nao!")
         return 0
 
-    # 4. Làm sạch: Xóa dòng lỗi, lọc trùng
-    df_final = df_final.dropna(subset=["product_id", "asin"]) \
-                       .dropDuplicates(["product_id"])
+    # 3. Loc va Xoa trung lap (Native)
+    df_final = df_final.filter(col("product_id") != "").dropDuplicates(["product_id"])
 
-    # 5. Lưu xuống Parquet
+    # 4. Native Parse Specs (100% JVM, khong goi Python)
+    logger.info("Dang thuc hien Native Parse Specs...")
+    map_schema = "MAP<STRING, STRING>"
+    
+    df_final = df_final.withColumn("parsed_specs", 
+        when(col("specs_text").startswith("{"), from_json(col("specs_text"), map_schema))
+        .otherwise(None)
+    ).drop("specs_text")
+
+    # 5. Ghi xuong Parquet
     count = df_final.count()
-    logger.info(f"Lưu {count} sản phẩm chuẩn hóa xuống Parquet...")
-    df_final.repartition(10).write.mode("overwrite").parquet(output_dir)
+    logger.info(f"Luu {count} san pham chuan hoa xuong Parquet...")
+    df_final.write.mode("overwrite").parquet(output_dir)
     
     return count
