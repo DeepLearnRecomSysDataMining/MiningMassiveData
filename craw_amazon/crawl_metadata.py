@@ -281,8 +281,8 @@ def process_amazon_metadata(source_dir, categories_dict):
             for idx, url in enumerate(urls):
                 # if idx < 7534:
                 #     continue
-                if idx not in [8155, 8221, 8222, 8223, 8225, 8231, 8235]:
-                    continue
+                # if idx not in [8155, 8221, 8222, 8223, 8225, 8231, 8235]:
+                #     continue
 
                 success = False
                 retry_count = 0
@@ -340,9 +340,9 @@ if __name__ == "__main__":
         # "Smartphone": "smartphone_products_2.csv",
         # "Tablets": "tablets_products_2.csv",
         # "Television": "television_products_2.csv",
-        "All":"ALL_UNCRAWLED_MERGED.csv"
+        "All":"all_links_amazon.csv"
     }
 
     # source_dir là thư mục chứa các file csv link của bạn
     # process_amazon_metadata('data_amazon_links', TARGET_CATEGORIES)
-    process_amazon_metadata('uncrawled', TARGET_CATEGORIES)
+    process_amazon_metadata('data_integrated', TARGET_CATEGORIES)

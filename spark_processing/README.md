@@ -2,12 +2,13 @@
 
 ## Cấu trúc project
 ```
-amazon_etl_project/
+root/spark_processing/
 ├── main.py                  ← Entry point – chạy file này
 ├── requirements.txt
 ├── config/
 │   └── spark_config.py      ← Cấu hình Spark + đường dẫn
 └── src/
+    ├── etl_evaluation.py      ← Tạo evaluation dataset (1 Amazon + 99 VN)
     ├── schema_scanner.py    ← Khảo sát schema tất cả file
     ├── etl_interactions.py  ← ETL tương tác (review files)
     ├── etl_item_nodes.py    ← ETL sản phẩm (meta/details)
@@ -20,77 +21,72 @@ amazon_etl_project/
 
 ### 1. Cài thư viện
 ```bash
-pip install -r requirements.txt
+pip install pyspark==3.5.0 findspark python-dotenv
 ```
 
-### 2. Chỉnh đường dẫn trong `config/spark_config.py`
+---
+
+## ⚙️ Thiết lập cấu hình
+
+### 1. File môi trường `.env` (Nếu dùng)
+Hoặc bạn có thể chỉnh trực tiếp trong `spark_processing/config/spark_config.py`.
+
+### 2. Cấu hình đường dẫn trong `spark_config.py`
+Mở file `spark_processing/config/spark_config.py` và cập nhật các đường dẫn môi trường cho đúng với máy bạn:
 ```python
-# Sửa 3 đường dẫn này cho đúng máy bạn:
-os.environ["HADOOP_HOME"] = r"D:\Apache_Hadoop"
-os.environ["JAVA_HOME"]   = r"D:\JavaJDK\jdk-11.0.30"
-
-class PathConfig:
-    RAW_DATA_DIR = r"D:\Data\amazon"   # ← thư mục chứa file .jsonl.gz
+os.environ["HADOOP_HOME"]    = r"C:\path\to\your\Hadoop" # Ví dụ: D:\Apache_Hadoop
+os.environ["JAVA_HOME"]      = r"C:\path\to\your\Java"   # Ví dụ: D:\JavaJDK\jdk-11.0.30
 ```
+*Lưu ý: Hệ thống đã tự động thiết lập `RAW_DATA_DIR` trỏ vào thư mục `data/` ở gốc dự án.*
 
-### 3. Chạy pipeline
+### 3. Chuẩn bị dữ liệu
+Copy các file `.jsonl` hoặc `.jsonl.gz` vào thư mục `data/` ở gốc dự án:
+*   Sản phẩm VN: `sample_metadatas_vn.jsonl`, `dmx_metadatas.jsonl`,...
+*   Sản phẩm Amazon: `sample_metadatas_amazon.jsonl`, `sample_metadatas.jsonl`,...
+*   Reviews: `sample_reviews.jsonl`,...
 
+---
+
+## 🛠️ Cách vận hành Pipeline
+
+Toàn bộ quy trình từ làm sạch dữ liệu đến tạo bộ Dataset kiểm thử được gói gọn trong file `main.py`.
+
+### Chạy toàn bộ quy trình (Khuyến nghị)
 ```bash
-# Khảo sát schema trước (nên chạy lần đầu)
-python main.py --scan-only
-
-# Chạy toàn bộ ETL
-python main.py
-
-# Chạy ETL + validate output
-python main.py --validate
-
-# Bỏ qua scan, chạy ETL thẳng
-python main.py --skip-scan
-
-# Đổi thư mục data
-python main.py --data-dir "E:\my_data\amazon"
+python spark_processing/main.py
 ```
+
+### Các tùy chọn nâng cao
+*   **Chỉ khảo sát Schema**: Xem cấu trúc dữ liệu thô mà không xử lý.
+    ```bash
+    python spark_processing/main.py --scan-only
+    ```
+*   **Bỏ qua bước Scan**: Chạy thẳng vào ETL để tiết kiệm thời gian.
+    ```bash
+    python spark_processing/main.py --skip-scan
+    ```
+*   **Kiểm tra chất lượng (Validate)**: Tự động kiểm tra file output sau khi chạy xong.
+    ```bash
+    python spark_processing/main.py --validate
+    ```
 
 ---
 
-## Cơ chế xử lý song song
+## 📂 Cấu trúc dữ liệu đầu ra (Output)
 
-```
-Spark local[*]  →  dùng TẤT CẢ CPU core trên máy bạn
-                   Mỗi file .gz được chia thành ~128MB partition
-                   Mỗi partition xử lý đồng thời trên 1 core
-```
+Kết quả sau khi chạy sẽ nằm trong thư mục `output/`:
 
-### Muốn chạy Distributed thật (nhiều máy)?
-
-Trong `config/spark_config.py`, đổi dòng `.master(...)`:
-
-```python
-# Spark Standalone Cluster
-.master("spark://192.168.1.100:7077")
-
-# YARN (Hadoop cluster)
-.master("yarn")
-```
+1.  **`output/item_nodes/`**: Danh mục sản phẩm chuẩn hóa (Amazon + VN). 
+    *   *Chứa: product_id, asin, category, full_text, parsed_specs, domain.*
+2.  **`output/all_interactions/`**: Dữ liệu review người dùng đã chuẩn hóa.
+3.  **`output/evaluation_dataset/`**: **BỘ ĐỀ THI CHO AI**. 
+    *   Mỗi dòng chứa 1 sản phẩm Amazon và **100 ứng viên** VN (gồm 1 đúng + 99 sai).
+    *   Đây là dữ liệu nạp cho 5 baseline (BM25, SBERT, DSSM, GCN, Hybrid).
 
 ---
 
-## Output
-
-| Thư mục | Nội dung |
-|---|---|
-| `amazon_processed/all_interactions/` | Parquet tương tác (user_id, item_id, rating, timestamp) |
-| `amazon_processed/item_nodes/` | Parquet sản phẩm phân vùng theo domain |
-| `amazon_processed/logs/` | Log file của pipeline |
-
----
-
-## Điều chỉnh hiệu năng (máy 16GB RAM)
-
-Trong `config/spark_config.py`:
-```python
-.config("spark.driver.memory",         "6g")   # Tăng nếu còn RAM
-.config("spark.executor.memory",        "4g")
-.config("spark.sql.shuffle.partitions", "8")    # = 2x số CPU core
-```
+## 💡 Lưu ý về Hiệu năng
+Hệ thống mặc định chạy ở chế độ `local[*]` (sử dụng tất cả nhân CPU hiện có). 
+Nếu máy bị lag, bạn có thể giảm RAM tại `spark_config.py`:
+*   `spark.driver.memory`: "4g"
+*   `spark.executor.memory`: "2g"

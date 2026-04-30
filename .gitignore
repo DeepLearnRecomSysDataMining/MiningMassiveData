@@ -1,7 +1,11 @@
 ./.venv
-./old_code
+./craw_amazon_v1
+craw_amazon_v1/
+
 .env
 .env/
 .env.*
 
+/data
+data/
 

@@ -19,18 +19,28 @@ os.environ["PATH"]           = (
 
 from pyspark.sql import SparkSession
 
+"""
+# Cấu hình tại hàm create_spark_session
+.config("spark.driver.memory",          "6g")   # Dành 6GB cho Driver xử lý logic chính
+.config("spark.executor.memory",         "4g")   # Dành 4GB cho việc tính toán song song
+.config("spark.executor.memoryOverhead", "1g")   # RAM dự phòng để tránh lỗi OOM (Out of Memory)
+.config("spark.sql.shuffle.partitions",  "16")   # Khớp với số luồng của CPU i5-1240P
+"""
 
 # ── 2. Hằng số đường dẫn – chỉnh sửa theo máy bạn ──────────
 class PathConfig:
-    # Thư mục chứa toàn bộ raw data Amazon
-    RAW_DATA_DIR   = r"D:\Data\amazon"
+    # Thư mục chứa toàn bộ raw data Amazon và VN
+    # SỬA: Lấy đường dẫn tuyệt đối của project
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    RAW_DATA_DIR = os.path.join(BASE_DIR, "data")
 
     # Thư mục lưu kết quả Parquet sau ETL
-    OUTPUT_BASE    = r"D:\Data\amazon_processed"
+    OUTPUT_BASE = os.path.join(BASE_DIR, "output")
 
-    INTERACTIONS_OUT = OUTPUT_BASE + r"\all_interactions"
-    ITEM_NODES_OUT   = OUTPUT_BASE + r"\item_nodes"
-    LOGS_DIR         = OUTPUT_BASE + r"\logs"
+    INTERACTIONS_OUT = os.path.join(OUTPUT_BASE, "all_interactions")
+    ITEM_NODES_OUT = os.path.join(OUTPUT_BASE, "item_nodes")
+    EVALUATION_OUT = os.path.join(OUTPUT_BASE, "evaluation_dataset")
+    LOGS_DIR = os.path.join(OUTPUT_BASE, "logs")
 
 
 # ── 3. Tạo SparkSession ──────────────────────────────────────

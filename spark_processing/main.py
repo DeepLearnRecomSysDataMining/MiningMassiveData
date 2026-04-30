@@ -34,6 +34,7 @@ from config.spark_config import create_spark_session, PathConfig
 from src.schema_scanner  import scan_all_files
 from src.etl_interactions import run_etl_interactions
 from src.etl_item_nodes   import run_etl_item_nodes
+from src.evaluation_dataset import run_evaluation_generator
 from src.data_validator   import validate_interactions, validate_item_nodes
 
 
@@ -63,6 +64,9 @@ def main():
     print_banner()
     args    = parse_args()
     t_start = time.time()
+    n_interactions = 0
+    n_items = 0
+    n_eval = 0
 
     # ── Khởi tạo SparkSession ────────────────────────────────
     spark = create_spark_session("AmazonETL_Pipeline")
@@ -110,6 +114,21 @@ def main():
                     f"Thời gian: {time.time()-t2:.1f}s")
 
         # ────────────────────────────────────────────────────
+        # BƯỚC 3: Tạo Evaluation Dataset (MỚI)
+        # ────────────────────────────────────────────────────
+        logger.info("Bắt đầu tạo Evaluation Dataset...")
+        t3 = time.time()
+        
+        n_eval = run_evaluation_generator(
+            spark,
+            item_nodes_path = PathConfig.ITEM_NODES_OUT,
+            output_path     = PathConfig.EVALUATION_OUT
+        )
+        
+        logger.info(f"Tạo Evaluation Dataset hoàn tất: {n_eval:,} bộ | "
+                    f"Thời gian: {time.time()-t3:.1f}s")
+
+        # ────────────────────────────────────────────────────
         # BƯỚC 3 (tuỳ chọn): Validate output
         # ────────────────────────────────────────────────────
         if args.validate:
@@ -124,11 +143,13 @@ def main():
 ║  ✔  PIPELINE HOÀN TẤT
 ║     Tương tác : {n_interactions:>12,}
 ║     Sản phẩm  : {n_items:>12,}
+║     Evaluation: {n_eval:>12,}
 ║     Thời gian : {elapsed:>11.1f} s
 ║
 ║  Output:
 ║    {PathConfig.INTERACTIONS_OUT}
 ║    {PathConfig.ITEM_NODES_OUT}
+║    {PathConfig.EVALUATION_OUT}
 ╚══════════════════════════════════════════════════════════╝
 """)
 

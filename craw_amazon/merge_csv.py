@@ -101,7 +101,7 @@ if __name__ == "__main__":
     # 2. Gộp các file trong thư mục 'data_integrated'
     merge_csv_in_directory(
         target_dir='data_integrated',
-        output_filename='ALL_INTEGRATED_MERGED.csv'
+        output_filename='all_links_amazon.csv'
     )
 
     logging.info("🏁 TOÀN BỘ QUÁ TRÌNH GỘP ĐÃ KẾT THÚC.")
