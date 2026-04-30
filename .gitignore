@@ -11,3 +11,5 @@ data_small/
 
 /output
 output/
+
+craw_amazon/reviews/reviews_amazon.jsonl
