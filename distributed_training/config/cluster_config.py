@@ -1,32 +1,28 @@
-# ============================================================
-# distributed_training/config/cluster_config.py
-# Cấu hình cho việc huấn luyện đa máy chủ (Multi-node)
-# ============================================================
-
 import os
 
 class ClusterConfig:
-    # Số lượng máy tham gia huấn luyện
-    WORLD_SIZE = 2  # Bạn có thể nâng lên 4 tùy vào tài nguyên GCP
+    # Số lượng máy tham gia huấn luyện (Lấy từ env hoặc mặc định 2)
+    WORLD_SIZE = int(os.getenv("WORLD_SIZE", 2))
     
     # IP và Port của máy Master (Node 0)
-    MASTER_ADDR = "10.128.0.2"  # Thay bằng IP nội bộ của máy Master trên GCP
-    MASTER_PORT = "12355"
+    MASTER_ADDR = os.getenv("MASTER_ADDR", "10.128.0.2")
+    MASTER_PORT = os.getenv("MASTER_PORT", "12355")
     
-    # Đường dẫn dữ liệu đầu ra từ Spark
-    # DATA_PATH = "../output/evaluation_dataset"
-    # MODEL_SAVE_PATH = "../output/trained_models"
-    # TRỎ VÀO Ổ ĐĨA MẠNG DÙNG CHUNG
-    DATA_PATH = "/mnt/shared_data/MiningSparkProcess/output/evaluation_dataset"
-    MODEL_SAVE_PATH = "/mnt/shared_data/MiningSparkProcess/output/trained_models"
+    # --- ĐƯỜNG DẪN TRÊN GCS ---
+    # Lấy từ env để linh hoạt (Ví dụ: export GCS_BUCKET=gs://my-recsys-bucket)
+    GCS_BUCKET = os.getenv("GCS_BUCKET", "gs://my-recsys-project-bucket")
+    
+    # Dữ liệu đầu ra từ Spark ETL (Bước 3)
+    DATA_PATH = f"{GCS_BUCKET}/processed_data/evaluation_dataset"
+    
+    # Nơi lưu Model checkpoints (Bước 4)
+    MODEL_SAVE_PATH = f"{GCS_BUCKET}/models"
 
     # Cấu hình cho từng Baseline
     BASELINES = [
-        "BM25",      # Ranker truyền thống (không train DDP, chạy Spark job)
+        "BM25",      # Ranker truyền thống
         "SBERT",     # Deep Learning (DDP)
         "DSSM",      # Deep Learning (DDP)
         "GCN",       # Graph Learning (DDP)
         "HYBRID"     # Ensemble logic
     ]
-
-os.makedirs(ClusterConfig.MODEL_SAVE_PATH, exist_ok=True)
