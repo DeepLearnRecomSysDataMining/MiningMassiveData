@@ -133,6 +133,12 @@ Do đó, trước khi muốn chạy file `download_data.py`, bạn chỉ cần g
 
 ### Các lệnh chạy sau đó ở Bước 5 này phải chạy với venv hết vì cần python3, gdown, ...
 
+### Vấn đề với lệnh `python3 download_data.py` 
+- yêu cầu VM instance có Disk > 10Gb , hoặc vài chục GB để load data từ drive về, sau đó đẩy lên.
+- Nhưng nếu tôi muốn giản nén các file `.gz` ra ngay tại VM rồi mới nhét vào GCS, thì VM cần disk > 10GB rất nhiều.
+- Giải pháp: dùng Colab + kỹ thuật Streaming + xử lý từng file lần lượt.
+- file [streaming_drive_gcs.ipynb](spark_processing_gpc/streaming_drive_gcs.ipynb)
+
 ---
 
 ## Bước 6: Tạo cụm Spark (Dataproc) để xử lý ETL
