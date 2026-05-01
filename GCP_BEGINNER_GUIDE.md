@@ -76,12 +76,12 @@ cd [TEN_THU_MUC_PROJECT]
 # 3. Cài đặt thư viện gdown
 pip3 install gdown
 
-# 4. Sửa file download_data.py (Dùng lệnh 'nano download_data.py')
+# 4. Sửa file download_data_to_gcs.py (Dùng lệnh 'nano download_data_to_gcs.py')
 # - Điền GOOGLE_DRIVE_ID của bạn.
 # - Điền GCS_DESTINATION (gs://ten-bucket-vua-tao/raw_data/amazon_gpc/).
 
 # 5. Chạy tải dữ liệu
-python3 download_data.py
+python3 download_data_to_gcs.py
 ```
 
 ### Lỗi ngay chạy lệnh `sudo apt-get update`

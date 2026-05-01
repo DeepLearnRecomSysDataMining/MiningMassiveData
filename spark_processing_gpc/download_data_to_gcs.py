@@ -63,6 +63,6 @@ if __name__ == "__main__":
     GCS_DESTINATION = "gs://mining-data-2/raw_data/amazon_gpc/"
 
     if "YOUR_FOLDER_ID_HERE" in GOOGLE_DRIVE_ID or "your-bucket-name" in GCS_DESTINATION:
-        logger.warning("Vui long mo file 'download_data.py' va dien thong tin GCS Bucket + Drive ID cua ban.")
+        logger.warning("Vui long mo file 'download_data_to_gcs.py' va dien thong tin GCS Bucket + Drive ID cua ban.")
     else:
         run_cloud_pipeline(GOOGLE_DRIVE_ID, GCS_DESTINATION)
