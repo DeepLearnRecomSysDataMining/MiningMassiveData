@@ -138,6 +138,9 @@ def process_amazon_breadcum(source_dir, categories_dict):
 
             batch_results = []
             for idx, row in enumerate(records):
+                if idx < 760 or idx >= 6000:
+                    continue
+
                 url = row['url']
                 asin = row['asin']
 
@@ -145,7 +148,7 @@ def process_amazon_breadcum(source_dir, categories_dict):
                 retry_count = 0
                 data = None
 
-                while retry_count < 3:
+                while retry_count < 2:
                     logging.info(f"   🔹 [{idx + 1}/{len(records)}] URL: {url} | Lần {retry_count + 1}")
 
                     data = extract_product_breadcrumb(driver, url)
@@ -175,7 +178,7 @@ def process_amazon_breadcum(source_dir, categories_dict):
                         logging.info(f"💾 Đã ghi {len(batch_results)} items vào {save_name}")
                         batch_results = []
 
-                time.sleep(random.uniform(3.0, 5.0))
+                time.sleep(random.uniform(1.0, 3.0))
 
             logging.info(f"✅ Hoàn tất danh mục: {manual_category}")
     finally:

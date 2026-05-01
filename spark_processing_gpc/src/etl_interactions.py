@@ -9,7 +9,7 @@ from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.functions import col, lower, lit, coalesce, concat_ws, regexp_replace, trim
 from pyspark.sql.types import StringType
 import ast
-from .file_utils import detect_jsonl_type
+from .file_utils import detect_jsonl_type, list_files
 
 logger = logging.getLogger("etl_interactions")
 

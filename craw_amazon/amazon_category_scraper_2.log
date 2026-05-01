@@ -661,3 +661,1032 @@
 22:11:04 [INFO]    🔹 [6586/10888] URL: https://www.amazon.com/dp/B0773ZY26F | Lần 1
 22:11:14 [INFO]    🔹 [6587/10888] URL: https://www.amazon.com/dp/B0F7P3HPGJ | Lần 1
 22:11:15 [INFO] 🏁 QUY TRÌNH HOÀN TẤT.
+12:20:20 [INFO] Hệ thống khởi tạo thành công. Thư mục: D:\Hoctap_Code_PrivateProject\MiningMassiveData\craw_amazon\data_integrated
+12:20:20 [INFO] 🚀 Hệ thống khởi tạo thành công. Kết quả sẽ lưu tại: D:\Hoctap_Code_PrivateProject\MiningMassiveData\craw_amazon\categories
+12:20:21 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+12:20:54 [INFO] ✅ Đã chuyển vùng thành công.
+12:20:54 [INFO] 📂 ĐANG XỬ LÝ DANH MỤC: ALL_LINKS_AMAZON | File: all_links_amazon.csv
+12:20:55 [INFO] 🔎 Tìm thấy 10888 records.
+12:20:55 [INFO]    🔹 [6582/10888] URL: https://www.amazon.com/dp/B09BJVZVTB | Lần 1
+12:21:15 [INFO]    🔹 [6583/10888] URL: https://www.amazon.com/dp/B0B3FVVL34 | Lần 1
+12:22:15 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0B3FVVL34: Message: timeout: Timed out receiving message from renderer: -0.009
+  (Session info: chrome=147.0.77
+12:22:20 [INFO]    🔹 [6584/10888] URL: https://www.amazon.com/dp/B0B3FDTV1F | Lần 1
+12:22:32 [INFO]    🔹 [6585/10888] URL: https://www.amazon.com/dp/B09BJVGK92 | Lần 1
+12:22:44 [INFO]    🔹 [6586/10888] URL: https://www.amazon.com/dp/B0773ZY26F | Lần 1
+12:22:55 [INFO]    🔹 [6587/10888] URL: https://www.amazon.com/dp/B0F7P3HPGJ | Lần 1
+12:23:06 [INFO]    🔹 [6588/10888] URL: https://www.amazon.com/dp/B0FC9J6RP8 | Lần 1
+12:23:15 [INFO]    🔹 [6589/10888] URL: https://www.amazon.com/dp/B0FCNSMGBT | Lần 1
+12:23:26 [INFO]    🔹 [6590/10888] URL: https://www.amazon.com/dp/B07774L6TT | Lần 1
+12:23:36 [INFO]    🔹 [6591/10888] URL: https://www.amazon.com/dp/B0FDV4BSDP | Lần 1
+12:23:45 [INFO]    🔹 [6592/10888] URL: https://www.amazon.com/dp/B0FDVNJ8ST | Lần 1
+12:23:52 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+12:23:55 [INFO]    🔹 [6593/10888] URL: https://www.amazon.com/dp/B0FH14H9X3 | Lần 1
+12:24:06 [INFO]    🔹 [6594/10888] URL: https://www.amazon.com/dp/B07TXM7K4T | Lần 1
+12:24:18 [INFO]    🔹 [6595/10888] URL: https://www.amazon.com/dp/B0CV4HXHJ8 | Lần 1
+12:24:27 [INFO]    🔹 [6596/10888] URL: https://www.amazon.com/dp/B0FF853BBF | Lần 1
+12:24:38 [INFO]    🔹 [6597/10888] URL: https://www.amazon.com/dp/B0FF7GRFPS | Lần 1
+12:24:49 [INFO]    🔹 [6598/10888] URL: https://www.amazon.com/dp/B0FDDVRS59 | Lần 1
+12:25:01 [INFO]    🔹 [6599/10888] URL: https://www.amazon.com/dp/B0CWJ3FH7M | Lần 1
+12:25:12 [INFO]    🔹 [6600/10888] URL: https://www.amazon.com/dp/B09B8PN1J9 | Lần 1
+12:25:23 [INFO]    🔹 [6601/10888] URL: https://www.amazon.com/dp/B098YKNVWR | Lần 1
+12:25:32 [INFO]    🔹 [6602/10888] URL: https://www.amazon.com/dp/B078HSKBG3 | Lần 1
+12:25:39 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+12:25:42 [INFO]    🔹 [6603/10888] URL: https://www.amazon.com/dp/B097FZG8QQ | Lần 1
+12:25:52 [INFO]    🔹 [6604/10888] URL: https://www.amazon.com/dp/B0FF7L83XD | Lần 1
+12:26:03 [INFO]    🔹 [6605/10888] URL: https://www.amazon.com/dp/B0G36TJ5GT | Lần 1
+12:26:12 [INFO]    🔹 [6606/10888] URL: https://www.amazon.com/dp/B071JJ8V4S | Lần 1
+12:26:23 [INFO]    🔹 [6607/10888] URL: https://www.amazon.com/dp/B09G6TX7L5 | Lần 1
+12:26:34 [INFO]    🔹 [6608/10888] URL: https://www.amazon.com/dp/B09VD9P2Q3 | Lần 1
+12:26:46 [INFO]    🔹 [6609/10888] URL: https://www.amazon.com/dp/B0B3DS23NB | Lần 1
+12:27:01 [INFO]    🔹 [6610/10888] URL: https://www.amazon.com/dp/B08XD4HMDG | Lần 1
+12:27:12 [INFO]    🔹 [6611/10888] URL: https://www.amazon.com/dp/B08VTW474P | Lần 1
+12:27:24 [INFO]    🔹 [6612/10888] URL: https://www.amazon.com/dp/B089BTLL9K | Lần 1
+12:27:31 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+12:27:36 [INFO]    🔹 [6613/10888] URL: https://www.amazon.com/dp/B09K3FWMPL | Lần 1
+12:27:55 [INFO]    🔹 [6614/10888] URL: https://www.amazon.com/dp/B0G63SN8SY | Lần 1
+12:28:09 [INFO]    🔹 [6615/10888] URL: https://www.amazon.com/dp/B0D59RS829 | Lần 1
+12:28:22 [INFO]    🔹 [6616/10888] URL: https://www.amazon.com/dp/B0GGGZTSTH | Lần 1
+12:28:35 [INFO]    🔹 [6617/10888] URL: https://www.amazon.com/dp/B0DDP95J7T | Lần 1
+12:28:46 [INFO]    🔹 [6618/10888] URL: https://www.amazon.com/dp/B0DRBVHTTK | Lần 1
+12:28:59 [INFO]    🔹 [6619/10888] URL: https://www.amazon.com/dp/B0F2HYPVDV | Lần 1
+12:29:11 [INFO]    🔹 [6620/10888] URL: https://www.amazon.com/dp/B0FL24PSYY | Lần 1
+12:29:23 [INFO]    🔹 [6621/10888] URL: https://www.amazon.com/dp/B0DR897LXK | Lần 1
+12:29:34 [INFO]    🔹 [6622/10888] URL: https://www.amazon.com/dp/B0F29LH9HP | Lần 1
+12:29:41 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+12:29:44 [INFO]    🔹 [6623/10888] URL: https://www.amazon.com/dp/B0FL28X7J7 | Lần 1
+12:29:58 [INFO]    🔹 [6624/10888] URL: https://www.amazon.com/dp/B0FJFK6S3N | Lần 1
+12:30:09 [INFO]    🔹 [6625/10888] URL: https://www.amazon.com/dp/B0FF1Y33RL | Lần 1
+12:30:19 [INFO]    🔹 [6626/10888] URL: https://www.amazon.com/dp/B0FM3NTR1W | Lần 1
+12:30:31 [INFO]    🔹 [6627/10888] URL: https://www.amazon.com/dp/B0FJDKH5T7 | Lần 1
+12:30:44 [INFO]    🔹 [6628/10888] URL: https://www.amazon.com/dp/B0FHB5NQK3 | Lần 1
+12:30:55 [INFO]    🔹 [6629/10888] URL: https://www.amazon.com/dp/B0F1FJSJ9S | Lần 1
+12:31:07 [INFO]    🔹 [6630/10888] URL: https://www.amazon.com/dp/B0FH52MNYL | Lần 1
+12:31:18 [INFO]    🔹 [6631/10888] URL: https://www.amazon.com/dp/B0FQW1HX8T | Lần 1
+12:31:28 [INFO]    🔹 [6632/10888] URL: https://www.amazon.com/dp/B0FZ9Y2CH4 | Lần 1
+12:31:34 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+12:31:38 [INFO]    🔹 [6633/10888] URL: https://www.amazon.com/dp/B0FJS4K2NB | Lần 1
+12:31:53 [INFO]    🔹 [6634/10888] URL: https://www.amazon.com/dp/B0CMXK5QDD | Lần 1
+12:32:04 [INFO]    🔹 [6635/10888] URL: https://www.amazon.com/dp/B0FNWZYGRN | Lần 1
+12:32:21 [INFO]    🔹 [6636/10888] URL: https://www.amazon.com/dp/B0DS7F9ND2 | Lần 1
+12:32:33 [INFO]    🔹 [6637/10888] URL: https://www.amazon.com/dp/B0G5Y7R756 | Lần 1
+12:33:03 [INFO]    🔹 [6638/10888] URL: https://www.amazon.com/dp/B0FVL7X1TC | Lần 1
+12:33:21 [INFO]    🔹 [6639/10888] URL: https://www.amazon.com/dp/B0GLZNRM6Z | Lần 1
+12:33:42 [INFO]    🔹 [6640/10888] URL: https://www.amazon.com/dp/B0F4QXV27P | Lần 1
+12:34:18 [INFO]    🔹 [6641/10888] URL: https://www.amazon.com/dp/B0DHH5STN9 | Lần 1
+12:34:35 [INFO]    🔹 [6642/10888] URL: https://www.amazon.com/dp/B0DMW42C3R | Lần 1
+12:34:43 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+12:34:46 [INFO]    🔹 [6643/10888] URL: https://www.amazon.com/dp/B0FQJ2QJX3 | Lần 1
+12:35:08 [INFO]    🔹 [6644/10888] URL: https://www.amazon.com/dp/B0FQVZ4LJ3 | Lần 1
+12:35:20 [INFO]    🔹 [6645/10888] URL: https://www.amazon.com/dp/B07T5SY43L | Lần 1
+12:35:38 [INFO]    🔹 [6646/10888] URL: https://www.amazon.com/dp/B07X262MRK | Lần 1
+12:36:38 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B07X262MRK: Message: timeout: Timed out receiving message from renderer: 59.576
+  (Session info: chrome=147.0.77
+12:36:42 [INFO]    🔹 [6647/10888] URL: https://www.amazon.com/dp/B009S750LA | Lần 1
+12:37:02 [INFO]    🔹 [6648/10888] URL: https://www.amazon.com/dp/B0CQTPZNV8 | Lần 1
+12:37:14 [INFO]    🔹 [6649/10888] URL: https://www.amazon.com/dp/B0F1XHP6JL | Lần 1
+12:37:24 [INFO]    🔹 [6650/10888] URL: https://www.amazon.com/dp/B0CTMHHJJC | Lần 1
+12:37:34 [INFO]    🔹 [6651/10888] URL: https://www.amazon.com/dp/B0FM76LQLM | Lần 1
+12:37:48 [INFO]    🔹 [6652/10888] URL: https://www.amazon.com/dp/B0FW474SMH | Lần 1
+12:38:01 [INFO]    🔹 [6653/10888] URL: https://www.amazon.com/dp/B0F29L3WX3 | Lần 1
+12:38:13 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+12:38:17 [INFO]    🔹 [6654/10888] URL: https://www.amazon.com/dp/B0G1Y46QS9 | Lần 1
+12:38:30 [INFO]    🔹 [6655/10888] URL: https://www.amazon.com/dp/B0FM7FS7CR | Lần 1
+12:38:39 [INFO]    🔹 [6656/10888] URL: https://www.amazon.com/dp/B0G1Z84MTC | Lần 1
+12:39:03 [INFO]    🔹 [6657/10888] URL: https://www.amazon.com/dp/B00QSUMKYA | Lần 1
+12:39:13 [INFO]    🔹 [6658/10888] URL: https://www.amazon.com/dp/B06WGPY3HZ | Lần 1
+12:39:24 [INFO]    🔹 [6659/10888] URL: https://www.amazon.com/dp/B00OL0L1VM | Lần 1
+12:39:33 [INFO]    🔹 [6660/10888] URL: https://www.amazon.com/dp/B00S8W8Z5E | Lần 1
+12:39:43 [INFO]    🔹 [6661/10888] URL: https://www.amazon.com/dp/B0C8ZJ6RW8 | Lần 1
+12:39:53 [INFO]    🔹 [6662/10888] URL: https://www.amazon.com/dp/B0DF9SKLL2 | Lần 1
+12:40:04 [INFO]    🔹 [6663/10888] URL: https://www.amazon.com/dp/B0D1L89H1F | Lần 1
+12:40:13 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+12:40:17 [INFO]    🔹 [6664/10888] URL: https://www.amazon.com/dp/B0CBLC9XBJ | Lần 1
+12:40:35 [INFO]    🔹 [6665/10888] URL: https://www.amazon.com/dp/B0DHYCR62P | Lần 1
+12:40:44 [INFO]    🔹 [6666/10888] URL: https://www.amazon.com/dp/B0DHYDCQN8 | Lần 1
+12:41:00 [INFO]    🔹 [6667/10888] URL: https://www.amazon.com/dp/B0FF5ZQWV6 | Lần 1
+12:41:09 [INFO]    🔹 [6668/10888] URL: https://www.amazon.com/dp/B0FY4LVHYH | Lần 1
+12:41:21 [INFO]    🔹 [6669/10888] URL: https://www.amazon.com/dp/B0FF6CHRYD | Lần 1
+12:41:34 [INFO]    🔹 [6670/10888] URL: https://www.amazon.com/dp/B0FY4BT6RT | Lần 1
+12:41:49 [INFO]    🔹 [6671/10888] URL: https://www.amazon.com/dp/B0FF5WBLMN | Lần 1
+12:42:01 [INFO]    🔹 [6672/10888] URL: https://www.amazon.com/dp/B0F22C6BTS | Lần 1
+12:42:12 [INFO]    🔹 [6673/10888] URL: https://www.amazon.com/dp/B0F4M14B9L | Lần 1
+12:42:18 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+12:42:23 [INFO]    🔹 [6674/10888] URL: https://www.amazon.com/dp/B0GS7QHQXX | Lần 1
+12:42:36 [INFO]    🔹 [6675/10888] URL: https://www.amazon.com/dp/B0F3MMK1J4 | Lần 1
+12:42:48 [INFO]    🔹 [6676/10888] URL: https://www.amazon.com/dp/B0F5FP39MK | Lần 1
+12:43:00 [INFO]    🔹 [6677/10888] URL: https://www.amazon.com/dp/B0DZ4QJY65 | Lần 1
+12:43:18 [INFO]    🔹 [6678/10888] URL: https://www.amazon.com/dp/B08Z66BHWW | Lần 1
+12:43:29 [INFO]    🔹 [6679/10888] URL: https://www.amazon.com/dp/B0D685N3NV | Lần 1
+12:43:39 [INFO]    🔹 [6680/10888] URL: https://www.amazon.com/dp/B0FFCKFWQX | Lần 1
+12:44:15 [INFO]    🔹 [6681/10888] URL: https://www.amazon.com/dp/B0G22NLF79 | Lần 1
+12:44:27 [INFO]    🔹 [6682/10888] URL: https://www.amazon.com/dp/B0FNKVCMGT | Lần 1
+12:44:37 [INFO]    🔹 [6683/10888] URL: https://www.amazon.com/dp/B0FJYKBYBB | Lần 1
+12:44:43 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+12:44:48 [INFO]    🔹 [6684/10888] URL: https://www.amazon.com/dp/B0D51L1475 | Lần 1
+12:44:58 [INFO]    🔹 [6685/10888] URL: https://www.amazon.com/dp/B0DH9JKQYN | Lần 1
+12:45:08 [INFO]    🔹 [6686/10888] URL: https://www.amazon.com/dp/B0G399ZBVB | Lần 1
+12:45:21 [INFO]    🔹 [6687/10888] URL: https://www.amazon.com/dp/B08D3Y5PFZ | Lần 1
+12:45:30 [INFO]    🔹 [6688/10888] URL: https://www.amazon.com/dp/B0FY5DJ785 | Lần 1
+12:45:39 [INFO]    🔹 [6689/10888] URL: https://www.amazon.com/dp/B077YYCD87 | Lần 1
+12:45:48 [INFO]    🔹 [6690/10888] URL: https://www.amazon.com/dp/B09V6PHDG4 | Lần 1
+12:45:59 [INFO]    🔹 [6691/10888] URL: https://www.amazon.com/dp/B0G4F1SR44 | Lần 1
+12:46:08 [INFO]    🔹 [6692/10888] URL: https://www.amazon.com/dp/B0FP99651G | Lần 1
+12:46:29 [INFO]    🔹 [6693/10888] URL: https://www.amazon.com/dp/B0FVFTMGDM | Lần 1
+12:46:36 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+12:46:41 [INFO]    🔹 [6694/10888] URL: https://www.amazon.com/dp/B0FWC2VGTW | Lần 1
+12:47:03 [INFO]    🔹 [6695/10888] URL: https://www.amazon.com/dp/B0FJ8G4K5C | Lần 1
+12:47:17 [INFO]    🔹 [6696/10888] URL: https://www.amazon.com/dp/B0FP95MKJM | Lần 1
+12:47:28 [INFO]    🔹 [6697/10888] URL: https://www.amazon.com/dp/B0FP98J55L | Lần 1
+12:47:43 [INFO]    🔹 [6698/10888] URL: https://www.amazon.com/dp/B0FPG5PGZL | Lần 1
+12:47:55 [INFO]    🔹 [6699/10888] URL: https://www.amazon.com/dp/B0DT127FVT | Lần 1
+12:48:05 [INFO]    🔹 [6700/10888] URL: https://www.amazon.com/dp/B0DQV7VS5W | Lần 1
+12:48:25 [INFO]    🔹 [6701/10888] URL: https://www.amazon.com/dp/B0DGGVY46Z | Lần 1
+12:48:40 [INFO]    🔹 [6702/10888] URL: https://www.amazon.com/dp/B0G5NL7K79 | Lần 1
+12:48:52 [INFO]    🔹 [6703/10888] URL: https://www.amazon.com/dp/B0FFMH8BZT | Lần 1
+12:48:59 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+12:49:03 [INFO]    🔹 [6704/10888] URL: https://www.amazon.com/dp/B0D8WS87M2 | Lần 1
+12:49:13 [INFO]    🔹 [6705/10888] URL: https://www.amazon.com/dp/B0DNTY89MM | Lần 1
+12:49:23 [INFO]    🔹 [6706/10888] URL: https://www.amazon.com/dp/B09CQ8R3SZ | Lần 1
+12:49:34 [INFO]    🔹 [6707/10888] URL: https://www.amazon.com/dp/B0B5GRGCX5 | Lần 1
+12:49:44 [INFO]    🔹 [6708/10888] URL: https://www.amazon.com/dp/B0D58LQ7X4 | Lần 1
+12:49:54 [INFO]    🔹 [6709/10888] URL: https://www.amazon.com/dp/B0FQJPMZLJ | Lần 1
+12:50:05 [INFO]    🔹 [6710/10888] URL: https://www.amazon.com/dp/B0G2T2V6JJ | Lần 1
+12:50:17 [INFO]    🔹 [6711/10888] URL: https://www.amazon.com/dp/B0FTVB3V15 | Lần 1
+12:50:28 [INFO]    🔹 [6712/10888] URL: https://www.amazon.com/dp/B0DJTXKX7P | Lần 1
+12:50:39 [INFO]    🔹 [6713/10888] URL: https://www.amazon.com/dp/B0FPRGSK6J | Lần 1
+12:50:46 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+12:50:51 [INFO]    🔹 [6714/10888] URL: https://www.amazon.com/dp/B0FPRKBD8J | Lần 1
+12:51:02 [INFO]    🔹 [6715/10888] URL: https://www.amazon.com/dp/B0DP1G8R18 | Lần 1
+12:51:13 [INFO]    🔹 [6716/10888] URL: https://www.amazon.com/dp/B0CGT8KQ2F | Lần 1
+12:51:23 [INFO]    🔹 [6717/10888] URL: https://www.amazon.com/dp/B0C8BHWKKB | Lần 1
+12:51:33 [INFO]    🔹 [6718/10888] URL: https://www.amazon.com/dp/B0FQ5RVSCJ | Lần 1
+12:51:43 [INFO]    🔹 [6719/10888] URL: https://www.amazon.com/dp/B0FTVC78FT | Lần 1
+12:51:53 [INFO]    🔹 [6720/10888] URL: https://www.amazon.com/dp/B0FPBDLRHV | Lần 1
+12:52:03 [INFO]    🔹 [6721/10888] URL: https://www.amazon.com/dp/B082M4MVFG | Lần 1
+12:52:16 [INFO]    🔹 [6722/10888] URL: https://www.amazon.com/dp/B09DNL4C9J | Lần 1
+12:52:27 [INFO]    🔹 [6723/10888] URL: https://www.amazon.com/dp/B07F8M844G | Lần 1
+12:52:36 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+12:52:40 [INFO]    🔹 [6724/10888] URL: https://www.amazon.com/dp/B0FYPJVF6S | Lần 1
+12:52:51 [INFO]    🔹 [6725/10888] URL: https://www.amazon.com/dp/B0G136C5QY | Lần 1
+12:53:01 [INFO]    🔹 [6726/10888] URL: https://www.amazon.com/dp/B0GJ6SV9M6 | Lần 1
+12:53:11 [INFO]    🔹 [6727/10888] URL: https://www.amazon.com/dp/B0DLT7CJV1 | Lần 1
+12:53:23 [INFO]    🔹 [6728/10888] URL: https://www.amazon.com/dp/B0D6YW3VZN | Lần 1
+12:53:33 [INFO]    🔹 [6729/10888] URL: https://www.amazon.com/dp/B0BG8SV1M7 | Lần 1
+12:53:43 [INFO]    🔹 [6730/10888] URL: https://www.amazon.com/dp/B0CVJTKP68 | Lần 1
+12:53:53 [INFO]    🔹 [6731/10888] URL: https://www.amazon.com/dp/B0F1LJ7KP3 | Lần 1
+12:54:03 [INFO]    🔹 [6732/10888] URL: https://www.amazon.com/dp/B08LW31NQ6 | Lần 1
+12:54:14 [INFO]    🔹 [6733/10888] URL: https://www.amazon.com/dp/B09DQ6CQVR | Lần 1
+12:54:22 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+12:54:26 [INFO]    🔹 [6734/10888] URL: https://www.amazon.com/dp/B0FR87BT6R | Lần 1
+12:54:36 [INFO]    🔹 [6735/10888] URL: https://www.amazon.com/dp/B0FR79J59W | Lần 1
+12:54:47 [INFO]    🔹 [6736/10888] URL: https://www.amazon.com/dp/B09DQ3R7GT | Lần 1
+12:54:56 [INFO]    🔹 [6737/10888] URL: https://www.amazon.com/dp/B0FXGNZHM6 | Lần 1
+12:55:07 [INFO]    🔹 [6738/10888] URL: https://www.amazon.com/dp/B08XF1LB8D | Lần 1
+12:55:17 [INFO]    🔹 [6739/10888] URL: https://www.amazon.com/dp/B09DVP7F5M | Lần 1
+12:55:27 [INFO]    🔹 [6740/10888] URL: https://www.amazon.com/dp/B0B9KSNM1L | Lần 1
+12:55:38 [INFO]    🔹 [6741/10888] URL: https://www.amazon.com/dp/B075Y6Y9H5 | Lần 1
+12:55:49 [INFO]    🔹 [6742/10888] URL: https://www.amazon.com/dp/B0B9KRR97K | Lần 1
+12:56:00 [INFO]    🔹 [6743/10888] URL: https://www.amazon.com/dp/B0FD7NX7DZ | Lần 1
+12:56:05 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+12:56:10 [INFO]    🔹 [6744/10888] URL: https://www.amazon.com/dp/B0CS6Z1QLK | Lần 1
+12:56:20 [INFO]    🔹 [6745/10888] URL: https://www.amazon.com/dp/B07YX5NKK2 | Lần 1
+12:56:30 [INFO]    🔹 [6746/10888] URL: https://www.amazon.com/dp/B0845Y1FRN | Lần 1
+12:56:40 [INFO]    🔹 [6747/10888] URL: https://www.amazon.com/dp/B0G72L47DS | Lần 1
+12:56:50 [INFO]    🔹 [6748/10888] URL: https://www.amazon.com/dp/B0GH2LP8RJ | Lần 1
+12:57:01 [INFO]    🔹 [6749/10888] URL: https://www.amazon.com/dp/B0GP7Z8KMF | Lần 1
+12:57:11 [INFO]    🔹 [6750/10888] URL: https://www.amazon.com/dp/B0GJFNK7QC | Lần 1
+12:57:22 [INFO]    🔹 [6751/10888] URL: https://www.amazon.com/dp/B0BZM2FQ8Q | Lần 1
+12:57:32 [INFO]    🔹 [6752/10888] URL: https://www.amazon.com/dp/B0FMP18HTK | Lần 1
+12:57:41 [INFO]    🔹 [6753/10888] URL: https://www.amazon.com/dp/B0BWFDV6R6 | Lần 1
+12:57:48 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+12:57:52 [INFO]    🔹 [6754/10888] URL: https://www.amazon.com/dp/B0FM4441RH | Lần 1
+12:58:02 [INFO]    🔹 [6755/10888] URL: https://www.amazon.com/dp/B0BXYVV6KM | Lần 1
+12:58:13 [INFO]    🔹 [6756/10888] URL: https://www.amazon.com/dp/B0FN86D4QX | Lần 1
+12:58:22 [INFO]    🔹 [6757/10888] URL: https://www.amazon.com/dp/B0GCNC4W9M | Lần 1
+12:58:31 [INFO]    🔹 [6758/10888] URL: https://www.amazon.com/dp/B0DY5223M7 | Lần 1
+12:58:42 [INFO]    🔹 [6759/10888] URL: https://www.amazon.com/dp/B0FR23H9TS | Lần 1
+12:58:52 [INFO]    🔹 [6760/10888] URL: https://www.amazon.com/dp/B0GBXNY7MM | Lần 1
+12:59:02 [INFO]    🔹 [6761/10888] URL: https://www.amazon.com/dp/B07SRDX1Z1 | Lần 1
+12:59:20 [INFO]    🔹 [6762/10888] URL: https://www.amazon.com/dp/B0D4ZNF5LT | Lần 1
+12:59:32 [INFO]    🔹 [6763/10888] URL: https://www.amazon.com/dp/B0FB7QRCS8 | Lần 1
+12:59:39 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+12:59:43 [INFO]    🔹 [6764/10888] URL: https://www.amazon.com/dp/B0787WGCXT | Lần 1
+12:59:56 [INFO]    🔹 [6765/10888] URL: https://www.amazon.com/dp/B0787XMLZQ | Lần 1
+13:00:07 [INFO]    🔹 [6766/10888] URL: https://www.amazon.com/dp/B086XMFNW6 | Lần 1
+13:00:18 [INFO]    🔹 [6767/10888] URL: https://www.amazon.com/dp/B09ZNQ1HJ7 | Lần 1
+13:00:30 [INFO]    🔹 [6768/10888] URL: https://www.amazon.com/dp/B0D78GLBRK | Lần 1
+13:00:40 [INFO]    🔹 [6769/10888] URL: https://www.amazon.com/dp/B08V85DH1R | Lần 1
+13:00:58 [INFO]    🔹 [6770/10888] URL: https://www.amazon.com/dp/B09NVXM1T3 | Lần 1
+13:01:10 [INFO]    🔹 [6771/10888] URL: https://www.amazon.com/dp/B08DLBDKBQ | Lần 1
+13:01:21 [INFO]    🔹 [6772/10888] URL: https://www.amazon.com/dp/B0CZ3KWC3P | Lần 1
+13:01:34 [INFO]    🔹 [6773/10888] URL: https://www.amazon.com/dp/B0CZ3KRMZH | Lần 1
+13:01:44 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:01:47 [INFO]    🔹 [6774/10888] URL: https://www.amazon.com/dp/B0FRJM6FLR | Lần 1
+13:01:58 [INFO]    🔹 [6775/10888] URL: https://www.amazon.com/dp/B09237LL5Q | Lần 1
+13:02:13 [INFO]    🔹 [6776/10888] URL: https://www.amazon.com/dp/B0DFGJ2367 | Lần 1
+13:02:24 [INFO]    🔹 [6777/10888] URL: https://www.amazon.com/dp/B0DFGN3TZ7 | Lần 1
+13:02:39 [INFO]    🔹 [6778/10888] URL: https://www.amazon.com/dp/B0DXLDBCWL | Lần 1
+13:02:51 [INFO]    🔹 [6779/10888] URL: https://www.amazon.com/dp/B0D84RFHJ3 | Lần 1
+13:03:04 [INFO]    🔹 [6780/10888] URL: https://www.amazon.com/dp/B0BZTCNTCD | Lần 1
+13:03:21 [INFO]    🔹 [6781/10888] URL: https://www.amazon.com/dp/B0BZTBVKKW | Lần 1
+13:03:32 [INFO]    🔹 [6782/10888] URL: https://www.amazon.com/dp/B0FJ1MNZ9B | Lần 1
+13:03:43 [INFO]    🔹 [6783/10888] URL: https://www.amazon.com/dp/B091SV8JGP | Lần 1
+13:03:54 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:03:58 [INFO]    🔹 [6784/10888] URL: https://www.amazon.com/dp/B0FHZYRZ73 | Lần 1
+13:04:07 [INFO]    🔹 [6785/10888] URL: https://www.amazon.com/dp/B09NN4B22D | Lần 1
+13:04:21 [INFO]    🔹 [6786/10888] URL: https://www.amazon.com/dp/B09MR3G5ST | Lần 1
+13:04:31 [INFO]    🔹 [6787/10888] URL: https://www.amazon.com/dp/B0F7TGH1YY | Lần 1
+13:04:41 [INFO]    🔹 [6788/10888] URL: https://www.amazon.com/dp/B0BQWVF8RH | Lần 1
+13:04:54 [INFO]    🔹 [6789/10888] URL: https://www.amazon.com/dp/B08DLC9HBG | Lần 1
+13:05:06 [INFO]    🔹 [6790/10888] URL: https://www.amazon.com/dp/B0F2D71L9L | Lần 1
+13:05:15 [INFO]    🔹 [6791/10888] URL: https://www.amazon.com/dp/B0DT5WW5JM | Lần 1
+13:05:27 [INFO]    🔹 [6792/10888] URL: https://www.amazon.com/dp/B0FD2Y4DBK | Lần 1
+13:05:39 [INFO]    🔹 [6793/10888] URL: https://www.amazon.com/dp/B0G92NB1G1 | Lần 1
+13:05:47 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:05:51 [INFO]    🔹 [6794/10888] URL: https://www.amazon.com/dp/B0G8V8CZZZ | Lần 1
+13:06:01 [INFO]    🔹 [6795/10888] URL: https://www.amazon.com/dp/B0G8VTQXMW | Lần 1
+13:06:11 [INFO]    🔹 [6796/10888] URL: https://www.amazon.com/dp/B0G8Y9XZB1 | Lần 1
+13:06:22 [INFO]    🔹 [6797/10888] URL: https://www.amazon.com/dp/B0G8XW4J4Y | Lần 1
+13:06:32 [INFO]    🔹 [6798/10888] URL: https://www.amazon.com/dp/B0G92DKK7V | Lần 1
+13:06:42 [INFO]    🔹 [6799/10888] URL: https://www.amazon.com/dp/B0G92LDQQR | Lần 1
+13:06:52 [INFO]    🔹 [6800/10888] URL: https://www.amazon.com/dp/B0GBWCFN1Y | Lần 1
+13:07:03 [INFO]    🔹 [6801/10888] URL: https://www.amazon.com/dp/B0GBWBZMJY | Lần 1
+13:07:13 [INFO]    🔹 [6802/10888] URL: https://www.amazon.com/dp/B0GBX2FK2K | Lần 1
+13:07:23 [INFO]    🔹 [6803/10888] URL: https://www.amazon.com/dp/B0G8HWTNGT | Lần 1
+13:07:31 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:07:35 [INFO]    🔹 [6804/10888] URL: https://www.amazon.com/dp/B0GBVLXH4G | Lần 1
+13:07:46 [INFO]    🔹 [6805/10888] URL: https://www.amazon.com/dp/B0GBWDTFLW | Lần 1
+13:07:59 [INFO]    🔹 [6806/10888] URL: https://www.amazon.com/dp/B0GBWRDF9Z | Lần 1
+13:08:10 [INFO]    🔹 [6807/10888] URL: https://www.amazon.com/dp/B097S9SYM5 | Lần 1
+13:08:23 [INFO]    🔹 [6808/10888] URL: https://www.amazon.com/dp/B0CSFB7YRH | Lần 1
+13:08:36 [INFO]    🔹 [6809/10888] URL: https://www.amazon.com/dp/B08HDMRW9M | Lần 1
+13:08:50 [INFO]    🔹 [6810/10888] URL: https://www.amazon.com/dp/B08HDMB2WN | Lần 1
+13:09:02 [INFO]    🔹 [6811/10888] URL: https://www.amazon.com/dp/B0BRNTYTYK | Lần 1
+13:09:16 [INFO]    🔹 [6812/10888] URL: https://www.amazon.com/dp/B0BJW649GZ | Lần 1
+13:09:28 [INFO]    🔹 [6813/10888] URL: https://www.amazon.com/dp/B0BRNVSNZW | Lần 1
+13:09:37 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:09:40 [INFO]    🔹 [6814/10888] URL: https://www.amazon.com/dp/B0BRNYJ46M | Lần 1
+13:09:53 [INFO]    🔹 [6815/10888] URL: https://www.amazon.com/dp/B09RG6PS6D | Lần 1
+13:10:06 [INFO]    🔹 [6816/10888] URL: https://www.amazon.com/dp/B0F16TCSVC | Lần 1
+13:10:23 [INFO]    🔹 [6817/10888] URL: https://www.amazon.com/dp/B0FJT5GJY6 | Lần 1
+13:10:35 [INFO]    🔹 [6818/10888] URL: https://www.amazon.com/dp/B08V1225XS | Lần 1
+13:10:46 [INFO]    🔹 [6819/10888] URL: https://www.amazon.com/dp/B097J4J1Z7 | Lần 1
+13:10:57 [INFO]    🔹 [6820/10888] URL: https://www.amazon.com/dp/B0CFYSTSC4 | Lần 1
+13:11:10 [INFO]    🔹 [6821/10888] URL: https://www.amazon.com/dp/B0CXRSGZN5 | Lần 1
+13:11:22 [INFO]    🔹 [6822/10888] URL: https://www.amazon.com/dp/B0DGPF1GM6 | Lần 1
+13:11:38 [INFO]    🔹 [6823/10888] URL: https://www.amazon.com/dp/B0F9L1BY1W | Lần 1
+13:11:48 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:11:52 [INFO]    🔹 [6824/10888] URL: https://www.amazon.com/dp/B0BZQJ5SPC | Lần 1
+13:12:03 [INFO]    🔹 [6825/10888] URL: https://www.amazon.com/dp/B0CQN3SX4Q | Lần 1
+13:12:19 [INFO]    🔹 [6826/10888] URL: https://www.amazon.com/dp/B0CFYWK9YR | Lần 1
+13:12:30 [INFO]    🔹 [6827/10888] URL: https://www.amazon.com/dp/B0CDJF17G5 | Lần 1
+13:12:40 [INFO]    🔹 [6828/10888] URL: https://www.amazon.com/dp/B0DS1ZLB9C | Lần 1
+13:12:51 [INFO]    🔹 [6829/10888] URL: https://www.amazon.com/dp/B00C5H5DN0 | Lần 1
+13:13:02 [INFO]    🔹 [6830/10888] URL: https://www.amazon.com/dp/B0FGYDMMMN | Lần 1
+13:13:13 [INFO]    🔹 [6831/10888] URL: https://www.amazon.com/dp/B0D78GWZQ2 | Lần 1
+13:13:23 [INFO]    🔹 [6832/10888] URL: https://www.amazon.com/dp/B08JVNN6SJ | Lần 1
+13:13:33 [INFO]    🔹 [6833/10888] URL: https://www.amazon.com/dp/B0DS1NQBDQ | Lần 1
+13:13:41 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:13:45 [INFO]    🔹 [6834/10888] URL: https://www.amazon.com/dp/B0D4DQCCWR | Lần 1
+13:13:57 [INFO]    🔹 [6835/10888] URL: https://www.amazon.com/dp/B08778F756 | Lần 1
+13:14:11 [INFO]    🔹 [6836/10888] URL: https://www.amazon.com/dp/B0D223Q6CX | Lần 1
+13:14:24 [INFO]    🔹 [6837/10888] URL: https://www.amazon.com/dp/B0FD2J28N5 | Lần 1
+13:14:36 [INFO]    🔹 [6838/10888] URL: https://www.amazon.com/dp/B0DGPWJ2GM | Lần 1
+13:14:48 [INFO]    🔹 [6839/10888] URL: https://www.amazon.com/dp/B0FWHF97TT | Lần 1
+13:14:59 [INFO]    🔹 [6840/10888] URL: https://www.amazon.com/dp/B0D5ZBP2YN | Lần 1
+13:15:10 [INFO]    🔹 [6841/10888] URL: https://www.amazon.com/dp/B0DGPL5YRJ | Lần 1
+13:15:22 [INFO]    🔹 [6842/10888] URL: https://www.amazon.com/dp/B0DPFDFXN7 | Lần 1
+13:15:34 [INFO]    🔹 [6843/10888] URL: https://www.amazon.com/dp/B0FQK571NZ | Lần 1
+13:15:42 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:15:45 [INFO]    🔹 [6844/10888] URL: https://www.amazon.com/dp/B0842BV59V | Lần 1
+13:15:58 [INFO]    🔹 [6845/10888] URL: https://www.amazon.com/dp/B08HDQBMJN | Lần 1
+13:16:09 [INFO]    🔹 [6846/10888] URL: https://www.amazon.com/dp/B01GE9QWB6 | Lần 1
+13:16:26 [INFO]    🔹 [6847/10888] URL: https://www.amazon.com/dp/B01GE9QSVK | Lần 1
+13:16:40 [INFO]    🔹 [6848/10888] URL: https://www.amazon.com/dp/B01GV9H1RS | Lần 1
+13:16:52 [INFO]    🔹 [6849/10888] URL: https://www.amazon.com/dp/B0BZ58V9S8 | Lần 1
+13:17:05 [INFO]    🔹 [6850/10888] URL: https://www.amazon.com/dp/B0F6MKDT1C | Lần 1
+13:17:18 [INFO]    🔹 [6851/10888] URL: https://www.amazon.com/dp/B0FR7Y1WS1 | Lần 1
+13:17:30 [INFO]    🔹 [6852/10888] URL: https://www.amazon.com/dp/B09QXWYBMM | Lần 1
+13:17:43 [INFO]    🔹 [6853/10888] URL: https://www.amazon.com/dp/B0FJ126W9M | Lần 1
+13:17:50 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:17:54 [INFO]    🔹 [6854/10888] URL: https://www.amazon.com/dp/B0FHZPDNC9 | Lần 1
+13:18:05 [INFO]    🔹 [6855/10888] URL: https://www.amazon.com/dp/B087792CQT | Lần 1
+13:18:21 [INFO]    🔹 [6856/10888] URL: https://www.amazon.com/dp/B0D8PPK8HD | Lần 1
+13:18:34 [INFO]    🔹 [6857/10888] URL: https://www.amazon.com/dp/B0D4DS15BW | Lần 1
+13:18:45 [INFO]    🔹 [6858/10888] URL: https://www.amazon.com/dp/B0G77YQF66 | Lần 1
+13:18:59 [INFO]    🔹 [6859/10888] URL: https://www.amazon.com/dp/B0GK2LT74K | Lần 1
+13:19:13 [INFO]    🔹 [6860/10888] URL: https://www.amazon.com/dp/B08VFCC4G1 | Lần 1
+13:19:25 [INFO]    🔹 [6861/10888] URL: https://www.amazon.com/dp/B0DC6NG3K3 | Lần 1
+13:19:37 [INFO]    🔹 [6862/10888] URL: https://www.amazon.com/dp/B0F9SNYJDN | Lần 1
+13:19:53 [INFO]    🔹 [6863/10888] URL: https://www.amazon.com/dp/B0CTKJ2YYV | Lần 1
+13:20:02 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:20:06 [INFO]    🔹 [6864/10888] URL: https://www.amazon.com/dp/B08VF9QBRD | Lần 1
+13:20:16 [INFO]    🔹 [6865/10888] URL: https://www.amazon.com/dp/B081FJRQJL | Lần 1
+13:20:28 [INFO]    🔹 [6866/10888] URL: https://www.amazon.com/dp/B0F2LZ6S3M | Lần 1
+13:20:41 [INFO]    🔹 [6867/10888] URL: https://www.amazon.com/dp/B0FW4JJRZ1 | Lần 1
+13:20:55 [INFO]    🔹 [6868/10888] URL: https://www.amazon.com/dp/B0DKXKL7V7 | Lần 1
+13:21:11 [INFO]    🔹 [6869/10888] URL: https://www.amazon.com/dp/B0B7JBZY4R | Lần 1
+13:21:23 [INFO]    🔹 [6870/10888] URL: https://www.amazon.com/dp/B08XNLF3PM | Lần 1
+13:21:34 [INFO]    🔹 [6871/10888] URL: https://www.amazon.com/dp/B07S1XYQMJ | Lần 1
+13:21:46 [INFO]    🔹 [6872/10888] URL: https://www.amazon.com/dp/B0F8N1Q8HZ | Lần 1
+13:21:58 [INFO]    🔹 [6873/10888] URL: https://www.amazon.com/dp/B0F8MB21KY | Lần 1
+13:22:05 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:22:08 [INFO]    🔹 [6874/10888] URL: https://www.amazon.com/dp/B08L9XCTGP | Lần 1
+13:22:22 [INFO]    🔹 [6875/10888] URL: https://www.amazon.com/dp/B08L9VHCGP | Lần 1
+13:22:35 [INFO]    🔹 [6876/10888] URL: https://www.amazon.com/dp/B08TZR782B | Lần 1
+13:22:47 [INFO]    🔹 [6877/10888] URL: https://www.amazon.com/dp/B08ZT31QCN | Lần 1
+13:23:01 [INFO]    🔹 [6878/10888] URL: https://www.amazon.com/dp/B01DKPJVIS | Lần 1
+13:23:14 [INFO]    🔹 [6879/10888] URL: https://www.amazon.com/dp/B0DB7G1TW4 | Lần 1
+13:23:25 [INFO]    🔹 [6880/10888] URL: https://www.amazon.com/dp/B01LVVNHTL | Lần 1
+13:23:38 [INFO]    🔹 [6881/10888] URL: https://www.amazon.com/dp/B0D4DPFW4Y | Lần 1
+13:23:50 [INFO]    🔹 [6882/10888] URL: https://www.amazon.com/dp/B08V8LJS5B | Lần 1
+13:24:03 [INFO]    🔹 [6883/10888] URL: https://www.amazon.com/dp/B0DCGPTNKV | Lần 1
+13:24:09 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:24:14 [INFO]    🔹 [6884/10888] URL: https://www.amazon.com/dp/B08JWCHR5N | Lần 1
+13:24:25 [INFO]    🔹 [6885/10888] URL: https://www.amazon.com/dp/B0CG2QBHCP | Lần 1
+13:24:36 [INFO]    🔹 [6886/10888] URL: https://www.amazon.com/dp/B0B5VY6ZFC | Lần 1
+13:24:47 [INFO]    🔹 [6887/10888] URL: https://www.amazon.com/dp/B0927959GD | Lần 1
+13:25:00 [INFO]    🔹 [6888/10888] URL: https://www.amazon.com/dp/B0GTZW9QKG | Lần 1
+13:25:11 [INFO]    🔹 [6889/10888] URL: https://www.amazon.com/dp/B08ZGXG36X | Lần 1
+13:25:23 [INFO]    🔹 [6890/10888] URL: https://www.amazon.com/dp/B0D9R7HCVG | Lần 1
+13:25:35 [INFO]    🔹 [6891/10888] URL: https://www.amazon.com/dp/B01LWYSKYR | Lần 1
+13:25:48 [INFO]    🔹 [6892/10888] URL: https://www.amazon.com/dp/B0DHYCZ3YH | Lần 1
+13:26:00 [INFO]    🔹 [6893/10888] URL: https://www.amazon.com/dp/B09J1HCBFF | Lần 1
+13:26:07 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:26:10 [INFO]    🔹 [6894/10888] URL: https://www.amazon.com/dp/B09R8WTG8B | Lần 1
+13:26:21 [INFO]    🔹 [6895/10888] URL: https://www.amazon.com/dp/B0DXN3T1GD | Lần 1
+13:26:34 [INFO]    🔹 [6896/10888] URL: https://www.amazon.com/dp/B0FLH3QMDB | Lần 1
+13:26:45 [INFO]    🔹 [6897/10888] URL: https://www.amazon.com/dp/B0D8F2K521 | Lần 1
+13:26:57 [INFO]    🔹 [6898/10888] URL: https://www.amazon.com/dp/B07J5C98NW | Lần 1
+13:27:08 [INFO]    🔹 [6899/10888] URL: https://www.amazon.com/dp/B0DP2CPKX8 | Lần 1
+13:27:23 [INFO]    🔹 [6900/10888] URL: https://www.amazon.com/dp/B0DT11T36K | Lần 1
+13:27:34 [INFO]    🔹 [6901/10888] URL: https://www.amazon.com/dp/B09VSTTGL5 | Lần 1
+13:27:46 [INFO]    🔹 [6902/10888] URL: https://www.amazon.com/dp/B09P7ZK4CJ | Lần 1
+13:27:59 [INFO]    🔹 [6903/10888] URL: https://www.amazon.com/dp/B0CHVG5RCC | Lần 1
+13:28:06 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:28:10 [INFO]    🔹 [6904/10888] URL: https://www.amazon.com/dp/B0DN6PJFDK | Lần 1
+13:28:22 [INFO]    🔹 [6905/10888] URL: https://www.amazon.com/dp/B0GL2M67BV | Lần 1
+13:28:33 [INFO]    🔹 [6906/10888] URL: https://www.amazon.com/dp/B0FPFKVW49 | Lần 1
+13:28:45 [INFO]    🔹 [6907/10888] URL: https://www.amazon.com/dp/B0F7KC4XGJ | Lần 1
+13:28:58 [INFO]    🔹 [6908/10888] URL: https://www.amazon.com/dp/B0FBWJ8RZW | Lần 1
+13:29:10 [INFO]    🔹 [6909/10888] URL: https://www.amazon.com/dp/B0F6C99CQ9 | Lần 1
+13:29:22 [INFO]    🔹 [6910/10888] URL: https://www.amazon.com/dp/B0FNRJBXSJ | Lần 1
+13:29:35 [INFO]    🔹 [6911/10888] URL: https://www.amazon.com/dp/B0FD3CHH25 | Lần 1
+13:29:47 [INFO]    🔹 [6912/10888] URL: https://www.amazon.com/dp/B0FMXXDK67 | Lần 1
+13:30:00 [INFO]    🔹 [6913/10888] URL: https://www.amazon.com/dp/B0FQ4SLRYY | Lần 1
+13:30:07 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:30:11 [INFO]    🔹 [6914/10888] URL: https://www.amazon.com/dp/B0CCJQ3LR2 | Lần 1
+13:30:23 [INFO]    🔹 [6915/10888] URL: https://www.amazon.com/dp/B0CP7C56M8 | Lần 1
+13:30:34 [INFO]    🔹 [6916/10888] URL: https://www.amazon.com/dp/B0C4DNVG5H | Lần 1
+13:30:51 [INFO]    🔹 [6917/10888] URL: https://www.amazon.com/dp/B0F4JF67JM | Lần 1
+13:31:06 [INFO]    🔹 [6918/10888] URL: https://www.amazon.com/dp/B0FX1ZJCRQ | Lần 1
+13:31:17 [INFO]    🔹 [6919/10888] URL: https://www.amazon.com/dp/B0D547L48X | Lần 1
+13:31:29 [INFO]    🔹 [6920/10888] URL: https://www.amazon.com/dp/B0D2R2GXK8 | Lần 1
+13:31:42 [INFO]    🔹 [6921/10888] URL: https://www.amazon.com/dp/B0CWTR4WG5 | Lần 1
+13:31:55 [INFO]    🔹 [6922/10888] URL: https://www.amazon.com/dp/B0F7XSYQ6K | Lần 1
+13:32:08 [INFO]    🔹 [6923/10888] URL: https://www.amazon.com/dp/B0B56DVML2 | Lần 1
+13:32:16 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:32:19 [INFO]    🔹 [6924/10888] URL: https://www.amazon.com/dp/B0F3VRPH3T | Lần 1
+13:32:33 [INFO]    🔹 [6925/10888] URL: https://www.amazon.com/dp/B0F6LSKP2G | Lần 1
+13:32:45 [INFO]    🔹 [6926/10888] URL: https://www.amazon.com/dp/B0FD3Y6DRJ | Lần 1
+13:32:57 [INFO]    🔹 [6927/10888] URL: https://www.amazon.com/dp/B0GD6SHYGZ | Lần 1
+13:33:09 [INFO]    🔹 [6928/10888] URL: https://www.amazon.com/dp/B0C5CTBPG9 | Lần 1
+13:33:21 [INFO]    🔹 [6929/10888] URL: https://www.amazon.com/dp/B0BYP9SFJK | Lần 1
+13:33:33 [INFO]    🔹 [6930/10888] URL: https://www.amazon.com/dp/B0D1VB1S6J | Lần 1
+13:33:44 [INFO]    🔹 [6931/10888] URL: https://www.amazon.com/dp/B0B3MNRDGL | Lần 1
+13:33:57 [INFO]    🔹 [6932/10888] URL: https://www.amazon.com/dp/B0CYZ5ZX6V | Lần 1
+13:34:07 [INFO]    🔹 [6933/10888] URL: https://www.amazon.com/dp/B0DSZYYDM2 | Lần 1
+13:34:15 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:34:19 [INFO]    🔹 [6934/10888] URL: https://www.amazon.com/dp/B0DMSZLDHM | Lần 1
+13:34:31 [INFO]    🔹 [6935/10888] URL: https://www.amazon.com/dp/B0FPFHY23J | Lần 1
+13:34:43 [INFO]    🔹 [6936/10888] URL: https://www.amazon.com/dp/B0CK599GS2 | Lần 1
+13:34:52 [INFO]    🔹 [6937/10888] URL: https://www.amazon.com/dp/B00SFSU53G | Lần 1
+13:35:04 [INFO]    🔹 [6938/10888] URL: https://www.amazon.com/dp/B07J4DC173 | Lần 1
+13:35:17 [INFO]    🔹 [6939/10888] URL: https://www.amazon.com/dp/B0DWJNCP9S | Lần 1
+13:35:31 [INFO]    🔹 [6940/10888] URL: https://www.amazon.com/dp/B0FND64HTD | Lần 1
+13:35:44 [INFO]    🔹 [6941/10888] URL: https://www.amazon.com/dp/B0F7R36X8Z | Lần 1
+13:35:57 [INFO]    🔹 [6942/10888] URL: https://www.amazon.com/dp/B0D4YL7PCL | Lần 1
+13:36:12 [INFO]    🔹 [6943/10888] URL: https://www.amazon.com/dp/B0FB3Q7X34 | Lần 1
+13:36:20 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:36:25 [INFO]    🔹 [6944/10888] URL: https://www.amazon.com/dp/B0FBG5B5WH | Lần 1
+13:36:36 [INFO]    🔹 [6945/10888] URL: https://www.amazon.com/dp/B0FBF7FCZW | Lần 1
+13:36:47 [INFO]    🔹 [6946/10888] URL: https://www.amazon.com/dp/B0FB9BVH47 | Lần 1
+13:37:00 [INFO]    🔹 [6947/10888] URL: https://www.amazon.com/dp/B0B1B3VZLD | Lần 1
+13:37:12 [INFO]    🔹 [6948/10888] URL: https://www.amazon.com/dp/B09SG26D3F | Lần 1
+13:37:24 [INFO]    🔹 [6949/10888] URL: https://www.amazon.com/dp/B0FB9CSN8S | Lần 1
+13:37:35 [INFO]    🔹 [6950/10888] URL: https://www.amazon.com/dp/B0FH9KYT2Z | Lần 1
+13:37:47 [INFO]    🔹 [6951/10888] URL: https://www.amazon.com/dp/B0F8MXBB4S | Lần 1
+13:37:59 [INFO]    🔹 [6952/10888] URL: https://www.amazon.com/dp/B0D1W426NX | Lần 1
+13:38:10 [INFO]    🔹 [6953/10888] URL: https://www.amazon.com/dp/B0CNHC5C6R | Lần 1
+13:38:17 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:38:21 [INFO]    🔹 [6954/10888] URL: https://www.amazon.com/dp/B0DFXYMGVR | Lần 1
+13:38:32 [INFO]    🔹 [6955/10888] URL: https://www.amazon.com/dp/B0DS54HLR5 | Lần 1
+13:38:44 [INFO]    🔹 [6956/10888] URL: https://www.amazon.com/dp/B0GCHLPSDJ | Lần 1
+13:38:55 [INFO]    🔹 [6957/10888] URL: https://www.amazon.com/dp/B0C4YY6WXX | Lần 1
+13:39:06 [INFO]    🔹 [6958/10888] URL: https://www.amazon.com/dp/B0DD8SHVZL | Lần 1
+13:39:20 [INFO]    🔹 [6959/10888] URL: https://www.amazon.com/dp/B0D51H96GD | Lần 1
+13:39:32 [INFO]    🔹 [6960/10888] URL: https://www.amazon.com/dp/B0D892Q9B3 | Lần 1
+13:39:43 [INFO]    🔹 [6961/10888] URL: https://www.amazon.com/dp/B0D51P17GC | Lần 1
+13:39:55 [INFO]    🔹 [6962/10888] URL: https://www.amazon.com/dp/B0D96V64NL | Lần 1
+13:40:06 [INFO]    🔹 [6963/10888] URL: https://www.amazon.com/dp/B0D1HQK5G5 | Lần 1
+13:40:12 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:40:17 [INFO]    🔹 [6964/10888] URL: https://www.amazon.com/dp/B0CTJ1DBTD | Lần 1
+13:40:27 [INFO]    🔹 [6965/10888] URL: https://www.amazon.com/dp/B0DFW63NCG | Lần 1
+13:40:38 [INFO]    🔹 [6966/10888] URL: https://www.amazon.com/dp/B08W2C5W59 | Lần 1
+13:40:51 [INFO]    🔹 [6967/10888] URL: https://www.amazon.com/dp/B0DYF82545 | Lần 1
+13:41:03 [INFO]    🔹 [6968/10888] URL: https://www.amazon.com/dp/B0DYF7HLQ2 | Lần 1
+13:41:15 [INFO]    🔹 [6969/10888] URL: https://www.amazon.com/dp/B0DYF64BV2 | Lần 1
+13:41:28 [INFO]    🔹 [6970/10888] URL: https://www.amazon.com/dp/B09X13LS7F | Lần 1
+13:41:40 [INFO]    🔹 [6971/10888] URL: https://www.amazon.com/dp/B0DF7RKGMW | Lần 1
+13:41:52 [INFO]    🔹 [6972/10888] URL: https://www.amazon.com/dp/B0CTZBR5CG | Lần 1
+13:42:02 [INFO]    🔹 [6973/10888] URL: https://www.amazon.com/dp/B0BTVY9MBM | Lần 1
+13:42:10 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:42:15 [INFO]    🔹 [6974/10888] URL: https://www.amazon.com/dp/B0D7TPZ2QS | Lần 1
+13:42:26 [INFO]    🔹 [6975/10888] URL: https://www.amazon.com/dp/B0DDNKVVXT | Lần 1
+13:42:38 [INFO]    🔹 [6976/10888] URL: https://www.amazon.com/dp/B0DG4DSWGX | Lần 1
+13:42:50 [INFO]    🔹 [6977/10888] URL: https://www.amazon.com/dp/B0CZ17X8K7 | Lần 1
+13:43:00 [INFO]    🔹 [6978/10888] URL: https://www.amazon.com/dp/B0D2JBKH28 | Lần 1
+13:43:10 [INFO]    🔹 [6979/10888] URL: https://www.amazon.com/dp/B083FJ8TSJ | Lần 1
+13:43:22 [INFO]    🔹 [6980/10888] URL: https://www.amazon.com/dp/B0DPR7ZMR6 | Lần 1
+13:43:33 [INFO]    🔹 [6981/10888] URL: https://www.amazon.com/dp/B0DPR7J97V | Lần 1
+13:43:44 [INFO]    🔹 [6982/10888] URL: https://www.amazon.com/dp/B07L9SPTFL | Lần 1
+13:43:55 [INFO]    🔹 [6983/10888] URL: https://www.amazon.com/dp/B07Y5ZZW3Y | Lần 1
+13:44:03 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:44:06 [INFO]    🔹 [6984/10888] URL: https://www.amazon.com/dp/B0D161PYFW | Lần 1
+13:44:19 [INFO]    🔹 [6985/10888] URL: https://www.amazon.com/dp/B0CZRRSG1B | Lần 1
+13:44:30 [INFO]    🔹 [6986/10888] URL: https://www.amazon.com/dp/B0BM7W7GFV | Lần 1
+13:44:41 [INFO]    🔹 [6987/10888] URL: https://www.amazon.com/dp/B0FLPVTT85 | Lần 1
+13:44:57 [INFO]    🔹 [6988/10888] URL: https://www.amazon.com/dp/B0746M33R7 | Lần 1
+13:45:09 [INFO]    🔹 [6989/10888] URL: https://www.amazon.com/dp/B07MCMFRK8 | Lần 1
+13:45:22 [INFO]    🔹 [6990/10888] URL: https://www.amazon.com/dp/B0CNQ3S76F | Lần 1
+13:45:32 [INFO]    🔹 [6991/10888] URL: https://www.amazon.com/dp/B0CT3LY42F | Lần 1
+13:45:45 [INFO]    🔹 [6992/10888] URL: https://www.amazon.com/dp/B0DCW7X8L6 | Lần 1
+13:45:56 [INFO]    🔹 [6993/10888] URL: https://www.amazon.com/dp/B09RF5RFMW | Lần 1
+13:46:03 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:46:06 [INFO]    🔹 [6994/10888] URL: https://www.amazon.com/dp/B08KW6MTZV | Lần 1
+13:46:16 [INFO]    🔹 [6995/10888] URL: https://www.amazon.com/dp/B0B6QG6PQ9 | Lần 1
+13:46:27 [INFO]    🔹 [6996/10888] URL: https://www.amazon.com/dp/B0BHV3CXNT | Lần 1
+13:46:38 [INFO]    🔹 [6997/10888] URL: https://www.amazon.com/dp/B0GBGTFYZ2 | Lần 1
+13:46:47 [INFO]    🔹 [6998/10888] URL: https://www.amazon.com/dp/B0FDGPPPHB | Lần 1
+13:46:57 [INFO]    🔹 [6999/10888] URL: https://www.amazon.com/dp/B0FDGQGTNM | Lần 1
+13:47:08 [INFO]    🔹 [7000/10888] URL: https://www.amazon.com/dp/B0B9SXD4CJ | Lần 1
+13:47:19 [INFO]    🔹 [7001/10888] URL: https://www.amazon.com/dp/B0B9SY152K | Lần 1
+13:47:32 [INFO]    🔹 [7002/10888] URL: https://www.amazon.com/dp/B0884XTXS8 | Lần 1
+13:47:45 [INFO]    🔹 [7003/10888] URL: https://www.amazon.com/dp/B07ZWNZKZD | Lần 1
+13:47:54 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:47:58 [INFO]    🔹 [7004/10888] URL: https://www.amazon.com/dp/B0F4KJMZP6 | Lần 1
+13:48:08 [INFO]    🔹 [7005/10888] URL: https://www.amazon.com/dp/B088W1QJP1 | Lần 1
+13:48:24 [INFO]    🔹 [7006/10888] URL: https://www.amazon.com/dp/B0C66P72SN | Lần 1
+13:48:36 [INFO]    🔹 [7007/10888] URL: https://www.amazon.com/dp/B07DDK3W5D | Lần 1
+13:48:49 [INFO]    🔹 [7008/10888] URL: https://www.amazon.com/dp/B07DDGBL5T | Lần 1
+13:49:01 [INFO]    🔹 [7009/10888] URL: https://www.amazon.com/dp/B0F5N6JKTY | Lần 1
+13:49:13 [INFO]    🔹 [7010/10888] URL: https://www.amazon.com/dp/B0F6MY44CT | Lần 1
+13:49:24 [INFO]    🔹 [7011/10888] URL: https://www.amazon.com/dp/B0G79HWTVP | Lần 1
+13:49:35 [INFO]    🔹 [7012/10888] URL: https://www.amazon.com/dp/B0G2RDWN5F | Lần 1
+13:49:46 [INFO]    🔹 [7013/10888] URL: https://www.amazon.com/dp/B0G2RHL2MQ | Lần 1
+13:49:53 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:49:56 [INFO]    🔹 [7014/10888] URL: https://www.amazon.com/dp/B08VYVY71J | Lần 1
+13:50:08 [INFO]    🔹 [7015/10888] URL: https://www.amazon.com/dp/B0791H74NT | Lần 1
+13:50:21 [INFO]    🔹 [7016/10888] URL: https://www.amazon.com/dp/B0791J2658 | Lần 1
+13:50:35 [INFO]    🔹 [7017/10888] URL: https://www.amazon.com/dp/B0GRJV5YXL | Lần 1
+13:50:46 [INFO]    🔹 [7018/10888] URL: https://www.amazon.com/dp/B0GRK8GZ41 | Lần 1
+13:50:57 [INFO]    🔹 [7019/10888] URL: https://www.amazon.com/dp/B0F3BD5N8Z | Lần 1
+13:51:08 [INFO]    🔹 [7020/10888] URL: https://www.amazon.com/dp/B0FG2SPM4M | Lần 1
+13:51:19 [INFO]    🔹 [7021/10888] URL: https://www.amazon.com/dp/B07D7TV5J3 | Lần 1
+13:51:31 [INFO]    🔹 [7022/10888] URL: https://www.amazon.com/dp/B07D7TL9KM | Lần 1
+13:51:43 [INFO]    🔹 [7023/10888] URL: https://www.amazon.com/dp/B0GRCCD97G | Lần 1
+13:51:50 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:51:54 [INFO]    🔹 [7024/10888] URL: https://www.amazon.com/dp/B0F6RDJHS7 | Lần 1
+13:52:06 [INFO]    🔹 [7025/10888] URL: https://www.amazon.com/dp/B0GRC2PYXD | Lần 1
+13:52:16 [INFO]    🔹 [7026/10888] URL: https://www.amazon.com/dp/B0GRC28DDB | Lần 1
+13:52:28 [INFO]    🔹 [7027/10888] URL: https://www.amazon.com/dp/B0GRBYD985 | Lần 1
+13:52:39 [INFO]    🔹 [7028/10888] URL: https://www.amazon.com/dp/B0F5PY4CXW | Lần 1
+13:52:51 [INFO]    🔹 [7029/10888] URL: https://www.amazon.com/dp/B0F9MPVT38 | Lần 1
+13:53:03 [INFO]    🔹 [7030/10888] URL: https://www.amazon.com/dp/B0F9MRQ328 | Lần 1
+13:53:16 [INFO]    🔹 [7031/10888] URL: https://www.amazon.com/dp/B0FC4KBJV2 | Lần 1
+13:53:29 [INFO]    🔹 [7032/10888] URL: https://www.amazon.com/dp/B0DPKLJ4CV | Lần 1
+13:53:41 [INFO]    🔹 [7033/10888] URL: https://www.amazon.com/dp/B0FH6M76JB | Lần 1
+13:53:48 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:53:52 [INFO]    🔹 [7034/10888] URL: https://www.amazon.com/dp/B0DJ7NVWQ9 | Lần 1
+13:54:04 [INFO]    🔹 [7035/10888] URL: https://www.amazon.com/dp/B0DTHXNRXL | Lần 1
+13:54:16 [INFO]    🔹 [7036/10888] URL: https://www.amazon.com/dp/B0BRL5PF1L | Lần 1
+13:54:26 [INFO]    🔹 [7037/10888] URL: https://www.amazon.com/dp/B0G3Q86MSC | Lần 1
+13:54:38 [INFO]    🔹 [7038/10888] URL: https://www.amazon.com/dp/B0DYJN7V83 | Lần 1
+13:54:49 [INFO]    🔹 [7039/10888] URL: https://www.amazon.com/dp/B0FCYMF9PH | Lần 1
+13:55:00 [INFO]    🔹 [7040/10888] URL: https://www.amazon.com/dp/B0GTNQQLKD | Lần 1
+13:55:11 [INFO]    🔹 [7041/10888] URL: https://www.amazon.com/dp/B0GTP3KRLB | Lần 1
+13:55:20 [INFO]    🔹 [7042/10888] URL: https://www.amazon.com/dp/B0GTNT52RX | Lần 1
+13:55:31 [INFO]    🔹 [7043/10888] URL: https://www.amazon.com/dp/B0GTNWNCM3 | Lần 1
+13:55:37 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:55:41 [INFO]    🔹 [7044/10888] URL: https://www.amazon.com/dp/B0GTP17QKV | Lần 1
+13:55:51 [INFO]    🔹 [7045/10888] URL: https://www.amazon.com/dp/B0GTP36DDB | Lần 1
+13:56:02 [INFO]    🔹 [7046/10888] URL: https://www.amazon.com/dp/B0GTP72XW7 | Lần 1
+13:56:14 [INFO]    🔹 [7047/10888] URL: https://www.amazon.com/dp/B0GTPTHJ4D | Lần 1
+13:56:24 [INFO]    🔹 [7048/10888] URL: https://www.amazon.com/dp/B0GTP86J72 | Lần 1
+13:56:35 [INFO]    🔹 [7049/10888] URL: https://www.amazon.com/dp/B0GTPMDYY4 | Lần 1
+13:56:45 [INFO]    🔹 [7050/10888] URL: https://www.amazon.com/dp/B0GTP8D4C5 | Lần 1
+13:56:55 [INFO]    🔹 [7051/10888] URL: https://www.amazon.com/dp/B0GTPSKF67 | Lần 1
+13:57:06 [INFO]    🔹 [7052/10888] URL: https://www.amazon.com/dp/B0GTPPS472 | Lần 1
+13:57:16 [INFO]    🔹 [7053/10888] URL: https://www.amazon.com/dp/B0GTPRTBBQ | Lần 1
+13:57:21 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:57:26 [INFO]    🔹 [7054/10888] URL: https://www.amazon.com/dp/B0F1457YSB | Lần 1
+13:57:36 [INFO]    🔹 [7055/10888] URL: https://www.amazon.com/dp/B0G1ZDN8NC | Lần 1
+13:57:47 [INFO]    🔹 [7056/10888] URL: https://www.amazon.com/dp/B0FXLYH32L | Lần 1
+13:57:58 [INFO]    🔹 [7057/10888] URL: https://www.amazon.com/dp/B0G25NYSJ2 | Lần 1
+13:58:08 [INFO]    🔹 [7058/10888] URL: https://www.amazon.com/dp/B0F1QPLCGS | Lần 1
+13:58:19 [INFO]    🔹 [7059/10888] URL: https://www.amazon.com/dp/B0FLPHC3GN | Lần 1
+13:58:29 [INFO]    🔹 [7060/10888] URL: https://www.amazon.com/dp/B0G2RHYW37 | Lần 1
+13:58:39 [INFO]    🔹 [7061/10888] URL: https://www.amazon.com/dp/B0FLPDHS6R | Lần 1
+13:58:51 [INFO]    🔹 [7062/10888] URL: https://www.amazon.com/dp/B0G2RFXG6S | Lần 1
+13:59:02 [INFO]    🔹 [7063/10888] URL: https://www.amazon.com/dp/B092FNMTGC | Lần 1
+13:59:08 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+13:59:13 [INFO]    🔹 [7064/10888] URL: https://www.amazon.com/dp/B07RPCG8ZW | Lần 1
+13:59:28 [INFO]    🔹 [7065/10888] URL: https://www.amazon.com/dp/B0DX2BZFFB | Lần 1
+13:59:38 [INFO]    🔹 [7066/10888] URL: https://www.amazon.com/dp/B0DTBV87RY | Lần 1
+13:59:49 [INFO]    🔹 [7067/10888] URL: https://www.amazon.com/dp/B0DGL3PW1V | Lần 1
+13:59:59 [INFO]    🔹 [7068/10888] URL: https://www.amazon.com/dp/B08C4QM3DF | Lần 1
+14:00:09 [INFO]    🔹 [7069/10888] URL: https://www.amazon.com/dp/B0DGKZKQTS | Lần 1
+14:00:18 [INFO]    🔹 [7070/10888] URL: https://www.amazon.com/dp/B0DGKNYG45 | Lần 1
+14:00:28 [INFO]    🔹 [7071/10888] URL: https://www.amazon.com/dp/B0DGKVSHXJ | Lần 1
+14:00:37 [INFO]    🔹 [7072/10888] URL: https://www.amazon.com/dp/B0DGKXRF28 | Lần 1
+14:00:46 [INFO]    🔹 [7073/10888] URL: https://www.amazon.com/dp/B0DGL3TQG8 | Lần 1
+14:00:52 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+14:00:55 [INFO]    🔹 [7074/10888] URL: https://www.amazon.com/dp/B0FTMWC9J3 | Lần 1
+14:01:05 [INFO]    🔹 [7075/10888] URL: https://www.amazon.com/dp/B0FTMR93NR | Lần 1
+14:01:15 [INFO]    🔹 [7076/10888] URL: https://www.amazon.com/dp/B0FTMQH46T | Lần 1
+14:01:26 [INFO]    🔹 [7077/10888] URL: https://www.amazon.com/dp/B0FTMPXPVF | Lần 1
+14:01:37 [INFO]    🔹 [7078/10888] URL: https://www.amazon.com/dp/B0FTMS28F6 | Lần 1
+14:01:46 [INFO]    🔹 [7079/10888] URL: https://www.amazon.com/dp/B0FTMWQK2V | Lần 1
+14:01:56 [INFO]    🔹 [7080/10888] URL: https://www.amazon.com/dp/B0FTMQF6P3 | Lần 1
+14:02:07 [INFO]    🔹 [7081/10888] URL: https://www.amazon.com/dp/B0GBZN9TPB | Lần 1
+14:02:19 [INFO]    🔹 [7082/10888] URL: https://www.amazon.com/dp/B0BLQLKVG5 | Lần 1
+14:02:33 [INFO]    🔹 [7083/10888] URL: https://www.amazon.com/dp/B0FXVXKZV6 | Lần 1
+14:02:39 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+14:02:42 [INFO]    🔹 [7084/10888] URL: https://www.amazon.com/dp/B08WNF8FP6 | Lần 1
+14:02:53 [INFO]    🔹 [7085/10888] URL: https://www.amazon.com/dp/B09TN242Q5 | Lần 1
+14:03:05 [INFO]    🔹 [7086/10888] URL: https://www.amazon.com/dp/B0BZ2FJ297 | Lần 1
+14:03:18 [INFO]    🔹 [7087/10888] URL: https://www.amazon.com/dp/B0BZ25NVWS | Lần 1
+14:03:27 [INFO]    🔹 [7088/10888] URL: https://www.amazon.com/dp/B0BYTNKBFC | Lần 1
+14:03:39 [INFO]    🔹 [7089/10888] URL: https://www.amazon.com/dp/B0BZ29WY9L | Lần 1
+14:03:51 [INFO]    🔹 [7090/10888] URL: https://www.amazon.com/dp/B0BZ21Z7D1 | Lần 1
+14:04:03 [INFO]    🔹 [7091/10888] URL: https://www.amazon.com/dp/B0BZ262SHQ | Lần 1
+14:04:13 [INFO]    🔹 [7092/10888] URL: https://www.amazon.com/dp/B0BZ2883SN | Lần 1
+14:04:24 [INFO]    🔹 [7093/10888] URL: https://www.amazon.com/dp/B0FJ26GV9L | Lần 1
+14:04:35 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+14:04:39 [INFO]    🔹 [7094/10888] URL: https://www.amazon.com/dp/B0F967C6WQ | Lần 1
+14:04:50 [INFO]    🔹 [7095/10888] URL: https://www.amazon.com/dp/B0F96FMT6D | Lần 1
+14:05:00 [INFO]    🔹 [7096/10888] URL: https://www.amazon.com/dp/B0F96JNZ9R | Lần 1
+14:05:11 [INFO]    🔹 [7097/10888] URL: https://www.amazon.com/dp/B089QVQHPS | Lần 1
+14:05:22 [INFO]    🔹 [7098/10888] URL: https://www.amazon.com/dp/B0GVQSNT4Y | Lần 1
+14:05:35 [INFO]    🔹 [7099/10888] URL: https://www.amazon.com/dp/B0849P8D69 | Lần 1
+14:05:52 [INFO]    🔹 [7100/10888] URL: https://www.amazon.com/dp/B0GVQM9JTK | Lần 1
+14:06:02 [INFO]    🔹 [7101/10888] URL: https://www.amazon.com/dp/B0GVQMF7NN | Lần 1
+14:06:14 [INFO]    🔹 [7102/10888] URL: https://www.amazon.com/dp/B0DQ7CC6KV | Lần 1
+14:06:27 [INFO]    🔹 [7103/10888] URL: https://www.amazon.com/dp/B0FRF2WHJK | Lần 1
+14:06:33 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+14:06:38 [INFO]    🔹 [7104/10888] URL: https://www.amazon.com/dp/B0DQ79HMCL | Lần 1
+14:06:49 [INFO]    🔹 [7105/10888] URL: https://www.amazon.com/dp/B0FH21126S | Lần 1
+14:07:00 [INFO]    🔹 [7106/10888] URL: https://www.amazon.com/dp/B0FJDDH3HY | Lần 1
+14:07:11 [INFO]    🔹 [7107/10888] URL: https://www.amazon.com/dp/B0DPGDSM92 | Lần 1
+14:07:51 [INFO]    🔹 [7108/10888] URL: https://www.amazon.com/dp/B0F9FFT7VW | Lần 1
+14:08:02 [INFO]    🔹 [7109/10888] URL: https://www.amazon.com/dp/B0GR4SDCH2 | Lần 1
+14:08:14 [INFO]    🔹 [7110/10888] URL: https://www.amazon.com/dp/B0GR4VR6GH | Lần 1
+14:08:24 [INFO]    🔹 [7111/10888] URL: https://www.amazon.com/dp/B0GR4RYX2C | Lần 1
+14:08:35 [INFO]    🔹 [7112/10888] URL: https://www.amazon.com/dp/B0GR4Z2JJ7 | Lần 1
+14:08:46 [INFO]    🔹 [7113/10888] URL: https://www.amazon.com/dp/B0GR4YLPZ3 | Lần 1
+14:08:53 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+14:08:57 [INFO]    🔹 [7114/10888] URL: https://www.amazon.com/dp/B0GQM38GL1 | Lần 1
+14:09:07 [INFO]    🔹 [7115/10888] URL: https://www.amazon.com/dp/B0GQM1S6FG | Lần 1
+14:09:22 [INFO]    🔹 [7116/10888] URL: https://www.amazon.com/dp/B0GQM849FJ | Lần 1
+14:09:47 [INFO]    🔹 [7117/10888] URL: https://www.amazon.com/dp/B0GQLRWDKL | Lần 1
+14:10:10 [INFO]    🔹 [7118/10888] URL: https://www.amazon.com/dp/B0GQLZ6GBG | Lần 1
+14:10:21 [INFO]    🔹 [7119/10888] URL: https://www.amazon.com/dp/B0GT4RNMV7 | Lần 1
+14:10:32 [INFO]    🔹 [7120/10888] URL: https://www.amazon.com/dp/B0GT4S5PDY | Lần 1
+14:10:42 [INFO]    🔹 [7121/10888] URL: https://www.amazon.com/dp/B0GT4FTCNJ | Lần 1
+14:10:53 [INFO]    🔹 [7122/10888] URL: https://www.amazon.com/dp/B0G6ZGXFQM | Lần 1
+14:11:04 [INFO]    🔹 [7123/10888] URL: https://www.amazon.com/dp/B0GT4M9SNM | Lần 1
+14:11:10 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+14:11:14 [INFO]    🔹 [7124/10888] URL: https://www.amazon.com/dp/B0GQSWWBVP | Lần 1
+14:11:25 [INFO]    🔹 [7125/10888] URL: https://www.amazon.com/dp/B0GQT7XLSM | Lần 1
+14:11:34 [INFO]    🔹 [7126/10888] URL: https://www.amazon.com/dp/B0GQSXB8HJ | Lần 1
+14:11:45 [INFO]    🔹 [7127/10888] URL: https://www.amazon.com/dp/B0GQSRV38R | Lần 1
+14:11:55 [INFO]    🔹 [7128/10888] URL: https://www.amazon.com/dp/B0GQT28SYY | Lần 1
+14:12:05 [INFO]    🔹 [7129/10888] URL: https://www.amazon.com/dp/B0GLF8813H | Lần 1
+14:12:18 [INFO]    🔹 [7130/10888] URL: https://www.amazon.com/dp/B0DTBN55K9 | Lần 1
+14:12:31 [INFO]    🔹 [7131/10888] URL: https://www.amazon.com/dp/B0B9S264ST | Lần 1
+14:12:43 [INFO]    🔹 [7132/10888] URL: https://www.amazon.com/dp/B0FMJG2RGQ | Lần 1
+14:12:54 [INFO]    🔹 [7133/10888] URL: https://www.amazon.com/dp/B0F19ZX161 | Lần 1
+14:13:03 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+14:13:06 [INFO]    🔹 [7134/10888] URL: https://www.amazon.com/dp/B0D9HPXP9F | Lần 1
+14:13:18 [INFO]    🔹 [7135/10888] URL: https://www.amazon.com/dp/B0DB76YCGQ | Lần 1
+14:13:31 [INFO]    🔹 [7136/10888] URL: https://www.amazon.com/dp/B0F1BJSVGF | Lần 1
+14:13:43 [INFO]    🔹 [7137/10888] URL: https://www.amazon.com/dp/B0FLMXZPYQ | Lần 1
+14:13:55 [INFO]    🔹 [7138/10888] URL: https://www.amazon.com/dp/B0CHN643V2 | Lần 1
+14:14:08 [INFO]    🔹 [7139/10888] URL: https://www.amazon.com/dp/B0FLF8BS63 | Lần 1
+14:14:21 [INFO]    🔹 [7140/10888] URL: https://www.amazon.com/dp/B0CPP3DWLX | Lần 1
+14:14:34 [INFO]    🔹 [7141/10888] URL: https://www.amazon.com/dp/B0BW21WZNG | Lần 1
+14:14:46 [INFO]    🔹 [7142/10888] URL: https://www.amazon.com/dp/B0D38H5LD9 | Lần 1
+14:14:59 [INFO]    🔹 [7143/10888] URL: https://www.amazon.com/dp/B0FGGZK4X7 | Lần 1
+14:15:06 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+14:15:10 [INFO]    🔹 [7144/10888] URL: https://www.amazon.com/dp/B0DHW9M7CB | Lần 1
+14:15:22 [INFO]    🔹 [7145/10888] URL: https://www.amazon.com/dp/B0DHWCCL6C | Lần 1
+14:15:36 [INFO]    🔹 [7146/10888] URL: https://www.amazon.com/dp/B0D398YQPN | Lần 1
+14:15:49 [INFO]    🔹 [7147/10888] URL: https://www.amazon.com/dp/B0DHWBW4MZ | Lần 1
+14:16:01 [INFO]    🔹 [7148/10888] URL: https://www.amazon.com/dp/B0D696CFBV | Lần 1
+14:16:15 [INFO]    🔹 [7149/10888] URL: https://www.amazon.com/dp/B0BHL9T17Y | Lần 1
+14:16:30 [INFO]    🔹 [7150/10888] URL: https://www.amazon.com/dp/B0DHWD6LQJ | Lần 1
+14:16:42 [INFO]    🔹 [7151/10888] URL: https://www.amazon.com/dp/B0DHW9Q7GL | Lần 1
+14:16:56 [INFO]    🔹 [7152/10888] URL: https://www.amazon.com/dp/B083Q45V1V | Lần 1
+14:17:10 [INFO]    🔹 [7153/10888] URL: https://www.amazon.com/dp/B08BXC3943 | Lần 1
+14:17:19 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+14:17:24 [INFO]    🔹 [7154/10888] URL: https://www.amazon.com/dp/B0DHWCYYFM | Lần 1
+14:17:36 [INFO]    🔹 [7155/10888] URL: https://www.amazon.com/dp/B0FT8MCSQX | Lần 1
+14:17:46 [INFO]    🔹 [7156/10888] URL: https://www.amazon.com/dp/B0FKYZF9HL | Lần 1
+14:17:58 [INFO]    🔹 [7157/10888] URL: https://www.amazon.com/dp/B0DJPDKGY7 | Lần 1
+14:18:11 [INFO]    🔹 [7158/10888] URL: https://www.amazon.com/dp/B0FQMQVM4H | Lần 1
+14:18:22 [INFO]    🔹 [7159/10888] URL: https://www.amazon.com/dp/B0FT8LNS3Q | Lần 1
+14:18:33 [INFO]    🔹 [7160/10888] URL: https://www.amazon.com/dp/B0DV9YB8PP | Lần 1
+14:18:44 [INFO]    🔹 [7161/10888] URL: https://www.amazon.com/dp/B0F1B85J1N | Lần 1
+14:18:54 [INFO]    🔹 [7162/10888] URL: https://www.amazon.com/dp/B0F1BJPBLM | Lần 1
+14:19:06 [INFO]    🔹 [7163/10888] URL: https://www.amazon.com/dp/B0F1BM6ZWM | Lần 1
+14:19:13 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+14:19:18 [INFO]    🔹 [7164/10888] URL: https://www.amazon.com/dp/B0BJDRK51K | Lần 1
+14:19:29 [INFO]    🔹 [7165/10888] URL: https://www.amazon.com/dp/B0FND33KP8 | Lần 1
+14:19:39 [INFO]    🔹 [7166/10888] URL: https://www.amazon.com/dp/B0FC42J1BJ | Lần 1
+14:19:50 [INFO]    🔹 [7167/10888] URL: https://www.amazon.com/dp/B0FC3W9RSW | Lần 1
+14:20:00 [INFO]    🔹 [7168/10888] URL: https://www.amazon.com/dp/B0FND2LB7G | Lần 1
+14:20:11 [INFO]    🔹 [7169/10888] URL: https://www.amazon.com/dp/B0BX7PK1WC | Lần 1
+14:20:21 [INFO]    🔹 [7170/10888] URL: https://www.amazon.com/dp/B0DTVVGKY6 | Lần 1
+14:20:33 [INFO]    🔹 [7171/10888] URL: https://www.amazon.com/dp/B0BQ41N3XP | Lần 1
+14:20:45 [INFO]    🔹 [7172/10888] URL: https://www.amazon.com/dp/B07MRD1LDZ | Lần 1
+14:20:59 [INFO]    🔹 [7173/10888] URL: https://www.amazon.com/dp/B0BQ3ZYVJN | Lần 1
+14:21:06 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+14:21:10 [INFO]    🔹 [7174/10888] URL: https://www.amazon.com/dp/B0C387CR8R | Lần 1
+14:21:21 [INFO]    🔹 [7175/10888] URL: https://www.amazon.com/dp/B0C388DJ49 | Lần 1
+14:21:32 [INFO]    🔹 [7176/10888] URL: https://www.amazon.com/dp/B0FMJCLMSH | Lần 1
+14:21:42 [INFO]    🔹 [7177/10888] URL: https://www.amazon.com/dp/B0GGLW43X6 | Lần 1
+14:21:51 [INFO]    🔹 [7178/10888] URL: https://www.amazon.com/dp/B0GGDKR3MH | Lần 1
+14:22:01 [INFO]    🔹 [7179/10888] URL: https://www.amazon.com/dp/B0GGF45Z31 | Lần 1
+14:22:11 [INFO]    🔹 [7180/10888] URL: https://www.amazon.com/dp/B0B9MXQGMT | Lần 1
+14:22:21 [INFO]    🔹 [7181/10888] URL: https://www.amazon.com/dp/B0FNWWYMVM | Lần 1
+14:22:30 [INFO]    🔹 [7182/10888] URL: https://www.amazon.com/dp/B0G4P6DM6T | Lần 1
+14:22:40 [INFO]    🔹 [7183/10888] URL: https://www.amazon.com/dp/B085Q1BWHQ | Lần 1
+14:22:46 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+14:22:50 [INFO]    🔹 [7184/10888] URL: https://www.amazon.com/dp/B085Q2FBFS | Lần 1
+14:22:59 [INFO]    🔹 [7185/10888] URL: https://www.amazon.com/dp/B085PXDNX7 | Lần 1
+14:23:09 [INFO]    🔹 [7186/10888] URL: https://www.amazon.com/dp/B085Q1BWHR | Lần 1
+14:23:19 [INFO]    🔹 [7187/10888] URL: https://www.amazon.com/dp/B085PTVNFK | Lần 1
+14:23:29 [INFO]    🔹 [7188/10888] URL: https://www.amazon.com/dp/B085Q3B1VB | Lần 1
+14:23:39 [INFO]    🔹 [7189/10888] URL: https://www.amazon.com/dp/B085PZYRZ3 | Lần 1
+14:23:48 [INFO]    🔹 [7190/10888] URL: https://www.amazon.com/dp/B085Q2Y3LT | Lần 1
+14:23:59 [INFO]    🔹 [7191/10888] URL: https://www.amazon.com/dp/B085PWW6F9 | Lần 1
+14:24:09 [INFO]    🔹 [7192/10888] URL: https://www.amazon.com/dp/B085PYT1WX | Lần 1
+14:24:19 [INFO]    🔹 [7193/10888] URL: https://www.amazon.com/dp/B085PQM85B | Lần 1
+14:24:25 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+14:24:29 [INFO]    🔹 [7194/10888] URL: https://www.amazon.com/dp/B085Q28XN7 | Lần 1
+14:24:40 [INFO]    🔹 [7195/10888] URL: https://www.amazon.com/dp/B085PZRTCQ | Lần 1
+14:24:50 [INFO]    🔹 [7196/10888] URL: https://www.amazon.com/dp/B085Q4CFQV | Lần 1
+14:25:02 [INFO]    🔹 [7197/10888] URL: https://www.amazon.com/dp/B085Q41ZKL | Lần 1
+14:25:11 [INFO]    🔹 [7198/10888] URL: https://www.amazon.com/dp/B085QD7LMY | Lần 1
+14:25:24 [INFO]    🔹 [7199/10888] URL: https://www.amazon.com/dp/B085PRCPN4 | Lần 1
+14:25:34 [INFO]    🔹 [7200/10888] URL: https://www.amazon.com/dp/B0GQ3SNRTM | Lần 1
+14:25:43 [INFO]    🔹 [7201/10888] URL: https://www.amazon.com/dp/B0FKGQL4ZB | Lần 1
+14:25:53 [INFO]    🔹 [7202/10888] URL: https://www.amazon.com/dp/B0CZNX4THH | Lần 1
+14:26:03 [INFO]    🔹 [7203/10888] URL: https://www.amazon.com/dp/B0F9WF86M5 | Lần 1
+14:26:09 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+14:26:13 [INFO]    🔹 [7204/10888] URL: https://www.amazon.com/dp/B0BBLGX1N5 | Lần 1
+14:26:24 [INFO]    🔹 [7205/10888] URL: https://www.amazon.com/dp/B0D9YF1YJ8 | Lần 1
+14:26:35 [INFO]    🔹 [7206/10888] URL: https://www.amazon.com/dp/B0D9YDJQWW | Lần 1
+14:26:46 [INFO]    🔹 [7207/10888] URL: https://www.amazon.com/dp/B0D9YD273G | Lần 1
+14:26:58 [INFO]    🔹 [7208/10888] URL: https://www.amazon.com/dp/B0D9YC1HWB | Lần 1
+14:27:09 [INFO]    🔹 [7209/10888] URL: https://www.amazon.com/dp/B0D9YDVK5F | Lần 1
+14:27:20 [INFO]    🔹 [7210/10888] URL: https://www.amazon.com/dp/B0D9YCNJ2X | Lần 1
+14:27:33 [INFO]    🔹 [7211/10888] URL: https://www.amazon.com/dp/B0D9YC1HWW | Lần 1
+14:27:44 [INFO]    🔹 [7212/10888] URL: https://www.amazon.com/dp/B0D9YBZZTD | Lần 1
+14:27:55 [INFO]    🔹 [7213/10888] URL: https://www.amazon.com/dp/B0D9YCYP9H | Lần 1
+14:28:02 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+14:28:06 [INFO]    🔹 [7214/10888] URL: https://www.amazon.com/dp/B0D9YC7G18 | Lần 1
+14:28:18 [INFO]    🔹 [7215/10888] URL: https://www.amazon.com/dp/B0D9YDV2QJ | Lần 1
+14:28:30 [INFO]    🔹 [7216/10888] URL: https://www.amazon.com/dp/B0D9YFHV5T | Lần 1
+14:28:40 [INFO]    🔹 [7217/10888] URL: https://www.amazon.com/dp/B0D9YDFM35 | Lần 1
+14:28:51 [INFO]    🔹 [7218/10888] URL: https://www.amazon.com/dp/B0D9YDFM2G | Lần 1
+14:29:03 [INFO]    🔹 [7219/10888] URL: https://www.amazon.com/dp/B0D9YF72ZL | Lần 1
+14:29:14 [INFO]    🔹 [7220/10888] URL: https://www.amazon.com/dp/B0D9YD661G | Lần 1
+14:29:25 [INFO]    🔹 [7221/10888] URL: https://www.amazon.com/dp/B0D9YD8N72 | Lần 1
+14:29:35 [INFO]    🔹 [7222/10888] URL: https://www.amazon.com/dp/B0D9YD7B31 | Lần 1
+14:29:46 [INFO]    🔹 [7223/10888] URL: https://www.amazon.com/dp/B0D9YD274M | Lần 1
+14:29:53 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+14:29:58 [INFO]    🔹 [7224/10888] URL: https://www.amazon.com/dp/B0D9YDVM53 | Lần 1
+14:30:10 [INFO]    🔹 [7225/10888] URL: https://www.amazon.com/dp/B0D9YF3JX8 | Lần 1
+14:30:21 [INFO]    🔹 [7226/10888] URL: https://www.amazon.com/dp/B0D9YD5B57 | Lần 1
+14:30:33 [INFO]    🔹 [7227/10888] URL: https://www.amazon.com/dp/B0D9YCY4WK | Lần 1
+14:30:44 [INFO]    🔹 [7228/10888] URL: https://www.amazon.com/dp/B0D9YGSCZP | Lần 1
+14:30:56 [INFO]    🔹 [7229/10888] URL: https://www.amazon.com/dp/B0D9YFVKNW | Lần 1
+14:31:08 [INFO]    🔹 [7230/10888] URL: https://www.amazon.com/dp/B0D9YCDC5Y | Lần 1
+14:31:20 [INFO]    🔹 [7231/10888] URL: https://www.amazon.com/dp/B0D9YCX69X | Lần 1
+14:31:32 [INFO]    🔹 [7232/10888] URL: https://www.amazon.com/dp/B0D9YD5GXN | Lần 1
+14:31:43 [INFO]    🔹 [7233/10888] URL: https://www.amazon.com/dp/B0D9YC7S2S | Lần 1
+14:31:50 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+14:31:54 [INFO]    🔹 [7234/10888] URL: https://www.amazon.com/dp/B0D9YCQ7NV | Lần 1
+14:32:06 [INFO]    🔹 [7235/10888] URL: https://www.amazon.com/dp/B0FPX1B3XX | Lần 1
+14:32:15 [INFO]    🔹 [7236/10888] URL: https://www.amazon.com/dp/B0F9WL6BWZ | Lần 1
+14:32:24 [INFO]    🔹 [7237/10888] URL: https://www.amazon.com/dp/B0BG75LJY2 | Lần 1
+14:32:33 [INFO]    🔹 [7238/10888] URL: https://www.amazon.com/dp/B0BG5MWNPY | Lần 1
+14:32:43 [INFO]    🔹 [7239/10888] URL: https://www.amazon.com/dp/B0BG5TZ2TQ | Lần 1
+14:32:53 [INFO]    🔹 [7240/10888] URL: https://www.amazon.com/dp/B0BG75GRK9 | Lần 1
+14:33:04 [INFO]    🔹 [7241/10888] URL: https://www.amazon.com/dp/B0DCJQ2SNF | Lần 1
+14:33:20 [INFO]    🔹 [7242/10888] URL: https://www.amazon.com/dp/B0BG6X2XMB | Lần 1
+14:33:30 [INFO]    🔹 [7243/10888] URL: https://www.amazon.com/dp/B0DCJL8N9L | Lần 1
+14:33:37 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details_2.jsonl
+14:33:41 [INFO]    🔹 [7244/10888] URL: https://www.amazon.com/dp/B0BDL59QWL | Lần 1
+14:33:51 [INFO]    🔹 [7245/10888] URL: https://www.amazon.com/dp/B0B9RZXTHC | Lần 1
+14:34:01 [INFO]    🔹 [7246/10888] URL: https://www.amazon.com/dp/B0B9RZ32SR | Lần 1
+14:34:01 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0B9RZ32SR: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnec
+14:34:05 [INFO]    🔹 [7247/10888] URL: https://www.amazon.com/dp/B0BG75378V | Lần 1
+14:34:05 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0BG75378V: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:34:09 [INFO]    🔹 [7248/10888] URL: https://www.amazon.com/dp/B0DCJPM8VD | Lần 1
+14:34:09 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DCJPM8VD: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:34:13 [INFO]    🔹 [7249/10888] URL: https://www.amazon.com/dp/B0CH6QRFXQ | Lần 1
+14:34:13 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0CH6QRFXQ: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:34:17 [INFO]    🔹 [7250/10888] URL: https://www.amazon.com/dp/B0CH6T2WV1 | Lần 1
+14:34:17 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0CH6T2WV1: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:34:21 [INFO]    🔹 [7251/10888] URL: https://www.amazon.com/dp/B0CH6TQVBG | Lần 1
+14:34:21 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0CH6TQVBG: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:34:25 [INFO]    🔹 [7252/10888] URL: https://www.amazon.com/dp/B0CH6TJ5WN | Lần 1
+14:34:25 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0CH6TJ5WN: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:34:30 [INFO]    🔹 [7253/10888] URL: https://www.amazon.com/dp/B0CH6TPRVQ | Lần 1
+14:34:30 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0CH6TPRVQ: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:34:33 [INFO]    🔹 [7254/10888] URL: https://www.amazon.com/dp/B0F4QT3BGN | Lần 1
+14:34:33 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0F4QT3BGN: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:34:37 [INFO]    🔹 [7255/10888] URL: https://www.amazon.com/dp/B07CRGSR16 | Lần 1
+14:34:37 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B07CRGSR16: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:34:41 [INFO]    🔹 [7256/10888] URL: https://www.amazon.com/dp/B07VS8QCXC | Lần 1
+14:34:41 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B07VS8QCXC: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:34:45 [INFO]    🔹 [7257/10888] URL: https://www.amazon.com/dp/B0DJ9J4BNG | Lần 1
+14:34:45 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DJ9J4BNG: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:34:49 [INFO]    🔹 [7258/10888] URL: https://www.amazon.com/dp/B092R5KTT7 | Lần 1
+14:34:49 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B092R5KTT7: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:34:53 [INFO]    🔹 [7259/10888] URL: https://www.amazon.com/dp/B093BSR3H4 | Lần 1
+14:34:53 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B093BSR3H4: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:34:57 [INFO]    🔹 [7260/10888] URL: https://www.amazon.com/dp/B092R4955J | Lần 1
+14:34:57 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B092R4955J: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:35:01 [INFO]    🔹 [7261/10888] URL: https://www.amazon.com/dp/B0B2PZWD81 | Lần 1
+14:35:01 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0B2PZWD81: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:35:05 [INFO]    🔹 [7262/10888] URL: https://www.amazon.com/dp/B0DW8ZW47C | Lần 1
+14:35:05 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DW8ZW47C: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:35:08 [INFO]    🔹 [7263/10888] URL: https://www.amazon.com/dp/B0DVM1Z46T | Lần 1
+14:35:08 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DVM1Z46T: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:35:11 [INFO]    🔹 [7264/10888] URL: https://www.amazon.com/dp/B0DW92YSB6 | Lần 1
+14:35:11 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DW92YSB6: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:35:15 [INFO]    🔹 [7265/10888] URL: https://www.amazon.com/dp/B0DJ9K1QSY | Lần 1
+14:35:15 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DJ9K1QSY: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:35:20 [INFO]    🔹 [7266/10888] URL: https://www.amazon.com/dp/B0G12DVM48 | Lần 1
+14:35:20 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0G12DVM48: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:35:23 [INFO]    🔹 [7267/10888] URL: https://www.amazon.com/dp/B0F4D23Y5Y | Lần 1
+14:35:23 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0F4D23Y5Y: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:35:27 [INFO]    🔹 [7268/10888] URL: https://www.amazon.com/dp/B0F4CLVT6Z | Lần 1
+14:35:27 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0F4CLVT6Z: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:35:32 [INFO]    🔹 [7269/10888] URL: https://www.amazon.com/dp/B0G12GBQ2D | Lần 1
+14:35:32 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0G12GBQ2D: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:35:36 [INFO]    🔹 [7270/10888] URL: https://www.amazon.com/dp/B0F4CRQ8XR | Lần 1
+14:35:36 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0F4CRQ8XR: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:35:39 [INFO]    🔹 [7271/10888] URL: https://www.amazon.com/dp/B0F4D1HYDG | Lần 1
+14:35:39 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0F4D1HYDG: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:35:43 [INFO]    🔹 [7272/10888] URL: https://www.amazon.com/dp/B0F4D1TMWQ | Lần 1
+14:35:43 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0F4D1TMWQ: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:35:47 [INFO]    🔹 [7273/10888] URL: https://www.amazon.com/dp/B0F4CRHGMB | Lần 1
+14:35:47 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0F4CRHGMB: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:35:51 [INFO]    🔹 [7274/10888] URL: https://www.amazon.com/dp/B0GVF1CNVD | Lần 1
+14:35:51 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0GVF1CNVD: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:35:56 [INFO]    🔹 [7275/10888] URL: https://www.amazon.com/dp/B0CRVHQLPB | Lần 1
+14:35:56 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0CRVHQLPB: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:36:00 [INFO]    🔹 [7276/10888] URL: https://www.amazon.com/dp/B0GCZXMDD2 | Lần 1
+14:36:00 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0GCZXMDD2: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:36:04 [INFO]    🔹 [7277/10888] URL: https://www.amazon.com/dp/B083DR37GD | Lần 1
+14:36:04 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B083DR37GD: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:36:08 [INFO]    🔹 [7278/10888] URL: https://www.amazon.com/dp/B083DR1RCT | Lần 1
+14:36:08 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B083DR1RCT: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:36:12 [INFO]    🔹 [7279/10888] URL: https://www.amazon.com/dp/B07V67STBD | Lần 1
+14:36:12 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B07V67STBD: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:36:17 [INFO]    🔹 [7280/10888] URL: https://www.amazon.com/dp/B0G8ZGCYRT | Lần 1
+14:36:17 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0G8ZGCYRT: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:36:20 [INFO]    🔹 [7281/10888] URL: https://www.amazon.com/dp/B0DSPZZ7DR | Lần 1
+14:36:20 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DSPZZ7DR: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:36:25 [INFO]    🔹 [7282/10888] URL: https://www.amazon.com/dp/B0C997V2MR | Lần 1
+14:36:25 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0C997V2MR: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:36:28 [INFO]    🔹 [7283/10888] URL: https://www.amazon.com/dp/B0CWH81QFR | Lần 1
+14:36:28 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0CWH81QFR: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:36:32 [INFO]    🔹 [7284/10888] URL: https://www.amazon.com/dp/B0BV286TVC | Lần 1
+14:36:32 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0BV286TVC: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:36:37 [INFO]    🔹 [7285/10888] URL: https://www.amazon.com/dp/B0DR8Y5W6Z | Lần 1
+14:36:37 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DR8Y5W6Z: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:36:41 [INFO]    🔹 [7286/10888] URL: https://www.amazon.com/dp/B00TY8UR2K | Lần 1
+14:36:41 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B00TY8UR2K: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:36:46 [INFO]    🔹 [7287/10888] URL: https://www.amazon.com/dp/B0DR8V899R | Lần 1
+14:36:46 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DR8V899R: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:36:50 [INFO]    🔹 [7288/10888] URL: https://www.amazon.com/dp/B0DR8S2DQY | Lần 1
+14:36:50 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DR8S2DQY: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:36:54 [INFO]    🔹 [7289/10888] URL: https://www.amazon.com/dp/B0B9RYS3M8 | Lần 1
+14:36:54 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0B9RYS3M8: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:36:58 [INFO]    🔹 [7290/10888] URL: https://www.amazon.com/dp/B0B9S1KYVX | Lần 1
+14:36:58 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0B9S1KYVX: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:37:02 [INFO]    🔹 [7291/10888] URL: https://www.amazon.com/dp/B0BG6ZR8KS | Lần 1
+14:37:02 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0BG6ZR8KS: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:37:05 [INFO]    🔹 [7292/10888] URL: https://www.amazon.com/dp/B09RMXH4BG | Lần 1
+14:37:05 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B09RMXH4BG: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:37:08 [INFO]    🔹 [7293/10888] URL: https://www.amazon.com/dp/B09DXDQF1V | Lần 1
+14:37:08 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B09DXDQF1V: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:37:12 [INFO]    🔹 [7294/10888] URL: https://www.amazon.com/dp/B0CLXJ2TY6 | Lần 1
+14:37:12 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0CLXJ2TY6: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:37:16 [INFO]    🔹 [7295/10888] URL: https://www.amazon.com/dp/B0D795Y9QN | Lần 1
+14:37:16 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0D795Y9QN: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:37:21 [INFO]    🔹 [7296/10888] URL: https://www.amazon.com/dp/B0DKXX9L6M | Lần 1
+14:37:21 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DKXX9L6M: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:37:24 [INFO]    🔹 [7297/10888] URL: https://www.amazon.com/dp/B0DYDVBRYZ | Lần 1
+14:37:24 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DYDVBRYZ: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:37:27 [INFO]    🔹 [7298/10888] URL: https://www.amazon.com/dp/B0DYDV44C5 | Lần 1
+14:37:27 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DYDV44C5: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:37:31 [INFO]    🔹 [7299/10888] URL: https://www.amazon.com/dp/B0D83VHK7D | Lần 1
+14:37:31 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0D83VHK7D: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:37:34 [INFO]    🔹 [7300/10888] URL: https://www.amazon.com/dp/B0DYDVZ6KP | Lần 1
+14:37:34 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DYDVZ6KP: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:37:39 [INFO]    🔹 [7301/10888] URL: https://www.amazon.com/dp/B0DYDT7D65 | Lần 1
+14:37:39 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DYDT7D65: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:37:42 [INFO]    🔹 [7302/10888] URL: https://www.amazon.com/dp/B0CZCWCGY8 | Lần 1
+14:37:42 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0CZCWCGY8: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:37:46 [INFO]    🔹 [7303/10888] URL: https://www.amazon.com/dp/B0D798ZTVX | Lần 1
+14:37:46 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0D798ZTVX: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:37:50 [INFO]    🔹 [7304/10888] URL: https://www.amazon.com/dp/B0D9N7RY1D | Lần 1
+14:37:50 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0D9N7RY1D: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:37:53 [INFO]    🔹 [7305/10888] URL: https://www.amazon.com/dp/B0D9N62T62 | Lần 1
+14:37:53 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0D9N62T62: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:37:57 [INFO]    🔹 [7306/10888] URL: https://www.amazon.com/dp/B0D9N5WX8L | Lần 1
+14:37:57 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0D9N5WX8L: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:38:02 [INFO]    🔹 [7307/10888] URL: https://www.amazon.com/dp/B0G11T4RQ9 | Lần 1
+14:38:02 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0G11T4RQ9: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:38:06 [INFO]    🔹 [7308/10888] URL: https://www.amazon.com/dp/B0FY46ZDHD | Lần 1
+14:38:06 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FY46ZDHD: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:38:09 [INFO]    🔹 [7309/10888] URL: https://www.amazon.com/dp/B0FY439XVT | Lần 1
+14:38:09 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FY439XVT: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:38:14 [INFO]    🔹 [7310/10888] URL: https://www.amazon.com/dp/B0GFBSDXTT | Lần 1
+14:38:14 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0GFBSDXTT: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:38:17 [INFO]    🔹 [7311/10888] URL: https://www.amazon.com/dp/B0FY47JTHZ | Lần 1
+14:38:17 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FY47JTHZ: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:38:22 [INFO]    🔹 [7312/10888] URL: https://www.amazon.com/dp/B0FY1PFZ11 | Lần 1
+14:38:22 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FY1PFZ11: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:38:26 [INFO]    🔹 [7313/10888] URL: https://www.amazon.com/dp/B0FY44JRBY | Lần 1
+14:38:26 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FY44JRBY: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:38:30 [INFO]    🔹 [7314/10888] URL: https://www.amazon.com/dp/B0FY468N34 | Lần 1
+14:38:30 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FY468N34: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:38:33 [INFO]    🔹 [7315/10888] URL: https://www.amazon.com/dp/B0FQJJQP61 | Lần 1
+14:38:33 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FQJJQP61: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:38:37 [INFO]    🔹 [7316/10888] URL: https://www.amazon.com/dp/B0CSSYSQQ2 | Lần 1
+14:38:37 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0CSSYSQQ2: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:38:42 [INFO]    🔹 [7317/10888] URL: https://www.amazon.com/dp/B0CB7W6W7B | Lần 1
+14:38:42 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0CB7W6W7B: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:38:46 [INFO]    🔹 [7318/10888] URL: https://www.amazon.com/dp/B0DRSZB57Z | Lần 1
+14:38:46 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DRSZB57Z: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:38:51 [INFO]    🔹 [7319/10888] URL: https://www.amazon.com/dp/B0DKV79L58 | Lần 1
+14:38:51 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DKV79L58: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:38:56 [INFO]    🔹 [7320/10888] URL: https://www.amazon.com/dp/B0DKV73M4T | Lần 1
+14:38:56 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DKV73M4T: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:38:59 [INFO]    🔹 [7321/10888] URL: https://www.amazon.com/dp/B0DRSSV8R5 | Lần 1
+14:38:59 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DRSSV8R5: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:39:03 [INFO]    🔹 [7322/10888] URL: https://www.amazon.com/dp/B0DT9LG83X | Lần 1
+14:39:03 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DT9LG83X: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:39:06 [INFO]    🔹 [7323/10888] URL: https://www.amazon.com/dp/B0DT9Q923V | Lần 1
+14:39:06 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DT9Q923V: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:39:11 [INFO]    🔹 [7324/10888] URL: https://www.amazon.com/dp/B0F8MRN3J9 | Lần 1
+14:39:11 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0F8MRN3J9: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:39:15 [INFO]    🔹 [7325/10888] URL: https://www.amazon.com/dp/B0CR43K5XJ | Lần 1
+14:39:15 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0CR43K5XJ: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:39:18 [INFO]    🔹 [7326/10888] URL: https://www.amazon.com/dp/B0DRSY7HJN | Lần 1
+14:39:18 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DRSY7HJN: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:39:22 [INFO]    🔹 [7327/10888] URL: https://www.amazon.com/dp/B0DRT25HB6 | Lần 1
+14:39:22 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DRT25HB6: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:39:27 [INFO]    🔹 [7328/10888] URL: https://www.amazon.com/dp/B0DT9P2Z2Q | Lần 1
+14:39:27 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DT9P2Z2Q: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:39:31 [INFO]    🔹 [7329/10888] URL: https://www.amazon.com/dp/B0CR3XWGZ2 | Lần 1
+14:39:31 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0CR3XWGZ2: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:39:35 [INFO]    🔹 [7330/10888] URL: https://www.amazon.com/dp/B0DJ1MC6CG | Lần 1
+14:39:35 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DJ1MC6CG: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:39:39 [INFO]    🔹 [7331/10888] URL: https://www.amazon.com/dp/B0G529T77C | Lần 1
+14:39:39 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0G529T77C: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:39:44 [INFO]    🔹 [7332/10888] URL: https://www.amazon.com/dp/B0G52CW81W | Lần 1
+14:39:44 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0G52CW81W: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:39:47 [INFO]    🔹 [7333/10888] URL: https://www.amazon.com/dp/B0CPXZKWY5 | Lần 1
+14:39:47 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0CPXZKWY5: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:39:51 [INFO]    🔹 [7334/10888] URL: https://www.amazon.com/dp/B0FLXZKLHL | Lần 1
+14:39:51 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FLXZKLHL: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:39:55 [INFO]    🔹 [7335/10888] URL: https://www.amazon.com/dp/B0F321RQCG | Lần 1
+14:39:55 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0F321RQCG: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:39:59 [INFO]    🔹 [7336/10888] URL: https://www.amazon.com/dp/B0DJQF5CF5 | Lần 1
+14:39:59 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DJQF5CF5: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:40:03 [INFO]    🔹 [7337/10888] URL: https://www.amazon.com/dp/B0FH2H5PL3 | Lần 1
+14:40:03 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FH2H5PL3: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:40:07 [INFO]    🔹 [7338/10888] URL: https://www.amazon.com/dp/B0FKSQJ1Y6 | Lần 1
+14:40:07 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FKSQJ1Y6: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:40:11 [INFO]    🔹 [7339/10888] URL: https://www.amazon.com/dp/B0FLPRKJDL | Lần 1
+14:40:11 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FLPRKJDL: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:40:16 [INFO]    🔹 [7340/10888] URL: https://www.amazon.com/dp/B0FP2D5ZBL | Lần 1
+14:40:16 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FP2D5ZBL: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:40:19 [INFO]    🔹 [7341/10888] URL: https://www.amazon.com/dp/B0F31VQS9Y | Lần 1
+14:40:19 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0F31VQS9Y: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:40:23 [INFO]    🔹 [7342/10888] URL: https://www.amazon.com/dp/B0F31W81HB | Lần 1
+14:40:23 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0F31W81HB: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:40:27 [INFO]    🔹 [7343/10888] URL: https://www.amazon.com/dp/B0DGLBZXG5 | Lần 1
+14:40:27 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DGLBZXG5: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:40:32 [INFO]    🔹 [7344/10888] URL: https://www.amazon.com/dp/B0CRQV838F | Lần 1
+14:40:32 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0CRQV838F: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:40:36 [INFO]    🔹 [7345/10888] URL: https://www.amazon.com/dp/B0DJQDZ47N | Lần 1
+14:40:36 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DJQDZ47N: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:40:40 [INFO]    🔹 [7346/10888] URL: https://www.amazon.com/dp/B0CJBGWF8C | Lần 1
+14:40:40 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0CJBGWF8C: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:40:45 [INFO]    🔹 [7347/10888] URL: https://www.amazon.com/dp/B0D8Q3WH33 | Lần 1
+14:40:45 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0D8Q3WH33: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:40:49 [INFO]    🔹 [7348/10888] URL: https://www.amazon.com/dp/B0FZJXSHV3 | Lần 1
+14:40:49 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FZJXSHV3: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:40:53 [INFO]    🔹 [7349/10888] URL: https://www.amazon.com/dp/B0FP27Z4D2 | Lần 1
+14:40:53 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FP27Z4D2: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:40:58 [INFO]    🔹 [7350/10888] URL: https://www.amazon.com/dp/B0CJBHQP45 | Lần 1
+14:40:58 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0CJBHQP45: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:41:02 [INFO]    🔹 [7351/10888] URL: https://www.amazon.com/dp/B0FK9M58BZ | Lần 1
+14:41:02 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FK9M58BZ: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:41:06 [INFO]    🔹 [7352/10888] URL: https://www.amazon.com/dp/B0FWRHWB7B | Lần 1
+14:41:06 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FWRHWB7B: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:41:10 [INFO]    🔹 [7353/10888] URL: https://www.amazon.com/dp/B0FC5SL3N2 | Lần 1
+14:41:10 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FC5SL3N2: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:41:15 [INFO]    🔹 [7354/10888] URL: https://www.amazon.com/dp/B0BGGQT4J5 | Lần 1
+14:41:15 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0BGGQT4J5: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:41:18 [INFO]    🔹 [7355/10888] URL: https://www.amazon.com/dp/B09LLSJYZX | Lần 1
+14:41:18 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B09LLSJYZX: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:41:22 [INFO]    🔹 [7356/10888] URL: https://www.amazon.com/dp/B0DCG7DYY5 | Lần 1
+14:41:22 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DCG7DYY5: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:41:26 [INFO]    🔹 [7357/10888] URL: https://www.amazon.com/dp/B0DCGFXC4F | Lần 1
+14:41:26 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DCGFXC4F: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:41:30 [INFO]    🔹 [7358/10888] URL: https://www.amazon.com/dp/B0CLGZS7TH | Lần 1
+14:41:30 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0CLGZS7TH: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:41:34 [INFO]    🔹 [7359/10888] URL: https://www.amazon.com/dp/B0BGH2V2Q9 | Lần 1
+14:41:34 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0BGH2V2Q9: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:41:38 [INFO]    🔹 [7360/10888] URL: https://www.amazon.com/dp/B0FQBVFMW3 | Lần 1
+14:41:38 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FQBVFMW3: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:41:41 [INFO]    🔹 [7361/10888] URL: https://www.amazon.com/dp/B09KZWZX9D | Lần 1
+14:41:41 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B09KZWZX9D: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:41:45 [INFO]    🔹 [7362/10888] URL: https://www.amazon.com/dp/B0FKSQN948 | Lần 1
+14:41:45 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FKSQN948: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:41:48 [INFO]    🔹 [7363/10888] URL: https://www.amazon.com/dp/B0DG5SCDWG | Lần 1
+14:41:48 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DG5SCDWG: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:41:53 [INFO]    🔹 [7364/10888] URL: https://www.amazon.com/dp/B0DTZ1D9MB | Lần 1
+14:41:53 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DTZ1D9MB: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:41:57 [INFO]    🔹 [7365/10888] URL: https://www.amazon.com/dp/B0DSPK2KCN | Lần 1
+14:41:57 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DSPK2KCN: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:42:01 [INFO]    🔹 [7366/10888] URL: https://www.amazon.com/dp/B0F2LKWBGB | Lần 1
+14:42:01 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0F2LKWBGB: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:42:04 [INFO]    🔹 [7367/10888] URL: https://www.amazon.com/dp/B0FKSM5DTK | Lần 1
+14:42:04 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FKSM5DTK: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:42:08 [INFO]    🔹 [7368/10888] URL: https://www.amazon.com/dp/B0FCFSVBNK | Lần 1
+14:42:08 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FCFSVBNK: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:42:11 [INFO]    🔹 [7369/10888] URL: https://www.amazon.com/dp/B0GHRS6DNQ | Lần 1
+14:42:11 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0GHRS6DNQ: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:42:16 [INFO]    🔹 [7370/10888] URL: https://www.amazon.com/dp/B0FCFRYPRW | Lần 1
+14:42:16 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FCFRYPRW: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:42:19 [INFO]    🔹 [7371/10888] URL: https://www.amazon.com/dp/B0FKTF4KMM | Lần 1
+14:42:19 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FKTF4KMM: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:42:23 [INFO]    🔹 [7372/10888] URL: https://www.amazon.com/dp/B0DZCJLJTF | Lần 1
+14:42:23 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DZCJLJTF: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:42:27 [INFO]    🔹 [7373/10888] URL: https://www.amazon.com/dp/B0FZC15BHV | Lần 1
+14:42:27 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FZC15BHV: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:42:31 [INFO]    🔹 [7374/10888] URL: https://www.amazon.com/dp/B0F1FQYBSR | Lần 1
+14:42:31 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0F1FQYBSR: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:42:35 [INFO]    🔹 [7375/10888] URL: https://www.amazon.com/dp/B0F1FQFXYV | Lần 1
+14:42:35 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0F1FQFXYV: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:42:39 [INFO]    🔹 [7376/10888] URL: https://www.amazon.com/dp/B0F2M73KJ7 | Lần 1
+14:42:39 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0F2M73KJ7: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:42:43 [INFO]    🔹 [7377/10888] URL: https://www.amazon.com/dp/B0DTHLNNL9 | Lần 1
+14:42:43 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DTHLNNL9: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:42:46 [INFO]    🔹 [7378/10888] URL: https://www.amazon.com/dp/B0F21Y6LC7 | Lần 1
+14:42:46 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0F21Y6LC7: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:42:50 [INFO]    🔹 [7379/10888] URL: https://www.amazon.com/dp/B0DQ1BFMX7 | Lần 1
+14:42:50 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0DQ1BFMX7: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:42:54 [INFO]    🔹 [7380/10888] URL: https://www.amazon.com/dp/B0GSZV7QXB | Lần 1
+14:42:54 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0GSZV7QXB: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:42:58 [INFO]    🔹 [7381/10888] URL: https://www.amazon.com/dp/B0FZQ8PC5Z | Lần 1
+14:42:58 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FZQ8PC5Z: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:43:03 [INFO]    🔹 [7382/10888] URL: https://www.amazon.com/dp/B0FHWBK3MQ | Lần 1
+14:43:03 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FHWBK3MQ: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:43:07 [INFO]    🔹 [7383/10888] URL: https://www.amazon.com/dp/B0FF9R97DD | Lần 1
+14:43:07 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FF9R97DD: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:43:11 [INFO]    🔹 [7384/10888] URL: https://www.amazon.com/dp/B0G1SN3SJ5 | Lần 1
+14:43:11 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0G1SN3SJ5: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:43:14 [INFO]    🔹 [7385/10888] URL: https://www.amazon.com/dp/B0G354J4NB | Lần 1
+14:43:14 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0G354J4NB: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:43:19 [INFO]    🔹 [7386/10888] URL: https://www.amazon.com/dp/B0FJM6SPHV | Lần 1
+14:43:19 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FJM6SPHV: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:43:23 [INFO]    🔹 [7387/10888] URL: https://www.amazon.com/dp/B0F2M6NWTQ | Lần 1
+14:43:23 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0F2M6NWTQ: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:43:27 [INFO]    🔹 [7388/10888] URL: https://www.amazon.com/dp/B0FLPY87VH | Lần 1
+14:43:27 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FLPY87VH: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+14:43:31 [INFO]    🔹 [7389/10888] URL: https://www.amazon.com/dp/B0FHWR43TY | Lần 1
+14:43:31 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B0FHWR43TY: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev

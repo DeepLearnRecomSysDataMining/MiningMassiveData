@@ -36,15 +36,28 @@ Máy này dùng để chạy các script điều khiển (như `download_data.py
 
 ---
 
-## Bước 4: Đưa code lên VM và Tải dữ liệu từ Drive
-Trong cửa sổ **SSH** vừa mở, hãy chạy các lệnh sau:
+## Bước 4: Thiết lập Môi trường Cloud (Quan trọng)
+Trong cửa sổ **SSH**, hãy cài đặt các biến sau để code nhận diện bạn đang chạy trên GCP:
 
 ```bash
-# 1. Cài đặt Git và Python
+# Thay đổi 'ten-bucket-cua-ban' thành tên Bucket bạn tạo ở Bước 2
+export SPARK_ENV="cloud"
+export RAW_DATA_DIR="gs://ten-bucket-cua-ban/raw_data/amazon_gpc/"
+export OUTPUT_BASE="gs://ten-bucket-cua-ban/output/"
+```
+
+---
+
+## Bước 5: Đưa code lên VM và Tải dữ liệu từ Drive
+Trong cửa sổ **SSH**, thực hiện:
+
+```bash
+# 1. Cài đặt Python và Thư viện GCP
 sudo apt-get update
 sudo apt-get install git python3-pip -y
+pip3 install gdown google-cloud-storage
 
-# 2. Clone code của bạn từ GitHub (Hoặc dùng công cụ upload file của GCP)
+# 2. Clone code
 git clone [LINK_GITHUB_CUA_BAN]
 cd [TEN_THU_MUC_PROJECT]
 
@@ -58,9 +71,6 @@ pip3 install gdown
 # 5. Chạy tải dữ liệu
 python3 download_data.py
 ```
-
----
-
 ## Bước 5: Tạo cụm Spark (Dataproc) để xử lý ETL
 1. Tìm kiếm "Dataproc" -> **Create Cluster** -> **Cluster on Compute Engine**.
 2. **Name**: `spark-cluster`.
@@ -68,19 +78,21 @@ python3 download_data.py
 4. **Master node**: `e2-standard-4` (4 vCPU, 16GB RAM).
 5. **Worker nodes**: Chọn 2 máy `e2-standard-4`.
 6. Nhấn **Create**.
-
 ---
 
-## Bước 6: Chạy ETL (Xử lý dữ liệu)
-Quay lại máy ảo **coordinator-vm** (Cửa sổ SSH), chạy lệnh này để Spark bắt đầu làm việc:
+## Bước 6: Tạo cụm Spark (Dataproc) và Chạy ETL
+1. Tạo cụm Dataproc (Master: 1 máy, Worker: 2 máy).
+2. Chạy lệnh Submit Job chuyên nghiệp:
 
 ```bash
 gcloud dataproc jobs submit pyspark spark_processing_gpc/main.py \
     --cluster=spark-cluster \
     --region=us-central1 \
+    --properties="spark.executorEnv.SPARK_ENV=cloud,spark.yarn.appMasterEnv.SPARK_ENV=cloud" \
     -- \
     --data-dir gs://[TEN-BUCKET-CUA-BAN]/raw_data/amazon_gpc/
 ```
+*Lưu ý: Flag `--properties` giúp Spark nhận diện môi trường Cloud ngay cả bên trong các máy con (Workers).*
 
 ---
 
@@ -92,8 +104,18 @@ Bước này tốn kém nhất, nên hãy chỉ làm khi Bước 6 đã xong:
 
 ---
 
+## Bước 8: Theo dõi Log
+Vì chúng ta đã tắt tính năng ghi log vào file cục bộ (để tránh lỗi GCS), bạn hãy theo dõi log tại:
+1. Console Dataproc -> Jobs -> Nhấn vào Job ID đang chạy.
+2. Tab **Output**: Xem log thời gian thực.
+3. Hoặc vào **Cloud Logging** để xem log chi tiết của toàn bộ hệ thống.
+
+---
+
 ## Lời khuyên cực kỳ quan trọng:
 - **TẮT MÁY (STOP)**: Khi không làm việc, hãy nhấn nút **Stop** cho VM và **Delete** cụm Dataproc. Nếu để nó chạy qua đêm, bạn sẽ mất rất nhiều tiền (Quota GPU và Dataproc tính phí theo giờ).
 - **Quota**: Nếu không tạo được GPU, bạn cần vào "IAM & Admin" -> "Quotas" để yêu cầu Google tăng hạn mức GPU (với tài khoản mới thường là 0).
+- **TẮT MÁY (STOP)**: Luôn **Delete** cụm Dataproc sau khi xong việc. GCS sẽ giữ lại toàn bộ kết quả Parquet cho bạn.
+- **Quota**: Nếu bị lỗi tạo máy ảo, hãy kiểm tra "Quotas" để đảm bảo tài khoản của bạn được phép dùng máy ảo tại `us-central1`.
 
 Bạn hãy bắt đầu từ **Bước 1 và Bước 2** đi, nếu vướng ở đâu hãy hỏi tôi ngay nhé!
