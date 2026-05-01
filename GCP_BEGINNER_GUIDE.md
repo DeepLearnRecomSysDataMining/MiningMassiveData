@@ -20,7 +20,8 @@ Mặc định GCP sẽ khóa các dịch vụ để tránh tốn tiền. Bạn c
 1. Tìm kiếm "Storage" trong Console.
 2. Nhấn **Create Bucket**.
 3. **Name**: Đặt tên duy nhất (Ví dụ: `recsys-data-xxxx`). Ghi nhớ tên này.
-4. **Location**: Chọn `us-central1` (Thường rẻ và nhiều GPU).
+4. **Location**: Chọn `us-central1` (Thường rẻ và nhiều GPU). 
+   - Tôi chọn `asia` để ko mất phí liên lục địa -> từ các bước sau phi chọn Location/Region thuộc châu á
 5. Nhấn **Create**.
 
 ---
@@ -34,10 +35,14 @@ Máy này dùng để chạy các script điều khiển (như `download_data.py
 5. Nhấn **Create**.
 6. Khi máy hiện lên, nhấn nút **SSH** để mở cửa sổ dòng lệnh.
 
+### Giao diện 2026 hơi khác , nhìn thanh sidebar bên trái để ấn vào `OS and Storage` mới chọn được Urbuntu
+
 ---
 
 ## Bước 4: Thiết lập Môi trường Cloud (Quan trọng)
 Trong cửa sổ **SSH**, hãy cài đặt các biến sau để code nhận diện bạn đang chạy trên GCP:
+
+project này có bucket : mining-data-2
 
 ```bash
 # Thay đổi 'ten-bucket-cua-ban' thành tên Bucket bạn tạo ở Bước 2
@@ -45,6 +50,13 @@ export SPARK_ENV="cloud"
 export RAW_DATA_DIR="gs://ten-bucket-cua-ban/raw_data/amazon_gpc/"
 export OUTPUT_BASE="gs://ten-bucket-cua-ban/output/"
 ```
+```bash
+export SPARK_ENV="cloud"
+export RAW_DATA_DIR="gs://mining-data-2/raw_data/amazon_gpc/"
+export OUTPUT_BASE="gs://mining-data-2/output/"
+```
+
+### (Lưu ý: Nếu sau này bạn tắt cửa sổ SSH này đi và mở lại, bạn sẽ phải chạy lại 3 dòng lệnh này nhé).
 
 ---
 
@@ -71,16 +83,16 @@ pip3 install gdown
 # 5. Chạy tải dữ liệu
 python3 download_data.py
 ```
-## Bước 5: Tạo cụm Spark (Dataproc) để xử lý ETL
+## Bước 6: Tạo cụm Spark (Dataproc) để xử lý ETL
 1. Tìm kiếm "Dataproc" -> **Create Cluster** -> **Cluster on Compute Engine**.
 2. **Name**: `spark-cluster`.
-3. **Region**: `us-central1`.
+3. **Region**: `us-central1` hoặc mặc định đặt `asia...`.
 4. **Master node**: `e2-standard-4` (4 vCPU, 16GB RAM).
 5. **Worker nodes**: Chọn 2 máy `e2-standard-4`.
 6. Nhấn **Create**.
 ---
 
-## Bước 6: Tạo cụm Spark (Dataproc) và Chạy ETL
+## Bước 7: Tạo cụm Spark (Dataproc) và Chạy ETL
 1. Tạo cụm Dataproc (Master: 1 máy, Worker: 2 máy).
 2. Chạy lệnh Submit Job chuyên nghiệp:
 
@@ -96,7 +108,7 @@ gcloud dataproc jobs submit pyspark spark_processing_gpc/main.py \
 
 ---
 
-## Bước 7: Huấn luyện trên GPU (Distributed Training)
+## Bước 8: Huấn luyện trên GPU (Distributed Training)
 Bước này tốn kém nhất, nên hãy chỉ làm khi Bước 6 đã xong:
 1. Tạo một máy ảo GPU (Compute Engine -> Create Instance).
 2. Ở phần **GPU**, chọn `NVIDIA T4`.
@@ -104,7 +116,7 @@ Bước này tốn kém nhất, nên hãy chỉ làm khi Bước 6 đã xong:
 
 ---
 
-## Bước 8: Theo dõi Log
+## Bước 9: Theo dõi Log
 Vì chúng ta đã tắt tính năng ghi log vào file cục bộ (để tránh lỗi GCS), bạn hãy theo dõi log tại:
 1. Console Dataproc -> Jobs -> Nhấn vào Job ID đang chạy.
 2. Tab **Output**: Xem log thời gian thực.
