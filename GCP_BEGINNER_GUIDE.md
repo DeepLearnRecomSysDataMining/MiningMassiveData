@@ -83,6 +83,58 @@ pip3 install gdown
 # 5. Chạy tải dữ liệu
 python3 download_data.py
 ```
+
+### Lỗi ngay chạy lệnh `sudo apt-get update`
+
+Vấn đề do VM instance không có External IP nên không thể kết nối ra ngoài để tải update Ubuntu
+
+- Cách 1: Edit cái VM Instance này để chọn : nhìn cột external Ip của VM instance sẽ thấy None 
+  - Cuộn xuống tìm mục Network interfaces (Giao diện mạng), nhấn vào mũi tên thả xuống để mở rộng phần này ra. 
+  - Tìm dòng External IPv4 address (Địa chỉ IPv4 bên ngoài). Hãy đổi nó từ "None" thành Ephemeral (Tạm thời).
+  - Ấn nút Save
+- Cách 1 có thể lỗi vì không chọn được (Ephemeral) do Chính sách tổ chức (Organization Policy) (thường gặp nếu bạn dùng tài khoản của công ty, trường học, hoặc được cấp sẵn). Chính sách này 
+cấm việc gắn IP công cộng (External IP) vào máy ảo để đảm bảo bảo mật. Fix bằng dùng `Cloud NAT` giúp bên ngoài ko kết nối xâm nhập đc nhưng bên trong kết nối ra được. 
+  - Tìm Cloud NAT -> ấn Get Started (hoặc Create a NAT gateway) 
+  - Điền thông tin: 
+    - Gateway name (Tên cổng): Đặt là my-nat-gateway.
+    - Network (Mạng): Chọn default
+    - Region (Khu vực): Bắt buộc chọn asia-southeast1 (hoặc đúng khu vực bạn đã tạo máy ảo coordinator-vm lúc nãy).
+  - Ở phần Cloud Router, nhấp vào ô thả xuống và chọn Create new router:
+    - Name: Đặt là my-router
+    - Nhấn Create (Tạo) để hoàn tất việc tạo Router.
+  - Quay lại trang tạo NAT (các thông số khác cứ để mặc định), kéo xuống dưới cùng và nhấn Create
+  - Chạy lại lệnh trong SSH
+    - đợi 1-2 phút: Mở lại SSH ở VM Instance rồi chạy lại 3 lệnh  export
+    - Chạy lại lệnh update: sudo apt-get update 
+
+```bash
+export SPARK_ENV="cloud"
+export RAW_DATA_DIR="gs://mining-data-2/raw_data/amazon_gpc/"
+export OUTPUT_BASE="gs://mining-data-2/output/"
+```
+
+### Lỗi chạy lệnh: `pip3 install gdown google-cloud-storage`
+
+- Ý nghĩa của lỗi: Hệ điều hành đang khóa không cho bạn dùng lệnh pip để cài thư viện bừa bãi vào hệ thống gốc. 
+Lý do là Linux cũng dùng Python để chạy các ứng dụng lõi của nó, nếu bạn cài đè các thư viện mới lên có thể làm "sập" hệ điều hành.
+- cách chuyên nghiệp và an toàn nhất hiện nay là tạo một Môi trường ảo (Virtual Environment - venv).
+  - Bước 1: Cài đặt gói hỗ trợ môi trường ảo: 
+      `sudo apt-get install python3-venv -y`
+  - Bước 2: Tạo môi trường ảo riêng cho dự án của bạn. Lệnh này sẽ tạo ra một thư mục tên là recsys_env chứa một bản Python hoàn toàn độc lập.
+      `python3 -m venv recsys_env`
+  - Bước 3: Kích hoạt môi trường ảo
+      `source recsys_env/bin/activate`
+      - Sau khi chạy lệnh này, bạn sẽ thấy chữ (recsys_env) hiện lên ở tuốt đầu dòng lệnh, báo hiệu bạn đã vào trong "vùng an toàn"
+  - Bước 4: Cài đặt thư viện thoải mái
+      `pip install gdown google-cloud-storage`
+
+### Chú ý: Từ giờ trở đi, mỗi lần bạn tắt cửa sổ SSH và mở lại, máy ảo sẽ quay về môi trường gốc (không có thư viện gdown). 
+Do đó, trước khi muốn chạy file `download_data.py`, bạn chỉ cần gõ lại lệnh kích hoạt ở Bước 3 (`source recsys_env/bin/activate`) là được nhé!
+
+### Các lệnh chạy sau đó ở Bước 5 này phải chạy với venv hết vì cần python3, gdown, ...
+
+---
+
 ## Bước 6: Tạo cụm Spark (Dataproc) để xử lý ETL
 1. Tìm kiếm "Dataproc" -> **Create Cluster** -> **Cluster on Compute Engine**.
 2. **Name**: `spark-cluster`.
