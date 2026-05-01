@@ -56,7 +56,7 @@ if __name__ == "__main__":
     # --- CAU HINH DANH RIENG CHO CLOUD (GPC) ---
     
     # ID thư mục Drive của bạn
-    GOOGLE_DRIVE_ID = "YOUR_FOLDER_ID_HERE" 
+    GOOGLE_DRIVE_ID = "1tvFgRsMkN-11Ucvnjl9AfLPHGLGAIAuJ"
     
     # Đường dẫn GCS Bucket đích (Phải bắt đầu bằng gs://)
     # Ví dụ: "gs://my-recsys-project-bucket/raw_data/amazon_gpc/"
