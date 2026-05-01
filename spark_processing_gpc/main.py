@@ -14,14 +14,19 @@ from src.data_validator     import validate_interactions, validate_item_nodes
 from src.file_utils         import decompress_gz_files
 
 # Setup logging
-os.makedirs(PathConfig.LOGS_DIR, exist_ok=True)
+is_cloud = os.getenv("SPARK_ENV") == "cloud"
+
+log_handlers = [logging.StreamHandler(sys.stdout)]
+
+# Chỉ tạo FileHandler và thư mục logs nếu KHÔNG chạy trên Cloud
+if not is_cloud:
+    os.makedirs(PathConfig.LOGS_DIR, exist_ok=True)
+    log_handlers.append(logging.FileHandler(os.path.join(PathConfig.LOGS_DIR, "etl_pipeline.log"), encoding="utf-8"))
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s - %(message)s",
-    handlers=[
-        logging.FileHandler(os.path.join(PathConfig.LOGS_DIR, "etl_pipeline.log"), encoding="utf-8"),
-        logging.StreamHandler(sys.stdout),
-    ],
+    handlers=log_handlers,
 )
 logger = logging.getLogger("main")
 

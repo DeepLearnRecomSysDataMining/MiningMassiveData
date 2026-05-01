@@ -1,33 +1,25 @@
 import os
 from pathlib import Path
-
-from dotenv import load_dotenv
 from pyspark.sql import SparkSession
-
-load_dotenv(override=True)
-
-if os.name == 'nt':
-    os.environ["HADOOP_HOME"]       = r"D:\Apache_Hadoop"
-    os.environ["JAVA_HOME"]         = r"D:\JavaJDK\jdk-11.0.30"
-    os.environ["PATH"]              = ( os.environ["HADOOP_HOME"] + r"\bin;" + os.environ.get("PATH", ""))
-os.environ["PYSPARK_PYTHON"]    = "python"
-os.environ["SPARK_LOCAL_IP"]    = "127.0.0.1"
 
 # ── 2. Hằng số đường dẫn – hỗ trợ override từ biến môi trường ──────────
 class PathConfig:
-    # BASE_DIR mặc định là root của project local
+    # BASE_DIR chỉ dùng để xác định đường dẫn local dự phòng
     BASE_DIR = Path(__file__).resolve().parent.parent.parent
     
-    # Cho phép ghi đè các đường dẫn bằng biến môi trường (Ví dụ: export RAW_DATA_DIR=gs://bucket/raw)
-    RAW_DATA_DIR = os.getenv("RAW_DATA_DIR", os.path.join(BASE_DIR, "data_small"))
-
-    # Thư mục lưu kết quả Parquet sau ETL
-    OUTPUT_BASE = os.getenv("OUTPUT_BASE", os.path.join(BASE_DIR, "output"))
+    # Ưu tiên lấy từ biến môi trường (GCP sẽ truyền gs://bucket/...)
+    RAW_DATA_DIR = os.getenv("RAW_DATA_DIR", os.path.join(BASE_DIR, "data_small")).replace("\\", "/")
+    OUTPUT_BASE  = os.getenv("OUTPUT_BASE", os.path.join(BASE_DIR, "output")).replace("\\", "/")
     
-    INTERACTIONS_OUT = os.path.join(OUTPUT_BASE, "all_interactions").replace("\\", "/")
-    ITEM_NODES_OUT   = os.path.join(OUTPUT_BASE, "item_nodes").replace("\\", "/")
-    EVALUATION_OUT   = os.path.join(OUTPUT_BASE, "evaluation_dataset").replace("\\", "/")
-    LOGS_DIR         = os.path.join(OUTPUT_BASE, "logs").replace("\\", "/")
+    # Tạo đường dẫn con bằng cách cộng chuỗi để tránh os.path.join dùng sai dấu gạch chéo trên Windows
+    def _join_gcs(base, sub):
+        return f"{base.rstrip('/')}/{sub}"
+
+    INTERACTIONS_OUT = _join_gcs(OUTPUT_BASE, "all_interactions")
+    ITEM_NODES_OUT   = _join_gcs(OUTPUT_BASE, "item_nodes")
+    EVALUATION_OUT   = _join_gcs(OUTPUT_BASE, "evaluation_dataset")
+    # Trên Cloud, logs nên in ra stdout, không cần lưu file cục bộ
+    LOGS_DIR         = _join_gcs(OUTPUT_BASE, "logs")
 
 # ── 3. Tạo SparkSession ──────────────────────────────────────
 def create_spark_session(app_name: str = "AmazonETL") -> SparkSession:

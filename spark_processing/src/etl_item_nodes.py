@@ -30,11 +30,8 @@ def spark_standardize(c):
 def spark_clean_text(c):
     """Aggressive cleaning: HTML removal, Regex strip, Space normalization, Trim, Lower."""
     c = coalesce(concat_ws(" ", c), lit(""))
-    # 1. Bo HTML
     c = regexp_replace(c, r"<[^>]*>", " ")
-    # 2. Bo ky tu dac biet, chi giu chu, so, dau cau (Simplified regex for stability)
     c = regexp_replace(c, r"[^a-zA-Z0-9\s.,!?àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]", " ")
-    # 3. Chuan hoa khoang trang
     c = regexp_replace(c, r"\s+", " ")
     return lower(trim(c))
 
