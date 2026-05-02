@@ -574,6 +574,24 @@ Vào **Dataproc** -> **Clusters** -> Chọn tick vào `amazon-cluster` -> Bấm 
 ```bash
 gcloud dataproc clusters delete amazon-cluster --region=asia-southeast1 -q
 ```
+### Khi chạy đến Phase 3 thì code dừng do quá tải, vì phải map 4tr item.
+
+Nên tôi code main2.py để chạy phase 3, -> hết.
+
+vẫn update lên github code, sau đó pull về rồi mới:
+
+```bash
+cd ~/MiningMassiveData/spark_processing_gpc
+zip -r dependencies.zip config src
+
+gcloud dataproc jobs submit pyspark main2.py \
+    --cluster=amazon-cluster \
+    --region=asia-southeast1 \
+    --py-files=dependencies.zip \
+    --properties="spark.shuffle.compress=true,spark.shuffle.spill.compress=true" \
+    -- \
+    --validate
+```
 
 ---
 
