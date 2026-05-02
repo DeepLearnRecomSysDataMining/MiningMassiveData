@@ -580,6 +580,8 @@ gcloud dataproc clusters delete amazon-cluster --region=asia-southeast1 -q
 ```
 ### Khi chạy đến Phase 3 thì code dừng do quá tải, vì phải map 4tr item.
 
+## Khi thay đổi cấu hình RAM của VM, phải chỉnh RAM spark trên code
+
 Phải cấu hfinh lại với các worker MẠnh hơn
 
 Nên tôi code main2.py để chạy phase 3, -> hết.
