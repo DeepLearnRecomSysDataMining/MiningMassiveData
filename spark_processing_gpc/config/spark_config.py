@@ -40,6 +40,10 @@ class PathConfig:
     def EVALUATION_OUT(self):
         return self._join_gcs(self.get_output_base(), "evaluation_dataset")
 
+    @property
+    def LOGS_DIR(self):
+        return self._join_gcs(self.get_output_base(), "logs")
+
 # Khởi tạo instance để các module khác dùng PathConfig.ITEM_NODES_OUT như cũ
 PathConfig = PathConfig()
 
