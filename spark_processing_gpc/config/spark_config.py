@@ -4,22 +4,44 @@ from pyspark.sql import SparkSession
 
 # ── 2. Hằng số đường dẫn – hỗ trợ override từ biến môi trường ──────────
 class PathConfig:
-    # BASE_DIR chỉ dùng để xác định đường dẫn local dự phòng
-    BASE_DIR = Path(__file__).resolve().parent.parent.parent
+    @classmethod
+    def get_raw_data_dir(cls):
+        base_dir = Path(__file__).resolve().parent.parent.parent
+        val = os.getenv("RAW_DATA_DIR", os.path.join(base_dir, "data_small"))
+        return val.replace("\\", "/")
+
+    @classmethod
+    def get_output_base(cls):
+        base_dir = Path(__file__).resolve().parent.parent.parent
+        val = os.getenv("OUTPUT_BASE", os.path.join(base_dir, "output"))
+        return val.replace("\\", "/")
     
-    # Ưu tiên lấy từ biến môi trường (GCP sẽ truyền gs://bucket/...)
-    RAW_DATA_DIR = os.getenv("RAW_DATA_DIR", os.path.join(BASE_DIR, "data_small")).replace("\\", "/")
-    OUTPUT_BASE  = os.getenv("OUTPUT_BASE", os.path.join(BASE_DIR, "output")).replace("\\", "/")
-    
-    # Tạo đường dẫn con bằng cách cộng chuỗi để tránh os.path.join dùng sai dấu gạch chéo trên Windows
+    @staticmethod
     def _join_gcs(base, sub):
         return f"{base.rstrip('/')}/{sub}"
 
-    INTERACTIONS_OUT = _join_gcs(OUTPUT_BASE, "all_interactions")
-    ITEM_NODES_OUT   = _join_gcs(OUTPUT_BASE, "item_nodes")
-    EVALUATION_OUT   = _join_gcs(OUTPUT_BASE, "evaluation_dataset")
-    # Trên Cloud, logs nên in ra stdout, không cần lưu file cục bộ
-    LOGS_DIR         = _join_gcs(OUTPUT_BASE, "logs")
+    @property
+    def RAW_DATA_DIR(self):
+        return self.get_raw_data_dir()
+
+    @property
+    def OUTPUT_BASE(self):
+        return self.get_output_base()
+
+    @property
+    def INTERACTIONS_OUT(self):
+        return self._join_gcs(self.get_output_base(), "all_interactions")
+    
+    @property
+    def ITEM_NODES_OUT(self):
+        return self._join_gcs(self.get_output_base(), "item_nodes")
+    
+    @property
+    def EVALUATION_OUT(self):
+        return self._join_gcs(self.get_output_base(), "evaluation_dataset")
+
+# Khởi tạo instance để các module khác dùng PathConfig.ITEM_NODES_OUT như cũ
+PathConfig = PathConfig()
 
 # ── 3. Tạo SparkSession ──────────────────────────────────────
 def create_spark_session(app_name: str = "AmazonETL") -> SparkSession:
