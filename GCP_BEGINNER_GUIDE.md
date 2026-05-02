@@ -580,6 +580,8 @@ gcloud dataproc clusters delete amazon-cluster --region=asia-southeast1 -q
 ```
 ### Khi chạy đến Phase 3 thì code dừng do quá tải, vì phải map 4tr item.
 
+Phải cấu hfinh lại với các worker MẠnh hơn
+
 Nên tôi code main2.py để chạy phase 3, -> hết.
 
 vẫn update lên github code, sau đó pull về rồi mới:
@@ -608,6 +610,18 @@ gcloud dataproc jobs submit pyspark main2.py \
     --properties="spark.shuffle.compress=true,spark.shuffle.spill.compress=true" \
     -- \
     --validate
+```
+```text
+1. spark.shuffle.compress=true (Nén dữ liệu khi truyền qua mạng)
+
+Shuffle là gì? Khi bạn thực hiện các lệnh như Join hay GroupBy, Spark phải gom dữ liệu từ máy Worker này chuyển sang máy Worker khác thông qua mạng nội bộ. Việc này gọi là Shuffle.
+Tác dụng: Khi bật =true, Spark sẽ nén (compress) dữ liệu lại cho nhỏ gọn trước khi gửi qua mạng.
+Lợi ích: Giảm đáng kể tình trạng nghẽn mạng (Network Bottleneck) giữa các máy ảo trên Cloud. Bù lại, CPU sẽ tốn một chút xíu sức lực để nén và giải nén.
+2. spark.shuffle.spill.compress=true (Nén dữ liệu khi xả xuống ổ cứng)
+
+Spill là gì? Như tôi vừa giải thích ở tin nhắn trước, khi RAM của Worker bị đầy trong lúc Join/Sort, Spark sẽ xả tạm dữ liệu (Spill) xuống ổ cứng 30GB.
+Tác dụng: Khi bật =true, Spark sẽ nén cái đống dữ liệu đó lại trước khi ghi xuống ổ cứng.
+Lợi ích: Tốc độ đọc/ghi của ổ cứng (Disk I/O) luôn là thứ chậm chạp nhất trong máy tính. Việc nén dữ liệu giúp dung lượng file xả xuống nhỏ hơn rất nhiều -> Ghi xuống đĩa nhanh hơn -> Đọc lên lại cũng nhanh hơn -> Tránh được lỗi nghẽn ổ cứng.
 ```
 
 ---
