@@ -55,8 +55,8 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
     logger.info(f"Dang thuc hien Mining cho {query_count} queries...")
     spark.conf.set("spark.sql.shuffle.partitions", "200")
     
-    # Lấy mẫu 2% VN items làm ứng viên
-    df_vn_reduced = df_vn.select("cand_id", "cand_asin", "cand_category").sample(False, 0.05, 42)
+    # Lấy toàn bộ VN items làm ứng viên (Vì VN chỉ có vài nghìn SP)
+    df_vn_reduced = df_vn.select("cand_id", "cand_asin", "cand_category")
     
     # Join Query với tập ứng viên (Broadcast Join)
     df_negatives = df_vn_reduced.join(F.broadcast(df_pos.select("query_id", "query_category").distinct()), 
@@ -83,9 +83,12 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
     # 6. Join Metadata cuối cùng
     # Lấy thêm cả text và specs của query
     df_amz_meta = df_amz.select("query_id", "query_name", "query_text", "query_category", "query_specs")
-    df_eval = df_grouped.join(F.broadcast(df_amz_meta), "query_id", "inner")
+    
+    # Ép Spark broadcast bảng df_grouped (bảng này rất nhỏ, chỉ vài chục/vài trăm dòng)
+    # Tuyệt đối KHÔNG broadcast df_amz_meta (4 triệu dòng)
+    df_eval = F.broadcast(df_grouped).join(df_amz_meta, "query_id", "inner")
 
-    # 7. Ghi dữ liệu (Dùng coalesce(1) để gom thành 1 file duy nhất cho gọn vì dữ liệu nhỏ)
+    # 7. Ghi dữ liệu
     logger.info(f"Dang ghi {query_count} queries xuong GCS...")
     df_eval.coalesce(1).write.mode("overwrite").parquet(output_path)
     
