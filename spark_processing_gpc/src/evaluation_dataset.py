@@ -50,11 +50,12 @@ def run_evaluation_generator(spark: SparkSession, item_nodes_path: str, output_p
         return 0
 
     # 3. Tạo Negative Candidates bằng phương pháp "Hard Negative Mining" (Join theo Category)
-    # Thay vì ngẫu nhiên, ta Join theo Category để Query "Laptop" sẽ gặp toàn đối thủ "Laptop" VN.
     logger.info("Dang thuc hien Hard Negative Mining theo Category...")
     
+    # Lấy danh sách các Query (Amazon) duy nhất đã tìm thấy cặp Positive
+    df_queries = df_pos.select("query_id", "query_name", "query_text", "query_category", "query_specs").distinct()
+    
     # Thực hiện Inner Join trên cột Category
-    # Spark xử lý phép Join này rất tốt vì nó có thể phân vùng (partition) theo Category
     df_negatives = df_queries.join(df_vn, df_queries.query_category == df_vn.cand_category, "inner") \
                              .filter(F.col("query_id") != F.col("cand_asin"))
     
