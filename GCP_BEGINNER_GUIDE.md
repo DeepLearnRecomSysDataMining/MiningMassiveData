@@ -596,7 +596,7 @@ source recsys_env/bin/activate
 cd ~/MiningMassiveData/spark_processing_gpc
 
 
-# Xóa file zip cũ (nếu có)
+# Xóa file zip cũ (nếu có) hoặc chả cần vì có xip tự replace file
 rm -f dependencies.zip
 
 zip -r dependencies.zip config src
