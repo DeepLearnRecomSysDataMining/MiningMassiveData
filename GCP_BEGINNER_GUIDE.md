@@ -581,6 +581,14 @@ Nên tôi code main2.py để chạy phase 3, -> hết.
 vẫn update lên github code, sau đó pull về rồi mới:
 
 ```bash
+export SPARK_ENV="cloud"
+export RAW_DATA_DIR="gs://mining-data-2/raw_data/amazon_gpc/"
+export OUTPUT_BASE="gs://mining-data-2/output/"
+# Dòng này để kích hoạt môi trường ảo Python
+source recsys_env/bin/activate
+```
+
+```bash
 cd ~/MiningMassiveData/spark_processing_gpc
 zip -r dependencies.zip config src
 
