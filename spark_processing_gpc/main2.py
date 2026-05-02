@@ -38,7 +38,7 @@ def main():
         t3 = time.time()
         n_eval = run_evaluation_generator( 
             spark, 
-            item_nodes_path = PathConfig.ITEM_NODES_OUT, 
+            items_path = PathConfig.ITEM_NODES_OUT, 
             output_path = PathConfig.EVALUATION_OUT
         )
         logger.info(f"V PHASE 3 DONE: {n_eval:,} evaluation queries | Time: {time.time()-t3:.1f}s")
@@ -46,7 +46,15 @@ def main():
         # BUOC 4: Tuy chon Validate
         if "--validate" in sys.argv:
             logger.info(">>> START PHASE 4: Data Validation")
+            # Kiem tra dau vao
             validate_item_nodes(spark, PathConfig.ITEM_NODES_OUT)
+            # Kiem tra dau ra cua Phase 3
+            if n_eval > 0:
+                logger.info(f"Kiem tra file Evaluation tai: {PathConfig.EVALUATION_OUT}")
+                df_check = spark.read.parquet(PathConfig.EVALUATION_OUT)
+                df_check.printSchema()
+                logger.info(f"So luong ban ghi thuc te: {df_check.count():,}")
+            
             logger.info("V PHASE 4 DONE: Validation complete.")
 
         # Tong ket
