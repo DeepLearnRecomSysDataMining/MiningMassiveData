@@ -90,7 +90,11 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
 
     # 7. Ghi dữ liệu
     logger.info(f"Dang ghi {query_count} queries xuong GCS...")
-    df_eval.coalesce(1).write.mode("overwrite").parquet(output_path)
+    
+    # SỬ DỤNG repartition(1) THAY VÌ coalesce(1)
+    # coalesce(1) là thủ phạm ép Spark dồn toàn bộ 50GB data vào 1 task duy nhất để đọc, gây OOM!
+    # repartition(1) sẽ cho phép Spark đọc và Join trên hàng trăm task song song, sau đó mới gom 11 kết quả cuối cùng lại.
+    df_eval.repartition(1).write.mode("overwrite").parquet(output_path)
     
     logger.info(f"V HOAN TAT: Da tao bo du lieu Evaluation tai {output_path}")
     return query_count
