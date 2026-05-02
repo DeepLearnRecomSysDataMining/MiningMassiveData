@@ -65,39 +65,50 @@ def main():
 
     # -- Khoi tao SparkSession --------------------------------
     spark = create_spark_session("AmazonETL_Pipeline")
+    
+    # Log cấu hình thực tế
+    sc = spark.sparkContext
+    logger.info(f"--- SPARK CONFIGURATION ---")
+    logger.info(f"Master: {sc.master}")
+    logger.info(f"Parallelism: {sc.defaultParallelism}")
+    logger.info(f"Shuffle Partitions: {spark.conf.get('spark.sql.shuffle.partitions')}")
+    logger.info(f"---------------------------")
 
     try:
         # BUOC 0: Schema Scanner
         if not args.skip_scan:
-            logger.info("Bat dau Schema Scanner...")
+            logger.info(">>> START PHASE 0: Schema Scanner")
             scan_all_files(spark, args.data_dir)
             if args.scan_only:
                 logger.info("--scan-only: dung sau khi scan xong.")
                 return
+        else:
+            logger.info(">>> SKIP PHASE 0: Schema Scanner")
 
         # BUOC 1: ETL Tuong tac (Giai doan 2.1)
-        logger.info("Bat dau ETL Interactions (Giai doan 2.1)...")
+        logger.info(">>> START PHASE 1: ETL Interactions (Giai doan 2.1)")
         t1 = time.time()
         n_interactions = run_etl_interactions( spark, data_dir = args.data_dir, output_dir = PathConfig.INTERACTIONS_OUT, )
-        logger.info(f"ETL 2.1 hoan tat: {n_interactions:,} tuong tac | " f"Thoi gian: {time.time()-t1:.1f}s")
+        logger.info(f"V PHASE 1 DONE: {n_interactions:,} interaction records | Time: {time.time()-t1:.1f}s")
 
         # BUOC 2: ETL San pham (Giai doan 2.2)
-        logger.info("Bat dau ETL Item Nodes (Giai doan 2.2)...")
+        logger.info(">>> START PHASE 2: ETL Item Nodes (Giai doan 2.2)")
         t2 = time.time()
         n_items = run_etl_item_nodes( spark, data_dir = args.data_dir, output_dir = PathConfig.ITEM_NODES_OUT, )
-        logger.info(f"ETL 2.2 hoan tat: {n_items:,} san pham | "f"Thoi gian: {time.time()-t2:.1f}s")
+        logger.info(f"V PHASE 2 DONE: {n_items:,} item records | Time: {time.time()-t2:.1f}s")
 
         # BUOC 3: Tao Evaluation Dataset
-        logger.info("Bat dau tao Evaluation Dataset...")
+        logger.info(">>> START PHASE 3: Evaluation Dataset Generation")
         t3 = time.time()
         n_eval = run_evaluation_generator( spark, item_nodes_path = PathConfig.ITEM_NODES_OUT, output_path = PathConfig.EVALUATION_OUT)
-        logger.info(f"Tao Evaluation Dataset hoan tat: {n_eval:,} bo | " f"Thoi gian: {time.time()-t3:.1f}s")
+        logger.info(f"V PHASE 3 DONE: {n_eval:,} evaluation pairs | Time: {time.time()-t3:.1f}s")
 
         # BUOC 4 (tuy chon): Validate output
         if args.validate:
-            logger.info("Dang validate output...")
+            logger.info(">>> START PHASE 4: Data Validation")
             validate_interactions(spark, PathConfig.INTERACTIONS_OUT)
             validate_item_nodes(spark,   PathConfig.ITEM_NODES_OUT)
+            logger.info("V PHASE 4 DONE: Validation complete.")
 
         # -- Tong ket -----------------------------------------
         elapsed = time.time() - t_start

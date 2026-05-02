@@ -27,7 +27,6 @@ def create_spark_session(app_name: str = "AmazonETL") -> SparkSession:
     builder = SparkSession.builder.appName(app_name)
 
     # ── Chế độ chạy ──────────────────────────────────────
-    # Chỉ đặt master("local[*]") nếu đang chạy local. Trên Cloud (YARN), bỏ qua dòng này.
     if os.getenv("SPARK_ENV") != "cloud":
         builder = builder.master("local[4]")
         builder = builder.config("spark.driver.memory", "4g")
@@ -36,6 +35,12 @@ def create_spark_session(app_name: str = "AmazonETL") -> SparkSession:
         # Tối ưu cho Cloud (GCS Connector)
         builder = builder.config("spark.hadoop.fs.gs.impl", "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem")
         builder = builder.config("spark.hadoop.google.cloud.auth.service.account.enable", "true")
+        
+        # Cấu hình tài nguyên cho n4-standard-2 (8GB RAM / 2 vCPU)
+        # Để lại ~2-3GB cho OS và overhead
+        builder = builder.config("spark.executor.memory", os.getenv("EXECUTOR_MEMORY", "5g"))
+        builder = builder.config("spark.executor.cores",  os.getenv("EXECUTOR_CORES", "2"))
+        builder = builder.config("spark.driver.memory",   os.getenv("DRIVER_MEMORY", "2g"))
 
     spark = (
         builder
@@ -44,8 +49,13 @@ def create_spark_session(app_name: str = "AmazonETL") -> SparkSession:
         .config("spark.memory.offHeap.size",     "1g")
 
         # ── Tối ưu shuffle và join ───────────────────────────
-        .config("spark.sql.shuffle.partitions",  os.getenv("SHUFFLE_PARTITIONS", "8"))
-        .config("spark.default.parallelism",     os.getenv("DEFAULT_PARALLELISM", "8"))
+        # Với 4 nodes x 2 cores = 8 slots. Partition nên là 16 hoặc 32.
+        .config("spark.sql.shuffle.partitions",  os.getenv("SHUFFLE_PARTITIONS", "16"))
+        .config("spark.default.parallelism",     os.getenv("DEFAULT_PARALLELISM", "16"))
+
+        # ── Xử lý lỗi cho Spot VM (Secondary Workers) ───────
+        .config("spark.task.maxFailures",        "8") 
+        .config("spark.speculation",            "true")
 
         # ── Đọc JSON Amazon (phân biệt hoa/thường) ───────────
         .config("spark.sql.caseSensitive",       "true")
