@@ -49,17 +49,20 @@ def run_evaluation_generator(spark: SparkSession, item_nodes_path: str, output_p
         logger.warning("Khong tim thay cap Amazon-VN nao khop ASIN!")
         return 0
 
-    # 3. Tạo Negative Candidates bằng phương pháp "Hard Negative Mining" (Join theo Category)
-    logger.info("Dang thuc hien Hard Negative Mining theo Category...")
+    # 3. Tạo Negative Candidates bằng phương pháp "Broadcast Hard Negative Mining"
+    logger.info("Dang thuc hien Broadcast Join (Loai bo Shuffle, chong tran dia)...")
     
-    # Lấy danh sách các Query (Amazon) duy nhất đã tìm thấy cặp Positive
-    # Sử dụng dropDuplicates thay vì distinct để tránh lỗi với kiểu dữ liệu MAP (query_specs)
+    # Lấy danh sách các Query (Amazon) duy nhất
     df_queries = df_pos.select("query_id", "query_name", "query_text", "query_category", "query_specs") \
                        .dropDuplicates(["query_id"])
     
-    # Thực hiện Inner Join trên cột Category
-    df_negatives = df_queries.join(df_vn, df_queries.query_category == df_vn.cand_category, "inner") \
-                             .filter(F.col("query_id") != F.col("cand_asin"))
+    # Kỹ thuật BROADCAST: Gửi danh sách Query tới từng máy Worker
+    # Cách này giúp loại bỏ hoàn toàn bước Shuffle dữ liệu VN (4 triệu dòng)
+    # Giúp Job chạy cực nhẹ và không bao giờ bị No space left on device.
+    df_negatives = df_vn.join(F.broadcast(df_queries), 
+                             df_vn.cand_category == df_queries.query_category, 
+                             "inner") \
+                        .filter(F.col("query_id") != F.col("cand_asin"))
     
     # Lấy 99 đối thủ "khó" nhất (cùng category) cho mỗi query
     window_spec = Window.partitionBy("query_id").orderBy(F.rand())
@@ -67,9 +70,6 @@ def run_evaluation_generator(spark: SparkSession, item_nodes_path: str, output_p
     df_negatives = df_negatives.withColumn("rank", F.row_number().over(window_spec)) \
                                .filter(F.col("rank") <= (num_candidates - 1)) \
                                .withColumn("label", F.lit(0))
-
-    # Trường hợp dự phòng: Nếu một số query không đủ 99 negatives từ cùng category (rất hiếm)
-    # Ta có thể bổ sung thêm random, nhưng với 4M items thì cùng category thường là đủ.
 
     # 4. Gộp Positive và Negative
     common_cols = ["query_id", "query_name", "query_text", "query_category", "query_specs", 
