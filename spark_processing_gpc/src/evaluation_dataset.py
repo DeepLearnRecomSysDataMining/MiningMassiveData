@@ -49,25 +49,32 @@ def run_evaluation_generator(spark: SparkSession, item_nodes_path: str, output_p
         logger.warning("Khong tim thay cap Amazon-VN nao khop ASIN!")
         return 0
 
-    # 3. Tạo Negative Candidates bằng phương pháp "Broadcast Hard Negative Mining"
-    logger.info("Dang thuc hien Broadcast Join (Loai bo Shuffle, chong tran dia)...")
+    # 3. Tạo Negative Candidates bằng phương pháp "Downsampled Broadcast Join"
+    logger.info("Dang thuc hien Downsampled Broadcast Join (Toi uu tuyet doi)...")
+    
+    # Ép Spark chia nhỏ các tác vụ ghi để không dồn cục bộ
+    spark.conf.set("spark.sql.shuffle.partitions", "1000")
+    
+    # Toi uu: Moi Category VN chi can lay khoang 2000 san pham ngau nhien lam ung vien
+    # Dieu nay giup giam thieu hang ty dong du lieu trung gian khi Join
+    window_vn = Window.partitionBy("cand_category").orderBy(F.rand())
+    df_vn_reduced = df_vn.withColumn("vn_rank", F.row_number().over(window_vn)) \
+                         .filter(F.col("vn_rank") <= 2000) \
+                         .drop("vn_rank")
     
     # Lấy danh sách các Query (Amazon) duy nhất
     df_queries = df_pos.select("query_id", "query_name", "query_text", "query_category", "query_specs") \
                        .dropDuplicates(["query_id"])
     
-    # Kỹ thuật BROADCAST: Gửi danh sách Query tới từng máy Worker
-    # Cách này giúp loại bỏ hoàn toàn bước Shuffle dữ liệu VN (4 triệu dòng)
-    # Giúp Job chạy cực nhẹ và không bao giờ bị No space left on device.
-    df_negatives = df_vn.join(F.broadcast(df_queries), 
-                             df_vn.cand_category == df_queries.query_category, 
-                             "inner") \
-                        .filter(F.col("query_id") != F.col("cand_asin"))
+    # Join Query Amazon voi tap ung vien VN da duoc rut gon
+    df_negatives = df_vn_reduced.join(F.broadcast(df_queries), 
+                                     df_vn_reduced.cand_category == df_queries.query_category, 
+                                     "inner") \
+                                .filter(F.col("query_id") != F.col("cand_asin"))
     
-    # Lấy 99 đối thủ "khó" nhất (cùng category) cho mỗi query
-    window_spec = Window.partitionBy("query_id").orderBy(F.rand())
-    
-    df_negatives = df_negatives.withColumn("rank", F.row_number().over(window_spec)) \
+    # Chon 99 negatives tu tap ung vien da thu hep
+    window_neg = Window.partitionBy("query_id").orderBy(F.rand())
+    df_negatives = df_negatives.withColumn("rank", F.row_number().over(window_neg)) \
                                .filter(F.col("rank") <= (num_candidates - 1)) \
                                .withColumn("label", F.lit(0))
 
