@@ -482,6 +482,17 @@ gcloud dataproc jobs submit pyspark main.py \
     --validate
 ```
 
+hoặc code mới nhất thì chỉ chạy
+
+```bash
+gcloud dataproc jobs submit pyspark main.py \
+    --cluster=amazon-cluster \
+    --region=asia-southeast1 \
+    --py-files=dependencies.zip \
+    -- \
+    --validate
+```
+
 **Mẹo nhỏ (Nếu bạn vẫn muốn dùng JSON Key):**
 Nếu bạn thực sự muốn bật tính năng tạo Key (dành cho các dự án sau này), bạn có thể tự tắt chính sách bảo mật này của Google:
 

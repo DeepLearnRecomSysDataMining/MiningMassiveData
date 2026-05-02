@@ -49,14 +49,14 @@ def create_spark_session(app_name: str = "AmazonETL_Cloud") -> SparkSession:
         .config("spark.hadoop.fs.gs.impl", "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem")
         .config("spark.hadoop.google.cloud.auth.service.account.enable", "true")
         
-        # Cấu hình tài nguyên cho cụm n4-standard-2
-        .config("spark.executor.memory", os.getenv("EXECUTOR_MEMORY", "5g"))
+        # Cấu hình tài nguyên cho cụm n4-standard-2 (8GB RAM)
+        .config("spark.executor.memory", os.getenv("EXECUTOR_MEMORY", "4g"))
         .config("spark.executor.cores",  os.getenv("EXECUTOR_CORES", "2"))
         .config("spark.driver.memory",   os.getenv("DRIVER_MEMORY", "2g"))
         
         # Bộ nhớ Off-heap và Tối ưu Shuffle
         .config("spark.memory.offHeap.enabled",  "true")
-        .config("spark.memory.offHeap.size",     "1g")
+        .config("spark.memory.offHeap.size",     "512m")
         .config("spark.sql.shuffle.partitions",  os.getenv("SHUFFLE_PARTITIONS", "16"))
         .config("spark.default.parallelism",     os.getenv("DEFAULT_PARALLELISM", "16"))
 
