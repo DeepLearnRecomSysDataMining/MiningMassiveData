@@ -27,12 +27,12 @@ def create_spark_session(app_name: str = "AmazonETL") -> SparkSession:
     builder = SparkSession.builder.appName(app_name)
 
     # ── Chế độ chạy ──────────────────────────────────────
-    if os.getenv("SPARK_ENV") != "cloud":
-        builder = builder.master("local[4]")
-        builder = builder.config("spark.driver.memory", "4g")
-        builder = builder.config("spark.executor.memory", "4g")
-    else:
-        # Tối ưu cho Cloud (GCS Connector)
+    env = os.getenv("SPARK_ENV", "local").lower()
+    print(f"[DEBUG] SPARK_ENV hien tai: {env}")
+    print(f"[DEBUG] RAW_DATA_DIR: {PathConfig.RAW_DATA_DIR}")
+
+    if env == "cloud":
+        # Tren Dataproc, Spark tu dong ket noi YARN, khong can set master
         builder = builder.config("spark.hadoop.fs.gs.impl", "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem")
         builder = builder.config("spark.hadoop.google.cloud.auth.service.account.enable", "true")
         

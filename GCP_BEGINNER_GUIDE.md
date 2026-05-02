@@ -64,9 +64,9 @@ export OUTPUT_BASE="gs://mining-data-2/output/"
 Trong cửa sổ **SSH**, thực hiện:
 
 ```bash
-# 1. Cài đặt Python và Thư viện GCP
+# 1. Cài đặt Python và Thư viện hệ thống
 sudo apt-get update
-sudo apt-get install git python3-pip -y
+sudo apt-get install git python3-pip zip -y
 pip3 install gdown google-cloud-storage
 
 # 2. Clone code
@@ -310,16 +310,169 @@ Bấm SUBMIT.
 ### Cách 2: Làm bằng code qua SSH (Được khuyên dùng)
 Mở cửa sổ SSH của `coordinator-vm`, đứng tại thư mục project `MiningMassiveData`, chạy các bước sau:
 
+```bash
+git pull origin main
+```
+
+```bash
+# Cập nhật danh sách gói phần mềm
+sudo apt-get update
+
+# Cài đặt công cụ zip (thêm sudo và -y để tự động đồng ý)
+sudo apt-get install zip -y
+```
+
 1. **Chuẩn bị file nén chứa code phụ trợ**:
 Lệnh này giúp Spark phân phối các thư mục `config` và `src` đến tất cả các máy Workers trong cụm.
 ```bash
+cd ~/MiningMassiveData/spark_processing_gpc
+zip -r dependencies.zip config src
+```
+
+**Chưa pull origin main** về mà đã zip
+thực hiện lại quy trình này là xong. Lệnh zip sẽ tự động ghi đè lên file cũ với code mới nhất.
+
+Bạn hãy chạy các lệnh sau theo thứ tự:
+```bash
+# 1. Quay về thư mục gốc của project
+cd ~/MiningMassiveData
+
+# 2. Cập nhật code mới nhất từ GitHub
+git pull origin main
+
+# 3. Vào thư mục xử lý Spark
 cd spark_processing_gpc
+
+# 4. Nén lại code mới (Lệnh này sẽ ghi đè dependencies.zip cũ)
 zip -r dependencies.zip config src
 ```
 
 2. **Bắn job sang cụm Dataproc**:
 Thay thế `gs://mining-data-2/` bằng tên bucket của bạn nếu khác.
+
 ```bash
+gcloud dataproc jobs submit pyspark main.py \
+    --cluster=amazon-cluster \
+    --region=asia-southeast1 \
+    --py-files=dependencies.zip \
+    --properties="spark.driverEnv.SPARK_ENV=cloud,spark.executorEnv.SPARK_ENV=cloud,spark.driverEnv.RAW_DATA_DIR=gs://mining-data-2/raw_data/amazon_gpc/,spark.executorEnv.RAW_DATA_DIR=gs://mining-data-2/raw_data/amazon_gpc/,spark.driverEnv.OUTPUT_BASE=gs://mining-data-2/output/,spark.executorEnv.OUTPUT_BASE=gs://mining-data-2/output/" \
+    -- \
+    --validate
+```
+
+*Giải thích các tham số:*
+- `--py-files`: Gửi kèm các module `src` và `config`.
+- `--properties`: 
+    - `spark.driverEnv`: Truyền biến vào code Python chạy trên máy Master.
+    - `spark.executorEnv`: Truyền biến vào code Python chạy trên các máy Workers.
+- `--`: Sau dấu này là các tham số truyền trực tiếp vào hàm `main()` của Python (ví dụ: `--validate`, `--skip-scan`).
+
+**Ta sẽ gặp lỗi**:
+```bash
+(recsys_env) cong23122004_gmail_com@coordinator-vm:~/MiningMassiveData/spark_processing_gpc$ ....
+> -- \
+> --validate
+ERROR: (gcloud.dataproc.jobs.submit.pyspark) PERMISSION_DENIED: Request had insufficient authentication scopes. This command is authenticated as 832856245299-compute@developer.gserviceaccount.com which is the active account specified by the [core/account] property.
+- '@type': type.googleapis.com/google.rpc.ErrorInfo
+  domain: googleapis.com
+  metadata:
+    method: google.cloud.dataproc.v1.ClusterController.GetCluster
+    service: dataproc.googleapis.com
+  reason: ACCESS_TOKEN_SCOPE_INSUFFICIENT
+
+If you are in a compute engine VM, it is likely that the specified scopes during VM creation are not enough to run this command.
+See https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam for more information about access scopes.
+See https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#changeserviceaccountandscopes for how to update access scopes of the VM.
+
+```
+
+**Lưu ý quan trọng về Quyền hạn (Permissions):**
+Nếu bạn gặp lỗi `PERMISSION_DENIED: Request had insufficient authentication scopes`, đó là do máy ảo bị hạn chế quyền truy cập API. 
+
+**Cách 1: Xác thực bằng luồng Remote (Khuyên dùng - Không cần Restart VM)**
+1. Tại cửa sổ SSH, nhấn **`Ctrl + C`** để thoát mọi lệnh đang chờ (nếu có).
+2. Chạy lệnh:
+   ```bash
+   gcloud auth login --no-browser
+   ```
+3. Copy link hiện ra dán vào trình duyệt máy tính cá nhân.
+4. Sau khi đăng nhập và Allow, trình duyệt sẽ **không hiện mã code** mà hiện ra một lệnh bắt đầu bằng: `gcloud auth login --remote-bootstrap="..."`.
+5. Hãy copy **toàn bộ lệnh đó**, quay lại cửa sổ SSH và dán vào, sau đó nhấn **Enter**.
+6. Chạy lại lệnh `gcloud dataproc jobs submit...` ở trên.
+
+*Lưu ý: Nếu bạn gặp lỗi 400 (invalid_request) khi mở link, hãy đảm bảo bạn đã copy đủ toàn bộ link dài của Google, không thiếu ký tự nào ở cuối.*
+
+**Cách 2: Khắc phục triệt để (Cấp quyền thẳng cho máy ảo)**
+(Cách này yêu cầu phải STOP máy ảo, nhưng sau đó bạn không bao giờ phải login nữa).
+1. Dừng máy ảo `coordinator-vm`.
+2. Nhấn nút **Edit**.
+3. Tìm mục **Cloud API access scopes hoặc Access scopes**.
+4. Chọn **Allow full access to all Cloud APIs**.
+5. Lưu lại và Start máy ảo.
+6. Khi chjay lại vẫn bị lỗi thì chạy:
+```bash
+curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/scopes
+```
+* Nếu kết quả hiện ra có dòng: https://www.googleapis.com/auth/cloud-platform -> Nghĩa là máy ảo đã có quyền Full, lỗi nằm ở IAM.
+* Nếu kết quả chỉ có dòng: ...logging.write, ...monitoring.write -> Nghĩa là bước chỉnh Scope của bạn chưa được lưu thành công.
+
+**Bước 2: Kiểm tra quyền IAM (Rất quan trọng)**
+Dù máy ảo được phép "gọi" đến Dataproc, nhưng nếu cái địa chỉ Email Service Account của bạn không có tên trong danh sách "Quản lý", nó cũng sẽ bị chặn.
+
+* Vào giao diện GCP -> Tìm "IAM & Admin".
+* Tìm dòng có email: 832856245299-compute@developer.gserviceaccount.com.
+* Nhấn nút Edit (hình cây bút) ở cuối dòng đó.
+* Nhấn Add another role.
+* Tìm và thêm quyền: Dataproc Editor.
+* Nhấn Save.
+
+**Tại sao đã sửa Bước 1 & 2 vẫn bị lỗi?**
+Nếu bạn chạy `gcloud auth list` thấy tài khoản máy ảo đã Active (`*`) mà vẫn báo lỗi `ACCESS_TOKEN_SCOPE_INSUFFICIENT`, đó là do các lần `auth login` trước đó đã tạo ra "Token rác" bị cache trong máy. `gcloud` sẽ dùng cái Token lỗi này thay vì dùng quyền mới bạn vừa cấp.
+
+**Bước 3: Phương án "Chốt hạ" - Dùng JSON Key (Khuyên dùng khi bị lỗi quyền lằng nhằng)**
+Cách này sẽ tạo ra một "chìa khóa" độc lập, giúp bạn vượt qua mọi giới hạn của máy ảo và Token cũ. Đây là cách chắc chắn thành công 100%.
+
+1. **Tạo Key trên Web**: 
+   - Vào **IAM & Admin** -> **Service Accounts**.
+   - Nhấn vào email `...-compute@developer...`.
+   - Chọn tab **KEYS** -> **ADD KEY** -> **Create new key** -> Chọn **JSON**.
+   - File `.json` sẽ tải về máy tính bạn.
+2. **Upload lên máy ảo**:
+   - Ở cửa sổ SSH, nhấn **UPLOAD FILE** (góc trên bên phải) và chọn file JSON vừa tải.
+3. **Kích hoạt quyền Admin**:
+   - Chạy lệnh sau (thay `ten-file.json` bằng tên file bạn vừa upload):
+   ```bash
+   gcloud auth activate-service-account --key-file=ten-file.json
+   ```
+4. **Chạy Job**: Bây giờ bạn có thể submit job mà không bao giờ gặp lỗi Scope nữa.
+
+**Bước 3 vẫn không được khi tạo Key -> ... _> JSON bị lỗi**
+xảy ra vì Google vừa cập nhật chính sách bảo mật mặc định cho các tài khoản mới (Organization Policy), tự động chặn việc tạo file JSON Key để tránh rò rỉ thông tin.
+
+Vì bạn không tạo được Key, chúng ta hãy tập trung vào việc "Quét sạch máy ảo" để nó nhận được quyền "Full Access" mà bạn đã chỉnh ở Bước 1.
+
+Bước 1: Quét sạch cấu hình lỗi trên máy ảo
+Bạn hãy chạy lệnh này để xóa bỏ toàn bộ những Token "rác" đang gây lỗi Scope:
+
+```bash
+# Xóa sạch cấu hình gcloud cũ
+rm -rf ~/.config/gcloud
+# Thiết lập lại Project ID cho máy ảo
+gcloud config set project mining-data-494820
+```
+Bước 2: Thử chạy lại Job
+Bây giờ, máy ảo sẽ bị buộc phải lấy một "Token mới" trực tiếp từ hệ thống (với quyền Full Access mà bạn đã chỉnh). Bạn hãy chạy lệnh submit job:
+
+```bash
+source recsys_env/bin/activate
+export SPARK_ENV="cloud"
+export RAW_DATA_DIR="gs://mining-data-2/raw_data/amazon_gpc/"
+export OUTPUT_BASE="gs://mining-data-2/output/"
+```
+
+```bash
+cd ~/MiningMassiveData/spark_processing_gpc
+# Nhớ chạy export 3 biến môi trường trước nếu chưa chạy
 gcloud dataproc jobs submit pyspark main.py \
     --cluster=amazon-cluster \
     --region=asia-southeast1 \
@@ -328,10 +481,66 @@ gcloud dataproc jobs submit pyspark main.py \
     -- \
     --validate
 ```
-*Giải thích các tham số:*
-- `--py-files`: Gửi kèm các module `src` và `config`.
-- `--properties`: Truyền biến môi trường để code Python bên trong các Worker nhận diện được GCS.
-- `--`: Sau dấu này là các tham số truyền trực tiếp vào hàm `main()` của Python (ví dụ: `--validate`, `--skip-scan`).
+
+**Mẹo nhỏ (Nếu bạn vẫn muốn dùng JSON Key):**
+Nếu bạn thực sự muốn bật tính năng tạo Key (dành cho các dự án sau này), bạn có thể tự tắt chính sách bảo mật này của Google:
+
+- Tìm kiếm "Organization Policies" trên thanh tìm kiếm của GCP.
+- Tìm chính sách tên là: iam.disableServiceAccountKeyCreation.
+- Nhấn nút Manage Policy -> Nhấn Override.
+- Ở mục Rule, chọn Off.
+- Nhấn Save. (Đợi 1-2 phút là bạn có thể tạo Key như hướng dẫn Bước 3).
+
+Nhưng tôi khuyên bạn nên thử Bước 1 (Xóa cache) trước, vì máy ảo của bạn hiện đã có quyền vạn năng rồi, chỉ là nó đang bị "kẹt" Token cũ thôi!
+
+Bạn có thể dùng bất kỳ cửa sổ SSH nào cũng được (cửa sổ hiện tại hoặc mở cái mới trên giao diện Cloud Console đều được), vì tất cả đều truy cập vào cùng một máy ảo coordinator-vm.
+
+** Quy trình tốt nhất bây giờ:**
+
+- Dùng ngay cửa sổ SSH hiện tại. của VM instance (coordinator-vm).
+- Chạy lệnh: rm -rf ~/.config/gcloud (Để xóa hết cái Token đang bị lỗi Scope).
+- Chạy lệnh: gcloud config set project mining-data-494820 (Để máy nhận diện lại Project).
+- Chạy lệnh Submit Job.
+- Việc xóa thư mục .config/gcloud giống như việc bạn "reset factory" cho trình điều khiển của máy ảo. Sau đó, nó sẽ tự động dùng quyền "Full Access" mà bạn đã chỉnh trong phần Edit VM để làm việc.
+
+Bạn thử chạy lệnh rm ngay đi, tôi tin là nó sẽ giải quyết được vấn đề!
+---
+
+
+**Lưu ý quan trọng: Biến môi trường (Environment Variables)**
+
+Sau khi SSH vào `coordinator-vm` (bằng bất kỳ cách nào), bạn **bắt buộc phải** chạy lại 3 lệnh `export` ở đầu cửa sổ Terminal để khởi tạo các biến môi trường. Nếu không có các biến này, code Spark sẽ không tìm thấy đường dẫn GCS và báo lỗi `FileNotFound`.
+
+```bash
+export SPARK_ENV="cloud"
+export RAW_DATA_DIR="gs://mining-data-2/raw_data/amazon_gpc/"
+export OUTPUT_BASE="gs://mining-data-2/output/"
+# Dòng này để kích hoạt môi trường ảo Python
+source recsys_env/bin/activate
+```
+
+3. **Kết quả**
+```bash
+cong23122004_gmail_com@coordinator-vm:~$ source recsys_env/bin/activate
+(recsys_env) cong23122004_gmail_com@coordinator-vm:~$ export SPARK_ENV="cloud"
+(recsys_env) cong23122004_gmail_com@coordinator-vm:~$ export RAW_DATA_DIR="gs://mining-data-2/raw_data/amazon_gpc/"
+(recsys_env) cong23122004_gmail_com@coordinator-vm:~$ export OUTPUT_BASE="gs://mining-data-2/output/"
+(recsys_env) cong23122004_gmail_com@coordinator-vm:~$ cd ~/MiningMassiveData/spark_processing_gpc
+(recsys_env) cong23122004_gmail_com@coordinator-vm:~/MiningMassiveData/spark_processing_gpc$ gcloud dataproc jobs submit pyspark main.py \
+    --cluster=amazon-cluster \
+    --region=asia-southeast1 \
+    --py-files=dependencies.zip \
+    --properties="spark.executorEnv.SPARK_ENV=cloud,spark.yarn.appMasterEnv.SPARK_ENV=cloud,spark.executorEnv.RAW_DATA_DIR=gs://mining-data-2/raw_data/amazon_gpc/,spark.executorEnv.OUTPUT_BASE=gs://mining-data-2/output/" \
+    -- \
+    --validate
+Job [dc2bad9e2d844914bd38c7aa75d80c7c] submitted.
+Waiting for job output...
+
++----------------------------------------------------------+
+|       AMAZON x VN  -  BIG DATA ETL PIPELINE             |
+|       PySpark  .  Phan tan song song  .  Parquet         |
++----------------------------------------------------------+
+```
 
 3. **Theo dõi tiến trình**:
 - Màn hình SSH sẽ hiển thị log trực tiếp.
