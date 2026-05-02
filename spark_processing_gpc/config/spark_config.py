@@ -49,16 +49,16 @@ def create_spark_session(app_name: str = "AmazonETL_Cloud") -> SparkSession:
         .config("spark.hadoop.fs.gs.impl", "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem")
         .config("spark.hadoop.google.cloud.auth.service.account.enable", "true")
         
-        # Cấu hình tài nguyên cho cụm n4-standard-2 (8GB RAM)
-        .config("spark.executor.memory", os.getenv("EXECUTOR_MEMORY", "4g"))
-        .config("spark.executor.cores",  os.getenv("EXECUTOR_CORES", "2"))
-        .config("spark.driver.memory",   os.getenv("DRIVER_MEMORY", "2g"))
+        # Cấu hình tài nguyên: Đã xóa các giới hạn cứng (như 4g)
+        # Để cho YARN (Dataproc) tự động phân bổ toàn bộ RAM thực tế của máy ảo (VD: 16GB)
         
-        # Bộ nhớ Off-heap và Tối ưu Shuffle
+        # Bộ nhớ Off-heap (giữ lại 1 phần nhỏ để tránh YARN kill vì tràn RAM vật lý)
         .config("spark.memory.offHeap.enabled",  "true")
-        .config("spark.memory.offHeap.size",     "512m")
-        .config("spark.sql.shuffle.partitions",  os.getenv("SHUFFLE_PARTITIONS", "16"))
-        .config("spark.default.parallelism",     os.getenv("DEFAULT_PARALLELISM", "16"))
+        .config("spark.memory.offHeap.size",     "1g")
+        
+        # Tăng phân mảnh shuffle để tránh các cục block quá to (làm nghẽn RAM)
+        .config("spark.sql.shuffle.partitions",  os.getenv("SHUFFLE_PARTITIONS", "200"))
+        .config("spark.default.parallelism",     os.getenv("DEFAULT_PARALLELISM", "200"))
 
         # Xử lý lỗi cho Spot VM (Secondary Workers)
         .config("spark.task.maxFailures",        "8") 
