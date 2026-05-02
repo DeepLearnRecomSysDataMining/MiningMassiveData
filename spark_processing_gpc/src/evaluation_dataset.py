@@ -49,32 +49,32 @@ def run_evaluation_generator(spark: SparkSession, item_nodes_path: str, output_p
         logger.warning("Khong tim thay cap Amazon-VN nao khop ASIN!")
         return 0
 
-    # 3. Tạo Negative Candidates
-    # Để tối ưu, ta không Cross Join toàn bộ (4k x 4k = 16M). 
-    # Ta sẽ lấy ngẫu nhiên một tập các ứng viên VN cho mỗi Query.
+    # 3. Tạo Negative Candidates bằng phương pháp "Hard Negative Mining" (Join theo Category)
+    # Thay vì ngẫu nhiên, ta Join theo Category để Query "Laptop" sẽ gặp toàn đối thủ "Laptop" VN.
+    logger.info("Dang thuc hien Hard Negative Mining theo Category...")
     
-    # Lấy 150 ứng viên ngẫu nhiên cho mỗi query để lọc lấy 99 cái
-    # Dùng hàm rand() và Window để chọn ngẫu nhiên
+    # Thực hiện Inner Join trên cột Category
+    # Spark xử lý phép Join này rất tốt vì nó có thể phân vùng (partition) theo Category
+    df_negatives = df_queries.join(df_vn, df_queries.query_category == df_vn.cand_category, "inner") \
+                             .filter(F.col("query_id") != F.col("cand_asin"))
+    
+    # Lấy 99 đối thủ "khó" nhất (cùng category) cho mỗi query
     window_spec = Window.partitionBy("query_id").orderBy(F.rand())
     
-    # Join Query với toàn bộ VN Catalog nhưng loại bỏ cặp Positive
-    df_all_pairs = df_amz.join(df_vn, df_amz.query_id != df_vn.cand_asin, "inner")
-    
-    # Phân loại Negative: Hard (cùng category) và Easy (khác category)
-    df_negatives = df_all_pairs.withColumn("is_hard", F.when(F.col("query_category") == F.col("cand_category"), 1).otherwise(0)) \
-                               .withColumn("rank", F.row_number().over(window_spec)) \
+    df_negatives = df_negatives.withColumn("rank", F.row_number().over(window_spec)) \
                                .filter(F.col("rank") <= (num_candidates - 1)) \
                                .withColumn("label", F.lit(0))
 
+    # Trường hợp dự phòng: Nếu một số query không đủ 99 negatives từ cùng category (rất hiếm)
+    # Ta có thể bổ sung thêm random, nhưng với 4M items thì cùng category thường là đủ.
+
     # 4. Gộp Positive và Negative
-    # Đưa về cùng schema
     common_cols = ["query_id", "query_name", "query_text", "query_category", "query_specs", 
                    "cand_id", "cand_name", "cand_text", "cand_category", "cand_specs", "label"]
     
     df_final = df_pos.select(*common_cols).unionByName(df_negatives.select(*common_cols))
 
-    # 5. Group lại thành dạng 1 dòng cho mỗi query (để AI Model dễ đọc)
-    # query_specs là kiểu Map nên không groupBy được, ta dùng first() trong agg
+    # 5. Group lại thành dạng 1 dòng cho mỗi query
     df_eval = df_final.groupBy("query_id", "query_name", "query_text", "query_category").agg(
         F.first("query_specs").alias("query_specs"),
         F.collect_list("cand_id").alias("candidate_ids"),
@@ -84,8 +84,9 @@ def run_evaluation_generator(spark: SparkSession, item_nodes_path: str, output_p
         F.collect_list("label").alias("labels")
     )
 
-    # 6. Lưu xuống Parquet (Native hoàn toàn)
+    # 6. Lưu xuống Parquet
+    logger.info(f"Dang ghi {query_count} queries (Hard Negatives) xuong GCS...")
     df_eval.write.mode("overwrite").parquet(output_path)
     
-    logger.info(f"Da tao bo kiem thu Native cho {query_count} queries.")
+    logger.info(f"V HOAN TAT: Da tao bo kiem thu Hard Negatives cho {query_count} queries.")
     return query_count
