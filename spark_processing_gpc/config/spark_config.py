@@ -2,96 +2,70 @@ import os
 from pathlib import Path
 from pyspark.sql import SparkSession
 
-# ── 2. Hằng số đường dẫn – hỗ trợ override từ biến môi trường ──────────
+# ── 1. Cấu hình đường dẫn Cloud-Only ───────────────────────────
 class PathConfig:
-    @classmethod
-    def get_raw_data_dir(cls):
-        base_dir = Path(__file__).resolve().parent.parent.parent
-        val = os.getenv("RAW_DATA_DIR", os.path.join(base_dir, "data_small"))
-        return val.replace("\\", "/")
+    @staticmethod
+    def _get_env_or_default(key, default):
+        return os.getenv(key, default).replace("\\", "/")
 
-    @classmethod
-    def get_output_base(cls):
-        base_dir = Path(__file__).resolve().parent.parent.parent
-        val = os.getenv("OUTPUT_BASE", os.path.join(base_dir, "output"))
-        return val.replace("\\", "/")
-    
+    @property
+    def RAW_DATA_DIR(self):
+        return self._get_env_or_default("RAW_DATA_DIR", "gs://mining-data-2/raw_data/amazon_gpc/")
+
+    @property
+    def OUTPUT_BASE(self):
+        return self._get_env_or_default("OUTPUT_BASE", "gs://mining-data-2/output/")
+
     @staticmethod
     def _join_gcs(base, sub):
         return f"{base.rstrip('/')}/{sub}"
 
     @property
-    def RAW_DATA_DIR(self):
-        return self.get_raw_data_dir()
-
-    @property
-    def OUTPUT_BASE(self):
-        return self.get_output_base()
-
-    @property
     def INTERACTIONS_OUT(self):
-        return self._join_gcs(self.get_output_base(), "all_interactions")
+        return self._join_gcs(self.OUTPUT_BASE, "all_interactions")
     
     @property
     def ITEM_NODES_OUT(self):
-        return self._join_gcs(self.get_output_base(), "item_nodes")
+        return self._join_gcs(self.OUTPUT_BASE, "item_nodes")
     
     @property
     def EVALUATION_OUT(self):
-        return self._join_gcs(self.get_output_base(), "evaluation_dataset")
+        return self._join_gcs(self.OUTPUT_BASE, "evaluation_dataset")
 
     @property
     def LOGS_DIR(self):
-        return self._join_gcs(self.get_output_base(), "logs")
+        return self._join_gcs(self.OUTPUT_BASE, "logs")
 
-# Khởi tạo instance để các module khác dùng PathConfig.ITEM_NODES_OUT như cũ
+# Khởi tạo instance
 PathConfig = PathConfig()
 
-# ── 3. Tạo SparkSession ──────────────────────────────────────
-def create_spark_session(app_name: str = "AmazonETL") -> SparkSession:
-    """ Tạo SparkSession linh hoạt cho cả Local và Cloud."""
-    builder = SparkSession.builder.appName(app_name)
-
-    # ── Chế độ chạy ──────────────────────────────────────
-    env = os.getenv("SPARK_ENV", "local").lower()
-    print(f"[DEBUG] SPARK_ENV hien tai: {env}")
-    print(f"[DEBUG] RAW_DATA_DIR: {PathConfig.RAW_DATA_DIR}")
-
-    if env == "cloud":
-        # Tren Dataproc, Spark tu dong ket noi YARN, khong can set master
-        builder = builder.config("spark.hadoop.fs.gs.impl", "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem")
-        builder = builder.config("spark.hadoop.google.cloud.auth.service.account.enable", "true")
+# ── 2. Tạo SparkSession tối ưu cho Dataproc ────────────────────
+def create_spark_session(app_name: str = "AmazonETL_Cloud") -> SparkSession:
+    """Tạo SparkSession mặc định chạy trên cụm Dataproc (YARN)."""
+    
+    builder = (SparkSession.builder
+        .appName(app_name)
+        # Tối ưu cho GCS Connector (Bắt buộc để đọc gs://)
+        .config("spark.hadoop.fs.gs.impl", "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem")
+        .config("spark.hadoop.google.cloud.auth.service.account.enable", "true")
         
-        # Cấu hình tài nguyên cho n4-standard-2 (8GB RAM / 2 vCPU)
-        # Để lại ~2-3GB cho OS và overhead
-        builder = builder.config("spark.executor.memory", os.getenv("EXECUTOR_MEMORY", "5g"))
-        builder = builder.config("spark.executor.cores",  os.getenv("EXECUTOR_CORES", "2"))
-        builder = builder.config("spark.driver.memory",   os.getenv("DRIVER_MEMORY", "2g"))
-
-    spark = (
-        builder
-        # ── Bộ nhớ Off-heap ──────────────────────────────────
+        # Cấu hình tài nguyên cho cụm n4-standard-2
+        .config("spark.executor.memory", os.getenv("EXECUTOR_MEMORY", "5g"))
+        .config("spark.executor.cores",  os.getenv("EXECUTOR_CORES", "2"))
+        .config("spark.driver.memory",   os.getenv("DRIVER_MEMORY", "2g"))
+        
+        # Bộ nhớ Off-heap và Tối ưu Shuffle
         .config("spark.memory.offHeap.enabled",  "true")
         .config("spark.memory.offHeap.size",     "1g")
-
-        # ── Tối ưu shuffle và join ───────────────────────────
-        # Với 4 nodes x 2 cores = 8 slots. Partition nên là 16 hoặc 32.
         .config("spark.sql.shuffle.partitions",  os.getenv("SHUFFLE_PARTITIONS", "16"))
         .config("spark.default.parallelism",     os.getenv("DEFAULT_PARALLELISM", "16"))
 
-        # ── Xử lý lỗi cho Spot VM (Secondary Workers) ───────
+        # Xử lý lỗi cho Spot VM (Secondary Workers)
         .config("spark.task.maxFailures",        "8") 
         .config("spark.speculation",            "true")
-
-        # ── Đọc JSON Amazon (phân biệt hoa/thường) ───────────
-        .config("spark.sql.caseSensitive",       "true")
         
-        .getOrCreate()
+        # Đọc JSON Amazon (phân biệt hoa/thường)
+        .config("spark.sql.caseSensitive",       "true")
     )
 
-    spark.sparkContext.setLogLevel("WARN")
-
-    print(f"[SparkSession] '{app_name}' khoi dong thanh cong!")
-    print(f"  Master  : {spark.sparkContext.master}")
-    print(f"  App ID  : {spark.sparkContext.applicationId}")
-    return spark
+    return builder.getOrCreate()
