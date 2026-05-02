@@ -141,28 +141,219 @@ Do đó, trước khi muốn chạy file `download_data.py`, bạn chỉ cần g
 
 ---
 
-## Bước 6: Tạo cụm Spark (Dataproc) để xử lý ETL
-1. Tìm kiếm "Dataproc" -> **Create Cluster** -> **Cluster on Compute Engine**.
-2. **Name**: `spark-cluster`.
-3. **Region**: `us-central1` hoặc mặc định đặt `asia...`.
-4. **Master node**: `e2-standard-4` (4 vCPU, 16GB RAM).
-5. **Worker nodes**: Chọn 2 máy `e2-standard-4`.
-6. Nhấn **Create**.
+## Bước 6: Tạo cụm Spark (Dataproc) để xử lý ETL - 2026: là Managed Apache Spark
+
+### Cách 1: dùng UI GPC để làm (cách này khá nhanh và dễ)
+1. Tìm kiếm "Dataproc"(nay là Managed Apache Spark) -> chọn -> giao diện Managed Apache Spark
+2. Side Bar bên trái , ấn **Clusters** -> **Create Cluster** -> giao diện **Cluster on Compute Engine**.
+2. **Name**: `amazon-cluster`.
+3. **Region**: `us-central1` hoặc mặc định đặt `asia-southeast1`.
+4. **Cluster type**: **Standard** (1 master, N workers). Ở dưới thì mặc định OS là Debian nhưng có thể đổi sang Ubuntu 22.
+5. **Kéo xuống, mở rộng để cấu hình Master & Worker (tránh tốn RAM, CPU, GB tốn nhiều tiền)**: 
+  - **Master**: Đưa về N4-Standard-2 (vCPU:2, RAM:8GB)
+  - **Worker**: đưa về N4-Standard-2 (vCPU:2, RAM:8GB)
+  - **Number of workers**: Đưa về 2, hoặc 3, 4 tùy bạn, ở ví dụ này đưa về 2 cho tiết kiệm 
+  - **Disksize**: Data ở GCS tổng 50GB nên chọn mỗi cái node khoảng 50Gb là đủ.
+
+| Tiêu chí                         | 2 Node Worker                | 3 Node Worker                | 4 Node Worker                |
+|----------------------------------|------------------------------|------------------------------|------------------------------|
+| Tổng số Node (Gồm 1 Master)     | 3 Máy                        | 4 Máy                        | 5 Máy                        |
+| Tổng vCPU & RAM toàn cụm        | 6 vCPU / 24GB RAM            | 8 vCPU / 32GB RAM            | 10 vCPU / 40GB RAM           |
+| Cấu hình Ổ cứng                 | Master: 50GB<br>Worker: 50GB/máy | Master: 50GB<br>Worker: 50GB/máy | Master: 50GB<br>Worker: 50GB/máy |
+| Sức tải (Mỗi Worker gánh)       | ~25GB dữ liệu                | ~16.6GB dữ liệu              | ~12.5GB dữ liệu              |
+| Hiệu năng & Thời gian (Ước tính)| Chậm nhất.<br>45 - 60 phút   | Tốc độ tốt.<br>30 - 40 phút  | Nhanh nhất.<br>20 - 25 phút  |
+| Giới hạn Quota GCP              | An toàn 100%                 | Chạm trần (8 vCPU).<br>Có thể bị từ chối | Chắc chắn lỗi (vượt quota)   |
+| Chi phí ước tính ($/giờ)        | ~$0.36 / giờ                | ~$0.48 / giờ                | ~$0.60 / giờ                |
+
+> Với 50GB dữ liệu jsonl
+
+mỗi node worker cần Disk từ 1,5 -> 3 lần GB mà dữ liệu nó xử lý, nên
+
+| Worker | Data / node | Disk đề xuất |
+| ------ | ----------- | ------------ |
+| 2      | 25GB        | 40–50GB      |
+| 3      | 16.6GB      | 30–40GB      |
+| 4      | 12.5GB      | 25–30GB      |
+
+### Cách 2: Làm bằng code qua SSH
+Mở cửa sổ SSH của `coordinator-vm`, copy toàn bộ khối này dán vào và Enter:
+```bash
+gcloud dataproc clusters create amazon-cluster \
+    --region=asia-southeast1 \
+    --master-machine-type=n4-standard-2 \
+    --master-boot-disk-size=50GB \
+    --num-workers=2 \
+    --worker-machine-type=n4-standard-2 \
+    --worker-boot-disk-size=50GB \
+    --image-version=2.1-debian11 (hoặc chọn Ubuntu 22)
+```
+
+### Chú ý: Cách để giảm chi phí: 
+
+#### 🚀 Hướng dẫn tạo Dataproc Cluster tối ưu (Spark ETL ~50GB)
+
+#### 🎯 Mục tiêu
+- Tối ưu **chi phí / hiệu năng / độ ổn định**
+- Sử dụng **Spot VM (Secondary workers)**
+- Đảm bảo chạy ETL ~50GB ổn định
+
 ---
 
-## Bước 7: Tạo cụm Spark (Dataproc) và Chạy ETL
-1. Tạo cụm Dataproc (Master: 1 máy, Worker: 2 máy).
-2. Chạy lệnh Submit Job chuyên nghiệp:
+#### 🧱 Tổng quan kiến trúc
+
+| Thành phần | Số lượng | Loại |
+|-----------|--------|------|
+| Manager (Master) | 1 | On-demand |
+| Primary Workers | 2 | On-demand |
+| Secondary Workers | 2 | 🔥 Spot (Preemptible) |
+
+---
+
+#### ⚙️ Cấu hình chi tiết
+
+> 1. Cluster basic
+
+- **Cluster name**: `amazon-cluster`
+- **Region**: `asia-southeast1`
+- **Cluster type**: Standard (1 master, N workers)
+- **Image version**: `2.3-ubuntu22`
+
+---
+
+> 2. Manager node (Master)
+
+| Thuộc tính | Giá trị |
+|-----------|--------|
+| Machine type | `n4-standard-2` (2 vCPU, 8GB RAM) |
+| Disk | 30GB |
+| Disk type | Hyperdisk Balanced |
+| Local SSD | 0 |
+
+---
+
+> 3. Primary Worker nodes
+
+| Thuộc tính | Giá trị |
+|-----------|--------|
+| Number of workers | 2 |
+| Machine type | `n4-standard-2` |
+| vCPU | 2 |
+| RAM | 8GB |
+| Disk | 30GB |
+| Disk type | Hyperdisk Balanced |
+| Local SSD | 0 |
+
+ ⚠️ Lưu ý: Primary workers bắt buộc ≥ 2
+
+---
+
+> 4. Secondary Worker nodes (Spot VM)
+
+| Thuộc tính | Giá trị |
+|-----------|--------|
+| Number of workers | 2 |
+| Preemptibility | ✅ Preemptible (Spot) |
+| Machine type | `n4-standard-2` |
+| Disk | 30GB |
+| Disk type | Hyperdisk Balanced |
+| Local SSD | 0 |
+
+ 🔥 Đây là phần giúp giảm ~50–60% chi phí
+
+---
+
+#### ⚙️ Spark cấu hình khuyến nghị
+
+Thêm vào **Cluster properties**:
 
 ```bash
-gcloud dataproc jobs submit pyspark spark_processing_gpc/main.py \
-    --cluster=spark-cluster \
-    --region=us-central1 \
-    --properties="spark.executorEnv.SPARK_ENV=cloud,spark.yarn.appMasterEnv.SPARK_ENV=cloud" \
-    -- \
-    --data-dir gs://[TEN-BUCKET-CUA-BAN]/raw_data/amazon_gpc/
+spark:spark.sql.shuffle.partitions=16
+spark:spark.default.parallelism=16
+spark:spark.task.maxFailures=8
+spark:spark.speculation=true
 ```
-*Lưu ý: Flag `--properties` giúp Spark nhận diện môi trường Cloud ngay cả bên trong các máy con (Workers).*
+
+---
+
+## Hủy ngay khi chạy xong Apache Spark để tránh tốn tiền
+
+- Xóa cluster để giảm tiền
+- xóa Compute Engine → VM instances
+- xóa Compute Engine → Disks, và External Disk
+- xóa storage bucket: Cloud Storage. Tìm bucket dạng: dataproc-staging-* hoặc dataproc-temp-*. Nếu chỉ dùng tạm:❗ DELETE bucket. Nếu dùng lâu dài: giữ lại nhưng clear data
+- xóa Compute Engine → Snapshots
+- xóa Compute Engine → Images
+- có thể xóa Logs (Cloud Logging), nhưng nó ko tốn nhiều tiền
+
+---
+
+## Bước 7: Submit Job từ GCS và xử lý ETL 
+### Cách 1: Làm trên Giao diện Web (Phức tạp hơn)
+Giao diện Web không thể lấy code từ máy coordinator-vm của bạn. Để submit qua UI, bạn phải:
+
+Mở SSH coordinator-vm, nén code và dùng gsutil đẩy cả file main.py và dependencies.zip lên một Bucket GCS (ví dụ: gs://mining-data-2/code/).
+
+Lên giao diện Dataproc -> Chọn tab Jobs -> Bấm SUBMIT JOB.
+
+Cấu hình Job:
+
+Cluster: Chọn amazon-cluster
+
+Job type: PySpark
+
+Main python file: Gõ đường dẫn GCS (vd: gs://mining-data-2/code/main.py)
+
+Python files (thư mục phụ): Gõ đường dẫn (vd: gs://mining-data-2/code/dependencies.zip)
+
+Bấm SUBMIT.
+
+### Cách 2: Làm bằng code qua SSH (Được khuyên dùng)
+Mở cửa sổ SSH của `coordinator-vm`, đứng tại thư mục project `MiningMassiveData`, chạy các bước sau:
+
+1. **Chuẩn bị file nén chứa code phụ trợ**:
+Lệnh này giúp Spark phân phối các thư mục `config` và `src` đến tất cả các máy Workers trong cụm.
+```bash
+cd spark_processing_gpc
+zip -r dependencies.zip config src
+```
+
+2. **Bắn job sang cụm Dataproc**:
+Thay thế `gs://mining-data-2/` bằng tên bucket của bạn nếu khác.
+```bash
+gcloud dataproc jobs submit pyspark main.py \
+    --cluster=amazon-cluster \
+    --region=asia-southeast1 \
+    --py-files=dependencies.zip \
+    --properties="spark.executorEnv.SPARK_ENV=cloud,spark.yarn.appMasterEnv.SPARK_ENV=cloud,spark.executorEnv.RAW_DATA_DIR=gs://mining-data-2/raw_data/amazon_gpc/,spark.executorEnv.OUTPUT_BASE=gs://mining-data-2/output/" \
+    -- \
+    --validate
+```
+*Giải thích các tham số:*
+- `--py-files`: Gửi kèm các module `src` và `config`.
+- `--properties`: Truyền biến môi trường để code Python bên trong các Worker nhận diện được GCS.
+- `--`: Sau dấu này là các tham số truyền trực tiếp vào hàm `main()` của Python (ví dụ: `--validate`, `--skip-scan`).
+
+3. **Theo dõi tiến trình**:
+- Màn hình SSH sẽ hiển thị log trực tiếp.
+- Bạn sẽ thấy các dòng log mới dạng `>>> START PHASE 1...` để biết hệ thống đang chạy đến đâu.
+
+### Theo dõi Log qua Cloud Logging (Cách chuyên nghiệp)
+Nếu bạn lỡ đóng cửa sổ SSH, bạn vẫn có thể xem log:
+1. Vào **Dataproc** -> **Jobs**.
+2. Nhấn vào **Job ID** đang chạy.
+3. Chọn tab **Monitoring** để xem biểu đồ CPU/RAM.
+4. Chọn tab **Output** hoặc nhấn vào link **View logs in Cloud Logging** để xem log chi tiết, lọc theo từng Worker.
+
+### Xóa Hạ tầng để tránh tốn tiền thêm
+Ngay khi Job báo "Succeeded" và bạn đã kiểm tra kết quả trên GCS thành công.
+
+1. Qua giao diện UI:
+Vào **Dataproc** -> **Clusters** -> Chọn tick vào `amazon-cluster` -> Bấm nút **DELETE**.
+
+2. Qua code SSH:
+```bash
+gcloud dataproc clusters delete amazon-cluster --region=asia-southeast1 -q
+```
 
 ---
 
