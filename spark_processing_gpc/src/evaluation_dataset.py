@@ -28,17 +28,14 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
         F.col("product_name").alias("query_name"),
         F.col("full_text").alias("query_text"),
         F.col("category").alias("query_category"),
-        # Chuyển Map sang JSON String ngay từ đầu để ổn định tuyệt đối
-        F.to_json(F.col("parsed_specs")).alias("query_specs")
+        F.col("parsed_specs") # Giữ nguyên MapType, CHƯA convert vội
     )
     
     df_vn = df_items.filter(F.col("domain") == "vn").select(
         F.col("product_id").alias("cand_id"),
         F.col("asin").alias("cand_asin"),
-        F.col("product_name").alias("cand_name"),
-        F.col("full_text").alias("cand_text"),
-        F.col("category").alias("cand_category"),
-        F.to_json(F.col("parsed_specs")).alias("cand_specs")
+        F.col("category").alias("cand_category")
+        # Không cần parse các cột text của VN ở đây vì file eval chỉ lưu cand_id
     )
 
     # 2. Tìm cặp Positive (Ground Truth) dựa trên ASIN
@@ -81,12 +78,14 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
     )
 
     # 6. Join Metadata cuối cùng
-    # Lấy thêm cả text và specs của query
-    df_amz_meta = df_amz.select("query_id", "query_name", "query_text", "query_category", "query_specs")
+    df_amz_meta = df_amz.select("query_id", "query_name", "query_text", "query_category", "parsed_specs")
     
     # Ép Spark broadcast bảng df_grouped (bảng này rất nhỏ, chỉ vài chục/vài trăm dòng)
-    # Tuyệt đối KHÔNG broadcast df_amz_meta (4 triệu dòng)
-    df_eval = F.broadcast(df_grouped).join(df_amz_meta, "query_id", "inner")
+    df_eval_raw = F.broadcast(df_grouped).join(df_amz_meta, "query_id", "inner")
+    
+    # BÂY GIỜ MỚI CONVERT SANG JSON: Vì lúc này bảng df_eval_raw chỉ còn ĐÚNG 11 DÒNG!
+    # Nó chạy nhanh bằng vận tốc ánh sáng và tốn 0 MB RAM.
+    df_eval = df_eval_raw.withColumn("query_specs", F.to_json(F.col("parsed_specs"))).drop("parsed_specs")
 
     # 7. Ghi dữ liệu
     logger.info(f"Dang ghi {query_count} queries xuong GCS...")
