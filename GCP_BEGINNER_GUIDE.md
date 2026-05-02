@@ -343,6 +343,10 @@ git pull origin main
 # 3. Vào thư mục xử lý Spark
 cd spark_processing_gpc
 
+
+# Xóa file zip cũ (nếu có)
+rm -f dependencies.zip
+
 # 4. Nén lại code mới (Lệnh này sẽ ghi đè dependencies.zip cũ)
 zip -r dependencies.zip config src
 ```
@@ -590,6 +594,11 @@ source recsys_env/bin/activate
 
 ```bash
 cd ~/MiningMassiveData/spark_processing_gpc
+
+
+# Xóa file zip cũ (nếu có)
+rm -f dependencies.zip
+
 zip -r dependencies.zip config src
 
 gcloud dataproc jobs submit pyspark main2.py \
