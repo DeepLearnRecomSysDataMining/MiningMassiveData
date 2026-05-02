@@ -22,25 +22,26 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
     # 1. Đọc dữ liệu
     df_items = spark.read.parquet(items_path)
 
-    # Tách Amazon (Query) và VN (Candidates)
-    df_amz = df_items.filter(F.col("domain") == "amazon").select(
+    # ==========================================
+    # CHIẾN THUẬT "EXTREME LEAN MINING"
+    # CHỈ lấy các cột cực nhẹ (ID, Category) để tính toán logic Join và Negative Mining.
+    # Tuyệt đối không dính dáng đến Text hay MapType ở giai đoạn này để tránh OOM.
+    # ==========================================
+    df_amz_light = df_items.filter(F.col("domain") == "amazon").select(
         F.col("asin").alias("query_id"),
-        F.col("product_name").alias("query_name"),
-        F.col("full_text").alias("query_text"),
-        F.col("category").alias("query_category"),
-        F.col("parsed_specs") # Giữ nguyên MapType, CHƯA convert vội
+        F.col("category").alias("query_category")
     )
     
-    df_vn = df_items.filter(F.col("domain") == "vn").select(
+    df_vn_light = df_items.filter(F.col("domain") == "vn").select(
         F.col("product_id").alias("cand_id"),
         F.col("asin").alias("cand_asin"),
         F.col("category").alias("cand_category")
-        # Không cần parse các cột text của VN ở đây vì file eval chỉ lưu cand_id
     )
 
     # 2. Tìm cặp Positive (Ground Truth) dựa trên ASIN
-    df_pos = df_amz.join(df_vn, df_amz.query_id == df_vn.cand_asin, "inner") \
-                   .withColumn("label", F.lit(1))
+    # Broadcast bảng VN (vì VN rất nhỏ, chỉ vài nghìn dòng) để KHÔNG BAO GIỜ Shuffle bảng Amazon 4 triệu dòng
+    df_pos = df_amz_light.join(F.broadcast(df_vn_light), df_amz_light.query_id == df_vn_light.cand_asin, "inner") \
+                         .withColumn("label", F.lit(1))
                    
     # Đếm số lượng query có cặp positive
     query_count = df_pos.select("query_id").distinct().count()
@@ -52,12 +53,9 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
     logger.info(f"Dang thuc hien Mining cho {query_count} queries...")
     spark.conf.set("spark.sql.shuffle.partitions", "200")
     
-    # Lấy toàn bộ VN items làm ứng viên (Vì VN chỉ có vài nghìn SP)
-    df_vn_reduced = df_vn.select("cand_id", "cand_asin", "cand_category")
-    
-    # Join Query với tập ứng viên (Broadcast Join)
-    df_negatives = df_vn_reduced.join(F.broadcast(df_pos.select("query_id", "query_category").distinct()), 
-                                     df_vn_reduced.cand_category == df_pos.query_category, 
+    # Join Query với tập ứng viên VN (Broadcast Join)
+    df_negatives = df_vn_light.join(F.broadcast(df_pos.select("query_id", "query_category").distinct()), 
+                                     df_vn_light.cand_category == df_pos.query_category, 
                                      "inner") \
                                 .filter(F.col("query_id") != F.col("cand_asin"))
     
@@ -71,17 +69,24 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
     df_final_ids = df_pos.select("query_id", "cand_id", "label") \
                          .unionByName(df_negatives.select("query_id", "cand_id", "label"))
 
-    # 5. Gom nhóm
+    # 5. Gom nhóm (Chỉ chứa ID)
     df_grouped = df_final_ids.groupBy("query_id").agg(
         F.collect_list("cand_id").alias("candidate_ids"),
         F.collect_list("label").alias("labels")
     )
 
-    # 6. Join Metadata cuối cùng
-    df_amz_meta = df_amz.select("query_id", "query_name", "query_text", "query_category", "parsed_specs")
+    # 6. Lấy lại Metadata (Text, Specs) cho 11 dòng Amazon Cuối cùng
+    # Đọc lại từ file gốc nhưng CHỈ lấy các cột nặng
+    df_amz_heavy = df_items.filter(F.col("domain") == "amazon").select(
+        F.col("asin").alias("query_id"),
+        F.col("product_name").alias("query_name"),
+        F.col("full_text").alias("query_text"),
+        F.col("category").alias("query_category"),
+        F.col("parsed_specs")
+    )
     
-    # Ép Spark broadcast bảng df_grouped (bảng này rất nhỏ, chỉ vài chục/vài trăm dòng)
-    df_eval_raw = F.broadcast(df_grouped).join(df_amz_meta, "query_id", "inner")
+    # Ép Spark broadcast bảng df_grouped (chỉ có 11 dòng)
+    df_eval_raw = F.broadcast(df_grouped).join(df_amz_heavy, "query_id", "inner")
     
     # BÂY GIỜ MỚI CONVERT SANG JSON: Vì lúc này bảng df_eval_raw chỉ còn ĐÚNG 11 DÒNG!
     # Nó chạy nhanh bằng vận tốc ánh sáng và tốn 0 MB RAM.

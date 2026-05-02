@@ -13,3 +13,6 @@ data_small/
 output/
 
 craw_amazon/reviews/reviews_amazon.jsonl
+
+log.txt
+log_*.txt
