@@ -4,6 +4,7 @@
 # ============================================================
 
 import logging
+import json
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql import functions as F
 from pyspark.sql.window import Window
@@ -13,10 +14,10 @@ logger = logging.getLogger("evaluation_dataset")
 def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: str, num_candidates: int = 100):
     """
     Generates evaluation dataset using 100% Native Spark logic.
-    For each Amazon item, find its VN counterpart (true) and pick 99 negatives.
+    Optimized for stability by converting MAP to STRING.
     """
     spark.conf.set("spark.sql.adaptive.enabled", "true")
-    logger.info("Bat dau tao bo du lieu Evaluation (Native Mode - Lean Architecture)...")
+    logger.info("Bat dau tao bo du lieu Evaluation (Ultra-Stable Architecture)...")
 
     # 1. Đọc dữ liệu
     df_items = spark.read.parquet(items_path)
@@ -27,7 +28,8 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
         F.col("product_name").alias("query_name"),
         F.col("full_text").alias("query_text"),
         F.col("category").alias("query_category"),
-        F.col("parsed_specs").alias("query_specs")
+        # Chuyển Map sang JSON String ngay từ đầu để ổn định tuyệt đối
+        F.to_json(F.col("parsed_specs")).alias("query_specs")
     )
     
     df_vn = df_items.filter(F.col("domain") == "vn").select(
@@ -36,7 +38,7 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
         F.col("product_name").alias("cand_name"),
         F.col("full_text").alias("cand_text"),
         F.col("category").alias("cand_category"),
-        F.col("parsed_specs").alias("cand_specs")
+        F.to_json(F.col("parsed_specs")).alias("cand_specs")
     )
 
     # 2. Tìm cặp Positive (Ground Truth) dựa trên ASIN
@@ -49,17 +51,12 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
         logger.warning("Khong tim thay cap Amazon-VN nao khop ASIN!")
         return 0
 
-    # 3. Tạo Negative Candidates bằng phương pháp "Extreme Lean Mining"
+    # 3. Tạo Negative Candidates
     logger.info(f"Dang thuc hien Mining cho {query_count} queries...")
-    
-    # Điều chỉnh partition về mức tối ưu cho cụm nhỏ
     spark.conf.set("spark.sql.shuffle.partitions", "200")
     
-    # Bước then chốt: Chỉ giữ lại Metadata của những Query thực sự cần thiết (Broadcast sau này)
-    df_amz_meta_lean = df_amz.join(F.broadcast(df_pos.select("query_id").distinct()), "query_id", "inner")
-    
-    # Lấy mẫu 2% VN items làm ứng viên (Cực nhẹ)
-    df_vn_reduced = df_vn.select("cand_id", "cand_asin", "cand_category").sample(False, 0.02, 42)
+    # Lấy mẫu 2% VN items làm ứng viên
+    df_vn_reduced = df_vn.select("cand_id", "cand_asin", "cand_category").sample(False, 0.05, 42)
     
     # Join Query với tập ứng viên (Broadcast Join)
     df_negatives = df_vn_reduced.join(F.broadcast(df_pos.select("query_id", "query_category").distinct()), 
@@ -73,24 +70,24 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
                                .filter(F.col("rank") <= (num_candidates - 1)) \
                                .withColumn("label", F.lit(0))
 
-    # 4. Gộp Positive và Negative (Chỉ dùng ID để Shuffle nhẹ)
-    df_final_ids = df_pos.select("query_id", "cand_id", "cand_category", "label") \
-                         .unionByName(df_negatives.select("query_id", "cand_id", "cand_category", "label"))
+    # 4. Gộp Positive và Negative
+    df_final_ids = df_pos.select("query_id", "cand_id", "label") \
+                         .unionByName(df_negatives.select("query_id", "cand_id", "label"))
 
-    # 5. Gom nhóm (Aggregation)
-    logger.info("Dang gom nhom ID (Shuffle-light)...")
+    # 5. Gom nhóm
     df_grouped = df_final_ids.groupBy("query_id").agg(
         F.collect_list("cand_id").alias("candidate_ids"),
-        F.collect_list("cand_category").alias("candidate_categories"),
         F.collect_list("label").alias("labels")
     )
 
-    # 6. Join ngược lại Metadata (Sử dụng Broadcast để chốt hạ OOM)
-    df_eval = df_grouped.join(F.broadcast(df_amz_meta_lean), "query_id", "inner")
+    # 6. Join Metadata cuối cùng
+    # Lấy thêm cả text và specs của query
+    df_amz_meta = df_amz.select("query_id", "query_name", "query_text", "query_category", "query_specs")
+    df_eval = df_grouped.join(F.broadcast(df_amz_meta), "query_id", "inner")
 
-    # 7. Lưu xuống Parquet
-    logger.info(f"Dang ghi {query_count} queries xuong GCS: {output_path}")
-    df_eval.write.mode("overwrite").parquet(output_path)
+    # 7. Ghi dữ liệu (Dùng coalesce(1) để gom thành 1 file duy nhất cho gọn vì dữ liệu nhỏ)
+    logger.info(f"Dang ghi {query_count} queries xuong GCS...")
+    df_eval.coalesce(1).write.mode("overwrite").parquet(output_path)
     
     logger.info(f"V HOAN TAT: Da tao bo du lieu Evaluation tai {output_path}")
     return query_count
