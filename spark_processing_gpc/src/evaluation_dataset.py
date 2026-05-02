@@ -53,7 +53,9 @@ def run_evaluation_generator(spark: SparkSession, item_nodes_path: str, output_p
     logger.info("Dang thuc hien Hard Negative Mining theo Category...")
     
     # Lấy danh sách các Query (Amazon) duy nhất đã tìm thấy cặp Positive
-    df_queries = df_pos.select("query_id", "query_name", "query_text", "query_category", "query_specs").distinct()
+    # Sử dụng dropDuplicates thay vì distinct để tránh lỗi với kiểu dữ liệu MAP (query_specs)
+    df_queries = df_pos.select("query_id", "query_name", "query_text", "query_category", "query_specs") \
+                       .dropDuplicates(["query_id"])
     
     # Thực hiện Inner Join trên cột Category
     df_negatives = df_queries.join(df_vn, df_queries.query_category == df_vn.cand_category, "inner") \
