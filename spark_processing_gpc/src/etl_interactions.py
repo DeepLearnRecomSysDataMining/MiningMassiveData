@@ -10,8 +10,8 @@ from pyspark.sql.functions import col, lower, lit, coalesce, concat_ws, regexp_r
 from pyspark.sql.types import StringType
 from pyspark import StorageLevel
 import ast
-from file_utils import detect_jsonl_type, list_files
-from debug_utils import log_df_size
+from src.file_utils import detect_jsonl_type, list_files
+from src.debug_utils import log_df_size
 
 logger = logging.getLogger("etl_interactions")
 

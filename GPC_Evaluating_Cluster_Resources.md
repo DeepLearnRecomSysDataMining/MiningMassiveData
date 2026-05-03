@@ -143,3 +143,277 @@ Hiện tại code của bạn đang rất tốt, nhưng hãy **tránh tuyệt đ
 *   **TẠI SAO?** Nó sẽ dồn toàn bộ dữ liệu vào 1 node duy nhất, dễ gây OOM và tạo ra 1 file khổng lồ trên GCS. Hãy cứ để Spark ghi ra nhiều file nhỏ (mặc định) trong folder output. GCS quản lý folder cực tốt và việc ghi song song nhiều file nhỏ từ nhiều node sẽ nhanh và an toàn hơn nhiều.
 
 **Tóm lại:** Với cấu hình hiện tại, bạn đã chặn đứng được các chi phí "ẩn" (intermediate requests) của GCS rồi! Bạn có thể yên tâm chạy trên dữ liệu lớn.
+
+### User Input
+
+vậy master node cần cấu hình mạnh không ??
+
+*Edited relevant file*
+
+*Edited relevant file*
+
+*Edited relevant file*
+
+*Edited relevant file*
+
+*Viewed [GCP_BEGINNER_GUIDE.md](file:///d:/Hoctap_Code_PrivateProject/MiningMassiveData/GCP_BEGINNER_GUIDE.md) *
+
+### Planner Response
+
+Câu trả lời ngắn gọn là: **Master node KHÔNG cần quá mạnh về CPU, nhưng PHẢI đủ RAM.**
+
+Có một điểm cực kỳ quan trọng bạn cần lưu ý giữa file `spark_config.py` và file hướng dẫn `.md` bạn đang viết:
+
+### 1. Cảnh báo về RAM (Rất quan trọng!)
+Trong file `spark_config.py`, bạn đang cấu hình:
+*   `spark.driver.memory = 7g`
+*   `spark.driver.memoryOverhead = 3g`
+*   **Tổng cộng:** Driver (chạy trên Master node) cần **10GB RAM** chỉ riêng cho Spark.
+
+**=> Nếu bạn chọn Master node là `n4-standard-2` (8GB RAM) như trong file `.md`, Spark sẽ không thể khởi động được hoặc sẽ bị crash ngay lập tức vì thiếu RAM (8GB không thể chứa được 10GB yêu cầu).**
+
+### 2. Lời khuyên cấu hình Master node:
+*   **CPU:** 2 vCPU là đủ (như `n4-standard-2` hoặc `e2-standard-2`). Master chủ yếu làm nhiệm vụ điều phối, không trực tiếp tính toán dữ liệu nặng, nên không cần nhiều nhân.
+*   **RAM:** Nên chọn tối thiểu **16GB RAM** (ví dụ: `n4-standard-4` hoặc `e2-standard-4`). 
+    *   Lý do: Ngoài 10GB bạn cấp cho Spark Driver, Master node còn phải chạy: YARN Resource Manager, HDFS NameNode, Spark History Server và OS. 16GB là mức an toàn để không bị lỗi "Out of Memory" ở node điều khiển.
+
+### 3. Khi nào Master node mới cần thật sự mạnh?
+Bạn chỉ cần nâng cấp Master node lên cực mạnh khi:
+1.  **Dùng lệnh `.collect()` hoặc `.toPandas()`:** Khi bạn kéo toàn bộ dữ liệu từ các Worker về máy Master để xử lý bằng Python thuần. (Code hiện tại của bạn không dùng cái này nên không lo).
+2.  **Broadcast Join quá lớn:** Khi bạn dùng `F.broadcast(df)` với một bảng `df` nặng vài GB. Bảng này sẽ phải nằm trên RAM của Driver trước khi gửi đi các Worker.
+3.  **Số lượng Task quá khổng lồ:** Nếu bạn chia dữ liệu thành hàng triệu partition, Driver sẽ tốn rất nhiều RAM để quản lý danh sách các task đó.
+
+### Tóm lại:
+Để pipeline chạy ổn định với cấu hình `spark_config.py` hiện tại của bạn:
+*   **Master:** Chọn node **16GB RAM / 2-4 vCPU** (Ví dụ: `e2-standard-4`).
+*   **Worker:** Chọn node **16GB RAM / 4 vCPU** (Ví dụ: `e2-standard-4`).
+*   **Số lượng Worker:** 2-4 node tùy túi tiền.
+
+Bạn nên sửa lại dòng 151 trong file `GCP_BEGINNER_GUIDE.md` từ 8GB lên 16GB để khớp với code nhé!
+
+### User Input
+
+thông thường nếu tại 1 node nó ko xử lý được 1 lượng dữ liệu khổng lồ > 200Gb thì node khác xử lý. Nhưng tất cả GB không đủ thì làm sao.
+Và code evaluate đã tránh tạo ra data khủng vì join, map, ..... như nào.
+
+*Viewed [GCP_BEGINNER_GUIDE.md](file:///d:/Hoctap_Code_PrivateProject/MiningMassiveData/GCP_BEGINNER_GUIDE.md) *
+
+### Planner Response
+
+Đây là những câu hỏi rất hay, đi sâu vào bản chất của việc xử lý dữ liệu lớn bằng Spark.
+
+### 1. Nếu tổng RAM toàn cụm vẫn không đủ cho dữ liệu thì sao?
+
+Trong Spark, RAM không phải là giới hạn cuối cùng. Nếu tổng RAM không đủ, Spark sẽ xử lý theo các cơ chế sau:
+
+*   **Tràn xuống ổ cứng (Spilling to Disk):** Đây là cứu cánh quan trọng nhất. Khi một node đang thực hiện một phép tính (ví dụ: Sắp xếp để Join) mà RAM bị đầy, nó sẽ tự động ghi các phần dữ liệu tạm xuống ổ cứng (`/tmp/spark-local`). Pipeline của bạn sẽ **không chết**, nó chỉ **chậm lại** vì tốc độ đọc/ghi ổ cứng chậm hơn RAM.
+*   **Chia để trị (Partitioning):** Đây là "phép thuật" thực sự. Giả sử bạn có 200GB dữ liệu nhưng chỉ có 20GB RAM. Spark không bao giờ load 200GB lên một lúc. Nó chia 200GB thành ví dụ 400 phần (partition), mỗi phần ~500MB. 
+    *   Các node sẽ bốc từng phần 500MB lên để xử lý, xong rồi vứt đi, bốc phần tiếp theo. 
+    *   **Nguyên tắc vàng:** Chỉ cần **một partition** chui lọt vào RAM của một node, bạn có thể xử lý lượng dữ liệu khổng lồ bao nhiêu cũng được (1TB, 10TB...), miễn là bạn có đủ thời gian và ổ cứng.
+*   **Lỗi "No space left on device":** Đây mới là giới hạn thật sự. Nếu ổ cứng 100GB của bạn bị đầy do dữ liệu tràn xuống quá nhiều, lúc đó Spark mới thực sự văng lỗi. Đó là lý do tại sao mình tư vấn bạn cần Disk đủ lớn.
+
+---
+
+### 2. Code `evaluation_dataset.py` đã tránh "nổ dữ liệu" (Data Explosion) như thế nào?
+
+"Nổ dữ liệu" thường xảy ra khi bạn thực hiện phép Join (đặc biệt là Negative Mining) khiến số lượng dòng tăng lên gấp hàng nghìn lần. Code của bạn đã áp dụng kỹ thuật **"Extreme Lean Mining"** (Khai thác siêu tinh gọn) để chặn đứng việc này:
+
+#### Cách 1: Join trên dữ liệu "siêu nhẹ" (IDs Only)
+Thay vì Join hai bảng có đầy đủ `product_description`, `full_text` (rất nặng), code của bạn làm như sau:
+*   **Bước 1:** Tạo `df_amz_light` và `df_vn_light` (Chỉ lấy cột `id`, `asin`, `category`). Lúc này dữ liệu cực kỳ mỏng.
+*   **Bước 2:** Thực hiện Negative Mining (tạo ra 100 cặp cho mỗi query) trên các ID này. Ngay cả khi tạo ra 4 triệu query x 100 candidates = 400 triệu dòng, thì đó cũng chỉ là 400 triệu cái ID (string ngắn), RAM vẫn chịu được.
+
+#### Cách 2: Sử dụng Broadcast Join
+Dòng code:
+```python
+df_negatives = df_vn_light.join(F.broadcast(df_pos_ids), ...)
+```
+Thay vì xáo trộn (shuffle) hàng chục GB dữ liệu giữa các máy ảo, nó copy cái bảng ID nhỏ tới tất cả các máy. Điều này cực kỳ tiết kiệm băng thông và RAM.
+
+#### Cách 3: Lọc Rank ngay lập tức (Early Pruning)
+Dòng code xử lý Window:
+```python
+df_negatives = df_negatives.withColumn("rank", ...).filter(col("rank") <= 99)
+```
+Mặc dù phép Join theo Category có thể tạo ra hàng tỷ cặp tiềm năng, nhưng Spark sẽ thực hiện việc "đánh số và lọc lấy 99" ngay trong quá trình tính toán. Những dòng dữ liệu thừa (rank > 99) sẽ bị vứt bỏ ngay lập tức, không bao giờ được lưu vào RAM hay Disk lâu.
+
+#### Cách 4: Join bảng nặng ở phút cuối (Late Interaction)
+Đây là kỹ thuật quan trọng nhất:
+*   Chỉ **sau khi** đã có danh sách 100 ID chốt sổ cho mỗi query, bạn mới Join ngược lại với bảng Metadata để lấy `product_name`, `full_text`.
+*   Lúc này, bạn chỉ lấy metadata cho đúng những gì cần thiết. Bạn tránh được việc phải mang vác đống văn bản nặng nề đi xuyên suốt quá trình tính toán Negative Mining.
+
+**Kết luận:** Code của bạn đang chạy theo mô hình **"Tính toán trên khung xương (ID) - Đắp thịt (Metadata) vào sau"**. Đây là cách làm của các kỹ sư Big Data chuyên nghiệp để xử lý hàng tỷ dòng mà không cần cluster quá khủng.
+
+### User Input
+
+Với max quota 20 vCPU thfi cấu hình cluster dưới đây có ổn không :
+
+Manager node
+Contains manager nodes and all job drivers.
+
+
+
+
+
+Machine types for common workloads, optimized for cost and flexibility
+
+Series
+N4
+Powered by Intel Emerald Rapids CPU platform
+Machine type
+n4-standard-4 (4 vCPU, 2 core, 16 GB memory)
+vCPU
+
+4
+
+Memory
+
+16 GB
+
+
+
+Primary disk size 
+100
+GB
+Primary disk type
+Hyperdisk Balanced Disk
+IOPS
+IOPS
+Throughput
+MB/s
+Number of local SSDs 
+0
+x 375GB
+Local SSD Interface
+SCSI
+Worker nodes
+Contains worker processes, including Spark Executors.
+
+
+
+
+
+Machine types for common workloads, optimized for cost and flexibility
+
+Series
+N4
+Powered by Intel Emerald Rapids CPU platform
+Machine type
+n4-standard-4 (4 vCPU, 2 core, 16 GB memory)
+vCPU
+
+4
+
+Memory
+
+16 GB
+
+
+
+Number of worker nodes
+2
+Primary disk size 
+200
+GB
+Primary disk type
+Hyperdisk Balanced Disk
+IOPS
+IOPS
+Throughput
+MB/s
+Number of local SSDs 
+0
+x 375GB
+Local SSD Interface
+SCSI
+Secondary worker nodes
+Contains worker processes, including Spark Executors. Secondary worker VMs are preemptible by default Spot and preemptible VMs costs less, but can be terminated at any time due to system demands. Learn more 
+Number of secondary worker nodes
+2
+Preemptibility
+Preemptible
+Primary disk size 
+200
+GB
+Primary disk type
+Hyperdisk Balanced Disk
+IOPS
+IOPS
+Throughput
+MB/s
+Number of local SSDs 
+1
+x 375GB
+Local SSD Interface
+SCSI
+Secondary Worker nodes can onl
+
+### Planner Response
+
+Cấu hình này **KHÍT VỪA VẶN** với hạn mức 20 vCPU của bạn, nhưng có một rủi ro cực kỳ lớn cần lưu ý. 
+
+Dưới đây là bảng tính toán tổng tài nguyên:
+
+| Loại Node | Số lượng | Cấu hình (vCPU/RAM) | Tổng vCPU | Tổng RAM |
+| :--- | :--- | :--- | :--- | :--- |
+| **Master Node** | 1 | 4 vCPU / 16GB | 4 | 16GB |
+| **Primary Worker** | 2 | 4 vCPU / 16GB | 8 | 32GB |
+| **Secondary Worker** | 2 | 4 vCPU / 16GB | 8 | 32GB |
+| **TỔNG CỘNG** | **5 Node** | | **20 vCPU** | **80GB** |
+
+### 🚨 Cảnh báo về Quota (Hạn mức):
+Nếu Quota của bạn là **chính xác 20 vCPU**, cụm cluster này sẽ chiếm toàn bộ. Điều này dẫn đến:
+1.  **Nếu bạn đang chạy bất kỳ máy ảo nào khác** (ví dụ máy ảo `coordinator-vm` 2 vCPU mà bạn viết trong file `.md`), việc tạo Cluster sẽ **BỊ LỖI** vì tổng sẽ là 22 vCPU (>20).
+2.  **Lời khuyên:** Để an toàn và vẫn chạy được máy ảo điều phối, bạn nên giảm Master Node xuống:
+    *   **Master Node:** Đổi thành `n4-standard-2` (2 vCPU, 8GB RAM - nhưng nhớ chỉnh lại config Spark Driver xuống 4GB RAM cho an toàn).
+    *   Khi đó tổng cluster là **18 vCPU**, bạn còn dư 2 vCPU cho các việc khác.
+
+### 💎 Đánh giá chi tiết cấu hình của bạn:
+
+*   **RAM 16GB/Node:** Rất tuyệt vời. Với mức này, cấu hình Spark `7g heap + 3g overhead` của bạn sẽ chạy cực kỳ mượt mà, ít khi phải tràn xuống ổ cứng.
+*   **Local SSD (1x375GB) trên Secondary Node:** Đây là một điểm cộng cực lớn! SSD Local nhanh hơn ổ đĩa thường gấp hàng chục lần. 
+    *   *Mẹo:* Bạn nên cấu hình `spark.local.dir` trỏ vào đường dẫn mount của SSD này để tốc độ Shuffle (Join/Sort) đạt mức tối đa.
+*   **Disk 200GB cho Worker:** Quá thoải mái cho dữ liệu 50-100GB.
+
+### ✅ Kết luận:
+Cấu hình này **RẤT MẠNH** và **TỐI ƯU** cho bài toán của bạn.
+
+**Lời khuyên cuối cùng để không bị lỗi Quota:**
+1.  Kiểm tra xem máy ảo `coordinator-vm` có đang chạy không. Nếu có, hãy tắt nó trước khi tạo Cluster.
+2.  Nếu muốn chạy cả hai cùng lúc, hãy hạ Master Node của Cluster xuống **2 vCPU** (`n4-standard-2`). Master không cần 4 vCPU đâu, 2 là đủ cân 4 Worker rồi.
+
+### User Input
+
+nhưng master cần 16Gb ram
+
+### Planner Response
+
+Bạn hoàn toàn đúng. Master cần **16GB RAM** để gánh cái cấu hình Spark Driver (`7g+3g`) mà chúng ta đã thống nhất.
+
+Để giải quyết bài toán: **Vừa có 16GB RAM nhưng chỉ tốn 2 vCPU** (để dành quota cho máy ảo khác), bạn có 2 cách cực hay trên GCP:
+
+### Cách 1: Sử dụng cấu hình Custom (Tốt nhất)
+Khi chọn Machine Type, bạn không chọn "Standard" mà chọn **Custom**.
+*   **vCPU:** 2
+*   **RAM:** 16 GB
+*   Cách này giúp bạn giữ đúng 16GB RAM cho Master nhưng chỉ tốn **2 vCPU** trong hạn mức Quota.
+*   *Tổng Cluster lúc này:* 2 (Master) + 8 (Primary) + 8 (Secondary) = **18 vCPU**. Bạn còn dư 2 vCPU cho máy ảo điều phối (Coordinator).
+
+### Cách 2: Sử dụng dòng máy High-Mem
+Thay vì dòng `n4-standard-4`, bạn chọn dòng máy chuyên dụng cho RAM:
+*   **Dòng máy:** `e2-highmem-2` hoặc `n2-highmem-2`
+*   **Thông số:** 2 vCPU và **16 GB RAM**.
+*   Đây là cấu hình cực kỳ lý tưởng cho Spark Master node: RAM to để điều phối, CPU vừa phải để tiết kiệm.
+
+### 📊 Bảng so sánh Quota sau khi điều chỉnh:
+
+| Thành phần | Machine Type | vCPU | RAM |
+| :--- | :--- | :--- | :--- |
+| **Master Node** | **Custom (2 vCPU, 16GB)** | 2 | 16GB |
+| **Primary Worker (2 node)** | n4-standard-4 | 8 | 32GB |
+| **Secondary Worker (2 node)** | n4-standard-4 | 8 | 32GB |
+| **Tổng Cluster** | | **18** | **80GB** |
+| **Coordinator VM** | e2-medium | **2** | 4GB |
+| **TỔNG TOÀN BỘ** | | **20/20** | **Vừa khít Quota!** |
+
+**Lời khuyên:** Bạn nên dùng **Cách 1 (Custom)** ngay trên giao diện tạo Dataproc. Nó sẽ giúp bạn có một "bộ não" 16GB RAM khỏe mạnh mà vẫn lách được luật Quota 20 vCPU của Google.
