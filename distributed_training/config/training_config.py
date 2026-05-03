@@ -3,6 +3,30 @@ import torch
 import logging
 
 class TrainingConfig:
+    # Nhận diện môi trường GCP (giống spark_processing_gpc)
+    IS_CLOUD = os.getenv("TRAINING_ENV") == "cloud"
+    
+    # 1. GCS Paths
+    GCS_BUCKET = os.getenv("GCS_BUCKET", "gs://mining-data-2")
+    GCS_ROOT = f"{GCS_BUCKET}/output"
+    
+    # 2. Local Paths (Sử dụng /tmp/training trên Cloud để tránh tràn disk hệ thống)
+    LOCAL_BASE = "/tmp/training_data" if IS_CLOUD else "data/prepared_data_improved"
+    LOCAL_MODELS_DIR = "models_checkpoints"
+    @property
+    def DEVICE(self):
+        # Trên GCP, ép dùng CUDA nếu có, nếu không dùng CPU
+        local_rank = int(os.getenv("LOCAL_RANK", 0))
+        if torch.cuda.is_available():
+            return torch.device(f"cuda:{local_rank}")
+        return torch.device("cpu")
+    # 3. Distributed Params (Lấy từ Vertex AI Environment Variables)
+    @property
+    def WORLD_SIZE(self): return int(os.getenv("WORLD_SIZE", "1"))
+    
+    @property
+    def RANK(self): return int(os.getenv("RANK", "0"))
+
     @staticmethod
     def _get_env_or_default(key, default):
         return os.getenv(key, default).replace("\\", "/")

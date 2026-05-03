@@ -5,6 +5,18 @@ from config.training_config import TrainingConfig
 
 logger = logging.getLogger("gcs_manager")
 
+def sync_data_from_gcs():
+    """Đồng bộ toàn bộ data từ GCS về local node trước khi train"""
+    gcs_src = f"{TrainingConfig.GCS_ROOT}/prepared_data_improved/"
+    local_dest = TrainingConfig.LOCAL_BASE
+    
+    try:
+        logger.info(f"Rsync data: {gcs_src} -> {local_dest}")
+        # -m: parallel, -r: recursive
+        subprocess.run(["gsutil", "-m", "rsync", "-r", gcs_src, local_dest], check=True)
+    except Exception as e:
+        logger.error(f"Sync failed: {e}")
+
 def download_training_data():
     """
     Downloads evaluation_dataset.pkl and vn_corpus.pkl from GCS to local disk.

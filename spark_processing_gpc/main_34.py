@@ -3,8 +3,8 @@ import time
 import logging
 import os
 from config.spark_config    import create_spark_session, PathConfig
-from src.evaluation_dataset import run_evaluation_generator
-from src.data_validator     import validate_interactions, validate_item_nodes
+from src.evaluation_dataset_v2 import run_evaluation_generator
+from src.data_validator_v2     import validate_interactions, validate_item_nodes
 from src.debug_utils import log_spark_configs
 
 # Setup logging cho Cloud
