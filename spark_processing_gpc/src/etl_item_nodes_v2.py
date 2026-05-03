@@ -8,10 +8,29 @@ import json
 import logging
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.functions import col, concat_ws, lit, lower, regexp_replace, udf, when, coalesce, array_join, trim, from_json
-from pyspark.sql.types import StringType, MapType, ArrayType
+from pyspark.sql.types import StructType, StructField, StringType
 from src.file_utils import detect_jsonl_type, list_files
 
 logger = logging.getLogger("etl_item_nodes_v2")
+
+# --- ĐỊNH NGHĨA SCHEMA TƯỜNG MINH ---
+VN_ITEM_SCHEMA = StructType([
+    StructField("product_id", StringType(), True),
+    StructField("asin", StringType(), True),
+    StructField("productName", StringType(), True),
+    StructField("specifications", StringType(), True),
+    StructField("description", StringType(), True),
+    StructField("breadcrumb", StringType(), True)
+])
+
+AMZ_ITEM_SCHEMA = StructType([
+    StructField("parent_asin", StringType(), True),
+    StructField("asin", StringType(), True),
+    StructField("title", StringType(), True),
+    StructField("features", StringType(), True),
+    StructField("description", StringType(), True),
+    StructField("main_category", StringType(), True)
+])
 
 def safe_col(df, col_name, default_val=None):
     if col_name in df.columns:
@@ -42,27 +61,28 @@ def get_category_expr(breadcrumb_col, product_name_col):
           .when(text.rlike("tablet|máy tính bảng|ipad"), "tablet") \
           .otherwise("other")
 
-def run_etl_item_nodes(spark, data_dir, output_dir):
-    logger.info(f"[V2-OPTIMIZED] Dang quet metadata tu: {data_dir}")
+def run_etl_item_nodes(spark, data_dir, output_dir, file_groups: dict = None):
+    logger.info(f"[V2-OPTIMIZED] Dang xu ly ETL Item Nodes...")
     
-    all_files = list_files(data_dir)
-    vn_files = []
-    amz_files = []
-    
-    for f in all_files:
-        if not f.endswith(".jsonl"): continue
-        ftype = detect_jsonl_type(f)
-        if ftype == "vn_item": vn_files.append(f)
-        elif ftype == "amz_item": amz_files.append(f)
+    if file_groups:
+        vn_files = file_groups.get("vn_item", [])
+        amz_files = file_groups.get("amz_item", [])
+    else:
+        all_files = list_files(data_dir)
+        vn_files = []
+        amz_files = []
+        for f in all_files:
+            if not f.endswith(".jsonl"): continue
+            ftype = detect_jsonl_type(f)
+            if ftype == "vn_item": vn_files.append(f)
+            elif ftype == "amz_item": amz_files.append(f)
 
     df_final = None
 
     # 1. Xử lý VN Metadata
     if vn_files:
-        logger.info(f"Dang xu ly {len(vn_files)} file VN metadata...")
-        # TỐI ƯU: Chỉ chọn cột cần
-        vn_cols = ["product_id", "asin", "productName", "specifications", "description", "breadcrumb"]
-        df_vn = spark.read.option("mode", "DROPMALFORMED").json(vn_files).select([c for c in vn_cols if c in vn_cols])
+        logger.info(f"Dang xu ly {len(vn_files)} file VN metadata (VỚI SCHEMA TƯỜNG MINH)")
+        df_vn = spark.read.option("mode", "DROPMALFORMED").schema(VN_ITEM_SCHEMA).json(vn_files)
         
         df_vn_std = df_vn.select(
             spark_standardize(safe_col(df_vn, "product_id")).alias("product_id"),
@@ -81,10 +101,8 @@ def run_etl_item_nodes(spark, data_dir, output_dir):
 
     # 2. Xử lý Amazon Metadata
     if amz_files:
-        logger.info(f"Dang xu ly {len(amz_files)} file Amazon metadata...")
-        # TỐI ƯU: Chỉ chọn cột cần
-        amz_cols = ["parent_asin", "asin", "title", "features", "description", "main_category"]
-        df_amz = spark.read.option("mode", "DROPMALFORMED").json(amz_files).select([c for c in amz_cols if c in amz_cols])
+        logger.info(f"Dang xu ly {len(amz_files)} file Amazon metadata (VỚI SCHEMA TƯỜNG MINH)")
+        df_amz = spark.read.option("mode", "DROPMALFORMED").schema(AMZ_ITEM_SCHEMA).json(amz_files)
         
         df_amz_std = df_amz.select(
             spark_standardize(safe_col(df_amz, "parent_asin")).alias("product_id"),
@@ -120,4 +138,8 @@ def run_etl_item_nodes(spark, data_dir, output_dir):
     logger.info(f"Saving to Parquet (V2-Coalesce) -> {output_dir}")
     df_final.coalesce(16).write.mode("overwrite").parquet(output_dir)
     
-    return -1
+    # TỐI ƯU: Đếm số lượng từ metadata của file đã ghi (Cực nhanh vì chỉ đọc footer Parquet)
+    final_count = spark.read.parquet(output_dir).count()
+    return final_count
+
+

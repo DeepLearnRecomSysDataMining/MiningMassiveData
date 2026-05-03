@@ -9,73 +9,53 @@ import json
 import logging
 from pyspark.sql import SparkSession
 
-from src.file_utils import list_files
+from src.file_utils import list_files, detect_jsonl_type
 
 logger = logging.getLogger(__name__)
 
 
 def scan_all_files(spark: SparkSession, data_dir: str) -> dict:
     """
-    Quet toan bo file .jsonl va .jsonl.gz / .json.gz trong data_dir.
-    Tra ve dict: {filename: {"columns": [...], "count_approx": int}}
+    Quet toan bo file .jsonl trong data_dir.
+    Tra ve dict: { 'vn_review': [], 'amz_review': [], 'vn_item': [], 'amz_item': [] }
+    Gup tranh viec scan lap lai o cac giai doan sau.
     """
     print("\n" + "="*60)
-    print("  SCHEMA SCANNER - Khao sat cau truc du lieu tho")
+    print("  SCHEMA SCANNER - Khao sat va Phan loai du lieu")
     print("="*60)
 
-    results = {}
+    file_groups = {
+        "vn_review": [],
+        "amz_review": [],
+        "vn_item": [],
+        "amz_item": [],
+        "unknown": []
+    }
+    
     all_paths = sorted(list_files(data_dir))
-    target_paths = [
-        p for p in all_paths
-        if p.endswith(".jsonl")
-        or p.endswith(".jsonl.gz")
-        or p.endswith(".json.gz")
-    ]
+    target_paths = [p for p in all_paths if p.endswith(".jsonl")]
 
-    print(f"\n  Tong so file can quet: {len(target_paths)}\n")
+    print(f"\n  Tong so file can phan loai: {len(target_paths)}\n")
 
     for file_path in target_paths:
         file_name = os.path.basename(file_path)
-        print(f"  -> Dang doc: {file_name} ...")
-
-        try:
-            df = (
-                spark.read
-                .option("mode", "DROPMALFORMED")
-                .json(file_path)
-            )
-
-            dtypes   = df.dtypes
-            n_rows = df.count()
-
-            results[file_name] = {
-                "path":       file_path,
-                "columns":    dtypes,
-                "count":      n_rows,
-                "is_meta":    file_name.startswith("meta_"),
-            }
-
-            print(f"     So cot   : {len(dtypes)}")
-            print(f"     So dong  : {n_rows:,}")
-            for col_name, col_type in dtypes[:15]:
-                short_type = col_type if len(col_type) < 55 else col_type[:52] + "..."
-                print(f"       - {col_name}: {short_type}")
-            if len(dtypes) > 15:
-                print(f"       ... va {len(dtypes) - 15} cot khac")
-            print()
-
-        except Exception as e:
-            print(f"     [LOI] Khong doc duoc file: {e}\n")
-            results[file_name] = {"error": str(e)}
+        f_type = detect_jsonl_type(file_path)
+        
+        if f_type in file_groups:
+            file_groups[f_type].append(file_path)
+            print(f"  [OK] {file_name} -> {f_type}")
+        else:
+            file_groups["unknown"].append(file_path)
+            print(f"  [??] {file_name} -> unknown")
 
     # -- Tom tat cuoi ----------------------------------------
     print("\n" + "="*60)
-    print("  TOM TAT")
+    print("  TOM TAT PHAN LOAI")
     print("="*60)
-    meta_files    = [f for f, v in results.items() if v.get("is_meta")]
-    review_files  = [f for f, v in results.items() if not v.get("is_meta") and "error" not in v]
-    print(f"  File META  (san pham) : {len(meta_files)}")
-    print(f"  File REVIEW (tuong tac): {len(review_files)}")
+    for g, paths in file_groups.items():
+        if paths:
+            print(f"  {g:<12}: {len(paths)} file(s)")
     print("="*60 + "\n")
 
-    return results
+    return file_groups
+

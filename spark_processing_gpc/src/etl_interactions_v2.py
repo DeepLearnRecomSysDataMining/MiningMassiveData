@@ -8,9 +8,29 @@ import logging
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.functions import col, lower, lit, coalesce, concat_ws, regexp_replace, trim
 from pyspark.sql.types import StringType
+from pyspark.sql.types import StructType, StructField, StringType, FloatType
 from src.file_utils import detect_jsonl_type, list_files
 
 logger = logging.getLogger("etl_interactions_v2")
+
+# --- ĐỊNH NGHĨA SCHEMA TƯỜNG MINH (Giúp Spark không cần scan dữ liệu để đoán schema) ---
+VN_REVIEW_SCHEMA = StructType([
+    StructField("fullName", StringType(), True),
+    StructField("productId", StringType(), True),
+    StructField("asin", StringType(), True),
+    StructField("rating", FloatType(), True),
+    StructField("content", StringType(), True),
+    StructField("breadcrumb", StringType(), True)
+])
+
+AMZ_REVIEW_SCHEMA = StructType([
+    StructField("user_id", StringType(), True),
+    StructField("parent_asin", StringType(), True),
+    StructField("asin", StringType(), True),
+    StructField("rating", FloatType(), True),
+    StructField("text", StringType(), True),
+    StructField("main_category", StringType(), True)
+])
 
 def safe_col(df, col_name, default_val=None):
     if col_name in df.columns:
@@ -30,27 +50,31 @@ def spark_clean_text(c):
     c = regexp_replace(c, r"\s+", " ")
     return lower(trim(c))
 
-def run_etl_interactions(spark: SparkSession, data_dir: str, output_dir: str) -> int:
-    logger.info(f"[V2-OPTIMIZED] Dang quet review tu: {data_dir}")
+def run_etl_interactions(spark: SparkSession, data_dir: str, output_dir: str, file_groups: dict = None) -> int:
+    logger.info(f"[V2-OPTIMIZED] Dang xu ly ETL Interactions...")
     
-    all_files = list_files(data_dir)
-    vn_review_files = []
-    amz_review_files = []
-
-    for f_path in all_files:
-        if not f_path.endswith(".jsonl"): continue
-        f_type = detect_jsonl_type(f_path)
-        if f_type == "vn_review": vn_review_files.append(f_path)
-        elif f_type == "amz_review": amz_review_files.append(f_path)
+    if file_groups:
+        # TỐI ƯU: Tận dụng kết quả từ Schema Scanner
+        vn_review_files = file_groups.get("vn_review", [])
+        amz_review_files = file_groups.get("amz_review", [])
+    else:
+        # Fallback nếu không có file_groups
+        all_files = list_files(data_dir)
+        vn_review_files = []
+        amz_review_files = []
+        for f_path in all_files:
+            if not f_path.endswith(".jsonl"): continue
+            f_type = detect_jsonl_type(f_path)
+            if f_type == "vn_review": vn_review_files.append(f_path)
+            elif f_type == "amz_review": amz_review_files.append(f_path)
 
     df_final = None
 
     # 1. Xử lý Review Việt Nam
     if vn_review_files:
-        logger.info(f"Dang xu ly {len(vn_review_files)} file VN reviews...")
-        # TỐI ƯU: Chỉ select những cột cần thiết ngay khi đọc
-        vn_cols = ["fullName", "productId", "asin", "rating", "content", "breadcrumb"]
-        df_vn = spark.read.json(vn_review_files).select([c for c in vn_cols if c in vn_cols])
+        logger.info(f"Dang xu ly {len(vn_review_files)} file VN reviews (VỚI SCHEMA TƯỜNG MINH)")
+        # TỐI ƯU: Dùng schema để tránh request đoán kiểu
+        df_vn = spark.read.schema(VN_REVIEW_SCHEMA).json(vn_review_files)
         
         df_vn_std = df_vn.select(
             spark_standardize(safe_col(df_vn, "fullName")).alias("user_id"),
@@ -64,10 +88,9 @@ def run_etl_interactions(spark: SparkSession, data_dir: str, output_dir: str) ->
 
     # 2. Xử lý Review Amazon
     if amz_review_files:
-        logger.info(f"Dang xu ly {len(amz_review_files)} file Amazon reviews...")
-        # TỐI ƯU: Chỉ select những cột cần thiết ngay khi đọc
-        amz_cols = ["user_id", "parent_asin", "asin", "rating", "text", "main_category"]
-        df_amz = spark.read.json(amz_review_files).select([c for c in amz_cols if c in amz_cols])
+        logger.info(f"Dang xu ly {len(amz_review_files)} file Amazon reviews (VỚI SCHEMA TƯỜNG MINH)")
+        # TỐI ƯU: Dùng schema để tránh request đoán kiểu
+        df_amz = spark.read.schema(AMZ_REVIEW_SCHEMA).json(amz_review_files)
         
         df_amz_std = df_amz.select(
             spark_standardize(safe_col(df_amz, "user_id")).alias("user_id"),
@@ -92,4 +115,6 @@ def run_etl_interactions(spark: SparkSession, data_dir: str, output_dir: str) ->
             .coalesce(32) \
             .write.mode("overwrite").parquet(output_dir)
 
-    return -1
+    # TỐI ƯU: Đếm số lượng từ metadata của file đã ghi (Cực nhanh vì chỉ đọc footer Parquet)
+    final_count = spark.read.parquet(output_dir).count()
+    return final_count

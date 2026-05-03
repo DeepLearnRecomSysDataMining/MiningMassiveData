@@ -138,7 +138,7 @@ def process_amazon_breadcum(source_dir, categories_dict):
 
             batch_results = []
             for idx, row in enumerate(records):
-                if idx < 1985 or idx >= 6000:
+                if idx < 2705 or idx >= 6000:
                     continue
 
                 url = row['url']
