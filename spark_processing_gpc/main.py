@@ -7,8 +7,8 @@ from pathlib import Path
 
 from config.spark_config    import create_spark_session, PathConfig
 from src.schema_scanner     import scan_all_files
-from src.etl_interactions   import run_etl_interactions
-from src.etl_item_nodes     import run_etl_item_nodes
+from src.etl_interactions_v2 import run_etl_interactions
+from src.etl_item_nodes_v2   import run_etl_item_nodes
 from src.evaluation_dataset import run_evaluation_generator
 from src.data_validator     import validate_interactions, validate_item_nodes
 from src.file_utils         import decompress_gz_files
