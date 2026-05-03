@@ -1494,3 +1494,720 @@ from disconnec
 14:43:19 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B074TCWHYR: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
 14:43:20 [INFO]    🔹 [1887/10888] URL: https://www.amazon.com/dp/B083R36CY4 | Lần 1
 14:43:20 [ERROR]       ❌ Lỗi trích xuất tại https://www.amazon.com/dp/B083R36CY4: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev
+05:08:17 [INFO] Hệ thống khởi tạo thành công. Thư mục: D:\Hoctap_Code_PrivateProject\MiningMassiveData\craw_amazon\data_integrated
+05:08:17 [INFO] 🚀 Hệ thống khởi tạo thành công. Kết quả sẽ lưu tại: D:\Hoctap_Code_PrivateProject\MiningMassiveData\craw_amazon\categories
+05:08:27 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+05:08:34 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+05:08:46 [INFO] ✅ Đã chuyển vùng thành công.
+05:08:46 [INFO] 📂 ĐANG XỬ LÝ DANH MỤC: ALL_LINKS_AMAZON | File: all_links_amazon.csv
+05:08:46 [INFO] 🔎 Tìm thấy 10888 records.
+05:08:46 [INFO]    🔹 [1611/10888] URL: https://www.amazon.com/dp/B0FYPGZ9TB | Lần 1
+05:08:53 [INFO]    🔹 [1612/10888] URL: https://www.amazon.com/dp/B0FYPK2MSK | Lần 1
+05:09:01 [INFO]    🔹 [1613/10888] URL: https://www.amazon.com/dp/B0FYPJ52ZD | Lần 1
+05:09:09 [INFO]    🔹 [1614/10888] URL: https://www.amazon.com/dp/B0FYPG2NLZ | Lần 1
+05:09:18 [INFO]    🔹 [1615/10888] URL: https://www.amazon.com/dp/B0FYPN8KSS | Lần 1
+05:09:26 [INFO]    🔹 [1616/10888] URL: https://www.amazon.com/dp/B0FYPKRCP8 | Lần 1
+05:09:34 [INFO]    🔹 [1617/10888] URL: https://www.amazon.com/dp/B0FYPNVPZ6 | Lần 1
+05:09:43 [INFO]    🔹 [1618/10888] URL: https://www.amazon.com/dp/B0FYPNZSL2 | Lần 1
+05:09:51 [INFO]    🔹 [1619/10888] URL: https://www.amazon.com/dp/B0FYPNC4R7 | Lần 1
+05:09:59 [INFO]    🔹 [1620/10888] URL: https://www.amazon.com/dp/B0DYJMYYHD | Lần 1
+05:10:06 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:10:08 [INFO]    🔹 [1621/10888] URL: https://www.amazon.com/dp/B0CW297HQV | Lần 1
+05:10:17 [INFO]    🔹 [1622/10888] URL: https://www.amazon.com/dp/B0DYJK9JNG | Lần 1
+05:10:26 [INFO]    🔹 [1623/10888] URL: https://www.amazon.com/dp/B0CV2VVTX4 | Lần 1
+05:10:35 [INFO]    🔹 [1624/10888] URL: https://www.amazon.com/dp/B0CGH12MPN | Lần 1
+05:10:42 [INFO]    🔹 [1625/10888] URL: https://www.amazon.com/dp/B0CV3B64K2 | Lần 1
+05:10:50 [INFO]    🔹 [1626/10888] URL: https://www.amazon.com/dp/B0CGGZZTV3 | Lần 1
+05:10:59 [INFO]    🔹 [1627/10888] URL: https://www.amazon.com/dp/B0FH5X791D | Lần 1
+05:11:08 [INFO]    🔹 [1628/10888] URL: https://www.amazon.com/dp/B0F789W1V3 | Lần 1
+05:11:18 [INFO]    🔹 [1629/10888] URL: https://www.amazon.com/dp/B0CW286XRZ | Lần 1
+05:11:27 [INFO]    🔹 [1630/10888] URL: https://www.amazon.com/dp/B0CW27V4HC | Lần 1
+05:11:34 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:11:36 [INFO]    🔹 [1631/10888] URL: https://www.amazon.com/dp/B0DYJHN2KL | Lần 1
+05:11:46 [INFO]    🔹 [1632/10888] URL: https://www.amazon.com/dp/B0DYJHX33G | Lần 1
+05:11:55 [INFO]    🔹 [1633/10888] URL: https://www.amazon.com/dp/B0DYJHNFR1 | Lần 1
+05:12:04 [INFO]    🔹 [1634/10888] URL: https://www.amazon.com/dp/B0F789BM1K | Lần 1
+05:12:14 [INFO]    🔹 [1635/10888] URL: https://www.amazon.com/dp/B0FNN3X79F | Lần 1
+05:12:22 [INFO]    🔹 [1636/10888] URL: https://www.amazon.com/dp/B0B35DR8Z8 | Lần 1
+05:12:31 [INFO]    🔹 [1637/10888] URL: https://www.amazon.com/dp/B09RQ75FBH | Lần 1
+05:12:40 [INFO]    🔹 [1638/10888] URL: https://www.amazon.com/dp/B0B35DX86C | Lần 1
+05:12:48 [INFO]    🔹 [1639/10888] URL: https://www.amazon.com/dp/B0CW28JXRJ | Lần 1
+05:12:55 [INFO]    🔹 [1640/10888] URL: https://www.amazon.com/dp/B0BZQMXLZP | Lần 1
+05:13:02 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:13:03 [INFO]    🔹 [1641/10888] URL: https://www.amazon.com/dp/B0CGGZ3XBG | Lần 1
+05:13:10 [INFO]    🔹 [1642/10888] URL: https://www.amazon.com/dp/B0CGH1BMZJ | Lần 1
+05:13:19 [INFO]    🔹 [1643/10888] URL: https://www.amazon.com/dp/B0CV2RQC53 | Lần 1
+05:13:28 [INFO]    🔹 [1644/10888] URL: https://www.amazon.com/dp/B0CQH57G8R | Lần 1
+05:13:36 [INFO]    🔹 [1645/10888] URL: https://www.amazon.com/dp/B0DXN145VV | Lần 1
+05:13:45 [INFO]    🔹 [1646/10888] URL: https://www.amazon.com/dp/B0FHZCZB73 | Lần 1
+05:13:53 [INFO]    🔹 [1647/10888] URL: https://www.amazon.com/dp/B083TZ68H1 | Lần 1
+05:14:02 [INFO]    🔹 [1648/10888] URL: https://www.amazon.com/dp/B0BH7GTY9C | Lần 1
+05:14:12 [INFO]    🔹 [1649/10888] URL: https://www.amazon.com/dp/B0BHMW8R6S | Lần 1
+05:14:22 [INFO]    🔹 [1650/10888] URL: https://www.amazon.com/dp/B0DGVMYTW6 | Lần 1
+05:14:30 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:14:32 [INFO]    🔹 [1651/10888] URL: https://www.amazon.com/dp/B0BBJDS62N | Lần 1
+05:14:43 [INFO]    🔹 [1652/10888] URL: https://www.amazon.com/dp/B0D6NN6TM7 | Lần 1
+05:14:53 [INFO]    🔹 [1653/10888] URL: https://www.amazon.com/dp/B0FFQJQYQ6 | Lần 1
+05:15:02 [INFO]    🔹 [1654/10888] URL: https://www.amazon.com/dp/B0FFQM1JXG | Lần 1
+05:15:12 [INFO]    🔹 [1655/10888] URL: https://www.amazon.com/dp/B0DQLJWRDX | Lần 1
+05:15:24 [INFO]    🔹 [1656/10888] URL: https://www.amazon.com/dp/B0FDLC6X93 | Lần 1
+05:15:35 [INFO]    🔹 [1657/10888] URL: https://www.amazon.com/dp/B0DS2R6948 | Lần 1
+05:15:45 [INFO]    🔹 [1658/10888] URL: https://www.amazon.com/dp/B0DT7HVT16 | Lần 1
+05:15:54 [INFO]    🔹 [1659/10888] URL: https://www.amazon.com/dp/B0DS2R7N4F | Lần 1
+05:16:02 [INFO]    🔹 [1660/10888] URL: https://www.amazon.com/dp/B0BMN5J1XJ | Lần 1
+05:16:09 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:16:11 [INFO]    🔹 [1661/10888] URL: https://www.amazon.com/dp/B0BTTZFQTP | Lần 1
+05:16:20 [INFO]    🔹 [1662/10888] URL: https://www.amazon.com/dp/B08R5736B3 | Lần 1
+05:16:28 [INFO]    🔹 [1663/10888] URL: https://www.amazon.com/dp/B0FDLCT35H | Lần 1
+05:16:35 [INFO]    🔹 [1664/10888] URL: https://www.amazon.com/dp/B0BTQ3SVFR | Lần 1
+05:16:44 [INFO]    🔹 [1665/10888] URL: https://www.amazon.com/dp/B0FD837GB5 | Lần 1
+05:16:51 [INFO]    🔹 [1666/10888] URL: https://www.amazon.com/dp/B0DT9WRP5M | Lần 1
+05:16:59 [INFO]    🔹 [1667/10888] URL: https://www.amazon.com/dp/B0DYVCGVK4 | Lần 1
+05:17:08 [INFO]    🔹 [1668/10888] URL: https://www.amazon.com/dp/B0DQSMMCSH | Lần 1
+05:17:18 [INFO]    🔹 [1669/10888] URL: https://www.amazon.com/dp/B0DQSLHSP2 | Lần 1
+05:17:27 [INFO]    🔹 [1670/10888] URL: https://www.amazon.com/dp/B0DT7JVPVH | Lần 1
+05:17:33 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:17:36 [INFO]    🔹 [1671/10888] URL: https://www.amazon.com/dp/B0FD7XGK1N | Lần 1
+05:17:46 [INFO]    🔹 [1672/10888] URL: https://www.amazon.com/dp/B0CTNXBRJV | Lần 1
+05:17:56 [INFO]    🔹 [1673/10888] URL: https://www.amazon.com/dp/B083R826VW | Lần 1
+05:18:06 [INFO]    🔹 [1674/10888] URL: https://www.amazon.com/dp/B0BH6XND27 | Lần 1
+05:18:16 [INFO]    🔹 [1675/10888] URL: https://www.amazon.com/dp/B083SJLWL9 | Lần 1
+05:18:25 [INFO]    🔹 [1676/10888] URL: https://www.amazon.com/dp/B0CMJSH15D | Lần 1
+05:18:37 [INFO]    🔹 [1677/10888] URL: https://www.amazon.com/dp/B0CMK1W2YX | Lần 1
+05:18:46 [INFO]    🔹 [1678/10888] URL: https://www.amazon.com/dp/B0DQLKPSMG | Lần 1
+05:18:56 [INFO]    🔹 [1679/10888] URL: https://www.amazon.com/dp/B0DQLJGTRM | Lần 1
+05:19:06 [INFO]    🔹 [1680/10888] URL: https://www.amazon.com/dp/B0DQLHVQSF | Lần 1
+05:19:14 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:19:16 [INFO]    🔹 [1681/10888] URL: https://www.amazon.com/dp/B0DQLKRXKW | Lần 1
+05:19:26 [INFO]    🔹 [1682/10888] URL: https://www.amazon.com/dp/B0FDL97CNB | Lần 1
+05:19:37 [INFO]    🔹 [1683/10888] URL: https://www.amazon.com/dp/B0F1F7MKVP | Lần 1
+05:19:47 [INFO]    🔹 [1684/10888] URL: https://www.amazon.com/dp/B0D692R15L | Lần 1
+05:19:56 [INFO]    🔹 [1685/10888] URL: https://www.amazon.com/dp/B0F646G2BX | Lần 1
+05:20:04 [INFO]    🔹 [1686/10888] URL: https://www.amazon.com/dp/B0F1DX19QR | Lần 1
+05:20:13 [INFO]    🔹 [1687/10888] URL: https://www.amazon.com/dp/B0GHBW3TG3 | Lần 1
+05:20:22 [INFO]    🔹 [1688/10888] URL: https://www.amazon.com/dp/B0GQGTWYJM | Lần 1
+05:20:30 [INFO]    🔹 [1689/10888] URL: https://www.amazon.com/dp/B0D1RM2TQW | Lần 1
+05:20:38 [INFO]    🔹 [1690/10888] URL: https://www.amazon.com/dp/B0DT7H5JYL | Lần 1
+05:20:46 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:20:48 [INFO]    🔹 [1691/10888] URL: https://www.amazon.com/dp/B0FBWPRWYX | Lần 1
+05:20:57 [INFO]    🔹 [1692/10888] URL: https://www.amazon.com/dp/B0DGVC3DDW | Lần 1
+05:21:07 [INFO]    🔹 [1693/10888] URL: https://www.amazon.com/dp/B0GP5Y8BXH | Lần 1
+05:21:16 [INFO]    🔹 [1694/10888] URL: https://www.amazon.com/dp/B0GP6MYZW1 | Lần 1
+05:21:26 [INFO]    🔹 [1695/10888] URL: https://www.amazon.com/dp/B0GDM6MD5T | Lần 1
+05:21:34 [INFO]    🔹 [1696/10888] URL: https://www.amazon.com/dp/B0DGVGRVLQ | Lần 1
+05:21:45 [INFO]    🔹 [1697/10888] URL: https://www.amazon.com/dp/B083WG2VDF | Lần 1
+05:21:55 [INFO]    🔹 [1698/10888] URL: https://www.amazon.com/dp/B0DHWLN5XT | Lần 1
+05:22:06 [INFO]    🔹 [1699/10888] URL: https://www.amazon.com/dp/B0FP2ZWN4M | Lần 1
+05:22:16 [INFO]    🔹 [1700/10888] URL: https://www.amazon.com/dp/B0CNR8Y29S | Lần 1
+05:22:23 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:22:26 [INFO]    🔹 [1701/10888] URL: https://www.amazon.com/dp/B0BF7FT26Z | Lần 1
+05:22:37 [INFO]    🔹 [1702/10888] URL: https://www.amazon.com/dp/B0FDL6182M | Lần 1
+05:22:46 [INFO]    🔹 [1703/10888] URL: https://www.amazon.com/dp/B0GTZZ7T3H | Lần 1
+05:22:54 [INFO]    🔹 [1704/10888] URL: https://www.amazon.com/dp/B0DGVGT3PJ | Lần 1
+05:23:03 [INFO]    🔹 [1705/10888] URL: https://www.amazon.com/dp/B0DTR54HZZ | Lần 1
+05:23:13 [INFO]    🔹 [1706/10888] URL: https://www.amazon.com/dp/B0BZHFLRLM | Lần 1
+05:23:23 [INFO]    🔹 [1707/10888] URL: https://www.amazon.com/dp/B0DTQTJQGZ | Lần 1
+05:23:32 [INFO]    🔹 [1708/10888] URL: https://www.amazon.com/dp/B0GKF8K19Q | Lần 1
+05:23:42 [INFO]    🔹 [1709/10888] URL: https://www.amazon.com/dp/B0FDL8QKDW | Lần 1
+05:23:51 [INFO]    🔹 [1710/10888] URL: https://www.amazon.com/dp/B0DVCD7X5X | Lần 1
+05:23:58 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:23:59 [INFO]    🔹 [1711/10888] URL: https://www.amazon.com/dp/B0GKFW9GCV | Lần 1
+05:24:08 [INFO]    🔹 [1712/10888] URL: https://www.amazon.com/dp/B0DTR8FDMN | Lần 1
+05:24:08 [WARNING] ⚠️ CAPTCHA! Restart driver...
+05:24:13 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+05:24:22 [INFO] ✅ Đã chuyển vùng thành công.
+05:24:22 [INFO]    🔹 [1712/10888] URL: https://www.amazon.com/dp/B0DTR8FDMN | Lần 2
+05:24:24 [WARNING] ⚠️ CAPTCHA! Restart driver...
+05:24:28 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+05:24:38 [INFO] ✅ Đã chuyển vùng thành công.
+05:24:40 [INFO]    🔹 [1713/10888] URL: https://www.amazon.com/dp/B0DS6WTXGP | Lần 1
+05:24:53 [INFO]    🔹 [1714/10888] URL: https://www.amazon.com/dp/B0DZZ63JXD | Lần 1
+05:25:02 [INFO]    🔹 [1715/10888] URL: https://www.amazon.com/dp/B0DTGPC5KR | Lần 1
+05:25:12 [INFO]    🔹 [1716/10888] URL: https://www.amazon.com/dp/B0F2XGK9XY | Lần 1
+05:25:20 [INFO]    🔹 [1717/10888] URL: https://www.amazon.com/dp/B0DTRCBYQC | Lần 1
+05:25:20 [WARNING] ⚠️ CAPTCHA! Restart driver...
+05:25:25 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+05:25:52 [INFO] ✅ Đã chuyển vùng thành công.
+05:25:52 [INFO]    🔹 [1717/10888] URL: https://www.amazon.com/dp/B0DTRCBYQC | Lần 2
+05:25:53 [WARNING] ⚠️ CAPTCHA! Restart driver...
+05:25:58 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+05:26:09 [INFO] ✅ Đã chuyển vùng thành công.
+05:26:12 [INFO]    🔹 [1718/10888] URL: https://www.amazon.com/dp/B0DTR7GWG6 | Lần 1
+05:26:14 [WARNING] ⚠️ CAPTCHA! Restart driver...
+05:26:19 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+05:26:28 [INFO] ✅ Đã chuyển vùng thành công.
+05:26:28 [INFO]    🔹 [1718/10888] URL: https://www.amazon.com/dp/B0DTR7GWG6 | Lần 2
+05:26:31 [WARNING] ⚠️ CAPTCHA! Restart driver...
+05:26:36 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+05:26:52 [INFO] ✅ Đã chuyển vùng thành công.
+05:26:54 [INFO]    🔹 [1719/10888] URL: https://www.amazon.com/dp/B0DTRC7782 | Lần 1
+05:26:55 [WARNING] ⚠️ CAPTCHA! Restart driver...
+05:27:00 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+05:27:12 [INFO] ✅ Đã chuyển vùng thành công.
+05:27:12 [INFO]    🔹 [1719/10888] URL: https://www.amazon.com/dp/B0DTRC7782 | Lần 2
+05:27:12 [WARNING] ⚠️ CAPTCHA! Restart driver...
+05:27:17 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+05:27:26 [INFO] ✅ Đã chuyển vùng thành công.
+05:27:27 [INFO]    🔹 [1720/10888] URL: https://www.amazon.com/dp/B0BRR2K3QJ | Lần 1
+05:27:28 [WARNING] ⚠️ CAPTCHA! Restart driver...
+05:27:33 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+05:27:45 [INFO] ✅ Đã chuyển vùng thành công.
+05:27:45 [INFO]    🔹 [1720/10888] URL: https://www.amazon.com/dp/B0BRR2K3QJ | Lần 2
+05:27:45 [WARNING] ⚠️ CAPTCHA! Restart driver...
+05:27:50 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+05:28:01 [INFO] ✅ Đã chuyển vùng thành công.
+05:28:03 [INFO]    🔹 [1721/10888] URL: https://www.amazon.com/dp/B091HTG6DQ | Lần 1
+05:28:13 [INFO]    🔹 [1722/10888] URL: https://www.amazon.com/dp/B0FD826K8F | Lần 1
+05:28:23 [INFO]    🔹 [1723/10888] URL: https://www.amazon.com/dp/B0DGVBSLLP | Lần 1
+05:28:33 [INFO]    🔹 [1724/10888] URL: https://www.amazon.com/dp/B0FRV5XHVQ | Lần 1
+05:28:43 [INFO]    🔹 [1725/10888] URL: https://www.amazon.com/dp/B0GDMLX6YN | Lần 1
+05:28:50 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:28:52 [INFO]    🔹 [1726/10888] URL: https://www.amazon.com/dp/B083WFQC1C | Lần 1
+05:29:02 [INFO]    🔹 [1727/10888] URL: https://www.amazon.com/dp/B0BF7CL99N | Lần 1
+05:29:12 [INFO]    🔹 [1728/10888] URL: https://www.amazon.com/dp/B0DGVGV7YN | Lần 1
+05:29:22 [INFO]    🔹 [1729/10888] URL: https://www.amazon.com/dp/B0GDM6M9KB | Lần 1
+05:29:32 [INFO]    🔹 [1730/10888] URL: https://www.amazon.com/dp/B0GDMF3NK1 | Lần 1
+05:29:41 [INFO]    🔹 [1731/10888] URL: https://www.amazon.com/dp/B0FRV8M4D3 | Lần 1
+05:29:52 [INFO]    🔹 [1732/10888] URL: https://www.amazon.com/dp/B0FDL8CFQX | Lần 1
+05:30:01 [INFO]    🔹 [1733/10888] URL: https://www.amazon.com/dp/B0GQGBLY4J | Lần 1
+05:30:11 [INFO]    🔹 [1734/10888] URL: https://www.amazon.com/dp/B0FR671G1H | Lần 1
+05:30:21 [INFO]    🔹 [1735/10888] URL: https://www.amazon.com/dp/B0GKFQXR3R | Lần 1
+05:30:28 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:30:30 [INFO]    🔹 [1736/10888] URL: https://www.amazon.com/dp/B0FJZHMSV9 | Lần 1
+05:30:39 [INFO]    🔹 [1737/10888] URL: https://www.amazon.com/dp/B0BH9DXY38 | Lần 1
+05:30:48 [INFO]    🔹 [1738/10888] URL: https://www.amazon.com/dp/B0D2PK3CC1 | Lần 1
+05:30:58 [INFO]    🔹 [1739/10888] URL: https://www.amazon.com/dp/B0CKS6BMH7 | Lần 1
+05:31:06 [INFO]    🔹 [1740/10888] URL: https://www.amazon.com/dp/B083RW9KDM | Lần 1
+05:31:16 [INFO]    🔹 [1741/10888] URL: https://www.amazon.com/dp/B0CTTVFWHM | Lần 1
+05:31:25 [INFO]    🔹 [1742/10888] URL: https://www.amazon.com/dp/B083RW9TJF | Lần 1
+05:31:34 [INFO]    🔹 [1743/10888] URL: https://www.amazon.com/dp/B0DJP82ML2 | Lần 1
+05:31:42 [INFO]    🔹 [1744/10888] URL: https://www.amazon.com/dp/B0DJP8Q6JK | Lần 1
+05:31:53 [INFO]    🔹 [1745/10888] URL: https://www.amazon.com/dp/B0DJP7NRXX | Lần 1
+05:32:00 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:32:02 [INFO]    🔹 [1746/10888] URL: https://www.amazon.com/dp/B0DJP76L1F | Lần 1
+05:32:12 [INFO]    🔹 [1747/10888] URL: https://www.amazon.com/dp/B0DJP95MGB | Lần 1
+05:32:22 [INFO]    🔹 [1748/10888] URL: https://www.amazon.com/dp/B0DJP8NFWP | Lần 1
+05:32:31 [INFO]    🔹 [1749/10888] URL: https://www.amazon.com/dp/B0FD81QMC7 | Lần 1
+05:32:40 [INFO]    🔹 [1750/10888] URL: https://www.amazon.com/dp/B09VKF3CFC | Lần 1
+05:32:48 [INFO]    🔹 [1751/10888] URL: https://www.amazon.com/dp/B0DKTVJQ5C | Lần 1
+05:32:58 [INFO]    🔹 [1752/10888] URL: https://www.amazon.com/dp/B09WPTKDQY | Lần 1
+05:33:07 [INFO]    🔹 [1753/10888] URL: https://www.amazon.com/dp/B0D5DF12VH | Lần 1
+05:33:15 [INFO]    🔹 [1754/10888] URL: https://www.amazon.com/dp/B0CSZ6VCS7 | Lần 1
+05:33:24 [INFO]    🔹 [1755/10888] URL: https://www.amazon.com/dp/B0FG34R66T | Lần 1
+05:33:31 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:33:33 [INFO]    🔹 [1756/10888] URL: https://www.amazon.com/dp/B0FJZ3CWW1 | Lần 1
+05:33:41 [INFO]    🔹 [1757/10888] URL: https://www.amazon.com/dp/B0DQLHLVLK | Lần 1
+05:33:51 [INFO]    🔹 [1758/10888] URL: https://www.amazon.com/dp/B0DQLJHJ8B | Lần 1
+05:34:01 [INFO]    🔹 [1759/10888] URL: https://www.amazon.com/dp/B0FBBW1YRW | Lần 1
+05:34:10 [INFO]    🔹 [1760/10888] URL: https://www.amazon.com/dp/B0CPWQY9Y4 | Lần 1
+05:34:21 [INFO]    🔹 [1761/10888] URL: https://www.amazon.com/dp/B0CTTY491F | Lần 1
+05:34:31 [INFO]    🔹 [1762/10888] URL: https://www.amazon.com/dp/B0BYBHW4SH | Lần 1
+05:34:41 [INFO]    🔹 [1763/10888] URL: https://www.amazon.com/dp/B0DQLKZSKF | Lần 1
+05:34:51 [INFO]    🔹 [1764/10888] URL: https://www.amazon.com/dp/B0DQLH22F6 | Lần 1
+05:35:02 [INFO]    🔹 [1765/10888] URL: https://www.amazon.com/dp/B0D2V4VH2C | Lần 1
+05:35:09 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:35:11 [INFO]    🔹 [1766/10888] URL: https://www.amazon.com/dp/B08KTWVHQP | Lần 1
+05:35:21 [INFO]    🔹 [1767/10888] URL: https://www.amazon.com/dp/B0DKFMSMYK | Lần 1
+05:35:32 [INFO]    🔹 [1768/10888] URL: https://www.amazon.com/dp/B0D6NN87T8 | Lần 1
+05:35:41 [INFO]    🔹 [1769/10888] URL: https://www.amazon.com/dp/B08HR74WV4 | Lần 1
+05:35:53 [INFO]    🔹 [1770/10888] URL: https://www.amazon.com/dp/B0FLQMYG1Z | Lần 1
+05:36:01 [INFO]    🔹 [1771/10888] URL: https://www.amazon.com/dp/B0FLQFHZD5 | Lần 1
+05:36:10 [INFO]    🔹 [1772/10888] URL: https://www.amazon.com/dp/B0DQ2M32HZ | Lần 1
+05:36:19 [INFO]    🔹 [1773/10888] URL: https://www.amazon.com/dp/B0DGY34739 | Lần 1
+05:36:27 [INFO]    🔹 [1774/10888] URL: https://www.amazon.com/dp/B0GP9NNG1Y | Lần 1
+05:36:35 [INFO]    🔹 [1775/10888] URL: https://www.amazon.com/dp/B0F9HKJW7D | Lần 1
+05:36:41 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:36:43 [INFO]    🔹 [1776/10888] URL: https://www.amazon.com/dp/B0B75HZT8K | Lần 1
+05:36:50 [INFO]    🔹 [1777/10888] URL: https://www.amazon.com/dp/B0GP24T9J9 | Lần 1
+05:36:58 [INFO]    🔹 [1778/10888] URL: https://www.amazon.com/dp/B0F9PVP6CZ | Lần 1
+05:37:06 [INFO]    🔹 [1779/10888] URL: https://www.amazon.com/dp/B0BPYPNDVP | Lần 1
+05:37:13 [INFO]    🔹 [1780/10888] URL: https://www.amazon.com/dp/B08F91JGSD | Lần 1
+05:37:22 [INFO]    🔹 [1781/10888] URL: https://www.amazon.com/dp/B0F4KXNSPN | Lần 1
+05:37:31 [INFO]    🔹 [1782/10888] URL: https://www.amazon.com/dp/B0FLLQC9X1 | Lần 1
+05:37:38 [INFO]    🔹 [1783/10888] URL: https://www.amazon.com/dp/B0F4F4WCT7 | Lần 1
+05:37:48 [INFO]    🔹 [1784/10888] URL: https://www.amazon.com/dp/B0F4L1GZCM | Lần 1
+05:37:59 [INFO]    🔹 [1785/10888] URL: https://www.amazon.com/dp/B0DGMQD4HT | Lần 1
+05:38:05 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:38:08 [INFO]    🔹 [1786/10888] URL: https://www.amazon.com/dp/B084BV242B | Lần 1
+05:38:18 [INFO]    🔹 [1787/10888] URL: https://www.amazon.com/dp/B0DZJW3TS7 | Lần 1
+05:38:26 [INFO]    🔹 [1788/10888] URL: https://www.amazon.com/dp/B07VGPR5DX | Lần 1
+05:38:34 [INFO]    🔹 [1789/10888] URL: https://www.amazon.com/dp/B004UBIJXK | Lần 1
+05:38:42 [INFO]    🔹 [1790/10888] URL: https://www.amazon.com/dp/B0F8P3L897 | Lần 1
+05:38:50 [INFO]    🔹 [1791/10888] URL: https://www.amazon.com/dp/B0DBNNL4QT | Lần 1
+05:38:59 [INFO]    🔹 [1792/10888] URL: https://www.amazon.com/dp/B0F8KFG397 | Lần 1
+05:39:07 [INFO]    🔹 [1793/10888] URL: https://www.amazon.com/dp/B0GQJRGZW7 | Lần 1
+05:39:14 [INFO]    🔹 [1794/10888] URL: https://www.amazon.com/dp/B0G65LSM23 | Lần 1
+05:39:22 [INFO]    🔹 [1795/10888] URL: https://www.amazon.com/dp/B0FH5YD2RZ | Lần 1
+05:39:28 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:39:31 [INFO]    🔹 [1796/10888] URL: https://www.amazon.com/dp/B0F2G2N2L8 | Lần 1
+05:39:43 [INFO]    🔹 [1797/10888] URL: https://www.amazon.com/dp/B0FW5DQWN6 | Lần 1
+05:39:51 [INFO]    🔹 [1798/10888] URL: https://www.amazon.com/dp/B0GNT5X792 | Lần 1
+05:39:59 [INFO]    🔹 [1799/10888] URL: https://www.amazon.com/dp/B09WC9LMSK | Lần 1
+05:40:08 [INFO]    🔹 [1800/10888] URL: https://www.amazon.com/dp/B0G4X88PNG | Lần 1
+05:40:17 [INFO]    🔹 [1801/10888] URL: https://www.amazon.com/dp/B0FPGF7NWD | Lần 1
+05:40:26 [INFO]    🔹 [1802/10888] URL: https://www.amazon.com/dp/B0FXNLS5N9 | Lần 1
+05:40:35 [INFO]    🔹 [1803/10888] URL: https://www.amazon.com/dp/B0GL3P2L5H | Lần 1
+05:40:43 [INFO]    🔹 [1804/10888] URL: https://www.amazon.com/dp/B0DZPGH229 | Lần 1
+05:40:51 [INFO]    🔹 [1805/10888] URL: https://www.amazon.com/dp/B0DZQ9R4J7 | Lần 1
+05:40:57 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:41:00 [INFO]    🔹 [1806/10888] URL: https://www.amazon.com/dp/B09PF98855 | Lần 1
+05:41:08 [INFO]    🔹 [1807/10888] URL: https://www.amazon.com/dp/B0DTMF52RB | Lần 1
+05:41:17 [INFO]    🔹 [1808/10888] URL: https://www.amazon.com/dp/B0DV9TB1JG | Lần 1
+05:41:26 [INFO]    🔹 [1809/10888] URL: https://www.amazon.com/dp/B0F22CL3CK | Lần 1
+05:41:33 [INFO]    🔹 [1810/10888] URL: https://www.amazon.com/dp/B0C5RYZF1F | Lần 1
+05:41:41 [INFO]    🔹 [1811/10888] URL: https://www.amazon.com/dp/B0DDF3WLMX | Lần 1
+05:41:48 [INFO]    🔹 [1812/10888] URL: https://www.amazon.com/dp/B0DMTH74RT | Lần 1
+05:41:56 [INFO]    🔹 [1813/10888] URL: https://www.amazon.com/dp/B0FNXBG746 | Lần 1
+05:42:07 [INFO]    🔹 [1814/10888] URL: https://www.amazon.com/dp/B0D54B3QGZ | Lần 1
+05:42:18 [INFO]    🔹 [1815/10888] URL: https://www.amazon.com/dp/B00IYV92MY | Lần 1
+05:42:25 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:42:26 [INFO]    🔹 [1816/10888] URL: https://www.amazon.com/dp/B0F2962Z6Q | Lần 1
+05:42:35 [INFO]    🔹 [1817/10888] URL: https://www.amazon.com/dp/B0DBMX259B | Lần 1
+05:42:43 [INFO]    🔹 [1818/10888] URL: https://www.amazon.com/dp/B09D8K5FXQ | Lần 1
+05:42:51 [INFO]    🔹 [1819/10888] URL: https://www.amazon.com/dp/B013F12486 | Lần 1
+05:42:59 [INFO]    🔹 [1820/10888] URL: https://www.amazon.com/dp/B084RQPDXC | Lần 1
+05:43:08 [INFO]    🔹 [1821/10888] URL: https://www.amazon.com/dp/B07VDPJMC8 | Lần 1
+05:43:15 [INFO]    🔹 [1822/10888] URL: https://www.amazon.com/dp/B0DDDVBY48 | Lần 1
+05:43:22 [INFO]    🔹 [1823/10888] URL: https://www.amazon.com/dp/B0GKQ16Y8C | Lần 1
+05:43:31 [INFO]    🔹 [1824/10888] URL: https://www.amazon.com/dp/B07WW84QFK | Lần 1
+05:43:39 [INFO]    🔹 [1825/10888] URL: https://www.amazon.com/dp/B07B285RXK | Lần 1
+05:43:46 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:43:47 [INFO]    🔹 [1826/10888] URL: https://www.amazon.com/dp/B00E4LGVUO | Lần 1
+05:43:56 [INFO]    🔹 [1827/10888] URL: https://www.amazon.com/dp/B00E4LGTYC | Lần 1
+05:44:06 [INFO]    🔹 [1828/10888] URL: https://www.amazon.com/dp/B00E4LGU1Y | Lần 1
+05:44:15 [INFO]    🔹 [1829/10888] URL: https://www.amazon.com/dp/B07SHW92VR | Lần 1
+05:44:25 [INFO]    🔹 [1830/10888] URL: https://www.amazon.com/dp/B07SKY2QQR | Lần 1
+05:44:36 [INFO]    🔹 [1831/10888] URL: https://www.amazon.com/dp/B07SP5XZL5 | Lần 1
+05:44:46 [INFO]    🔹 [1832/10888] URL: https://www.amazon.com/dp/B07SP57RWH | Lần 1
+05:44:55 [INFO]    🔹 [1833/10888] URL: https://www.amazon.com/dp/B00E4LGU32 | Lần 1
+05:45:04 [INFO]    🔹 [1834/10888] URL: https://www.amazon.com/dp/B07SP6G436 | Lần 1
+05:45:14 [INFO]    🔹 [1835/10888] URL: https://www.amazon.com/dp/B07SP77JCT | Lần 1
+05:45:22 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:45:23 [INFO]    🔹 [1836/10888] URL: https://www.amazon.com/dp/B07J4RNY2S | Lần 1
+05:45:34 [INFO]    🔹 [1837/10888] URL: https://www.amazon.com/dp/B003ELYQGG | Lần 1
+05:45:43 [INFO]    🔹 [1838/10888] URL: https://www.amazon.com/dp/B003EM6AQE | Lần 1
+05:45:54 [INFO]    🔹 [1839/10888] URL: https://www.amazon.com/dp/B003EM800S | Lần 1
+05:46:03 [INFO]    🔹 [1840/10888] URL: https://www.amazon.com/dp/B07J4WHNFC | Lần 1
+05:46:14 [INFO]    🔹 [1841/10888] URL: https://www.amazon.com/dp/B014LQS88O | Lần 1
+05:46:22 [INFO]    🔹 [1842/10888] URL: https://www.amazon.com/dp/B0GQJJR3Z7 | Lần 1
+05:46:30 [INFO]    🔹 [1843/10888] URL: https://www.amazon.com/dp/B0DQ9HY4G6 | Lần 1
+05:46:39 [INFO]    🔹 [1844/10888] URL: https://www.amazon.com/dp/B0DQ91X7GH | Lần 1
+05:46:49 [INFO]    🔹 [1845/10888] URL: https://www.amazon.com/dp/B0DLXZ4KVR | Lần 1
+05:46:55 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:46:58 [INFO]    🔹 [1846/10888] URL: https://www.amazon.com/dp/B0G1PR5GJB | Lần 1
+05:47:06 [INFO]    🔹 [1847/10888] URL: https://www.amazon.com/dp/B001E3U5P2 | Lần 1
+05:47:13 [INFO]    🔹 [1848/10888] URL: https://www.amazon.com/dp/B0DKG5FYTT | Lần 1
+05:47:21 [INFO]    🔹 [1849/10888] URL: https://www.amazon.com/dp/B0BY36RJNH | Lần 1
+05:47:30 [INFO]    🔹 [1850/10888] URL: https://www.amazon.com/dp/B0FPG3MY4Q | Lần 1
+05:47:43 [INFO]    🔹 [1851/10888] URL: https://www.amazon.com/dp/B0GC66KHQQ | Lần 1
+05:47:56 [INFO]    🔹 [1852/10888] URL: https://www.amazon.com/dp/B0B5YDSND7 | Lần 1
+05:48:04 [INFO]    🔹 [1853/10888] URL: https://www.amazon.com/dp/B0DK682X7L | Lần 1
+05:48:13 [INFO]    🔹 [1854/10888] URL: https://www.amazon.com/dp/B00RBG5TRA | Lần 1
+05:48:21 [INFO]    🔹 [1855/10888] URL: https://www.amazon.com/dp/B01A60SYRE | Lần 1
+05:48:28 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:48:31 [INFO]    🔹 [1856/10888] URL: https://www.amazon.com/dp/B0BSVPSKXF | Lần 1
+05:48:39 [INFO]    🔹 [1857/10888] URL: https://www.amazon.com/dp/B008HBFADQ | Lần 1
+05:48:49 [INFO]    🔹 [1858/10888] URL: https://www.amazon.com/dp/B00936DZXQ | Lần 1
+05:48:58 [INFO]    🔹 [1859/10888] URL: https://www.amazon.com/dp/B0CLMB2NPF | Lần 1
+05:49:06 [INFO]    🔹 [1860/10888] URL: https://www.amazon.com/dp/B0D9PN1Y41 | Lần 1
+05:49:14 [INFO]    🔹 [1861/10888] URL: https://www.amazon.com/dp/B00GKC5HO6 | Lần 1
+05:49:23 [INFO]    🔹 [1862/10888] URL: https://www.amazon.com/dp/B0D29KDZRG | Lần 1
+05:49:31 [INFO]    🔹 [1863/10888] URL: https://www.amazon.com/dp/B0DSLNDK61 | Lần 1
+05:49:39 [INFO]    🔹 [1864/10888] URL: https://www.amazon.com/dp/B0DJTBHNZ8 | Lần 1
+05:49:48 [INFO]    🔹 [1865/10888] URL: https://www.amazon.com/dp/B07SLMX6YJ | Lần 1
+05:49:54 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:49:57 [INFO]    🔹 [1866/10888] URL: https://www.amazon.com/dp/B0F9B1PMTS | Lần 1
+05:50:06 [INFO]    🔹 [1867/10888] URL: https://www.amazon.com/dp/B08PMQQZ8H | Lần 1
+05:50:15 [INFO]    🔹 [1868/10888] URL: https://www.amazon.com/dp/B07FM3R1MX | Lần 1
+05:50:23 [INFO]    🔹 [1869/10888] URL: https://www.amazon.com/dp/B0FWGTB3S3 | Lần 1
+05:50:33 [INFO]    🔹 [1870/10888] URL: https://www.amazon.com/dp/B08PMPHKDV | Lần 1
+05:50:42 [INFO]    🔹 [1871/10888] URL: https://www.amazon.com/dp/B0D29JZ3R1 | Lần 1
+05:50:51 [INFO]    🔹 [1872/10888] URL: https://www.amazon.com/dp/B09KZG5VPD | Lần 1
+05:51:00 [INFO]    🔹 [1873/10888] URL: https://www.amazon.com/dp/B07H46Q8WN | Lần 1
+05:51:09 [INFO]    🔹 [1874/10888] URL: https://www.amazon.com/dp/B0FMKQ6KFK | Lần 1
+05:51:16 [INFO]    🔹 [1875/10888] URL: https://www.amazon.com/dp/B09RP81PYM | Lần 1
+05:51:24 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:51:26 [INFO]    🔹 [1876/10888] URL: https://www.amazon.com/dp/B09FX5DWBK | Lần 1
+05:51:35 [INFO]    🔹 [1877/10888] URL: https://www.amazon.com/dp/B09FX5SRQT | Lần 1
+05:51:45 [INFO]    🔹 [1878/10888] URL: https://www.amazon.com/dp/B0G3CJSH5H | Lần 1
+05:51:54 [INFO]    🔹 [1879/10888] URL: https://www.amazon.com/dp/B0865RXKBL | Lần 1
+05:52:03 [INFO]    🔹 [1880/10888] URL: https://www.amazon.com/dp/B07HDJG9BG | Lần 1
+05:52:11 [INFO]    🔹 [1881/10888] URL: https://www.amazon.com/dp/B0CR1G4SS2 | Lần 1
+05:52:21 [INFO]    🔹 [1882/10888] URL: https://www.amazon.com/dp/B07CP8VVZ7 | Lần 1
+05:52:30 [INFO]    🔹 [1883/10888] URL: https://www.amazon.com/dp/B01JZXVNP8 | Lần 1
+05:52:40 [INFO]    🔹 [1884/10888] URL: https://www.amazon.com/dp/B0F9B1H5VN | Lần 1
+05:52:50 [INFO]    🔹 [1885/10888] URL: https://www.amazon.com/dp/B07MMNDB3K | Lần 1
+05:52:57 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:52:59 [INFO]    🔹 [1886/10888] URL: https://www.amazon.com/dp/B074TCWHYR | Lần 1
+05:53:08 [INFO]    🔹 [1887/10888] URL: https://www.amazon.com/dp/B083R36CY4 | Lần 1
+05:53:18 [INFO]    🔹 [1888/10888] URL: https://www.amazon.com/dp/B096PVJZGY | Lần 1
+05:53:27 [INFO]    🔹 [1889/10888] URL: https://www.amazon.com/dp/B004TM56SQ | Lần 1
+05:53:35 [INFO]    🔹 [1890/10888] URL: https://www.amazon.com/dp/B06X9HWNWQ | Lần 1
+05:53:44 [INFO]    🔹 [1891/10888] URL: https://www.amazon.com/dp/B0D1T3SN8B | Lần 1
+05:53:55 [INFO]    🔹 [1892/10888] URL: https://www.amazon.com/dp/B0DJTDY5S7 | Lần 1
+05:54:03 [INFO]    🔹 [1893/10888] URL: https://www.amazon.com/dp/B0935L4XZ5 | Lần 1
+05:54:10 [INFO]    🔹 [1894/10888] URL: https://www.amazon.com/dp/B0FJSH5MJD | Lần 1
+05:54:20 [INFO]    🔹 [1895/10888] URL: https://www.amazon.com/dp/B08P3ZT5WH | Lần 1
+05:54:29 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:54:31 [INFO]    🔹 [1896/10888] URL: https://www.amazon.com/dp/B00A5YE7BO | Lần 1
+05:54:39 [INFO]    🔹 [1897/10888] URL: https://www.amazon.com/dp/B0F1MTD9TJ | Lần 1
+05:54:48 [INFO]    🔹 [1898/10888] URL: https://www.amazon.com/dp/B0FNM7DLTQ | Lần 1
+05:54:56 [INFO]    🔹 [1899/10888] URL: https://www.amazon.com/dp/B07JH77CCB | Lần 1
+05:55:04 [INFO]    🔹 [1900/10888] URL: https://www.amazon.com/dp/B07CP3LMTN | Lần 1
+05:55:12 [INFO]    🔹 [1901/10888] URL: https://www.amazon.com/dp/B07SGYGMLS | Lần 1
+05:55:19 [INFO]    🔹 [1902/10888] URL: https://www.amazon.com/dp/B07H44YFZN | Lần 1
+05:55:28 [INFO]    🔹 [1903/10888] URL: https://www.amazon.com/dp/B0BZJXJRPG | Lần 1
+05:55:35 [INFO]    🔹 [1904/10888] URL: https://www.amazon.com/dp/B07CP5VH2Q | Lần 1
+05:55:44 [INFO]    🔹 [1905/10888] URL: https://www.amazon.com/dp/B000SON4JM | Lần 1
+05:55:50 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:55:52 [INFO]    🔹 [1906/10888] URL: https://www.amazon.com/dp/B07H43YWB1 | Lần 1
+05:56:01 [INFO]    🔹 [1907/10888] URL: https://www.amazon.com/dp/B01K1JR77I | Lần 1
+05:56:10 [INFO]    🔹 [1908/10888] URL: https://www.amazon.com/dp/B0774YFG85 | Lần 1
+05:56:18 [INFO]    🔹 [1909/10888] URL: https://www.amazon.com/dp/B001V9LQH0 | Lần 1
+05:56:26 [INFO]    🔹 [1910/10888] URL: https://www.amazon.com/dp/B092PSPL8Z | Lần 1
+05:56:34 [INFO]    🔹 [1911/10888] URL: https://www.amazon.com/dp/B0FS3BRMB3 | Lần 1
+05:56:42 [INFO]    🔹 [1912/10888] URL: https://www.amazon.com/dp/B00NWGGUAS | Lần 1
+05:56:53 [INFO]    🔹 [1913/10888] URL: https://www.amazon.com/dp/B0DYKYYYQ2 | Lần 1
+05:57:02 [INFO]    🔹 [1914/10888] URL: https://www.amazon.com/dp/B07QDWBKXP | Lần 1
+05:57:11 [INFO]    🔹 [1915/10888] URL: https://www.amazon.com/dp/B0098O9SHA | Lần 1
+05:57:17 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:57:19 [INFO]    🔹 [1916/10888] URL: https://www.amazon.com/dp/B07H592VF7 | Lần 1
+05:57:27 [INFO]    🔹 [1917/10888] URL: https://www.amazon.com/dp/B00ATZ9QMO | Lần 1
+05:57:36 [INFO]    🔹 [1918/10888] URL: https://www.amazon.com/dp/B08B4PPT12 | Lần 1
+05:57:44 [INFO]    🔹 [1919/10888] URL: https://www.amazon.com/dp/B07YNKC8XQ | Lần 1
+05:57:54 [INFO]    🔹 [1920/10888] URL: https://www.amazon.com/dp/B083R46983 | Lần 1
+05:58:02 [INFO]    🔹 [1921/10888] URL: https://www.amazon.com/dp/B08P3ZXTP7 | Lần 1
+05:58:13 [INFO]    🔹 [1922/10888] URL: https://www.amazon.com/dp/B09TRX9JQ3 | Lần 1
+05:58:22 [INFO]    🔹 [1923/10888] URL: https://www.amazon.com/dp/B004ISGG7Q | Lần 1
+05:58:31 [INFO]    🔹 [1924/10888] URL: https://www.amazon.com/dp/B0CPL25J3W | Lần 1
+05:58:40 [INFO]    🔹 [1925/10888] URL: https://www.amazon.com/dp/B07R4BQ4LG | Lần 1
+05:58:47 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+05:58:49 [INFO]    🔹 [1926/10888] URL: https://www.amazon.com/dp/B0D1MMQQYS | Lần 1
+05:58:57 [INFO]    🔹 [1927/10888] URL: https://www.amazon.com/dp/B0GHDTHM53 | Lần 1
+05:59:08 [INFO]    🔹 [1928/10888] URL: https://www.amazon.com/dp/B0GHNR8JXY | Lần 1
+05:59:17 [INFO]    🔹 [1929/10888] URL: https://www.amazon.com/dp/B0F1KC557J | Lần 1
+05:59:25 [INFO]    🔹 [1930/10888] URL: https://www.amazon.com/dp/B0CS3XPZNH | Lần 1
+05:59:34 [INFO]    🔹 [1931/10888] URL: https://www.amazon.com/dp/B0DY2SLYGH | Lần 1
+05:59:43 [INFO]    🔹 [1932/10888] URL: https://www.amazon.com/dp/B0D1HCKF5Y | Lần 1
+05:59:52 [INFO]    🔹 [1933/10888] URL: https://www.amazon.com/dp/B07SQFGKDF | Lần 1
+06:00:00 [INFO]    🔹 [1934/10888] URL: https://www.amazon.com/dp/B09XJRN7BR | Lần 1
+06:00:09 [INFO]    🔹 [1935/10888] URL: https://www.amazon.com/dp/B0DRW5BTRS | Lần 1
+06:00:15 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+06:00:17 [INFO]    🔹 [1936/10888] URL: https://www.amazon.com/dp/B0C4G3R4PZ | Lần 1
+06:00:25 [INFO]    🔹 [1937/10888] URL: https://www.amazon.com/dp/B0F53V8WR5 | Lần 1
+06:00:34 [INFO]    🔹 [1938/10888] URL: https://www.amazon.com/dp/B09X8M42C8 | Lần 1
+06:00:42 [INFO]    🔹 [1939/10888] URL: https://www.amazon.com/dp/B0DRW3G9QM | Lần 1
+06:00:50 [INFO]    🔹 [1940/10888] URL: https://www.amazon.com/dp/B0DRW4GHT3 | Lần 1
+06:00:57 [INFO]    🔹 [1941/10888] URL: https://www.amazon.com/dp/B0DSBDS8QG | Lần 1
+06:01:04 [INFO]    🔹 [1942/10888] URL: https://www.amazon.com/dp/B0DR9213C2 | Lần 1
+06:01:11 [INFO]    🔹 [1943/10888] URL: https://www.amazon.com/dp/B0FTG5BLH3 | Lần 1
+06:01:19 [INFO]    🔹 [1944/10888] URL: https://www.amazon.com/dp/B0BLQNXY8B | Lần 1
+06:01:27 [INFO]    🔹 [1945/10888] URL: https://www.amazon.com/dp/B0FS7X1LNH | Lần 1
+06:01:33 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+06:01:36 [INFO]    🔹 [1946/10888] URL: https://www.amazon.com/dp/B0FQJJ2STC | Lần 1
+06:01:43 [INFO]    🔹 [1947/10888] URL: https://www.amazon.com/dp/B0FTMBPLRG | Lần 1
+06:01:50 [INFO]    🔹 [1948/10888] URL: https://www.amazon.com/dp/B0FR6PC2Z8 | Lần 1
+06:01:59 [INFO]    🔹 [1949/10888] URL: https://www.amazon.com/dp/B0FTG85KWK | Lần 1
+06:02:07 [INFO]    🔹 [1950/10888] URL: https://www.amazon.com/dp/B0FS7YKFDR | Lần 1
+06:02:13 [INFO]    🔹 [1951/10888] URL: https://www.amazon.com/dp/B0FRFTMCCQ | Lần 1
+06:02:22 [INFO]    🔹 [1952/10888] URL: https://www.amazon.com/dp/B0DD6WH7Y5 | Lần 1
+06:02:30 [INFO]    🔹 [1953/10888] URL: https://www.amazon.com/dp/B0FS7YHV2Y | Lần 1
+06:02:37 [INFO]    🔹 [1954/10888] URL: https://www.amazon.com/dp/B0FY3N8SZ3 | Lần 1
+06:02:45 [INFO]    🔹 [1955/10888] URL: https://www.amazon.com/dp/B0CQ4C9ZY1 | Lần 1
+06:02:52 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+06:02:55 [INFO]    🔹 [1956/10888] URL: https://www.amazon.com/dp/B0GFCMGHJT | Lần 1
+06:03:02 [INFO]    🔹 [1957/10888] URL: https://www.amazon.com/dp/B0G488CW54 | Lần 1
+06:03:11 [INFO]    🔹 [1958/10888] URL: https://www.amazon.com/dp/B0GHR8Y9YF | Lần 1
+06:03:20 [INFO]    🔹 [1959/10888] URL: https://www.amazon.com/dp/B0GJS1QDFD | Lần 1
+06:03:29 [INFO]    🔹 [1960/10888] URL: https://www.amazon.com/dp/B0F14SGHXN | Lần 1
+06:03:38 [INFO]    🔹 [1961/10888] URL: https://www.amazon.com/dp/B0FL2XJPZ8 | Lần 1
+06:03:46 [INFO]    🔹 [1962/10888] URL: https://www.amazon.com/dp/B0DNDY2PVY | Lần 1
+06:03:55 [INFO]    🔹 [1963/10888] URL: https://www.amazon.com/dp/B0FN4G7XXK | Lần 1
+06:04:04 [INFO]    🔹 [1964/10888] URL: https://www.amazon.com/dp/B0B8H2DPLY | Lần 1
+06:04:12 [INFO]    🔹 [1965/10888] URL: https://www.amazon.com/dp/B0GJDB3J5L | Lần 1
+06:04:18 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+06:04:20 [INFO]    🔹 [1966/10888] URL: https://www.amazon.com/dp/B0GJDH2P3H | Lần 1
+06:04:28 [INFO]    🔹 [1967/10888] URL: https://www.amazon.com/dp/B0GJDPTPMG | Lần 1
+06:04:36 [INFO]    🔹 [1968/10888] URL: https://www.amazon.com/dp/B0GJDCPWPW | Lần 1
+06:04:43 [INFO]    🔹 [1969/10888] URL: https://www.amazon.com/dp/B0GJDLQFLL | Lần 1
+06:04:51 [INFO]    🔹 [1970/10888] URL: https://www.amazon.com/dp/B0G92BQB2N | Lần 1
+06:04:59 [INFO]    🔹 [1971/10888] URL: https://www.amazon.com/dp/B0GG96BWSW | Lần 1
+06:05:07 [INFO]    🔹 [1972/10888] URL: https://www.amazon.com/dp/B0GG8X9G8J | Lần 1
+06:05:16 [INFO]    🔹 [1973/10888] URL: https://www.amazon.com/dp/B0GG8TVF6B | Lần 1
+06:05:24 [INFO]    🔹 [1974/10888] URL: https://www.amazon.com/dp/B0FD7ZVPH3 | Lần 1
+06:05:33 [INFO]    🔹 [1975/10888] URL: https://www.amazon.com/dp/B0G8JMLXNQ | Lần 1
+06:05:41 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+06:05:44 [INFO]    🔹 [1976/10888] URL: https://www.amazon.com/dp/B0DVZSG8D5 | Lần 1
+06:05:53 [INFO]    🔹 [1977/10888] URL: https://www.amazon.com/dp/B0DWGWN8GY | Lần 1
+06:06:01 [INFO]    🔹 [1978/10888] URL: https://www.amazon.com/dp/B0DDZNZF76 | Lần 1
+06:06:10 [INFO]    🔹 [1979/10888] URL: https://www.amazon.com/dp/B0BTZB7F88 | Lần 1
+06:06:22 [INFO]    🔹 [1980/10888] URL: https://www.amazon.com/dp/B0D6NMDNNX | Lần 1
+06:06:33 [INFO]    🔹 [1981/10888] URL: https://www.amazon.com/dp/B0FD81Y54R | Lần 1
+06:06:41 [INFO]    🔹 [1982/10888] URL: https://www.amazon.com/dp/B09VCHR1VH | Lần 1
+06:06:50 [INFO]    🔹 [1983/10888] URL: https://www.amazon.com/dp/B0DFKC99VL | Lần 1
+06:07:00 [INFO]    🔹 [1984/10888] URL: https://www.amazon.com/dp/B0D6NNDQ92 | Lần 1
+06:07:10 [INFO]    🔹 [1985/10888] URL: https://www.amazon.com/dp/B0BV3DZZ6K | Lần 1
+06:07:16 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+06:07:18 [INFO]    🔹 [1986/10888] URL: https://www.amazon.com/dp/B0BV3C5GTL | Lần 1
+06:07:26 [INFO]    🔹 [1987/10888] URL: https://www.amazon.com/dp/B0BV3B3MW6 | Lần 1
+06:07:34 [INFO]    🔹 [1988/10888] URL: https://www.amazon.com/dp/B0F677HDLG | Lần 1
+06:07:43 [INFO]    🔹 [1989/10888] URL: https://www.amazon.com/dp/B0F674WG5M | Lần 1
+06:07:50 [INFO]    🔹 [1990/10888] URL: https://www.amazon.com/dp/B0F676JYVC | Lần 1
+06:07:58 [INFO]    🔹 [1991/10888] URL: https://www.amazon.com/dp/B0BBHHT8LY | Lần 1
+06:08:09 [INFO]    🔹 [1992/10888] URL: https://www.amazon.com/dp/B0BBJ59WJ4 | Lần 1
+06:08:10 [WARNING] ⚠️ CAPTCHA! Restart driver...
+06:08:14 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+06:08:30 [INFO] ✅ Đã chuyển vùng thành công.
+06:08:30 [INFO]    🔹 [1992/10888] URL: https://www.amazon.com/dp/B0BBJ59WJ4 | Lần 2
+06:08:31 [WARNING] ⚠️ CAPTCHA! Restart driver...
+06:08:35 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+06:08:47 [INFO] ✅ Đã chuyển vùng thành công.
+06:08:49 [INFO]    🔹 [1993/10888] URL: https://www.amazon.com/dp/B0BV3C385D | Lần 1
+06:08:50 [WARNING] ⚠️ CAPTCHA! Restart driver...
+06:08:55 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+06:09:12 [INFO] ✅ Đã chuyển vùng thành công.
+06:09:12 [INFO]    🔹 [1993/10888] URL: https://www.amazon.com/dp/B0BV3C385D | Lần 2
+06:09:13 [WARNING] ⚠️ CAPTCHA! Restart driver...
+06:09:18 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+06:09:32 [INFO] ✅ Đã chuyển vùng thành công.
+06:09:34 [INFO]    🔹 [1994/10888] URL: https://www.amazon.com/dp/B0BV3B525C | Lần 1
+06:09:35 [WARNING] ⚠️ CAPTCHA! Restart driver...
+06:09:40 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+06:09:53 [INFO] ✅ Đã chuyển vùng thành công.
+06:09:53 [INFO]    🔹 [1994/10888] URL: https://www.amazon.com/dp/B0BV3B525C | Lần 2
+06:09:54 [WARNING] ⚠️ CAPTCHA! Restart driver...
+06:09:58 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+06:10:11 [INFO] ✅ Đã chuyển vùng thành công.
+06:10:13 [INFO]    🔹 [1995/10888] URL: https://www.amazon.com/dp/B0BV3BFL41 | Lần 1
+06:10:13 [WARNING] ⚠️ CAPTCHA! Restart driver...
+06:10:18 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+06:10:30 [INFO] ✅ Đã chuyển vùng thành công.
+06:10:30 [INFO]    🔹 [1995/10888] URL: https://www.amazon.com/dp/B0BV3BFL41 | Lần 2
+06:10:31 [WARNING] ⚠️ CAPTCHA! Restart driver...
+06:10:36 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+06:10:48 [INFO] ✅ Đã chuyển vùng thành công.
+06:10:51 [INFO]    🔹 [1996/10888] URL: https://www.amazon.com/dp/B0BV3BT54D | Lần 1
+06:10:52 [WARNING] ⚠️ CAPTCHA! Restart driver...
+06:10:57 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+06:11:07 [INFO] ✅ Đã chuyển vùng thành công.
+06:11:07 [INFO]    🔹 [1996/10888] URL: https://www.amazon.com/dp/B0BV3BT54D | Lần 2
+06:11:08 [WARNING] ⚠️ CAPTCHA! Restart driver...
+06:11:13 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+06:11:25 [INFO] ✅ Đã chuyển vùng thành công.
+06:11:27 [INFO]    🔹 [1997/10888] URL: https://www.amazon.com/dp/B0BV3CYVXK | Lần 1
+06:11:28 [WARNING] ⚠️ CAPTCHA! Restart driver...
+06:11:32 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+06:11:49 [INFO] ✅ Đã chuyển vùng thành công.
+06:11:49 [INFO]    🔹 [1997/10888] URL: https://www.amazon.com/dp/B0BV3CYVXK | Lần 2
+06:11:49 [WARNING] ⚠️ CAPTCHA! Restart driver...
+06:11:55 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+06:12:03 [INFO] ✅ Đã chuyển vùng thành công.
+06:12:05 [INFO]    🔹 [1998/10888] URL: https://www.amazon.com/dp/B0F674HDYM | Lần 1
+06:12:06 [WARNING] ⚠️ CAPTCHA! Restart driver...
+06:12:11 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+06:12:24 [INFO] ✅ Đã chuyển vùng thành công.
+06:12:24 [INFO]    🔹 [1998/10888] URL: https://www.amazon.com/dp/B0F674HDYM | Lần 2
+06:12:25 [WARNING] ⚠️ CAPTCHA! Restart driver...
+06:12:30 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+06:12:33 [WARNING] ⚠️ Không thể tự động đổi vùng. Giá có thể vẫn là VND.
+17:57:46 [INFO] Hệ thống khởi tạo thành công. Thư mục: D:\Hoctap_Code_PrivateProject\MiningMassiveData\craw_amazon\data_integrated
+17:57:46 [INFO] 🚀 Hệ thống khởi tạo thành công. Kết quả sẽ lưu tại: D:\Hoctap_Code_PrivateProject\MiningMassiveData\craw_amazon\categories
+17:57:52 [INFO] patching driver executable C:\Users\CONG\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+17:58:02 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+17:58:10 [INFO] ✅ Đã chuyển vùng thành công.
+17:58:10 [INFO] 📂 ĐANG XỬ LÝ DANH MỤC: ALL_LINKS_AMAZON | File: all_links_amazon.csv
+17:58:11 [INFO] 🔎 Tìm thấy 10888 records.
+17:58:11 [INFO]    🔹 [1986/10888] URL: https://www.amazon.com/dp/B0BV3C5GTL | Lần 1
+17:58:18 [INFO]    🔹 [1987/10888] URL: https://www.amazon.com/dp/B0BV3B3MW6 | Lần 1
+17:58:27 [INFO]    🔹 [1988/10888] URL: https://www.amazon.com/dp/B0F677HDLG | Lần 1
+17:58:36 [INFO]    🔹 [1989/10888] URL: https://www.amazon.com/dp/B0F674WG5M | Lần 1
+17:58:45 [INFO]    🔹 [1990/10888] URL: https://www.amazon.com/dp/B0F676JYVC | Lần 1
+17:58:54 [INFO]    🔹 [1991/10888] URL: https://www.amazon.com/dp/B0BBHHT8LY | Lần 1
+17:59:04 [INFO]    🔹 [1992/10888] URL: https://www.amazon.com/dp/B0BBJ59WJ4 | Lần 1
+17:59:04 [WARNING] ⚠️ CAPTCHA! Restart driver...
+17:59:09 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+17:59:17 [INFO] ✅ Đã chuyển vùng thành công.
+17:59:17 [INFO]    🔹 [1992/10888] URL: https://www.amazon.com/dp/B0BBJ59WJ4 | Lần 2
+17:59:18 [WARNING] ⚠️ CAPTCHA! Restart driver...
+17:59:23 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+17:59:30 [INFO] ✅ Đã chuyển vùng thành công.
+17:59:32 [INFO]    🔹 [1993/10888] URL: https://www.amazon.com/dp/B0BV3C385D | Lần 1
+17:59:32 [WARNING] ⚠️ CAPTCHA! Restart driver...
+17:59:37 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+17:59:45 [INFO] ✅ Đã chuyển vùng thành công.
+17:59:45 [INFO]    🔹 [1993/10888] URL: https://www.amazon.com/dp/B0BV3C385D | Lần 2
+17:59:46 [WARNING] ⚠️ CAPTCHA! Restart driver...
+17:59:51 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+17:59:59 [INFO] ✅ Đã chuyển vùng thành công.
+18:00:00 [INFO]    🔹 [1994/10888] URL: https://www.amazon.com/dp/B0BV3B525C | Lần 1
+18:00:01 [WARNING] ⚠️ CAPTCHA! Restart driver...
+18:00:06 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+18:00:15 [INFO] ✅ Đã chuyển vùng thành công.
+18:00:15 [INFO]    🔹 [1994/10888] URL: https://www.amazon.com/dp/B0BV3B525C | Lần 2
+18:00:16 [WARNING] ⚠️ CAPTCHA! Restart driver...
+18:00:21 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+18:00:30 [INFO] ✅ Đã chuyển vùng thành công.
+18:00:31 [INFO]    🔹 [1995/10888] URL: https://www.amazon.com/dp/B0BV3BFL41 | Lần 1
+18:00:31 [WARNING] ⚠️ CAPTCHA! Restart driver...
+18:00:36 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+18:00:45 [INFO] ✅ Đã chuyển vùng thành công.
+18:00:45 [INFO]    🔹 [1995/10888] URL: https://www.amazon.com/dp/B0BV3BFL41 | Lần 2
+18:00:46 [WARNING] ⚠️ CAPTCHA! Restart driver...
+18:00:50 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+18:00:59 [INFO] ✅ Đã chuyển vùng thành công.
+18:01:01 [INFO]    🔹 [1996/10888] URL: https://www.amazon.com/dp/B0BV3BT54D | Lần 1
+18:01:02 [WARNING] ⚠️ CAPTCHA! Restart driver...
+18:01:07 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+18:01:16 [INFO] ✅ Đã chuyển vùng thành công.
+18:01:16 [INFO]    🔹 [1996/10888] URL: https://www.amazon.com/dp/B0BV3BT54D | Lần 2
+18:01:17 [WARNING] ⚠️ CAPTCHA! Restart driver...
+18:01:21 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+18:01:30 [INFO] ✅ Đã chuyển vùng thành công.
+18:01:33 [INFO]    🔹 [1997/10888] URL: https://www.amazon.com/dp/B0BV3CYVXK | Lần 1
+18:01:34 [WARNING] ⚠️ CAPTCHA! Restart driver...
+18:01:39 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+18:01:47 [INFO] ✅ Đã chuyển vùng thành công.
+18:01:47 [INFO]    🔹 [1997/10888] URL: https://www.amazon.com/dp/B0BV3CYVXK | Lần 2
+18:01:49 [WARNING] ⚠️ CAPTCHA! Restart driver...
+18:01:53 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+18:02:01 [INFO] ✅ Đã chuyển vùng thành công.
+18:02:03 [INFO]    🔹 [1998/10888] URL: https://www.amazon.com/dp/B0F674HDYM | Lần 1
+18:02:04 [WARNING] ⚠️ CAPTCHA! Restart driver...
+18:02:09 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+18:02:18 [INFO] ✅ Đã chuyển vùng thành công.
+18:02:18 [INFO]    🔹 [1998/10888] URL: https://www.amazon.com/dp/B0F674HDYM | Lần 2
+18:02:18 [WARNING] ⚠️ CAPTCHA! Restart driver...
+18:02:23 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+18:02:34 [INFO] ✅ Đã chuyển vùng thành công.
+18:02:36 [INFO]    🔹 [1999/10888] URL: https://www.amazon.com/dp/B0F677TL9X | Lần 1
+18:02:37 [WARNING] ⚠️ CAPTCHA! Restart driver...
+18:02:42 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+18:02:51 [INFO] ✅ Đã chuyển vùng thành công.
+18:02:51 [INFO]    🔹 [1999/10888] URL: https://www.amazon.com/dp/B0F677TL9X | Lần 2
+18:02:52 [WARNING] ⚠️ CAPTCHA! Restart driver...
+18:02:57 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+18:03:07 [INFO] ✅ Đã chuyển vùng thành công.
+18:03:08 [INFO]    🔹 [2000/10888] URL: https://www.amazon.com/dp/B0F676V2LK | Lần 1
+18:03:09 [WARNING] ⚠️ CAPTCHA! Restart driver...
+18:03:14 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+18:03:23 [INFO] ✅ Đã chuyển vùng thành công.
+18:03:23 [INFO]    🔹 [2000/10888] URL: https://www.amazon.com/dp/B0F676V2LK | Lần 2
+18:03:24 [WARNING] ⚠️ CAPTCHA! Restart driver...
+18:03:28 [INFO] 📍 Đang thiết lập vùng địa lý US (Zip: 10001)...
+18:03:36 [INFO] ✅ Đã chuyển vùng thành công.
+18:03:38 [INFO]    🔹 [2001/10888] URL: https://www.amazon.com/dp/B09FXFJW2F | Lần 1
+18:03:48 [INFO]    🔹 [2002/10888] URL: https://www.amazon.com/dp/B09VCJ171S | Lần 1
+18:03:58 [INFO]    🔹 [2003/10888] URL: https://www.amazon.com/dp/B0CGJDKLB8 | Lần 1
+18:04:07 [INFO]    🔹 [2004/10888] URL: https://www.amazon.com/dp/B0DFK2WHF8 | Lần 1
+18:04:17 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+18:04:19 [INFO]    🔹 [2005/10888] URL: https://www.amazon.com/dp/B09FXDLX95 | Lần 1
+18:04:28 [INFO]    🔹 [2006/10888] URL: https://www.amazon.com/dp/B0815Y8J9N | Lần 1
+18:04:38 [INFO]    🔹 [2007/10888] URL: https://www.amazon.com/dp/B0DFK2MH2D | Lần 1
+18:04:46 [INFO]    🔹 [2008/10888] URL: https://www.amazon.com/dp/B0DGWNVCHL | Lần 1
+18:04:57 [INFO]    🔹 [2009/10888] URL: https://www.amazon.com/dp/B0DGWHZKMC | Lần 1
+18:05:04 [INFO]    🔹 [2010/10888] URL: https://www.amazon.com/dp/B0815XFSGK | Lần 1
+18:05:15 [INFO]    🔹 [2011/10888] URL: https://www.amazon.com/dp/B0DFC5R1L2 | Lần 1
+18:05:24 [INFO]    🔹 [2012/10888] URL: https://www.amazon.com/dp/B0DBLLV5WC | Lần 1
+18:05:33 [INFO]    🔹 [2013/10888] URL: https://www.amazon.com/dp/B0DQCPY4XL | Lần 1
+18:05:43 [INFO]    🔹 [2014/10888] URL: https://www.amazon.com/dp/B0DQCQ4M9P | Lần 1
+18:05:50 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+18:05:53 [INFO]    🔹 [2015/10888] URL: https://www.amazon.com/dp/B0DSZTYX2M | Lần 1
+18:06:01 [INFO]    🔹 [2016/10888] URL: https://www.amazon.com/dp/B0DSZTBHDL | Lần 1
+18:06:10 [INFO]    🔹 [2017/10888] URL: https://www.amazon.com/dp/B0815SBQ9W | Lần 1
+18:06:18 [INFO]    🔹 [2018/10888] URL: https://www.amazon.com/dp/B0CQRYXWWQ | Lần 1
+18:06:27 [INFO]    🔹 [2019/10888] URL: https://www.amazon.com/dp/B0CPW1F841 | Lần 1
+18:06:35 [INFO]    🔹 [2020/10888] URL: https://www.amazon.com/dp/B0CMZHDQPD | Lần 1
+18:06:46 [INFO]    🔹 [2021/10888] URL: https://www.amazon.com/dp/B091J3NYVF | Lần 1
+18:06:55 [INFO]    🔹 [2022/10888] URL: https://www.amazon.com/dp/B0FJ6K1FMP | Lần 1
+18:07:03 [INFO]    🔹 [2023/10888] URL: https://www.amazon.com/dp/B0CQ4HPJYV | Lần 1
+18:07:12 [INFO]    🔹 [2024/10888] URL: https://www.amazon.com/dp/B09FXKHN7M | Lần 1
+18:07:19 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+18:07:21 [INFO]    🔹 [2025/10888] URL: https://www.amazon.com/dp/B0FJ6FJN2H | Lần 1
+18:07:29 [INFO]    🔹 [2026/10888] URL: https://www.amazon.com/dp/B0CGJC178L | Lần 1
+18:07:39 [INFO]    🔹 [2027/10888] URL: https://www.amazon.com/dp/B09VCHQHZ6 | Lần 1
+18:07:48 [INFO]    🔹 [2028/10888] URL: https://www.amazon.com/dp/B07WLLR43R | Lần 1
+18:07:57 [INFO]    🔹 [2029/10888] URL: https://www.amazon.com/dp/B09LV9W4D3 | Lần 1
+18:08:06 [INFO]    🔹 [2030/10888] URL: https://www.amazon.com/dp/B08JQFLJ5F | Lần 1
+18:08:16 [INFO]    🔹 [2031/10888] URL: https://www.amazon.com/dp/B0932CKPPY | Lần 1
+18:08:25 [INFO]    🔹 [2032/10888] URL: https://www.amazon.com/dp/B0G3FPZCPR | Lần 1
+18:08:33 [INFO]    🔹 [2033/10888] URL: https://www.amazon.com/dp/B0G47N4CBJ | Lần 1
+18:08:43 [INFO]    🔹 [2034/10888] URL: https://www.amazon.com/dp/B08D96HGX8 | Lần 1
+18:08:51 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+18:08:53 [INFO]    🔹 [2035/10888] URL: https://www.amazon.com/dp/B0DZWX9H7M | Lần 1
+18:09:02 [INFO]    🔹 [2036/10888] URL: https://www.amazon.com/dp/B0D6FLW5YM | Lần 1
+18:09:12 [INFO]    🔹 [2037/10888] URL: https://www.amazon.com/dp/B0CK2ZQJZ6 | Lần 1
+18:09:19 [INFO]    🔹 [2038/10888] URL: https://www.amazon.com/dp/B07V34QQ3C | Lần 1
+18:09:27 [INFO]    🔹 [2039/10888] URL: https://www.amazon.com/dp/B0DFLGNQG4 | Lần 1
+18:09:35 [INFO]    🔹 [2040/10888] URL: https://www.amazon.com/dp/B0CRSZGN9L | Lần 1
+18:09:45 [INFO]    🔹 [2041/10888] URL: https://www.amazon.com/dp/B0DFLN7114 | Lần 1
+18:09:53 [INFO]    🔹 [2042/10888] URL: https://www.amazon.com/dp/B0CVWZKC6D | Lần 1
+18:10:01 [INFO]    🔹 [2043/10888] URL: https://www.amazon.com/dp/B0DFLMKFGV | Lần 1
+18:10:10 [INFO]    🔹 [2044/10888] URL: https://www.amazon.com/dp/B09FX4D72T | Lần 1
+18:10:17 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+18:10:19 [INFO]    🔹 [2045/10888] URL: https://www.amazon.com/dp/B0D6NNRBGP | Lần 1
+18:10:28 [INFO]    🔹 [2046/10888] URL: https://www.amazon.com/dp/B0DF123GCV | Lần 1
+18:10:39 [INFO]    🔹 [2047/10888] URL: https://www.amazon.com/dp/B0BBHD5D8Y | Lần 1
+18:10:48 [INFO]    🔹 [2048/10888] URL: https://www.amazon.com/dp/B09FWYK5M9 | Lần 1
+18:10:57 [INFO]    🔹 [2049/10888] URL: https://www.amazon.com/dp/B0C4GWLBTS | Lần 1
+18:11:08 [INFO]    🔹 [2050/10888] URL: https://www.amazon.com/dp/B09SYSPSSM | Lần 1
+18:11:17 [INFO]    🔹 [2051/10888] URL: https://www.amazon.com/dp/B0D6VBTHLV | Lần 1
+18:11:27 [INFO]    🔹 [2052/10888] URL: https://www.amazon.com/dp/B0963SGJH3 | Lần 1
+18:11:37 [INFO]    🔹 [2053/10888] URL: https://www.amazon.com/dp/B09HCCVSJR | Lần 1
+18:11:47 [INFO]    🔹 [2054/10888] URL: https://www.amazon.com/dp/B09SYR619R | Lần 1
+18:11:55 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+18:11:57 [INFO]    🔹 [2055/10888] URL: https://www.amazon.com/dp/B0FJ5DH6BZ | Lần 1
+18:12:07 [INFO]    🔹 [2056/10888] URL: https://www.amazon.com/dp/B0DHMWSK91 | Lần 1
+18:12:15 [INFO]    🔹 [2057/10888] URL: https://www.amazon.com/dp/B0DBLLGKPK | Lần 1
+18:12:25 [INFO]    🔹 [2058/10888] URL: https://www.amazon.com/dp/B08DR39Y7S | Lần 1
+18:12:35 [INFO]    🔹 [2059/10888] URL: https://www.amazon.com/dp/B0DJVT9JXX | Lần 1
+18:12:45 [INFO]    🔹 [2060/10888] URL: https://www.amazon.com/dp/B0DJVRSQP7 | Lần 1
+18:12:53 [INFO]    🔹 [2061/10888] URL: https://www.amazon.com/dp/B0DBLK132C | Lần 1
+18:13:02 [INFO]    🔹 [2062/10888] URL: https://www.amazon.com/dp/B0CCXZBP37 | Lần 1
+18:13:11 [INFO]    🔹 [2063/10888] URL: https://www.amazon.com/dp/B0FPFH3T2Z | Lần 1
+18:13:19 [INFO]    🔹 [2064/10888] URL: https://www.amazon.com/dp/B0DWSLBS9B | Lần 1
+18:13:26 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+18:13:28 [INFO]    🔹 [2065/10888] URL: https://www.amazon.com/dp/B0CQ1P2TRN | Lần 1
+18:13:38 [INFO]    🔹 [2066/10888] URL: https://www.amazon.com/dp/B0CQ4JV8D5 | Lần 1
+18:13:48 [INFO]    🔹 [2067/10888] URL: https://www.amazon.com/dp/B0BC7S9R5C | Lần 1
+18:13:59 [INFO]    🔹 [2068/10888] URL: https://www.amazon.com/dp/B0GCHZZPL9 | Lần 1
+18:14:08 [INFO]    🔹 [2069/10888] URL: https://www.amazon.com/dp/B0GK9HFN17 | Lần 1
+18:14:18 [INFO]    🔹 [2070/10888] URL: https://www.amazon.com/dp/B0DQPVC7FG | Lần 1
+18:14:28 [INFO]    🔹 [2071/10888] URL: https://www.amazon.com/dp/B0FGV8RJ2M | Lần 1
+18:14:37 [INFO]    🔹 [2072/10888] URL: https://www.amazon.com/dp/B0D5LGMYY7 | Lần 1
+18:14:46 [INFO]    🔹 [2073/10888] URL: https://www.amazon.com/dp/B0GVB2C5YS | Lần 1
+18:14:55 [INFO]    🔹 [2074/10888] URL: https://www.amazon.com/dp/B0GCJ38NST | Lần 1
+18:15:02 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+18:15:05 [INFO]    🔹 [2075/10888] URL: https://www.amazon.com/dp/B09R6H1Z6H | Lần 1
+18:15:14 [INFO]    🔹 [2076/10888] URL: https://www.amazon.com/dp/B09NPJX7PV | Lần 1
+18:15:24 [INFO]    🔹 [2077/10888] URL: https://www.amazon.com/dp/B07J2SPR49 | Lần 1
+18:15:32 [INFO]    🔹 [2078/10888] URL: https://www.amazon.com/dp/B08166SLDF | Lần 1
+18:15:40 [INFO]    🔹 [2079/10888] URL: https://www.amazon.com/dp/B0CGJ41C9W | Lần 1
+18:15:51 [INFO]    🔹 [2080/10888] URL: https://www.amazon.com/dp/B09FXNVDBJ | Lần 1
+18:16:01 [INFO]    🔹 [2081/10888] URL: https://www.amazon.com/dp/B09WZXMZ5L | Lần 1
+18:16:10 [INFO]    🔹 [2082/10888] URL: https://www.amazon.com/dp/B09WZXQJ8F | Lần 1
+18:16:19 [INFO]    🔹 [2083/10888] URL: https://www.amazon.com/dp/B0CK2W3WFP | Lần 1
+18:16:28 [INFO]    🔹 [2084/10888] URL: https://www.amazon.com/dp/B0CHRS9RXB | Lần 1
+18:16:35 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+18:16:36 [INFO]    🔹 [2085/10888] URL: https://www.amazon.com/dp/B0BMQJWBDM | Lần 1
+18:16:45 [INFO]    🔹 [2086/10888] URL: https://www.amazon.com/dp/B07STGGQ18 | Lần 1
+18:16:56 [INFO]    🔹 [2087/10888] URL: https://www.amazon.com/dp/B0BL92CBWG | Lần 1
+18:17:04 [INFO]    🔹 [2088/10888] URL: https://www.amazon.com/dp/B0BTRH9MNS | Lần 1
+18:17:12 [INFO]    🔹 [2089/10888] URL: https://www.amazon.com/dp/B0CQ4JBKW3 | Lần 1
+18:17:22 [INFO]    🔹 [2090/10888] URL: https://www.amazon.com/dp/B0BMQK718H | Lần 1
+18:17:32 [INFO]    🔹 [2091/10888] URL: https://www.amazon.com/dp/B0CQ4GYTTX | Lần 1
+18:17:40 [INFO]    🔹 [2092/10888] URL: https://www.amazon.com/dp/B0D2JD6P86 | Lần 1
+18:17:49 [INFO]    🔹 [2093/10888] URL: https://www.amazon.com/dp/B0CQ4DTJYX | Lần 1
+18:17:58 [INFO]    🔹 [2094/10888] URL: https://www.amazon.com/dp/B092L9GF5N | Lần 1
+18:18:05 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+18:18:07 [INFO]    🔹 [2095/10888] URL: https://www.amazon.com/dp/B0FD7Z236N | Lần 1
+18:18:16 [INFO]    🔹 [2096/10888] URL: https://www.amazon.com/dp/B0876Y2TMZ | Lần 1
+18:18:26 [INFO]    🔹 [2097/10888] URL: https://www.amazon.com/dp/B09VCJN7HZ | Lần 1
+18:18:36 [INFO]    🔹 [2098/10888] URL: https://www.amazon.com/dp/B07STGHZK8 | Lần 1
+18:18:45 [INFO]    🔹 [2099/10888] URL: https://www.amazon.com/dp/B07MWGKHR9 | Lần 1
+18:18:55 [INFO]    🔹 [2100/10888] URL: https://www.amazon.com/dp/B0F9XH8DBP | Lần 1
+18:19:04 [INFO]    🔹 [2101/10888] URL: https://www.amazon.com/dp/B08164VTWH | Lần 1
+18:19:13 [INFO]    🔹 [2102/10888] URL: https://www.amazon.com/dp/B09VCRQVWM | Lần 1
+18:19:23 [INFO]    🔹 [2103/10888] URL: https://www.amazon.com/dp/B0BTRRNK7T | Lần 1
+18:19:33 [INFO]    🔹 [2104/10888] URL: https://www.amazon.com/dp/B0D6NMCZG1 | Lần 1
+18:19:40 [INFO] 💾 Đã ghi 10 items vào all_links_amazon_details.jsonl
+18:19:42 [INFO]    🔹 [2105/10888] URL: https://www.amazon.com/dp/B0D1CK42PV | Lần 1

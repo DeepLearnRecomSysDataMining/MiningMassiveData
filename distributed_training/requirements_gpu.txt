@@ -18,3 +18,4 @@ sentence-transformers
 transformers
 numpy
 tqdm
+rank_bm25
