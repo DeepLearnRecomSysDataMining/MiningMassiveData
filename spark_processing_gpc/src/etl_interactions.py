@@ -8,8 +8,10 @@ import logging
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.functions import col, lower, lit, coalesce, concat_ws, regexp_replace, trim
 from pyspark.sql.types import StringType
+from pyspark import StorageLevel
 import ast
-from .file_utils import detect_jsonl_type, list_files
+from file_utils import detect_jsonl_type, list_files
+from debug_utils import log_df_size
 
 logger = logging.getLogger("etl_interactions")
 
@@ -102,13 +104,19 @@ def run_etl_interactions(spark: SparkSession, data_dir: str, output_dir: str) ->
         logger.warning("Khong tim thay file review nao!")
         return 0
 
-    # 4. Làm sạch: Xóa dòng thiếu thông tin định danh cốt lõi
+    # 1. Lọc và lưu Dataframe vào bộ đệm (Local Disk/RAM) để tránh Double-Action
     df_final = df_final.filter((col("user_id") != "") & (col("product_id") != "")) \
-                       .dropDuplicates(["user_id", "product_id"])
-
-    # 5. Lưu xuống Parquet
+                       .dropDuplicates(["user_id", "product_id"]) \
+                       .persist(StorageLevel.MEMORY_AND_DISK)
+    # 2. Soi dung lượng và lấy count (Action đầu tiên và duy nhất)
+    log_df_size(df_final, "df_final_interactions (Chuẩn bị ghi file)")
     count = df_final.count()
+
+    # 3. Ghi ra GCS (Không dùng repartition(32) nữa, để Spark tự chia file an toàn hơn)
     logger.info(f"Luu {count} tuong tac chuan hoa xuong Parquet...")
-    df_final.repartition(32).write.mode("overwrite").parquet(output_dir)
+    df_final.write.mode("overwrite").parquet(output_dir)
+
+    # 4. Dọn rác
+    df_final.unpersist()
 
     return count

@@ -9,7 +9,8 @@ import logging
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.functions import col, concat_ws, lit, lower, regexp_replace, udf, when, coalesce, array_join, trim, from_json
 from pyspark.sql.types import StringType, MapType, ArrayType
-from .file_utils import detect_jsonl_type, list_files
+from file_utils import detect_jsonl_type, list_files
+from debug_utils import log_df_size
 
 logger = logging.getLogger("etl_item_nodes")
 
@@ -55,7 +56,6 @@ def run_etl_item_nodes(spark, data_dir, output_dir):
     logger.info(f"Dang quet metadata tu: {data_dir}")
     
     all_files = list_files(data_dir)
-    
     vn_files = []
     amz_files = []
     
@@ -120,21 +120,27 @@ def run_etl_item_nodes(spark, data_dir, output_dir):
         logger.warning("Khong tim thay file metadata nao!")
         return 0
 
-    # 3. Loc va Xoa trung lap (Native)
-    df_final = df_final.filter(col("product_id") != "").dropDuplicates(["product_id"])
-
-    # 4. Native Parse Specs (100% JVM, khong goi Python)
     logger.info("Dang thuc hien Native Parse Specs...")
+    # Lọc và Parse JSON Native
     map_schema = "MAP<STRING, STRING>"
-    
-    df_final = df_final.withColumn("parsed_specs", 
-        when(col("specs_text").startswith("{"), from_json(col("specs_text"), map_schema))
-        .otherwise(None)
-    ).drop("specs_text")
+    df_final = df_final.filter(col("product_id") != "").dropDuplicates(["product_id"]) \
+                       .withColumn("parsed_specs", 
+                           when(col("specs_text").startswith("{"), from_json(col("specs_text"), map_schema))
+                           .otherwise(None)
+                       ).drop("specs_text")
 
-    # 5. Ghi xuong Parquet
+    # 1. Ép vào Cache để tránh đọc lại GCS
+    df_final = df_final.persist(StorageLevel.MEMORY_AND_DISK)
+
+    # 2. Soi dung lượng
+    log_df_size(df_final, "df_final_items (Chuẩn bị ghi file)")
     count = df_final.count()
+
+    # 3. Ghi file
     logger.info(f"Luu {count} san pham chuan hoa xuong Parquet...")
     df_final.write.mode("overwrite").parquet(output_dir)
     
+    # 4. Giải phóng
+    df_final.unpersist()
+
     return count

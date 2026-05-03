@@ -5,9 +5,9 @@ import os
 from config.spark_config    import create_spark_session, PathConfig
 from src.evaluation_dataset import run_evaluation_generator
 from src.data_validator     import validate_interactions, validate_item_nodes
+from src.debug_utils import log_spark_configs
 
 # Setup logging cho Cloud
-is_cloud = os.getenv("SPARK_ENV") == "cloud"
 log_handlers = [logging.StreamHandler(sys.stdout)]
 
 logging.basicConfig(
@@ -26,8 +26,8 @@ def main():
 """)
     t_start = time.time()
 
-    # Khoi tao SparkSession
     spark = create_spark_session("AmazonETL_Phase3_Only")
+    log_spark_configs(spark)
     
     try:
         # KIEM TRA DU LIEU DAU VAO CUA PHASE 2

@@ -13,7 +13,6 @@ from src.evaluation_dataset import run_evaluation_generator
 from src.data_validator     import validate_interactions, validate_item_nodes
 from src.file_utils         import decompress_gz_files
 
-# Setup logging
 is_cloud = os.getenv("SPARK_ENV") == "cloud"
 
 log_handlers = [logging.StreamHandler(sys.stdout)]
@@ -35,7 +34,6 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Amazon ETL Pipeline voi PySpark")
     parser.add_argument("--scan-only",  action="store_true", help="Chi chay Schema Scanner")
     parser.add_argument("--skip-scan",  action="store_true", help="Bo qua buoc scan")
-    parser.add_argument("--validate",   action="store_true", help="Validate output sau ETL")
     parser.add_argument("--decompress", action="store_true", help="Giai nen file .gz truoc khi xu ly")
     parser.add_argument("--data-dir",   default=PathConfig.RAW_DATA_DIR, help=f"Thu muc data tho (default: {PathConfig.RAW_DATA_DIR})")
     return parser.parse_args()
@@ -58,21 +56,12 @@ def main():
     n_items = 0
     n_eval = 0
 
-    # -- Buoc tien xu ly: Giai nen neu can -------------------
     if args.decompress:
         logger.info("Dang kiem tra va giai nen cac file .gz...")
         decompress_gz_files(args.data_dir)
 
-    # -- Khoi tao SparkSession --------------------------------
     spark = create_spark_session("AmazonETL_Pipeline")
-    
-    # Log cấu hình thực tế
-    sc = spark.sparkContext
-    logger.info(f"--- SPARK CONFIGURATION ---")
-    logger.info(f"Master: {sc.master}")
-    logger.info(f"Parallelism: {sc.defaultParallelism}")
-    logger.info(f"Shuffle Partitions: {spark.conf.get('spark.sql.shuffle.partitions')}")
-    logger.info(f"---------------------------")
+    log_spark_configs(spark)
 
     try:
         # BUOC 0: Schema Scanner
@@ -97,33 +86,17 @@ def main():
         n_items = run_etl_item_nodes( spark, data_dir = args.data_dir, output_dir = PathConfig.ITEM_NODES_OUT, )
         logger.info(f"V PHASE 2 DONE: {n_items:,} item records | Time: {time.time()-t2:.1f}s")
 
-        # BUOC 3: Tao Evaluation Dataset
-        logger.info(">>> START PHASE 3: Evaluation Dataset Generation")
-        t3 = time.time()
-        n_eval = run_evaluation_generator( spark, item_nodes_path = PathConfig.ITEM_NODES_OUT, output_path = PathConfig.EVALUATION_OUT)
-        logger.info(f"V PHASE 3 DONE: {n_eval:,} evaluation pairs | Time: {time.time()-t3:.1f}s")
-
-        # BUOC 4 (tuy chon): Validate output
-        if args.validate:
-            logger.info(">>> START PHASE 4: Data Validation")
-            validate_interactions(spark, PathConfig.INTERACTIONS_OUT)
-            validate_item_nodes(spark,   PathConfig.ITEM_NODES_OUT)
-            logger.info("V PHASE 4 DONE: Validation complete.")
-
-        # -- Tong ket -----------------------------------------
         elapsed = time.time() - t_start
         print(f"""
         +----------------------------------------------------------+
         |  V  PIPELINE HOAN TAT
         |     Tuong tac : {n_interactions:>12,}
         |     San pham  : {n_items:>12,}
-        |     Evaluation: {n_eval:>12,}
         |     Thoi gian : {elapsed:>11.1f} s
         |
         |  Output:
         |    {PathConfig.INTERACTIONS_OUT}
         |    {PathConfig.ITEM_NODES_OUT}
-        |    {PathConfig.EVALUATION_OUT}
         +----------------------------------------------------------+
         """)
 
