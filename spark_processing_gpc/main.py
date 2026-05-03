@@ -12,6 +12,7 @@ from src.etl_item_nodes     import run_etl_item_nodes
 from src.evaluation_dataset import run_evaluation_generator
 from src.data_validator     import validate_interactions, validate_item_nodes
 from src.file_utils         import decompress_gz_files
+from src.debug_utils        import log_spark_configs
 
 is_cloud = os.getenv("SPARK_ENV") == "cloud"
 
@@ -35,6 +36,7 @@ def parse_args():
     parser.add_argument("--scan-only",  action="store_true", help="Chi chay Schema Scanner")
     parser.add_argument("--skip-scan",  action="store_true", help="Bo qua buoc scan")
     parser.add_argument("--decompress", action="store_true", help="Giai nen file .gz truoc khi xu ly")
+    parser.add_argument("--validate",   action="store_true", help="Chay logic kiem tra du lieu sau khi ETL")
     parser.add_argument("--data-dir",   default=PathConfig.RAW_DATA_DIR, help=f"Thu muc data tho (default: {PathConfig.RAW_DATA_DIR})")
     return parser.parse_args()
 
