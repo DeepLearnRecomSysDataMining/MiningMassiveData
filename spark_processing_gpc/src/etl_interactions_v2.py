@@ -75,7 +75,9 @@ def run_etl_interactions(spark: SparkSession, data_dir: str, output_dir: str, fi
         logger.info(f"Dang xu ly {len(vn_review_files)} file VN reviews (VỚI SCHEMA TƯỜNG MINH)")
         # TỐI ƯU: Dùng schema để tránh request đoán kiểu
         df_vn = spark.read.schema(VN_REVIEW_SCHEMA).json(vn_review_files)
-        
+
+        logger.info(f"Dang Mapping data cua {len(vn_review_files)} file VN reviews sang Formal Schema")
+
         df_vn_std = df_vn.select(
             spark_standardize(safe_col(df_vn, "fullName")).alias("user_id"),
             spark_standardize(safe_col(df_vn, "productId")).alias("product_id"),
@@ -84,6 +86,7 @@ def run_etl_interactions(spark: SparkSession, data_dir: str, output_dir: str, fi
             spark_clean_text(safe_col(df_vn, "content")).alias("review_text"),
             spark_standardize(safe_col(df_vn, "breadcrumb")).alias("main_category")
         ).withColumn("domain", lit("vn"))
+
         df_final = df_vn_std
 
     # 2. Xử lý Review Amazon
@@ -91,7 +94,9 @@ def run_etl_interactions(spark: SparkSession, data_dir: str, output_dir: str, fi
         logger.info(f"Dang xu ly {len(amz_review_files)} file Amazon reviews (VỚI SCHEMA TƯỜNG MINH)")
         # TỐI ƯU: Dùng schema để tránh request đoán kiểu
         df_amz = spark.read.schema(AMZ_REVIEW_SCHEMA).json(amz_review_files)
-        
+
+        logger.info(f"Dang Mapping data cua {len(amz_review_files)} file Amazon reviews sang Formal Schema")
+
         df_amz_std = df_amz.select(
             spark_standardize(safe_col(df_amz, "user_id")).alias("user_id"),
             spark_standardize(safe_col(df_amz, "parent_asin")).alias("product_id"),

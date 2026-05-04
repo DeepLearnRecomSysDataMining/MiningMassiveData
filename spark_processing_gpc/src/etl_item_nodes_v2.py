@@ -83,6 +83,8 @@ def run_etl_item_nodes(spark, data_dir, output_dir, file_groups: dict = None):
     if vn_files:
         logger.info(f"Dang xu ly {len(vn_files)} file VN metadata (VỚI SCHEMA TƯỜNG MINH)")
         df_vn = spark.read.option("mode", "DROPMALFORMED").schema(VN_ITEM_SCHEMA).json(vn_files)
+
+        logger.info(f"Dang Mapping data cua {len(vn_files)} file VN metadata sang Formal Schema")
         
         df_vn_std = df_vn.select(
             spark_standardize(safe_col(df_vn, "product_id")).alias("product_id"),
@@ -103,6 +105,8 @@ def run_etl_item_nodes(spark, data_dir, output_dir, file_groups: dict = None):
     if amz_files:
         logger.info(f"Dang xu ly {len(amz_files)} file Amazon metadata (VỚI SCHEMA TƯỜNG MINH)")
         df_amz = spark.read.option("mode", "DROPMALFORMED").schema(AMZ_ITEM_SCHEMA).json(amz_files)
+
+        logger.info(f"Dang Mapping data cua {len(amz_files)} file Amazon metadata sang Formal Schema")
         
         df_amz_std = df_amz.select(
             spark_standardize(safe_col(df_amz, "parent_asin")).alias("product_id"),
