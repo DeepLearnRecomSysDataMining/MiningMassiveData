@@ -90,7 +90,8 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
         F.to_json(F.col("parsed_specs")).alias("query_specs")
     )
     
-    df_eval = df_grouped.join(F.broadcast(df_amz_metadata), "query_id", "inner")
+    # df_eval = df_grouped.join(F.broadcast(df_amz_metadata), "query_id", "inner")
+    df_eval = df_grouped.join(df_amz_metadata, "query_id", "inner")
 
     # Ghi kết quả (TỐI ƯU: Coalesce để giảm phí Class A trên GCS)
     logger.info(f"Ghi ket qua Evaluation (Coalesce 16) xuong: {output_path}")
