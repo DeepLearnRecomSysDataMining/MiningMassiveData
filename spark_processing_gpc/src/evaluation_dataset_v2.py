@@ -26,18 +26,23 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
     ).persist(StorageLevel.MEMORY_AND_DISK)
 
     # 2. Tạo tập Positive (Dựa trên ASIN khớp nhau giữa Amazon và VN)
-    df_amz = df_items.filter(F.col("domain") == "amazon").select(
+    # QUAN TRỌNG: Lọc bỏ ASIN rỗng hoặc null để tránh Cartesian Product (Tích đề-các)
+    df_amz = df_items.filter(
+        (F.col("domain") == "amazon") & (F.col("asin") != "") & (F.col("asin").isNotNull())
+    ).select(
         F.col("asin").alias("query_id"),
         F.col("category").alias("query_category")
     )
 
-    df_vn = df_items.filter(F.col("domain") == "vn").select(
+    df_vn = df_items.filter(
+        (F.col("domain") == "vn") & (F.col("asin") != "") & (F.col("asin").isNotNull())
+    ).select(
         F.col("product_id").alias("cand_id"),
         F.col("asin").alias("cand_asin"),
         F.col("category").alias("cand_category")
     )
 
-    # Positive pairs: Những cặp có cùng ASIN
+    # Positive pairs: Những cặp có cùng ASIN thực sự
     df_pos_raw = df_amz.join(F.broadcast(df_vn), df_amz.query_id == df_vn.cand_asin, "inner") \
         .select("query_id", "cand_id", "query_category") \
         .withColumn("label", F.lit(1))
@@ -45,10 +50,10 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
     # 3. TỐI ƯU NEGATIVE MINING (Sampling)
     # Lấy mẫu khoảng 50,000 queries để đánh giá (Cực kỳ quan trọng để không treo máy)
     total_pos = df_pos_raw.count()
-    if total_pos > 50000:
-        fraction = 50000.0 / total_pos
+    if total_pos > 1000000:
+        fraction = 1000000.0 / total_pos
         df_pos = df_pos_raw.sample(withReplacement=False, fraction=fraction, seed=42)
-        logger.info(f"Sampling: Giam tu {total_pos} xuong con ~50,000 queries de tiet kiem RAM.")
+        logger.info(f"Sampling: Giam tu {total_pos} xuong con ~1,000,000 queries de tiet kiem RAM.")
     else:
         df_pos = df_pos_raw
 
