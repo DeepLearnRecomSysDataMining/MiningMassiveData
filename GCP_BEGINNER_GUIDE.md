@@ -10,7 +10,7 @@ Mặc định GCP sẽ khóa các dịch vụ để tránh tốn tiền. Bạn c
 2. Chọn đúng Project của bạn ở góc trên bên trái.
 3. Mở thanh tìm kiếm và gõ "API Library", sau đó tìm và nhấn **Enable** cho các dịch vụ sau:
    - **Compute Engine API** (Để chạy máy ảo)
-   - **Cloud Dataproc API** (Để chạy Spark) - hoặc Managed Apache Spark
+   - **Cloud Dataproc API** (Để chạy Spark) 
    - **Cloud Storage API** (Để lưu trữ dữ liệu)
 
 ---
@@ -145,11 +145,12 @@ Do đó, trước khi muốn chạy file `.py`, bạn chỉ cần gõ lại lệ
 1. Tìm kiếm "Dataproc"(nay là Managed Apache Spark) -> chọn -> giao diện Managed Apache Spark
 2. Side Bar bên trái , ấn **Clusters** -> **Create Cluster** -> giao diện **Cluster on Compute Engine**.
 2. **Name**: `amazon-cluster`.
-3. **Region**: `us-central1` hoặc mặc định đặt `asia-southeast1`.
+3. **Region**: `us-central1` hoặc mặc định đặt `asia-southeast1`. có thể chọn zone luôn cùng zone VM coordinator
 4. **Cluster type**: **Standard** (1 master, N workers). Ở dưới thì mặc định OS là Debian nhưng có thể đổi sang Ubuntu 22.
+5. **Bật Lighting Engine và Native ...**
 5. **Kéo xuống, mở rộng để cấu hình Master & Worker (tránh tốn RAM, CPU, GB tốn nhiều tiền)**: 
-  - **Master**: Đưa về N4-Standard-2 (vCPU:2, RAM:8GB)
-  - **Worker**: đưa về N4-Standard-2 (vCPU:2, RAM:8GB)
+  - **Master**: Đưa về N4-Standard-2 (vCPU:4, RAM:16GB)
+  - **Worker**: đưa về N4-Standard-2 (vCPU:4, RAM:16GB)
   - **Number of workers**: Đưa về 2, hoặc 3, 4 tùy bạn, ở ví dụ này đưa về 2 cho tiết kiệm 
   - **Disksize**: Data ở GCS tổng 50GB nên chọn mỗi cái node khoảng 50Gb là đủ.
 
@@ -475,7 +476,7 @@ export OUTPUT_BASE="gs://mining-data-2/output/"
 ```bash
 cd ~/MiningMassiveData/spark_processing_gpc
 # Nhớ chạy export 3 biến môi trường trước nếu chưa chạy
-gcloud dataproc jobs submit pyspark main.py \
+gcloud dataproc jobs submit pyspark main_.....py \
     --cluster=amazon-cluster \
     --region=asia-southeast1 \
     --py-files=dependencies.zip \
@@ -487,7 +488,15 @@ gcloud dataproc jobs submit pyspark main.py \
 hoặc code mới nhất thì chỉ chạy
 
 ```bash
-gcloud dataproc jobs submit pyspark main.py \
+gcloud dataproc jobs submit pyspark main_12.py \
+    --cluster=amazon-cluster \
+    --region=asia-southeast1 \
+    --py-files=dependencies.zip \
+    -- \
+    --validate
+```
+```bash
+gcloud dataproc jobs submit pyspark main_34.py \
     --cluster=amazon-cluster \
     --region=asia-southeast1 \
     --py-files=dependencies.zip \
@@ -603,11 +612,12 @@ rm -f dependencies.zip
 
 zip -r dependencies.zip config src
 
-gcloud dataproc jobs submit pyspark main2.py \
+# Cần thêm lệnh spark.driver.maxResultSize=4g, để driver lấy dữ liệu từ tất cả workers
+gcloud dataproc jobs submit pyspark main_34.py \
     --cluster=amazon-cluster \
     --region=asia-southeast1 \
     --py-files=dependencies.zip \
-    --properties="spark.shuffle.compress=true,spark.shuffle.spill.compress=true" \
+    --properties="spark.executor.memory=7g,spark.executor.memoryOverhead=3g,spark.driver.memory=7g,spark.driver.memoryOverhead=3g,spark.shuffle.compress=true,spark.shuffle.spill.compress=true,spark.driver.maxResultSize=4g" \
     -- \
     --validate
 ```
@@ -624,6 +634,60 @@ Tác dụng: Khi bật =true, Spark sẽ nén cái đống dữ liệu đó lạ
 Lợi ích: Tốc độ đọc/ghi của ổ cứng (Disk I/O) luôn là thứ chậm chạp nhất trong máy tính. Việc nén dữ liệu giúp dung lượng file xả xuống nhỏ hơn rất nhiều -> Ghi xuống đĩa nhanh hơn -> Đọc lên lại cũng nhanh hơn -> Tránh được lỗi nghẽn ổ cứng.
 ```
 
+## Lưu ý về SPARK.
+
+**Spark lazy evaluation (Đánh giá lười biếng)**
+Trong Spark, tất cả các lệnh trước đó (Join, GroupBy, Filter) đều là Lazy Evaluation (nó chỉ ghi lại kế hoạch chứ chưa chạy).
+Lệnh Ghi file (coalesce 16) là lệnh thực thi đầu tiên, kích hoạt toàn bộ chuỗi tính toán.
+
+```bash
+window_limit = Window.partitionBy("cand_category").orderBy(F.rand())
+    df_vn_sampled = df_vn.withColumn("rn", F.row_number().over(window_limit)) \
+                         .filter(F.col("rn") <= 500) # Chỉ lấy tối đa 500 ứng viên mỗi Category để Mining
+    
+    # Mining: Join Query với tập Candidate đã được thu gọn (Sampled)
+    df_neg_candidates = query_ids_df.join(F.broadcast(df_vn_sampled), 
+                                          query_ids_df.query_category == df_vn_sampled.cand_category, 
+                                          "inner") \
+                                    .filter(F.col("query_id") != F.col("cand_asin"))
+    
+    # Chọn ra 99 Negative cho mỗi Query từ tập ứng viên
+    window_neg = Window.partitionBy("query_id").orderBy(F.rand())
+    df_negatives = df_neg_candidates.withColumn("rank", F.row_number().over(window_neg)) \
+                                    .filter(F.col("rank") <= (num_candidates - 1)) \
+                                    .select("query_id", "cand_id") \
+                                    .withColumn("label", F.lit(0))
+
+    # 4. Gom tập Positive và Negative
+    df_final_ids = df_pos.select("query_id", "cand_id", "label") \
+                         .unionByName(df_negatives)
+
+    # Group IDs lại thành List (Format chuẩn cho Training)
+    df_grouped = df_final_ids.groupBy("query_id").agg(
+        F.collect_list("cand_id").alias("candidate_ids"),
+        F.collect_list("label").alias("labels")
+    )
+
+    # 5. Join lại với Metadata Amazon (Heavy)
+    df_amz_metadata = df_items.filter(F.col("domain") == "amazon").select(
+        F.col("asin").alias("query_id"),
+        F.col("product_name").alias("query_name"),
+        F.col("full_text").alias("query_text"),
+        F.col("category").alias("query_category"),
+        F.to_json(F.col("parsed_specs")).alias("query_specs")
+    )
+    
+    # df_eval = df_grouped.join(F.broadcast(df_amz_metadata), "query_id", "inner")
+    df_eval = df_grouped.join(df_amz_metadata, "query_id", "inner")
+
+    # Trong Spark, tất cả các lệnh trước đó (Join, GroupBy, Filter) đều là Lazy Evaluation (nó chỉ ghi lại kế hoạch chứ chưa chạy).
+    # Lệnh Ghi file (coalesce 16) là lệnh thực thi đầu tiên, kích hoạt toàn bộ chuỗi tính toán.
+    # Ghi kết quả (TỐI ƯU: Coalesce để giảm phí Class A trên GCS)
+    logger.info(f"Ghi ket qua Evaluation (Coalesce 16) xuong: {output_path}")
+    df_eval.coalesce(16).write.mode("overwrite").parquet(output_path)
+    
+    df_items.unpersist()
+```
 ---
 
 ## Bước 8: Huấn luyện trên GPU (Distributed Training)

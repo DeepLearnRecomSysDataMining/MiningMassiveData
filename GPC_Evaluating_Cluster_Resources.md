@@ -417,3 +417,78 @@ Thay vì dòng `n4-standard-4`, bạn chọn dòng máy chuyên dụng cho RAM:
 | **TỔNG TOÀN BỘ** | | **20/20** | **Vừa khít Quota!** |
 
 **Lời khuyên:** Bạn nên dùng **Cách 1 (Custom)** ngay trên giao diện tạo Dataproc. Nó sẽ giúp bạn có một "bộ não" 16GB RAM khỏe mạnh mà vẫn lách được luật Quota 20 vCPU của Google.
+
+### User Input
+
+đọc code @[spark_processing_gpc/src/etl_item_nodes_v2.py] và @[spark_processing_gpc/src/etl_interactions_v2.py] và @[spark_processing_gpc/src/evaluation_dataset_v2.py] và @[spark_processing_gpc/src/data_validator_v2.py]. Hãy xem nếu cấu hình 5 nodes, 1 master, 2 worker, 2 seconar worker, mỗi node 16GB RAM - 4vCPU - 100GB thì có được không, chạy ổn không, Tràn bộ nhớ không . Lưu ý tổng tập dữ liệu nặng 55Gb mà chủ yếu dữ liệu bên Amazon chiền 54GB, bên việt nam chỉ chiếm 1GB.
+
+*Viewed [etl_item_nodes_v2.py](file:///d:/Hoctap_Code_PrivateProject/MiningMassiveData/spark_processing_gpc/src/etl_item_nodes_v2.py) *
+
+*Viewed [etl_interactions_v2.py](file:///d:/Hoctap_Code_PrivateProject/MiningMassiveData/spark_processing_gpc/src/etl_interactions_v2.py) *
+
+*Viewed [evaluation_dataset_v2.py](file:///d:/Hoctap_Code_PrivateProject/MiningMassiveData/spark_processing_gpc/src/evaluation_dataset_v2.py) *
+
+*Viewed [data_validator_v2.py](file:///d:/Hoctap_Code_PrivateProject/MiningMassiveData/spark_processing_gpc/src/data_validator_v2.py) *
+
+### Planner Response
+
+Đánh giá cấu hình cụm 5 nodes (1 Master, 2 Worker, 2 Secondary) với bộ mã nguồn **V2 (Optimized)**:
+
+### 1. Phân tích sự tương thích giữa Code V2 và Phần cứng
+Bộ code V2 bạn cung cấp có những cải tiến cực kỳ quan trọng giúp nó chạy cực kỳ ổn định trên cấu hình 16GB RAM:
+
+*   **Explicit Schema (Quan trọng nhất):** Trong `etl_item_nodes_v2.py` và `etl_interactions_v2.py`, bạn đã định nghĩa `VN_ITEM_SCHEMA`, `AMZ_ITEM_SCHEMA`,... Việc này giúp Spark không phải quét toàn bộ 54GB dữ liệu Amazon chỉ để "đoán" kiểu dữ liệu. Nó tiết kiệm hàng chục GB RAM trong giai đoạn khởi tạo.
+*   **Sampling trong Negative Mining:** Trong `evaluation_dataset_v2.py`, bạn dùng chiêu `filter(col("rn") <= 500)` để giới hạn tập ứng viên âm tính mỗi Category. Đây là "chốt chặn" an toàn nhất để **không bao giờ bị nổ dữ liệu** (Data Explosion) khi join 54GB Amazon với 1GB Việt Nam.
+*   **Gom Action trong Validator:** `data_validator_v2.py` dùng `agg(...).collect()[0]` để tính toán mọi chỉ số (count, distinct, null, avg) trong **một lần quét duy nhất**. Điều này cực kỳ hiệu quả so với việc gọi nhiều lệnh `.count()` riêng lẻ.
+
+### 2. Đánh giá tài nguyên hệ thống
+
+*   **RAM (Tổng 80GB, Worker 64GB):** 
+    *   Tổng dữ liệu thô là 55GB, nhưng khi nén vào Parquet nó sẽ chỉ còn khoảng **15-20GB**. 
+    *   Với 64GB RAM của 4 Worker, Spark có thể chứa gần như toàn bộ tập dữ liệu đã nén vào RAM (Cache). 
+    *   **Kết luận:** **KHÔNG lo tràn bộ nhớ (OOM)** với cấu hình này.
+*   **CPU (20 vCPU):** 
+    *   Bạn đang dùng `coalesce(16)` và `coalesce(32)` khi ghi file. Với 20 vCPU, Spark sẽ chạy 20 task song song. Con số 16 và 32 rất khớp với số core này, giúp tận dụng tối đa sức mạnh tính toán mà không gây nghẽn cổ chai.
+*   **Disk (500GB tổng):** 
+    *   Dữ liệu 55GB thô + 20GB Parquet + khoảng 50GB Shuffle data (tối đa). 100GB mỗi node (tổng 500GB) là quá dư dả.
+
+### 3. Xử lý sự chênh lệch (Amazon 54GB vs VN 1GB)
+Sự chênh lệch này thường gây ra hiện tượng **Data Skew** (node xử lý Amazon thì quá tải, node xử lý VN thì chơi không). Tuy nhiên:
+*   Spark sẽ tự động chia 54GB Amazon thành hàng trăm "part" nhỏ (mỗi part ~128MB).
+*   Các node sẽ chia nhau xử lý các part này một cách công bằng. 
+*   Vì bạn đã dùng `F.broadcast(df_vn)` (bảng 1GB) trong giai đoạn join, nên bảng VN sẽ được gửi đến mọi node để "chờ sẵn" bảng Amazon. Đây là chiến thuật join tối ưu nhất cho trường hợp này.
+
+### ⚠️ Lưu ý duy nhất:
+Mặc dù 5 node chạy rất ổn, nhưng hãy đảm bảo **Secondary Worker (Preemptible)** của bạn không bị Google thu hồi cùng lúc cả 2 node. Nếu mất 2 node này, cluster sẽ bị mất 50% sức mạnh tính toán, Spark sẽ phải chạy lại các task đang dang dở, khiến pipeline chạy chậm lại đáng kể (nhưng vẫn sẽ hoàn thành).
+
+**Chốt lại:** Cấu hình **1 Master + 4 Workers (16GB - 4vCPU)** chạy bộ code **V2** này là **CỰC KỲ AN TOÀN** và **TỐI ƯU**. Bạn có thể yên tâm bấm nút chạy!
+
+### User Input
+
+trong các giai đoạn ETL thì nó lấy 1 cục luôn amazon, có nên chia các file amazon ra làm 2 để dễ hơn không.
+
+### Planner Response
+
+Bạn **KHÔNG CẦN** phải chia thủ công các file Amazon ra làm 2 hay nhiều phần. Việc này chỉ làm tốn thêm thời gian quản lý file của bạn mà không giúp Spark chạy nhanh hơn.
+
+Lý do là vì cách Spark vận hành dữ liệu lớn rất thông minh:
+
+### 1. Cơ chế "Chia để trị" tự động (Input Splitting)
+Dù bạn đưa cho Spark một danh sách file nặng 54GB, Spark không bao giờ "bốc" cả 54GB đó lên cùng một lúc vào một node.
+*   Spark sẽ tự động chia 54GB đó thành hàng nghìn **Input Splits** (mặc định khoảng 128MB mỗi phần).
+*   Mỗi "phần" 128MB này sẽ trở thành 1 **Task**.
+*   Với cụm 20 vCPU của bạn, Spark sẽ bốc 20 task (tổng cộng ~2.5GB dữ liệu) lên xử lý song song. Xong task nào, nó sẽ bốc tiếp task khác cho đến khi hết 54GB.
+
+### 2. Khi nào thì MỚI CẦN chia file thủ công?
+Bạn chỉ nên cân nhắc chia file nếu gặp 1 trong 2 trường hợp sau:
+1.  **File nén định dạng không thể chia nhỏ (Non-splittable):** Ví dụ bạn có một file duy nhất `amazon_data.json.gz` nặng 54GB. Định dạng `.gz` khiến Spark buộc phải dùng **duy nhất 1 máy** để giải nén từ đầu đến cuối. (Lúc này máy đó sẽ rất dễ OOM).
+    *   *Giải pháp:* Nếu dữ liệu là nhiều file `.jsonl` nhỏ hoặc không nén, Spark sẽ chia cực tốt.
+2.  **Số lượng file quá ít so với số vCPU:** Ví dụ bạn có 54GB nhưng chỉ nằm trong 2 file cực lớn, trong khi bạn có 100 vCPU. Lúc này 98 vCPU sẽ ngồi chơi.
+    *   *Thực tế:* Với Amazon dataset, thường dữ liệu đã được chia sẵn thành hàng chục hoặc hàng trăm file nhỏ, nên Spark sẽ tận dụng tối đa 20 vCPU của bạn.
+
+### 3. Tối ưu thực tế thay vì chia file
+Thay vì mất công chia nhỏ file Amazon, bạn nên tập trung vào:
+*   **Sử dụng Parquet:** Ở Phase 1, bạn đọc JSONL (chậm) nhưng hãy lưu ra Parquet (nhanh). Từ Phase 2 trở đi, hãy đọc từ Parquet. Nó nhanh hơn gấp 10 lần và hỗ trợ chia nhỏ cực tốt.
+*   **Kiểm soát số lượng file đầu ra:** Dòng code `.coalesce(32)` bạn đang dùng là rất tốt. Nó giúp gom hàng nghìn task nhỏ lại thành 32 file kết quả vừa phải, giúp các công đoạn sau đọc lại nhanh hơn.
+
+**Lời khuyên:** Cứ để nguyên 54GB Amazon như vậy. Spark "thích" làm việc với một danh sách file lớn vì nó có cái nhìn tổng thể để tối ưu hóa kế hoạch thực thi (Execution Plan) tốt hơn là bạn chia nhỏ ra chạy nhiều lần.
