@@ -13,15 +13,16 @@ logger = logging.getLogger("evaluation_dataset_v2")
 
 def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: str, num_candidates: int = 100):
     """
-    Tạo bộ dữ liệu Evaluation (1 Positive + 99 Negatives) 
-    Sử dụng kỹ thuật 'Safe Mining' để tránh bùng nổ dữ liệu khi Join Category.
-    """
+        Tạo bộ dữ liệu Evaluation (1 Positive + 99 Negatives)
+        Sử dụng kỹ thuật 'Safe Mining' và Sampling để tránh bùng nổ dữ liệu.
+        Chỉ lưu ID-Only, bỏ qua Join Metadata để tối ưu RAM và thời gian chạy.
+        """
     spark.conf.set("spark.sql.adaptive.enabled", "true")
-    logger.info("[EVAL-V2] Bat dau tao bo du lieu Evaluation...")
+    logger.info("[EVAL-V2] Bat dau tao bo du lieu Evaluation (ID-Only)...")
 
-    # 1. Đọc dữ liệu sản phẩm (Khoảng 4-5 triệu dòng)
+    # 1. Đọc dữ liệu sản phẩm (Chỉ load các cột cần thiết cho việc xử lý ID)
     df_items = spark.read.parquet(items_path).select(
-        "product_id", "asin", "product_name", "category", "full_text", "parsed_specs", "domain"
+        "product_id", "asin", "category", "domain"
     ).persist(StorageLevel.MEMORY_AND_DISK)
 
     # 2. Tạo tập Positive (Dựa trên ASIN khớp nhau giữa Amazon và VN)
@@ -29,7 +30,7 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
         F.col("asin").alias("query_id"),
         F.col("category").alias("query_category")
     )
-    
+
     df_vn = df_items.filter(F.col("domain") == "vn").select(
         F.col("product_id").alias("cand_id"),
         F.col("asin").alias("cand_asin"),
@@ -37,10 +38,20 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
     )
 
     # Positive pairs: Những cặp có cùng ASIN
-    df_pos = df_amz.join(F.broadcast(df_vn), df_amz.query_id == df_vn.cand_asin, "inner") \
-                   .select("query_id", "cand_id", "query_category") \
-                   .withColumn("label", F.lit(1))
-    
+    df_pos_raw = df_amz.join(F.broadcast(df_vn), df_amz.query_id == df_vn.cand_asin, "inner") \
+        .select("query_id", "cand_id", "query_category") \
+        .withColumn("label", F.lit(1))
+
+    # 3. TỐI ƯU NEGATIVE MINING (Sampling)
+    # Lấy mẫu khoảng 50,000 queries để đánh giá (Cực kỳ quan trọng để không treo máy)
+    total_pos = df_pos_raw.count()
+    if total_pos > 50000:
+        fraction = 50000.0 / total_pos
+        df_pos = df_pos_raw.sample(withReplacement=False, fraction=fraction, seed=42)
+        logger.info(f"Sampling: Giam tu {total_pos} xuong con ~50,000 queries de tiet kiem RAM.")
+    else:
+        df_pos = df_pos_raw
+
     query_ids_df = df_pos.select("query_id", "query_category").distinct()
     query_count = query_ids_df.count()
 
@@ -50,57 +61,44 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
 
     logger.info(f"Mining cho {query_count} queries...")
 
-    # 3. TỐI ƯU NEGATIVE MINING (Tránh Join Cartesian Product)
-    # Thay vì Join mọi Amazon với mọi VN trong cùng Category (dễ sập), 
-    # Ta lấy mẫu ngẫu nhiên khoảng 500 candidates cho mỗi Category trước.
-    
-    window_limit = Window.partitionBy("cand_category").orderBy(F.rand())
+    # Tránh Join Cartesian Product: Lấy ngẫu nhiên 500 candidates cho mỗi Category trước
+    window_limit = Window.partitionBy("cand_category").orderBy(F.rand(seed=42))
     df_vn_sampled = df_vn.withColumn("rn", F.row_number().over(window_limit)) \
-                         .filter(F.col("rn") <= 500) # Chỉ lấy tối đa 500 ứng viên mỗi Category để Mining
-    
+        .filter(F.col("rn") <= 500)
+
     # Mining: Join Query với tập Candidate đã được thu gọn (Sampled)
-    df_neg_candidates = query_ids_df.join(F.broadcast(df_vn_sampled), 
-                                          query_ids_df.query_category == df_vn_sampled.cand_category, 
+    df_neg_candidates = query_ids_df.join(F.broadcast(df_vn_sampled),
+                                          query_ids_df.query_category == df_vn_sampled.cand_category,
                                           "inner") \
-                                    .filter(F.col("query_id") != F.col("cand_asin"))
-    
+        .filter(F.col("query_id") != F.col("cand_asin"))
+
     # Chọn ra 99 Negative cho mỗi Query từ tập ứng viên
-    window_neg = Window.partitionBy("query_id").orderBy(F.rand())
+    window_neg = Window.partitionBy("query_id").orderBy(F.rand(seed=42))
     df_negatives = df_neg_candidates.withColumn("rank", F.row_number().over(window_neg)) \
-                                    .filter(F.col("rank") <= (num_candidates - 1)) \
-                                    .select("query_id", "cand_id") \
-                                    .withColumn("label", F.lit(0))
+        .filter(F.col("rank") <= (num_candidates - 1)) \
+        .select("query_id", "cand_id") \
+        .withColumn("label", F.lit(0))
 
-    # 4. Gom tập Positive và Negative
+    # 4. Gom tập Positive và Negative (Chỉ lấy ID)
     df_final_ids = df_pos.select("query_id", "cand_id", "label") \
-                         .unionByName(df_negatives)
+        .unionByName(df_negatives)
 
-    # Group IDs lại thành List (Format chuẩn cho Training)
-    df_grouped = df_final_ids.groupBy("query_id").agg(
+    # 5. Group IDs lại thành List (Format chuẩn cho Training nhưng siêu nhẹ)
+    df_eval = df_final_ids.groupBy("query_id").agg(
         F.collect_list("cand_id").alias("candidate_ids"),
         F.collect_list("label").alias("labels")
     )
 
-    # 5. Join lại với Metadata Amazon (Heavy)
-    df_amz_metadata = df_items.filter(F.col("domain") == "amazon").select(
-        F.col("asin").alias("query_id"),
-        F.col("product_name").alias("query_name"),
-        F.col("full_text").alias("query_text"),
-        F.col("category").alias("query_category"),
-        F.to_json(F.col("parsed_specs")).alias("query_specs")
-    )
-    
-    # df_eval = df_grouped.join(F.broadcast(df_amz_metadata), "query_id", "inner")
-    df_eval = df_grouped.join(df_amz_metadata, "query_id", "inner")
+    # --- KHÔNG JOIN METADATA Ở ĐÂY NỮA ---
+    # Toàn bộ dữ liệu text khổng lồ sẽ được xử lý độc lập bên ngoài Spark
 
-    # Ghi kết quả (TỐI ƯU: Coalesce để giảm phí Class A trên GCS)
-    logger.info(f"Ghi ket qua Evaluation (Coalesce 16) xuong: {output_path}")
-    df_eval.coalesce(16).write.mode("overwrite").parquet(output_path)
-    
+    # 6. Ghi kết quả (Bây giờ chỉ còn vài MB, chạy cực nhanh)
+    logger.info(f"Ghi ket qua Evaluation ID-ONLY (Coalesce 1) xuong: {output_path}")
+    df_eval.coalesce(1).write.mode("overwrite").parquet(output_path)
+
     df_items.unpersist()
-    
-    # TỐI ƯU: Đếm số lượng từ metadata của output (Cực nhanh)
-    final_query_count = spark.read.parquet(output_path).count()
-    logger.info(f"Hoan tat! Da tao {final_query_count} evaluation queries.")
-    return final_query_count
 
+    # Đếm số lượng từ metadata của output
+    final_query_count = spark.read.parquet(output_path).count()
+    logger.info(f"Hoan tat! Da tao {final_query_count} evaluation queries (ID-Only).")
+    return final_query_count
