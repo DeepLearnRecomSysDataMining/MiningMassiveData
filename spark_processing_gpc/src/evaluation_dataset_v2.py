@@ -43,7 +43,7 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
     )
 
     # Positive pairs: Những cặp có cùng ASIN thực sự
-    df_pos_raw = df_amz.join(F.broadcast(df_vn), df_amz.query_id == df_vn.cand_asin, "inner") \
+    df_pos_raw = df_amz.join(F.broadcast(df_vn), F.lower(df_amz.query_id) == F.lower(df_vn.cand_asin), "inner") \
         .select("query_id", "cand_id", "query_category") \
         .withColumn("label", F.lit(1))
 
