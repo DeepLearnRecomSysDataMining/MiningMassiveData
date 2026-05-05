@@ -31,6 +31,7 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
         (F.col("domain") == "amazon") & (F.col("asin") != "") & (F.col("asin").isNotNull())
     ).select(
         F.col("asin").alias("query_id"),
+        F.col("product_id").alias("query_parent_id"), # Lấy thêm parent_asin để tăng khả năng khớp
         F.col("category").alias("query_category")
     )
 
@@ -42,10 +43,15 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
         F.col("category").alias("cand_category")
     )
 
-    # Positive pairs: Những cặp có cùng ASIN thực sự
-    df_pos_raw = df_amz.join(F.broadcast(df_vn), F.lower(df_amz.query_id) == F.lower(df_vn.cand_asin), "inner") \
-        .select("query_id", "cand_id", "query_category") \
-        .withColumn("label", F.lit(1))
+    # Positive pairs: Khớp linh hoạt với cả ASIN con HOẶC Parent ASIN
+    df_pos_raw = df_amz.join(
+        F.broadcast(df_vn), 
+        (F.lower(df_amz.query_id) == F.lower(df_vn.cand_asin)) | 
+        (F.lower(df_amz.query_parent_id) == F.lower(df_vn.cand_asin)), 
+        "inner"
+    ).select("query_id", "cand_id", "query_category") \
+     .dropDuplicates(["query_id", "cand_id"]) \
+     .withColumn("label", F.lit(1))
 
     # 3. TỐI ƯU NEGATIVE MINING (Sampling)
     # Lấy mẫu khoảng 50,000 queries để đánh giá (Cực kỳ quan trọng để không treo máy)
