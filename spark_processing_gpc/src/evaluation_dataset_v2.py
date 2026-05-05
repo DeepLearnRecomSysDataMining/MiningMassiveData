@@ -28,7 +28,10 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
     # 2. Tạo tập Positive (Dựa trên ASIN khớp nhau giữa Amazon và VN)
     # QUAN TRỌNG: Lọc bỏ ASIN rỗng hoặc null để tránh Cartesian Product (Tích đề-các)
     df_amz = df_items.filter(
-        (F.col("domain") == "amazon") & (F.col("asin") != "") & (F.col("asin").isNotNull())
+        (F.col("domain") == "amazon") & 
+        (F.col("asin") != "") & 
+        (F.col("asin").isNotNull()) & 
+        (F.col("asin") != "none") # Loại bỏ chuỗi "none"
     ).select(
         F.col("asin").alias("query_id"),
         F.col("product_id").alias("query_parent_id"), # Lấy thêm parent_asin để tăng khả năng khớp
@@ -36,7 +39,10 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
     )
 
     df_vn = df_items.filter(
-        (F.col("domain") == "vn") & (F.col("asin") != "") & (F.col("asin").isNotNull())
+        (F.col("domain") == "vn") & 
+        (F.col("asin") != "") & 
+        (F.col("asin").isNotNull()) &
+        (F.col("asin") != "none") # Loại bỏ chuỗi "none"
     ).select(
         F.col("product_id").alias("cand_id"),
         F.col("asin").alias("cand_asin"),

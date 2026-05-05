@@ -109,7 +109,7 @@ def run_etl_item_nodes(spark, data_dir, output_dir, file_groups: dict = None):
         logger.info(f"Dang Mapping data cua {len(amz_files)} file Amazon metadata sang Formal Schema")
         
         df_amz_std = df_amz.select(
-            spark_standardize(safe_col(df_amz, "parent_asin")).alias("product_id"),
+            spark_standardize(coalesce(col("parent_asin"), col("asin"))).alias("product_id"),
             spark_standardize(safe_col(df_amz, "asin")).alias("asin"),
             spark_standardize(safe_col(df_amz, "title")).alias("product_name"),
             spark_clean_text(safe_col(df_amz, "features")).alias("specs_text"),
@@ -132,7 +132,9 @@ def run_etl_item_nodes(spark, data_dir, output_dir, file_groups: dict = None):
 
     # Lọc và Parse JSON Native
     map_schema = "MAP<STRING, STRING>"
-    df_final = df_final.filter(col("product_id") != "").dropDuplicates(["product_id"]) \
+    # TỐI ƯU: Không dropDuplicates quá tay chỉ theo product_id (parent_asin) 
+    # vì sẽ làm mất các phiên bản con (asin) có thể khớp với VN.
+    df_final = df_final.filter(col("product_id") != "").dropDuplicates(["product_id", "asin"]) \
                        .withColumn("parsed_specs", 
                            when(col("specs_text").startswith("{"), from_json(col("specs_text"), map_schema))
                            .otherwise(None)

@@ -99,7 +99,7 @@ def run_etl_interactions(spark: SparkSession, data_dir: str, output_dir: str, fi
 
         df_amz_std = df_amz.select(
             spark_standardize(safe_col(df_amz, "user_id")).alias("user_id"),
-            spark_standardize(safe_col(df_amz, "parent_asin")).alias("product_id"),
+            spark_standardize(coalesce(col("parent_asin"), col("asin"))).alias("product_id"),
             spark_standardize(safe_col(df_amz, "asin")).alias("asin"),
             coalesce(safe_col(df_amz, "rating").cast("float"), lit(0.0)).alias("rating"),
             spark_clean_text(safe_col(df_amz, "text")).alias("review_text"),
