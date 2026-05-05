@@ -382,11 +382,6 @@ ERROR: (gcloud.dataproc.jobs.submit.pyspark) PERMISSION_DENIED: Request had insu
     method: google.cloud.dataproc.v1.ClusterController.GetCluster
     service: dataproc.googleapis.com
   reason: ACCESS_TOKEN_SCOPE_INSUFFICIENT
-
-If you are in a compute engine VM, it is likely that the specified scopes during VM creation are not enough to run this command.
-See https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam for more information about access scopes.
-See https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#changeserviceaccountandscopes for how to update access scopes of the VM.
-
 ```
 
 **Lưu ý quan trọng về Quyền hạn (Permissions):**

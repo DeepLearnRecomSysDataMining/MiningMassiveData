@@ -87,15 +87,15 @@ def main():
         logger.info(f"V PHASE 1 DONE: {n_interactions:,} interaction records | Time: {time.time()-t1:.1f}s")
 
         # BUOC 2: ETL San pham (Giai doan 2.2)
-        # logger.info(">>> START PHASE 2: ETL Item Nodes (Giai doan 2.2)")
-        # t2 = time.time()
-        # n_items = run_etl_item_nodes(
-        #     spark, 
-        #     data_dir = args.data_dir, 
-        #     output_dir = PathConfig.ITEM_NODES_OUT,
-        #     file_groups = file_groups
-        # )
-        # logger.info(f"V PHASE 2 DONE: {n_items:,} item records | Time: {time.time()-t2:.1f}s")
+        logger.info(">>> START PHASE 2: ETL Item Nodes (Giai doan 2.2)")
+        t2 = time.time()
+        n_items = run_etl_item_nodes(
+            spark,
+            data_dir = args.data_dir,
+            output_dir = PathConfig.ITEM_NODES_OUT,
+            file_groups = file_groups
+        )
+        logger.info(f"V PHASE 2 DONE: {n_items:,} item records | Time: {time.time()-t2:.1f}s")
 
 
         elapsed = time.time() - t_start
