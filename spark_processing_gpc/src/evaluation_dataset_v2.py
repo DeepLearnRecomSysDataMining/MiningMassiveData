@@ -55,13 +55,14 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
 
     # 3. TỐI ƯU NEGATIVE MINING (Sampling)
     # Lấy mẫu khoảng 50,000 queries để đánh giá (Cực kỳ quan trọng để không treo máy)
-    total_pos = df_pos_raw.count()
-    if total_pos > 1000000:
-        fraction = 1000000.0 / total_pos
-        df_pos = df_pos_raw.sample(withReplacement=False, fraction=fraction, seed=42)
-        logger.info(f"Sampling: Giam tu {total_pos} xuong con ~1,000,000 queries de tiet kiem RAM.")
-    else:
-        df_pos = df_pos_raw
+    # total_pos = df_pos_raw.count()
+    # if total_pos > 1000000:
+    #     fraction = 1000000.0 / total_pos
+    #     df_pos = df_pos_raw.sample(withReplacement=False, fraction=fraction, seed=42)
+    #     logger.info(f"Sampling: Giam tu {total_pos} xuong con ~1,000,000 queries de tiet kiem RAM.")
+    # else:
+    #     df_pos = df_pos_raw
+    df_pos = df_pos_raw
 
     query_ids_df = df_pos.select("query_id", "query_category").distinct()
     query_count = query_ids_df.count()
