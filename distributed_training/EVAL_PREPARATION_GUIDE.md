@@ -1,48 +1,57 @@
-# Hướng dẫn chuẩn bị dữ liệu Evaluation (.pkl)
+# Hướng dẫn Chuẩn bị Dữ liệu Đánh giá (.pkl)
 
-Tài liệu này hướng dẫn cách thiết lập và chạy script `src/prepare_eval_pkl.py` để tạo bộ dữ liệu đánh giá cho các mô hình training.
+Tài liệu này hướng dẫn cách thiết lập và chạy script `src/prepare_eval_pkl.py` để tạo bộ dữ liệu đánh giá chuẩn cho các mô hình training.
 
-## 1. Yêu cầu hệ thống & Thư viện
-Script yêu cầu Python 3.8+ và các thư viện xử lý dữ liệu lớn trên Cloud.
+## 1. Yêu cầu Hệ thống & VM đề xuất
+- **Instance Type**: `e2-standard-4` (4 vCPU, 16GB RAM).
+- **Tại sao**: Code V2 đã tối ưu RAM (chỉ dùng ~4-6GB), giúp tiết kiệm chi phí so với máy 32GB trước đây.
+- **Boot Disk**: 50GB.
+- **Quyền hạn (Scopes)**: Chọn `Allow full access to all Cloud APIs`.
 
-Cài đặt bằng lệnh:
+## 2. Khởi tạo Môi trường & Cài đặt Thư viện
+Sau khi SSH vào máy ảo, hãy thực hiện các lệnh sau để tạo môi trường sạch:
+
 ```bash
+# 1. Di chuyển vào thư mục dự án
+cd ~/MiningMassiveData
+
+# 2. Tạo môi trường ảo (Virtual Environment)
+python3 -m venv eval_env
+
+# 3. Kích hoạt môi trường ảo
+source eval_env/bin/activate
+
+# 4. Cài đặt các thư viện xử lý dữ liệu lớn
+pip install --upgrade pip
 pip install pandas pyarrow gcsfs
 ```
 
-*   **pyarrow**: Engine xử lý định dạng Parquet tốc độ cao.
-*   **gcsfs**: Cho phép Pandas đọc/ghi trực tiếp trên Google Cloud Storage.
+- **pyarrow**: Xử lý định dạng Parquet (item_nodes) tốc độ cao.
+- **gcsfs**: Cho phép Pandas đọc dữ liệu trực tiếp từ GCS.
 
-### Tạo hẳn 1 VM 32Gb RAM nhé, xong thì xóa đi là được.
+## 3. Cấu hình & Chạy Script
+Thiết lập biến môi trường để script biết cần đọc dữ liệu từ GCS:
 
-- Instance Type: e2-standard-8 (8 vCPU, 32GB RAM).
-- Tại sao: Dòng e2 có chi phí rất rẻ (~0.26 USD/giờ). 8 vCPU sẽ giúp thư viện pyarrow giải nén file Parquet 35GB nhanh hơn gấp nhiều lần.
-- Boot Disk: 50GB - 100GB (Standard Persistent Disk).
-- Tại sao: Bạn cần đủ không gian để lưu thư mục /tmp/training_data khi tải file về.
-- Quyền hạn (Scopes): Chọn Allow full access to all Cloud APIs.
-- Tại sao: Để máy ảo có quyền dùng lệnh gsutil tải và upload dữ liệu lên GCS mà không cần cấu hình file JSON key thủ công.
-
-## 2. Cấu hình Môi trường
-Script tự động nhận diện môi trường dựa trên biến `TRAINING_ENV`.
-
-### Chế độ Cloud (GCP VM / Vertex AI)
-Thiết lập biến môi trường để script sử dụng đường dẫn GCS và tự động upload kết quả:
 ```bash
+# 1. Thiết lập biến môi trường (Chấp nhận cả SPARK_ENV hoặc TRAINING_ENV)
+export SPARK_ENV=cloud
 export TRAINING_ENV=cloud
+
+# 2. Chạy script đóng gói dữ liệu
+# Lưu ý: Chạy dưới dạng module (-m) để tránh lỗi import
+python3 -m distributed_training.src.prepare_eval_pkl
 ```
-*Dữ liệu sẽ được lưu tạm tại `/tmp/training_data/` để tối ưu tốc độ.*
 
-### Chế độ Local
-Không cần cấu hình, script sẽ mặc định tìm dữ liệu trong thư mục `data/` tại local.
+### Kết quả mong đợi:
+- Script sẽ đọc `gs://mining-data-2/output/evaluation_dataset` (Parquet) và `gs://mining-data-2/output/item_nodes` (Parquet).
+- Tạo file `.pkl` tại: `distributed_training/data/prepared_data_improved/evaluation_dataset.pkl`.
+- Tự động upload kết quả lên: `gs://mining-data-2/output/prepared_data_improved/evaluation_dataset.pkl`.
 
-## 3. Kiểm tra Dữ liệu đầu vào
-Đảm bảo các đường dẫn sau đã có dữ liệu (kết quả từ Phase Spark):
+## 4. Kiểm tra
+Nếu bảng thống kê hiện ra con số **4,082,820 products** và số lượng Queries tương ứng, bạn đã thành công!
 - `gs://mining-data-2/output/evaluation_dataset/` (Dữ liệu ID-Only)
 - `gs://mining-data-2/output/item_nodes/` (Metadata sản phẩm)
 
-## 4. Thực thi
-Chạy script từ thư mục gốc của `distributed_training`:
-```bash
 python src/prepare_eval_pkl.py
 ```
 
