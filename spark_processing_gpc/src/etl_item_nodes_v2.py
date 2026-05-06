@@ -89,19 +89,27 @@ def run_etl_item_nodes(spark, data_dir, output_dir, file_groups: dict = None):
                           .schema(VN_ITEM_SCHEMA).json(vn_files)
         
         df_vn_std = df_vn.select(
-            spark_standardize(col("product_id")).alias("product_id"),
-            spark_standardize(col("asin")).alias("a_asin"),
-            spark_standardize(col("product_name")).alias("product_name"),
-            spark_clean_text(col("specifications")).alias("specs_text"),
-            spark_clean_text(col("description")).alias("desc_text"),
-            spark_standardize(safe_col(df_vn, "breadcrumb")).alias("breadcrumb")
+            col("product_id").alias("raw_pid"),
+            col("asin").alias("raw_asin"),
+            col("product_name").alias("raw_pname"),
+            col("specifications").alias("raw_specs"),
+            col("description").alias("raw_desc"),
+            col("breadcrumb").alias("raw_bc")
         ).withColumn(
-            "category", get_category_expr(col("breadcrumb"), col("product_name"))
+            # QUAN TRỌNG: Với VN, product_id đôi khi chính là mã để khớp (nếu asin trống)
+            "final_asin", spark_standardize(coalesce(col("raw_asin"), col("raw_pid")))
         ).withColumn(
-            # Nếu asin trống, lấy product_id làm dự phòng (dành cho khớp nối)
-            "asin", when(col("a_asin") != "", col("a_asin")).otherwise(col("product_id"))
+            "product_id", spark_standardize(col("raw_pid"))
         ).withColumn(
-            "full_text", concat_ws(" ", col("product_name"), col("specs_text"), col("desc_text"))
+            "asin", col("final_asin")
+        ).withColumn(
+            "product_name", spark_standardize(col("raw_pname"))
+        ).withColumn(
+            "category", get_category_expr(col("raw_bc"), col("raw_pname"))
+        ).withColumn(
+            "specs_text", spark_clean_text(col("raw_specs"))
+        ).withColumn(
+            "full_text", concat_ws(" ", col("raw_pname"), col("raw_specs"), col("raw_desc"))
         ).withColumn("domain", lit("vn"))
 
         df_vn_final = df_vn_std.select("product_id", "asin", "product_name", "category", "full_text", "specs_text", "domain")
@@ -110,28 +118,36 @@ def run_etl_item_nodes(spark, data_dir, output_dir, file_groups: dict = None):
     # 2. Xử lý Amazon Metadata
     if amz_files:
         logger.info(f"Dang xu ly {len(amz_files)} file Amazon metadata")
-        # Đọc chuẩn JSONL (mỗi dòng một sản phẩm)
         df_amz = spark.read.option("mode", "PERMISSIVE") \
                           .schema(AMZ_ITEM_SCHEMA).json(amz_files)
         
         df_amz_std = df_amz.select(
-            spark_standardize(col("parent_asin")).alias("p_asin"),
-            spark_standardize(col("asin")).alias("a_asin"),
-            spark_standardize(col("title")).alias("product_name"),
-            spark_clean_text(col("features")).alias("features_text"),
-            spark_clean_text(col("description")).alias("desc_text"),
-            # Giữ logic ép kiểu Map/Array sang String
-            spark_clean_text(coalesce(col("details").cast("string"), col("features").cast("string"))).alias("specs_text"),
-            spark_standardize(col("main_category")).alias("breadcrumb")
+            col("parent_asin").alias("raw_p_asin"),
+            col("asin").alias("raw_a_asin"),
+            col("title").alias("raw_title"),
+            col("features").alias("raw_features"),
+            col("description").alias("raw_desc"),
+            col("details").alias("raw_details"),
+            col("main_category").alias("raw_bc")
         ).withColumn(
-            "category", get_category_expr(col("breadcrumb"), col("product_name"))
+            # TRÍCH XUẤT ASIN TỪ MAP DETAILS (Nếu có)
+            "details_asin", coalesce(col("raw_details")["ASIN"], col("raw_details")["asin"])
         ).withColumn(
-            "product_id", when(col("p_asin") != "", col("p_asin")).otherwise(col("a_asin"))
+            # Ưu tiên: asin > parent_asin > asin trong details
+            "final_asin", spark_standardize(coalesce(col("raw_a_asin"), col("raw_p_asin"), col("details_asin")))
         ).withColumn(
-            # QUAN TRỌNG: Nếu asin trống, lấy p_asin (parent_asin) làm dự phòng
-            "asin", when(col("a_asin") != "", col("a_asin")).otherwise(col("p_asin"))
+            "product_id", when(spark_standardize(col("raw_p_asin")) != "", spark_standardize(col("raw_p_asin")))
+                          .otherwise(col("final_asin"))
         ).withColumn(
-            "full_text", concat_ws(" ", col("product_name"), col("specs_text"), col("desc_text"))
+            "asin", col("final_asin")
+        ).withColumn(
+            "product_name", spark_standardize(col("raw_title"))
+        ).withColumn(
+            "category", get_category_expr(col("raw_bc"), col("raw_title"))
+        ).withColumn(
+            "specs_text", spark_clean_text(coalesce(col("raw_details").cast("string"), col("raw_features").cast("string")))
+        ).withColumn(
+            "full_text", concat_ws(" ", col("raw_title"), col("specs_text"), col("raw_desc"))
         ).withColumn("domain", lit("amazon"))
 
         df_amz_final = df_amz_std.select(
