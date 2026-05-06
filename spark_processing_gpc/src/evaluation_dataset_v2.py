@@ -55,22 +55,27 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
     logger.info(f"[DEBUG] So luong Amazon hop le: {amz_count:,}")
     logger.info(f"[DEBUG] So luong VN hop le: {vn_count:,}")
 
-    # Positive pairs: Khớp linh hoạt với cả ASIN con HOẶC Parent ASIN
+    # 2. Tạo tập Positive (Khớp linh hoạt và cực kỳ sạch)
     df_pos_raw = df_amz.join(
         F.broadcast(df_vn), 
-        (F.lower(df_amz.query_id) == F.lower(df_vn.cand_asin)) | 
-        (F.lower(df_amz.query_parent_id) == F.lower(df_vn.cand_asin)), 
+        (F.lower(F.trim(df_amz.query_id)) == F.lower(F.trim(df_vn.cand_asin))) | 
+        (F.lower(F.trim(df_amz.query_parent_id)) == F.lower(F.trim(df_vn.cand_asin))), 
         "inner"
-    ).select("query_id", "cand_id", "query_category") \
-     .dropDuplicates(["query_id", "cand_id"]) \
+    ).select(
+        df_amz.query_id, 
+        df_vn.cand_id, 
+        df_amz.query_category,
+        df_vn.cand_asin # Giữ lại để lọc trùng khi mining
+    ).dropDuplicates(["query_id", "cand_id"]) \
      .withColumn("label", F.lit(1))
 
     pos_count = df_pos_raw.count()
     logger.info(f"[DEBUG] So luong cap Positive tim thay: {pos_count:,}")
 
-    df_pos = df_pos_raw
+    df_pos = df_pos_raw.select("query_id", "cand_id", "label")
 
-    query_ids_df = df_pos.select("query_id", "query_category").distinct()
+    # query_ids_df: Tập các Amazon items có ít nhất 1 match ở VN
+    query_ids_df = df_pos_raw.select("query_id", "query_category").distinct()
     query_count = query_ids_df.count()
 
     if query_count == 0:
@@ -79,30 +84,32 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
 
     logger.info(f"Mining cho {query_count} queries...")
 
-    # 3. TỐI ƯU NEGATIVE MINING (Đảm bảo luôn đủ 100 candidates bằng cách Fallback)
-    # Lấy mẫu Hard Negatives (cùng Category) - tối đa 500 mẫu mỗi loại
+    # 3. TỐI ƯU NEGATIVE MINING (Luôn đảm bảo đủ 100 candidates)
+    # Pool VN Items để bốc mẫu âm
     window_limit = Window.partitionBy("cand_category").orderBy(F.rand(seed=42))
     df_vn_hard_pool = df_vn.withColumn("rn", F.row_number().over(window_limit)) \
         .filter(F.col("rn") <= 500)
 
-    # Lấy mẫu Easy Negatives (Ngẫu nhiên từ toàn bộ kho) để làm dự phòng
     df_vn_easy_pool = df_vn.orderBy(F.rand(seed=42)).limit(2000)
 
-    # Bước A: Tìm ứng viên cùng Category (Hard)
-    df_neg_hard = query_ids_df.join(F.broadcast(df_vn_hard_pool),
-                                    query_ids_df.query_category == df_vn_hard_pool.cand_category,
-                                    "inner") \
+    # Bước A: Hard Negatives (Cùng category, khác ASIN)
+    df_neg_hard = query_ids_df.join(
+            F.broadcast(df_vn_hard_pool),
+            (query_ids_df.query_category == df_vn_hard_pool.cand_category) & 
+            (query_ids_df.query_category != "other"), # Chỉ tính là Hard nếu category cụ thể
+            "inner"
+        ) \
         .filter(F.col("query_id") != F.col("cand_asin")) \
         .select("query_id", "cand_id") \
         .withColumn("priority", F.lit(1))
 
-    # Bước B: Tìm ứng viên ngẫu nhiên (Easy) - Cross join với tập đã thu gọn là cực nhanh
+    # Bước B: Easy Negatives (Random)
     df_neg_easy = query_ids_df.crossJoin(F.broadcast(df_vn_easy_pool)) \
         .filter(F.col("query_id") != F.col("cand_asin")) \
         .select("query_id", "cand_id") \
         .withColumn("priority", F.lit(0))
 
-    # Bước C: Gộp và lấy Top 99 cho mỗi Query (Ưu tiên Hard trước)
+    # Bước C: Gộp và lấy Top 99 Negatives
     df_neg_all = df_neg_hard.unionByName(df_neg_easy)
     
     window_neg = Window.partitionBy("query_id").orderBy(F.col("priority").desc(), F.rand(seed=42))
