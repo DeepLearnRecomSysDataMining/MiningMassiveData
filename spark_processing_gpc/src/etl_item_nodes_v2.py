@@ -13,7 +13,7 @@ from src.file_utils import detect_jsonl_type, list_files
 
 logger = logging.getLogger("etl_item_nodes_v2")
 
-# --- ĐỊNH NGHĨA SCHEMA TƯỜNG MINH ---
+# --- ĐỊNH NGHĨA SCHEMA LINH HOẠT (Cập nhật để không mất dữ liệu) ---
 VN_ITEM_SCHEMA = StructType([
     StructField("product_id", StringType(), True),
     StructField("asin", StringType(), True),
@@ -29,7 +29,8 @@ AMZ_ITEM_SCHEMA = StructType([
     StructField("title", StringType(), True),
     StructField("features", StringType(), True),
     StructField("description", StringType(), True),
-    StructField("main_category", StringType(), True)
+    StructField("main_category", StringType(), True),
+    StructField("details", StringType(), True) # Bổ sung để lấy specs
 ])
 
 def safe_col(df, col_name, default_val=None):
@@ -62,6 +63,9 @@ def get_category_expr(breadcrumb_col, product_name_col):
           .otherwise("other")
 
 def run_etl_item_nodes(spark, data_dir, output_dir, file_groups: dict = None):
+    # QUAN TRỌNG: Ép Spark đọc JSON không phân biệt hoa thường
+    spark.conf.set("spark.sql.caseSensitive", "false")
+    
     logger.info(f"[V2-OPTIMIZED] Dang xu ly ETL Item Nodes...")
     
     if file_groups:
@@ -81,10 +85,9 @@ def run_etl_item_nodes(spark, data_dir, output_dir, file_groups: dict = None):
 
     # 1. Xử lý VN Metadata
     if vn_files:
-        logger.info(f"Dang xu ly {len(vn_files)} file VN metadata (VỚI SCHEMA TƯỜNG MINH)")
-        df_vn = spark.read.option("mode", "DROPMALFORMED").schema(VN_ITEM_SCHEMA).json(vn_files)
-
-        logger.info(f"Dang Mapping data cua {len(vn_files)} file VN metadata sang Formal Schema")
+        logger.info(f"Dang xu ly {len(vn_files)} file VN metadata")
+        # Dùng PERMISSIVE để không mất dòng nếu lỗi 1 trường
+        df_vn = spark.read.option("mode", "PERMISSIVE").schema(VN_ITEM_SCHEMA).json(vn_files)
         
         df_vn_std = df_vn.select(
             spark_standardize(safe_col(df_vn, "product_id")).alias("product_id"),
@@ -103,25 +106,29 @@ def run_etl_item_nodes(spark, data_dir, output_dir, file_groups: dict = None):
 
     # 2. Xử lý Amazon Metadata
     if amz_files:
-        logger.info(f"Dang xu ly {len(amz_files)} file Amazon metadata (VỚI SCHEMA TƯỜNG MINH)")
-        df_amz = spark.read.option("mode", "DROPMALFORMED").schema(AMZ_ITEM_SCHEMA).json(amz_files)
-
-        logger.info(f"Dang Mapping data cua {len(amz_files)} file Amazon metadata sang Formal Schema")
+        logger.info(f"Dang xu ly {len(amz_files)} file Amazon metadata")
+        # QUAN TRỌNG: Dùng PERMISSIVE và Schema mới
+        df_amz = spark.read.option("mode", "PERMISSIVE").schema(AMZ_ITEM_SCHEMA).json(amz_files)
         
         df_amz_std = df_amz.select(
             spark_standardize(coalesce(col("parent_asin"), col("asin"))).alias("product_id"),
-            spark_standardize(safe_col(df_amz, "asin")).alias("asin"),
-            spark_standardize(safe_col(df_amz, "title")).alias("product_name"),
-            spark_clean_text(safe_col(df_amz, "features")).alias("specs_text"),
-            spark_clean_text(safe_col(df_amz, "description")).alias("desc_text"),
-            spark_standardize(safe_col(df_amz, "main_category")).alias("breadcrumb")
+            spark_standardize(col("asin")).alias("asin"),
+            spark_standardize(col("title")).alias("product_name"),
+            spark_clean_text(col("features")).alias("specs_text"),
+            spark_clean_text(col("description")).alias("desc_text"),
+            # Ưu tiên lấy specs từ 'details' (giống Colab) nếu 'features' trống
+            spark_clean_text(coalesce(col("details"), col("features"))).alias("raw_specs"),
+            spark_standardize(col("main_category")).alias("breadcrumb")
         ).withColumn(
             "category", get_category_expr(col("breadcrumb"), col("product_name"))
         ).withColumn(
             "full_text", concat_ws(" ", col("product_name"), col("specs_text"), col("desc_text"))
         ).withColumn("domain", lit("amazon"))
 
-        df_amz_final = df_amz_std.select("product_id", "asin", "product_name", "category", "full_text", "specs_text", "domain")
+        df_amz_final = df_amz_std.select(
+            "product_id", "asin", "product_name", "category", "full_text", 
+            col("raw_specs").alias("specs_text"), "domain"
+        )
         
         if df_final is None: df_final = df_amz_final
         else: df_final = df_final.unionByName(df_amz_final)

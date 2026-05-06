@@ -49,8 +49,8 @@ def create_spark_session(app_name: str = "AmazonETL_Cloud") -> SparkSession:
         .config("spark.hadoop.google.cloud.auth.service.account.enable", "true")
         
         # 1. FIX LỖI 143: Khống chế RAM nghiêm ngặt cho Node 16GB
-        .config("spark.executor.memory", "7g")           # RAM cho JVM
-        .config("spark.executor.memoryOverhead", "3g")   # RAM cho Python và ngoài JVM (Cực kỳ quan trọng)
+        .config("spark.executor.memory", "7g")           
+        .config("spark.executor.memoryOverhead", "3g")   
         .config("spark.driver.memory", "7g")
         .config("spark.driver.memoryOverhead", "3g")
 
