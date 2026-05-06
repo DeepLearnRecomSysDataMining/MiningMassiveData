@@ -59,15 +59,6 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
      .dropDuplicates(["query_id", "cand_id"]) \
      .withColumn("label", F.lit(1))
 
-    # 3. TỐI ƯU NEGATIVE MINING (Sampling)
-    # Lấy mẫu khoảng 50,000 queries để đánh giá (Cực kỳ quan trọng để không treo máy)
-    # total_pos = df_pos_raw.count()
-    # if total_pos > 1000000:
-    #     fraction = 1000000.0 / total_pos
-    #     df_pos = df_pos_raw.sample(withReplacement=False, fraction=fraction, seed=42)
-    #     logger.info(f"Sampling: Giam tu {total_pos} xuong con ~1,000,000 queries de tiet kiem RAM.")
-    # else:
-    #     df_pos = df_pos_raw
     df_pos = df_pos_raw
 
     query_ids_df = df_pos.select("query_id", "query_category").distinct()
@@ -79,20 +70,35 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
 
     logger.info(f"Mining cho {query_count} queries...")
 
-    # Tránh Join Cartesian Product: Lấy ngẫu nhiên 500 candidates cho mỗi Category trước
+    # 3. TỐI ƯU NEGATIVE MINING (Đảm bảo luôn đủ 100 candidates bằng cách Fallback)
+    # Lấy mẫu Hard Negatives (cùng Category) - tối đa 500 mẫu mỗi loại
     window_limit = Window.partitionBy("cand_category").orderBy(F.rand(seed=42))
-    df_vn_sampled = df_vn.withColumn("rn", F.row_number().over(window_limit)) \
+    df_vn_hard_pool = df_vn.withColumn("rn", F.row_number().over(window_limit)) \
         .filter(F.col("rn") <= 500)
 
-    # Mining: Join Query với tập Candidate đã được thu gọn (Sampled)
-    df_neg_candidates = query_ids_df.join(F.broadcast(df_vn_sampled),
-                                          query_ids_df.query_category == df_vn_sampled.cand_category,
-                                          "inner") \
-        .filter(F.col("query_id") != F.col("cand_asin"))
+    # Lấy mẫu Easy Negatives (Ngẫu nhiên từ toàn bộ kho) để làm dự phòng
+    df_vn_easy_pool = df_vn.orderBy(F.rand(seed=42)).limit(2000)
 
-    # Chọn ra 99 Negative cho mỗi Query từ tập ứng viên
-    window_neg = Window.partitionBy("query_id").orderBy(F.rand(seed=42))
-    df_negatives = df_neg_candidates.withColumn("rank", F.row_number().over(window_neg)) \
+    # Bước A: Tìm ứng viên cùng Category (Hard)
+    df_neg_hard = query_ids_df.join(F.broadcast(df_vn_hard_pool),
+                                    query_ids_df.query_category == df_vn_hard_pool.cand_category,
+                                    "inner") \
+        .filter(F.col("query_id") != F.col("cand_asin")) \
+        .select("query_id", "cand_id") \
+        .withColumn("priority", F.lit(1))
+
+    # Bước B: Tìm ứng viên ngẫu nhiên (Easy) - Cross join với tập đã thu gọn là cực nhanh
+    df_neg_easy = query_ids_df.crossJoin(F.broadcast(df_vn_easy_pool)) \
+        .filter(F.col("query_id") != F.col("cand_asin")) \
+        .select("query_id", "cand_id") \
+        .withColumn("priority", F.lit(0))
+
+    # Bước C: Gộp và lấy Top 99 cho mỗi Query (Ưu tiên Hard trước)
+    df_neg_all = df_neg_hard.unionByName(df_neg_easy)
+    
+    window_neg = Window.partitionBy("query_id").orderBy(F.col("priority").desc(), F.rand(seed=42))
+    
+    df_negatives = df_neg_all.withColumn("rank", F.row_number().over(window_neg)) \
         .filter(F.col("rank") <= (num_candidates - 1)) \
         .select("query_id", "cand_id") \
         .withColumn("label", F.lit(0))
