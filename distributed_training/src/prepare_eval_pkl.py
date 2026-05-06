@@ -15,6 +15,9 @@ def prepare_evaluation_pickle_optimized():
     Học tập từ tư duy 'Selective Processing' của Spark V2.
     """
     # 1. Xác định đường dẫn
+    mode = "CLOUD (GCS)" if TrainingConfig.IS_CLOUD else "LOCAL"
+    logger.info(f"--- ĐANG CHẠY TRONG CHẾ ĐỘ: {mode} ---")
+
     eval_parquet_path = TrainingConfig.GCS_EVAL_PARQUET
     item_nodes_path = TrainingConfig.GCS_ITEM_NODES
     output_pkl = TrainingConfig.EVAL_PKL_PATH
@@ -34,42 +37,38 @@ def prepare_evaluation_pickle_optimized():
     
     logger.info(f"Tổng số ID cần metadata: {len(all_needed_ids):,}")
 
-    # --- BƯỚC 2: ĐỌC METADATA CÓ CHỌN LỌC (HỌC TỪ SPARK V2) ---
-    logger.info(f"Đang đọc Item Nodes (Step 2) với Filter và Column Selection...")
+    # --- BƯỚC 2: ĐỌC METADATA CÓ CHỌN LỌC ---
+    logger.info(f"Đang đọc Item Nodes và lọc metadata cho {len(all_needed_ids)} IDs...")
     
-    # Kỹ thuật tối ưu: Chỉ load các cột cần thiết và dùng filter 'isin'
-    # Bổ sung thêm cột 'parsed_specs' cho các model Hybrid và CHGNN
     target_columns = ['product_id', 'asin', 'product_name', 'category', 'parsed_specs']
     
-    try:
-        item_df = pd.read_parquet(
-            item_nodes_path,
-            columns=target_columns,
-            filters=[('product_id', 'in', list(all_needed_ids))]
-        )
-    except Exception as e:
-        logger.warning(f"Filter trực tiếp thất bại ({e}), đang load toàn bộ và filter thủ công...")
-        item_df = pd.read_parquet(item_nodes_path, columns=target_columns)
-        item_df = item_df[item_df['product_id'].isin(all_needed_ids) | item_df['asin'].isin(all_needed_ids)]
+    # Load toàn bộ metadata (chỉ các cột cần thiết) và filter trong Pandas
+    item_df = pd.read_parquet(item_nodes_path, columns=target_columns)
+    item_df = item_df[item_df['product_id'].isin(all_needed_ids) | item_df['asin'].isin(all_needed_ids)]
 
-    logger.info(f"Đã load thành công {len(item_df):,} items.")
+    logger.info(f"Đã load thành công {len(item_df):,} items hợp lệ.")
 
     # --- BƯỚC 3: XÂY DỰNG LOOKUP DICTIONARY SIÊU NHẸ ---
     lookup = {}
     for _, row in item_df.iterrows():
-        # Chuyển đổi specs sang dict nếu nó là chuỗi hoặc None
+        # Đảm bảo specs luôn là dict (Spark Parquet MapType -> Python Dict)
         specs = row['parsed_specs']
-        if specs is None: specs = {}
+        if specs is None: 
+            specs = {}
         elif isinstance(specs, str):
-            try: specs = eval(specs) 
-            except: specs = {}
+            try: 
+                import json
+                specs = json.loads(specs.replace("'", '"')) 
+            except: 
+                specs = {}
 
         meta = {
-            'text': row['product_name'] if pd.notnull(row['product_name']) else "",
-            'name': row['product_name'] if pd.notnull(row['product_name']) else "",
-            'category': row['category'] if pd.notnull(row['category']) else "other",
+            'text': str(row['product_name']) if pd.notnull(row['product_name']) else "",
+            'name': str(row['product_name']) if pd.notnull(row['product_name']) else "",
+            'category': str(row['category']) if pd.notnull(row['category']) else "other",
             'specs': specs
         }
+        # Lưu vào cả 2 loại khóa để Lookup chính xác 100%
         if row['product_id']: lookup[row['product_id']] = meta
         if row['asin']: lookup[row['asin']] = meta
 

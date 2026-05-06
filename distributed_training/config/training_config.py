@@ -3,8 +3,8 @@ import torch
 import logging
 
 class TrainingConfig:
-    # Nhận diện môi trường GCP (giống spark_processing_gpc)
-    IS_CLOUD = os.getenv("TRAINING_ENV") == "cloud"
+    # Nhận diện môi trường GCP (Chấp nhận cả TRAINING_ENV hoặc SPARK_ENV)
+    IS_CLOUD = (os.getenv("TRAINING_ENV") == "cloud") or (os.getenv("SPARK_ENV") == "cloud")
     
     # 1. GCS Paths
     GCS_BUCKET = os.getenv("GCS_BUCKET", "gs://mining-data-2")
