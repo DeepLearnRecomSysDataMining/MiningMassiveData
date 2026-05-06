@@ -26,15 +26,15 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
     ).persist(StorageLevel.MEMORY_AND_DISK)
 
     # 2. Tạo tập Positive (Dựa trên ASIN khớp nhau giữa Amazon và VN)
-    # QUAN TRỌNG: Lọc bỏ ASIN rỗng hoặc null để tránh Cartesian Product (Tích đề-các)
+    # TỐI ƯU: Thêm F.trim() để tránh lỗi khoảng trắng làm lệch kết quả
     df_amz = df_items.filter(
         (F.col("domain") == "amazon") & 
         (F.col("asin") != "") & 
         (F.col("asin").isNotNull()) & 
-        (F.col("asin") != "none") # Loại bỏ chuỗi "none"
+        (F.col("asin") != "none")
     ).select(
-        F.col("asin").alias("query_id"),
-        F.col("product_id").alias("query_parent_id"), # Lấy thêm parent_asin để tăng khả năng khớp
+        F.trim(F.col("asin")).alias("query_id"),
+        F.trim(F.col("product_id")).alias("query_parent_id"), 
         F.col("category").alias("query_category")
     )
 
@@ -42,12 +42,18 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
         (F.col("domain") == "vn") & 
         (F.col("asin") != "") & 
         (F.col("asin").isNotNull()) &
-        (F.col("asin") != "none") # Loại bỏ chuỗi "none"
+        (F.col("asin") != "none")
     ).select(
         F.col("product_id").alias("cand_id"),
-        F.col("asin").alias("cand_asin"),
+        F.trim(F.col("asin")).alias("cand_asin"),
         F.col("category").alias("cand_category")
     )
+
+    # DEBUG: Kiểm tra số lượng item thô
+    amz_count = df_amz.count()
+    vn_count = df_vn.count()
+    logger.info(f"[DEBUG] So luong Amazon hop le: {amz_count:,}")
+    logger.info(f"[DEBUG] So luong VN hop le: {vn_count:,}")
 
     # Positive pairs: Khớp linh hoạt với cả ASIN con HOẶC Parent ASIN
     df_pos_raw = df_amz.join(
@@ -58,6 +64,9 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
     ).select("query_id", "cand_id", "query_category") \
      .dropDuplicates(["query_id", "cand_id"]) \
      .withColumn("label", F.lit(1))
+
+    pos_count = df_pos_raw.count()
+    logger.info(f"[DEBUG] So luong cap Positive tim thay: {pos_count:,}")
 
     df_pos = df_pos_raw
 

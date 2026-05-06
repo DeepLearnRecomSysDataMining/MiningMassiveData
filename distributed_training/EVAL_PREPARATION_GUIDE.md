@@ -13,6 +13,15 @@ pip install pandas pyarrow gcsfs
 *   **pyarrow**: Engine xử lý định dạng Parquet tốc độ cao.
 *   **gcsfs**: Cho phép Pandas đọc/ghi trực tiếp trên Google Cloud Storage.
 
+### Tạo hẳn 1 VM 32Gb RAM nhé, xong thì xóa đi là được.
+
+- Instance Type: e2-standard-8 (8 vCPU, 32GB RAM).
+- Tại sao: Dòng e2 có chi phí rất rẻ (~0.26 USD/giờ). 8 vCPU sẽ giúp thư viện pyarrow giải nén file Parquet 35GB nhanh hơn gấp nhiều lần.
+- Boot Disk: 50GB - 100GB (Standard Persistent Disk).
+- Tại sao: Bạn cần đủ không gian để lưu thư mục /tmp/training_data khi tải file về.
+- Quyền hạn (Scopes): Chọn Allow full access to all Cloud APIs.
+- Tại sao: Để máy ảo có quyền dùng lệnh gsutil tải và upload dữ liệu lên GCS mà không cần cấu hình file JSON key thủ công.
+
 ## 2. Cấu hình Môi trường
 Script tự động nhận diện môi trường dựa trên biến `TRAINING_ENV`.
 
