@@ -22,25 +22,25 @@ def download_training_data():
     Downloads evaluation_dataset.pkl and vn_corpus.pkl from GCS to local disk.
     Follows the pattern of efficient data sync.
     """
-    files_to_download = ["evaluation_dataset.pkl", "vn_corpus.pkl"]
+    # Map local filename to GCS path
+    files_to_sync = {
+        "evaluation_dataset.pkl": TrainingConfig.GCS_EVAL_PKL,
+        "vn_corpus.pkl": TrainingConfig.GCS_VN_CORPUS_PKL
+    }
     
-    gcs_base = TrainingConfig.GCS_PREPARED_DATA
     local_base = TrainingConfig.LOCAL_DATA_DIR
+    logger.info(f"Synchronizing training data to {local_base}...")
     
-    logger.info(f"Synchronizing training data from {gcs_base} to {local_base}...")
-    
-    for filename in files_to_download:
-        gcs_path = f"{gcs_base}/{filename}"
+    for filename, gcs_path in files_to_sync.items():
         local_path = os.path.join(local_base, filename)
         
-        # Kiểm tra nếu file đã tồn tại cục bộ thì có thể bỏ qua (hoặc force download)
         try:
-            logger.info(f"Downloading {filename}...")
+            logger.info(f"Downloading {filename} from {gcs_path}...")
             subprocess.run(["gsutil", "cp", gcs_path, local_path], check=True)
             logger.info(f"Successfully downloaded {filename}")
         except subprocess.CalledProcessError as e:
             logger.error(f"Failed to download {filename} from GCS: {e}")
-            # Nếu vn_corpus.pkl không có cũng không sao (tùy baseline)
+            # evaluation_dataset.pkl is critical for most baselines
             if filename == "evaluation_dataset.pkl":
                 raise e
 

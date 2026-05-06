@@ -49,14 +49,26 @@ class TrainingConfig:
         return f"{self.GCS_OUTPUT_DIR}/all_interactions"
 
     @property
+    def GCS_EVAL_PARQUET(self):
+        return f"{self.GCS_OUTPUT_DIR}/evaluation_dataset"
+
+    @property
     def GCS_ITEM_NODES(self):
         return f"{self.GCS_OUTPUT_DIR}/item_nodes"
+
+    @property
+    def GCS_EVAL_PKL(self):
+        return f"{self.GCS_PREPARED_DATA}/evaluation_dataset.pkl"
+
+    @property
+    def GCS_VN_CORPUS_PKL(self):
+        return f"{self.GCS_PREPARED_DATA}/vn_corpus.pkl"
 
     # --- 2. Local Paths (Scratch) ---
     @property
     def LOCAL_DATA_DIR(self):
-        # Use current directory/data or a temp dir
-        path = "data/prepared_data_improved"
+        # Use /tmp/training_data on Cloud to avoid disk issues, or local data/ for local dev
+        path = "/tmp/training_data" if self.IS_CLOUD else "data/prepared_data_improved"
         os.makedirs(path, exist_ok=True)
         return path
 
