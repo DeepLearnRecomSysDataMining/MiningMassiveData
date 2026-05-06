@@ -685,14 +685,6 @@ window_limit = Window.partitionBy("cand_category").orderBy(F.rand())
 ```
 ---
 
-## Bước 8: Huấn luyện trên GPU (Distributed Training)
-Bước này tốn kém nhất, nên hãy chỉ làm khi Bước 6 đã xong:
-1. Tạo một máy ảo GPU (Compute Engine -> Create Instance).
-2. Ở phần **GPU**, chọn `NVIDIA T4`.
-3. Cài đặt driver GPU và chạy file `distributed_training/train_sbert.py`.
-
----
-
 ## Bước 9: Theo dõi Log
 Vì chúng ta đã tắt tính năng ghi log vào file cục bộ (để tránh lỗi GCS), bạn hãy theo dõi log tại:
 1. Console Dataproc -> Jobs -> Nhấn vào Job ID đang chạy.
