@@ -30,9 +30,26 @@ def main():
     log_spark_configs(spark)
     
     try:
-        # KIEM TRA DU LIEU DAU VAO CUA PHASE 2
-        logger.info(f"Kiem tra du lieu dau vao tai: {PathConfig.ITEM_NODES_OUT}")
+        # 1. KIEM TRA DU LIEU DAU VAO (DEBUG)
+        logger.info(f"--- [DEBUG] KIEM TRA KHO DU LIEU ITEM_NODES ---")
+        from src.file_utils import list_files
+        from pyspark.sql.functions import col
         
+        nodes_files = list_files(PathConfig.ITEM_NODES_OUT)
+        logger.info(f"Tim thay {len(nodes_files)} files/folders trong thu muc item_nodes.")
+        
+        # Doc thu de kiem tra so luong truoc khi mining
+        df_debug = spark.read.parquet(PathConfig.ITEM_NODES_OUT)
+        total_rows = df_debug.count()
+        amz_rows = df_debug.filter(col("domain") == "amazon").count()
+        vn_rows = df_debug.filter(col("domain") == "vn").count()
+        
+        logger.info(f"--- [THONG KE KHO HIEN TAI] ---")
+        logger.info(f"Tong so row: {total_rows:,}")
+        logger.info(f"Amazon     : {amz_rows:,}")
+        logger.info(f"Viet Nam   : {vn_rows:,}")
+        logger.info(f"-------------------------------")
+
         # BUOC 3: Tao Evaluation Dataset
         logger.info(">>> START PHASE 3: Evaluation Dataset Generation (Standalone)")
         t3 = time.time()

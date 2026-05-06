@@ -68,13 +68,14 @@ def run_etl_item_nodes(spark, data_dir, output_dir, file_groups: dict = None):
     # QUAN TRỌNG: Cấu hình Spark linh hoạt
     spark.conf.set("spark.sql.caseSensitive", "false")
     
-    logger.info(f"[V2-OPTIMIZED] Dang xu ly ETL Item Nodes (Multi-Type Mode)...")
+    logger.info(f"[V2-OPTIMIZED] Dang xu ly ETL Item Nodes (Strict .JSONL Mode)...")
     
     if file_groups:
         vn_files = file_groups.get("vn_item", [])
         amz_files = file_groups.get("amz_item", [])
     else:
         all_files = list_files(data_dir)
+        # Chỉ quét file .jsonl như yêu cầu
         vn_files = [f for f in all_files if f.endswith(".jsonl") and detect_jsonl_type(f) == "vn_item"]
         amz_files = [f for f in all_files if f.endswith(".jsonl") and detect_jsonl_type(f) == "amz_item"]
 
@@ -83,8 +84,9 @@ def run_etl_item_nodes(spark, data_dir, output_dir, file_groups: dict = None):
     # 1. Xử lý VN Metadata
     if vn_files:
         logger.info(f"Dang xu ly {len(vn_files)} file VN metadata")
-        # Dùng PERMISSIVE và Schema chuẩn
-        df_vn = spark.read.option("mode", "PERMISSIVE").schema(VN_ITEM_SCHEMA).json(vn_files)
+        # Đọc chuẩn JSONL (mỗi dòng một sản phẩm)
+        df_vn = spark.read.option("mode", "PERMISSIVE") \
+                          .schema(VN_ITEM_SCHEMA).json(vn_files)
         
         df_vn_std = df_vn.select(
             spark_standardize(col("product_id")).alias("product_id"),
@@ -104,8 +106,9 @@ def run_etl_item_nodes(spark, data_dir, output_dir, file_groups: dict = None):
     # 2. Xử lý Amazon Metadata
     if amz_files:
         logger.info(f"Dang xu ly {len(amz_files)} file Amazon metadata")
-        # Dùng PERMISSIVE và Schema chuẩn
-        df_amz = spark.read.option("mode", "PERMISSIVE").schema(AMZ_ITEM_SCHEMA).json(amz_files)
+        # Đọc chuẩn JSONL (mỗi dòng một sản phẩm)
+        df_amz = spark.read.option("mode", "PERMISSIVE") \
+                          .schema(AMZ_ITEM_SCHEMA).json(amz_files)
         
         df_amz_std = df_amz.select(
             spark_standardize(coalesce(col("parent_asin"), col("asin"))).alias("product_id"),
@@ -113,7 +116,7 @@ def run_etl_item_nodes(spark, data_dir, output_dir, file_groups: dict = None):
             spark_standardize(col("title")).alias("product_name"),
             spark_clean_text(col("features")).alias("features_text"),
             spark_clean_text(col("description")).alias("desc_text"),
-            # QUAN TRỌNG: Ép kiểu Map/Array sang String trước khi coalesce
+            # Giữ logic ép kiểu Map/Array sang String
             spark_clean_text(coalesce(col("details").cast("string"), col("features").cast("string"))).alias("specs_text"),
             spark_standardize(col("main_category")).alias("breadcrumb")
         ).withColumn(
