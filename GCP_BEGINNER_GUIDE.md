@@ -456,7 +456,7 @@ Bạn hãy chạy lệnh này để xóa bỏ toàn bộ những Token "rác" đ
 # Xóa sạch cấu hình gcloud cũ
 rm -rf ~/.config/gcloud
 # Thiết lập lại Project ID cho máy ảo
-gcloud config set project mining-data-494820
+gcloud config set project mining-data-2
 ```
 Bước 2: Thử chạy lại Job
 Bây giờ, máy ảo sẽ bị buộc phải lấy một "Token mới" trực tiếp từ hệ thống (với quyền Full Access mà bạn đã chỉnh). Bạn hãy chạy lệnh submit job:
