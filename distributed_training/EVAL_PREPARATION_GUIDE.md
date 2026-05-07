@@ -8,22 +8,56 @@ Tài liệu này hướng dẫn cách thiết lập và chạy script `src/prepa
 - **Boot Disk**: 50GB.
 - **Quyền hạn (Scopes)**: Chọn `Allow full access to all Cloud APIs`.
 
-## 2. Khởi tạo Môi trường & Cài đặt Thư viện
-Sau khi SSH vào máy ảo, hãy thực hiện các lệnh sau để tạo môi trường sạch:
+### Nếu chọn VM với GPU:
+- **VM type**: `n1-standard-4 4 vCPUs, 15 GB RAM with NVIDIA Tesla T4 GPU`
+- **Boot Disk**: 50GB.
+- **Quyền hạn (Scopes)**: Chọn `Allow full access to all Cloud APIs`.
+- **giảm giá hơn**: kéo xuồng dưới tìm chọn `provision Model` đổi standard thành Spot
 
+## 2. Khởi tạo Môi trường & Cài đặt Thư viện
+Sau khi SSH vào máy ảo mới, hãy thực hiện các lệnh sau theo đúng thứ tự:
+
+### Bước 2.1: Cấu hình Google Cloud Project
+```bash
+# Xóa cấu hình cũ để tránh lỗi quyền hạn
+rm -rf ~/.config/gcloud
+# Thiết lập Project ID thực tế của bạn
+gcloud config set project mining-data-2
+```
+
+### Bước 2.2: Cài đặt công cụ hệ thống (Bắt buộc dùng sudo)
+Máy ảo mới thường thiếu gói tạo môi trường ảo, bạn cần cài đặt nó trước:
+```bash
+# Cập nhật hệ thống
+sudo apt update
+# Cài đặt gói python3-venv
+sudo apt install -y python3-venv
+```
+
+### Bước 2.3: Tạo & Kích hoạt Môi trường ảo
 ```bash
 # 1. Di chuyển vào thư mục dự án
 cd ~/MiningMassiveData
 
-# 2. Tạo môi trường ảo (Virtual Environment)
+# 2. Tạo môi trường ảo
 python3 -m venv eval_env
 
 # 3. Kích hoạt môi trường ảo
 source eval_env/bin/activate
+```
 
-# 4. Cài đặt các thư viện xử lý dữ liệu lớn
+### Bước 2.4: Cài đặt các thư viện Python
+```bash
+# Nâng cấp pip
 pip install --upgrade pip
-pip install pandas pyarrow gcsfs
+
+# CHỌN MỘT TRONG HAI LỆNH SAU:
+
+# LỰA CHỌN A: Dành cho máy ảo CPU (Tiết kiệm, chỉ dùng đóng gói dữ liệu)
+pip install pandas pyarrow gcsfs torch --index-url https://download.pytorch.org/whl/cpu
+
+# LỰA CHỌN B: Dành cho máy ảo GPU (Dùng để Train model trực tiếp)
+pip install pandas pyarrow gcsfs torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 ```
 
 - **pyarrow**: Xử lý định dạng Parquet (item_nodes) tốc độ cao.
@@ -37,9 +71,11 @@ Thiết lập biến môi trường để script biết cần đọc dữ liệu
 export SPARK_ENV=cloud
 export TRAINING_ENV=cloud
 
+cd ~/MiningMassiveData/distributed_training
+
 # 2. Chạy script đóng gói dữ liệu
 # Lưu ý: Chạy dưới dạng module (-m) để tránh lỗi import
-python3 -m distributed_training.src.prepare_eval_pkl
+python3 -m src.prepare_eval_pkl
 ```
 
 ### Kết quả mong đợi:
