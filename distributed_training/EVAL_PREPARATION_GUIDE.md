@@ -17,40 +17,34 @@ Tài liệu này hướng dẫn cách thiết lập và chạy script `src/prepa
 ## 2. Khởi tạo Môi trường & Cài đặt Thư viện
 Sau khi SSH vào máy ảo mới, hãy thực hiện các lệnh sau theo đúng thứ tự:
 
-### Bước 2.1: Cấu hình Google Cloud Project
+### Bước 2.1: Cấu hình Google Cloud Project & System Packages
 ```bash
-# Xóa cấu hình cũ để tránh lỗi quyền hạn
+# 1. Xóa cấu hình cũ để tránh lỗi quyền hạn
 rm -rf ~/.config/gcloud
-# Thiết lập Project ID thực tế của bạn
+
+# 2. Thiết lập Project ID
 gcloud config set project mining-data-2
+
+# 3. Cập nhật hệ thống và cài đặt các công cụ cần thiết (Git, Venv, Pip)
+sudo apt update && sudo apt install -y git python3-venv python3-pip
 ```
 
-### Bước 2.2: Cài đặt công cụ hệ thống (Bắt buộc dùng sudo)
-Máy ảo mới thường thiếu gói tạo môi trường ảo, bạn cần cài đặt nó trước:
+### Bước 2.2: Clone Project & Tạo Virtual Environment
 ```bash
-# Cập nhật hệ thống
-sudo apt update
-# Cài đặt gói python3-venv
-sudo apt install -y python3-venv
-```
+# 1. Clone repository (thay [LINK_GITHUB_CUA_BAN] bằng link thực tế)
+git clone [LINK_GITHUB_CUA_BAN]
+cd ~/MiningMassiveData/distributed_training
 
-### Bước 2.3: Tạo & Kích hoạt Môi trường ảo
-```bash
-# 1. Di chuyển vào thư mục dự án
-cd ~/MiningMassiveData
-
-# 2. Tạo môi trường ảo
+# 2. Tạo và kích hoạt môi trường ảo
 python3 -m venv eval_env
-
-# 3. Kích hoạt môi trường ảo
 source eval_env/bin/activate
+
+# 3. Nâng cấp pip
+pip install --upgrade pip
 ```
 
-### Bước 2.4: Cài đặt các thư viện Python
+### Bước 2.3: Cài đặt Python Dependencies
 ```bash
-# Nâng cấp pip
-pip install --upgrade pip
-
 # CHỌN MỘT TRONG HAI LỆNH SAU:
 
 # LỰA CHỌN A: Dành cho máy ảo CPU (Tiết kiệm, chỉ dùng đóng gói dữ liệu)
@@ -58,22 +52,32 @@ pip install pandas pyarrow gcsfs torch --index-url https://download.pytorch.org/
 
 # LỰA CHỌN B: Dành cho máy ảo GPU (Dùng để Train model trực tiếp)
 pip install pandas pyarrow gcsfs torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+# Cài đặt thêm google-cloud-storage và gdown nếu cần
+pip install google-cloud-storage gdown
 ```
 
 - **pyarrow**: Xử lý định dạng Parquet (item_nodes) tốc độ cao.
 - **gcsfs**: Cho phép Pandas đọc dữ liệu trực tiếp từ GCS.
 
 ## 3. Cấu hình & Chạy Script
-Thiết lập biến môi trường để script biết cần đọc dữ liệu từ GCS:
+Thiết lập biến môi trường và chạy script:
 
 ```bash
-# 1. Thiết lập biến môi trường (Chấp nhận cả SPARK_ENV hoặc TRAINING_ENV)
+# 1. Đảm bảo đang ở thư mục distributed_training
+cd ~/MiningMassiveData/distributed_training
+
+# 2. Kích hoạt lại môi trường ảo nếu chưa activate
+source eval_env/bin/activate
+
+# 3. GCP Authentication (BẮT BUỘC cho GCS access)
+gcloud auth application-default login
+
+# 4. Thiết lập biến môi trường (Chấp nhận cả SPARK_ENV hoặc TRAINING_ENV)
 export SPARK_ENV=cloud
 export TRAINING_ENV=cloud
 
-cd ~/MiningMassiveData/distributed_training
-
-# 2. Chạy script đóng gói dữ liệu
+# 5. Chạy script đóng gói dữ liệu
 # Lưu ý: Chạy dưới dạng module (-m) để tránh lỗi import
 python3 -m src.prepare_eval_pkl
 ```
@@ -85,11 +89,10 @@ python3 -m src.prepare_eval_pkl
 
 ## 4. Kiểm tra
 Nếu bảng thống kê hiện ra con số **4,082,820 products** và số lượng Queries tương ứng, bạn đã thành công!
+
+Các đường dẫn GCS quan trọng:
 - `gs://mining-data-2/output/evaluation_dataset/` (Dữ liệu ID-Only)
 - `gs://mining-data-2/output/item_nodes/` (Metadata sản phẩm)
-
-python src/prepare_eval_pkl.py
-```
 
 ## 5. Quy trình hoạt động (Logic)
 1.  **Bước 1**: Đọc tập ID từ file Eval Parquet để xác định danh sách sản phẩm cần lấy metadata.
@@ -100,5 +103,7 @@ python src/prepare_eval_pkl.py
 6.  **Bước 6**: (Chỉ Cloud) Upload file lên GCS tại `gs://mining-data-2/output/prepared_data_improved/evaluation_dataset.pkl`.
 
 ## 6. Xử lý sự cố
+- **Lỗi `NameError: name 'time' is not defined`**: Chưa thêm `import time` vào script. Xem Bước 2.4.
+- **Lỗi `ModuleNotFoundError: No module named 'config'`**: Chạy sai thư mục hoặc chưa activate venv. Đảm bảo chạy từ `distributed_training/` với `python3 -m src.prepare_eval_pkl`.
+- **Lỗi GCS (`403 Forbidden`, `401 Unauthorized`)**: Chạy `gcloud auth application-default login` và đăng nhập bằng tài khoản có quyền truy cập bucket.
 - **Tràn RAM**: Script đã được tối ưu cho dữ liệu 25GB+, nếu vẫn tràn RAM, hãy kiểm tra xem có đang load thừa cột nào không.
-- **Lỗi GCS**: Đảm bảo máy ảo đã được cấp quyền `Storage Object Admin` hoặc đã chạy `gcloud auth application-default login`.

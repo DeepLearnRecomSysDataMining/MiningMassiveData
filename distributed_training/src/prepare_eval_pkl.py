@@ -4,6 +4,7 @@ import os
 import logging
 import gc
 from config.training_config import TrainingConfig
+import time
 
 # Cấu hình logging giống style Spark
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")

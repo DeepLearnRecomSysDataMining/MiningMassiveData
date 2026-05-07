@@ -18,3 +18,5 @@ craw_amazon/reviews/reviews_amazon.jsonl
 
 log.txt
 log_*.txt
+
+.commandcode/
