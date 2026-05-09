@@ -1,0 +1,28 @@
+.git
+.gitignore
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+.venv
+*.log
+log_way_4.txt
+
+# Bỏ qua các file dữ liệu và model (rất nặng)
+data/
+dataset/
+checkpoints/
+models/
+outputs/
+*.csv
+*.parquet
+*.pt
+*.pth
+*.bin
+
+# Bỏ qua các file md documentation
+*.md

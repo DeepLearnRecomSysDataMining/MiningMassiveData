@@ -14,8 +14,8 @@ pyarrow
 fastparquet
 
 # Deep Learning Utilities
-sentence-transformers>=2.6.1
-transformers>=4.39.3
+sentence-transformers==2.7.0
+transformers==4.40.1
 numpy
 tqdm
 rank_bm25
