@@ -14,28 +14,56 @@ def load_eval_dataset():
     with open(TrainingConfig.EVAL_PKL_PATH, 'rb') as f:
         return pickle.load(f)
 
-def load_item_nodes_lookup():
-    """Tải Metadata sản phẩm từ Parquet (Item Nodes) để lấy Text/Specs."""
-    if TrainingConfig.RANK == 0:
-        logger.info(f"Loading Item Nodes lookup from {TrainingConfig.GCS_ITEM_NODES}...")
+def load_item_nodes_lookup(columns=None):
+    """
+    Tải Metadata sản phẩm từ Parquet (Item Nodes) một cách tối ưu RAM.
+    Mặc định load: product_id, asin, product_name, category, parsed_specs.
+    """
+    if columns is None:
+        columns = ['product_id', 'asin', 'product_name', 'category', 'parsed_specs']
+        
+    path = TrainingConfig.GCS_ITEM_NODES if TrainingConfig.IS_CLOUD else "data/item_nodes"
     
-    # Sử dụng pandas để đọc Parquet từ GCS
-    df = pd.read_parquet(TrainingConfig.GCS_ITEM_NODES)
-    lookup = df.set_index('asin')[['product_name', 'full_text', 'category']].to_dict('index')
-    
     if TrainingConfig.RANK == 0:
-        logger.info(f"Loaded metadata for {len(lookup)} items.")
+        logger.info(f"==> Đang tải Item Metadata từ: {path} (RAM-Efficient Mode)")
+    
+    # Đọc Parquet với các cột đã chọn
+    df = pd.read_parquet(path, columns=columns)
+    
+    lookup = {}
+    # Sử dụng itertuples() để duyệt nhanh và tiết kiệm RAM hơn iterrows()
+    for row in df.itertuples(index=False):
+        # Trích xuất dữ liệu (hỗ trợ cả các cột có thể thiếu)
+        meta = {
+            'text': str(row.product_name) if hasattr(row, 'product_name') and pd.notnull(row.product_name) else "",
+            'category': str(row.category) if hasattr(row, 'category') and pd.notnull(row.category) else "other",
+            'specs': row.parsed_specs if hasattr(row, 'parsed_specs') else {}
+        }
+        
+        # Ánh xạ theo cả ID và ASIN để tối đa khả năng Join
+        if hasattr(row, 'product_id') and row.product_id:
+            lookup[row.product_id] = meta
+        if hasattr(row, 'asin') and row.asin:
+            lookup[row.asin] = meta
+            
+    if TrainingConfig.RANK == 0:
+        logger.info(f"==> Hoàn tất! Đã nạp metadata cho {len(lookup):,} sản phẩm vào RAM.")
+    
+    del df # Giải phóng dataframe ngay lập tức
+    import gc; gc.collect()
     return lookup
 
 def load_interactions_df():
     """Tải lịch sử tương tác (Interactions) để làm dữ liệu Train."""
-    if TrainingConfig.RANK == 0:
-        logger.info(f"Loading Interactions from {TrainingConfig.GCS_INTERACTIONS}...")
-    
-    df = pd.read_parquet(TrainingConfig.GCS_INTERACTIONS)
+    path = TrainingConfig.GCS_INTERACTIONS if TrainingConfig.IS_CLOUD else "data/all_interactions"
     
     if TrainingConfig.RANK == 0:
-        logger.info(f"Loaded {len(df)} interactions.")
+        logger.info(f"==> Đang tải Interactions từ: {path}")
+    
+    df = pd.read_parquet(path)
+    
+    if TrainingConfig.RANK == 0:
+        logger.info(f"==> Đã nạp {len(df):,} tương tác để huấn luyện.")
     return df
 
 def clean_text(val):

@@ -39,6 +39,7 @@ def cleanup_distributed():
 def run_pipeline(baseline_id):
     """Thực thi một Baseline cụ thể trong môi trường phân tán."""
     ckpt_path = None
+    device = TrainingConfig.DEVICE
     
     # 1. Load Evaluation Dataset (Cần cho tất cả baseline để test)
     eval_dataset = load_eval_dataset()
@@ -53,9 +54,8 @@ def run_pipeline(baseline_id):
         # DSSM cần thêm dữ liệu ETL để Train
         interactions_df = load_interactions_df()
         item_lookup = load_item_nodes_lookup()
+        # train_dssm đã tích hợp evaluate nội bộ sau mỗi epoch
         ckpt_path = train_dssm(interactions_df, item_lookup)
-        # Đánh giá sau khi train
-        run_sbert(eval_dataset) 
         
     elif baseline_id == 4:
         interactions_df = load_interactions_df()
@@ -64,11 +64,14 @@ def run_pipeline(baseline_id):
         
     elif baseline_id == 5:
         run_hybrid(eval_dataset)
+
     elif baseline_id == 6:
+        # Proposed Model: CHGNN
         run_llm_chgnn(eval_dataset)
 
     # Chỉ Rank 0 mới upload checkpoint lên GCS
     if TrainingConfig.RANK == 0 and ckpt_path and os.path.exists(ckpt_path):
+        logger.info(f"Uploading checkpoint {ckpt_path} to GCS...")
         upload_model_checkpoint(ckpt_path)
 
 def main():

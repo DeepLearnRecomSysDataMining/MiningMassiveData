@@ -92,3 +92,22 @@ def run_llm_chgnn(dataset):
     
     if TrainingConfig.RANK == 0:
         logger.info(f"LLM-CHGNN Result -> HR@10: {res[0].item()/len(dataset):.4f} | NDCG@10: {res[1].item()/len(dataset):.4f}")
+
+if __name__ == "__main__":
+    from src.data_utils import load_eval_dataset
+    
+    # 1. Setup logging
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+    
+    # 2. Khởi tạo Phân tán cho GPU
+    if TrainingConfig.WORLD_SIZE > 1 and not torch.distributed.is_initialized():
+        torch.distributed.init_process_group(backend="nccl" if torch.cuda.is_available() else "gloo")
+        if torch.cuda.is_available():
+            torch.cuda.set_device(TrainingConfig.DEVICE)
+
+    # 3. Chạy
+    try:
+        eval_data = load_eval_dataset()
+        run_llm_chgnn(eval_data)
+    except Exception as e:
+        logger.error(f"Error running CHGNN: {e}")
