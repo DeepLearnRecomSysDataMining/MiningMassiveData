@@ -1,0 +1,74 @@
+# Cách 4: Quy trình "Vàng" - Kết hợp GitHub & Coordinator VM
+
+Đây là quy trình tối ưu nhất để tránh việc upload dữ liệu chậm từ máy nhà, giữ cho môi trường huấn luyện luôn sạch sẽ và dễ dàng quản lý phiên bản code.
+
+## 1. Tổng quan Luồng vận hành
+Quy trình này sử dụng một máy ảo nhỏ (không cần GPU) làm "Coordinator" để điều phối việc nộp job lên Vertex AI.
+
+1. **Local**: Viết code, đẩy lên GitHub.
+2. **Coordinator VM**: Pull code từ GitHub, chạy script nộp Job.
+3. **Vertex AI**: Tiếp nhận Job, tự động cấp phát tài nguyên mạnh (Nhiều GPU), chạy huấn luyện và lưu kết quả vào GCS.
+
+- **Quyền hạn**: Tài khoản Google Cloud của bạn cần có các quyền:
+    - `Vertex AI Administrator`
+    - `Storage Admin`
+    - `Artifact Registry Administrator`
+
+## 2. Thiết lập máy ảo Coordinator (Làm 1 lần)
+Trên máy ảo Google Cloud của bạn, hãy chạy các lệnh sau:
+
+Cài máy VM 150GB và 16GB RAM, dùng dòng e2-standard-4 để ổn định.
+
+Có thể dùng lệnh ở Cloud Shell:
+```bash
+gcloud compute instances create coordinator-vm \
+    --project=mining-data-2 \
+    --zone=asia-southeast1-b \
+    --machine-type=e2-standard-4 \
+    --network-interface=network-tier=PREMIUM,subnet=default \
+    --create-disk=auto-delete=yes,boot=yes,device-name=coordinator-vm,image-project=ubuntu-os-cloud,image-family=ubuntu-2204-lts,mode=rw,size=200,type=pd-balanced \
+    --scopes=https://www.googleapis.com/auth/cloud-platform
+```        
+
+1.  **Cài đặt Docker**:
+    ```bash
+    sudo apt-get update && sudo apt-get install docker.io -y
+    sudo usermod -aG docker $USER
+    # Logout và Login lại VM để cập nhật quyền Docker
+    ```
+
+2.  **Cấu hình Quyền Cloud**:
+    ```bash
+    gcloud auth login
+    gcloud auth configure-docker --quiet
+    ```
+    
+3.  **Clone mã nguồn**:
+    ```bash
+    git clone <URL_REPO_GITHUB_CUA_BAN>
+    cd MiningMassiveData/distributed_training
+    chmod +x submit_job.sh
+    ```
+
+## 3. Luồng làm việc hàng ngày (Daily Workflow)
+
+### Bước 1: Tại máy cá nhân (Local)
+- Viết code, chỉnh sửa tham số.
+- Đẩy code lên GitHub:
+    ```bash
+    git add .
+    git commit -m "Cập nhật model CHGNN"
+    git push origin main
+    ```
+
+### Bước 2: Tại máy ảo Coordinator (SSH)
+- Kéo code mới nhất và nộp Job:
+    ```bash
+    git pull origin main
+    ./submit_job.sh 6  # Ví dụ chạy CHGNN
+    ```
+
+## 4. Tại sao gọi là Quy trình "Vàng"?
+- **Tốc độ mạng**: VM Coordinator nằm trong Google Network nên việc `docker push` image lên Artifact Registry cực nhanh.
+- **Tính ổn định**: Không phụ thuộc vào kết nối internet chập chờn của máy cá nhân.
+- **Môi trường sạch**: Mỗi Job trên Vertex AI là một container mới hoàn toàn, tránh xung đột thư viện.
