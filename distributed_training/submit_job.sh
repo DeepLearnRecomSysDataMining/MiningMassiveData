@@ -47,7 +47,7 @@ echo "=========================================================="
 
 # --- 5. BUILD & PUSH DOCKER ---
 echo ">>> Đang đóng gói Code và đẩy lên Cloud..."
-gcloud auth configure-docker --quiet
+gcloud auth configure-docker asia-southeast1-docker.pkg.dev --quiet
 docker build -t $IMAGE_URI .
 docker push $IMAGE_URI
 

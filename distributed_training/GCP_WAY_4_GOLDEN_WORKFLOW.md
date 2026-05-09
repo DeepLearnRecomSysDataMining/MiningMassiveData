@@ -54,6 +54,20 @@ gcloud compute instances create coordinator-vm \
     cd MiningMassiveData/distributed_training
     chmod +x submit_job.sh
     ```
+4. **Mỗi lần chạy pull code github mới**
+    ```bash
+        # Xóa bỏ các thay đổi lặt vặt (hoặc lỗi kẹt) trên máy ảo, ép nó giống hệt trên mạng
+        git reset --hard origin/main
+        # Kéo code mới nhất về
+        git pull origin main
+
+        cd distributed_training
+        chmod +x submit_job.sh
+        
+        # ./submit_job.sh
+        hoặc 
+        # ./submit_job.sh 1 # Ví dụ chạy Baseline 1
+    ```
 ## Chú ý
 Cần tạo Repository của mình trên GCP (artifact registry).
     ```bash
