@@ -23,7 +23,7 @@ Có thể dùng lệnh ở Cloud Shell:
 ```bash
 gcloud compute instances create coordinator-vm \
     --project=mining-data-2 \
-    --zone=asia-southeast1-b \
+    --zone=asia-southeast1-c \
     --machine-type=e2-standard-4 \
     --network-interface=network-tier=PREMIUM,subnet=default \
     --create-disk=auto-delete=yes,boot=yes,device-name=coordinator-vm,image-project=ubuntu-os-cloud,image-family=ubuntu-2204-lts,mode=rw,size=200,type=pd-balanced \
@@ -40,14 +40,27 @@ gcloud compute instances create coordinator-vm \
 2.  **Cấu hình Quyền Cloud**:
     ```bash
     gcloud auth login
+    gcloud config set project [PROJECT_ID]
     gcloud auth configure-docker --quiet
     ```
-    
+- Trên VM cũng cần cài git, python nữa.
+    ```bash
+    sudo apt-get install git python3-pip zip -y
+    ```
+
 3.  **Clone mã nguồn**:
     ```bash
     git clone <URL_REPO_GITHUB_CUA_BAN>
     cd MiningMassiveData/distributed_training
     chmod +x submit_job.sh
+    ```
+## Chú ý
+Cần tạo Repository của mình trên GCP (artifact registry).
+    ```bash
+    gcloud artifacts repositories create recsys-repo \
+        --repository-format=docker \
+        --location=asia-southeast1 \
+        --description="Kho chua Docker Image"
     ```
 
 ## 3. Luồng làm việc hàng ngày (Daily Workflow)
