@@ -3,12 +3,12 @@ FROM gcr.io/deeplearning-platform-release/pytorch-gpu.2-4
 
 WORKDIR /app
 
-# Copy code vào container
-COPY . /app/
-
-# Cài đặt các thư viện cần thiết cho 6 Baselines
-# Sử dụng --no-cache-dir để giảm dung lượng Image
+# Cài đặt các thư viện trước để tận dụng Docker Cache
+COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy toàn bộ code vào container sau khi đã cài xong thư viện
+COPY . /app/
 
 # Thiết lập PYTHONPATH để import được các module trong src/ và config/
 ENV PYTHONPATH="/app"
