@@ -52,6 +52,15 @@ REGION="asia-southeast1"           # Vùng chạy (us-central1, asia-southeast1,
 BUCKET="mining-data-2"         # Tên GCS Bucket của bạn
 ```
 
+## Chú ý
+Cần tạo Repository của mình trên GCP (artifact registry).
+    ```bash
+    gcloud artifacts repositories create recsys-repo \
+        --repository-format=docker \
+        --location=asia-southeast1 \
+        --description="Kho chua Docker Image"
+    ```
+
 ### BƯỚC 3: Thực thi nộp Job từ Local
 Chạy script `submit_job.sh` kèm theo ID của model bạn muốn huấn luyện:
 
