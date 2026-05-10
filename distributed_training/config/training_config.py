@@ -112,14 +112,33 @@ class TrainingConfigClass:
 # Khởi tạo Instance duy nhất
 TrainingConfig = TrainingConfigClass()
 
+class RankFilter(logging.Filter):
+    def filter(self, record):
+        record.rank = TrainingConfig.RANK
+        return True
+
 def setup_logging():
     # Chỉ GPU 0 mới in log INFO
     log_level = logging.INFO if TrainingConfig.RANK == 0 else logging.WARNING
+    
+    # Xóa các handler cũ nếu có
+    for handler in logging.root.handlers[:]:
+        logging.root.removeHandler(handler)
+
+    # Ẩn các cảnh báo phiền phức từ huggingface_hub
+    import warnings
+    warnings.filterwarnings("ignore", category=FutureWarning, module="huggingface_hub")
+    logging.getLogger("huggingface_hub").setLevel(logging.ERROR)
+
     logging.basicConfig(
         level=log_level,
-        format="%(asctime)s [%(levelname)s] %(name)s - %(message)s",
+        format="%(asctime)s [%(levelname)s] [Rank %(rank)s] %(name)s - %(message)s",
         handlers=[
             logging.StreamHandler(),
             logging.FileHandler("training_pipeline.log", encoding="utf-8")
         ]
     )
+    
+    # Thêm RankFilter cho toàn bộ root logger
+    for handler in logging.root.handlers:
+        handler.addFilter(RankFilter())

@@ -9,8 +9,6 @@ import gcsfs
 from config.training_config import TrainingConfig
 from tqdm import tqdm
 
-# Cấu hình logging
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger("prepare_eval_pkl_v4")
 
 def prepare_evaluation_pickle_optimized():
