@@ -53,6 +53,14 @@ class TrainingConfigClass:
         return os.path.join(self.LOCAL_DATA_DIR, "evaluation_dataset.pkl")
 
     @property
+    def ITEM_EMBEDDINGS_PATH(self):
+        return os.path.join(self.LOCAL_DATA_DIR, "item_embeddings.npy")
+
+    @property
+    def ITEM_INDEX_PATH(self):
+        return os.path.join(self.LOCAL_DATA_DIR, "item_index.pkl")
+
+    @property
     def VN_CORPUS_PKL_PATH(self):
         return os.path.join(self.LOCAL_DATA_DIR, "vn_corpus.pkl")
 
@@ -95,6 +103,11 @@ class TrainingConfigClass:
     @property
     def LR(self):
         return float(self._get_env_or_default("LR", "1e-3"))
+
+    @property
+    def DATA_FRACTION(self):
+        # Mặc định lấy 1/4 dữ liệu để chạy thử nhanh
+        return float(self._get_env_or_default("DATA_FRACTION", "0.25"))
 
 # Khởi tạo Instance duy nhất
 TrainingConfig = TrainingConfigClass()

@@ -1,59 +1,51 @@
-import subprocess
 import os
+import subprocess
 import logging
 from config.training_config import TrainingConfig
 
 logger = logging.getLogger("gcs_manager")
 
-def sync_data_from_gcs():
-    """Đồng bộ toàn bộ data từ GCS về local node trước khi train"""
-    gcs_src = f"{TrainingConfig.GCS_ROOT}/prepared_data_improved/"
-    local_dest = TrainingConfig.LOCAL_BASE
-    
-    try:
-        logger.info(f"Rsync data: {gcs_src} -> {local_dest}")
-        # -m: parallel, -r: recursive
-        subprocess.run(["gsutil", "-m", "rsync", "-r", gcs_src, local_dest], check=True)
-    except Exception as e:
-        logger.error(f"Sync failed: {e}")
-
 def download_training_data():
-    """
-    Downloads evaluation_dataset.pkl and vn_corpus.pkl from GCS to local disk.
-    Follows the pattern of efficient data sync.
-    """
-    # Map local filename to GCS path
-    files_to_sync = {
-        "evaluation_dataset.pkl": TrainingConfig.GCS_EVAL_PKL,
-        "vn_corpus.pkl": TrainingConfig.GCS_VN_CORPUS_PKL
-    }
+    """Tải dữ liệu .pkl và các file vector đã precompute (nếu có) từ GCS."""
+    local_dir = TrainingConfig.LOCAL_DATA_DIR
+    gcs_path = TrainingConfig.GCS_PREPARED_DATA
     
-    local_base = TrainingConfig.LOCAL_DATA_DIR
-    logger.info(f"Synchronizing training data to {local_base}...")
+    logger.info(f"Đang đồng bộ dữ liệu từ {gcs_path} về {local_dir}...")
     
-    for filename, gcs_path in files_to_sync.items():
-        local_path = os.path.join(local_base, filename)
-        
-        try:
-            logger.info(f"Downloading {filename} from {gcs_path}...")
-            subprocess.run(["gsutil", "cp", gcs_path, local_path], check=True)
-            logger.info(f"Successfully downloaded {filename}")
-        except subprocess.CalledProcessError as e:
-            logger.error(f"Failed to download {filename} from GCS: {e}")
-            # evaluation_dataset.pkl is critical for most baselines
-            if filename == "evaluation_dataset.pkl":
-                raise e
+    # Tải các file .pkl cơ bản
+    subprocess.run(["gsutil", "-m", "cp", f"{gcs_path}/*.pkl", local_dir], check=False)
+    
+    # Kiểm tra và tải file vector 12GB nếu đã tồn tại trên GCS (Tiết kiệm 1 tiếng precompute)
+    emb_file = "item_embeddings.npy"
+    idx_file = "item_index.pkl"
+    
+    for f in [emb_file, idx_file]:
+        remote_f = f"{gcs_path}/{f}"
+        local_f = os.path.join(local_dir, f)
+        if not os.path.exists(local_f):
+            logger.info(f"Đang kiểm tra {f} trên GCS...")
+            # Kiểm tra file có tồn tại trên GCS không trước khi tải
+            result = subprocess.run(["gsutil", "-q", "stat", remote_f], capture_output=True)
+            if result.returncode == 0:
+                logger.info(f"Tìm thấy {f} trên GCS. Đang tải về siêu tốc...")
+                subprocess.run(["gsutil", "-m", "cp", remote_f, local_f], check=True)
 
-def upload_model_checkpoint(local_ckpt_path):
-    """
-    Uploads trained model checkpoint to GCS.
-    """
-    filename = os.path.basename(local_ckpt_path)
-    gcs_dest = f"{TrainingConfig.GCS_OUTPUT_DIR}/models_checkpoints/{filename}"
+def upload_precomputed_data():
+    """Upload file vector 12GB lên GCS để các lần chạy sau không phải tính lại."""
+    local_dir = TrainingConfig.LOCAL_DATA_DIR
+    gcs_path = TrainingConfig.GCS_PREPARED_DATA
     
-    try:
-        logger.info(f"Uploading checkpoint {filename} to GCS...")
-        subprocess.run(["gsutil", "cp", local_ckpt_path, gcs_dest], check=True)
-        logger.info(f"Checkpoint uploaded to: {gcs_dest}")
-    except Exception as e:
-        logger.error(f"GCS Upload Failed: {e}")
+    emb_file = os.path.join(local_dir, "item_embeddings.npy")
+    idx_file = os.path.join(local_dir, "item_index.pkl")
+    
+    if os.path.exists(emb_file) and os.path.exists(idx_file):
+        logger.info("Đang upload bộ nhớ đệm Vector lên GCS (Chỉ thực hiện 1 lần duy nhất)...")
+        subprocess.run(["gsutil", "-m", "cp", emb_file, gcs_path], check=True)
+        subprocess.run(["gsutil", "-m", "cp", idx_file, gcs_path], check=True)
+        logger.info("==> Đã lưu kho thành công!")
+
+def upload_model_checkpoint(local_path):
+    """Upload model sau khi train xong."""
+    gcs_dest = f"{TrainingConfig.GCS_OUTPUT_DIR}/models_checkpoints/"
+    logger.info(f"Uploading {local_path} to {gcs_dest}")
+    subprocess.run(["gsutil", "cp", local_path, gcs_dest], check=True)

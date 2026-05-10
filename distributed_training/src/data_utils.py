@@ -10,89 +10,74 @@ from datasets import load_dataset
 
 logger = logging.getLogger("data_utils")
 
-class LazyItemLookup:
+class PrecomputedEmbeddingLookup:
     """
-    Hệ thống tra cứu Metadata:
-    - Sử dụng PyArrow Table (Dữ liệu dạng nhị phân, cực nhẹ RAM).
-    - Chỉ lưu bảng Index ID -> RowIndex.
+    Hệ thống tra cứu Vector siêu tốc:
+    - Sử dụng Memory-Mapping để nạp file 12GB mà không tốn RAM.
+    - Trả về trực tiếp vector 768 chiều.
     """
-    def __init__(self, table, id_to_idx):
-        self.table = table
+    def __init__(self, embeddings_npy, id_to_idx):
+        self.embeddings = embeddings_npy # Đây là mmap array
         self.id_to_idx = id_to_idx
+        self.dim = embeddings_npy.shape[1]
 
-    def get(self, item_id, default=None):
+    def get_embedding(self, item_id):
         idx = self.id_to_idx.get(item_id)
         if idx is None:
-            return default if default is not None else {'text': "", 'full_text': "", 'category': "other"}
+            return np.zeros(self.dim, dtype=np.float32)
+        return self.embeddings[idx]
+
+def load_precomputed_embeddings():
+    """
+    Nạp dữ liệu vector đã tính toán trước.
+    Dùng mmap_mode='r' để không làm tràn RAM máy ảo.
+    """
+    emb_path = TrainingConfig.ITEM_EMBEDDINGS_PATH
+    idx_path = TrainingConfig.ITEM_INDEX_PATH
+    
+    if not os.path.exists(emb_path) or not os.path.exists(idx_path):
+        logger.error("KHÔNG TÌM THẤY DỮ LIỆU PRECOMPUTED! Vui lòng chạy src/precompute_embeddings.py trước.")
+        return None
         
-        # Lấy dữ liệu từ PyArrow Table (tốc độ O(1))
-        row_dict = {col: str(self.table[col][idx]) for col in self.table.column_names}
-        return {
-            'text': row_dict.get('product_name', ''),
-            'full_text': row_dict.get('full_text', ''),
-            'category': row_dict.get('category', 'other')
-        }
+    if TrainingConfig.RANK == 0:
+        logger.info(f"==> Đang nạp Precomputed Embeddings từ: {emb_path}")
+        
+    # Nạp index tra cứu
+    with open(idx_path, "rb") as f:
+        id_to_idx = pickle.load(f)
+        
+    # Nạp vector bằng Memory-Mapping (Cực kỳ tiết kiệm RAM)
+    embeddings = np.load(emb_path, mmap_mode='r')
+    
+    if TrainingConfig.RANK == 0:
+        logger.info(f"==> Hoàn tất! Đã sẵn sàng tra cứu {len(id_to_idx):,} sản phẩm (Tốc độ O(1)).")
+        
+    return PrecomputedEmbeddingLookup(embeddings, id_to_idx)
 
 def load_eval_dataset():
     """Tải tập Evaluation (Pickle) để đánh giá."""
     path = TrainingConfig.EVAL_PKL_PATH
     if not os.path.exists(path):
-        # Fallback cho trường hợp chạy trên Cloud nhưng file chưa tải về /tmp
         path = "data/prepared_data_improved/evaluation_dataset.pkl"
-        
-    if TrainingConfig.RANK == 0:
-        logger.info(f"Loading EVAL dataset from {path}")
-        
     with open(path, 'rb') as f:
         return pickle.load(f)
 
-def load_item_nodes_lookup():
-    """
-    Tải Metadata sản phẩm sử dụng PyArrow (Tránh lỗi Map type và tiết kiệm RAM).
-    """
-    import pyarrow.parquet as pq
-    import gcsfs
-    
-    path = TrainingConfig.GCS_ITEM_NODES if TrainingConfig.IS_CLOUD else "data/item_nodes"
-    if TrainingConfig.RANK == 0:
-        logger.info(f"==> Đang tải Item Metadata qua PyArrow từ: {path}")
-
-    # 1. Chỉ đọc các cột cần thiết (Bỏ qua hoàn toàn parsed_specs để tránh lỗi)
-    target_cols = ['product_id', 'asin', 'product_name', 'full_text', 'category']
-    
-    fs = gcsfs.GCSFileSystem() if TrainingConfig.IS_CLOUD else None
-    
-    # Đọc trực tiếp thành Table (Nhẹ hơn nhiều so với Pandas DataFrame)
-    arrow_path = path.replace("gs://", "") if TrainingConfig.IS_CLOUD else path
-    table = pq.read_table(arrow_path, columns=target_cols, filesystem=fs)
-
-    # 2. Xây dựng Index
-    if TrainingConfig.RANK == 0:
-        logger.info(f"==> Đang xây dựng bảng chỉ mục cho {table.num_rows:,} sản phẩm...")
-    
-    id_to_idx = {}
-    p_ids = table['product_id'].to_pylist()
-    asins = table['asin'].to_pylist()
-    
-    for idx, (p_id, asin) in enumerate(zip(p_ids, asins)):
-        if p_id: id_to_idx[p_id] = idx
-        if asin: id_to_idx[asin] = idx
-
-    return LazyItemLookup(table, id_to_idx)
-
 def load_interactions_df():
-    """Tải lịch sử tương tác (Interactions) bằng Memory-Mapping."""
+    """Tải lịch sử tương tác (Interactions) với tỷ lệ chỉ định."""
     path = TrainingConfig.GCS_INTERACTIONS if TrainingConfig.IS_CLOUD else "data/all_interactions"
+    fraction = int(TrainingConfig.DATA_FRACTION * 100)
     
     if TrainingConfig.RANK == 0:
-        logger.info(f"==> Đang tải Interactions từ: {path} (Memory-Mapping Mode)")
+        logger.info(f"==> Đang tải {fraction}% Interactions từ: {path}")
+    
+    # Sử dụng tính năng cắt (Slicing) của HF Datasets: 'train[:25%]'
+    split_str = f"train[:{fraction}%]"
     
     if TrainingConfig.IS_CLOUD:
-        # Chỉ lấy 2 cột cần thiết nhất để huấn luyện cơ bản
-        df = load_dataset('parquet', data_files=f"{path}/*.parquet", split='train', columns=['asin', 'product_id'])
+        df = load_dataset('parquet', data_files=f"{path}/*.parquet", split=split_str, columns=['asin', 'product_id'])
     else:
-        df = load_dataset('parquet', data_dir=path, split='train', columns=['asin', 'product_id'])
+        df = load_dataset('parquet', data_dir=path, split=split_str, columns=['asin', 'product_id'])
     
     if TrainingConfig.RANK == 0:
-        logger.info(f"==> Đã nạp {len(df):,} tương tác.")
+        logger.info(f"==> Đã nạp {len(df):,} tương tác ({fraction}% tổng số).")
     return df
