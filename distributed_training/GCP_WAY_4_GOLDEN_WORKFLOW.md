@@ -78,6 +78,11 @@ Cần tạo Repository của mình trên GCP (artifact registry).
         --description="Kho chua Docker Image"
     ```
 
+Gõ lệnh kiểm tra dung lượng ổ cứng:
+   ```bash
+   df -h
+   ```
+
 ## 3. Luồng làm việc hàng ngày (Daily Workflow)
 
 ### Bước 1: Tại máy cá nhân (Local)

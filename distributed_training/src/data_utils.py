@@ -20,15 +20,20 @@ def load_item_nodes_lookup(columns=None):
     Mặc định load: product_id, asin, product_name, category, parsed_specs.
     """
     if columns is None:
-        columns = ['product_id', 'asin', 'product_name', 'category', 'parsed_specs']
+        columns = ['product_id', 'asin', 'product_name', 'category', 'parsed_specs', 'full_text']
         
     path = TrainingConfig.GCS_ITEM_NODES if TrainingConfig.IS_CLOUD else "data/item_nodes"
     
     if TrainingConfig.RANK == 0:
         logger.info(f"==> Đang tải Item Metadata từ: {path} (RAM-Efficient Mode)")
     
-    # Đọc Parquet với các cột đã chọn
-    df = pd.read_parquet(path, columns=columns)
+    # Đọc Parquet với các cột đã chọn (Sử dụng try-except để tránh lỗi nếu thiếu cột full_text)
+    try:
+        df = pd.read_parquet(path, columns=columns)
+    except:
+        # Nếu thiếu cột full_text thì nạp các cột còn lại
+        columns.remove('full_text')
+        df = pd.read_parquet(path, columns=columns)
     
     lookup = {}
     # Sử dụng itertuples() để duyệt nhanh và tiết kiệm RAM hơn iterrows()
@@ -36,6 +41,7 @@ def load_item_nodes_lookup(columns=None):
         # Trích xuất dữ liệu (hỗ trợ cả các cột có thể thiếu)
         meta = {
             'text': str(row.product_name) if hasattr(row, 'product_name') and pd.notnull(row.product_name) else "",
+            'full_text': str(row.full_text) if hasattr(row, 'full_text') and pd.notnull(row.full_text) else "",
             'category': str(row.category) if hasattr(row, 'category') and pd.notnull(row.category) else "other",
             'specs': row.parsed_specs if hasattr(row, 'parsed_specs') else {}
         }
@@ -61,11 +67,18 @@ def load_interactions_df():
         logger.info(f"==> Đang tải Interactions từ: {path} (Memory-Mapping Mode)")
     
     from datasets import load_dataset
+
+    # if TrainingConfig.IS_CLOUD:
+    #     # Datasets sẽ tải file về cache và map trực tiếp ổ cứng (0 RAM)
+    #     df = load_dataset('parquet', data_files=f"gs://mining-data-2/output/all_interactions/*.parquet", split='train')
+    # else:
+    #     df = load_dataset('parquet', data_dir=path, split='train')
+    
     if TrainingConfig.IS_CLOUD:
         # Datasets sẽ tải file về cache và map trực tiếp ổ cứng (0 RAM)
-        df = load_dataset('parquet', data_files=f"gs://mining-data-2/output/all_interactions/*.parquet", split='train')
+        df = load_dataset('parquet', data_files=f"gs://mining-data-2/output/all_interactions/*.parquet", split='train').select_columns(['asin', 'product_id'])
     else:
-        df = load_dataset('parquet', data_dir=path, split='train')
+        df = load_dataset('parquet', data_dir=path, split='train').select_columns(['asin', 'product_id'])
     
     if TrainingConfig.RANK == 0:
         logger.info(f"==> Đã nạp {len(df):,} tương tác (RAM tốn xấp xỉ 0GB).")
