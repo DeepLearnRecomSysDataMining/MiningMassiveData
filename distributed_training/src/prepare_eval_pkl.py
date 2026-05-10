@@ -58,7 +58,9 @@ def prepare_evaluation_pickle_optimized():
     fs = gcsfs.GCSFileSystem() if TrainingConfig.IS_CLOUD else None
     
     # Mở dataset theo dạng fragments (từng file .parquet lẻ)
-    dataset = pq.ParquetDataset(item_nodes_path, filesystem=fs)
+    # LƯU Ý: Loại bỏ gs:// nếu dùng filesystem để tránh lỗi ArrowInvalid
+    arrow_path = item_nodes_path.replace("gs://", "") if TrainingConfig.IS_CLOUD else item_nodes_path
+    dataset = pq.ParquetDataset(arrow_path, filesystem=fs)
     fragments = dataset.fragments
     
     for i, frag in enumerate(fragments):
