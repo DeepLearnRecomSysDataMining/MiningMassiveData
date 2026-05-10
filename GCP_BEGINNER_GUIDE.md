@@ -154,26 +154,6 @@ Do đó, trước khi muốn chạy file `.py`, bạn chỉ cần gõ lại lệ
   - **Number of workers**: Đưa về 2, hoặc 3, 4 tùy bạn, ở ví dụ này đưa về 2 cho tiết kiệm 
   - **Disksize**: Data ở GCS tổng 50GB nên chọn mỗi cái node khoảng 50Gb là đủ.
 
-| Tiêu chí                         | 2 Node Worker                | 3 Node Worker                | 4 Node Worker                |
-|----------------------------------|------------------------------|------------------------------|------------------------------|
-| Tổng số Node (Gồm 1 Master)     | 3 Máy                        | 4 Máy                        | 5 Máy                        |
-| Tổng vCPU & RAM toàn cụm        | 6 vCPU / 24GB RAM            | 8 vCPU / 32GB RAM            | 10 vCPU / 40GB RAM           |
-| Cấu hình Ổ cứng                 | Master: 50GB<br>Worker: 50GB/máy | Master: 50GB<br>Worker: 50GB/máy | Master: 50GB<br>Worker: 50GB/máy |
-| Sức tải (Mỗi Worker gánh)       | ~25GB dữ liệu                | ~16.6GB dữ liệu              | ~12.5GB dữ liệu              |
-| Hiệu năng & Thời gian (Ước tính)| Chậm nhất.<br>45 - 60 phút   | Tốc độ tốt.<br>30 - 40 phút  | Nhanh nhất.<br>20 - 25 phút  |
-| Giới hạn Quota GCP              | An toàn 100%                 | Chạm trần (8 vCPU).<br>Có thể bị từ chối | Chắc chắn lỗi (vượt quota)   |
-| Chi phí ước tính ($/giờ)        | ~$0.36 / giờ                | ~$0.48 / giờ                | ~$0.60 / giờ                |
-
-> Với 50GB dữ liệu jsonl
-
-mỗi node worker cần Disk từ 1,5 -> 3 lần GB mà dữ liệu nó xử lý, nên
-
-| Worker | Data / node | Disk đề xuất |
-| ------ | ----------- | ------------ |
-| 2      | 25GB        | 40–50GB      |
-| 3      | 16.6GB      | 30–40GB      |
-| 4      | 12.5GB      | 25–30GB      |
-
 ### Cách 2: Làm bằng code qua SSH
 Mở cửa sổ SSH của `coordinator-vm`, copy toàn bộ khối này dán vào và Enter:
 ```bash
