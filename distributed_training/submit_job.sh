@@ -57,7 +57,7 @@ gcloud ai custom-jobs create \
     --region=$REGION \
     --project=$PROJECT_ID \
     --display-name="RecSys_Baseline_${BASELINE_ID}_${TIMESTAMP}" \
-    --worker-pool-spec="machine-type=$MACHINE_TYPE,replica-count=$REPLICA_COUNT,container-image-uri=$IMAGE_URI,accelerator-type=$ACCELERATOR_TYPE,accelerator-count=$ACCELERATOR_COUNT" \
+    --worker-pool-spec="machine-type=$MACHINE_TYPE,replica-count=$REPLICA_COUNT,container-image-uri=$IMAGE_URI,accelerator-type=$ACCELERATOR_TYPE,accelerator-count=$ACCELERATOR_COUNT,boot-disk-type=pd-ssd,boot-disk-size-gb=200" \
     --args="--baseline=$BASELINE_ID"
 
 echo "----------------------------------------------------------"

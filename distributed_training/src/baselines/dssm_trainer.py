@@ -26,7 +26,7 @@ class DSSMTrainingDataset(Dataset):
         row = self.df[int(idx)]
         # Lấy metadata từ lookup
         q_meta = self.lookup.get(row['asin'], {})
-        p_meta = self.lookup.get(row['parent_asin'], {})
+        p_meta = self.lookup.get(row['product_id'], {})
         
         q_text = q_meta.get('full_text', "") or q_meta.get('text', "")
         p_text = p_meta.get('full_text', "") or p_meta.get('text', "")
