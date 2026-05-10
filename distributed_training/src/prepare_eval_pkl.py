@@ -4,22 +4,23 @@ import os
 import logging
 import gc
 import time
+import pyarrow.parquet as pq
+import gcsfs
 from config.training_config import TrainingConfig
-from datasets import load_dataset # Lazy Loading để tiết kiệm RAM
 from tqdm import tqdm
 
-# Cấu hình logging giống style Spark
+# Cấu hình logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger("prepare_eval_pkl_v2")
+logger = logging.getLogger("prepare_eval_pkl_v4")
 
 def prepare_evaluation_pickle_optimized():
     """
-    PHIÊN BẢN V2 (OPTIMIZED): Dành riêng cho máy Coordinator 16GB RAM.
-    Sử dụng Memory-Mapping của Hugging Face Datasets thay vì Pandas.
+    PHIÊN BẢN V4 (PYARROW STREAMING): Giải pháp tối ưu nhất cho máy 16GB.
+    Đọc từng fragment (file nhỏ) để giữ RAM cực thấp và tránh lỗi Cast Schema.
     """
     t_start = time.time()
     logger.info("============================================================")
-    logger.info("   BẮT ĐẦU CHUẨN BỊ EVALUATION PKL (MEMORY-MAPPING MODE)")
+    logger.info("   BẮT ĐẦU CHUẨN BỊ EVALUATION PKL (PYARROW STREAMING)")
     logger.info("============================================================")
 
     # 1. Xác định đường dẫn
@@ -38,10 +39,9 @@ def prepare_evaluation_pickle_optimized():
     logger.info(f" -> Path Item: {item_nodes_path}")
 
     # --- BƯỚC 2: ĐỌC TẬP ID ---
-    logger.info("[BƯỚC 2] Đang đọc danh sách ID từ bộ Evaluation (Pandas)...")
+    logger.info("[BƯỚC 2] Đang đọc danh sách ID từ bộ Evaluation...")
     eval_df = pd.read_parquet(eval_parquet_path)
     
-    # Thu thập tất cả ID cần thiết để filter (Chỉ tốn vài MB RAM)
     needed_query_ids = set(eval_df['query_id'].unique())
     needed_cand_ids = set([item for sublist in eval_df['candidate_ids'] for item in sublist])
     all_needed_ids = needed_query_ids.union(needed_cand_ids)
@@ -49,99 +49,84 @@ def prepare_evaluation_pickle_optimized():
     logger.info(f" -> Tìm thấy {len(eval_df):,} queries.")
     logger.info(f" -> Cần truy xuất metadata cho {len(all_needed_ids):,} sản phẩm duy nhất.")
 
-    # --- BƯỚC 3: MỞ DATASET (0 RAM) ---
-    logger.info(f"[BƯỚC 3] Đang ánh xạ Item Metadata (Hugging Face Datasets)...")
-    
-    # Định nghĩa Schema tường minh để ép Datasets bỏ qua các cột lỗi (như parsed_specs)
-    from datasets import Features, Value
-    var_features = Features({
-        'product_id': Value('string'),
-        'asin': Value('string'),
-        'product_name': Value('string'),
-        'full_text': Value('string')
-    })
-    
-    if TrainingConfig.IS_CLOUD:
-        item_ds = load_dataset('parquet', data_files=f"{item_nodes_path}/*.parquet", split='train', features=var_features)
-    else:
-        item_ds = load_dataset('parquet', data_dir=item_nodes_path, split='train', features=var_features)
-
-    # --- BƯỚC 4: XÂY DỰNG LOOKUP ---
-    logger.info("[BƯỚC 4] Đang lọc và xây dựng bản đồ tra cứu (Lookup Map)...")
+    # --- BƯỚC 3: XỬ LÝ METADATA THEO CHUNK ---
+    logger.info("[BƯỚC 3] Đang đọc Metadata theo từng mảnh (Streaming)...")
     lookup = {}
+    target_cols = ['product_id', 'asin', 'product_name', 'full_text']
     
-    # Duyệt qua từng dòng của file metadata (4 triệu dòng) mà không nạp hết vào RAM
-    for row in tqdm(item_ds, desc="Building Lookup", total=len(item_ds)):
-        p_id = row.get('product_id')
-        asin = row.get('asin')
+    # Kết nối FileSystem
+    fs = gcsfs.GCSFileSystem() if TrainingConfig.IS_CLOUD else None
+    
+    # Mở dataset theo dạng fragments (từng file .parquet lẻ)
+    dataset = pq.ParquetDataset(item_nodes_path, filesystem=fs)
+    fragments = dataset.fragments
+    
+    for i, frag in enumerate(fragments):
+        logger.info(f" -> Đang xử lý mảnh {i+1}/{len(fragments)}...")
+        # Chỉ đọc các cột cần thiết từ mảnh này
+        table = frag.to_table(columns=target_cols)
+        df_chunk = table.to_pandas()
         
-        # Chỉ bốc dữ liệu nếu ID nằm trong tập cần thiết
-        if p_id in all_needed_ids or asin in all_needed_ids:
-            # Ưu tiên full_text, nếu không có thì lấy product_name
-            final_text = row.get('full_text') or row.get('product_name') or ""
+        # Lọc nhanh trong chunk
+        mask = df_chunk['product_id'].isin(all_needed_ids) | df_chunk['asin'].isin(all_needed_ids)
+        filtered_chunk = df_chunk[mask]
+        
+        for _, row in filtered_chunk.iterrows():
+            final_text = str(row['full_text']) if pd.notnull(row['full_text']) and row['full_text'] != "" else str(row['product_name'])
+            meta = {'text': final_text}
             
-            meta = {
-                'text': str(final_text)
-            }
+            p_id = row['product_id']
+            asin = row['asin']
             if p_id: lookup[p_id] = meta
             if asin: lookup[asin] = meta
+            
+        # Giải phóng RAM sau mỗi mảnh
+        del table, df_chunk, filtered_chunk
+        gc.collect()
 
-    # Giải phóng Dataset thô để lấy lại RAM
-    del item_ds
-    gc.collect()
-
-    # --- BƯỚC 5: GỘP DỮ LIỆU ---
-    logger.info("[BƯỚC 5] Đang đóng gói dữ liệu vào bộ Evaluation (Enriching)...")
+    # --- BƯỚC 4: GỘP DỮ LIỆU ---
+    logger.info("[BƯỚC 4] Đang đóng gói dữ liệu cuối cùng (Enriching)...")
     enriched_data = []
-    
     for i, (_, row) in enumerate(eval_df.iterrows()):
         if (i+1) % 50 == 0:
             logger.info(f" -> Đã xử lý {i+1}/{len(eval_df)} queries...")
             
         q_id = row['query_id']
-        cand_ids = row['candidate_ids']
-        labels = row['labels']
-        
         q_meta = lookup.get(q_id, {'text': ""})
         
-        cand_texts = []
+        cand_texts = [lookup.get(cid, {'text': ""})['text'] for cid in row['candidate_ids']]
+        
+        labels = row['labels']
         true_vn_id = None
-        
-        for idx, cid in enumerate(cand_ids):
-            c_meta = lookup.get(cid, {'text': ""})
-            cand_texts.append(c_meta['text'])
-            if labels[idx] == 1: 
-                true_vn_id = cid
-        
+        for idx, lbl in enumerate(labels):
+            if lbl == 1:
+                true_vn_id = row['candidate_ids'][idx]
+                break
+
         if true_vn_id:
             enriched_data.append({
-                'query_id': q_id, 
-                'query_text': q_meta['text'], 
-                'candidate_ids': list(cand_ids),
-                'candidate_texts': cand_texts, 
+                'query_id': q_id,
+                'query_text': q_meta['text'],
+                'candidate_ids': list(row['candidate_ids']),
+                'candidate_texts': cand_texts,
                 'true_vn_id': true_vn_id
             })
 
-    # --- BƯỚC 6: LƯU KẾT QUẢ ---
-    logger.info(f"[BƯỚC 6] Đang lưu {len(enriched_data)} queries ra file Pickle...")
+    # --- BƯỚC 5: LƯU & UPLOAD ---
+    logger.info(f"[BƯỚC 5] Đang lưu {len(enriched_data)} mẫu vào {output_pkl}...")
     os.makedirs(os.path.dirname(output_pkl), exist_ok=True)
     with open(output_pkl, 'wb') as f:
         pickle.dump(enriched_data, f)
-    
-    logger.info(f" -> Đã lưu tại: {output_pkl}")
 
     if TrainingConfig.IS_CLOUD:
         try:
             import subprocess
-            logger.info(f" -> Đang upload lên GCS: {TrainingConfig.GCS_EVAL_PKL}")
             subprocess.run(["gsutil", "cp", output_pkl, TrainingConfig.GCS_EVAL_PKL], check=True)
-        except Exception as e:
-            logger.error(f" -> Lỗi upload GCS: {e}")
+            logger.info(" -> Upload GCS thành công!")
+        except:
+            logger.error(" -> Lỗi upload GCS.")
 
-    elapsed = time.time() - t_start
-    logger.info("============================================================")
-    logger.info(f"   HOÀN TẤT TRONG {elapsed:.1f}s | QUERIES: {len(enriched_data):,}")
-    logger.info("============================================================")
+    logger.info(f"=== HOÀN TẤT SAU {time.time()-t_start:.1f}s ===")
 
 if __name__ == "__main__":
     prepare_evaluation_pickle_optimized()
