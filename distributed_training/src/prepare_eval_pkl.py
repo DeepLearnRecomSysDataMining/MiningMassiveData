@@ -51,11 +51,15 @@ def prepare_evaluation_pickle_optimized():
 
     # --- BƯỚC 3: MỞ DATASET (0 RAM) ---
     logger.info(f"[BƯỚC 3] Đang ánh xạ Item Metadata (Hugging Face Datasets)...")
+    
+    # Chỉ định rõ các cột cần lấy để tránh lỗi với cột 'parsed_specs' (kiểu Map không tương thích)
+    target_cols = ['product_id', 'asin', 'product_name', 'full_text']
+    
     if TrainingConfig.IS_CLOUD:
-        # Tải metadata trực tiếp từ GCS (Datasets sẽ tự động cache về disk)
-        item_ds = load_dataset('parquet', data_files=f"{item_nodes_path}/*.parquet", split='train')
+        # Tải metadata trực tiếp từ GCS
+        item_ds = load_dataset('parquet', data_files=f"{item_nodes_path}/*.parquet", split='train', columns=target_cols)
     else:
-        item_ds = load_dataset('parquet', data_dir=item_nodes_path, split='train')
+        item_ds = load_dataset('parquet', data_dir=item_nodes_path, split='train', columns=target_cols)
 
     # --- BƯỚC 4: XÂY DỰNG LOOKUP ---
     logger.info("[BƯỚC 4] Đang lọc và xây dựng bản đồ tra cứu (Lookup Map)...")
@@ -72,9 +76,7 @@ def prepare_evaluation_pickle_optimized():
             final_text = row.get('full_text') or row.get('product_name') or ""
             
             meta = {
-                'text': str(final_text),
-                'category': str(row.get('category', 'other')),
-                'specs': row.get('parsed_specs', {})
+                'text': str(final_text)
             }
             if p_id: lookup[p_id] = meta
             if asin: lookup[asin] = meta
@@ -95,7 +97,7 @@ def prepare_evaluation_pickle_optimized():
         cand_ids = row['candidate_ids']
         labels = row['labels']
         
-        q_meta = lookup.get(q_id, {'text': "", 'category': 'other', 'specs': {}})
+        q_meta = lookup.get(q_id, {'text': ""})
         
         cand_texts = []
         true_vn_id = None
