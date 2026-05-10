@@ -1,23 +1,17 @@
 import pickle
 import pandas as pd
 import numpy as np
-import ast
 import logging
 import os
-import gc
+import pyarrow.parquet as pq
 from config.training_config import TrainingConfig
-from datasets import load_dataset
 
 logger = logging.getLogger("data_utils")
 
 class PrecomputedEmbeddingLookup:
-    """
-    Hệ thống tra cứu Vector siêu tốc:
-    - Sử dụng Memory-Mapping để nạp file 12GB mà không tốn RAM.
-    - Trả về trực tiếp vector 768 chiều.
-    """
+    """Hệ thống tra cứu Vector siêu tốc bằng Memory-Mapping."""
     def __init__(self, embeddings_npy, id_to_idx):
-        self.embeddings = embeddings_npy # Đây là mmap array
+        self.embeddings = embeddings_npy
         self.id_to_idx = id_to_idx
         self.dim = embeddings_npy.shape[1]
 
@@ -28,30 +22,17 @@ class PrecomputedEmbeddingLookup:
         return self.embeddings[idx]
 
 def load_precomputed_embeddings():
-    """
-    Nạp dữ liệu vector đã tính toán trước.
-    Dùng mmap_mode='r' để không làm tràn RAM máy ảo.
-    """
+    """Nạp dữ liệu vector đã tính toán trước."""
     emb_path = TrainingConfig.ITEM_EMBEDDINGS_PATH
     idx_path = TrainingConfig.ITEM_INDEX_PATH
     
     if not os.path.exists(emb_path) or not os.path.exists(idx_path):
-        logger.error("KHÔNG TÌM THẤY DỮ LIỆU PRECOMPUTED! Vui lòng chạy src/precompute_embeddings.py trước.")
+        logger.error("KHÔNG TÌM THẤY DỮ LIỆU PRECOMPUTED!")
         return None
         
-    if TrainingConfig.RANK == 0:
-        logger.info(f"==> Đang nạp Precomputed Embeddings từ: {emb_path}")
-        
-    # Nạp index tra cứu
     with open(idx_path, "rb") as f:
         id_to_idx = pickle.load(f)
-        
-    # Nạp vector bằng Memory-Mapping (Cực kỳ tiết kiệm RAM)
     embeddings = np.load(emb_path, mmap_mode='r')
-    
-    if TrainingConfig.RANK == 0:
-        logger.info(f"==> Hoàn tất! Đã sẵn sàng tra cứu {len(id_to_idx):,} sản phẩm (Tốc độ O(1)).")
-        
     return PrecomputedEmbeddingLookup(embeddings, id_to_idx)
 
 def load_eval_dataset():
@@ -63,21 +44,32 @@ def load_eval_dataset():
         return pickle.load(f)
 
 def load_interactions_df():
-    """Tải lịch sử tương tác (Interactions) với tỷ lệ chỉ định."""
+    """
+    Tải lịch sử tương tác sử dụng PyArrow (Thay thế hoàn toàn thư viện datasets).
+    Chỉ nạp tỷ lệ phần trăm dữ liệu được chỉ định (mặc định 25%).
+    """
+    import gcsfs
     path = TrainingConfig.GCS_INTERACTIONS if TrainingConfig.IS_CLOUD else "data/all_interactions"
-    fraction = int(TrainingConfig.DATA_FRACTION * 100)
+    fraction = TrainingConfig.DATA_FRACTION
     
     if TrainingConfig.RANK == 0:
-        logger.info(f"==> Đang tải {fraction}% Interactions từ: {path}")
+        logger.info(f"==> [PyArrow] Đang nạp {int(fraction*100)}% tương tác từ: {path}")
     
-    # Sử dụng tính năng cắt (Slicing) của HF Datasets: 'train[:25%]'
-    split_str = f"train[:{fraction}%]"
+    # 1. Kết nối GCS nếu cần
+    fs = gcsfs.GCSFileSystem() if TrainingConfig.IS_CLOUD else None
+    arrow_path = path.replace("gs://", "") if TrainingConfig.IS_CLOUD else path
     
-    if TrainingConfig.IS_CLOUD:
-        df = load_dataset('parquet', data_files=f"{path}/*.parquet", split=split_str, columns=['asin', 'product_id'])
-    else:
-        df = load_dataset('parquet', data_dir=path, split=split_str, columns=['asin', 'product_id'])
+    # 2. Đọc toàn bộ bảng (Chỉ lấy 2 cột ID để tiết kiệm RAM)
+    dataset = pq.ParquetDataset(arrow_path, filesystem=fs)
+    table = dataset.read(columns=['asin', 'product_id'])
+    
+    # 3. Thực hiện Slice (Cắt) lấy 25% đầu tiên
+    num_rows = table.num_rows
+    target_rows = int(num_rows * fraction)
+    table_subset = table.slice(0, target_rows)
     
     if TrainingConfig.RANK == 0:
-        logger.info(f"==> Đã nạp {len(df):,} tương tác ({fraction}% tổng số).")
-    return df
+        logger.info(f"==> Thành công! Đã nạp {table_subset.num_rows:,} dòng tương tác (Tổng file: {num_rows:,})")
+    
+    # Chuyển sang Pandas để các file Trainer truy cập được bằng index [idx]
+    return table_subset.to_pandas()
