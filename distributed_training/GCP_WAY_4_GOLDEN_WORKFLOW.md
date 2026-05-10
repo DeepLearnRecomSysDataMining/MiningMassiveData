@@ -28,7 +28,17 @@ gcloud compute instances create coordinator-vm \
     --network-interface=network-tier=PREMIUM,subnet=default \
     --create-disk=auto-delete=yes,boot=yes,device-name=coordinator-vm,image-project=ubuntu-os-cloud,image-family=ubuntu-2204-lts,mode=rw,size=200,type=pd-balanced \
     --scopes=https://www.googleapis.com/auth/cloud-platform
-```        
+```    
+
+## Chú ý
+Cần tạo Repository của mình trên GCP (artifact registry).
+
+```bash
+    gcloud artifacts repositories create recsys-repo \
+        --repository-format=docker \
+        --location=asia-southeast1 \
+        --description="Kho chua Docker Image"
+```
 
 1.  **Cài đặt Docker**:
     ```bash
@@ -70,14 +80,29 @@ gcloud compute instances create coordinator-vm \
         # sh submit_job.sh 1  # ko cần chmod nữa
         # ./submit_job.sh 1 # Ví dụ chạy Baseline 1
     ```
-## Chú ý
-Cần tạo Repository của mình trên GCP (artifact registry).
-    ```bash
-    gcloud artifacts repositories create recsys-repo \
-        --repository-format=docker \
-        --location=asia-southeast1 \
-        --description="Kho chua Docker Image"
-    ```
+Để bạn có thể tắt laptop mà script vẫn chạy, hãy dùng nohup kết hợp với chạy nền. Cách này đơn giản và không cần cài thêm tmux:
+```bash
+    nohup bash submit_job.sh all > training_log.txt 2>&1 &
+```
+Giải thích lệnh này:nohup: Viết tắt của "no hang up" – giúp script lờ đi tín hiệu ngắt kết nối khi bạn tắt SSH/laptop.> training_log.txt: Ghi toàn bộ kết quả (log) vào file để bạn xem lại sau.
+
+2>&1: Gom cả thông báo lỗi vào chung file log đó.
+
+&: Cho script chạy dưới nền (background).
+
+Cách kiểm tra sau khi bật lại laptop:Khi bạn mở máy lại và SSH vào VM, hãy dùng lệnh sau để xem script đã chạy xong chưa hoặc đang chạy đến đâu:
+
+```bash
+    tail -f training_log.txt
+```
+Kiểm tra xem tiến trình còn sống không:
+
+```bash   
+    ps aux | grep submit_job.sh
+```
+
+Kiểm tra trên Console: Truy cập link Vertex AI ở cuối script của bạn để xem Job đã xuất hiện chưa.
+
 
 Gõ lệnh kiểm tra dung lượng ổ cứng:
    ```bash
