@@ -12,13 +12,12 @@ logger = logging.getLogger("data_utils")
 
 class LazyItemLookup:
     """
-    Hệ thống tra cứu Metadata thông minh: 
-    - Giữ dữ liệu trên ổ cứng (Memory-Mapping).
-    - Chỉ giữ bảng Index ID -> RowIndex trong RAM.
-    - Tiết kiệm 99% RAM so với dùng Dictionary thông thường.
+    Hệ thống tra cứu Metadata:
+    - Sử dụng PyArrow Table (Dữ liệu dạng nhị phân, cực nhẹ RAM).
+    - Chỉ lưu bảng Index ID -> RowIndex.
     """
-    def __init__(self, dataset, id_to_idx):
-        self.dataset = dataset
+    def __init__(self, table, id_to_idx):
+        self.table = table
         self.id_to_idx = id_to_idx
 
     def get(self, item_id, default=None):
@@ -26,12 +25,12 @@ class LazyItemLookup:
         if idx is None:
             return default if default is not None else {'text': "", 'full_text': "", 'category': "other"}
         
-        # Bốc dữ liệu từ ổ cứng (Cực nhanh nhờ memory-mapping)
-        row = self.dataset[idx]
+        # Lấy dữ liệu từ PyArrow Table (tốc độ O(1))
+        row_dict = {col: str(self.table[col][idx]) for col in self.table.column_names}
         return {
-            'text': str(row.get('product_name', '')),
-            'full_text': str(row.get('full_text', '')),
-            'category': str(row.get('category', 'other'))
+            'text': row_dict.get('product_name', ''),
+            'full_text': row_dict.get('full_text', ''),
+            'category': row_dict.get('category', 'other')
         }
 
 def load_eval_dataset():
@@ -49,40 +48,37 @@ def load_eval_dataset():
 
 def load_item_nodes_lookup():
     """
-    Tải Metadata sản phẩm sử dụng Memory-Mapping để tiết kiệm RAM tối đa cho DDP.
+    Tải Metadata sản phẩm sử dụng PyArrow (Tránh lỗi Map type và tiết kiệm RAM).
     """
-    path = TrainingConfig.GCS_ITEM_NODES if TrainingConfig.IS_CLOUD else "data/item_nodes"
+    import pyarrow.parquet as pq
+    import gcsfs
     
+    path = TrainingConfig.GCS_ITEM_NODES if TrainingConfig.IS_CLOUD else "data/item_nodes"
     if TrainingConfig.RANK == 0:
-        logger.info(f"==> Đang khởi tạo Lazy Item Lookup từ: {path}")
+        logger.info(f"==> Đang tải Item Metadata qua PyArrow từ: {path}")
 
-    # 1. Mở dataset bằng HF Datasets (0 RAM)
-    # TỐI ƯU: Loại bỏ parsed_specs để tránh lỗi kiểu Map và tiết kiệm RAM
+    # 1. Chỉ đọc các cột cần thiết (Bỏ qua hoàn toàn parsed_specs để tránh lỗi)
     target_cols = ['product_id', 'asin', 'product_name', 'full_text', 'category']
     
-    if TrainingConfig.IS_CLOUD:
-        # Lưu ý: HF Datasets tự động handle gs:// và cache về local disk
-        item_ds = load_dataset('parquet', data_files=f"{path}/*.parquet", split='train', columns=target_cols)
-    else:
-        item_ds = load_dataset('parquet', data_dir=path, split='train', columns=target_cols)
+    fs = gcsfs.GCSFileSystem() if TrainingConfig.IS_CLOUD else None
+    
+    # Đọc trực tiếp thành Table (Nhẹ hơn nhiều so với Pandas DataFrame)
+    arrow_path = path.replace("gs://", "") if TrainingConfig.IS_CLOUD else path
+    table = pq.read_table(arrow_path, columns=target_cols, filesystem=fs)
 
-    # 2. Xây dựng bảng Index (Chỉ tốn vài trăm MB RAM thay vì hàng chục GB)
+    # 2. Xây dựng Index
     if TrainingConfig.RANK == 0:
-        logger.info(f"==> Đang xây dựng bảng chỉ mục cho {len(item_ds):,} sản phẩm...")
+        logger.info(f"==> Đang xây dựng bảng chỉ mục cho {table.num_rows:,} sản phẩm...")
     
     id_to_idx = {}
-    # Lấy nhanh 2 cột ID để build index
-    p_ids = item_ds['product_id']
-    asins = item_ds['asin']
+    p_ids = table['product_id'].to_pylist()
+    asins = table['asin'].to_pylist()
     
     for idx, (p_id, asin) in enumerate(zip(p_ids, asins)):
         if p_id: id_to_idx[p_id] = idx
         if asin: id_to_idx[asin] = idx
 
-    if TrainingConfig.RANK == 0:
-        logger.info(f"==> Hoàn tất! Index size: {len(id_to_idx):,} IDs.")
-    
-    return LazyItemLookup(item_ds, id_to_idx)
+    return LazyItemLookup(table, id_to_idx)
 
 def load_interactions_df():
     """Tải lịch sử tương tác (Interactions) bằng Memory-Mapping."""
