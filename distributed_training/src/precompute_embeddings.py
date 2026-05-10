@@ -59,10 +59,18 @@ def precompute_item_embeddings():
     with open(f"{tmp_dir}/ids_rank_{rank}.pkl", "wb") as f:
         import pickle
         pickle.dump({'ids': my_ids, 'asins': my_asins}, f)
+    
+    # GIẢI PHÓNG RAM NGAY LẬP TỨC (Cực kỳ quan trọng cho máy 52GB)
+    del embeddings
+    del model
+    import gc
+    gc.collect()
+    torch.cuda.empty_cache()
         
     # Chờ tất cả các GPU xong việc
     if world_size > 1:
-        torch.distributed.init_process_group(backend="nccl")
+        if not torch.distributed.is_initialized():
+            torch.distributed.init_process_group(backend="nccl")
         torch.distributed.barrier()
         
     # 6. Rank 0 gom tất cả lại thành 1 file duy nhất (12GB)
