@@ -62,7 +62,8 @@ gcloud compute instances create coordinator-vm \
         git pull origin main
 
         cd distributed_training
-        chmod +x submit_job.sh
+        
+        # chmod +x submit_job.sh nếu gán nó thành hàm hệ thống chạy được
         
         # ./submit_job.sh
         hoặc 
