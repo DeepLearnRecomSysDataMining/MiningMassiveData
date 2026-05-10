@@ -3,116 +3,100 @@ import pandas as pd
 import numpy as np
 import ast
 import logging
+import os
+import gc
 from config.training_config import TrainingConfig
+from datasets import load_dataset
 
 logger = logging.getLogger("data_utils")
 
+class LazyItemLookup:
+    """
+    Hệ thống tra cứu Metadata thông minh: 
+    - Giữ dữ liệu trên ổ cứng (Memory-Mapping).
+    - Chỉ giữ bảng Index ID -> RowIndex trong RAM.
+    - Tiết kiệm 99% RAM so với dùng Dictionary thông thường.
+    """
+    def __init__(self, dataset, id_to_idx):
+        self.dataset = dataset
+        self.id_to_idx = id_to_idx
+
+    def get(self, item_id, default=None):
+        idx = self.id_to_idx.get(item_id)
+        if idx is None:
+            return default if default is not None else {'text': "", 'full_text': "", 'category': "other"}
+        
+        # Bốc dữ liệu từ ổ cứng (Cực nhanh nhờ memory-mapping)
+        row = self.dataset[idx]
+        return {
+            'text': str(row.get('product_name', '')),
+            'full_text': str(row.get('full_text', '')),
+            'category': str(row.get('category', 'other'))
+        }
+
 def load_eval_dataset():
     """Tải tập Evaluation (Pickle) để đánh giá."""
+    path = TrainingConfig.EVAL_PKL_PATH
+    if not os.path.exists(path):
+        # Fallback cho trường hợp chạy trên Cloud nhưng file chưa tải về /tmp
+        path = "data/prepared_data_improved/evaluation_dataset.pkl"
+        
     if TrainingConfig.RANK == 0:
-        logger.info(f"Loading EVAL dataset from {TrainingConfig.EVAL_PKL_PATH}")
-    with open(TrainingConfig.EVAL_PKL_PATH, 'rb') as f:
+        logger.info(f"Loading EVAL dataset from {path}")
+        
+    with open(path, 'rb') as f:
         return pickle.load(f)
 
-def load_item_nodes_lookup(columns=None):
+def load_item_nodes_lookup():
     """
-    Tải Metadata sản phẩm từ Parquet (Item Nodes) một cách tối ưu RAM.
-    Mặc định load: product_id, asin, product_name, category, parsed_specs.
+    Tải Metadata sản phẩm sử dụng Memory-Mapping để tiết kiệm RAM tối đa cho DDP.
     """
-    if columns is None:
-        columns = ['product_id', 'asin', 'product_name', 'category', 'parsed_specs', 'full_text']
-        
     path = TrainingConfig.GCS_ITEM_NODES if TrainingConfig.IS_CLOUD else "data/item_nodes"
     
     if TrainingConfig.RANK == 0:
-        logger.info(f"==> Đang tải Item Metadata từ: {path} (RAM-Efficient Mode)")
+        logger.info(f"==> Đang khởi tạo Lazy Item Lookup từ: {path}")
+
+    # 1. Mở dataset bằng HF Datasets (0 RAM)
+    # TỐI ƯU: Loại bỏ parsed_specs để tránh lỗi kiểu Map và tiết kiệm RAM
+    target_cols = ['product_id', 'asin', 'product_name', 'full_text', 'category']
     
-    # Đọc Parquet với các cột đã chọn (Sử dụng try-except để tránh lỗi nếu thiếu cột full_text)
-    try:
-        df = pd.read_parquet(path, columns=columns)
-    except:
-        # Nếu thiếu cột full_text thì nạp các cột còn lại
-        columns.remove('full_text')
-        df = pd.read_parquet(path, columns=columns)
-    
-    lookup = {}
-    # Sử dụng itertuples() để duyệt nhanh và tiết kiệm RAM hơn iterrows()
-    for row in df.itertuples(index=False):
-        # Trích xuất dữ liệu (hỗ trợ cả các cột có thể thiếu)
-        meta = {
-            'text': str(row.product_name) if hasattr(row, 'product_name') and pd.notnull(row.product_name) else "",
-            'full_text': str(row.full_text) if hasattr(row, 'full_text') and pd.notnull(row.full_text) else "",
-            'category': str(row.category) if hasattr(row, 'category') and pd.notnull(row.category) else "other",
-            'specs': row.parsed_specs if hasattr(row, 'parsed_specs') else {}
-        }
-        
-        # Ánh xạ theo cả ID và ASIN để tối đa khả năng Join
-        if hasattr(row, 'product_id') and row.product_id:
-            lookup[row.product_id] = meta
-        if hasattr(row, 'asin') and row.asin:
-            lookup[row.asin] = meta
-            
+    if TrainingConfig.IS_CLOUD:
+        # Lưu ý: HF Datasets tự động handle gs:// và cache về local disk
+        item_ds = load_dataset('parquet', data_files=f"{path}/*.parquet", split='train', columns=target_cols)
+    else:
+        item_ds = load_dataset('parquet', data_dir=path, split='train', columns=target_cols)
+
+    # 2. Xây dựng bảng Index (Chỉ tốn vài trăm MB RAM thay vì hàng chục GB)
     if TrainingConfig.RANK == 0:
-        logger.info(f"==> Hoàn tất! Đã nạp metadata cho {len(lookup):,} sản phẩm vào RAM.")
+        logger.info(f"==> Đang xây dựng bảng chỉ mục cho {len(item_ds):,} sản phẩm...")
     
-    del df # Giải phóng dataframe ngay lập tức
-    import gc; gc.collect()
-    return lookup
+    id_to_idx = {}
+    # Lấy nhanh 2 cột ID để build index
+    p_ids = item_ds['product_id']
+    asins = item_ds['asin']
+    
+    for idx, (p_id, asin) in enumerate(zip(p_ids, asins)):
+        if p_id: id_to_idx[p_id] = idx
+        if asin: id_to_idx[asin] = idx
+
+    if TrainingConfig.RANK == 0:
+        logger.info(f"==> Hoàn tất! Index size: {len(id_to_idx):,} IDs.")
+    
+    return LazyItemLookup(item_ds, id_to_idx)
 
 def load_interactions_df():
-    """Tải lịch sử tương tác (Interactions) để làm dữ liệu Train bằng Memory-Mapping."""
+    """Tải lịch sử tương tác (Interactions) bằng Memory-Mapping."""
     path = TrainingConfig.GCS_INTERACTIONS if TrainingConfig.IS_CLOUD else "data/all_interactions"
     
     if TrainingConfig.RANK == 0:
         logger.info(f"==> Đang tải Interactions từ: {path} (Memory-Mapping Mode)")
     
-    from datasets import load_dataset
-
-    # if TrainingConfig.IS_CLOUD:
-    #     # Datasets sẽ tải file về cache và map trực tiếp ổ cứng (0 RAM)
-    #     df = load_dataset('parquet', data_files=f"gs://mining-data-2/output/all_interactions/*.parquet", split='train')
-    # else:
-    #     df = load_dataset('parquet', data_dir=path, split='train')
-    
     if TrainingConfig.IS_CLOUD:
-        # Datasets sẽ tải file về cache và map trực tiếp ổ cứng (0 RAM)
-        df = load_dataset('parquet', data_files=f"gs://mining-data-2/output/all_interactions/*.parquet", split='train').select_columns(['asin', 'product_id'])
+        # Chỉ lấy 2 cột cần thiết nhất để huấn luyện cơ bản
+        df = load_dataset('parquet', data_files=f"{path}/*.parquet", split='train', columns=['asin', 'product_id'])
     else:
-        df = load_dataset('parquet', data_dir=path, split='train').select_columns(['asin', 'product_id'])
+        df = load_dataset('parquet', data_dir=path, split='train', columns=['asin', 'product_id'])
     
     if TrainingConfig.RANK == 0:
-        logger.info(f"==> Đã nạp {len(df):,} tương tác (RAM tốn xấp xỉ 0GB).")
+        logger.info(f"==> Đã nạp {len(df):,} tương tác.")
     return df
-
-def clean_text(val):
-    """Làm sạch dữ liệu văn bản từ dataframe."""
-    if isinstance(val, list): return " ".join([str(x) for x in val])
-    if isinstance(val, str):
-        if val.startswith('['):
-            try:
-                val_list = ast.literal_eval(val)
-                if isinstance(val_list, list): return " ".join([str(x) for x in val_list])
-            except: pass
-        return val
-    if pd.isna(val): return ""
-    return str(val)
-
-def parse_specs(spec_text):
-    """Chuyển đổi chuỗi specs hoặc list specs sang dictionary key-value."""
-    specs = {}
-    if isinstance(spec_text, list):
-        for item in spec_text:
-            if '::' in str(item):
-                parts = str(item).split('::', 1)
-                if len(parts) == 2: specs[parts[0].strip().lower()] = parts[1].strip().lower()
-    elif isinstance(spec_text, str) and spec_text.startswith('['):
-        try:
-            items = ast.literal_eval(spec_text)
-            for item in items:
-                if '::' in str(item):
-                    parts = str(item).split('::', 1)
-                    if len(parts) == 2: specs[parts[0].strip().lower()] = parts[1].strip().lower()
-        except: pass
-    elif isinstance(spec_text, dict):
-        return {str(k).lower(): str(v).lower() for k, v in spec_text.items()}
-    return specs
