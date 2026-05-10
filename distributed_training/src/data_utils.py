@@ -54,16 +54,21 @@ def load_item_nodes_lookup(columns=None):
     return lookup
 
 def load_interactions_df():
-    """Tải lịch sử tương tác (Interactions) để làm dữ liệu Train."""
+    """Tải lịch sử tương tác (Interactions) để làm dữ liệu Train bằng Memory-Mapping."""
     path = TrainingConfig.GCS_INTERACTIONS if TrainingConfig.IS_CLOUD else "data/all_interactions"
     
     if TrainingConfig.RANK == 0:
-        logger.info(f"==> Đang tải Interactions từ: {path}")
+        logger.info(f"==> Đang tải Interactions từ: {path} (Memory-Mapping Mode)")
     
-    df = pd.read_parquet(path)
+    from datasets import load_dataset
+    if TrainingConfig.IS_CLOUD:
+        # Datasets sẽ tải file về cache và map trực tiếp ổ cứng (0 RAM)
+        df = load_dataset('parquet', data_files=f"gs://mining-data-2/output/all_interactions/*.parquet", split='train')
+    else:
+        df = load_dataset('parquet', data_dir=path, split='train')
     
     if TrainingConfig.RANK == 0:
-        logger.info(f"==> Đã nạp {len(df):,} tương tác để huấn luyện.")
+        logger.info(f"==> Đã nạp {len(df):,} tương tác (RAM tốn xấp xỉ 0GB).")
     return df
 
 def clean_text(val):
