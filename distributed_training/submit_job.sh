@@ -19,7 +19,7 @@ BUCKET="mining-data-2"         # Tên GCS Bucket của bạn
 # --- 2. CẤU HÌNH PHẦN CỨNG ---
 MACHINE_TYPE="n1-standard-8"   # Loại máy (8 vCPU, 30GB RAM)
 ACCELERATOR_TYPE="NVIDIA_TESLA_T4" # Loại GPU, tên định danh GPU T4 trên Vertex AI
-ACCELERATOR_COUNT=4            # CHẠY 4 GPU PHÂN TÁN trên mỗi node VM
+ACCELERATOR_COUNT=2            # CHẠY 4 GPU PHÂN TÁN trên mỗi node VM
 REPLICA_COUNT=1                # Số lượng Node VM (1 cho Single-Node, >1 cho Multi-Node)
 
 # --- 3. XỬ LÝ THAM SỐ VÀ TAG ---
@@ -57,7 +57,7 @@ gcloud ai custom-jobs create \
     --region=$REGION \
     --project=$PROJECT_ID \
     --display-name="RecSys_Baseline_${BASELINE_ID}_${TIMESTAMP}" \
-    --worker-pool-spec="machine-type=$MACHINE_TYPE,replica-count=$REPLICA_COUNT,container-image-uri=$IMAGE_URI,accelerator-type=$ACCELERATOR_TYPE,accelerator-count=$ACCELERATOR_COUNT,boot-disk-type=pd-ssd,boot-disk-size-gb=200" \
+    --worker-pool-spec="machine-type=$MACHINE_TYPE,replica-count=$REPLICA_COUNT,container-image-uri=$IMAGE_URI,accelerator-type=$ACCELERATOR_TYPE,accelerator-count=$ACCELERATOR_COUNT" \
     --args="--baseline=$BASELINE_ID"
 
 echo "----------------------------------------------------------"
