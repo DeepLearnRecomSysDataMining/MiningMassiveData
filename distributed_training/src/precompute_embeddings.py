@@ -11,12 +11,7 @@ import pickle
 import gc
 from datetime import timedelta
 
-# Cấu hình logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s [%(levelname)s] Rank %(rank)s: %(message)s',
-    force=True
-)
+# Cấu hình logging sẽ được quản lý tập trung bởi main.py và TrainingConfig
 
 def precompute_item_embeddings():
     """

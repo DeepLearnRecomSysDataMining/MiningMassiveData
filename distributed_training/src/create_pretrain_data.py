@@ -6,7 +6,6 @@ import numpy as np
 import pandas as pd
 from config.training_config import TrainingConfig
 
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("pretrain_data")
 
 def create_amazon_triplets(n_samples=100000):
