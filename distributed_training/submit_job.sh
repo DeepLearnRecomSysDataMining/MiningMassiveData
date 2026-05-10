@@ -17,9 +17,9 @@ REGION="asia-southeast1"           # Vùng chạy (us-central1, asia-southeast1,
 BUCKET="mining-data-2"         # Tên GCS Bucket của bạn
 
 # --- 2. CẤU HÌNH PHẦN CỨNG ---
-MACHINE_TYPE="n1-standard-8"   # Loại máy (8 vCPU, 30GB RAM)
+MACHINE_TYPE="n1-highmem-8"   # Loại máy (8 vCPU, 52GB RAM)
 ACCELERATOR_TYPE="NVIDIA_TESLA_T4" # Loại GPU, tên định danh GPU T4 trên Vertex AI
-ACCELERATOR_COUNT=2            # CHẠY 4 GPU PHÂN TÁN trên mỗi node VM
+ACCELERATOR_COUNT=4            # CHẠY 4 GPU PHÂN TÁN trên mỗi node VM
 REPLICA_COUNT=1                # Số lượng Node VM (1 cho Single-Node, >1 cho Multi-Node)
 
 # --- 3. XỬ LÝ THAM SỐ VÀ TAG ---
