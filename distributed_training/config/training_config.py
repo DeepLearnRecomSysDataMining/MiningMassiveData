@@ -2,36 +2,19 @@ import os
 import torch
 import logging
 
-class TrainingConfig:
-    # Nhận diện môi trường GCP (Chấp nhận cả TRAINING_ENV hoặc SPARK_ENV)
-    IS_CLOUD = (os.getenv("TRAINING_ENV") == "cloud") or (os.getenv("SPARK_ENV") == "cloud")
+class TrainingConfigClass:
+    """
+    Cấu hình tập trung cho toàn bộ Pipeline huấn luyện.
+    """
+    def __init__(self):
+        # 1. Nhận diện môi trường
+        self.IS_CLOUD = (os.getenv("TRAINING_ENV") == "cloud") or (os.getenv("SPARK_ENV") == "cloud")
     
-    # 1. GCS Paths
-    GCS_BUCKET = os.getenv("GCS_BUCKET", "gs://mining-data-2")
-    GCS_ROOT = f"{GCS_BUCKET}/output"
-    
-    # 2. Local Paths (Sử dụng /tmp/training trên Cloud để tránh tràn disk hệ thống)
-    LOCAL_BASE = "/tmp/training_data" if IS_CLOUD else "data/prepared_data_improved"
-    LOCAL_MODELS_DIR = "models_checkpoints"
-    @property
-    def DEVICE(self):
-        # Trên GCP, ép dùng CUDA nếu có, nếu không dùng CPU
-        local_rank = int(os.getenv("LOCAL_RANK", 0))
-        if torch.cuda.is_available():
-            return torch.device(f"cuda:{local_rank}")
-        return torch.device("cpu")
-    # 3. Distributed Params (Lấy từ Vertex AI Environment Variables)
-    @property
-    def WORLD_SIZE(self): return int(os.getenv("WORLD_SIZE", "1"))
-    
-    @property
-    def RANK(self): return int(os.getenv("RANK", "0"))
-
     @staticmethod
     def _get_env_or_default(key, default):
         return os.getenv(key, default).replace("\\", "/")
 
-    # --- 1. Cloud Paths (GCS) ---
+    # --- 2. Đường dẫn GCS (Dữ liệu gốc) ---
     @property
     def GCS_BUCKET(self):
         return self._get_env_or_default("GCS_BUCKET", "gs://mining-data-2")
@@ -41,33 +24,20 @@ class TrainingConfig:
         return f"{self.GCS_BUCKET}/output"
 
     @property
-    def GCS_PREPARED_DATA(self):
-        return f"{self.GCS_OUTPUT_DIR}/prepared_data_improved"
-
-    @property
     def GCS_INTERACTIONS(self):
         return f"{self.GCS_OUTPUT_DIR}/all_interactions"
-
-    @property
-    def GCS_EVAL_PARQUET(self):
-        return f"{self.GCS_OUTPUT_DIR}/evaluation_dataset"
 
     @property
     def GCS_ITEM_NODES(self):
         return f"{self.GCS_OUTPUT_DIR}/item_nodes"
 
     @property
-    def GCS_EVAL_PKL(self):
-        return f"{self.GCS_PREPARED_DATA}/evaluation_dataset.pkl"
+    def GCS_PREPARED_DATA(self):
+        return f"{self.GCS_OUTPUT_DIR}/prepared_data_improved"
 
-    @property
-    def GCS_VN_CORPUS_PKL(self):
-        return f"{self.GCS_PREPARED_DATA}/vn_corpus.pkl"
-
-    # --- 2. Local Paths (Scratch) ---
+    # --- 3. Đường dẫn Local (Sử dụng ổ cứng tạm SSD của VM) ---
     @property
     def LOCAL_DATA_DIR(self):
-        # Use /tmp/training_data on Cloud to avoid disk issues, or local data/ for local dev
         path = "/tmp/training_data" if self.IS_CLOUD else "data/prepared_data_improved"
         os.makedirs(path, exist_ok=True)
         return path
@@ -86,13 +56,7 @@ class TrainingConfig:
     def VN_CORPUS_PKL_PATH(self):
         return os.path.join(self.LOCAL_DATA_DIR, "vn_corpus.pkl")
 
-    # --- 3. Training Hyperparameters ---
-    @property
-    def DEVICE(self):
-        # Lấy GPU theo rank cục bộ (local_rank)
-        local_rank = int(os.getenv("LOCAL_RANK", 0))
-        return torch.device(f"cuda:{local_rank}" if torch.cuda.is_available() else "cpu")
-
+    # --- 4. Tham số Distributed (Dành cho 4 GPU) ---
     @property
     def WORLD_SIZE(self):
         return int(os.getenv("WORLD_SIZE", "1"))
@@ -100,6 +64,10 @@ class TrainingConfig:
     @property
     def RANK(self):
         return int(os.getenv("RANK", "0"))
+
+    @property
+    def LOCAL_RANK(self):
+        return int(os.getenv("LOCAL_RANK", "0"))
 
     @property
     def MASTER_ADDR(self):
@@ -110,24 +78,32 @@ class TrainingConfig:
         return self._get_env_or_default("MASTER_PORT", "12355")
 
     @property
+    def DEVICE(self):
+        if torch.cuda.is_available():
+            return torch.device(f"cuda:{self.LOCAL_RANK}")
+        return torch.device("cpu")
+
+    # --- 5. Siêu tham số huấn luyện (Đã tối ưu cho 4 GPU) ---
+    @property
     def BATCH_SIZE(self):
-        return int(self._get_env_or_default("BATCH_SIZE", "64"))
+        return int(self._get_env_or_default("BATCH_SIZE", "128"))
 
     @property
     def EPOCHS(self):
-        return int(self._get_env_or_default("EPOCHS", "15"))
+        return int(self._get_env_or_default("EPOCHS", "3"))
 
     @property
     def LR(self):
         return float(self._get_env_or_default("LR", "1e-3"))
 
-# Khởi tạo instance duy nhất
-TrainingConfig = TrainingConfig()
+# Khởi tạo Instance duy nhất
+TrainingConfig = TrainingConfigClass()
 
-# Cấu hình Logging chuyên nghiệp
 def setup_logging():
+    # Chỉ GPU 0 mới in log INFO
+    log_level = logging.INFO if TrainingConfig.RANK == 0 else logging.WARNING
     logging.basicConfig(
-        level=logging.INFO,
+        level=log_level,
         format="%(asctime)s [%(levelname)s] %(name)s - %(message)s",
         handlers=[
             logging.StreamHandler(),
