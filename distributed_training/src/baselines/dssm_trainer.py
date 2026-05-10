@@ -23,7 +23,7 @@ class DSSMTrainingDataset(Dataset):
     def __len__(self): return len(self.df)
 
     def __getitem__(self, idx):
-        row = self.df.iloc[idx]
+        row = self.df[int(idx)]
         # Lấy metadata từ lookup
         q_meta = self.lookup.get(row['asin'], {})
         p_meta = self.lookup.get(row['parent_asin'], {})

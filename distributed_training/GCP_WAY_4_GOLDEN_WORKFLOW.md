@@ -66,6 +66,7 @@ gcloud compute instances create coordinator-vm \
         
         # ./submit_job.sh
         hoặc 
+        # sh submit_job.sh 1  # ko cần chmod nữa
         # ./submit_job.sh 1 # Ví dụ chạy Baseline 1
     ```
 ## Chú ý
