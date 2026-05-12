@@ -20,3 +20,4 @@ log.txt
 log_*.txt
 
 .commandcode/
+distributed_training/scripts/

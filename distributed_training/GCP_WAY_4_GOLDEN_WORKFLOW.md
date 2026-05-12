@@ -109,6 +109,11 @@ Gõ lệnh kiểm tra dung lượng ổ cứng:
    df -h
    ```
 
+Xem log chạy Custom Job trên terminal:
+```bash
+   gcloud ai custom-jobs stream-logs [JOB_ID]
+```
+
 ## 3. Luồng làm việc hàng ngày (Daily Workflow)
 
 ### Bước 1: Tại máy cá nhân (Local)
