@@ -110,7 +110,7 @@ def precompute_item_embeddings():
                 continue
 
             # Encode chỉ những items hợp lệ
-            embs = model.encode(valid_texts, batch_size=512, convert_to_numpy=True, show_progress_bar=False)
+            embs = model.encode(valid_texts, batch_size=896, convert_to_numpy=True, show_progress_bar=False)
             num_vectors = embs.shape[0]
 
             # IN VÀ SO SÁNH NGAY LẬP TỨC
