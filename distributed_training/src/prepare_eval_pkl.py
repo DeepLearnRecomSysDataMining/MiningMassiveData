@@ -104,13 +104,17 @@ def prepare_evaluation_pickle_optimized():
                 break
 
         if true_vn_id:
+            # Lấy category an toàn (tránh KeyError nếu meta tồn tại nhưng thiếu key)
+            q_cat = q_meta.get('category', 'other')
+            cand_cats = [lookup.get(cid, {}).get('category', 'other') for cid in row['candidate_ids']]
+
             enriched_data.append({
                 'query_id': q_id,
                 'query_text': q_meta['text'],
-                'query_category': q_meta['category'],
+                'query_category': q_cat,
                 'candidate_ids': list(row['candidate_ids']),
                 'candidate_texts': cand_texts,
-                'candidate_categories': [lookup.get(cid, {'category': "other"})['category'] for cid in row['candidate_ids']],
+                'candidate_categories': cand_cats,
                 'true_vn_id': true_vn_id
             })
 
