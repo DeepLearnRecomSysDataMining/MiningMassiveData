@@ -36,10 +36,26 @@ def load_precomputed_embeddings():
     return PrecomputedEmbeddingLookup(embeddings, id_to_idx)
 
 def load_eval_dataset():
-    """Tải tập Evaluation (Pickle) để đánh giá."""
+    """Tải tập Evaluation (Pickle) để đánh giá. Tự động tải từ GCS nếu cần."""
     path = TrainingConfig.EVAL_PKL_PATH
+    
     if not os.path.exists(path):
-        path = "data/prepared_data_improved/evaluation_dataset.pkl"
+        if TrainingConfig.IS_CLOUD:
+            logger.info(f"Đang tải evaluation_dataset.pkl từ GCS về: {path}")
+            import subprocess
+            gcs_src = f"{TrainingConfig.GCS_PREPARED_DATA}/evaluation_dataset.pkl"
+            result = subprocess.run(["gsutil", "cp", gcs_src, path], capture_output=True)
+            if result.returncode != 0:
+                logger.warning(f"Không thể tải file từ {gcs_src} (Có thể file chưa tồn tại trên GCS).")
+        
+        # Fallback kiểm tra lần cuối
+        if not os.path.exists(path):
+            path_local = "data/prepared_data_improved/evaluation_dataset.pkl"
+            if os.path.exists(path_local):
+                path = path_local
+            else:
+                raise FileNotFoundError(f"Evaluation dataset không tìm thấy tại {path} hoặc {path_local}")
+            
     with open(path, 'rb') as f:
         return pickle.load(f)
 

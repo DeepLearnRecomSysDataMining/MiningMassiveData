@@ -37,11 +37,12 @@ def cleanup_distributed():
 
 def run_pipeline(baseline_id):
     ckpt_path = None
-    eval_dataset = load_eval_dataset()
 
     if baseline_id == 1:
+        eval_dataset = load_eval_dataset()
         run_bm25(eval_dataset)
     elif baseline_id == 2:
+        eval_dataset = load_eval_dataset()
         run_sbert(eval_dataset)
     elif baseline_id in [3, 4]:
         # 1. KIỂM TRA LOCAL VÀ GCS
@@ -66,8 +67,10 @@ def run_pipeline(baseline_id):
             ckpt_path = train_gcn(interactions_df, embedding_lookup)
             
     elif baseline_id == 5:
+        eval_dataset = load_eval_dataset()
         run_hybrid(eval_dataset)
     elif baseline_id == 6:
+        eval_dataset = load_eval_dataset()
         run_llm_chgnn(eval_dataset)
 
     if TrainingConfig.RANK == 0 and ckpt_path and os.path.exists(ckpt_path):
@@ -83,6 +86,9 @@ def main():
 
     setup_distributed()
 
+    # 1. Đồng bộ dữ liệu từ GCS về Local (Cần thiết cho mọi Rank để đọc file)
+    download_training_data()
+
     if TrainingConfig.RANK == 0:
         print("\n" + "="*60)
         print(f"   AMAZON x VN - SUPER-FAST DISTRIBUTED TRAINING (PRECOMPUTED)")
@@ -90,7 +96,8 @@ def main():
         print("="*60 + "\n")
 
     # Thay thế dist.barrier() cứng nhắc bằng vòng lặp kiểm tra file (Tránh NCCL Timeout)
-    if TrainingConfig.RANK != 0:
+    # CHỈ ĐỢI NẾU KHÔNG PHẢI LÀ BASELINE 3, 4 HOẶC ALL
+    if str(args.baseline) not in ["3", "4", "all"] and TrainingConfig.RANK != 0:
         import time
         logger.info(f"Rank {TrainingConfig.RANK} đang đợi dữ liệu được đồng bộ từ Rank 0...")
         max_wait = 3600  # Đợi tối đa 1 tiếng
