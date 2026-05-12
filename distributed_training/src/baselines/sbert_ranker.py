@@ -51,11 +51,13 @@ def run_sbert(dataset):
             # Tính toán trên GPU
             cos_scores = torch.nn.functional.cosine_similarity(query_emb.unsqueeze(0), candidate_embs)
             
-            # Chuyển Category sang Tensor để so khớp trên GPU (tùy chọn, ở đây dùng numpy cho đơn giản vì data nhỏ)
+            # 4. Tính điểm kết hợp (Chỉ dùng Category Bonus nếu dữ liệu có sẵn)
             cos_scores_cpu = cos_scores.cpu().numpy()
-            cat_scores = np.array([1.0 if cat == data['query_category'] else 0.0 for cat in data['candidate_categories']])
-            
-            combined = 0.7 * cos_scores_cpu + 0.3 * cat_scores * np.max(cos_scores_cpu)
+            if 'candidate_categories' in data and 'query_category' in data:
+                cat_scores = np.array([1.0 if cat == data['query_category'] else 0.0 for cat in data['candidate_categories']])
+                combined = 0.7 * cos_scores_cpu + 0.3 * cat_scores * np.max(cos_scores_cpu)
+            else:
+                combined = cos_scores_cpu
             
             ranked_ids = [data['candidate_ids'][i] for i in np.argsort(combined)[::-1]]
             try:

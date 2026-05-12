@@ -35,6 +35,14 @@ class TrainingConfigClass:
     def GCS_PREPARED_DATA(self):
         return f"{self.GCS_OUTPUT_DIR}/prepared_data_improved"
 
+    @property
+    def GCS_EVAL_PARQUET(self):
+        return f"{self.GCS_OUTPUT_DIR}/evaluation_dataset"
+
+    @property
+    def GCS_EVAL_PKL(self):
+        return f"{self.GCS_PREPARED_DATA}/evaluation_dataset.pkl"
+
     # --- 3. Đường dẫn Local (Sử dụng ổ cứng tạm SSD của VM) ---
     @property
     def LOCAL_DATA_DIR(self):

@@ -92,7 +92,7 @@ def prepare_evaluation_pickle_optimized():
             logger.info(f" -> Đã xử lý {i+1}/{len(eval_df)} queries...")
             
         q_id = row['query_id']
-        q_meta = lookup.get(q_id, {'text': ""})
+        q_meta = lookup.get(q_id, {'text': "", 'category': "other"})
         
         cand_texts = [lookup.get(cid, {'text': ""})['text'] for cid in row['candidate_ids']]
         
@@ -107,8 +107,10 @@ def prepare_evaluation_pickle_optimized():
             enriched_data.append({
                 'query_id': q_id,
                 'query_text': q_meta['text'],
+                'query_category': q_meta['category'],
                 'candidate_ids': list(row['candidate_ids']),
                 'candidate_texts': cand_texts,
+                'candidate_categories': [lookup.get(cid, {'category': "other"})['category'] for cid in row['candidate_ids']],
                 'true_vn_id': true_vn_id
             })
 
