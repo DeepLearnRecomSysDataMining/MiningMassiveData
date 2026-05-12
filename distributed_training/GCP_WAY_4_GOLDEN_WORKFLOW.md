@@ -113,6 +113,13 @@ Xem log chạy Custom Job trên terminal:
 ```bash
    gcloud ai custom-jobs stream-logs [JOB_ID]
 ```
+Hoặc xem realtime lưu ra log:
+```bash
+   # Giả sử JOB_ID là 123456789
+   nohup gcloud ai custom-jobs stream-logs 123456789 > training_process_log.txt 2>&1 &
+   # hoặcc rõ nhất:
+   nohup gcloud ai custom-jobs stream-logs projects/650721316539/locations/asia-southeast1/customJobs/2567941017630146560 > training_process_log.txt 2>&1 &
+```
 
 ## 3. Luồng làm việc hàng ngày (Daily Workflow)
 
