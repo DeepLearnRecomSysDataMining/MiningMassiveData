@@ -86,8 +86,17 @@ def main():
 
     setup_distributed()
 
-    # 1. Đồng bộ dữ liệu từ GCS về Local (Cần thiết cho mọi Rank để đọc file)
-    download_training_data()
+    # 1. ĐỒNG BỘ DỮ LIỆU (Chỉ GPU 0 tải, các GPU khác đợi để tránh xung đột gsutil)
+    if TrainingConfig.RANK == 0:
+        download_training_data()
+    else:
+        import time
+        # Đợi tối đa 5 phút cho việc tải các file pkl nhỏ
+        max_wait = 300
+        elapsed = 0
+        while not os.path.exists(TrainingConfig.EVAL_PKL_PATH) and elapsed < max_wait:
+            time.sleep(5)
+            elapsed += 5
 
     if TrainingConfig.RANK == 0:
         print("\n" + "="*60)
