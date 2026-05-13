@@ -1,6 +1,6 @@
 import logging
 import torch
-import torch.distributed as dist
+# import torch.distributed as dist
 import numpy as np
 from tqdm import tqdm
 from sentence_transformers import SentenceTransformer
@@ -21,8 +21,8 @@ def run_sbert(dataset):
     model = SentenceTransformer('paraphrase-multilingual-mpnet-base-v2', device=device)
     
     # 1. Khởi tạo Phân tán nếu cần
-    if TrainingConfig.WORLD_SIZE > 1 and not dist.is_initialized():
-        dist.init_process_group(backend="nccl" if torch.cuda.is_available() else "gloo")
+    # if TrainingConfig.WORLD_SIZE > 1 and not dist.is_initialized():
+    #     dist.init_process_group(backend="nccl" if torch.cuda.is_available() else "gloo")
 
     # 2. Pre-compute VN unique embeddings (Tăng tốc độ bằng cách encode 1 lần)
     unique_vn = {}
@@ -40,7 +40,8 @@ def run_sbert(dataset):
     vn_emb_dict = {vid: vn_embs[i] for i, vid in enumerate(vn_ids)}
     
     # 3. Chia nhỏ data theo GPU
-    chunk = dataset[TrainingConfig.RANK::TrainingConfig.WORLD_SIZE]
+    # chunk = dataset[TrainingConfig.RANK::TrainingConfig.WORLD_SIZE]
+    chunk = dataset
     local_hits, local_ndcg = 0, 0.0
     
     with torch.no_grad():
@@ -67,12 +68,13 @@ def run_sbert(dataset):
             except ValueError: pass
 
     # 4. Sync kết quả
-    res = torch.tensor([local_hits, local_ndcg], device=device)
-    if dist.is_initialized():
-        dist.all_reduce(res, op=dist.ReduceOp.SUM)
+    # res = torch.tensor([local_hits, local_ndcg], device=device)
+    # if dist.is_initialized():
+    #     dist.all_reduce(res, op=dist.ReduceOp.SUM)
     
     if TrainingConfig.RANK == 0:
-        logger.info(f"SBERT Result -> HR@10: {res[0].item()/len(dataset):.4f} | NDCG@10: {res[1].item()/len(dataset):.4f}")
+        # logger.info(f"SBERT Result -> HR@10: {res[0].item()/len(dataset):.4f} | NDCG@10: {res[1].item()/len(dataset):.4f}")
+        logger.info(f"SBERT Result -> HR@10: {local_hits/len(dataset):.4f} | NDCG@10: {local_ndcg/len(dataset):.4f}")
 
 if __name__ == "__main__":
     from src.data_utils import load_eval_dataset

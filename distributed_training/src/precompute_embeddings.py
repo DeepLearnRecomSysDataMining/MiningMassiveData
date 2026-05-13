@@ -106,7 +106,8 @@ def precompute_item_embeddings():
 
             num_valid_ids = len(valid_prefixed_ids)
             if num_valid_ids == 0:
-                logger.warning(f"  - File {f_name} không có dữ liệu hợp lệ. Bỏ qua.")
+                logger.warning(f"  - File {f_name} không có dữ liệu hợp lệ. Đánh dấu done và bỏ qua.")
+                subprocess.run(["gsutil", "cp", "/dev/null", done_flag_gcs], check=True)
                 continue
 
             # Encode chỉ những items hợp lệ

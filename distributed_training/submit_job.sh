@@ -1,20 +1,10 @@
-#!/bin/bash
-
-# submit_job.sh - Script chuẩn gửi huấn luyện phân tán lên Google Vertex AI
-#
-# CÁCH DÙNG:
-#   1. Trên Linux/Mac/Git Bash: ./submit_job.sh [baseline_id]
-#   2. Trên Windows PowerShell: bash distributed_training/submit_job.sh [baseline_id]
-#
-# Tham số: [baseline_id] có thể là 1, 2, 3, 4, 5, 6 hoặc "all" (mặc định)
-
 # --- 0. ĐẢM BẢO CHẠY ĐÚNG THƯ MỤC ---
 cd "$(dirname "$0")"
 
 # --- 1. CẤU HÌNH DỰ ÁN (BẮT BUỘC THAY ĐỔI) ---
-PROJECT_ID="mining-data-2"   # <--- THAY BẰNG PROJECT ID CỦA BẠN
-REGION="asia-southeast1"           # Vùng chạy (us-central1, asia-southeast1, ...)
-BUCKET="mining-data-2"         # Tên GCS Bucket của bạn
+PROJECT_ID="mining-data-2"   
+REGION="asia-southeast1" 
+BUCKET="mining-data-2" 
 
 # --- 2. CẤU HÌNH PHẦN CỨNG ---
 MACHINE_TYPE="n1-highmem-8"   # Loại máy (8 vCPU, 52GB RAM)

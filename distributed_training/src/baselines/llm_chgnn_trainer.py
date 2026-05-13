@@ -57,14 +57,16 @@ def run_llm_chgnn(dataset):
     
     # 3. Đánh giá
     hits_at_10, ndcg_at_10 = 0, 0.0
-    chunk = dataset[TrainingConfig.RANK::TrainingConfig.WORLD_SIZE]
+    # chunk = dataset[TrainingConfig.RANK::TrainingConfig.WORLD_SIZE]
+    chunk = dataset
     
     with torch.no_grad():
-        for data in tqdm(chunk, desc=f"CHGNN Rank {TrainingConfig.RANK}"):
+        # for data in tqdm(chunk, desc=f"CHGNN Rank {TrainingConfig.RANK}"):
+        for data in tqdm(dataset, desc="LLM-CHGNN Evaluation"):
             # Lấy vector SBERT làm input feature (X)
-            q_emb = model_sbert.encode(data['query_text'], convert_to_tensor=True)
-            c_embs = model_sbert.encode(data['candidate_texts'], convert_to_tensor=True)
-            X = torch.cat([q_emb.unsqueeze(0), c_embs], dim=0).unsqueeze(0) # (1, 101, 768)
+            q_emb = model_sbert.encode(data['query_text'], convert_to_tensor=True, device=device)
+            c_embs = model_sbert.encode(data['candidate_texts'], convert_to_tensor=True, device=device)
+            X = torch.cat([q_emb.unsqueeze(0), c_embs], dim=0).unsqueeze(0).to(device) # (1, 101, 768)
             
             # Xây dựng ma trận H cho batch này
             item_specs_list = [data.get('query_specs', {})] + data.get('candidate_specs', [])
@@ -87,11 +89,12 @@ def run_llm_chgnn(dataset):
             except ValueError: pass
 
     # Đồng bộ kết quả phân tán
-    res = torch.tensor([hits_at_10, ndcg_at_10], device=device)
-    torch.distributed.all_reduce(res)
+    # res = torch.tensor([hits_at_10, ndcg_at_10], device=device)
+    # torch.distributed.all_reduce(res)
     
     if TrainingConfig.RANK == 0:
-        logger.info(f"LLM-CHGNN Result -> HR@10: {res[0].item()/len(dataset):.4f} | NDCG@10: {res[1].item()/len(dataset):.4f}")
+        # logger.info(f"LLM-CHGNN Result -> HR@10: {res[0].item()/len(dataset):.4f} | NDCG@10: {res[1].item()/len(dataset):.4f}")
+        logger.info(f"LLM-CHGNN Result -> HR@10: {hits_at_10/len(dataset):.4f} | NDCG@10: {ndcg_at_10/len(dataset):.4f}")
 
 if __name__ == "__main__":
     from src.data_utils import load_eval_dataset
@@ -100,10 +103,10 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
     
     # 2. Khởi tạo Phân tán cho GPU
-    if TrainingConfig.WORLD_SIZE > 1 and not torch.distributed.is_initialized():
-        torch.distributed.init_process_group(backend="nccl" if torch.cuda.is_available() else "gloo")
-        if torch.cuda.is_available():
-            torch.cuda.set_device(TrainingConfig.DEVICE)
+    # if TrainingConfig.WORLD_SIZE > 1 and not torch.distributed.is_initialized():
+    #     torch.distributed.init_process_group(backend="nccl" if torch.cuda.is_available() else "gloo")
+    #     if torch.cuda.is_available():
+    #         torch.cuda.set_device(TrainingConfig.DEVICE)
 
     # 3. Chạy
     try:

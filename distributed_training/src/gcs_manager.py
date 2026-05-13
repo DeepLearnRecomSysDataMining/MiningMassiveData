@@ -85,7 +85,8 @@ def merge_precomputed_chunks():
     logger.info(f"Tổng hợp {len(all_npy_files)} mảnh. Tổng số item: {total_rows:,}")
 
     # 3. Gộp Vector dùng Memmap (RAM Safe)
-    fp = np.memmap(final_npy_path, dtype='float32', mode='w+', shape=(total_rows, 768))
+    # fp = np.memmap(final_npy_path, dtype='float32', mode='w+', shape=(total_rows, 768))
+    fp = np.lib.format.open_memmap(final_npy_path, dtype='float32', mode='w+', shape=(total_rows, 768))
     
     final_index = {}
     curr_offset = 0
