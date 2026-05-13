@@ -1,19 +1,14 @@
-# Thu vien cot loi cho Training
-# torch>=2.0.0
-# torchvision
-# torchaudio
-
-# Giao tiep voi Google Cloud Storage
+# Google Cloud Storage
 gcsfs
 google-cloud-storage
 fsspec
 
-# Xu ly du lieu Big Data
+# Data processing
 pandas
 pyarrow
 fastparquet
 
-# Deep Learning Utilities
+# ML / NLP utilities
 sentence-transformers==2.7.0
 transformers==4.40.1
 datasets>=2.19.0
