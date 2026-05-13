@@ -123,6 +123,8 @@ def run_evaluation_generator(spark: SparkSession, items_path: str, output_path: 
     df_final_ids = df_pos.select("query_id", "cand_id", "label") \
         .unionByName(df_negatives)
 
+    df_final_ids = df_final_ids.dropDuplicates(["query_id", "cand_id"])
+    
     # 5. Group IDs lại thành List (Format chuẩn cho Training nhưng siêu nhẹ)
     df_eval = df_final_ids.groupBy("query_id").agg(
         F.collect_list("cand_id").alias("candidate_ids"),
