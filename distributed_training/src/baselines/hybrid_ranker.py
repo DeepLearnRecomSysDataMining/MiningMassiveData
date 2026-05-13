@@ -1,6 +1,6 @@
 import logging
 import torch
-import torch.distributed as dist
+# import torch.distributed as dist
 import numpy as np
 from tqdm import tqdm
 from sentence_transformers import SentenceTransformer
@@ -32,8 +32,8 @@ def run_hybrid(dataset):
     model_sbert = SentenceTransformer('paraphrase-multilingual-mpnet-base-v2', device=device)
     
     # 1. Khởi tạo Phân tán
-    if TrainingConfig.WORLD_SIZE > 1 and not dist.is_initialized():
-        dist.init_process_group(backend="nccl" if torch.cuda.is_available() else "gloo")
+    # if TrainingConfig.WORLD_SIZE > 1 and not dist.is_initialized():
+    #     dist.init_process_group(backend="nccl" if torch.cuda.is_available() else "gloo")
 
     # 2. Pre-compute VN unique embeddings
     unique_vn = {}
@@ -49,10 +49,12 @@ def run_hybrid(dataset):
     vn_emb_dict = {vid: vn_embs[i] for i, vid in enumerate(vn_ids)}
     
     # 3. Chia nhỏ data
-    chunk = dataset[TrainingConfig.RANK::TrainingConfig.WORLD_SIZE]
+    # chunk = dataset[TrainingConfig.RANK::TrainingConfig.WORLD_SIZE]
+    chunk = dataset
     l_hits, l_ndcg = 0, 0.0
     
-    for data in tqdm(chunk, desc=f"Hybrid Rank {TrainingConfig.RANK}", disable=(TrainingConfig.RANK != 0)):
+    # for data in tqdm(chunk, desc=f"Hybrid Rank {TrainingConfig.RANK}", disable=(TrainingConfig.RANK != 0)):
+    for data in tqdm(dataset, desc="Hybrid Evaluation"):
         # -- BM25 (CPU) --
         bm25_scores = np.array(BM25Okapi([t.split() for t in data['candidate_texts']]).get_scores(data['query_text'].split()))
         bm25_scores /= (np.max(bm25_scores) + 1e-6)
@@ -80,12 +82,13 @@ def run_hybrid(dataset):
         except ValueError: pass
 
     # 4. Sync
-    res = torch.tensor([l_hits, l_ndcg], device=device)
-    if dist.is_initialized():
-        dist.all_reduce(res, op=dist.ReduceOp.SUM)
+    # res = torch.tensor([l_hits, l_ndcg], device=device)
+    # if dist.is_initialized():
+    #     dist.all_reduce(res, op=dist.ReduceOp.SUM)
     
     if TrainingConfig.RANK == 0:
-        logger.info(f"Hybrid Result -> HR@10: {res[0].item()/len(dataset):.4f} | NDCG@10: {res[1].item()/len(dataset):.4f}")
+        # logger.info(f"Hybrid Result -> HR@10: {res[0].item()/len(dataset):.4f} | NDCG@10: {res[1].item()/len(dataset):.4f}")
+        logger.info(f"Hybrid Result -> HR@10: {l_hits/len(dataset):.4f} | NDCG@10: {l_ndcg/len(dataset):.4f}")
 
 if __name__ == "__main__":
     from src.data_utils import load_eval_dataset

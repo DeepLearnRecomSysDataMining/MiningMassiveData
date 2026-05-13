@@ -26,24 +26,46 @@ logger = logging.getLogger("training_main")
 def setup_distributed():
     if not dist.is_initialized():
         backend = "nccl" if torch.cuda.is_available() else "gloo"
-        dist.init_process_group(backend=backend, init_method="env://")
         if torch.cuda.is_available():
-            torch.cuda.set_device(TrainingConfig.DEVICE)
-        dist.barrier()
+            torch.cuda.set_device(TrainingConfig.LOCAL_RANK)
+        dist.init_process_group(backend=backend, init_method="env://")
 
 def cleanup_distributed():
     if dist.is_initialized():
         dist.destroy_process_group()
 
+def sync_rank0_stage(stage_name, timeout=21600):
+    import time
+    flag_path = f"/tmp/{stage_name}_done.flag"
+
+    if TrainingConfig.RANK == 0:
+        with open(flag_path, "w") as f:
+            f.write("done")
+        return
+
+    elapsed = 0
+    while not os.path.exists(flag_path) and elapsed < timeout:
+        time.sleep(10)
+        elapsed += 10
+
+    if not os.path.exists(flag_path):
+        raise TimeoutError(f"Timeout waiting for Rank 0 stage: {stage_name}")
+
 def run_pipeline(baseline_id):
     ckpt_path = None
 
-    if baseline_id == 1:
+    # Baseline không cần multi-GPU: chỉ Rank 0 chạy
+    if baseline_id in [1, 2, 5, 6] and TrainingConfig.RANK != 0:
+        return
+
+    if baseline_id == 1:        
         eval_dataset = load_eval_dataset()
         run_bm25(eval_dataset)
+        
     elif baseline_id == 2:
         eval_dataset = load_eval_dataset()
         run_sbert(eval_dataset)
+
     elif baseline_id in [3, 4]:
         # 1. KIỂM TRA LOCAL VÀ GCS
         emb_path = TrainingConfig.ITEM_EMBEDDINGS_PATH
@@ -69,6 +91,7 @@ def run_pipeline(baseline_id):
     elif baseline_id == 5:
         eval_dataset = load_eval_dataset()
         run_hybrid(eval_dataset)
+        
     elif baseline_id == 6:
         eval_dataset = load_eval_dataset()
         run_llm_chgnn(eval_dataset)
@@ -84,62 +107,64 @@ def main():
     parser.add_argument("--skip-download", action="store_true", help="Bỏ qua tải dữ liệu từ GCS")
     args = parser.parse_args()
 
-    setup_distributed()
+    baseline_arg = str(args.baseline)
+    needs_distributed = baseline_arg in ["3", "4", "all"]
 
-    # 1. ĐỒNG BỘ DỮ LIỆU (Chỉ GPU 0 tải, các GPU khác đợi để tránh xung đột gsutil)
-    if TrainingConfig.RANK == 0:
-        download_training_data()
+    # Chỉ baseline 3, 4, all mới cần distributed
+    if needs_distributed:
+        setup_distributed()
     else:
-        import time
-        # Đợi tối đa 5 phút cho việc tải các file pkl nhỏ
-        max_wait = 300
-        elapsed = 0
-        while not os.path.exists(TrainingConfig.EVAL_PKL_PATH) and elapsed < max_wait:
-            time.sleep(5)
-            elapsed += 5
+        # Baseline 1,2,5,6 chạy single process trên GPU 0 nếu có
+        if torch.cuda.is_available():
+            torch.cuda.set_device(0)
 
-    if TrainingConfig.RANK == 0:
-        print("\n" + "="*60)
-        print(f"   AMAZON x VN - SUPER-FAST DISTRIBUTED TRAINING (PRECOMPUTED)")
-        print(f"   World Size: {TrainingConfig.WORLD_SIZE} | Mode: {args.baseline}")
-        print("="*60 + "\n")
+    try:
+        # 1. ĐỒNG BỘ DỮ LIỆU (Chỉ GPU 0 tải, các GPU khác đợi để tránh xung đột gsutil)
+        if TrainingConfig.RANK == 0:
+            download_training_data()
+            if needs_distributed:
+                sync_rank0_stage("download_data")
+        else:
+            if needs_distributed:
+                sync_rank0_stage("download_data")
 
-    # Thay thế dist.barrier() cứng nhắc bằng vòng lặp kiểm tra file (Tránh NCCL Timeout)
-    # CHỈ ĐỢI NẾU KHÔNG PHẢI LÀ BASELINE 3, 4 HOẶC ALL
-    if str(args.baseline) not in ["3", "4", "all"] and TrainingConfig.RANK != 0:
-        import time
-        logger.info(f"Rank {TrainingConfig.RANK} đang đợi dữ liệu được đồng bộ từ Rank 0...")
-        max_wait = 3600  # Đợi tối đa 1 tiếng
-        elapsed = 0
-        while not os.path.exists(TrainingConfig.ITEM_EMBEDDINGS_PATH) and elapsed < max_wait:
-            time.sleep(10)
-            elapsed += 10
-            if elapsed % 60 == 0:
-                logger.info(f"  - Vẫn đang đợi... ({elapsed//60} phút)")
-        
-        if not os.path.exists(TrainingConfig.ITEM_EMBEDDINGS_PATH):
-            logger.error("Quá thời gian chờ tải dữ liệu (Timeout).")
-            cleanup_distributed(); return
-    else:
-        # Rank 0 đợi một chút để đảm bảo file system đã flush (quan trọng trên NFS/Cloud)
-        import time
-        time.sleep(5)
+        if TrainingConfig.RANK == 0:
+            print("\n" + "="*60)
+            print(f"   AMAZON x VN - SUPER-FAST DISTRIBUTED TRAINING (PRECOMPUTED)")
+            print(f"   World Size: {TrainingConfig.WORLD_SIZE} | Mode: {args.baseline}")
+            print("="*60 + "\n")
 
-    if args.baseline == "all":
-        baselines_to_run = [1, 2, 3, 4, 5, 6]
-    else:
-        baselines_to_run = [int(args.baseline)]
+        # Với baseline 1,2,5,6 thì không cần đợi item_embeddings.npy
+        # Vì chỉ baseline 3,4 mới cần precomputed embeddings
 
-    for b_id in baselines_to_run:
-        if TrainingConfig.RANK == 0: logger.info(f">>> BẮT ĐẦU BASELINE {b_id} <<<")
-        try: run_pipeline(b_id)
-        except Exception as e: 
-            logger.error(f"Thất bại tại Baseline {b_id}: {e}")
-            import traceback; traceback.print_exc()
-        dist.barrier()
+        if args.baseline == "all":
+            baselines_to_run = [1, 2, 3, 4, 5, 6]
+        else:
+            baselines_to_run = [int(args.baseline)]
 
-    if TrainingConfig.RANK == 0: logger.info("TOÀN BỘ PIPELINE ĐÃ HOÀN TẤT!")
-    cleanup_distributed()
+        for b_id in baselines_to_run:
+            if TrainingConfig.RANK == 0: 
+                logger.info(f">>> BẮT ĐẦU BASELINE {b_id} <<<")
+            try: 
+                run_pipeline(b_id)
+            except Exception as e: 
+                logger.error(f"Thất bại tại Baseline {b_id}: {e}")
+                import traceback
+                traceback.print_exc()
+            # Khi chạy all, baseline 1/2/5/6 chỉ Rank 0 chạy,
+            # Rank khác phải đợi Rank 0 xong rồi mới đi tiếp.
+            if needs_distributed and b_id in [1, 2, 5, 6]:
+                sync_rank0_stage(f"baseline_{b_id}")
+            
+            # Baseline 3/4 chạy multi-GPU thật.
+            if dist.is_initialized() and b_id in [3, 4]:
+                dist.barrier()
+
+        if TrainingConfig.RANK == 0: 
+            logger.info("TOÀN BỘ PIPELINE ĐÃ HOÀN TẤT!")
+
+    finally:
+        cleanup_distributed()
 
 if __name__ == "__main__":
     main()

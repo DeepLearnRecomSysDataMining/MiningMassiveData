@@ -1,7 +1,7 @@
 import logging
 import numpy as np
-import torch
-import torch.distributed as dist
+# import torch
+# import torch.distributed as dist
 from tqdm import tqdm
 from rank_bm25 import BM25Okapi
 from config.training_config import TrainingConfig
@@ -16,14 +16,15 @@ def run_bm25(dataset):
     Baseline 1: BM25 + Category Filter.
     Parallelized across all available ranks.
     """
-    device = TrainingConfig.DEVICE
+    # device = TrainingConfig.DEVICE
     
-    # 1. Khởi tạo Phân tán nếu chạy qua torchrun
-    if TrainingConfig.WORLD_SIZE > 1 and not dist.is_initialized():
-        dist.init_process_group(backend="gloo") 
+    # # 1. Khởi tạo Phân tán nếu chạy qua torchrun
+    # if TrainingConfig.WORLD_SIZE > 1 and not dist.is_initialized():
+    #     dist.init_process_group(backend="gloo") 
 
     # 2. Chia nhỏ data theo Rank
-    chunk = dataset[TrainingConfig.RANK::TrainingConfig.WORLD_SIZE]
+    # chunk = dataset[TrainingConfig.RANK::TrainingConfig.WORLD_SIZE]
+    chunk = dataset
     local_hits, local_ndcg = 0, 0.0
     
     if TrainingConfig.RANK == 0:
@@ -49,12 +50,13 @@ def run_bm25(dataset):
         except ValueError: pass
         
     # 3. Sync kết quả về Rank 0
-    res = torch.tensor([local_hits, local_ndcg], device=device)
-    if dist.is_initialized():
-        dist.all_reduce(res, op=dist.ReduceOp.SUM)
+    # res = torch.tensor([local_hits, local_ndcg], device=device)
+    # if dist.is_initialized():
+    #     dist.all_reduce(res, op=dist.ReduceOp.SUM)
         
     if TrainingConfig.RANK == 0:
-        logger.info(f"BM25 Result -> HR@10: {res[0].item()/len(dataset):.4f} | NDCG@10: {res[1].item()/len(dataset):.4f}")
+        # logger.info(f"BM25 Result -> HR@10: {res[0].item()/len(dataset):.4f} | NDCG@10: {res[1].item()/len(dataset):.4f}")
+        logger.info(f"BM25 Result -> HR@10: {local_hits/len(dataset):.4f} | NDCG@10: {local_ndcg/len(dataset):.4f}")
 
 if __name__ == "__main__":
     from src.data_utils import load_eval_dataset
