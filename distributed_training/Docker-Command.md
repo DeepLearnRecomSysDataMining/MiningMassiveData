@@ -51,6 +51,12 @@ và:
    sudo du -h --max-depth=1 /home | sort -hr
 ```
 
+Sau đó build lại
+
+```bash
+   docker build -t test .
+```
+
 Test đúng bằng cách override entrypoint:
 ```bash
    docker run --rm --entrypoint python test -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"

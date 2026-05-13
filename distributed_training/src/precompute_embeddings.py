@@ -104,7 +104,29 @@ def precompute_item_embeddings():
                         valid_prefixed_ids.append(f"vn_{p_id}")
                         valid_texts.append(txt)
 
+            dedup_ids = []
+            dedup_texts = []
+            seen = set()
+            duplicate_count = 0
+
+            for pid, txt in zip(valid_prefixed_ids, valid_texts):
+                if pid in seen:
+                    duplicate_count += 1
+                    continue
+                seen.add(pid)
+                dedup_ids.append(pid)
+                dedup_texts.append(txt)
+
+            if duplicate_count > 0:
+                logger.warning(
+                    f"  [DEDUP] Chunk '{f_name}' có {duplicate_count:,} duplicate IDs. "
+                    f"Đã bỏ trước khi encode."
+                )
+
+            valid_prefixed_ids = dedup_ids
+            valid_texts = dedup_texts
             num_valid_ids = len(valid_prefixed_ids)
+
             if num_valid_ids == 0:
                 logger.warning(f"  - File {f_name} không có dữ liệu hợp lệ. Đánh dấu done và bỏ qua.")
                 subprocess.run(["gsutil", "cp", "/dev/null", done_flag_gcs], check=True)

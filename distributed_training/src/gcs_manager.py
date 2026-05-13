@@ -51,88 +51,158 @@ def upload_precomputed_data():
 
 def merge_precomputed_chunks():
     """
-    Hợp nhất các file mảnh (chunks) từ GCS thành một file vector 12GB và file index duy nhất.
-    Đảm bảo tính nhất quán của index khi gộp.
+    Hợp nhất các file chunk từ GCS thành:
+    - item_embeddings.npy
+    - item_index.pkl
+
+    Nguyên tắc:
+    - Chỉ giữ các vector còn được trỏ bởi pkl index.
+    - Bỏ orphan vectors do duplicate ID trong chunk.
+    - Bỏ duplicate global giữa các chunk.
+    - Tạo .npy đúng chuẩn bằng np.lib.format.open_memmap.
     """
     local_dir = TrainingConfig.LOCAL_DATA_DIR
     gcs_chunks_path = f"{TrainingConfig.GCS_PREPARED_DATA}/chunks"
-    
+
     final_npy_path = TrainingConfig.ITEM_EMBEDDINGS_PATH
     final_pkl_path = TrainingConfig.ITEM_INDEX_PATH
 
     logger.info(">>> BẮT ĐẦU QUY TRÌNH HỢP NHẤT CHUNKS...")
 
-    # 1. Tải tất cả chunks về local
+    # 1. Tải toàn bộ chunk về local
     subprocess.run(["gsutil", "-m", "cp", f"{gcs_chunks_path}/*.npy", local_dir], check=True)
     subprocess.run(["gsutil", "-m", "cp", f"{gcs_chunks_path}/*.pkl", local_dir], check=True)
 
-    all_npy_files = sorted([f for f in os.listdir(local_dir) if f.endswith(".npy") and f != "item_embeddings.npy"])
-    
+    all_npy_files = sorted([
+        f for f in os.listdir(local_dir)
+        if f.endswith(".npy") and f != "item_embeddings.npy"
+    ])
+
     if not all_npy_files:
         logger.warning("Không tìm thấy file chunk nào để gộp!")
         return
 
-    # 2. Khảo sát kích thước để tạo memmap
-    total_rows = 0
+    # 2. Khảo sát index thực sự dùng được
     file_info = []
+    seen_global = set()
+    total_rows = 0
+    orphan_total = 0
+    global_dup_total = 0
+
     for npy_f in all_npy_files:
         data_path = os.path.join(local_dir, npy_f)
-        # Load header-only để lấy shape mà không tốn RAM
-        data_shape = np.load(data_path, mmap_mode='r').shape
-        file_info.append((npy_f, data_shape[0]))
-        total_rows += data_shape[0]
 
-    logger.info(f"Tổng hợp {len(all_npy_files)} mảnh. Tổng số item: {total_rows:,}")
+        # Chỉ đọc header để lấy số vector, không load toàn bộ RAM
+        n_vectors = np.load(data_path, mmap_mode="r").shape[0]
 
-    # 3. Gộp Vector dùng Memmap (RAM Safe)
-    # fp = np.memmap(final_npy_path, dtype='float32', mode='w+', shape=(total_rows, 768))
-    fp = np.lib.format.open_memmap(final_npy_path, dtype='float32', mode='w+', shape=(total_rows, 768))
-    
-    final_index = {}
-    curr_offset = 0
-    
-    for npy_f, n_rows in file_info:
-        logger.info(f"Đang gộp {npy_f} ({n_rows:,} rows)...")
-        # Đọc mảnh bằng mmap_mode='r' để KHÔNG tốn RAM (chỉ ánh xạ bộ nhớ)
-        data_path = os.path.join(local_dir, npy_f)
-        data = np.load(data_path, mmap_mode='r')
-        
-        # Ghi vào vị trí tương ứng trong file tổng (SSD -> SSD)
-        fp[curr_offset : curr_offset + n_rows] = data
-        
-        # Đọc và offset lại Index
         pkl_f = npy_f.replace(".npy", ".pkl")
         pkl_path = os.path.join(local_dir, pkl_f)
+
+        if not os.path.exists(pkl_path):
+            raise FileNotFoundError(f"Không tìm thấy index pkl tương ứng với {npy_f}: {pkl_path}")
+
         with open(pkl_path, "rb") as f_in:
             chunk_idx = pickle.load(f_in)
-        
-        for key, val in chunk_idx.items():
-            # Quan trọng: Cộng dồn offset để index trỏ đúng vào file tổng
-            final_index[key] = curr_offset + val
-            
-        curr_offset += n_rows
-        
-        # KIỂM TRA LŨY KẾ SAU MỖI MẢNH
-        current_total_vectors = curr_offset
-        current_total_indices = len(final_index)
-        logger.info(f"  -> Lũy kế sau {npy_f}: Tổng Vector={current_total_vectors:,}, Tổng Index={current_total_indices:,}")
-        
-        if current_total_vectors != current_total_indices:
-            logger.error(f"!!! LỖI TOÀN VẸN KHI GỘP: Tại mảnh {npy_f}, tổng số lượng bị lệch!")
-            raise Exception(f"Merge corruption at chunk {npy_f}. Pipeline aborted.")
-            
-        # Xóa mảnh local ngay sau khi gộp để giải phóng SSD
+
+        unique_items = []
+        global_duplicates = 0
+
+        for key, local_idx in chunk_idx.items():
+            if local_idx < 0 or local_idx >= n_vectors:
+                raise ValueError(
+                    f"Index out of range trong {pkl_f}: "
+                    f"{key} -> {local_idx}, n_vectors={n_vectors}"
+                )
+
+            # Nếu cùng ID đã xuất hiện ở chunk trước, bỏ bản sau
+            if key in seen_global:
+                global_duplicates += 1
+                continue
+
+            seen_global.add(key)
+            unique_items.append((key, local_idx))
+
+        # Vector mồ côi = vector có trong .npy nhưng không còn key trong dict pkl
+        # Thường do duplicate ID trong cùng chunk làm dict ghi đè.
+        orphan_count = n_vectors - len(chunk_idx)
+
+        orphan_total += orphan_count
+        global_dup_total += global_duplicates
+        total_rows += len(unique_items)
+
+        logger.info(
+            f"[CHECK] {npy_f}: "
+            f"vectors={n_vectors:,}, "
+            f"chunk_index={len(chunk_idx):,}, "
+            f"orphan_vectors={orphan_count:,}, "
+            f"kept_unique={len(unique_items):,}, "
+            f"global_duplicates={global_duplicates:,}"
+        )
+
+        file_info.append((npy_f, unique_items))
+
+    logger.info(
+        f"Tổng hợp {len(all_npy_files)} mảnh. "
+        f"Final unique vectors={total_rows:,}, "
+        f"orphan_vectors={orphan_total:,}, "
+        f"global_duplicates={global_dup_total:,}"
+    )
+
+    if total_rows == 0:
+        raise ValueError("Không có vector hợp lệ nào để merge.")
+
+    # 3. Tạo file .npy đúng chuẩn, RAM-safe
+    fp = np.lib.format.open_memmap(
+        final_npy_path,
+        dtype="float32",
+        mode="w+",
+        shape=(total_rows, 768)
+    )
+
+    final_index = {}
+    curr_offset = 0
+
+    # 4. Gộp từng vector có index
+    for npy_f, unique_items in file_info:
+        logger.info(f"Đang gộp {npy_f}: giữ {len(unique_items):,} vector có index...")
+
+        data_path = os.path.join(local_dir, npy_f)
+        data = np.load(data_path, mmap_mode="r")
+
+        for key, local_idx in unique_items:
+            fp[curr_offset] = data[local_idx]
+            final_index[key] = curr_offset
+            curr_offset += 1
+
+        pkl_path = os.path.join(local_dir, npy_f.replace(".npy", ".pkl"))
+
+        logger.info(
+            f"  -> Lũy kế sau {npy_f}: "
+            f"Tổng Vector={curr_offset:,}, Tổng Index={len(final_index):,}"
+        )
+
+        if curr_offset != len(final_index):
+            raise Exception(f"Merge corruption after chunk {npy_f}")
+
+        # Giải phóng SSD local
         os.remove(data_path)
         os.remove(pkl_path)
 
     fp.flush()
-    del fp # Đóng file
-    
-    # 4. Lưu file index tổng
+    del fp
+
+    # 5. Lưu index tổng
     with open(final_pkl_path, "wb") as f_out:
         pickle.dump(final_index, f_out)
-    
-    logger.info("==> Hợp nhất hoàn tất. Đang upload kết quả cuối cùng...")
+
+    logger.info(
+        f"==> Hợp nhất hoàn tất. "
+        f"Final Vectors={curr_offset:,}, Final Index={len(final_index):,}"
+    )
+
+    if curr_offset != len(final_index):
+        raise Exception("Final merge integrity failed. Pipeline aborted.")
+
     upload_precomputed_data()
 
 def upload_model_checkpoint(local_path):

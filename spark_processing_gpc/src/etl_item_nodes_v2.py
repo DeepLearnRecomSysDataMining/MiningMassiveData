@@ -9,6 +9,8 @@ import logging
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.functions import col, concat_ws, lit, lower, regexp_replace, udf, when, coalesce, array_join, trim, from_json
 from pyspark.sql.types import StructType, StructField, StringType, ArrayType, MapType
+from pyspark.sql.window import Window
+from pyspark.sql import functions as F
 from src.file_utils import detect_jsonl_type, list_files
 
 logger = logging.getLogger("etl_item_nodes_v2")
@@ -165,11 +167,45 @@ def run_etl_item_nodes(spark, data_dir, output_dir, file_groups: dict = None):
     map_schema = "MAP<STRING, STRING>"
     # TỐI ƯU: Không dropDuplicates quá tay chỉ theo product_id (parent_asin) 
     # vì sẽ làm mất các phiên bản con (asin) có thể khớp với VN.
-    df_final = df_final.filter(col("product_id") != "").dropDuplicates(["product_id", "asin"]) \
-                       .withColumn("parsed_specs", 
-                           when(col("specs_text").startswith("{"), from_json(col("specs_text"), map_schema))
-                           .otherwise(None)
-                       ).drop("specs_text")
+    # df_final = df_final.filter(col("product_id") != "").dropDuplicates(["product_id", "asin"]) \
+    #                    .withColumn("parsed_specs", 
+    #                        when(col("specs_text").startswith("{"), from_json(col("specs_text"), map_schema))
+    #                        .otherwise(None)
+    #                    ).drop("specs_text")
+
+    df_final = df_final.filter(
+        (col("product_id").isNotNull()) &
+        (col("product_id") != "") &
+        (col("full_text").isNotNull()) &
+        (col("full_text") != "")
+    )
+
+    df_final = df_final.withColumn(
+        "embedding_id",
+        when(col("domain") == "amazon", F.concat(lit("amz_"), col("asin")))
+        .otherwise(F.concat(lit("vn_"), col("product_id")))
+    )
+
+    df_final = df_final.filter(
+        (col("embedding_id").isNotNull()) &
+        (col("embedding_id") != "") &
+        (~col("embedding_id").isin("amz_", "vn_"))
+    )
+
+    # Giữ bản có full_text dài hơn nếu bị trùng embedding_id
+    df_final = df_final.withColumn("text_len", F.length(col("full_text")))
+
+    w = Window.partitionBy("embedding_id").orderBy(F.desc("text_len"))
+
+    df_final = df_final.withColumn("rn", F.row_number().over(w)) \
+                    .filter(col("rn") == 1) \
+                    .drop("rn", "text_len")
+
+    df_final = df_final.withColumn(
+        "parsed_specs",
+        when(col("specs_text").startswith("{"), from_json(col("specs_text"), map_schema))
+        .otherwise(None)
+    ).drop("specs_text")
 
     # TỐI ƯU: Ghi trực tiếp
     logger.info(f"Saving to Parquet (V2-Coalesce) -> {output_dir}")

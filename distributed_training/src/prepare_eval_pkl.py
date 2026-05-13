@@ -50,7 +50,7 @@ def prepare_evaluation_pickle_optimized():
     # --- BƯỚC 3: XỬ LÝ METADATA THEO CHUNK ---
     logger.info("[BƯỚC 3] Đang đọc Metadata theo từng mảnh (Streaming)...")
     lookup = {}
-    target_cols = ['product_id', 'asin', 'product_name', 'full_text']
+    target_cols = ['product_id', 'asin', 'product_name', 'full_text', 'category']
     
     # Kết nối FileSystem
     fs = gcsfs.GCSFileSystem() if TrainingConfig.IS_CLOUD else None
@@ -73,12 +73,33 @@ def prepare_evaluation_pickle_optimized():
         
         for _, row in filtered_chunk.iterrows():
             final_text = str(row['full_text']) if pd.notnull(row['full_text']) and row['full_text'] != "" else str(row['product_name'])
-            meta = {'text': final_text}
+            
+            category = (
+                str(row['category'])
+                if pd.notnull(row['category']) and row['category'] != ""
+                else "other"
+            )
+            meta = {'text': final_text, 'category': category}
             
             p_id = row['product_id']
             asin = row['asin']
-            if p_id: lookup[p_id] = meta
-            if asin: lookup[asin] = meta
+
+            # if p_id: 
+            #     lookup[p_id] = meta
+            #     lookup[f"vn_{p_id}"] = meta
+            # if asin: 
+            #     lookup[asin] = meta
+            #     lookup[f"amz_{asin}"] = meta
+
+            if pd.notnull(p_id) and p_id != "":
+                p_id = str(p_id)
+                lookup[p_id] = meta
+                lookup[f"vn_{p_id}"] = meta
+
+            if pd.notnull(asin) and asin != "":
+                asin = str(asin)
+                lookup[asin] = meta
+                lookup[f"amz_{asin}"] = meta
             
         # Giải phóng RAM sau mỗi mảnh
         del table, df_chunk, filtered_chunk
@@ -94,25 +115,34 @@ def prepare_evaluation_pickle_optimized():
         q_id = row['query_id']
         q_meta = lookup.get(q_id, {'text': "", 'category': "other"})
         
-        cand_texts = [lookup.get(cid, {'text': ""})['text'] for cid in row['candidate_ids']]
+        candidate_ids = [str(cid) for cid in row['candidate_ids']]
+        
+        cand_texts = [
+            lookup.get(cid, {'text': "", 'category': "other"})['text']
+            for cid in candidate_ids
+        ]
         
         labels = row['labels']
         true_vn_id = None
         for idx, lbl in enumerate(labels):
             if lbl == 1:
-                true_vn_id = row['candidate_ids'][idx]
+                true_vn_id = candidate_ids[idx]
                 break
 
         if true_vn_id:
             # Lấy category an toàn (tránh KeyError nếu meta tồn tại nhưng thiếu key)
             q_cat = q_meta.get('category', 'other')
-            cand_cats = [lookup.get(cid, {}).get('category', 'other') for cid in row['candidate_ids']]
+            
+            cand_cats = [
+                lookup.get(cid, {}).get('category', 'other')
+                for cid in candidate_ids
+            ]
 
             enriched_data.append({
                 'query_id': q_id,
                 'query_text': q_meta['text'],
                 'query_category': q_cat,
-                'candidate_ids': list(row['candidate_ids']),
+                'candidate_ids': candidate_ids,
                 'candidate_texts': cand_texts,
                 'candidate_categories': cand_cats,
                 'true_vn_id': true_vn_id
