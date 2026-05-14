@@ -12,6 +12,7 @@ from config.training_config import TrainingConfig
 from src.models import BatchedGCN
 from tqdm import tqdm
 import numpy as np
+from src.metrics_utils import write_metrics_csv
 
 logger = logging.getLogger("gcn_trainer")
 
@@ -27,7 +28,7 @@ class GCNTrainingDataset(Dataset):
         # Tra cứu trực tiếp vector (Sử dụng Prefix để tránh xung đột)
         q_emb = self.lookup.get_embedding(f"amz_{row['asin']}")
         p_emb = self.lookup.get_embedding(f"vn_{row['product_id']}")
-        return torch.from_numpy(q_emb).float(), torch.from_numpy(p_emb).float()
+        return torch.from_numpy(q_emb.copy()).float(), torch.from_numpy(p_emb.copy()).float()
 
 def evaluate_gcn(model, eval_pkl_path, text_encoder, device):
     """Đánh giá model GCN sử dụng file .pkl"""
@@ -63,7 +64,9 @@ def evaluate_gcn(model, eval_pkl_path, text_encoder, device):
             except ValueError: pass
 
     res = torch.tensor([hits_at_10, ndcg_at_10], device=device)
-    if TrainingConfig.WORLD_SIZE > 1: torch.distributed.all_reduce(res)
+    if TrainingConfig.WORLD_SIZE > 1:
+        if torch.distributed.is_initialized():
+            torch.distributed.all_reduce(res, op=torch.distributed.ReduceOp.SUM)
     return res[0].item() / total, res[1].item() / total
 
 def train_gcn(interactions_df, embedding_lookup):
@@ -92,16 +95,20 @@ def train_gcn(interactions_df, embedding_lookup):
     if rank == 0:
         logger.info(">>> BẮT ĐẦU HUẤN LUYỆN GCN CHẾ ĐỘ THẦN TỐC (PRECOMPUTED)...")
 
+    metrics_rows = []
+
     for epoch in range(TrainingConfig.EPOCHS):
         model.train()
         sampler.set_epoch(epoch)
         total_loss = 0
+        total_batches = len(train_loader)
         
-        pbar = tqdm(train_loader, desc=f"Epoch {epoch+1}/{TrainingConfig.EPOCHS}", disable=(rank != 0))
-        for batch_idx, (q_embs, p_embs) in enumerate(pbar):
+        # pbar = tqdm(train_loader, desc=f"Epoch {epoch+1}/{TrainingConfig.EPOCHS}", disable=(rank != 0))
+        for batch_idx, (q_embs, p_embs) in enumerate(train_loader, start=1):
             q_embs, p_embs = q_embs.to(device), p_embs.to(device)
             B = q_embs.size(0)
-            if B < 2: continue
+            if B < 2: 
+                continue
             
             optimizer.zero_grad()
             # Đưa vector vào đồ thị
@@ -115,17 +122,47 @@ def train_gcn(interactions_df, embedding_lookup):
             loss = criterion(anchors, positives, negatives)
             loss.backward()
             optimizer.step()
+
             total_loss += loss.item()
             
-            if rank == 0 and batch_idx % 100 == 0:
-                pbar.set_postfix({"loss": f"{total_loss / (batch_idx + 1):.4f}"})
+            if rank == 0 and (batch_idx % 200 == 0 or batch_idx == total_batches):
+                # pbar.set_postfix({"loss": f"{total_loss / (batch_idx + 1):.4f}"})
+                logger.info(
+                    f"Epoch {epoch+1}/{TrainingConfig.EPOCHS} | "
+                    f"Batch {batch_idx}/{total_batches} | "
+                    f"Loss={loss.item():.4f}"
+                )
+        if torch.distributed.is_initialized():
+            torch.distributed.barrier()
 
         hr10, ndcg10 = evaluate_gcn(model, TrainingConfig.EVAL_PKL_PATH, text_encoder, device)
+        
         if rank == 0:
             logger.info(f"GCN EPOCH {epoch+1} DONE | HR@10: {hr10:.4f}")
             if hr10 > best_hr:
                 best_hr = hr10
                 save_model = model.module if hasattr(model, 'module') else model
                 torch.save(save_model.state_dict(), ckpt_path)
+
+            # trong mỗi epoch sau eval:
+            metrics_rows.append({
+                "baseline": "gcn",
+                "epoch": epoch + 1,
+                "hr10": hr10,
+                "ndcg10": ndcg10,
+                "loss": total_loss / max(total_batches, 1),
+                "data_fraction": getattr(TrainingConfig, "DATA_FRACTION", "")
+            })
+        
+        if torch.distributed.is_initialized():
+            torch.distributed.barrier()
+
+    try:
+        write_metrics_csv(
+            os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "gcn_metrics.csv"),
+            metrics_rows
+        )
+    except Exception as e:
+        logger.error(f"\n\n\nLỗi khi ghi lại GCN metrics: {e}\n\n\n")
 
     return ckpt_path

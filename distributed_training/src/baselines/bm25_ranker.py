@@ -5,6 +5,8 @@ import numpy as np
 from tqdm import tqdm
 from rank_bm25 import BM25Okapi
 from config.training_config import TrainingConfig
+import os
+from src.metrics_utils import write_metrics_csv
 
 logger = logging.getLogger("bm25_ranker")
 
@@ -57,6 +59,21 @@ def run_bm25(dataset):
     if TrainingConfig.RANK == 0:
         # logger.info(f"BM25 Result -> HR@10: {res[0].item()/len(dataset):.4f} | NDCG@10: {res[1].item()/len(dataset):.4f}")
         logger.info(f"BM25 Result -> HR@10: {local_hits/len(dataset):.4f} | NDCG@10: {local_ndcg/len(dataset):.4f}")
+        
+        try:
+            write_metrics_csv(
+                os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "bm25_metrics.csv"),
+                {
+                    "baseline": "bm25",
+                    "epoch": 0,
+                    "hr10": local_hits/len(dataset),
+                    "ndcg10": local_ndcg/len(dataset),
+                    "loss": "",
+                    "data_fraction": getattr(TrainingConfig, "DATA_FRACTION", "")
+                }
+            )
+        except Exception as e:
+            logger.error(f"\n\n\nLỗi khi ghi lại BM25 metrics: {e}\n\n\n")
 
 if __name__ == "__main__":
     from src.data_utils import load_eval_dataset

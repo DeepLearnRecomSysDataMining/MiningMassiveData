@@ -53,6 +53,7 @@ def sync_rank0_stage(stage_name, timeout=21600):
 
 def run_pipeline(baseline_id):
     ckpt_path = None
+    metrics_path = None
 
     # Baseline không cần multi-GPU: chỉ Rank 0 chạy
     if baseline_id in [1, 2, 5, 6] and TrainingConfig.RANK != 0:
@@ -61,10 +62,12 @@ def run_pipeline(baseline_id):
     if baseline_id == 1:        
         eval_dataset = load_eval_dataset()
         run_bm25(eval_dataset)
+        metrics_path = os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "bm25_metrics.csv")
         
     elif baseline_id == 2:
         eval_dataset = load_eval_dataset()
         run_sbert(eval_dataset)
+        metrics_path = os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "sbert_metrics.csv")
 
     elif baseline_id in [3, 4]:
         # 1. KIỂM TRA LOCAL VÀ GCS
@@ -85,20 +88,34 @@ def run_pipeline(baseline_id):
         
         if baseline_id == 3:
             ckpt_path = train_dssm(interactions_df, embedding_lookup)
+            metrics_path = os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "dssm_metrics.csv")
         else:
             ckpt_path = train_gcn(interactions_df, embedding_lookup)
+            metrics_path = os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "gcn_metrics.csv")
             
     elif baseline_id == 5:
         eval_dataset = load_eval_dataset()
         run_hybrid(eval_dataset)
+        metrics_path = os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "hybrid_metrics.csv")
         
     elif baseline_id == 6:
         eval_dataset = load_eval_dataset()
         run_llm_chgnn(eval_dataset)
+        metrics_path = os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "llm_chgnn_metrics.csv")
 
     if TrainingConfig.RANK == 0 and ckpt_path and os.path.exists(ckpt_path):
-        logger.info(f"Uploading checkpoint {ckpt_path} to GCS...")
-        upload_model_checkpoint(ckpt_path)
+        try:
+            logger.info(f"Uploading checkpoint {ckpt_path} to GCS...")
+            upload_model_checkpoint(ckpt_path)
+        except Exception as e:
+            logger.error(f"\n\n\nFailed to upload checkpoint {ckpt_path}: {e}\n\n\n")
+
+    if TrainingConfig.RANK == 0 and metrics_path and os.path.exists(metrics_path):
+        try:
+            logger.info(f"Uploading metrics {metrics_path} to GCS...")
+            upload_model_checkpoint(metrics_path)
+        except Exception as e:
+            logger.error(f"\n\n\nFailed to upload metrics {metrics_path}: {e}\n\n\n")
 
 def main():
     setup_logging()
