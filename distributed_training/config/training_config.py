@@ -102,7 +102,7 @@ class TrainingConfigClass:
     # --- 5. Siêu tham số huấn luyện (Đã tối ưu cho 4 GPU) ---
     @property
     def BATCH_SIZE(self):
-        return int(self._get_env_or_default("BATCH_SIZE", "512"))
+        return int(self._get_env_or_default("BATCH_SIZE", "2048"))
 
     @property
     def EPOCHS(self):

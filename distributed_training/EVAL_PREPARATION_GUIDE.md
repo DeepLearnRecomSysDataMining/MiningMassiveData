@@ -50,8 +50,18 @@ pip install --upgrade pip
 # LỰA CHỌN A: Dành cho máy ảo CPU (Tiết kiệm, chỉ dùng đóng gói dữ liệu)
 pip install pandas pyarrow datasets gcsfs torch --extra-index-url https://download.pytorch.org/whl/cpu
 
+pip install \
+pandas==2.2.2 \
+pyarrow==16.1.0 \
+datasets==2.19.1 \
+gcsfs==2024.3.1 \
+tqdm==4.66.4 \
+torch==2.4.0 \
+--extra-index-url https://download.pytorch.org/whl/cpu
+
 # LỰA CHỌN B: Dành cho máy ảo GPU (Dùng để Train model trực tiếp)
 pip install pandas pyarrow gcsfs torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu121
+
 
 # Cài đặt thêm google-cloud-storage và gdown nếu cần
 pip install google-cloud-storage gdown
