@@ -8,6 +8,8 @@ from tqdm import tqdm
 from sentence_transformers import SentenceTransformer
 from config.training_config import TrainingConfig
 from src.models import LLM_CHGNN
+import os
+from src.metrics_utils import write_metrics_csv
 
 logger = logging.getLogger("llm_chgnn_trainer")
 
@@ -95,6 +97,22 @@ def run_llm_chgnn(dataset):
     if TrainingConfig.RANK == 0:
         # logger.info(f"LLM-CHGNN Result -> HR@10: {res[0].item()/len(dataset):.4f} | NDCG@10: {res[1].item()/len(dataset):.4f}")
         logger.info(f"LLM-CHGNN Result -> HR@10: {hits_at_10/len(dataset):.4f} | NDCG@10: {ndcg_at_10/len(dataset):.4f}")
+
+        try:
+            write_metrics_csv(
+                os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "llm_chgnn_metrics.csv"),
+                {
+                    "baseline": "llm_chgnn",
+                    "epoch": 0,
+                    "hr10": hits_at_10/len(dataset),
+                    "ndcg10": ndcg_at_10/len(dataset),
+                    "loss": "",
+                    "data_fraction": getattr(TrainingConfig, "DATA_FRACTION", "")
+                }
+            )
+        except Exception as e:
+            logger.error(f"\n\n\nLỗi khi ghi lại LLM-CHGNN metrics: {e}\n\n\n")
+
 
 if __name__ == "__main__":
     from src.data_utils import load_eval_dataset

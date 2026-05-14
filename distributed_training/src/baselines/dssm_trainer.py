@@ -11,6 +11,7 @@ from sentence_transformers import SentenceTransformer
 from config.training_config import TrainingConfig
 from src.models import DSSM
 from tqdm import tqdm
+from src.metrics_utils import write_metrics_csv
 
 logger = logging.getLogger("dssm_trainer")
 
@@ -89,7 +90,9 @@ def train_dssm(interactions_df, embedding_lookup):
     best_hr10 = 0.0
     if TrainingConfig.RANK == 0:
         logger.info(">>> BẮT ĐẦU HUẤN LUYỆN DSSM CHẾ ĐỘ THẦN TỐC (PRECOMPUTED)...")
-    
+        
+    metrics_rows = []   
+
     for epoch in range(TrainingConfig.EPOCHS):
         sampler.set_epoch(epoch)
         model.train()
@@ -121,12 +124,31 @@ def train_dssm(interactions_df, embedding_lookup):
         hr10, ndcg10 = evaluate_dssm(model, TrainingConfig.EVAL_PKL_PATH, text_encoder, device)
         if TrainingConfig.RANK == 0:
             logger.info(f"--- EPOCH {epoch+1} DONE | HR@10: {hr10:.4f} ---")
+            
             if hr10 > best_hr10:
                 best_hr10 = hr10
                 save_model = model.module if hasattr(model, 'module') else model
                 torch.save(save_model.state_dict(), os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "dssm_best.pt"))
+
+            # trong mỗi epoch sau eval:
+            metrics_rows.append({
+                "baseline": "dssm",
+                "epoch": epoch + 1,
+                "hr10": hr10,
+                "ndcg10": ndcg10,
+                "loss": total_loss / max(total_batches, 1),
+                "data_fraction": getattr(TrainingConfig, "DATA_FRACTION", "")
+            })
+
         # Sync sau eval + save checkpoint
         if torch.distributed.is_initialized():
             torch.distributed.barrier()
+    try:
+        write_metrics_csv(
+            os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "dssm_metrics.csv"),
+            metrics_rows
+        )
+    except Exception as e:
+        logger.error(f"\n\n\nLỗi khi ghi lại DSSM metrics: {e}\n\n\n")
 
     return os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "dssm_best.pt")
