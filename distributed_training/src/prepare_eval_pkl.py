@@ -50,7 +50,7 @@ def prepare_evaluation_pickle_optimized():
     # --- BƯỚC 3: XỬ LÝ METADATA THEO CHUNK ---
     logger.info("[BƯỚC 3] Đang đọc Metadata theo từng mảnh (Streaming)...")
     lookup = {}
-    target_cols = ['product_id', 'asin', 'product_name', 'full_text', 'category']
+    target_cols = ['product_id', 'asin', 'product_name', 'full_text', 'category','parsed_specs']
     
     # Kết nối FileSystem
     fs = gcsfs.GCSFileSystem() if TrainingConfig.IS_CLOUD else None
@@ -79,17 +79,20 @@ def prepare_evaluation_pickle_optimized():
                 if pd.notnull(row['category']) and row['category'] != ""
                 else "other"
             )
-            meta = {'text': final_text, 'category': category}
+
+            specs = row['parsed_specs']
+
+            if specs is None or (isinstance(specs, float) and pd.isnull(specs)):
+                specs = {}
+
+            meta = {
+                'text': final_text,
+                'category': category,
+                'specs': specs
+            }
             
             p_id = row['product_id']
             asin = row['asin']
-
-            # if p_id: 
-            #     lookup[p_id] = meta
-            #     lookup[f"vn_{p_id}"] = meta
-            # if asin: 
-            #     lookup[asin] = meta
-            #     lookup[f"amz_{asin}"] = meta
 
             if pd.notnull(p_id) and p_id != "":
                 p_id = str(p_id)
@@ -113,12 +116,12 @@ def prepare_evaluation_pickle_optimized():
             logger.info(f" -> Đã xử lý {i+1}/{len(eval_df)} queries...")
             
         q_id = row['query_id']
-        q_meta = lookup.get(q_id, {'text': "", 'category': "other"})
+        q_meta = lookup.get(q_id, {'text': "", 'category': "other", 'specs': {}})
         
         candidate_ids = [str(cid) for cid in row['candidate_ids']]
         
         cand_texts = [
-            lookup.get(cid, {'text': "", 'category': "other"})['text']
+            lookup.get(cid, {'text': "", 'category': "other", 'specs': {}})['text']
             for cid in candidate_ids
         ]
         
@@ -142,9 +145,14 @@ def prepare_evaluation_pickle_optimized():
                 'query_id': q_id,
                 'query_text': q_meta['text'],
                 'query_category': q_cat,
+                'query_specs': q_meta.get('specs', {}),
                 'candidate_ids': candidate_ids,
                 'candidate_texts': cand_texts,
                 'candidate_categories': cand_cats,
+                'candidate_specs': [
+                    lookup.get(cid, {}).get('specs', {})
+                    for cid in candidate_ids
+                ],
                 'true_vn_id': true_vn_id
             })
 
