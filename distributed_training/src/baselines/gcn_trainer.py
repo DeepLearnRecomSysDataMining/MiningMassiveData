@@ -156,13 +156,14 @@ def train_gcn(interactions_df, embedding_lookup):
         
         if torch.distributed.is_initialized():
             torch.distributed.barrier()
-
-    try:
-        write_metrics_csv(
-            os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "gcn_metrics.csv"),
-            metrics_rows
-        )
-    except Exception as e:
-        logger.error(f"\n\n\nLỗi khi ghi lại GCN metrics: {e}\n\n\n")
+            
+    if TrainingConfig.RANK == 0:
+        try:
+            write_metrics_csv(
+                os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "gcn_metrics.csv"),
+                metrics_rows
+            )
+        except Exception as e:
+            logger.error(f"\n\n\nLỗi khi ghi lại GCN metrics: {e}\n\n\n")
 
     return ckpt_path

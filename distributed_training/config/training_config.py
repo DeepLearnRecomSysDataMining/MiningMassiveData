@@ -115,7 +115,7 @@ class TrainingConfigClass:
     @property
     def DATA_FRACTION(self):
         # Giảm xuống 1/8 dữ liệu (12.5%) để chạy siêu tốc
-        return float(self._get_env_or_default("DATA_FRACTION", "0.5"))
+        return float(self._get_env_or_default("DATA_FRACTION", "0.25"))
 
 # Khởi tạo Instance duy nhất
 TrainingConfig = TrainingConfigClass()
