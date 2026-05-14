@@ -68,6 +68,7 @@ def evaluate_dssm(model, eval_pkl_path, text_encoder, device):
 
 def train_dssm(interactions_df, embedding_lookup):
     device = TrainingConfig.DEVICE
+    logger.info(f"\n\n\nTraining DSSM on device {device}\n\n\n")
     # Chỉ dùng encoder cho phần Evaluation
     text_encoder = SentenceTransformer('paraphrase-multilingual-mpnet-base-v2', device=device)
     
