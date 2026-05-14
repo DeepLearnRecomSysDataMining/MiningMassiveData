@@ -23,7 +23,7 @@ class GCNTrainingDataset(Dataset):
     def __len__(self): return len(self.df)
 
     def __getitem__(self, idx):
-        row = self.df[int(idx)]
+        row = self.df.iloc[int(idx)]
         # Tra cứu trực tiếp vector (Sử dụng Prefix để tránh xung đột)
         q_emb = self.lookup.get_embedding(f"amz_{row['asin']}")
         p_emb = self.lookup.get_embedding(f"vn_{row['product_id']}")

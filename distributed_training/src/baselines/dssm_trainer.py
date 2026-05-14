@@ -22,7 +22,7 @@ class DSSMTrainingDataset(Dataset):
     def __len__(self): return len(self.df)
 
     def __getitem__(self, idx):
-        row = self.df[int(idx)]
+        row = self.df.iloc[int(idx)]
         # Bốc trực tiếp vector đã tính toán trước (Sử dụng Prefix để tránh xung đột)
         q_emb = self.lookup.get_embedding(f"amz_{row['asin']}")
         p_emb = self.lookup.get_embedding(f"vn_{row['product_id']}")
