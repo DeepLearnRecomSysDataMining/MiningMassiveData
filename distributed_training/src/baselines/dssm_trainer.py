@@ -26,7 +26,7 @@ class DSSMTrainingDataset(Dataset):
         # Bốc trực tiếp vector đã tính toán trước (Sử dụng Prefix để tránh xung đột)
         q_emb = self.lookup.get_embedding(f"amz_{row['asin']}")
         p_emb = self.lookup.get_embedding(f"vn_{row['product_id']}")
-        return torch.from_numpy(q_emb).float(), torch.from_numpy(p_emb).float()
+        return torch.from_numpy(q_emb.copy()).float(), torch.from_numpy(p_emb.copy()).float()
 
 def evaluate_dssm(model, eval_pkl_path, text_encoder, device):
     """Đánh giá model DSSM (Vẫn cần encoder cho tập Eval vì nó nhỏ)"""
@@ -60,7 +60,9 @@ def evaluate_dssm(model, eval_pkl_path, text_encoder, device):
             except ValueError: pass
 
     res = torch.tensor([hits_at_10, ndcg_at_10], device=device)
-    if TrainingConfig.WORLD_SIZE > 1: torch.distributed.all_reduce(res)
+    if TrainingConfig.WORLD_SIZE > 1:
+        if torch.distributed.is_initialized():
+            torch.distributed.all_reduce(res, op=torch.distributed.ReduceOp.SUM)
     return res[0].item() / total, res[1].item() / total
 
 def train_dssm(interactions_df, embedding_lookup):
@@ -75,6 +77,7 @@ def train_dssm(interactions_df, embedding_lookup):
     
     # 2. Setup Model & DDP
     model = DSSM().to(device)
+
     if TrainingConfig.WORLD_SIZE > 1:
         if not torch.distributed.is_initialized():
             torch.distributed.init_process_group(backend="nccl")
@@ -91,9 +94,11 @@ def train_dssm(interactions_df, embedding_lookup):
         sampler.set_epoch(epoch)
         model.train()
         total_loss = 0
-        
-        pbar = tqdm(loader, desc=f"Epoch {epoch+1}", disable=(TrainingConfig.RANK != 0))
-        for q_embs, p_embs in pbar:
+        total_batches = len(loader)
+
+        # pbar = tqdm(loader, desc=f"Epoch {epoch+1}", disable=(TrainingConfig.RANK != 0), mininterval=30, miniters=200, dynamic_ncols=False)
+        # for q_embs, p_embs in pbar:
+        for batch_idx, (q_embs, p_embs) in enumerate(loader, start=1):
             q_embs, p_embs = q_embs.to(device), p_embs.to(device)
             neg_embs = p_embs[torch.randperm(p_embs.size(0))]
             
@@ -106,9 +111,13 @@ def train_dssm(interactions_df, embedding_lookup):
             optimizer.step()
             
             total_loss += loss.item()
-            if TrainingConfig.RANK == 0:
-                pbar.set_postfix({"loss": f"{loss.item():.4f}"})
-            
+
+            if TrainingConfig.RANK == 0 and (batch_idx % 200 == 0 or batch_idx == total_batches):
+                logger.info(f"Epoch {epoch+1}/{TrainingConfig.EPOCHS} | Batch {batch_idx}/{total_batches} | Loss={loss.item():.4f}")
+
+        if torch.distributed.is_initialized():
+            torch.distributed.barrier()
+        # Eval
         hr10, ndcg10 = evaluate_dssm(model, TrainingConfig.EVAL_PKL_PATH, text_encoder, device)
         if TrainingConfig.RANK == 0:
             logger.info(f"--- EPOCH {epoch+1} DONE | HR@10: {hr10:.4f} ---")
@@ -116,4 +125,8 @@ def train_dssm(interactions_df, embedding_lookup):
                 best_hr10 = hr10
                 save_model = model.module if hasattr(model, 'module') else model
                 torch.save(save_model.state_dict(), os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "dssm_best.pt"))
+        # Sync sau eval + save checkpoint
+        if torch.distributed.is_initialized():
+            torch.distributed.barrier()
+
     return os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "dssm_best.pt")
