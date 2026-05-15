@@ -83,9 +83,8 @@ def train_dssm(interactions_df, embedding_lookup):
     
     # 1. Setup Data (Chế độ Precomputed)
     train_set = DSSMTrainingDataset(interactions_df, embedding_lookup)
-    sampler = DistributedSampler(train_set, num_replicas=TrainingConfig.WORLD_SIZE, rank=TrainingConfig.RANK)
-    # loader = DataLoader(train_set, batch_size=TrainingConfig.BATCH_SIZE, sampler=sampler, num_workers=4)
-    loader = DataLoader(train_set, batch_size=TrainingConfig.BATCH_SIZE, sampler=sampler, num_workers=2, pin_memory=True)
+    # sampler = DistributedSampler(train_set, num_replicas=TrainingConfig.WORLD_SIZE, rank=TrainingConfig.RANK)
+    loader = DataLoader(train_set, batch_size=TrainingConfig.BATCH_SIZE, shuffle=True, num_workers=2, pin_memory=True)
     
     # 2. Setup Model & DDP
     model = DSSM().to(device)
@@ -105,13 +104,11 @@ def train_dssm(interactions_df, embedding_lookup):
     metrics_rows = []   
 
     for epoch in range(TrainingConfig.EPOCHS):
-        sampler.set_epoch(epoch)
+        # sampler.set_epoch(epoch)
         model.train()
         total_loss = 0
         total_batches = len(loader)
 
-        # pbar = tqdm(loader, desc=f"Epoch {epoch+1}", disable=(TrainingConfig.RANK != 0), mininterval=30, miniters=200, dynamic_ncols=False)
-        # for q_embs, p_embs in pbar:
         for batch_idx, (q_embs, p_embs) in enumerate(loader, start=1):
             q_embs, p_embs = q_embs.to(device, non_blocking=True), p_embs.to(device, non_blocking=True)
             neg_embs = p_embs[torch.randperm(p_embs.size(0),device=device)] # device=device: Tránh tạo index CPU rồi dùng với tensor GPU
