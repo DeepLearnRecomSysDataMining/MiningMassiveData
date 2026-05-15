@@ -103,7 +103,8 @@ def load_interactions_df():
     else:
         rank_fragments = selected_fragments
 
-    chunks = []
+    asin_list = []
+    product_list = []
     local_rows = 0
 
     if rank == 0:
@@ -114,23 +115,37 @@ def load_interactions_df():
 
     for i, frag in enumerate(rank_fragments):
         table = frag.to_table(columns=["asin", "product_id"])
-        df_chunk = table.to_pandas()
 
-        chunks.append(df_chunk)
-        local_rows += len(df_chunk)
+        asin_arr = table.column("asin").to_numpy()
+        product_arr = table.column("product_id").to_numpy()
+
+        asin_list.append(asin_arr)
+        product_list.append(product_arr)
+
+        local_rows += len(asin_arr)
 
         logger.info(
             f"Rank {rank}: loaded fragment {i+1}/{len(rank_fragments)} | "
             f"local_rows={local_rows:,}"
         )
 
-        del table, df_chunk
+        del table, asin_arr, product_arr
 
-    if not chunks:
-        raise ValueError(f"Rank {rank}: Không có interaction fragment nào để đọc.")
+    asin_all = np.concatenate(asin_list).astype(str)
+    product_all = np.concatenate(product_list).astype(str)
 
-    df = pd.concat(chunks, ignore_index=True)
+    # Shuffle nhẹ 1 lần để batch đa dạng hơn, tránh DataLoader shuffle gây OOM
+    rng = np.random.default_rng(42 + rank)
+    perm = rng.permutation(len(asin_all))
 
-    logger.info(f"Rank {rank}: final local interactions={len(df):,}")
+    asin_all = asin_all[perm]
+    product_all = product_all[perm]
 
-    return df
+    logger.info(
+        f"Rank {rank}: final local interactions={len(asin_all):,}"
+    )
+
+    return {
+        "asin": asin_all,
+        "product_id": product_all
+    }

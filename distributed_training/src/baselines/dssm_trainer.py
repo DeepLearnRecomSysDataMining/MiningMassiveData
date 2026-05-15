@@ -17,24 +17,23 @@ logger = logging.getLogger("dssm_trainer")
 
 class DSSMTrainingDataset(Dataset):
     def __init__(self, interactions_df, embedding_lookup):
-        # self.df = interactions_df
-        self.asins = interactions_df["asin"].astype(str).to_numpy()
-        self.product_ids = interactions_df["product_id"].astype(str).to_numpy()
+        self.asins = interactions_df["asin"]
+        self.product_ids = interactions_df["product_id"]
         self.lookup = embedding_lookup
 
     def __len__(self): 
-        # return len(self.df)
         return len(self.asins)
 
     def __getitem__(self, idx):
-        # row = self.df.iloc[int(idx)]
+        idx = int(idx)
 
-        # Bốc trực tiếp vector đã tính toán trước (Sử dụng Prefix để tránh xung đột)
-        # q_emb = self.lookup.get_embedding(f"amz_{row['asin']}")
-        # p_emb = self.lookup.get_embedding(f"vn_{row['product_id']}")
         q_emb = self.lookup.get_embedding(f"amz_{self.asins[idx]}")
         p_emb = self.lookup.get_embedding(f"vn_{self.product_ids[idx]}")
-        return torch.from_numpy(q_emb.copy()).float(), torch.from_numpy(p_emb.copy()).float()
+
+        return (
+            torch.from_numpy(q_emb.copy()).float(),
+            torch.from_numpy(p_emb.copy()).float()
+        )
 
 def evaluate_dssm(model, eval_pkl_path, text_encoder, device):
     """Đánh giá model DSSM (Vẫn cần encoder cho tập Eval vì nó nhỏ)"""
@@ -83,8 +82,7 @@ def train_dssm(interactions_df, embedding_lookup):
     
     # 1. Setup Data (Chế độ Precomputed)
     train_set = DSSMTrainingDataset(interactions_df, embedding_lookup)
-    # sampler = DistributedSampler(train_set, num_replicas=TrainingConfig.WORLD_SIZE, rank=TrainingConfig.RANK)
-    loader = DataLoader(train_set, batch_size=TrainingConfig.BATCH_SIZE, shuffle=True, num_workers=2, pin_memory=True)
+    loader = DataLoader(train_set, batch_size=TrainingConfig.BATCH_SIZE, shuffle=False, num_workers=1, pin_memory=True)
     
     # 2. Setup Model & DDP
     model = DSSM().to(device)
@@ -127,14 +125,6 @@ def train_dssm(interactions_df, embedding_lookup):
 
             if TrainingConfig.RANK == 0 and (batch_idx % 200 == 0 or batch_idx == total_batches):
                 logger.info(f"Epoch {epoch+1}/{TrainingConfig.EPOCHS} | Batch {batch_idx}/{total_batches} | Loss={loss.item():.4f}")
-
-        # if torch.distributed.is_initialized():
-        #     torch.distributed.barrier()
-        # # Eval
-        # hr10, ndcg10 = evaluate_dssm(model, TrainingConfig.EVAL_PKL_PATH, text_encoder, device)
-        
-        # if TrainingConfig.RANK == 0:
-        #     logger.info(f"--- EPOCH {epoch+1} DONE | HR@10: {hr10:.4f} ---")
 
         if torch.distributed.is_initialized():
             torch.distributed.barrier()
