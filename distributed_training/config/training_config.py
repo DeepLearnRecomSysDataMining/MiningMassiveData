@@ -102,7 +102,7 @@ class TrainingConfigClass:
     # --- 5. Siêu tham số huấn luyện (Đã tối ưu cho 4 GPU) ---
     @property
     def BATCH_SIZE(self):
-        return int(self._get_env_or_default("BATCH_SIZE", "2048"))
+        return int(self._get_env_or_default("BATCH_SIZE", "1024"))
 
     @property
     def EPOCHS(self):
@@ -110,12 +110,12 @@ class TrainingConfigClass:
 
     @property
     def LR(self):
-        return float(self._get_env_or_default("LR", "1e-3"))
+        return float(self._get_env_or_default("LR", "2e-3"))
 
     @property
     def DATA_FRACTION(self):
         # Giảm xuống 1/8 dữ liệu (12.5%) để chạy siêu tốc
-        return float(self._get_env_or_default("DATA_FRACTION", "0.25"))
+        return float(self._get_env_or_default("DATA_FRACTION", "1"))
 
 # Khởi tạo Instance duy nhất
 TrainingConfig = TrainingConfigClass()
