@@ -78,8 +78,10 @@ def load_interactions_df():
     import gcsfs
     path = TrainingConfig.GCS_INTERACTIONS if TrainingConfig.IS_CLOUD else "data/all_interactions"
     fraction = TrainingConfig.DATA_FRACTION
+    rank = TrainingConfig.RANK
+    world_size = TrainingConfig.WORLD_SIZE
     
-    if TrainingConfig.RANK == 0:
+    if rank == 0:
         logger.info(f"==> [PyArrow] Đang nạp {int(fraction*100)}% tương tác từ: {path}")
     
     # 1. Kết nối GCS nếu cần
@@ -88,57 +90,47 @@ def load_interactions_df():
     
     # 2. Đọc toàn bộ bảng (Chỉ lấy 2 cột ID để tiết kiệm RAM)
     dataset = pq.ParquetDataset(arrow_path, filesystem=fs)
-    fragments = list(dataset.fragments)
+    all_fragments = list(dataset.fragments)
 
-    total_rows = 0
-    for frag in fragments:
-        total_rows += frag.metadata.num_rows
+    # 1. Lấy fraction theo thứ tự global trước
+    total_fragments = len(all_fragments)
+    target_fragments = max(1, int(total_fragments * fraction))
+    selected_fragments = all_fragments[:target_fragments]
 
-    target_rows = int(total_rows * fraction)
+    # 2. Chia fragment cho từng rank
+    if world_size > 1:
+        rank_fragments = selected_fragments[rank::world_size]
+    else:
+        rank_fragments = selected_fragments
 
     chunks = []
     loaded_rows = 0
 
-    for frag in fragments:
-        if loaded_rows >= target_rows:
-            break
+    if rank == 0:
+        logger.info(
+            f"==> Tổng fragments={total_fragments}, dùng={len(selected_fragments)}, "
+            f"world_size={world_size}"
+        )
 
+    for i, frag in enumerate(rank_fragments):
         table = frag.to_table(columns=["asin", "product_id"])
-
-        remaining = target_rows - loaded_rows
-        if table.num_rows > remaining:
-            table = table.slice(0, remaining)
-
         df_chunk = table.to_pandas()
-        chunks.append(df_chunk)
-        loaded_rows += len(df_chunk)
 
-        if TrainingConfig.RANK == 0:
-            logger.info(f"  - Đã nạp {loaded_rows:,}/{target_rows:,} dòng")
+        chunks.append(df_chunk)
+        local_rows += len(df_chunk)
+
+        logger.info(
+            f"Rank {rank}: loaded fragment {i+1}/{len(rank_fragments)} | "
+            f"local_rows={local_rows:,}"
+        )
+
+        del table, df_chunk
 
     if not chunks:
-        raise ValueError("Không đọc được interaction nào.")
+        raise ValueError(f"Rank {rank}: Không có interaction fragment nào để đọc.")
 
     df = pd.concat(chunks, ignore_index=True)
 
-    if TrainingConfig.RANK == 0:
-        logger.info(
-            f"==> Thành công! Đã nạp {len(df):,} dòng tương tác "
-            f"trên tổng {total_rows:,} dòng"
-        )
+    logger.info(f"Rank {rank}: final local interactions={len(df):,}")
 
     return df
-
-
-    # table = dataset.read(columns=['asin', 'product_id'])
-    
-    # # 3. Thực hiện Slice (Cắt) lấy 25% đầu tiên
-    # num_rows = table.num_rows
-    # target_rows = int(num_rows * fraction)
-    # table_subset = table.slice(0, target_rows)
-    
-    # if TrainingConfig.RANK == 0:
-    #     logger.info(f"==> Thành công! Đã nạp {table_subset.num_rows:,} dòng tương tác (Tổng file: {num_rows:,})")
-    
-    # # Chuyển sang Pandas để các file Trainer truy cập được bằng index [idx]
-    # return table_subset.to_pandas()
