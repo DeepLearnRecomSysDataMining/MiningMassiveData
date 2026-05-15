@@ -104,7 +104,7 @@ def load_interactions_df():
         rank_fragments = selected_fragments
 
     chunks = []
-    loaded_rows = 0
+    local_rows = 0
 
     if rank == 0:
         logger.info(
