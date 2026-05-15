@@ -17,16 +17,23 @@ logger = logging.getLogger("dssm_trainer")
 
 class DSSMTrainingDataset(Dataset):
     def __init__(self, interactions_df, embedding_lookup):
-        self.df = interactions_df
+        # self.df = interactions_df
+        self.asins = interactions_df["asin"].astype(str).to_numpy()
+        self.product_ids = interactions_df["product_id"].astype(str).to_numpy()
         self.lookup = embedding_lookup
 
-    def __len__(self): return len(self.df)
+    def __len__(self): 
+        # return len(self.df)
+        return len(self.asins)
 
     def __getitem__(self, idx):
-        row = self.df.iloc[int(idx)]
+        # row = self.df.iloc[int(idx)]
+
         # Bốc trực tiếp vector đã tính toán trước (Sử dụng Prefix để tránh xung đột)
-        q_emb = self.lookup.get_embedding(f"amz_{row['asin']}")
-        p_emb = self.lookup.get_embedding(f"vn_{row['product_id']}")
+        # q_emb = self.lookup.get_embedding(f"amz_{row['asin']}")
+        # p_emb = self.lookup.get_embedding(f"vn_{row['product_id']}")
+        q_emb = self.lookup.get_embedding(f"amz_{self.asins[idx]}")
+        p_emb = self.lookup.get_embedding(f"vn_{self.product_ids[idx]}")
         return torch.from_numpy(q_emb.copy()).float(), torch.from_numpy(p_emb.copy()).float()
 
 def evaluate_dssm(model, eval_pkl_path, text_encoder, device):
@@ -75,7 +82,8 @@ def train_dssm(interactions_df, embedding_lookup):
     # 1. Setup Data (Chế độ Precomputed)
     train_set = DSSMTrainingDataset(interactions_df, embedding_lookup)
     sampler = DistributedSampler(train_set, num_replicas=TrainingConfig.WORLD_SIZE, rank=TrainingConfig.RANK)
-    loader = DataLoader(train_set, batch_size=TrainingConfig.BATCH_SIZE, sampler=sampler, num_workers=4)
+    # loader = DataLoader(train_set, batch_size=TrainingConfig.BATCH_SIZE, sampler=sampler, num_workers=4)
+    loader = DataLoader(train_set, batch_size=TrainingConfig.BATCH_SIZE, sampler=sampler, num_workers=2, pin_memory=True)
     
     # 2. Setup Model & DDP
     model = DSSM().to(device)
@@ -103,14 +111,16 @@ def train_dssm(interactions_df, embedding_lookup):
         # pbar = tqdm(loader, desc=f"Epoch {epoch+1}", disable=(TrainingConfig.RANK != 0), mininterval=30, miniters=200, dynamic_ncols=False)
         # for q_embs, p_embs in pbar:
         for batch_idx, (q_embs, p_embs) in enumerate(loader, start=1):
-            q_embs, p_embs = q_embs.to(device), p_embs.to(device)
-            neg_embs = p_embs[torch.randperm(p_embs.size(0))]
+            q_embs, p_embs = q_embs.to(device, non_blocking=True), p_embs.to(device, non_blocking=True)
+            neg_embs = p_embs[torch.randperm(p_embs.size(0),device=device)] # device=device: Tránh tạo index CPU rồi dùng với tensor GPU
             
-            optimizer.zero_grad()
+            optimizer.zero_grad(set_to_none=True) # set_to_none=True giúp giải phóng bộ nhớ nhanh hơn
             pos_score = model(q_embs, p_embs)
             neg_score = model(q_embs, neg_embs)
             
-            loss = criterion(pos_score, neg_score, torch.ones_like(pos_score).to(device))
+            # loss = criterion(pos_score, neg_score, torch.ones_like(pos_score).to(device))
+            target = torch.ones_like(pos_score, device=device)
+            loss = criterion(pos_score, neg_score, target)
             loss.backward()
             optimizer.step()
             

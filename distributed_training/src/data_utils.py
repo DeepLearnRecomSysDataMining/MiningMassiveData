@@ -33,6 +33,17 @@ def load_precomputed_embeddings():
     with open(idx_path, "rb") as f:
         id_to_idx = pickle.load(f)
     embeddings = np.load(emb_path, mmap_mode='r')
+    # Check consistency
+    if len(id_to_idx) != embeddings.shape[0]:
+        raise ValueError(
+            f"Index/vector mismatch: index={len(id_to_idx):,}, vectors={embeddings.shape[0]:,}"
+        )
+
+    max_idx = max(id_to_idx.values())
+    if max_idx >= embeddings.shape[0]:
+        raise ValueError(
+            f"Index out of range: max_idx={max_idx}, vectors={embeddings.shape[0]}"
+        )
     return PrecomputedEmbeddingLookup(embeddings, id_to_idx)
 
 def load_eval_dataset():

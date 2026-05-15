@@ -85,9 +85,10 @@ def train_gcn(interactions_df, embedding_lookup):
     optimizer = optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-5)
     criterion = nn.TripletMarginLoss(margin=0.5, p=2)
 
-    dataset = GCNTrainingDataset(interactions_df, embedding_lookup)
-    sampler = DistributedSampler(dataset, num_replicas=world_size, rank=rank, shuffle=True)
-    train_loader = DataLoader(dataset, batch_size=TrainingConfig.BATCH_SIZE, sampler=sampler, num_workers=4)
+    train_set = GCNTrainingDataset(interactions_df, embedding_lookup)
+    sampler = DistributedSampler(train_set, num_replicas=world_size, rank=rank, shuffle=True)
+    # train_loader = DataLoader(train_set, batch_size=TrainingConfig.BATCH_SIZE, sampler=sampler, num_workers=4)
+    loader = DataLoader(train_set, batch_size=TrainingConfig.BATCH_SIZE, sampler=sampler, num_workers=2, pin_memory=True)
 
     best_hr = 0.0
     ckpt_path = os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "gcn_best.pt")
@@ -105,7 +106,7 @@ def train_gcn(interactions_df, embedding_lookup):
         
         # pbar = tqdm(train_loader, desc=f"Epoch {epoch+1}/{TrainingConfig.EPOCHS}", disable=(rank != 0))
         for batch_idx, (q_embs, p_embs) in enumerate(train_loader, start=1):
-            q_embs, p_embs = q_embs.to(device), p_embs.to(device)
+            q_embs, p_embs = q_embs.to(device, non_blocking=True), p_embs.to(device, non_blocking=True)
             B = q_embs.size(0)
             if B < 2: 
                 continue
