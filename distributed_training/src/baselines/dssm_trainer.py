@@ -48,7 +48,8 @@ def evaluate_dssm(model, eval_pkl_path, text_encoder, device):
     base_model = model.module if hasattr(model, 'module') else model
     hits_at_10, ndcg_at_10 = 0, 0.0
     total = len(evaluation_dataset)
-    chunk = evaluation_dataset[TrainingConfig.RANK::TrainingConfig.WORLD_SIZE]
+    # chunk = evaluation_dataset[TrainingConfig.RANK::TrainingConfig.WORLD_SIZE]
+    chunk = evaluation_dataset
 
     with torch.no_grad():
         for data in tqdm(chunk, desc=f"Eval DSSM Rank {TrainingConfig.RANK}", disable=(TrainingConfig.RANK != 0)):
@@ -67,11 +68,12 @@ def evaluate_dssm(model, eval_pkl_path, text_encoder, device):
                 ndcg_at_10 += 1.0 / np.log2(rank + 1) if rank <= 10 else 0.0
             except ValueError: pass
 
-    res = torch.tensor([hits_at_10, ndcg_at_10], device=device)
-    if TrainingConfig.WORLD_SIZE > 1:
-        if torch.distributed.is_initialized():
-            torch.distributed.all_reduce(res, op=torch.distributed.ReduceOp.SUM)
-    return res[0].item() / total, res[1].item() / total
+    # res = torch.tensor([hits_at_10, ndcg_at_10], device=device)
+    # if TrainingConfig.WORLD_SIZE > 1:
+    #     if torch.distributed.is_initialized():
+    #         torch.distributed.all_reduce(res, op=torch.distributed.ReduceOp.SUM)
+    # return res[0].item() / total, res[1].item() / total
+    return hits_at_10 / total, ndcg_at_10 / total
 
 def train_dssm(interactions_df, embedding_lookup):
     device = TrainingConfig.DEVICE
@@ -129,11 +131,20 @@ def train_dssm(interactions_df, embedding_lookup):
             if TrainingConfig.RANK == 0 and (batch_idx % 200 == 0 or batch_idx == total_batches):
                 logger.info(f"Epoch {epoch+1}/{TrainingConfig.EPOCHS} | Batch {batch_idx}/{total_batches} | Loss={loss.item():.4f}")
 
+        # if torch.distributed.is_initialized():
+        #     torch.distributed.barrier()
+        # # Eval
+        # hr10, ndcg10 = evaluate_dssm(model, TrainingConfig.EVAL_PKL_PATH, text_encoder, device)
+        
+        # if TrainingConfig.RANK == 0:
+        #     logger.info(f"--- EPOCH {epoch+1} DONE | HR@10: {hr10:.4f} ---")
+
         if torch.distributed.is_initialized():
             torch.distributed.barrier()
-        # Eval
-        hr10, ndcg10 = evaluate_dssm(model, TrainingConfig.EVAL_PKL_PATH, text_encoder, device)
+
+        # Eval chỉ chạy trên Rank 0 để tránh NCCL timeout do các rank lệch nhịp khi encode text
         if TrainingConfig.RANK == 0:
+            hr10, ndcg10 = evaluate_dssm( model, TrainingConfig.EVAL_PKL_PATH, text_encoder, device )
             logger.info(f"--- EPOCH {epoch+1} DONE | HR@10: {hr10:.4f} ---")
             
             if hr10 > best_hr10:
