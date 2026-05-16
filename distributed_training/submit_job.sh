@@ -42,13 +42,36 @@ docker build -t $IMAGE_URI .
 docker push $IMAGE_URI
 
 # --- 6. KHỞI TẠO JOB TRÊN VERTEX AI ---
+echo ">>> Đang tạo file cấu hình tạm thời với cơ chế Spot..."
+
+echo ">>> Đang tạo config từ template..."
+TEMP_CONFIG="temp_config.yaml"
+
+sed \
+  -e "s|__MACHINE_TYPE__|$MACHINE_TYPE|g" \
+  -e "s|__ACCELERATOR_TYPE__|$ACCELERATOR_TYPE|g" \
+  -e "s|__ACCELERATOR_COUNT__|$ACCELERATOR_COUNT|g" \
+  -e "s|__REPLICA_COUNT__|$REPLICA_COUNT|g" \
+  -e "s|__IMAGE_URI__|$IMAGE_URI|g" \
+  -e "s|__BASELINE_ID__|$BASELINE_ID|g" \
+  -e "s|__BUCKET__|$BUCKET|g" \
+  config.yaml > "$TEMP_CONFIG"
+
 echo ">>> Đang gửi yêu cầu huấn luyện lên Vertex AI..."
+# gcloud ai custom-jobs create \
+#     --region=$REGION \
+#     --project=$PROJECT_ID \
+#     --display-name="RecSys_Baseline_${BASELINE_ID}_${TIMESTAMP}" \
+#     --worker-pool-spec="machine-type=$MACHINE_TYPE,replica-count=$REPLICA_COUNT,container-image-uri=$IMAGE_URI,accelerator-type=$ACCELERATOR_TYPE,accelerator-count=$ACCELERATOR_COUNT" \
+#     --args="--baseline=$BASELINE_ID"
 gcloud ai custom-jobs create \
     --region=$REGION \
     --project=$PROJECT_ID \
     --display-name="RecSys_Baseline_${BASELINE_ID}_${TIMESTAMP}" \
-    --worker-pool-spec="machine-type=$MACHINE_TYPE,replica-count=$REPLICA_COUNT,container-image-uri=$IMAGE_URI,accelerator-type=$ACCELERATOR_TYPE,accelerator-count=$ACCELERATOR_COUNT" \
-    --args="--baseline=$BASELINE_ID"
+    --config=$TEMP_CONFIG
+
+# Xóa file cấu hình tạm thời sau khi gửi xong
+rm $TEMP_CONFIG
 
 echo "----------------------------------------------------------"
 echo "KẾT QUẢ: Job đã được gửi thành công!"

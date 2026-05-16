@@ -13,22 +13,29 @@ from src.models import BatchedGCN
 from tqdm import tqdm
 import numpy as np
 from src.metrics_utils import write_metrics_csv
+from src.checkpoint_utils import download_resume_checkpoint, load_resume_checkpoint, save_resume_checkpoint, save_best_model, upload_file_to_gcs
 
 logger = logging.getLogger("gcn_trainer")
 
 class GCNTrainingDataset(Dataset):
     def __init__(self, interactions_df, embedding_lookup):
-        self.df = interactions_df
+        self.asins = interactions_df["asin"]
+        self.product_ids = interactions_df["product_id"]
         self.lookup = embedding_lookup
 
-    def __len__(self): return len(self.df)
+    def __len__(self): 
+        return len(self.asins)
 
     def __getitem__(self, idx):
-        row = self.df.iloc[int(idx)]
-        # Tra cứu trực tiếp vector (Sử dụng Prefix để tránh xung đột)
-        q_emb = self.lookup.get_embedding(f"amz_{row['asin']}")
-        p_emb = self.lookup.get_embedding(f"vn_{row['product_id']}")
-        return torch.from_numpy(q_emb.copy()).float(), torch.from_numpy(p_emb.copy()).float()
+        idx = int(idx)
+
+        q_emb = self.lookup.get_embedding(f"amz_{self.asins[idx]}")
+        p_emb = self.lookup.get_embedding(f"vn_{self.product_ids[idx]}")
+        
+        return (
+            torch.from_numpy(q_emb.copy()).float(),
+            torch.from_numpy(p_emb.copy()).float()
+        )
 
 def evaluate_gcn(model, eval_pkl_path, text_encoder, device):
     """Đánh giá model GCN sử dụng file .pkl"""
@@ -41,7 +48,8 @@ def evaluate_gcn(model, eval_pkl_path, text_encoder, device):
     model.eval()
     hits_at_10, ndcg_at_10 = 0, 0.0
     total = len(evaluation_dataset)
-    chunk = evaluation_dataset[TrainingConfig.RANK::TrainingConfig.WORLD_SIZE]
+    # chunk = evaluation_dataset[TrainingConfig.RANK::TrainingConfig.WORLD_SIZE]
+    chunk = evaluation_dataset
 
     with torch.no_grad():
         for data in tqdm(chunk, desc=f"Eval GCN Rank {TrainingConfig.RANK}", disable=(TrainingConfig.RANK != 0)):
@@ -63,62 +71,104 @@ def evaluate_gcn(model, eval_pkl_path, text_encoder, device):
                 ndcg_at_10 += 1.0 / np.log2(rank + 1) if rank <= 10 else 0.0
             except ValueError: pass
 
-    res = torch.tensor([hits_at_10, ndcg_at_10], device=device)
-    if TrainingConfig.WORLD_SIZE > 1:
-        if torch.distributed.is_initialized():
-            torch.distributed.all_reduce(res, op=torch.distributed.ReduceOp.SUM)
-    return res[0].item() / total, res[1].item() / total
+    # res = torch.tensor([hits_at_10, ndcg_at_10], device=device)
+    # if TrainingConfig.WORLD_SIZE > 1:
+    #     if torch.distributed.is_initialized():
+    #         torch.distributed.all_reduce(res, op=torch.distributed.ReduceOp.SUM)
+    # return res[0].item() / total, res[1].item() / total
+    return hits_at_10 / total, ndcg_at_10 / total
 
 def train_gcn(interactions_df, embedding_lookup):
     device = TrainingConfig.DEVICE
-    rank = TrainingConfig.RANK
-    world_size = TrainingConfig.WORLD_SIZE
+    logger.info(f"\n\n\nTraining GCN on device {device}\n\n\n")
     
     # Chỉ dùng encoder cho Evaluation
     text_encoder = SentenceTransformer('paraphrase-multilingual-mpnet-base-v2', device=device)
-        
+    
+    train_set = GCNTrainingDataset(interactions_df, embedding_lookup)
+    loader = DataLoader(train_set, batch_size=TrainingConfig.BATCH_SIZE, shuffle=False, num_workers=1, pin_memory=True, drop_last=True, persistent_workers=True)
+    
     model = BatchedGCN(in_features=768, hidden_features=256, out_features=128, knn_threshold=0.3).to(device)
-    if world_size > 1:
-        if not torch.distributed.is_initialized(): torch.distributed.init_process_group(backend="nccl")
+
+    if TrainingConfig.WORLD_SIZE > 1:
+        if not torch.distributed.is_initialized(): 
+            torch.distributed.init_process_group(backend="nccl")
         model = DDP(model, device_ids=[device.index])
     
-    optimizer = optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-5)
+    local_batches = torch.tensor([len(loader)], device=device)
+
+    if torch.distributed.is_initialized():
+        torch.distributed.all_reduce( local_batches, op=torch.distributed.ReduceOp.MIN)
+
+    sync_train_batches = int(local_batches.item())
+
+    logger.info(
+        f"Rank {TrainingConfig.RANK}: local_batches={len(loader)}, "
+        f"sync_train_batches={sync_train_batches}"
+    )
+
+    optimizer = optim.Adam(model.parameters(), TrainingConfig.LR, weight_decay=1e-5)
     criterion = nn.TripletMarginLoss(margin=0.5, p=2)
 
-    train_set = GCNTrainingDataset(interactions_df, embedding_lookup)
-    sampler = DistributedSampler(train_set, num_replicas=world_size, rank=rank, shuffle=True)
-    # train_loader = DataLoader(train_set, batch_size=TrainingConfig.BATCH_SIZE, sampler=sampler, num_workers=4)
-    loader = DataLoader(train_set, batch_size=TrainingConfig.BATCH_SIZE, sampler=sampler, num_workers=2, pin_memory=True)
+    if TrainingConfig.RANK == 0:
+        download_resume_checkpoint("gcn")
 
-    best_hr = 0.0
+    if torch.distributed.is_initialized():
+        torch.distributed.barrier()
+
+    resume = load_resume_checkpoint( "gcn", model, optimizer, device=device )
+
+    start_epoch = resume["start_epoch"]
+    best_hr = resume["best_metric"]
+    metrics_rows = resume["history"]
+
     ckpt_path = os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "gcn_best.pt")
     
-    if rank == 0:
-        logger.info(">>> BẮT ĐẦU HUẤN LUYỆN GCN CHẾ ĐỘ THẦN TỐC (PRECOMPUTED)...")
+    if TrainingConfig.RANK == 0:
+        logger.info(">>> BẮT ĐẦU HUẤN LUYỆN GCN (PRECOMPUTED)...")
 
-    metrics_rows = []
-
-    for epoch in range(TrainingConfig.EPOCHS):
+    for epoch in range(start_epoch, TrainingConfig.EPOCHS):
+        # sampler.set_epoch(epoch)
         model.train()
-        sampler.set_epoch(epoch)
         total_loss = 0
-        total_batches = len(train_loader)
+        total_batches = min(len(loader), sync_train_batches)
         
         # pbar = tqdm(train_loader, desc=f"Epoch {epoch+1}/{TrainingConfig.EPOCHS}", disable=(rank != 0))
-        for batch_idx, (q_embs, p_embs) in enumerate(train_loader, start=1):
+        for batch_idx, (q_embs, p_embs) in enumerate(loader, start=1):
+            if batch_idx > sync_train_batches:
+                break
+
             q_embs, p_embs = q_embs.to(device, non_blocking=True), p_embs.to(device, non_blocking=True)
             B = q_embs.size(0)
             if B < 2: 
                 continue
             
-            optimizer.zero_grad()
+            optimizer.zero_grad(set_to_none=True)
             # Đưa vector vào đồ thị
             X = torch.stack([q_embs, p_embs], dim=1) 
             X_out = model(X)
             
             anchors, positives = X_out[:, 0, :], X_out[:, 1, :]
-            neg_indices = (torch.arange(B, device=device) + 1) % B
-            negatives = positives[neg_indices]
+
+            with torch.no_grad():
+                a_norm = F.normalize(anchors, p=2, dim=1)
+                p_norm = F.normalize(positives, p=2, dim=1)
+
+                sim = torch.matmul(a_norm, p_norm.T)
+                sim.fill_diagonal_(-1e9)
+
+                k = min(10, sim.size(1) - 1)
+
+                topk_idx = torch.topk(sim, k=k, dim=1).indices
+
+                rand_pos = torch.randint( 0, k, (sim.size(0),), device=device )
+
+                hard_neg_idx = topk_idx[ torch.arange(sim.size(0), device=device), rand_pos ]
+
+            negatives = positives[hard_neg_idx]
+
+            # neg_indices = (torch.arange(B, device=device) + 1) % B
+            # negatives = positives[neg_indices]
             
             loss = criterion(anchors, positives, negatives)
             loss.backward()
@@ -126,45 +176,50 @@ def train_gcn(interactions_df, embedding_lookup):
 
             total_loss += loss.item()
             
-            if rank == 0 and (batch_idx % 200 == 0 or batch_idx == total_batches):
+            if TrainingConfig.RANK == 0 and (batch_idx % 200 == 0 or batch_idx == total_batches):
                 # pbar.set_postfix({"loss": f"{total_loss / (batch_idx + 1):.4f}"})
                 logger.info(
                     f"Epoch {epoch+1}/{TrainingConfig.EPOCHS} | "
                     f"Batch {batch_idx}/{total_batches} | "
                     f"Loss={loss.item():.4f}"
                 )
+
         if torch.distributed.is_initialized():
             torch.distributed.barrier()
 
-        hr10, ndcg10 = evaluate_gcn(model, TrainingConfig.EVAL_PKL_PATH, text_encoder, device)
-        
-        if rank == 0:
+        loss_tensor = torch.tensor([total_loss, total_batches], dtype=torch.float32, device=device)
+        if torch.distributed.is_initialized():
+            torch.distributed.all_reduce(loss_tensor, op=torch.distributed.ReduceOp.SUM)
+        global_avg_loss = (loss_tensor[0] / loss_tensor[1].clamp_min(1)).item()
+
+        if TrainingConfig.RANK == 0:
+            hr10, ndcg10 = evaluate_gcn(model, TrainingConfig.EVAL_PKL_PATH, text_encoder, device)
             logger.info(f"GCN EPOCH {epoch+1} DONE | HR@10: {hr10:.4f}")
-            if hr10 > best_hr:
-                best_hr = hr10
-                save_model = model.module if hasattr(model, 'module') else model
-                torch.save(save_model.state_dict(), ckpt_path)
+            
+            # avg_loss = total_loss / max(total_batches, 1)
 
             # trong mỗi epoch sau eval:
-            metrics_rows.append({
+            current_metrics = {
                 "baseline": "gcn",
                 "epoch": epoch + 1,
                 "hr10": hr10,
                 "ndcg10": ndcg10,
-                "loss": total_loss / max(total_batches, 1),
+                "loss": global_avg_loss,
                 "data_fraction": getattr(TrainingConfig, "DATA_FRACTION", "")
-            })
+            }
+
+            metrics_rows.append(current_metrics)
+            metrics_path = os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "gcn_metrics.csv")    
+            write_metrics_csv(metrics_path, metrics_rows)
+            upload_file_to_gcs(metrics_path)
+            
+            if hr10 > best_hr:
+                best_hr = hr10
+                save_best_model( model_name="gcn", model=model, epoch=epoch, metrics=current_metrics )           
+
+            save_resume_checkpoint(model_name="gcn", model=model, optimizer=optimizer, epoch=epoch, best_metric=best_hr, history=metrics_rows)
         
         if torch.distributed.is_initialized():
             torch.distributed.barrier()
-            
-    if TrainingConfig.RANK == 0:
-        try:
-            write_metrics_csv(
-                os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "gcn_metrics.csv"),
-                metrics_rows
-            )
-        except Exception as e:
-            logger.error(f"\n\n\nLỗi khi ghi lại GCN metrics: {e}\n\n\n")
 
-    return ckpt_path
+    return os.path.join( TrainingConfig.LOCAL_MODELS_DIR, "gcn_best.pt" )

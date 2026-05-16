@@ -1,0 +1,18 @@
+workerPoolSpecs:
+  - machineSpec:
+      machineType: "__MACHINE_TYPE__"
+      acceleratorType: "__ACCELERATOR_TYPE__"
+      acceleratorCount: __ACCELERATOR_COUNT__
+    replicaCount: __REPLICA_COUNT__
+    containerSpec:
+      imageUri: "__IMAGE_URI__"
+      args:
+        - "--baseline=__BASELINE_ID__"
+      env:
+        - name: TRAINING_ENV
+          value: "cloud"
+        - name: GCS_BUCKET
+          value: "gs://__BUCKET__"
+
+scheduling:
+  strategy: "SPOT"

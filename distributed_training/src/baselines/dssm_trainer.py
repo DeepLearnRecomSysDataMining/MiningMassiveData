@@ -12,6 +12,7 @@ from config.training_config import TrainingConfig
 from src.models import DSSM
 from tqdm import tqdm
 from src.metrics_utils import write_metrics_csv
+from src.checkpoint_utils import download_resume_checkpoint, load_resume_checkpoint, save_resume_checkpoint, save_best_model, upload_file_to_gcs
 
 logger = logging.getLogger("dssm_trainer")
 
@@ -82,8 +83,8 @@ def train_dssm(interactions_df, embedding_lookup):
     
     # 1. Setup Data (Chế độ Precomputed)
     train_set = DSSMTrainingDataset(interactions_df, embedding_lookup)
-    loader = DataLoader(train_set, batch_size=TrainingConfig.BATCH_SIZE, shuffle=False, num_workers=1, pin_memory=True)
-    
+    loader = DataLoader(train_set, batch_size=TrainingConfig.BATCH_SIZE, shuffle=False, num_workers=1, pin_memory=True, drop_last=True, persistent_workers=True)
+
     # 2. Setup Model & DDP
     model = DSSM().to(device)
 
@@ -91,26 +92,67 @@ def train_dssm(interactions_df, embedding_lookup):
         if not torch.distributed.is_initialized():
             torch.distributed.init_process_group(backend="nccl")
         model = DDP(model, device_ids=[device.index])
+
+    local_batches = torch.tensor([len(loader)], device=device)
+
+    if torch.distributed.is_initialized():
+        torch.distributed.all_reduce(local_batches, op=torch.distributed.ReduceOp.MIN)
+
+    sync_train_batches = int(local_batches.item())
+    
+    logger.info(
+        f"Rank {TrainingConfig.RANK}: local_batches={len(loader)}, "
+        f"sync_train_batches={sync_train_batches}"
+    )
     
     optimizer = optim.Adam(model.parameters(), lr=TrainingConfig.LR)
     criterion = nn.MarginRankingLoss(margin=0.2)
     
-    best_hr10 = 0.0
     if TrainingConfig.RANK == 0:
-        logger.info(">>> BẮT ĐẦU HUẤN LUYỆN DSSM CHẾ ĐỘ THẦN TỐC (PRECOMPUTED)...")
-        
-    metrics_rows = []   
+        download_resume_checkpoint("dssm")
 
-    for epoch in range(TrainingConfig.EPOCHS):
+    if torch.distributed.is_initialized():
+        torch.distributed.barrier()
+    
+    resume = load_resume_checkpoint( "dssm", model, optimizer, device=device )
+
+    start_epoch = resume["start_epoch"]
+    best_hr10 = resume["best_metric"]
+    metrics_rows = resume["history"]
+
+    if TrainingConfig.RANK == 0:
+        logger.info(">>> BẮT ĐẦU HUẤN LUYỆN DSSM (PRECOMPUTED)...")  
+
+    for epoch in range(start_epoch, TrainingConfig.EPOCHS):
         # sampler.set_epoch(epoch)
         model.train()
         total_loss = 0
-        total_batches = len(loader)
+        total_batches = min(len(loader), sync_train_batches)
 
         for batch_idx, (q_embs, p_embs) in enumerate(loader, start=1):
+            if batch_idx > sync_train_batches:
+                break
+
             q_embs, p_embs = q_embs.to(device, non_blocking=True), p_embs.to(device, non_blocking=True)
-            neg_embs = p_embs[torch.randperm(p_embs.size(0),device=device)] # device=device: Tránh tạo index CPU rồi dùng với tensor GPU
-            
+            # neg_embs = p_embs[torch.randperm(p_embs.size(0),device=device)] # device=device: Tránh tạo index CPU rồi dùng với tensor GPU
+            with torch.no_grad():
+                q_norm = torch.nn.functional.normalize(q_embs, p=2, dim=1)
+                p_norm = torch.nn.functional.normalize(p_embs, p=2, dim=1)
+                sim = torch.matmul(q_norm, p_norm.T)
+                sim.fill_diagonal_(-1e9)
+
+                k = min(10, sim.size(1) - 1)
+                topk_idx = torch.topk(sim, k=k, dim=1).indices
+
+                rand_pos = torch.randint(0, k, (sim.size(0),), device=device)
+                hard_neg_idx = topk_idx[
+                    torch.arange(sim.size(0), device=device),
+                    rand_pos
+                ]
+
+            neg_embs = p_embs[hard_neg_idx]
+
+            # 4. Training Step
             optimizer.zero_grad(set_to_none=True) # set_to_none=True giúp giải phóng bộ nhớ nhanh hơn
             pos_score = model(q_embs, p_embs)
             neg_score = model(q_embs, neg_embs)
@@ -134,32 +176,30 @@ def train_dssm(interactions_df, embedding_lookup):
             hr10, ndcg10 = evaluate_dssm( model, TrainingConfig.EVAL_PKL_PATH, text_encoder, device )
             logger.info(f"--- EPOCH {epoch+1} DONE | HR@10: {hr10:.4f} ---")
             
-            if hr10 > best_hr10:
-                best_hr10 = hr10
-                save_model = model.module if hasattr(model, 'module') else model
-                torch.save(save_model.state_dict(), os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "dssm_best.pt"))
+            avg_loss = total_loss / max(total_batches, 1)
 
-            # trong mỗi epoch sau eval:
-            metrics_rows.append({
+            current_metrics = {
                 "baseline": "dssm",
                 "epoch": epoch + 1,
                 "hr10": hr10,
                 "ndcg10": ndcg10,
-                "loss": total_loss / max(total_batches, 1),
+                "loss": avg_loss,
                 "data_fraction": getattr(TrainingConfig, "DATA_FRACTION", "")
-            })
+            }
+
+            metrics_rows.append(current_metrics)
+            metrics_path = os.path.join( TrainingConfig.LOCAL_MODELS_DIR, "dssm_metrics.csv" )
+            write_metrics_csv(metrics_path, metrics_rows)
+            upload_file_to_gcs(metrics_path)
+
+            if hr10 > best_hr10:
+                best_hr10 = hr10
+                save_best_model( model_name="dssm", model=model, epoch=epoch, metrics=current_metrics)
+
+            save_resume_checkpoint( model_name="dssm", model=model, optimizer=optimizer, epoch=epoch, best_metric=best_hr10, history=metrics_rows)
 
         # Sync sau eval + save checkpoint
         if torch.distributed.is_initialized():
             torch.distributed.barrier()
-
-    if TrainingConfig.RANK == 0:
-        try:
-            write_metrics_csv(
-                os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "dssm_metrics.csv"),
-                metrics_rows
-            )
-        except Exception as e:
-            logger.error(f"\n\n\nLỗi khi ghi lại DSSM metrics: {e}\n\n\n")
-
+        
     return os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "dssm_best.pt")

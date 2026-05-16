@@ -97,12 +97,27 @@ Xem log chạy Custom Job trên terminal:
 ```bash
    gcloud ai custom-jobs stream-logs [JOB_ID]
 ```
+hoặc 
+```bash
+   gcloud ai custom-jobs stream-logs projects/[PROJECT_ID]/locations/[REGION]/customJobs/[JOB_ID]
+```
+Ví dụ:
+```bash
+gcloud ai custom-jobs stream-logs projects/650721316539/locations/asia-southeast1/customJobs/2567941017630146560
+```
 
 - Lưu ý quan trọng khi chạy:
   - Bật API: Khi terminal hỏi `Would you like to enable and retry (y/N)?`, bạn hãy gõ `y` rồi Enter. Quá trình này chỉ mất khoảng 1-2 phút.
   - Docker: Đảm bảo Docker Desktop của bạn đang chạy (trạng thái màu xanh).
   - Thư mục: Nhờ lệnh `cd "$(dirname "$0")"` tôi vừa thêm vào, giờ đây bạn có thể đứng ở bất kỳ đâu chạy script mà không còn lo lỗi "không thấy Dockerfile".
 
+## Cách 1: Fix từ phía PowerShell (Không cần sửa code)
+PowerShell trên Windows mặc định thường không dùng UTF-8 để hiển thị output từ lệnh bên ngoài (như gcloud). Bạn có thể chạy lệnh này trong PowerShell trước khi lấy log:
+
+```powershell
+# Chạy lệnh này để ép PowerShell hiển thị UTF-8
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+```
 
 ## 3. Luồng vận hành chi tiết của Script
 Khi bạn chạy lệnh trên, hệ thống local sẽ thực hiện các bước:
