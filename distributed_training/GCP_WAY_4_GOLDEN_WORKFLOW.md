@@ -121,6 +121,16 @@ Hoặc xem realtime lưu ra log:
    nohup gcloud ai custom-jobs stream-logs projects/650721316539/locations/asia-southeast1/customJobs/2567941017630146560 > training_process_log.txt 2>&1 &
 ```
 
+## Cách 1: Fix từ phía PowerShell (Không cần sửa code)
+PowerShell trên Windows mặc định thường không dùng UTF-8 để hiển thị output từ lệnh bên ngoài (như gcloud). Bạn có thể chạy lệnh này trong PowerShell trước khi lấy log:
+
+```powershell
+# Chạy lệnh này để ép PowerShell hiển thị UTF-8
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
+PS D:\Hoctap_Code_PrivateProject\MiningMassiveData> [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+PS D:\Hoctap_Code_PrivateProject\MiningMassiveData> gcloud ai custom-jobs stream-logs projects/650721316539/locations/asia-southeast1/customJobs/8801556220608512000
+
 ## 3. Luồng làm việc hàng ngày (Daily Workflow)
 
 ### Bước 1: Tại máy cá nhân (Local)

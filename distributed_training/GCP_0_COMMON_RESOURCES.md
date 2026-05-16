@@ -22,7 +22,10 @@ Trước khi chạy bất kỳ script nào, bạn cần thực hiện các bư�
     - Tìm: `Vertex AI Training GPUs` (loại NVIDIA_TESLA_T4 hoặc NVIDIA_L4).
     - Đảm bảo "Limit" lớn hơn hoặc bằng số GPU bạn định dùng. Nếu là 0, hãy bấm **Edit Quotas** để yêu cầu tăng lên.
     - Tại thanh Filter (Bộ lọc), bạn gõ: `Vertex AI Custom Model Training` hoặc `Vertex AI Training GPUs`.
+    
     - hoặc Bạn tìm kiếm đến đúng dòng tên là: `Custom model training Nvidia T4 GPUs per region` (nếu bạn dùng T4) và kiểm tra xem cột `Limit` (Giới hạn) đang là 0 hay 1.
+
+    - dùng GPU spot hoặc preemptible `custom_model_training_preemptible_nvidia_t4_gpus`
 
 5.  **Cấu hình Docker Local**:
     ```bash
