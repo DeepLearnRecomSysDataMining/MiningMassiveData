@@ -107,8 +107,8 @@ def train_gcn(interactions_df, embedding_lookup):
         f"sync_train_batches={sync_train_batches}"
     )
 
-    optimizer = optim.Adam(model.parameters(), TrainingConfig.LR, weight_decay=1e-5)
-    criterion = nn.TripletMarginLoss(margin=0.5, p=2)
+    optimizer = optim.Adam(model.parameters(), lr=1e-4, weight_decay=1e-5) # giảm LR thay vì chọn TrainingConfig.LEARNing..
+    criterion = nn.TripletMarginLoss(margin=0.2, p=2)  # giảm margin
 
     if TrainingConfig.RANK == 0:
         download_resume_checkpoint("gcn")
@@ -121,8 +121,6 @@ def train_gcn(interactions_df, embedding_lookup):
     start_epoch = resume["start_epoch"]
     best_hr = resume["best_metric"]
     metrics_rows = resume["history"]
-
-    ckpt_path = os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "gcn_best.pt")
     
     if TrainingConfig.RANK == 0:
         logger.info(">>> BẮT ĐẦU HUẤN LUYỆN GCN (PRECOMPUTED)...")
@@ -139,37 +137,105 @@ def train_gcn(interactions_df, embedding_lookup):
                 break
 
             q_embs, p_embs = q_embs.to(device, non_blocking=True), p_embs.to(device, non_blocking=True)
+
+            # B = q_embs.size(0)
+            # if B < 2:
+            #     continue
+
+            # num_neg = 8
+            # rand_idx = torch.randint( 0, B, (B, num_neg), device=device )
+            # # tránh chọn chính positive của sample đó
+            # row_idx = torch.arange(B, device=device).unsqueeze(1)
+            # rand_idx = torch.where( rand_idx == row_idx, (rand_idx + 1) % B, rand_idx )
+            # neg_embs = p_embs[rand_idx]  # (B, num_neg, 768)
+            # X = torch.cat(
+            #     [
+            #         q_embs.unsqueeze(1),  # (B, 1, 768)
+            #         p_embs.unsqueeze(1),  # (B, 1, 768)
+            #         neg_embs  # (B, num_neg, 768)
+            #     ],
+            #     dim=1
+            # )
+
+            # optimizer.zero_grad(set_to_none=True)
+            # # Đưa vector vào đồ thị
+            # X = torch.stack([q_embs, p_embs], dim=1) 
+            # X_out = model(X)
+
+            # anchors = X_out[:, 0, :]
+            # positives = X_out[:, 1, :]
+            # negatives = X_out[:, 2:, :]
+            
+            # # anchors, positives = X_out[:, 0, :], X_out[:, 1, :]
+
+            # if epoch ==0:
+            #     neg_indices = (torch.arange(B, device=device) + 1) % B
+            #     negatives = positives[neg_indices]
+            # else:
+            #     with torch.no_grad():
+            #         a_norm = F.normalize(anchors, p=2, dim=1)
+            #         p_norm = F.normalize(positives, p=2, dim=1)
+            #         sim = torch.matmul(a_norm, p_norm.T)
+            #         sim.fill_diagonal_(-1e9)
+            #         k = min(10, sim.size(1) - 1)
+            #         topk_idx = torch.topk(sim, k=k, dim=1).indices
+            #         rand_pos = torch.randint( 0, k, (sim.size(0),), device=device )
+            #         hard_neg_idx = topk_idx[ torch.arange(sim.size(0), device=device), rand_pos ]
+            #     negatives = positives[hard_neg_idx]
+            
+            # loss = criterion(anchors, positives, negatives)
+            # loss.backward()
+            # optimizer.step()
+
             B = q_embs.size(0)
-            if B < 2: 
+            if B < 2:
                 continue
-            
+            num_neg = min(8, B - 1)
+            # 1. Lấy negative candidates từ các positive khác trong cùng batch
+            rand_idx = torch.randint( 0, B, (B, num_neg), device=device )
+            row_idx = torch.arange(B, device=device).unsqueeze(1)
+
+            # Tránh chọn đúng positive của chính sample đó
+            rand_idx = torch.where( rand_idx == row_idx, (rand_idx + 1) % B, rand_idx )
+            neg_embs = p_embs[rand_idx]  # (B, num_neg, 768)
+
+            # 2. Tạo graph context thật: query + positive + nhiều negatives
+            X = torch.cat(
+                [
+                    q_embs.unsqueeze(1),  # (B, 1, 768)
+                    p_embs.unsqueeze(1),  # (B, 1, 768)
+                    neg_embs              # (B, num_neg, 768)
+                ],
+                dim=1
+            )
+
             optimizer.zero_grad(set_to_none=True)
-            # Đưa vector vào đồ thị
-            X = torch.stack([q_embs, p_embs], dim=1) 
+
+            # 3. GCN message passing trên graph nhiều node
             X_out = model(X)
-            
-            anchors, positives = X_out[:, 0, :], X_out[:, 1, :]
 
-            with torch.no_grad():
-                a_norm = F.normalize(anchors, p=2, dim=1)
-                p_norm = F.normalize(positives, p=2, dim=1)
+            anchors = X_out[:, 0, :]          # (B, 128)
+            positives = X_out[:, 1, :]        # (B, 128)
+            neg_candidates = X_out[:, 2:, :]  # (B, num_neg, 128)
 
-                sim = torch.matmul(a_norm, p_norm.T)
-                sim.fill_diagonal_(-1e9)
+            # 4. Chọn negative
+            if epoch <= 3:
+                # Warm-up: chọn random negative trong graph
+                neg_choice = torch.randint( 0, num_neg, (B,), device=device )
+            else:
+                # Semi-hard: chọn negative giống anchor nhất trong graph candidates
+                with torch.no_grad():
+                    a_norm = F.normalize(anchors, p=2, dim=1)
+                    n_norm = F.normalize(neg_candidates, p=2, dim=2)
+                    sim = torch.sum( a_norm.unsqueeze(1) * n_norm, dim=2 )  # (B, num_neg)
+                    k = min(5, sim.size(1))
+                    topk_idx = torch.topk( sim, k=k, dim=1 ).indices  # (B, k)
+                    rand_pos = torch.randint( 0, k, (B,), device=device )
+                    neg_choice = topk_idx[ torch.arange(B, device=device), rand_pos ]
 
-                k = min(10, sim.size(1) - 1)
+            negatives = neg_candidates[ torch.arange(B, device=device), neg_choice ]  # (B, 128)
 
-                topk_idx = torch.topk(sim, k=k, dim=1).indices
-
-                rand_pos = torch.randint( 0, k, (sim.size(0),), device=device )
-
-                hard_neg_idx = topk_idx[ torch.arange(sim.size(0), device=device), rand_pos ]
-
-            negatives = positives[hard_neg_idx]
-
-            # neg_indices = (torch.arange(B, device=device) + 1) % B
-            # negatives = positives[neg_indices]
-            
+            # 5. Triplet loss
             loss = criterion(anchors, positives, negatives)
             loss.backward()
             optimizer.step()
