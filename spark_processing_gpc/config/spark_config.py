@@ -36,6 +36,13 @@ class PathConfig:
     def LOGS_DIR(self):
         return self._join_gcs(self.OUTPUT_BASE, "logs")
 
+    @property
+    def LLM_CHGNN_TRAIN_OUT(self):
+        return self._join_gcs(
+            self.OUTPUT_BASE,
+            "llm_chgnn_train_dataset"
+        )
+
 # Khởi tạo instance
 PathConfig = PathConfig()
 

@@ -5,6 +5,7 @@ import logging
 import os
 import pyarrow.parquet as pq
 from config.training_config import TrainingConfig
+import gcsfs
 
 logger = logging.getLogger("data_utils")
 
@@ -149,3 +150,81 @@ def load_interactions_df():
         "asin": asin_all,
         "product_id": product_all
     }
+
+
+# def load_llm_chgnn_train_dataset():
+
+#     path = TrainingConfig.GCS_LLM_CHGNN_TRAIN if TrainingConfig.IS_CLOUD else "data/llm_chgnn_train_dataset"
+#     fs = gcsfs.GCSFileSystem() if TrainingConfig.IS_CLOUD else None
+#     arrow_path = path.replace("gs://", "") if TrainingConfig.IS_CLOUD else path
+
+#     dataset = pq.ParquetDataset(arrow_path, filesystem=fs)
+#     fragments = list(dataset.fragments)
+
+#     rank = TrainingConfig.RANK
+#     world_size = TrainingConfig.WORLD_SIZE
+
+#     if world_size > 1:
+#         fragments = fragments[rank::world_size]
+
+#     records = []
+#     cols = [ "query_asin", "query_text", "query_specs", "query_category", "candidate_ids", "candidate_texts", "candidate_specs", "candidate_categories", "true_vn_id", ]
+
+#     for i, frag in enumerate(fragments):
+#         table = frag.to_table(columns=cols)
+#         records.extend(table.to_pylist())
+#         del table
+
+#         logger.info(
+#             f"Rank {rank}: loaded LLM-CHGNN fragment "
+#             f"{i+1}/{len(fragments)} | records={len(records):,}"
+#         )
+
+#     return records
+
+class LLMCHGNNParquetDataset:
+    """
+    Iterable-like dataset đọc Parquet theo fragment, tránh load toàn bộ RAM.
+    Mỗi rank chỉ đọc fragment của rank đó.
+    """
+    def __init__(self):
+        path = ( TrainingConfig.GCS_LLM_CHGNN_TRAIN if TrainingConfig.IS_CLOUD else "data/llm_chgnn_train_dataset" )
+
+        fs = gcsfs.GCSFileSystem() if TrainingConfig.IS_CLOUD else None
+        arrow_path = path.replace("gs://", "") if TrainingConfig.IS_CLOUD else path
+
+        dataset = pq.ParquetDataset(arrow_path, filesystem=fs)
+        fragments = list(dataset.fragments)
+
+        rank = TrainingConfig.RANK
+        world_size = TrainingConfig.WORLD_SIZE
+
+        self.fragments = fragments[rank::world_size] if world_size > 1 else fragments
+        self.cols = [ "query_asin", "query_text", "query_specs", "query_category", 
+                      "candidate_ids", "candidate_texts", "candidate_specs", "candidate_categories",
+                      "true_vn_id" ]
+
+    def __iter__(self):
+        for i, frag in enumerate(self.fragments):
+            table = frag.to_table(columns=self.cols)
+            rows = table.to_pylist()
+
+            logger.info(
+                f"Rank {TrainingConfig.RANK}: streaming LLM-CHGNN fragment "
+                f"{i+1}/{len(self.fragments)} | rows={len(rows):,}"
+            )
+
+            for row in rows:
+                yield row
+
+            del table, rows
+
+    def __len__(self):
+        total = 0
+        for frag in self.fragments:
+            total += frag.metadata.num_rows
+        return total
+
+
+def load_llm_chgnn_train_dataset():
+    return LLMCHGNNParquetDataset()
