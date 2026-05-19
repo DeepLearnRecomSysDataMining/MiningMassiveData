@@ -10,7 +10,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from config.training_config import TrainingConfig, setup_logging
 from src.gcs_manager import download_training_data, upload_model_checkpoint
-from src.data_utils import load_eval_dataset, load_interactions_df, load_precomputed_embeddings
+from src.data_utils import load_eval_dataset, load_interactions_df, load_precomputed_embeddings, load_llm_chgnn_train_dataset
 
 # Import các baseline
 from src.baselines.bm25_ranker import run_bm25
@@ -56,7 +56,7 @@ def run_pipeline(baseline_id):
     metrics_path = None
 
     # Baseline không cần multi-GPU: chỉ Rank 0 chạy
-    if baseline_id in [1, 2, 5, 6] and TrainingConfig.RANK != 0:
+    if baseline_id in [1, 2, 5] and TrainingConfig.RANK != 0:
         return
 
     if baseline_id == 1:        
@@ -99,8 +99,9 @@ def run_pipeline(baseline_id):
         metrics_path = os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "hybrid_metrics.csv")
         
     elif baseline_id == 6:
+        train_dataset = load_llm_chgnn_train_dataset()
         eval_dataset = load_eval_dataset()
-        run_llm_chgnn(eval_dataset)
+        ckpt_path = run_llm_chgnn(train_dataset, eval_dataset)
         metrics_path = os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "llm_chgnn_metrics.csv")
 
     if TrainingConfig.RANK == 0 and ckpt_path and os.path.exists(ckpt_path):
@@ -125,13 +126,13 @@ def main():
     args = parser.parse_args()
 
     baseline_arg = str(args.baseline)
-    needs_distributed = baseline_arg in ["3", "4", "all"]
+    needs_distributed = baseline_arg in ["3", "4", "6","all"]
 
-    # Chỉ baseline 3, 4, all mới cần distributed
+    # Chỉ baseline 3, 4, 6, all mới cần distributed
     if needs_distributed:
         setup_distributed()
     else:
-        # Baseline 1,2,5,6 chạy single process trên GPU 0 nếu có
+        # Baseline 1,2,5 chạy single process trên GPU 0 nếu có
         if torch.cuda.is_available():
             torch.cuda.set_device(0)
 
@@ -151,7 +152,8 @@ def main():
             print(f"   World Size: {TrainingConfig.WORLD_SIZE} | Mode: {args.baseline}")
             print("="*60 + "\n")
 
-        # Với baseline 1,2,5,6 thì không cần đợi item_embeddings.npy
+        # Với baseline 1,2,5 thì không cần đợi item_embeddings.npy
+        # Baseline 6 dùng eval_dataset.pkl và chạy distributed riêng.
         # Vì chỉ baseline 3,4 mới cần precomputed embeddings
 
         if args.baseline == "all":
@@ -168,13 +170,13 @@ def main():
                 logger.error(f"Thất bại tại Baseline {b_id}: {e}")
                 import traceback
                 traceback.print_exc()
-            # Khi chạy all, baseline 1/2/5/6 chỉ Rank 0 chạy,
+            # Khi chạy all, baseline 1/2/5 chỉ Rank 0 chạy,
             # Rank khác phải đợi Rank 0 xong rồi mới đi tiếp.
-            if needs_distributed and b_id in [1, 2, 5, 6]:
+            if needs_distributed and b_id in [1, 2, 5]:
                 sync_rank0_stage(f"baseline_{b_id}")
             
             # Baseline 3/4 chạy multi-GPU thật.
-            if dist.is_initialized() and b_id in [3, 4]:
+            if dist.is_initialized() and b_id in [3, 4, 6]:
                 dist.barrier()
 
         if TrainingConfig.RANK == 0: 

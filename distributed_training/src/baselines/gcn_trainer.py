@@ -70,12 +70,7 @@ def evaluate_gcn(model, eval_pkl_path, text_encoder, device):
                 if rank <= 10: hits_at_10 += 1
                 ndcg_at_10 += 1.0 / np.log2(rank + 1) if rank <= 10 else 0.0
             except ValueError: pass
-
-    # res = torch.tensor([hits_at_10, ndcg_at_10], device=device)
-    # if TrainingConfig.WORLD_SIZE > 1:
-    #     if torch.distributed.is_initialized():
-    #         torch.distributed.all_reduce(res, op=torch.distributed.ReduceOp.SUM)
-    # return res[0].item() / total, res[1].item() / total
+            
     return hits_at_10 / total, ndcg_at_10 / total
 
 def train_gcn(interactions_df, embedding_lookup):
@@ -137,55 +132,6 @@ def train_gcn(interactions_df, embedding_lookup):
                 break
 
             q_embs, p_embs = q_embs.to(device, non_blocking=True), p_embs.to(device, non_blocking=True)
-
-            # B = q_embs.size(0)
-            # if B < 2:
-            #     continue
-
-            # num_neg = 8
-            # rand_idx = torch.randint( 0, B, (B, num_neg), device=device )
-            # # tránh chọn chính positive của sample đó
-            # row_idx = torch.arange(B, device=device).unsqueeze(1)
-            # rand_idx = torch.where( rand_idx == row_idx, (rand_idx + 1) % B, rand_idx )
-            # neg_embs = p_embs[rand_idx]  # (B, num_neg, 768)
-            # X = torch.cat(
-            #     [
-            #         q_embs.unsqueeze(1),  # (B, 1, 768)
-            #         p_embs.unsqueeze(1),  # (B, 1, 768)
-            #         neg_embs  # (B, num_neg, 768)
-            #     ],
-            #     dim=1
-            # )
-
-            # optimizer.zero_grad(set_to_none=True)
-            # # Đưa vector vào đồ thị
-            # X = torch.stack([q_embs, p_embs], dim=1) 
-            # X_out = model(X)
-
-            # anchors = X_out[:, 0, :]
-            # positives = X_out[:, 1, :]
-            # negatives = X_out[:, 2:, :]
-            
-            # # anchors, positives = X_out[:, 0, :], X_out[:, 1, :]
-
-            # if epoch ==0:
-            #     neg_indices = (torch.arange(B, device=device) + 1) % B
-            #     negatives = positives[neg_indices]
-            # else:
-            #     with torch.no_grad():
-            #         a_norm = F.normalize(anchors, p=2, dim=1)
-            #         p_norm = F.normalize(positives, p=2, dim=1)
-            #         sim = torch.matmul(a_norm, p_norm.T)
-            #         sim.fill_diagonal_(-1e9)
-            #         k = min(10, sim.size(1) - 1)
-            #         topk_idx = torch.topk(sim, k=k, dim=1).indices
-            #         rand_pos = torch.randint( 0, k, (sim.size(0),), device=device )
-            #         hard_neg_idx = topk_idx[ torch.arange(sim.size(0), device=device), rand_pos ]
-            #     negatives = positives[hard_neg_idx]
-            
-            # loss = criterion(anchors, positives, negatives)
-            # loss.backward()
-            # optimizer.step()
 
             B = q_embs.size(0)
             if B < 2:

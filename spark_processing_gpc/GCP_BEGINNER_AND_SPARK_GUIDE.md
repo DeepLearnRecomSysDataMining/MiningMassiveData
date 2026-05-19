@@ -195,7 +195,7 @@ gcloud dataproc clusters create amazon-cluster \
 - **Cluster name**: `amazon-cluster`
 - **Region**: `asia-southeast1`
 - **Cluster type**: Standard (1 master, N workers)
-- **Image version**: `2.3-ubuntu22`
+- **Image version**: `2.2-ubuntu22`
 
 ---
 
@@ -203,8 +203,8 @@ gcloud dataproc clusters create amazon-cluster \
 
 | Thuộc tính | Giá trị |
 |-----------|--------|
-| Machine type | `n4-standard-2` (2 vCPU, 8GB RAM) |
-| Disk | 30GB |
+| Machine type | `n4-standard-4` (4 vCPU, 16GB RAM) |
+| Disk | 100GB |
 | Disk type | Hyperdisk Balanced |
 | Local SSD | 0 |
 
@@ -215,10 +215,10 @@ gcloud dataproc clusters create amazon-cluster \
 | Thuộc tính | Giá trị |
 |-----------|--------|
 | Number of workers | 2 |
-| Machine type | `n4-standard-2` |
-| vCPU | 2 |
-| RAM | 8GB |
-| Disk | 30GB |
+| Machine type | `n4-standard-4` |
+| vCPU | 4 |
+| RAM | 16GB |
+| Disk | 100GB |
 | Disk type | Hyperdisk Balanced |
 | Local SSD | 0 |
 
@@ -232,8 +232,10 @@ gcloud dataproc clusters create amazon-cluster \
 |-----------|--------|
 | Number of workers | 2 |
 | Preemptibility | ✅ Preemptible (Spot) |
-| Machine type | `n4-standard-2` |
-| Disk | 30GB |
+| Machine type | `n4-standard-4` |
+| vCPU | 4 |
+| RAM | 16GB |
+| Disk | 100GB |
 | Disk type | Hyperdisk Balanced |
 | Local SSD | 0 |
 
@@ -246,8 +248,8 @@ gcloud dataproc clusters create amazon-cluster \
 Thêm vào **Cluster properties**:
 
 ```bash
-spark:spark.sql.shuffle.partitions=16
-spark:spark.default.parallelism=16
+spark:spark.sql.shuffle.partitions=16 hoặc hơn, tùy vào số worker
+spark:spark.default.parallelism=16 hoặc hơn, tùy vào số worker
 spark:spark.task.maxFailures=8
 spark:spark.speculation=true
 ```
