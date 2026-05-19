@@ -119,6 +119,7 @@ Lý do là Linux cũng dùng Python để chạy các ứng dụng lõi của n�
   - Bước 1: Cài đặt gói hỗ trợ môi trường ảo: 
       `sudo apt-get install python3-venv -y`
   - Bước 2: Tạo môi trường ảo riêng cho dự án của bạn. Lệnh này sẽ tạo ra một thư mục tên là recsys_env chứa một bản Python hoàn toàn độc lập.
+      ` Tại MiningMassiveData$....`
       `python3 -m venv recsys_env`
   - Bước 3: Kích hoạt môi trường ảo
       `source recsys_env/bin/activate`
@@ -434,6 +435,8 @@ Vì bạn không tạo được Key, chúng ta hãy tập trung vào việc "Qu�
 Bước 1: Quét sạch cấu hình lỗi trên máy ảo
 Bạn hãy chạy lệnh này để xóa bỏ toàn bộ những Token "rác" đang gây lỗi Scope:
 
+## CẦN THIẾT LẬP LIÊN KẾT ĐẾN PROJECT, BẬT CLOUD NAT, BẬT KẾT NỐI ĐẾN CLOUD KHI EDIT HOẶC CÀI MỚI VM 
+
 ```bash
 # Xóa sạch cấu hình gcloud cũ
 rm -rf ~/.config/gcloud
@@ -487,6 +490,13 @@ gcloud dataproc jobs submit pyspark main_34.py \
     --py-files=dependencies.zip \
     -- \
     --validate
+```
+```bash
+gcloud dataproc jobs submit pyspark main_56.py \
+    --cluster=amazon-cluster \
+    --region=asia-southeast1 \
+    --py-files=dependencies.zip \
+    -- \
 ```
 
 **Mẹo nhỏ (Nếu bạn vẫn muốn dùng JSON Key):**
@@ -619,60 +629,6 @@ Tác dụng: Khi bật =true, Spark sẽ nén cái đống dữ liệu đó lạ
 Lợi ích: Tốc độ đọc/ghi của ổ cứng (Disk I/O) luôn là thứ chậm chạp nhất trong máy tính. Việc nén dữ liệu giúp dung lượng file xả xuống nhỏ hơn rất nhiều -> Ghi xuống đĩa nhanh hơn -> Đọc lên lại cũng nhanh hơn -> Tránh được lỗi nghẽn ổ cứng.
 ```
 
-## Lưu ý về SPARK.
-
-**Spark lazy evaluation (Đánh giá lười biếng)**
-Trong Spark, tất cả các lệnh trước đó (Join, GroupBy, Filter) đều là Lazy Evaluation (nó chỉ ghi lại kế hoạch chứ chưa chạy).
-Lệnh Ghi file (coalesce 16) là lệnh thực thi đầu tiên, kích hoạt toàn bộ chuỗi tính toán.
-
-```bash
-window_limit = Window.partitionBy("cand_category").orderBy(F.rand())
-    df_vn_sampled = df_vn.withColumn("rn", F.row_number().over(window_limit)) \
-                         .filter(F.col("rn") <= 500) # Chỉ lấy tối đa 500 ứng viên mỗi Category để Mining
-    
-    # Mining: Join Query với tập Candidate đã được thu gọn (Sampled)
-    df_neg_candidates = query_ids_df.join(F.broadcast(df_vn_sampled), 
-                                          query_ids_df.query_category == df_vn_sampled.cand_category, 
-                                          "inner") \
-                                    .filter(F.col("query_id") != F.col("cand_asin"))
-    
-    # Chọn ra 99 Negative cho mỗi Query từ tập ứng viên
-    window_neg = Window.partitionBy("query_id").orderBy(F.rand())
-    df_negatives = df_neg_candidates.withColumn("rank", F.row_number().over(window_neg)) \
-                                    .filter(F.col("rank") <= (num_candidates - 1)) \
-                                    .select("query_id", "cand_id") \
-                                    .withColumn("label", F.lit(0))
-
-    # 4. Gom tập Positive và Negative
-    df_final_ids = df_pos.select("query_id", "cand_id", "label") \
-                         .unionByName(df_negatives)
-
-    # Group IDs lại thành List (Format chuẩn cho Training)
-    df_grouped = df_final_ids.groupBy("query_id").agg(
-        F.collect_list("cand_id").alias("candidate_ids"),
-        F.collect_list("label").alias("labels")
-    )
-
-    # 5. Join lại với Metadata Amazon (Heavy)
-    df_amz_metadata = df_items.filter(F.col("domain") == "amazon").select(
-        F.col("asin").alias("query_id"),
-        F.col("product_name").alias("query_name"),
-        F.col("full_text").alias("query_text"),
-        F.col("category").alias("query_category"),
-        F.to_json(F.col("parsed_specs")).alias("query_specs")
-    )
-    
-    # df_eval = df_grouped.join(F.broadcast(df_amz_metadata), "query_id", "inner")
-    df_eval = df_grouped.join(df_amz_metadata, "query_id", "inner")
-
-    # Trong Spark, tất cả các lệnh trước đó (Join, GroupBy, Filter) đều là Lazy Evaluation (nó chỉ ghi lại kế hoạch chứ chưa chạy).
-    # Lệnh Ghi file (coalesce 16) là lệnh thực thi đầu tiên, kích hoạt toàn bộ chuỗi tính toán.
-    # Ghi kết quả (TỐI ƯU: Coalesce để giảm phí Class A trên GCS)
-    logger.info(f"Ghi ket qua Evaluation (Coalesce 16) xuong: {output_path}")
-    df_eval.coalesce(16).write.mode("overwrite").parquet(output_path)
-    
-    df_items.unpersist()
-```
 ---
 
 ## Bước 9: Theo dõi Log

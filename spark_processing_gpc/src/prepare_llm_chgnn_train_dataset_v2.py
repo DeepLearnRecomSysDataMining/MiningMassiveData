@@ -6,7 +6,7 @@ from pyspark.storagelevel import StorageLevel
 logger = logging.getLogger("prepare_llm_chgnn_train_dataset")
 
 
-def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_path, output_path, negatives_per_query=20, ):
+def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_path, output_path, negatives_per_query=20 ):
     """
     Tạo dataset train cho LLM-CHGNN:
 
@@ -23,36 +23,30 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
     """
 
     logger.info("Loading interactions...")
-    df_inter = (
-        spark.read.parquet(interactions_path)
-        .select( "asin", "product_id", )
-        .dropna()
-        .dropDuplicates()
-    )
+    df_inter = (spark.read.parquet(interactions_path)
+                        .select( "asin", "product_id", )
+                        .dropna()
+                        .dropDuplicates())
 
     logger.info("Loading item_nodes...")
 
-    df_items = (
-        spark.read.parquet(item_nodes_path)
-        .select( "product_id", "asin", "full_text", "parsed_specs", "category", "domain", )
-        .dropna(subset=["full_text"])
-    )
+    df_items = (spark.read.parquet(item_nodes_path)
+                        .select( "product_id", "asin", "full_text", "parsed_specs", "category", "domain", )
+                        .dropna(subset=["full_text"]))
 
     # =========================
     # AMAZON QUERY ITEMS
     # =========================
 
-    df_amz = (
-        df_items
-        .filter(F.col("domain") == "amazon")
-        .select(
-            F.col("asin").alias("query_asin"),
-            F.col("full_text").alias("query_text"),
-            F.col("parsed_specs").alias("query_specs"),
-            F.col("category").alias("query_category"),
-        )
-    )
-
+    df_amz = ( df_items.filter(F.col("domain") == "amazon")
+                        .select(
+                            F.col("asin").alias("query_asin"),
+                            F.col("full_text").alias("query_text"),
+                            F.col("parsed_specs").alias("query_specs"),
+                            F.col("category").alias("query_category")
+                        )
+              )
+    
     # =========================
     # VN POSITIVE ITEMS
     # =========================
@@ -74,26 +68,15 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
 
     logger.info("Building positive pairs...")
 
-    df_pos = (
-        df_inter
-        .join(
-            df_amz,
-            df_inter["asin"] == df_amz["query_asin"],
-            "inner"
-        )
-        .join( df_vn, df_inter["product_id"] == df_vn["vn_product_id"], "inner" )
-        .select(
-            "query_asin",
-            "query_text",
-            "query_specs",
-            "query_category",
-
-            F.col("vn_product_id").alias("positive_product_id"),
-            F.col("candidate_text").alias("positive_text"),
-            F.col("candidate_specs").alias("positive_specs"),
-            F.col("candidate_category").alias("positive_category"),
-        )
-    )
+    df_pos = ( df_inter.join( df_amz, df_inter["asin"] == df_amz["query_asin"], "inner" )
+                .join( df_vn, df_inter["product_id"] == df_vn["vn_product_id"], "inner" )
+                .select( "query_asin", "query_text", "query_specs", "query_category",
+                            F.col("vn_product_id").alias("positive_product_id"),
+                            F.col("candidate_text").alias("positive_text"),
+                            F.col("candidate_specs").alias("positive_specs"),
+                            F.col("candidate_category").alias("positive_category")
+                        )
+            )
 
     # =========================
     # NEGATIVE POOL
@@ -101,10 +84,7 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
 
     logger.info("Preparing negative pool...")
 
-    df_vn_neg = (
-        df_vn
-        .repartition(64)
-    )
+    df_vn_neg = df_vn.repartition(64)
 
     # =========================
     # RANDOM NEGATIVE SAMPLING
@@ -112,20 +92,12 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
 
     logger.info("Generating negatives...")
 
-    df_neg = (
-        df_pos
-        .withColumn( "rand_seed", F.rand())
-        .join( df_vn_neg, ( df_vn_neg["vn_product_id"] != df_pos["positive_product_id"] ), "inner" )
-    )
+    df_neg = df_pos.withColumn( "rand_seed", F.rand()).join( df_vn_neg, ( df_vn_neg["vn_product_id"] != df_pos["positive_product_id"] ), "inner" )
 
     # RANDOM TOP-K NEGATIVES
     window_neg = Window.partitionBy( "query_asin", "positive_product_id" ).orderBy(F.rand())
 
-    df_neg = (
-        df_neg
-        .withColumn( "neg_rank", F.row_number().over(window_neg) )
-        .filter(F.col("neg_rank") <= negatives_per_query)
-    )
+    df_neg = df_neg.withColumn( "neg_rank", F.row_number().over(window_neg) ).filter(F.col("neg_rank") <= negatives_per_query)
 
     # =========================
     # GROUP NEGATIVES
