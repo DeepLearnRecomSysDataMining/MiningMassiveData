@@ -21,18 +21,23 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
     Output:
         parquet train dataset
     """
+    spark.conf.set("spark.sql.adaptive.enabled", "true")
 
     logger.info("Loading interactions...")
     df_inter = (spark.read.parquet(interactions_path)
-                        .select( "asin", "product_id", )
+                        .select( 
+                            F.trim(F.col("asin")).alias("asin"),
+                            F.trim(F.col("product_id")).alias("product_id")
+                         )
                         .dropna()
-                        .dropDuplicates())
+                        .dropDuplicates(["asin", "product_id"]))
 
     logger.info("Loading item_nodes...")
 
     df_items = (spark.read.parquet(item_nodes_path)
-                        .select( "product_id", "asin", "full_text", "parsed_specs", "category", "domain", )
-                        .dropna(subset=["full_text"]))
+                        .select( "product_id", "asin", "full_text", "parsed_specs", "category", "domain")
+                        .filter(F.col("full_text").isNotNull())
+                        .filter(F.col("full_text") != ""))
 
     # =========================
     # AMAZON QUERY ITEMS
@@ -40,10 +45,10 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
 
     df_amz = ( df_items.filter(F.col("domain") == "amazon")
                         .select(
-                            F.col("asin").alias("query_asin"),
+                            F.trim(F.col("asin")).alias("query_asin"),
                             F.col("full_text").alias("query_text"),
                             F.col("parsed_specs").alias("query_specs"),
-                            F.col("category").alias("query_category")
+                            F.col("category").alias("query_category"),
                         )
               )
     
@@ -55,11 +60,14 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
         df_items
         .filter(F.col("domain") == "vn")
         .select(
-            F.col("product_id").alias("vn_product_id"),
+            F.trim(F.col("product_id")).alias("vn_product_id"),
             F.col("full_text").alias("candidate_text"),
             F.col("parsed_specs").alias("candidate_specs"),
             F.col("category").alias("candidate_category"),
         )
+        .filter(F.col("vn_product_id").isNotNull())
+        .filter(F.col("vn_product_id") != "")
+        .dropDuplicates(["vn_product_id"])
     )
 
     # =========================
@@ -70,77 +78,147 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
 
     df_pos = ( df_inter.join( df_amz, df_inter["asin"] == df_amz["query_asin"], "inner" )
                 .join( df_vn, df_inter["product_id"] == df_vn["vn_product_id"], "inner" )
-                .select( "query_asin", "query_text", "query_specs", "query_category",
-                            F.col("vn_product_id").alias("positive_product_id"),
-                            F.col("candidate_text").alias("positive_text"),
-                            F.col("candidate_specs").alias("positive_specs"),
-                            F.col("candidate_category").alias("positive_category")
-                        )
+                .select( 
+                    "query_asin", "query_text", "query_specs", "query_category",
+                    F.col("vn_product_id").alias("positive_product_id"),
+                    F.col("candidate_text").alias("positive_text"),
+                    F.col("candidate_specs").alias("positive_specs"),
+                    F.col("candidate_category").alias("positive_category")
+                )
+                .dropDuplicates(["query_asin", "positive_product_id"])
             )
+    
+    # Tạo key đơn giản để groupBy, tránh groupBy MAP
+    df_pos = df_pos.withColumn( "pair_id", F.sha2(F.concat_ws("||", F.col("query_asin"), F.col("positive_product_id")), 256) )
 
-    # =========================
-    # NEGATIVE POOL
-    # =========================
+    df_pos_keys = df_pos.select( "pair_id", "query_asin", "positive_product_id", "query_category")
 
-    logger.info("Preparing negative pool...")
+    logger.info("Preparing bounded negative pools...")
 
-    df_vn_neg = df_vn.repartition(64)
+    # Hard pool: tối đa 200 item/category
+    w_cat = Window.partitionBy("candidate_category").orderBy(F.rand(seed=42))
+    df_vn_hard_pool = (
+        df_vn
+        .withColumn("rn", F.row_number().over(w_cat))
+        .filter(F.col("rn") <= 200)      # Hard pool: tối đa 200 item/category
+        .drop("rn")
+    )
 
-    # =========================
-    # RANDOM NEGATIVE SAMPLING
-    # =========================
+    # Easy pool: random global pool giới hạn, giảm từ 5000 về 2000 cho limit thôi
+    df_vn_easy_pool = (
+        df_vn
+        .orderBy(F.rand(seed=42))
+        .limit(2000)
+    )
 
-    logger.info("Generating negatives...")
+    logger.info("Generating hard negatives...")
+    df_neg_hard = (
+        df_pos_keys
+        .join(
+            F.broadcast(df_vn_hard_pool),
+            (df_pos_keys["query_category"] == df_vn_hard_pool["candidate_category"]) &
+            (df_pos_keys["positive_product_id"] != df_vn_hard_pool["vn_product_id"]) &
+            (df_pos_keys["query_category"] != "other"),
+            "inner",
+        )
+        .select(
+            "pair_id",
+            F.col("vn_product_id").alias("neg_id"),
+            F.col("candidate_text").alias("neg_text"),
+            F.col("candidate_specs").alias("neg_specs"),
+            F.col("candidate_category").alias("neg_category"),
+        )
+        .withColumn("priority", F.lit(1))
+    )
 
-    df_neg = df_pos.withColumn( "rand_seed", F.rand()).join( df_vn_neg, ( df_vn_neg["vn_product_id"] != df_pos["positive_product_id"] ), "inner" )
+    logger.info("Generating easy negatives...")
+    df_neg_easy = (
+        df_pos_keys
+        .join(
+            F.broadcast(df_vn_easy_pool),
+            df_pos_keys["positive_product_id"] != df_vn_easy_pool["vn_product_id"],
+            "inner",
+        )
+        .select(
+            "pair_id",
+            F.col("vn_product_id").alias("neg_id"),
+            F.col("candidate_text").alias("neg_text"),
+            F.col("candidate_specs").alias("neg_specs"),
+            F.col("candidate_category").alias("neg_category"),
+        )
+        .withColumn("priority", F.lit(0))
+    )
 
-    # RANDOM TOP-K NEGATIVES
-    window_neg = Window.partitionBy( "query_asin", "positive_product_id" ).orderBy(F.rand())
+    logger.info("Ranking negatives...")
+    df_neg_all = df_neg_hard.unionByName(df_neg_easy)
 
-    df_neg = df_neg.withColumn( "neg_rank", F.row_number().over(window_neg) ).filter(F.col("neg_rank") <= negatives_per_query)
+    w_neg = Window.partitionBy("pair_id").orderBy(
+        F.col("priority").desc(),
+        F.rand(seed=42)
+    )
 
-    # =========================
-    # GROUP NEGATIVES
-    # =========================
+    df_neg_topk = (
+        df_neg_all
+        .dropDuplicates(["pair_id", "neg_id"])
+        .withColumn("neg_rank", F.row_number().over(w_neg))
+        .filter(F.col("neg_rank") <= negatives_per_query)
+    )
 
-    logger.info("Aggregating negatives...")
-
-    df_final = (
-        df_neg
-        .groupBy( "query_asin", "query_text", "query_specs", "query_category", "positive_product_id", "positive_text", "positive_specs", "positive_category", )
+    logger.info("Aggregating negatives by pair_id...")
+    df_neg_grouped = (
+        df_neg_topk
+        .groupBy("pair_id")
         .agg(
-            F.collect_list("vn_product_id").alias("negative_ids"),
-            F.collect_list("candidate_text").alias("negative_texts"),
-            F.collect_list("candidate_specs").alias("negative_specs"),
-            F.collect_list("candidate_category").alias("negative_categories"),
+            F.collect_list("neg_id").alias("negative_ids"),
+            F.collect_list("neg_text").alias("negative_texts"),
+            F.collect_list("neg_specs").alias("negative_specs"),
+            F.collect_list("neg_category").alias("negative_categories"),
         )
     )
 
-    # =========================
-    # FINAL FORMAT
-    # =========================
-
-    logger.info("Formatting final dataset...")
-
+    logger.info("Joining positives back and formatting final dataset...")
     df_final = (
-        df_final
-        .withColumn( "candidate_ids", F.concat( F.array(F.col("positive_product_id")), F.col("negative_ids")))
-        .withColumn( "candidate_texts", F.concat( F.array(F.col("positive_text")), F.col("negative_texts") ))
-        .withColumn( "candidate_specs", F.concat( F.array(F.col("positive_specs")), F.col("negative_specs")))
-        .withColumn( "candidate_categories", F.concat( F.array(F.col("positive_category")), F.col("negative_categories")))
+        df_pos
+        .join(df_neg_grouped, "pair_id", "inner")
+        .withColumn(
+            "candidate_ids",
+            F.concat(F.array(F.col("positive_product_id")), F.col("negative_ids"))
+        )
+        .withColumn(
+            "candidate_texts",
+            F.concat(F.array(F.col("positive_text")), F.col("negative_texts"))
+        )
+        .withColumn(
+            "candidate_specs",
+            F.concat(F.array(F.col("positive_specs")), F.col("negative_specs"))
+        )
+        .withColumn(
+            "candidate_categories",
+            F.concat(F.array(F.col("positive_category")), F.col("negative_categories"))
+        )
         .withColumn("true_vn_id", F.col("positive_product_id"))
         .select(
-            "query_asin", "query_text", "query_specs", "query_category",
-            "candidate_ids", "candidate_texts", "candidate_specs", "candidate_categories",
+            "query_asin",
+            "query_text",
+            "query_specs",
+            "query_category",
+            "candidate_ids",
+            "candidate_texts",
+            "candidate_specs",
+            "candidate_categories",
             "true_vn_id",
         )
     )
 
-    logger.info("Writing parquet output...")
+    logger.info(f"Writing LLM-CHGNN train dataset -> {output_path}")
+    (
+        df_final
+        .coalesce(32)
+        .write
+        .mode("overwrite")
+        .parquet(output_path)
+    )
 
-    df_final.coalesce(32).write.mode("overwrite").parquet(output_path)
     final_count = spark.read.parquet(output_path).count()
-
     logger.info(f"LLM-CHGNN train dataset done: {final_count:,}")
-
     return final_count
