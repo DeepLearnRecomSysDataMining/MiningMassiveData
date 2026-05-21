@@ -70,23 +70,81 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
         .dropDuplicates(["vn_product_id"])
     )
 
-    # =========================
-    # POSITIVE PAIRS
-    # =========================
+    logger.info("Building exact positive pairs...")
 
-    logger.info("Building positive pairs...")
+    df_pos_exact = (
+        df_inter
+        .join(df_amz, df_inter["asin"] == df_amz["query_asin"], "inner")
+        .join(df_vn, df_inter["product_id"] == df_vn["vn_product_id"], "inner")
+        .select(
+            "query_asin", "query_text", "query_specs", "query_category",
+            F.col("vn_product_id").alias("positive_product_id"),
+            F.col("candidate_text").alias("positive_text"),
+            F.col("candidate_specs").alias("positive_specs"),
+            F.col("candidate_category").alias("positive_category")
+        )
+        .dropDuplicates(["query_asin", "positive_product_id"])
+        .withColumn("source_type", F.lit("exact"))
+    )
 
-    df_pos = ( df_inter.join( df_amz, df_inter["asin"] == df_amz["query_asin"], "inner" )
-                .join( df_vn, df_inter["product_id"] == df_vn["vn_product_id"], "inner" )
-                .select( 
-                    "query_asin", "query_text", "query_specs", "query_category",
-                    F.col("vn_product_id").alias("positive_product_id"),
-                    F.col("candidate_text").alias("positive_text"),
-                    F.col("candidate_specs").alias("positive_specs"),
-                    F.col("candidate_category").alias("positive_category")
-                )
-                .dropDuplicates(["query_asin", "positive_product_id"])
-            )
+    logger.info("Building pseudo positive pairs from same-category Amazon-VN items...")
+
+    pseudo_amz_per_category = 200
+    pseudo_per_vn = 20
+
+    w_amz_cat = Window.partitionBy("query_category").orderBy(F.rand(seed=123))
+
+    df_amz_pool = (
+        df_amz
+        .filter(F.col("query_category").isNotNull())
+        .filter(F.col("query_category") != "")
+        .filter(F.col("query_category") != "other")
+        .withColumn("amz_rank", F.row_number().over(w_amz_cat))
+        .filter(F.col("amz_rank") <= pseudo_amz_per_category)
+        .drop("amz_rank")
+    )
+
+    df_vn_pos = (
+        df_vn
+        .filter(F.col("candidate_category").isNotNull())
+        .filter(F.col("candidate_category") != "")
+        .filter(F.col("candidate_category") != "other")
+    )
+
+    df_pseudo_raw = (
+        df_vn_pos
+        .join(
+            F.broadcast(df_amz_pool),
+            df_vn_pos["candidate_category"] == df_amz_pool["query_category"],
+            "inner"
+        )
+        .select(
+            "query_asin",
+            "query_text",
+            "query_specs",
+            "query_category",
+            F.col("vn_product_id").alias("positive_product_id"),
+            F.col("candidate_text").alias("positive_text"),
+            F.col("candidate_specs").alias("positive_specs"),
+            F.col("candidate_category").alias("positive_category")
+        )
+    )
+
+    w_pseudo = Window.partitionBy("positive_product_id").orderBy(F.rand(seed=456))
+
+    df_pos_pseudo = (
+        df_pseudo_raw
+        .withColumn("pseudo_rank", F.row_number().over(w_pseudo))
+        .filter(F.col("pseudo_rank") <= pseudo_per_vn)
+        .drop("pseudo_rank")
+        .withColumn("source_type", F.lit("pseudo_same_category"))
+    )
+
+        df_pos = (
+            df_pos_exact
+            .unionByName(df_pos_pseudo)
+            .dropDuplicates(["query_asin", "positive_product_id"])
+        )
     
     # Tạo key đơn giản để groupBy, tránh groupBy MAP
     df_pos = df_pos.withColumn( "pair_id", F.sha2(F.concat_ws("||", F.col("query_asin"), F.col("positive_product_id")), 256) )
