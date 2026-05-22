@@ -140,11 +140,11 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
         .withColumn("source_type", F.lit("pseudo_same_category"))
     )
 
-        df_pos = (
-            df_pos_exact
-            .unionByName(df_pos_pseudo)
-            .dropDuplicates(["query_asin", "positive_product_id"])
-        )
+    df_pos = (
+        df_pos_exact
+        .unionByName(df_pos_pseudo)
+        .dropDuplicates(["query_asin", "positive_product_id"])
+    )
     
     # Tạo key đơn giản để groupBy, tránh groupBy MAP
     df_pos = df_pos.withColumn( "pair_id", F.sha2(F.concat_ws("||", F.col("query_asin"), F.col("positive_product_id")), 256) )
