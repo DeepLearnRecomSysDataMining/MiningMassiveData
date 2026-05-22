@@ -22,6 +22,7 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
         parquet train dataset
     """
     spark.conf.set("spark.sql.adaptive.enabled", "true")
+    spark.conf.set("spark.eventLog.enabled", "false")
 
     logger.info("Loading interactions...")
     df_inter = (spark.read.parquet(interactions_path)
@@ -271,7 +272,7 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
     logger.info(f"Writing LLM-CHGNN train dataset -> {output_path}")
     (
         df_final
-        .coalesce(32)
+        .coalesce(4)
         .write
         .mode("overwrite")
         .parquet(output_path)
