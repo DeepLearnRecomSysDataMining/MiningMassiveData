@@ -72,6 +72,8 @@ def create_spark_session(app_name: str = "AmazonETL_Cloud") -> SparkSession:
         .config("spark.task.maxFailures", "8") 
         .config("spark.speculation", "true")
         .config("spark.sql.caseSensitive", "true")
+        
+        .config("spark.eventLog.enabled", "false")
     )
 
     return builder.getOrCreate()
