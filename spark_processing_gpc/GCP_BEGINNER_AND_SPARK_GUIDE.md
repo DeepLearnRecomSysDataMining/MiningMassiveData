@@ -472,7 +472,7 @@ export SPARK_ENV="cloud"
 export RAW_DATA_DIR="gs://mining-data-2/raw_data/amazon_gpc/"
 export OUTPUT_BASE="gs://mining-data-2/output/"
 
-# tại /MiningMassivaData$ 
+# tại /MiningMassiveData$ 
 
 # ta cần
 source recsys_env/bin/activate 
