@@ -67,7 +67,7 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
         )
         .filter(F.col("vn_product_id").isNotNull())
         .filter(F.col("vn_product_id") != "")
-        .dropDuplicates(["vn_product_id"])
+        # .dropDuplicates(["vn_product_id"])
     )
 
     logger.info("Building exact positive pairs...")
@@ -83,14 +83,14 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
             F.col("candidate_specs").alias("positive_specs"),
             F.col("candidate_category").alias("positive_category")
         )
-        .dropDuplicates(["query_asin", "positive_product_id"])
+        # .dropDuplicates(["query_asin", "positive_product_id"])
         .withColumn("source_type", F.lit("exact"))
     )
 
     logger.info("Building pseudo positive pairs from same-category Amazon-VN items...")
 
-    pseudo_amz_per_category = 200
-    pseudo_per_vn = 20
+    pseudo_amz_per_category = 50
+    pseudo_per_vn = 5
 
     w_amz_cat = Window.partitionBy("query_category").orderBy(F.rand(seed=123))
 
@@ -153,12 +153,12 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
 
     logger.info("Preparing bounded negative pools...")
 
-    # Hard pool: tối đa 200 item/category
+    # Hard pool: tối đa 50 item/category
     w_cat = Window.partitionBy("candidate_category").orderBy(F.rand(seed=42))
     df_vn_hard_pool = (
         df_vn
         .withColumn("rn", F.row_number().over(w_cat))
-        .filter(F.col("rn") <= 200)      # Hard pool: tối đa 200 item/category
+        .filter(F.col("rn") <= 50)      # Hard pool: tối đa 50 item/category
         .drop("rn")
     )
 
@@ -166,7 +166,7 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
     df_vn_easy_pool = (
         df_vn
         .orderBy(F.rand(seed=42))
-        .limit(2000)
+        .limit(500)
     )
 
     logger.info("Generating hard negatives...")
@@ -217,7 +217,7 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
 
     df_neg_topk = (
         df_neg_all
-        .dropDuplicates(["pair_id", "neg_id"])
+        # .dropDuplicates(["pair_id", "neg_id"])
         .withColumn("neg_rank", F.row_number().over(w_neg))
         .filter(F.col("neg_rank") <= negatives_per_query)
     )
@@ -269,13 +269,7 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
     )
 
     logger.info(f"Writing LLM-CHGNN train dataset -> {output_path}")
-    (
-        df_final
-        .coalesce(8)
-        .write
-        .mode("overwrite")
-        .parquet(output_path)
-    )
+    df_final.coalesce(8).write.mode("overwrite").parquet(output_path)
 
     final_count = spark.read.parquet(output_path).count()
     logger.info(f"LLM-CHGNN train dataset done: {final_count:,}")
