@@ -9,6 +9,9 @@ from tqdm import tqdm
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.utils.data import Dataset, DataLoader
 from sentence_transformers import SentenceTransformer
+import pyarrow.parquet as pq
+import gcsfs
+from collections import Counter
 
 from config.training_config import TrainingConfig
 from src.models import LLM_CHGNN
@@ -24,7 +27,101 @@ def _get_env_int(key: str, default: int) -> int:
         return int(os.getenv(key, str(default)))
     except Exception:
         return default
+    
 
+def _key_amz(x):
+    x = str(x or "").strip()
+    return f"amz_{x}" if x else None
+
+
+def _key_vn(x):
+    x = str(x or "").strip()
+    return f"vn_{x}" if x else None
+
+
+def _normalize_attr(k, v):
+    if k is None or v is None:
+        return None
+    attr = f"{str(k).strip().lower()}:{str(v).strip().lower()}"
+    if attr == ":":
+        return None
+    return attr
+
+
+def build_attr_vocab_from_train_parquet(max_attrs: int = 5000, arrow_batch_size: int = 1024):
+    """
+    Build attr_vocab từ toàn bộ TRAIN parquet.
+    Chỉ scan query_specs + candidate_specs, không load toàn bộ train vào RAM.
+    Chỉ rank 0 nên gọi hàm này.
+    """
+    path = (
+        TrainingConfig.GCS_LLM_CHGNN_TRAIN
+        if TrainingConfig.IS_CLOUD
+        else "data/llm_chgnn_train_dataset"
+    )
+
+    fs = gcsfs.GCSFileSystem() if TrainingConfig.IS_CLOUD else None
+    arrow_path = path.replace("gs://", "") if TrainingConfig.IS_CLOUD else path
+
+    dataset = pq.ParquetDataset(arrow_path, filesystem=fs)
+    attr_counts = Counter()
+
+    cols = ["query_specs", "candidate_specs"]
+
+    for frag_idx, frag in enumerate(dataset.fragments, start=1):
+        for record_batch in frag.to_batches(columns=cols, batch_size=arrow_batch_size):
+            for row in record_batch.to_pylist():
+                specs_list = [row.get("query_specs", {})] + (row.get("candidate_specs", []) or [])
+
+                for specs in specs_list:
+                    if not specs:
+                        continue
+
+                    for k, v in specs.items():
+                        attr = _normalize_attr(k, v)
+                        if attr is not None:
+                            attr_counts[attr] += 1
+
+            del record_batch
+
+        logger.info(
+            f"Rank {TrainingConfig.RANK}: scanned train fragment "
+            f"{frag_idx}/{len(dataset.fragments)} for attr_vocab"
+        )
+
+    sorted_attrs = sorted(attr_counts.items(), key=lambda x: (-x[1], x[0]))
+    return [attr for attr, _ in sorted_attrs[:max_attrs]]
+
+
+def load_or_build_train_attr_vocab(max_attrs: int = 5000):
+    """
+    Single-node multi-GPU:
+    - Rank 0 build attr_vocab từ toàn bộ train parquet.
+    - Các rank khác đợi barrier rồi load cùng file local.
+    """
+    local_path = os.path.join(TrainingConfig.LOCAL_DATA_DIR, "llm_chgnn_attr_vocab.json")
+
+    if TrainingConfig.RANK == 0:
+        if os.path.exists(local_path):
+            logger.info(f"Loading existing train attr_vocab from {local_path}")
+            with open(local_path, "r", encoding="utf-8") as f:
+                attr_vocab = json.load(f)
+        else:
+            logger.info("Building attr_vocab from TRAIN parquet, not eval dataset...")
+            attr_vocab = build_attr_vocab_from_train_parquet(max_attrs=max_attrs)
+
+            with open(local_path, "w", encoding="utf-8") as f:
+                json.dump(attr_vocab, f, ensure_ascii=False, indent=2)
+
+            logger.info(f"Saved train attr_vocab to {local_path}")
+
+        save_attr_vocab("llm_chgnn", attr_vocab)
+
+    if torch.distributed.is_initialized():
+        torch.distributed.barrier()
+
+    with open(local_path, "r", encoding="utf-8") as f:
+        return json.load(f)
 
 def build_attr_vocab(dataset, max_attrs: int = 5000):
     """
@@ -105,37 +202,115 @@ def collate_graph_records(batch):
     return batch
 
 
-def encode_graph_record(data, model_sbert, attr_to_idx, device):
-    """
-    Encode one query-candidate graph.
+# def encode_graph_record(data, model_sbert, attr_to_idx, device):
+#     """
+#     Encode one query-candidate graph.
 
-    Returns:
-        X: (1, N, 768)
-        H: (1, N, E)
-        target_idx: index among candidates, or None
-    """
-    q_text = data["query_text"]
-    candidate_texts = data["candidate_texts"]
-    candidate_ids = data["candidate_ids"]
-    true_vn_id = data["true_vn_id"]
+#     Returns:
+#         X: (1, N, 768)
+#         H: (1, N, E)
+#         target_idx: index among candidates, or None
+#     """
+#     q_text = str(data.get("query_text", "") or "")
 
-    q_emb = model_sbert.encode(q_text, convert_to_tensor=True, device=device)
-    c_embs = model_sbert.encode(candidate_texts, convert_to_tensor=True, device=device)
+#     candidate_texts = data.get("candidate_texts", []) or []
+#     candidate_texts = [str(x or "") for x in candidate_texts]
 
-    X = torch.cat([q_emb.unsqueeze(0), c_embs], dim=0).unsqueeze(0).to(device)
+#     candidate_ids = data.get("candidate_ids", []) or []
+#     candidate_ids = [str(x) for x in candidate_ids]
 
-    item_specs_list = [data.get("query_specs", {})] + data.get("candidate_specs", [])
+#     true_vn_id = str(data.get("true_vn_id", ""))
+
+#     if not candidate_ids or not candidate_texts:
+#         return None, None, None
+
+#     # Cắt về cùng độ dài nếu dữ liệu có vấn đề nhẹ
+#     n = min(len(candidate_ids), len(candidate_texts))
+#     candidate_ids = candidate_ids[:n]
+#     candidate_texts = candidate_texts[:n]
+
+#     if true_vn_id not in candidate_ids:
+#         return None, None, None
+
+#     target_idx = candidate_ids.index(true_vn_id)
+
+#     q_emb = model_sbert.encode(q_text, convert_to_tensor=True, device=device)
+#     c_embs = model_sbert.encode(candidate_texts, convert_to_tensor=True, device=device)
+
+#     X = torch.cat([q_emb.unsqueeze(0), c_embs], dim=0).unsqueeze(0).to(device)
+
+#     # candidate_specs = data.get("candidate_specs", []) or []
+#     # candidate_specs = candidate_specs[:n]
+
+#     # item_specs_list = [data.get("query_specs", {}) or {}] + candidate_specs
+#     # H = build_incidence_matrix(item_specs_list, attr_to_idx, device).unsqueeze(0)
+#     candidate_specs = data.get("candidate_specs", []) or []
+#     candidate_specs = list(candidate_specs[:n])
+
+#     if len(candidate_specs) < n:
+#         candidate_specs.extend([{} for _ in range(n - len(candidate_specs))])
+
+#     item_specs_list = [data.get("query_specs", {}) or {}] + candidate_specs
+#     H = build_incidence_matrix(item_specs_list, attr_to_idx, device).unsqueeze(0)
+
+#     if H.size(1) != X.size(1):
+#         return None, None, None
+
+#     return X, H, target_idx
+
+def encode_graph_record(data, embedding_lookup, attr_to_idx, device):
+    query_asin = ( data.get("query_asin") or data.get("query_id") or data.get("asin") )
+
+    q_key = _key_amz(query_asin)
+
+    candidate_ids = data.get("candidate_ids", []) or []
+    candidate_ids = [str(x) for x in candidate_ids]
+
+    true_vn_id = str(data.get("true_vn_id", ""))
+
+    if not q_key or not candidate_ids:
+        return None, None, None
+
+    if true_vn_id not in candidate_ids:
+        return None, None, None
+
+    target_idx = candidate_ids.index(true_vn_id)
+
+    q_emb = embedding_lookup.get_embedding(q_key)
+
+    candidate_keys = [_key_vn(cid) for cid in candidate_ids]
+    c_embs = [embedding_lookup.get_embedding(k) for k in candidate_keys if k]
+
+    n = min(len(candidate_ids), len(c_embs))
+    candidate_ids = candidate_ids[:n]
+    c_embs = c_embs[:n]
+
+    if n == 0 or true_vn_id not in candidate_ids:
+        return None, None, None
+
+    target_idx = candidate_ids.index(true_vn_id)
+
+    q_tensor = torch.from_numpy(np.asarray(q_emb, dtype=np.float32)).to(device)
+    c_tensor = torch.from_numpy(np.stack(c_embs).astype(np.float32)).to(device)
+
+    X = torch.cat([q_tensor.unsqueeze(0), c_tensor], dim=0).unsqueeze(0)
+
+    candidate_specs = data.get("candidate_specs", []) or []
+    candidate_specs = list(candidate_specs[:n])
+
+    if len(candidate_specs) < n:
+        candidate_specs.extend([{} for _ in range(n - len(candidate_specs))])
+
+    item_specs_list = [data.get("query_specs", {}) or {}] + candidate_specs
     H = build_incidence_matrix(item_specs_list, attr_to_idx, device).unsqueeze(0)
 
-    try:
-        target_idx = candidate_ids.index(true_vn_id)
-    except ValueError:
-        target_idx = None
+    if H.size(1) != X.size(1):
+        return None, None, None
 
     return X, H, target_idx
 
 
-def evaluate_llm_chgnn(model, dataset, model_sbert, attr_to_idx, device):
+def evaluate_llm_chgnn(model, dataset, embedding_lookup, attr_to_idx, device):
     """
     Rank candidates with trained LLM-CHGNN and compute HR@10/NDCG@10.
     Only Rank 0 should call this.
@@ -148,11 +323,18 @@ def evaluate_llm_chgnn(model, dataset, model_sbert, attr_to_idx, device):
 
     hits_at_10 = 0
     ndcg_at_10 = 0.0
-    total = len(dataset)
+    valid_total = 0
+    # total = len(dataset)
 
     with torch.no_grad():
         for data in tqdm(dataset, desc="LLM-CHGNN Evaluation", disable=(TrainingConfig.RANK != 0)):
-            X, H, target_idx = encode_graph_record(data, model_sbert, attr_to_idx, device)
+            X, H, target_idx = encode_graph_record(data, embedding_lookup, attr_to_idx, device)
+
+            if X is None or H is None or target_idx is None:
+                continue
+
+            valid_total += 1
+
             X_out = base_model(X, H).squeeze(0)
 
             q_vec = X_out[0]
@@ -160,9 +342,6 @@ def evaluate_llm_chgnn(model, dataset, model_sbert, attr_to_idx, device):
 
             scores = torch.sum(q_vec.unsqueeze(0) * c_vecs, dim=1).detach().cpu().numpy()
             ranked_indices = list(np.argsort(scores)[::-1])
-
-            if target_idx is None:
-                continue
 
             try:
                 rank = ranked_indices.index(target_idx) + 1
@@ -172,10 +351,13 @@ def evaluate_llm_chgnn(model, dataset, model_sbert, attr_to_idx, device):
             except ValueError:
                 pass
 
-    return hits_at_10 / total, ndcg_at_10 / total
+    if valid_total == 0:
+        return 0.0, 0.0
+
+    return hits_at_10 / valid_total, ndcg_at_10 / valid_total
 
 
-def train_llm_chgnn(train_dataset, eval_dataset=None):
+def train_llm_chgnn(train_dataset, eval_dataset=None, embedding_lookup=None):
 
     device = TrainingConfig.DEVICE
     rank = TrainingConfig.RANK
@@ -183,13 +365,17 @@ def train_llm_chgnn(train_dataset, eval_dataset=None):
 
     logger.info(f"\n\n\nTraining LLM-CHGNN on device {device}\n\n\n")
 
+    if embedding_lookup is None:
+        raise ValueError("LLM-CHGNN cần precomputed embedding_lookup.")
+
     if eval_dataset is None:
         raise ValueError("LLM-CHGNN cần eval_dataset riêng, không dùng train_dataset để evaluate.")
     eval_dataset = list(eval_dataset)
 
     max_attrs = TrainingConfig.LLM_CHGNN_MAX_ATTRS
     # attr_vocab = build_attr_vocab(train_dataset, max_attrs=max_attrs)
-    attr_vocab = build_attr_vocab(eval_dataset, max_attrs=max_attrs)
+    # attr_to_idx = {attr: i for i, attr in enumerate(attr_vocab)}
+    attr_vocab = load_or_build_train_attr_vocab(max_attrs=max_attrs)
     attr_to_idx = {attr: i for i, attr in enumerate(attr_vocab)}
 
     if rank == 0:
@@ -201,7 +387,7 @@ def train_llm_chgnn(train_dataset, eval_dataset=None):
                         pin_memory=True, drop_last=True, collate_fn=collate_graph_records, 
                         persistent_workers=True)
 
-    model_sbert = SentenceTransformer("paraphrase-multilingual-mpnet-base-v2", device=device)
+    # model_sbert = SentenceTransformer("paraphrase-multilingual-mpnet-base-v2", device=device)
     model = LLM_CHGNN(in_features=768).to(device)
 
     if world_size > 1:
@@ -248,6 +434,8 @@ def train_llm_chgnn(train_dataset, eval_dataset=None):
         total_loss = 0.0
         total_batches = min(len(loader), sync_train_batches)
 
+        valid_steps = 0
+
         for batch_idx, batch_records in enumerate(loader, start=1):
             if batch_idx > sync_train_batches:
                 break
@@ -256,9 +444,9 @@ def train_llm_chgnn(train_dataset, eval_dataset=None):
             optimizer.zero_grad(set_to_none=True)
 
             for data in batch_records:
-                X, H, target_idx = encode_graph_record(data, model_sbert, attr_to_idx, device)
+                X, H, target_idx = encode_graph_record(data, embedding_lookup, attr_to_idx, device)
 
-                if target_idx is None:
+                if X is None or H is None or target_idx is None:
                     continue
 
                 X_out = model(X, H).squeeze(0)
@@ -267,33 +455,47 @@ def train_llm_chgnn(train_dataset, eval_dataset=None):
                 c_vecs = X_out[1:]
 
                 logits = torch.sum(q_vec.unsqueeze(0) * c_vecs, dim=1).unsqueeze(0)
-
                 target = torch.tensor([target_idx], dtype=torch.long, device=device)
 
                 loss = criterion(logits, target)
                 batch_losses.append(loss)
 
-            if not batch_losses:
-                continue
+            if batch_losses:
+                loss = torch.stack(batch_losses).mean()
+                loss.backward()
+                optimizer.step()
 
-            loss = torch.stack(batch_losses).mean()
-            loss.backward()
-            optimizer.step()
+                total_loss += float(loss.item())
+                valid_steps += 1
 
-            total_loss += float(loss.item())
+                log_loss = loss.item()
+            else:
+                # DDP-safe dummy forward/backward.
+                # Không cập nhật học thật, nhưng giúp mọi rank đều tham gia backward.
+                E = len(attr_to_idx)
+                dummy_X = torch.zeros((1, 2, 768), dtype=torch.float32, device=device)
+                dummy_H = torch.zeros((1, 2, E), dtype=torch.float32, device=device)
+
+                dummy_out = model(dummy_X, dummy_H)
+                dummy_loss = dummy_out.sum() * 0.0
+
+                dummy_loss.backward()
+                optimizer.step()
+
+                log_loss = 0.0
 
             if rank == 0 and (batch_idx % 20 == 0 or batch_idx == total_batches):
                 logger.info(
                     f"Epoch {epoch+1}/{TrainingConfig.EPOCHS} | "
                     f"Batch {batch_idx}/{total_batches} | "
-                    f"Loss={loss.item():.4f}"
+                    f"Loss={log_loss:.4f}"
                 )
 
         if torch.distributed.is_initialized():
             torch.distributed.barrier()
 
         loss_tensor = torch.tensor(
-            [total_loss, max(total_batches, 1)],
+            [total_loss, max(valid_steps, 1)],
             dtype=torch.float32,
             device=device
         )
@@ -304,7 +506,7 @@ def train_llm_chgnn(train_dataset, eval_dataset=None):
         global_avg_loss = (loss_tensor[0] / loss_tensor[1].clamp_min(1)).item()
 
         if rank == 0:
-            hr10, ndcg10 = evaluate_llm_chgnn( model=model, dataset=eval_dataset, model_sbert=model_sbert, attr_to_idx=attr_to_idx, device=device )
+            hr10, ndcg10 = evaluate_llm_chgnn( model=model, dataset=eval_dataset, embedding_lookup=embedding_lookup, attr_to_idx=attr_to_idx, device=device )
 
             logger.info(
                 f"LLM-CHGNN EPOCH {epoch+1} DONE | "
@@ -352,24 +554,5 @@ def train_llm_chgnn(train_dataset, eval_dataset=None):
     return os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "llm_chgnn_best.pt")
 
 
-def run_llm_chgnn(train_dataset, eval_dataset=None):
-    """
-    Compatibility wrapper for existing main.py.
-
-    Old behavior:
-        run_llm_chgnn(dataset) only evaluated zero-shot.
-
-    New behavior:
-        run_llm_chgnn(dataset) trains LLM-CHGNN with DDP/checkpointing.
-    """
-    return train_llm_chgnn(train_dataset, eval_dataset)
-
-if __name__ == "__main__":
-
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-
-    try:
-        eval_data = load_eval_dataset()
-        run_llm_chgnn(eval_data)
-    except Exception as e:
-        logger.exception(f"Error running LLM-CHGNN: {e}")
+def run_llm_chgnn(train_dataset, eval_dataset=None, embedding_lookup=None):
+    return train_llm_chgnn(train_dataset, eval_dataset, embedding_lookup)

@@ -64,6 +64,7 @@ class HypergraphConv(nn.Module):
     def __init__(self, in_features, out_features):
         super(HypergraphConv, self).__init__()
         self.W = nn.Linear(in_features, out_features)
+        self.self_loop = nn.Linear(in_features, out_features, bias=False)
 
     def forward(self, X, H):
         """
@@ -71,16 +72,33 @@ class HypergraphConv(nn.Module):
         H: (B, N, E) - Incidence matrix (N nodes, E hyperedges)
         """
         # 1. Tính bậc của Node (D_v) và bậc của Hyperedge (D_e)
-        D_v = torch.sum(H, dim=2) # (B, N)
-        D_e = torch.sum(H, dim=1) # (B, E)
+        D_v = torch.sum(H, dim=2).clamp(min=1.0) # (B, N)
+        D_e = torch.sum(H, dim=1).clamp(min=1.0) # (B, E)
         
         # 2. Chuẩn hóa ma trận H (D_v^-1/2 * H * D_e^-1 * H^T * D_v^-1/2)
         # Placeholder cho công thức chuẩn hóa siêu đồ thị (GCN-style)
         # Ở bản này ta dùng công thức đơn giản: H @ H.T @ X
-        
         # Message passing: Node -> Hyperedge -> Node
-        out = torch.bmm(H, torch.bmm(H.transpose(1, 2), X))
-        return F.relu(self.W(out))
+        
+        # Dv^-1/2 * X
+        X_norm = X * torch.pow(D_v, -0.5).unsqueeze(-1)
+
+        # H^T * Dv^-1/2 * X
+        edge_features = torch.bmm(H.transpose(1, 2), X_norm)
+
+        # De^-1 * H^T * Dv^-1/2 * X
+        edge_features = edge_features * torch.pow(D_e, -1.0).unsqueeze(-1)
+
+        # H * De^-1 * H^T * Dv^-1/2 * X
+        out = torch.bmm(H, edge_features)
+
+        # Dv^-1/2 * H * De^-1 * H^T * Dv^-1/2 * X
+        out = out * torch.pow(D_v, -0.5).unsqueeze(-1)
+
+        # Residual/self-loop để giữ thông tin gốc
+        out = self.W(out) + self.self_loop(X)
+
+        return F.relu(out)
 
 class LLM_CHGNN(nn.Module):
     def __init__(self, in_features=768, hidden_features=256, out_features=128):

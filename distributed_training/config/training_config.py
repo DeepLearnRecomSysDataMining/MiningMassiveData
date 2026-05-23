@@ -83,6 +83,18 @@ class TrainingConfigClass:
     @property
     def LOCAL_LLM_CHGNN_TRAIN(self):
         return os.path.join(self.LOCAL_DATA_DIR, "llm_chgnn_train_dataset")
+    
+    @property
+    def GCS_LLM_CHGNN_EMBEDDINGS(self):
+        return f"{self.GCS_OUTPUT_DIR}/llm_chgnn_embeddings"
+
+    @property
+    def LLM_CHGNN_EMBEDDINGS_PATH(self):
+        return os.path.join(self.LOCAL_DATA_DIR, "llm_chgnn_embeddings.npy")
+
+    @property
+    def LLM_CHGNN_INDEX_PATH(self):
+        return os.path.join(self.LOCAL_DATA_DIR, "llm_chgnn_index.pkl")
 
     # --- 4. Tham số Distributed (Dành cho 4 GPU) ---
     @property
@@ -126,7 +138,7 @@ class TrainingConfigClass:
 
     @property
     def DATA_FRACTION(self):
-        return float(self._get_env_or_default("DATA_FRACTION", "1"))
+        return float(self._get_env_or_default("DATA_FRACTION", "0.125"))
 
     @property
     def LLM_CHGNN_MAX_ATTRS(self):
