@@ -34,7 +34,7 @@ def main():
             interactions_path=PathConfig.INTERACTIONS_OUT,
             item_nodes_path=PathConfig.ITEM_NODES_OUT,
             output_path=PathConfig.LLM_CHGNN_TRAIN_OUT,
-            negatives_per_query=20,
+            negatives_per_query=10,
         )
 
         elapsed = time.time() - t_start
