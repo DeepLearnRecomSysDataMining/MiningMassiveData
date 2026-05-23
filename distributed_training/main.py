@@ -10,7 +10,8 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from config.training_config import TrainingConfig, setup_logging
 from src.gcs_manager import download_training_data, upload_model_checkpoint
-from src.data_utils import load_eval_dataset, load_interactions_df, load_precomputed_embeddings, load_llm_chgnn_train_dataset
+from src.data_utils import load_eval_dataset, load_interactions_df, load_precomputed_embeddings, load_llm_chgnn_train_dataset, load_llm_chgnn_embeddings
+from src.precompute_llm_chgnn_embeddings import precompute_llm_chgnn_embeddings
 
 # Import các baseline
 from src.baselines.bm25_ranker import run_bm25
@@ -77,10 +78,9 @@ def run_pipeline(baseline_id):
                 logger.info("!!! KHÔNG TÌM THẤY EMBEDDINGS LOCAL. ĐANG KÍCH HOẠT PRECOMPUTE...")
             
             # Chạy Precompute (Sử dụng 4 GPU - Tự động Resume và Gộp file)
-            precompute_item_embeddings()
-            
             # Sau khi xong, tất cả các Rank sẽ tự động đồng bộ qua barrier nội bộ của hàm trên
             # Dữ liệu lúc này đã sẵn sàng ở LOCAL_DATA_DIR cho các bước tiếp theo
+            precompute_item_embeddings()
         
         # 2. Nạp dữ liệu Vector (Memory-Mapped)
         embedding_lookup = load_precomputed_embeddings()
@@ -97,12 +97,25 @@ def run_pipeline(baseline_id):
         eval_dataset = load_eval_dataset()
         run_hybrid(eval_dataset)
         metrics_path = os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "hybrid_metrics.csv")
-        
+
     elif baseline_id == 6:
+        emb_path = TrainingConfig.LLM_CHGNN_EMBEDDINGS_PATH
+        idx_path = TrainingConfig.LLM_CHGNN_INDEX_PATH
+
+        if not os.path.exists(emb_path) or not os.path.exists(idx_path):
+            if TrainingConfig.RANK == 0:
+                logger.info("!!! KHÔNG TÌM THẤY LLM-CHGNN EMBEDDINGS LOCAL. ĐANG PRECOMPUTE...")
+            precompute_llm_chgnn_embeddings()
+
+        embedding_lookup = load_llm_chgnn_embeddings()
         train_dataset = load_llm_chgnn_train_dataset()
         eval_dataset = load_eval_dataset()
-        ckpt_path = run_llm_chgnn(train_dataset, eval_dataset)
-        metrics_path = os.path.join(TrainingConfig.LOCAL_MODELS_DIR, "llm_chgnn_metrics.csv")
+
+        ckpt_path = run_llm_chgnn(train_dataset, eval_dataset, embedding_lookup)
+        metrics_path = os.path.join(
+            TrainingConfig.LOCAL_MODELS_DIR,
+            "llm_chgnn_metrics.csv"
+        )
 
     if TrainingConfig.RANK == 0 and ckpt_path and os.path.exists(ckpt_path):
         try:

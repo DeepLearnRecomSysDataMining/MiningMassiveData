@@ -4,8 +4,9 @@ import numpy as np
 import logging
 import os
 import pyarrow.parquet as pq
-from config.training_config import TrainingConfig
 import gcsfs
+from torch.utils.data import IterableDataset, get_worker_info
+from config.training_config import TrainingConfig
 
 logger = logging.getLogger("data_utils")
 
@@ -151,38 +152,51 @@ def load_interactions_df():
         "product_id": product_all
     }
 
+class LLMCHGNNEmbeddingLookup:
+    def __init__(self, embeddings_npy, id_to_idx):
+        self.embeddings = embeddings_npy
+        self.id_to_idx = id_to_idx
+        self.dim = embeddings_npy.shape[1]
 
-# def load_llm_chgnn_train_dataset():
+    def get_embedding(self, item_id):
+        idx = self.id_to_idx.get(item_id)
+        if idx is None:
+            return np.zeros(self.dim, dtype=np.float32)
+        return self.embeddings[idx]
 
-#     path = TrainingConfig.GCS_LLM_CHGNN_TRAIN if TrainingConfig.IS_CLOUD else "data/llm_chgnn_train_dataset"
-#     fs = gcsfs.GCSFileSystem() if TrainingConfig.IS_CLOUD else None
-#     arrow_path = path.replace("gs://", "") if TrainingConfig.IS_CLOUD else path
 
-#     dataset = pq.ParquetDataset(arrow_path, filesystem=fs)
-#     fragments = list(dataset.fragments)
+def load_llm_chgnn_embeddings():
+    import subprocess
 
-#     rank = TrainingConfig.RANK
-#     world_size = TrainingConfig.WORLD_SIZE
+    local_npy = TrainingConfig.LLM_CHGNN_EMBEDDINGS_PATH
+    local_pkl = TrainingConfig.LLM_CHGNN_INDEX_PATH
 
-#     if world_size > 1:
-#         fragments = fragments[rank::world_size]
+    if TrainingConfig.IS_CLOUD:
+        gcs_dir = TrainingConfig.GCS_LLM_CHGNN_EMBEDDINGS
 
-#     records = []
-#     cols = [ "query_asin", "query_text", "query_specs", "query_category", "candidate_ids", "candidate_texts", "candidate_specs", "candidate_categories", "true_vn_id", ]
+        if not os.path.exists(local_npy):
+            subprocess.run(
+                ["gsutil", "cp", f"{gcs_dir}/llm_chgnn_embeddings.npy", local_npy],
+                check=True
+            )
 
-#     for i, frag in enumerate(fragments):
-#         table = frag.to_table(columns=cols)
-#         records.extend(table.to_pylist())
-#         del table
+        if not os.path.exists(local_pkl):
+            subprocess.run(
+                ["gsutil", "cp", f"{gcs_dir}/llm_chgnn_index.pkl", local_pkl],
+                check=True
+            )
 
-#         logger.info(
-#             f"Rank {rank}: loaded LLM-CHGNN fragment "
-#             f"{i+1}/{len(fragments)} | records={len(records):,}"
-#         )
+    if not os.path.exists(local_npy) or not os.path.exists(local_pkl):
+        raise FileNotFoundError("Missing LLM-CHGNN precomputed embeddings.")
 
-#     return records
+    with open(local_pkl, "rb") as f:
+        id_to_idx = pickle.load(f)
 
-class LLMCHGNNParquetDataset:
+    embeddings = np.load(local_npy, mmap_mode="r")
+
+    return LLMCHGNNEmbeddingLookup(embeddings, id_to_idx)
+
+class LLMCHGNNParquetDataset(IterableDataset):
     """
     Iterable-like dataset đọc Parquet theo fragment, tránh load toàn bộ RAM.
     Mỗi rank chỉ đọc fragment của rank đó.
@@ -205,7 +219,12 @@ class LLMCHGNNParquetDataset:
                       "true_vn_id" ]
 
     def __iter__(self):
-        for i, frag in enumerate(self.fragments):
+        fragments = self.fragments
+
+        worker_info = get_worker_info()
+        if worker_info is not None:
+            fragments = fragments[worker_info.id::worker_info.num_workers]
+        for i, frag in enumerate(fragments):
             table = frag.to_table(columns=self.cols)
             rows = table.to_pylist()
 
