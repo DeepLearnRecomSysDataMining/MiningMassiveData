@@ -69,7 +69,6 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
         )
         .filter(F.col("vn_product_id").isNotNull())
         .filter(F.col("vn_product_id") != "")
-        # .dropDuplicates(["vn_product_id"])
     )
 
     logger.info("Building exact positive pairs...")
@@ -77,7 +76,6 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
     df_pos_exact = (
         df_inter
         .join(df_amz, df_inter["asin"] == df_amz["query_asin"], "inner")
-        # .join(df_vn, df_inter["product_id"] == df_vn["vn_product_id"], "inner")
         .join(F.broadcast(df_vn), df_inter["product_id"] == df_vn["vn_product_id"], "inner")
         .select(
             "query_asin", "query_text", "query_specs", "query_category",
@@ -86,14 +84,13 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
             F.col("candidate_specs").alias("positive_specs"),
             F.col("candidate_category").alias("positive_category")
         )
-        # .dropDuplicates(["query_asin", "positive_product_id"])
         .withColumn("source_type", F.lit("exact"))
     )
 
     logger.info("Building pseudo positive pairs from same-category Amazon-VN items...")
 
-    pseudo_amz_per_category = 50  # Sau khi chạy ổn mới tăng dần lên 100, 200
-    pseudo_per_vn = 5             # Sau khi ổn mới tăng dần lên 10, 20
+    pseudo_amz_per_category = 400  # Sau khi chạy ổn mới tăng dần lên 100, 200
+    pseudo_per_vn = 40             # Sau khi ổn mới tăng dần lên 10, 20
 
     w_amz_cat = Window.partitionBy("query_category").orderBy(F.rand(seed=123))
 
