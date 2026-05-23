@@ -30,7 +30,9 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
                             F.trim(F.col("product_id")).alias("product_id")
                          )
                         .dropna()
-                        .dropDuplicates(["asin", "product_id"]))
+                        .filter(F.col("asin") != "")
+                        .filter(F.col("product_id") != "")
+                )
 
     logger.info("Loading item_nodes...")
 
@@ -75,7 +77,8 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
     df_pos_exact = (
         df_inter
         .join(df_amz, df_inter["asin"] == df_amz["query_asin"], "inner")
-        .join(df_vn, df_inter["product_id"] == df_vn["vn_product_id"], "inner")
+        # .join(df_vn, df_inter["product_id"] == df_vn["vn_product_id"], "inner")
+        .join(F.broadcast(df_vn), df_inter["product_id"] == df_vn["vn_product_id"], "inner")
         .select(
             "query_asin", "query_text", "query_specs", "query_category",
             F.col("vn_product_id").alias("positive_product_id"),
@@ -89,8 +92,8 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
 
     logger.info("Building pseudo positive pairs from same-category Amazon-VN items...")
 
-    pseudo_amz_per_category = 50
-    pseudo_per_vn = 5
+    pseudo_amz_per_category = 50  # Sau khi chạy ổn mới tăng dần lên 100, 200
+    pseudo_per_vn = 5             # Sau khi ổn mới tăng dần lên 10, 20
 
     w_amz_cat = Window.partitionBy("query_category").orderBy(F.rand(seed=123))
 
@@ -158,7 +161,7 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
     df_vn_hard_pool = (
         df_vn
         .withColumn("rn", F.row_number().over(w_cat))
-        .filter(F.col("rn") <= 50)      # Hard pool: tối đa 50 item/category
+        .filter(F.col("rn") <= 50)      # Hard pool: tối đa 50 item/category sau đó tăng dần lên 100, 200
         .drop("rn")
     )
 
@@ -166,7 +169,7 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
     df_vn_easy_pool = (
         df_vn
         .orderBy(F.rand(seed=42))
-        .limit(500)
+        .limit(500)                    # Sau khi chạy ổn định sẽ tăng dần lên 1000, 2000
     )
 
     logger.info("Generating hard negatives...")
@@ -189,26 +192,29 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
         .withColumn("priority", F.lit(1))
     )
 
-    logger.info("Generating easy negatives...")
-    df_neg_easy = (
-        df_pos_keys
-        .join(
-            F.broadcast(df_vn_easy_pool),
-            df_pos_keys["positive_product_id"] != df_vn_easy_pool["vn_product_id"],
-            "inner",
-        )
-        .select(
-            "pair_id",
-            F.col("vn_product_id").alias("neg_id"),
-            F.col("candidate_text").alias("neg_text"),
-            F.col("candidate_specs").alias("neg_specs"),
-            F.col("candidate_category").alias("neg_category"),
-        )
-        .withColumn("priority", F.lit(0))
-    )
+    # logger.info("Generating easy negatives...")
+    # df_neg_easy = (
+    #     df_pos_keys
+    #     .join(
+    #         F.broadcast(df_vn_easy_pool),
+    #         df_pos_keys["positive_product_id"] != df_vn_easy_pool["vn_product_id"],
+    #         "inner",
+    #     )
+    #     .select(
+    #         "pair_id",
+    #         F.col("vn_product_id").alias("neg_id"),
+    #         F.col("candidate_text").alias("neg_text"),
+    #         F.col("candidate_specs").alias("neg_specs"),
+    #         F.col("candidate_category").alias("neg_category"),
+    #     )
+    #     .withColumn("priority", F.lit(0))
+    # )
+
+    # logger.info("Ranking negatives...")
+    # df_neg_all = df_neg_hard.unionByName(df_neg_easy)
 
     logger.info("Ranking negatives...")
-    df_neg_all = df_neg_hard.unionByName(df_neg_easy)
+    df_neg_all = df_neg_hard
 
     w_neg = Window.partitionBy("pair_id").orderBy(
         F.col("priority").desc(),
