@@ -5,6 +5,8 @@ import logging
 from config.spark_config import create_spark_session, PathConfig
 from src.prepare_llm_chgnn_train_dataset_v2 import run_prepare_llm_chgnn_train_dataset
 from src.debug_utils import log_spark_configs
+from src.prepare_llm_chgnn_specs_v2 import run_prepare_llm_chgnn_specs
+import subprocess
 
 logging.basicConfig(
     level=logging.INFO,
@@ -14,6 +16,12 @@ logging.basicConfig(
 
 logger = logging.getLogger("main_llm_chgnn")
 
+def gcs_path_exists(path: str) -> bool:
+    result = subprocess.run(
+        ["gsutil", "-q", "stat", f"{path.rstrip('/')}/_SUCCESS"],
+        capture_output=True
+    )
+    return result.returncode == 0
 
 def main():
 
@@ -29,10 +37,24 @@ def main():
     log_spark_configs(spark)
 
     try:
+        if gcs_path_exists(PathConfig.LLM_CHGNN_ITEM_SPECS_OUT):
+            logger.info(
+                f"LLM-CHGNN item specs already exists. Skip rebuild: "
+                f"{PathConfig.LLM_CHGNN_ITEM_SPECS_OUT}"
+            )
+        else:
+            n_specs = run_prepare_llm_chgnn_specs(
+                spark=spark,
+                raw_data_dir=PathConfig.RAW_DATA_DIR,
+                output_path=PathConfig.LLM_CHGNN_ITEM_SPECS_OUT,
+            )
+            logger.info(f"LLM-CHGNN specs rows: {n_specs:,}")
+            
         n_rows = run_prepare_llm_chgnn_train_dataset(
             spark=spark,
             interactions_path=PathConfig.INTERACTIONS_OUT,
             item_nodes_path=PathConfig.ITEM_NODES_OUT,
+            specs_path=PathConfig.LLM_CHGNN_ITEM_SPECS_OUT,
             output_path=PathConfig.LLM_CHGNN_TRAIN_OUT,
             negatives_per_query=20,
         )

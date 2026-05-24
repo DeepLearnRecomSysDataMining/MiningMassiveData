@@ -202,62 +202,6 @@ def collate_graph_records(batch):
     return batch
 
 
-# def encode_graph_record(data, model_sbert, attr_to_idx, device):
-#     """
-#     Encode one query-candidate graph.
-
-#     Returns:
-#         X: (1, N, 768)
-#         H: (1, N, E)
-#         target_idx: index among candidates, or None
-#     """
-#     q_text = str(data.get("query_text", "") or "")
-
-#     candidate_texts = data.get("candidate_texts", []) or []
-#     candidate_texts = [str(x or "") for x in candidate_texts]
-
-#     candidate_ids = data.get("candidate_ids", []) or []
-#     candidate_ids = [str(x) for x in candidate_ids]
-
-#     true_vn_id = str(data.get("true_vn_id", ""))
-
-#     if not candidate_ids or not candidate_texts:
-#         return None, None, None
-
-#     # Cắt về cùng độ dài nếu dữ liệu có vấn đề nhẹ
-#     n = min(len(candidate_ids), len(candidate_texts))
-#     candidate_ids = candidate_ids[:n]
-#     candidate_texts = candidate_texts[:n]
-
-#     if true_vn_id not in candidate_ids:
-#         return None, None, None
-
-#     target_idx = candidate_ids.index(true_vn_id)
-
-#     q_emb = model_sbert.encode(q_text, convert_to_tensor=True, device=device)
-#     c_embs = model_sbert.encode(candidate_texts, convert_to_tensor=True, device=device)
-
-#     X = torch.cat([q_emb.unsqueeze(0), c_embs], dim=0).unsqueeze(0).to(device)
-
-#     # candidate_specs = data.get("candidate_specs", []) or []
-#     # candidate_specs = candidate_specs[:n]
-
-#     # item_specs_list = [data.get("query_specs", {}) or {}] + candidate_specs
-#     # H = build_incidence_matrix(item_specs_list, attr_to_idx, device).unsqueeze(0)
-#     candidate_specs = data.get("candidate_specs", []) or []
-#     candidate_specs = list(candidate_specs[:n])
-
-#     if len(candidate_specs) < n:
-#         candidate_specs.extend([{} for _ in range(n - len(candidate_specs))])
-
-#     item_specs_list = [data.get("query_specs", {}) or {}] + candidate_specs
-#     H = build_incidence_matrix(item_specs_list, attr_to_idx, device).unsqueeze(0)
-
-#     if H.size(1) != X.size(1):
-#         return None, None, None
-
-#     return X, H, target_idx
-
 def encode_graph_record(data, embedding_lookup, attr_to_idx, device):
     query_asin = ( data.get("query_asin") or data.get("query_id") or data.get("asin") )
 
@@ -373,8 +317,6 @@ def train_llm_chgnn(train_dataset, eval_dataset=None, embedding_lookup=None):
     eval_dataset = list(eval_dataset)
 
     max_attrs = TrainingConfig.LLM_CHGNN_MAX_ATTRS
-    # attr_vocab = build_attr_vocab(train_dataset, max_attrs=max_attrs)
-    # attr_to_idx = {attr: i for i, attr in enumerate(attr_vocab)}
     attr_vocab = load_or_build_train_attr_vocab(max_attrs=max_attrs)
     attr_to_idx = {attr: i for i, attr in enumerate(attr_vocab)}
 
@@ -385,7 +327,7 @@ def train_llm_chgnn(train_dataset, eval_dataset=None, embedding_lookup=None):
     graph_batch_size = TrainingConfig.LLM_CHGNN_BATCH_SIZE
     loader = DataLoader( train_dataset, batch_size=graph_batch_size, shuffle=False, num_workers=1, 
                         pin_memory=True, drop_last=True, collate_fn=collate_graph_records, 
-                        persistent_workers=True)
+                        persistent_workers=True, prefetch_factor=2 )
 
     # model_sbert = SentenceTransformer("paraphrase-multilingual-mpnet-base-v2", device=device)
     model = LLM_CHGNN(in_features=768).to(device)
