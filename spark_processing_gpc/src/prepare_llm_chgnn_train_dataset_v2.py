@@ -53,7 +53,7 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
             .otherwise(F.concat(F.lit("vn_"), F.col("product_id")))
         )
         .drop("parsed_specs")
-        .join(F.broadcast(df_specs), "embedding_id", "left")
+        .join(df_specs, "embedding_id", "left")
         .drop("embedding_id")
     )
 
