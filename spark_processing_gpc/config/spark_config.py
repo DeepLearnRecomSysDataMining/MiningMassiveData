@@ -42,6 +42,13 @@ class PathConfig:
             self.OUTPUT_BASE,
             "llm_chgnn_train_dataset"
         )
+    
+    @property
+    def LLM_CHGNN_ITEM_SPECS_OUT(self):
+        return self._join_gcs(
+            self.OUTPUT_BASE,
+            "llm_chgnn_item_specs"
+        )
 
 # Khởi tạo instance
 PathConfig = PathConfig()

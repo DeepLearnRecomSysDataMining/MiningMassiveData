@@ -198,39 +198,81 @@ def load_llm_chgnn_embeddings():
 
 class LLMCHGNNParquetDataset(IterableDataset):
     """
-    Iterable-like dataset đọc Parquet theo fragment, tránh load toàn bộ RAM.
-    Mỗi rank chỉ đọc fragment của rank đó.
+    Dataset đọc Parquet streaming cho LLM-CHGNN.
+    Fork-safe với DataLoader(num_workers=1):
+    - __init__ chỉ lưu path string
+    - __iter__ mới tạo gcsfs/pyarrow trong worker process
     """
     def __init__(self):
-        path = ( TrainingConfig.GCS_LLM_CHGNN_TRAIN if TrainingConfig.IS_CLOUD else "data/llm_chgnn_train_dataset" )
+        path = (
+            TrainingConfig.GCS_LLM_CHGNN_TRAIN
+            if TrainingConfig.IS_CLOUD
+            else "data/llm_chgnn_train_dataset"
+        )
 
-        fs = gcsfs.GCSFileSystem() if TrainingConfig.IS_CLOUD else None
-        arrow_path = path.replace("gs://", "") if TrainingConfig.IS_CLOUD else path
+        self.path = path
+        self.is_cloud = TrainingConfig.IS_CLOUD
+        self.cols = [
+            "query_asin",
+            "query_text",
+            "query_specs",
+            "query_category",
+            "candidate_ids",
+            "candidate_texts",
+            "candidate_specs",
+            "candidate_categories",
+            "true_vn_id",
+        ]
 
-        dataset = pq.ParquetDataset(arrow_path, filesystem=fs)
-        fragments = list(dataset.fragments)
+        # Chỉ list file path string, không giữ fs/dataset/fragment object.
+        if self.is_cloud:
+            fs = gcsfs.GCSFileSystem()
+            raw_path = path.replace("gs://", "")
+            files = sorted([f"gs://{f}" for f in fs.ls(raw_path) if f.endswith(".parquet")])
+        else:
+            import glob
+            files = sorted(glob.glob(os.path.join(path, "*.parquet")))
 
         rank = TrainingConfig.RANK
         world_size = TrainingConfig.WORLD_SIZE
 
-        self.fragments = fragments[rank::world_size] if world_size > 1 else fragments
-        self.cols = [ "query_asin", "query_text", "query_specs", "query_category", 
-                      "candidate_ids", "candidate_texts", "candidate_specs", "candidate_categories",
-                      "true_vn_id" ]
+        self.files = files[rank::world_size] if world_size > 1 else files
+
+        # Tính length bằng metadata, nhưng không giữ filesystem object.
+        self._length = 0
+        for f in self.files:
+            try:
+                fs = gcsfs.GCSFileSystem() if self.is_cloud else None
+                table_path = f.replace("gs://", "") if self.is_cloud else f
+                pf = pq.ParquetFile(table_path, filesystem=fs)
+                self._length += pf.metadata.num_rows
+            except Exception:
+                pass
 
     def __iter__(self):
-        fragments = self.fragments
+        files = self.files
 
         worker_info = get_worker_info()
         if worker_info is not None:
-            fragments = fragments[worker_info.id::worker_info.num_workers]
-        for i, frag in enumerate(fragments):
-            table = frag.to_table(columns=self.cols)
+            files = files[worker_info.id::worker_info.num_workers]
+
+        # Tạo filesystem riêng trong worker process để tránh lỗi fork-safe.
+        fs = gcsfs.GCSFileSystem() if self.is_cloud else None
+
+        for i, file_path in enumerate(files):
+            arrow_path = file_path.replace("gs://", "") if self.is_cloud else file_path
+
+            table = pq.read_table(
+                arrow_path,
+                columns=self.cols,
+                filesystem=fs
+            )
+
             rows = table.to_pylist()
 
             logger.info(
-                f"Rank {TrainingConfig.RANK}: streaming LLM-CHGNN fragment "
-                f"{i+1}/{len(self.fragments)} | rows={len(rows):,}"
+                f"Rank {TrainingConfig.RANK}: streaming LLM-CHGNN file "
+                f"{i+1}/{len(files)} | rows={len(rows):,} | file={os.path.basename(file_path)}"
             )
 
             for row in rows:
@@ -239,11 +281,7 @@ class LLMCHGNNParquetDataset(IterableDataset):
             del table, rows
 
     def __len__(self):
-        total = 0
-        for frag in self.fragments:
-            total += frag.metadata.num_rows
-        return total
-
+        return self._length
 
 def load_llm_chgnn_train_dataset():
     return LLMCHGNNParquetDataset()

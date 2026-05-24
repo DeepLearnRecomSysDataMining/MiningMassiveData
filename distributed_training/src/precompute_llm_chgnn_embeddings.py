@@ -145,7 +145,9 @@ def merge_llm_chgnn_embedding_chunks():
 
     npy_files = sorted([
         f for f in os.listdir(local_dir)
-        if f.startswith("llm_chgnn_") and f.endswith(".npy")
+        if f.startswith("llm_chgnn_")
+        and f.endswith(".npy")
+        and f != "llm_chgnn_embeddings.npy"
     ])
 
     seen = set()
@@ -270,7 +272,13 @@ def precompute_llm_chgnn_embeddings():
     cols = ["query_asin", "query_text", "candidate_ids", "candidate_texts"]
 
     for frag_idx, frag in enumerate(my_fragments):
-        chunk_name = f"llm_chgnn_train_rank{rank}_frag{frag_idx}"
+        frag_path = getattr(frag, "path", None)
+
+        if frag_path:
+            chunk_name = os.path.basename(frag_path).replace(".parquet", "")
+        else:
+            chunk_name = f"part_rank{rank}_frag{frag_idx}"
+        chunk_name = f"llm_chgnn_{chunk_name}"
         done_flag = f"{gcs_out}/chunks/{chunk_name}_done.txt"
 
         if check_gcs_file_exists(done_flag):

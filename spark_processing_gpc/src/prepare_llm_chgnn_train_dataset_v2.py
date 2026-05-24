@@ -6,7 +6,7 @@ from pyspark.storagelevel import StorageLevel
 logger = logging.getLogger("prepare_llm_chgnn_train_dataset")
 
 
-def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_path, output_path, negatives_per_query=20 ):
+def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_path, specs_path, output_path, negatives_per_query=20 ):
     """
     Tạo dataset train cho LLM-CHGNN:
 
@@ -40,6 +40,22 @@ def run_prepare_llm_chgnn_train_dataset( spark, interactions_path, item_nodes_pa
                         .select( "product_id", "asin", "full_text", "parsed_specs", "category", "domain")
                         .filter(F.col("full_text").isNotNull())
                         .filter(F.col("full_text") != ""))
+    
+    logger.info("Loading LLM-CHGNN item specs...")
+
+    df_specs = ( spark.read.parquet(specs_path).select("embedding_id", "parsed_specs"))
+
+    df_items = (
+        df_items
+        .withColumn(
+            "embedding_id",
+            F.when(F.col("domain") == "amazon", F.concat(F.lit("amz_"), F.col("asin")))
+            .otherwise(F.concat(F.lit("vn_"), F.col("product_id")))
+        )
+        .drop("parsed_specs")
+        .join(F.broadcast(df_specs), "embedding_id", "left")
+        .drop("embedding_id")
+    )
 
     # =========================
     # AMAZON QUERY ITEMS
