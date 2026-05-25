@@ -138,7 +138,7 @@ class TrainingConfigClass:
 
     @property
     def DATA_FRACTION(self):
-        return float(self._get_env_or_default("DATA_FRACTION", "0.125"))
+        return float(self._get_env_or_default("DATA_FRACTION", "1"))
 
     @property
     def LLM_CHGNN_MAX_ATTRS(self):
