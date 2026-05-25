@@ -5,6 +5,7 @@ import pickle
 import logging
 import subprocess
 from datetime import timedelta
+import hashlib
 
 import numpy as np
 import torch.distributed as dist
@@ -17,20 +18,29 @@ from src.data_utils import load_eval_dataset
 
 logger = logging.getLogger("precompute_llm_chgnn")
 
+def make_context_key(prefix, item_id, text):
+    item_id = str(item_id or "").strip()
+    text = str(text or "").strip()
+
+    if not item_id or not text:
+        return None
+
+    h = hashlib.md5(text.encode("utf-8")).hexdigest()[:12]
+    return f"{prefix}_{item_id}_{h}"
 
 def check_gcs_file_exists(gcs_path: str) -> bool:
     result = subprocess.run(["gsutil", "-q", "stat", gcs_path], capture_output=True)
     return result.returncode == 0
 
 
-def _key_amz(x):
-    x = str(x or "").strip()
-    return f"amz_{x}" if x else None
+# def _key_amz(x):
+#     x = str(x or "").strip()
+#     return f"amz_{x}" if x else None
 
 
-def _key_vn(x):
-    x = str(x or "").strip()
-    return f"vn_{x}" if x else None
+# def _key_vn(x):
+#     x = str(x or "").strip()
+#     return f"vn_{x}" if x else None
 
 
 def _collect_train_pairs_from_batch(record_batch):
@@ -43,7 +53,8 @@ def _collect_train_pairs_from_batch(record_batch):
     for row in record_batch.to_pylist():
         query_asin = row.get("query_asin") or row.get("query_id")
         query_text = row.get("query_text") or ""
-        q_key = _key_amz(query_asin)
+        # q_key = _key_amz(query_asin)
+        q_key = make_context_key("amz", query_asin, query_text)
 
         if q_key and query_text:
             pairs.append((q_key, str(query_text)))
@@ -54,7 +65,8 @@ def _collect_train_pairs_from_batch(record_batch):
         n = min(len(candidate_ids), len(candidate_texts))
 
         for cid, ctext in zip(candidate_ids[:n], candidate_texts[:n]):
-            c_key = _key_vn(cid)
+            # c_key = _key_vn(cid)
+            c_key = make_context_key("vn", cid, ctext)
             if c_key and ctext:
                 pairs.append((c_key, str(ctext)))
 
@@ -71,7 +83,8 @@ def _collect_eval_pairs(eval_dataset):
             or row.get("asin")
         )
         query_text = row.get("query_text") or ""
-        q_key = _key_amz(query_asin)
+        # q_key = _key_amz(query_asin)
+        q_key = make_context_key("amz", query_asin, query_text)
 
         if q_key and query_text:
             pairs.append((q_key, str(query_text)))
@@ -82,7 +95,8 @@ def _collect_eval_pairs(eval_dataset):
         n = min(len(candidate_ids), len(candidate_texts))
 
         for cid, ctext in zip(candidate_ids[:n], candidate_texts[:n]):
-            c_key = _key_vn(cid)
+            # c_key = _key_vn(cid)
+            c_key = make_context_key("vn", cid, ctext)
             if c_key and ctext:
                 pairs.append((c_key, str(ctext)))
 

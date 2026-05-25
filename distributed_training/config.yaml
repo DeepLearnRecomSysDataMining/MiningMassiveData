@@ -15,4 +15,4 @@ workerPoolSpecs:
           value: "gs://__BUCKET__"
 
 scheduling:
-  strategy: "SPOT"
+  strategy: "STANDARD"
