@@ -171,19 +171,22 @@ def train_dssm(interactions_df, embedding_lookup):
         if torch.distributed.is_initialized():
             torch.distributed.barrier()
 
+        loss_tensor = torch.tensor([total_loss, total_batches], dtype=torch.float32, device=device)
+        if torch.distributed.is_initialized():
+            torch.distributed.all_reduce(loss_tensor, op=torch.distributed.ReduceOp.SUM)
+        global_avg_loss = (loss_tensor[0] / loss_tensor[1].clamp_min(1)).item()
+
         # Eval chỉ chạy trên Rank 0 để tránh NCCL timeout do các rank lệch nhịp khi encode text
         if TrainingConfig.RANK == 0:
             hr10, ndcg10 = evaluate_dssm( model, TrainingConfig.EVAL_PKL_PATH, text_encoder, device )
             logger.info(f"--- EPOCH {epoch+1} DONE | HR@10: {hr10:.4f} ---")
-            
-            avg_loss = total_loss / max(total_batches, 1)
 
             current_metrics = {
                 "baseline": "dssm",
                 "epoch": epoch + 1,
                 "hr10": hr10,
                 "ndcg10": ndcg10,
-                "loss": avg_loss,
+                "loss": global_avg_loss,
                 "data_fraction": getattr(TrainingConfig, "DATA_FRACTION", "")
             }
 
