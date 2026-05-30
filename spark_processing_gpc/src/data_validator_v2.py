@@ -1,8 +1,3 @@
-# ============================================================
-# src/data_validator_v2.py (OPTIMIZED VERSION)
-# Kiểm tra chất lượng dữ liệu với cơ chế Caching một lần duy nhất.
-# ============================================================
-
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 from pyspark import StorageLevel

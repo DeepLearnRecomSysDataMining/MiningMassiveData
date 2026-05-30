@@ -1,8 +1,3 @@
-# ============================================================
-# src/etl_interactions_v2.py (OPTIMIZED VERSION)
-# Standardizes Amazon and VN reviews into a common schema.
-# ============================================================
-
 import os
 import logging
 from pyspark.sql import SparkSession, DataFrame

@@ -1,8 +1,3 @@
-# ============================================================
-# src/etl_item_nodes_v2.py (OPTIMIZED VERSION)
-# Standardizes Amazon and VN metadata into a common schema.
-# ============================================================
-
 import os
 import json
 import logging
@@ -165,13 +160,6 @@ def run_etl_item_nodes(spark, data_dir, output_dir, file_groups: dict = None):
 
     # Lọc và Parse JSON Native
     map_schema = "MAP<STRING, STRING>"
-    # TỐI ƯU: Không dropDuplicates quá tay chỉ theo product_id (parent_asin) 
-    # vì sẽ làm mất các phiên bản con (asin) có thể khớp với VN.
-    # df_final = df_final.filter(col("product_id") != "").dropDuplicates(["product_id", "asin"]) \
-    #                    .withColumn("parsed_specs", 
-    #                        when(col("specs_text").startswith("{"), from_json(col("specs_text"), map_schema))
-    #                        .otherwise(None)
-    #                    ).drop("specs_text")
 
     df_final = df_final.filter(
         (col("product_id").isNotNull()) &

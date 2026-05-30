@@ -1,8 +1,3 @@
-# ============================================================
-# src/evaluation_dataset_v2.py (OPTIMIZED VERSION)
-# Native Spark implementation of Negative Mining (Ultra-Stable)
-# ============================================================
-
 import logging
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql import functions as F
