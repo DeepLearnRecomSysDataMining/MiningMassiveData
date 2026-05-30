@@ -1,9 +1,3 @@
-# ============================================================
-# src/schema_scanner.py
-# Giai đoạn 0 – Khảo sát schema và thống kê nhanh tất cả file
-# Chạy file này TRƯỚC để biết cấu trúc data_small
-# ============================================================
-
 import os
 import json
 import logging
