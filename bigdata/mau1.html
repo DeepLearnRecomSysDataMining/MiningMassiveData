@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Semantic Search & Recommendation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amazon: {
+                            light: '#232F3E',
+                            DEFAULT: '#131921',
+                            orange: '#F97316', // tailwind orange-500
+                            yellow: '#FEBD69'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Tùy chỉnh thanh cuộn */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .product-card { transition: transform 0.2s, box-shadow 0.2s; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); }
+        
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 min-h-screen flex flex-col">
+
+    <!-- Navbar Header -->
+    <header class="bg-amazon text-white sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2 cursor-pointer">
+                <i class="fa-brands fa-amazon text-3xl"></i>
+                <span class="text-xl font-bold tracking-tight">Semantic<span class="text-amazon-orange">Search</span></span>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="hidden md:flex flex-1 max-w-3xl mx-8 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fa-solid fa-language text-gray-400"></i>
+                </div>
+                <input type="text" id="searchInput" 
+                    class="w-full pl-10 pr-4 py-2 rounded-l-md text-black focus:outline-none focus:ring-2 focus:ring-amazon-orange" 
+                    placeholder="Nhập yêu cầu bằng tiếng Việt (VD: loa bass mạnh đi phượt, tai nghe không đau tai...)"
+                    onkeypress="handleKeyPress(event)">
+                <button onclick="performSearch()" class="bg-amazon-yellow hover:bg-yellow-500 text-black px-6 rounded-r-md transition-colors font-medium">
+                    <i class="fa-solid fa-magnifying-glass"></i> Tìm
+                </button>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <div class="text-sm cursor-pointer hidden sm:block">
+                    <p class="text-gray-300">Xin chào, Nhóm 3</p>
+                    <p class="font-bold">Đồ án Big Data</p>
+                </div>
+                <div class="relative cursor-pointer">
+                    <i class="fa-solid fa-cart-shopping text-2xl"></i>
+                    <span class="absolute -top-2 -right-2 bg-amazon-orange text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Search Bar -->
+        <div class="md:hidden px-4 pb-3 flex">
+            <input type="text" id="searchInputMobile" class="w-full pl-3 pr-4 py-2 rounded-l-md text-black focus:outline-none" placeholder="Tìm kiếm tiếng Việt...">
+            <button onclick="performSearch('mobile')" class="bg-amazon-yellow text-black px-4 rounded-r-md"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 flex-1 flex flex-col gap-8">
+        
+        <!-- Welcome / Instructions -->
+        <div id="welcomeSection" class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center max-w-3xl mx-auto mt-10">
+            <i class="fa-solid fa-database text-5xl text-amazon-orange mb-4"></i>
+            <h1 class="text-2xl font-bold mb-2">Hệ Thống Gợi Ý & Tìm Kiếm Xuyên Ngôn Ngữ</h1>
+            <p class="text-gray-600 mb-6">Mô phỏng kiến trúc tìm kiếm ngữ nghĩa trên tập dữ liệu Amazon Electronics (10GB). Hãy thử tìm kiếm bằng tiếng Việt tự nhiên!</p>
+            <div class="flex flex-wrap justify-center gap-2">
+                <button onclick="fillAndSearch('Loa bass mạnh đi phượt')" class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm text-gray-700 transition">"Loa bass mạnh đi phượt"</button>
+                <button onclick="fillAndSearch('Tai nghe không đau tai')" class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm text-gray-700 transition">"Tai nghe không đau tai"</button>
+                <button onclick="fillAndSearch('Đồng hồ đo nhịp tim thông minh')" class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm text-gray-700 transition">"Đồng hồ đo nhịp tim thông minh"</button>
+            </div>
+        </div>
+
+        <!-- Loading Spinner (Mô phỏng API / PySpark / FAISS latency) -->
+        <div id="loadingIndicator" class="hidden flex-col items-center justify-center py-20">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-amazon-orange mb-4"></div>
+            <p class="text-gray-600 animate-pulse">Đang quét FAISS Index trên hàng triệu vector...</p>
+        </div>
+
+        <!-- Search Results Section -->
+        <section id="searchResultsSection" class="hidden">
+            <div class="flex justify-between items-end mb-4 border-b pb-2">
+                <h2 class="text-2xl font-bold text-gray-800">Kết quả tìm kiếm cho: <span id="searchQueryDisplay" class="text-amazon-orange"></span></h2>
+                <span class="text-sm text-gray-500">Tìm thấy <span id="resultCount">0</span> sản phẩm (0.34s)</span>
+            </div>
+            
+            <div id="resultsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Product Cards sẽ được inject bằng JS -->
+            </div>
+        </section>
+
+        <!-- Recommendation Section (K-Means Output) -->
+        <section id="recommendationSection" class="hidden mt-8 bg-amazon-light text-white p-6 rounded-xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-4 opacity-10"><i class="fa-solid fa-project-diagram text-9xl"></i></div>
+            <div class="relative z-10">
+                <div class="flex items-center gap-3 mb-6">
+                    <i class="fa-solid fa-wand-magic-sparkles text-amazon-yellow text-2xl"></i>
+                    <h2 class="text-2xl font-bold">Gợi ý từ Hệ thống (Cùng Cụm - K-Means)</h2>
+                </div>
+                <p class="text-gray-300 mb-6 text-sm">Các sản phẩm dưới đây có vector ngữ nghĩa nằm trong cùng một Cluster (Cụm <span id="clusterIdDisplay" class="font-bold text-amazon-yellow"></span>) với sản phẩm bạn vừa chọn.</p>
+                
+                <div id="recommendationsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                    <!-- Recommendation Cards sẽ được inject bằng JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-amazon text-white py-6 mt-auto">
+        <div class="container mx-auto px-4 text-center text-sm text-gray-400">
+            <p>Dự án môn học: Mining Massive Datasets - Module: Recommendation & Frontend (Thành viên 3)</p>
+            <p class="mt-2">&copy; 2026 Amazon Semantic Search Simulation.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Data & Logic -->
+    <script>
+        // --- 1. MOCK DATA (Giả lập kết quả từ Backend API) ---
+        // Cluster 0: Portable Audio (Loa di động, bass mạnh)
+        // Cluster 1: Wearables (Smartwatch, đo nhịp tim)
+        // Cluster 2: Headphones (Tai nghe chống ồn, êm tai)
+        
+        const mockProducts = [
+            { id: 101, title: "JBL Charge 5 - Portable Bluetooth Speaker with IP67 Waterproof and USB Charge out", price: 149.95, rating: 4.8, reviews: 32104, cluster: 0, image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&q=80&w=400", tags: ["loa", "bass", "phượt", "chống nước"] },
+            { id: 102, title: "Marshall Emberton Portable Bluetooth Speaker, Black", price: 169.99, rating: 4.7, reviews: 15420, cluster: 0, image: "https://images.unsplash.com/photo-1589003071536-4114f6b5b542?auto=format&fit=crop&q=80&w=400", tags: ["loa", "bass", "cầm tay", "cổ điển"] },
+            { id: 103, title: "Sony SRS-XB33 EXTRA BASS Wireless Portable Speaker IP67", price: 128.00, rating: 4.6, reviews: 8932, cluster: 0, image: "https://images.unsplash.com/photo-1612282130134-297eb063b584?auto=format&fit=crop&q=80&w=400", tags: ["loa", "bass", "đèn led", "tiệc tùng"] },
+            { id: 104, title: "Bose SoundLink Micro Bluetooth Speaker: Small Portable Waterproof Speaker", price: 119.00, rating: 4.8, reviews: 45012, cluster: 0, image: "https://images.unsplash.com/photo-1593526613712-7b4b9a707330?auto=format&fit=crop&q=80&w=400", tags: ["loa", "nhỏ gọn", "phượt", "chống nước"] },
+            
+            { id: 201, title: "Apple Watch Series 8 [GPS 45mm] Smart Watch w/Midnight Aluminum Case", price: 399.00, rating: 4.9, reviews: 56782, cluster: 1, image: "https://images.unsplash.com/photo-1434493789847-2902a52dda8c?auto=format&fit=crop&q=80&w=400", tags: ["đồng hồ", "nhịp tim", "thông minh", "apple"] },
+            { id: 202, title: "Garmin Forerunner 245 Music, GPS Running Smartwatch", price: 284.50, rating: 4.7, reviews: 12341, cluster: 1, image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&q=80&w=400", tags: ["đồng hồ", "chạy bộ", "nhịp tim", "thể thao"] },
+            { id: 203, title: "Fitbit Charge 5 Advanced Fitness & Health Tracker with Built-in GPS", price: 149.95, rating: 4.5, reviews: 34512, cluster: 1, image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b0?auto=format&fit=crop&q=80&w=400", tags: ["vòng tay", "sức khỏe", "nhịp tim"] },
+            
+            { id: 301, title: "Sony WH-1000XM5 Wireless Industry Leading Noise Canceling Headphones", price: 398.00, rating: 4.6, reviews: 18902, cluster: 2, image: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&q=80&w=400", tags: ["tai nghe", "chống ồn", "đau tai", "chụp tai"] },
+            { id: 302, title: "Bose QuietComfort 45 Bluetooth Wireless Noise Cancelling Headphones", price: 329.00, rating: 4.8, reviews: 21045, cluster: 2, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=400", tags: ["tai nghe", "êm tai", "chống ồn", "không đau tai"] },
+            { id: 303, title: "Apple AirPods Pro (2nd Generation) Wireless Earbuds", price: 239.00, rating: 4.8, reviews: 89012, cluster: 2, image: "https://images.unsplash.com/photo-1606220838315-056192d5e92b?auto=format&fit=crop&q=80&w=400", tags: ["tai nghe", "nhét tai", "chống ồn", "nhỏ gọn"] }
+        ];
+
+        // --- 2. HÀM RENDER UI ---
+        
+        function generateStars(rating) {
+            let starsHtml = '';
+            const fullStars = Math.floor(rating);
+            const hasHalf = rating % 1 !== 0;
+            
+            for(let i=0; i<fullStars; i++) starsHtml += '<i class="fa-solid fa-star text-amazon-yellow text-sm"></i>';
+            if(hasHalf) starsHtml += '<i class="fa-solid fa-star-half-stroke text-amazon-yellow text-sm"></i>';
+            const emptyStars = 5 - Math.ceil(rating);
+            for(let i=0; i<emptyStars; i++) starsHtml += '<i class="fa-regular fa-star text-amazon-yellow text-sm"></i>';
+            
+            return starsHtml;
+        }
+
+        function createProductCard(product, isRecommendation = false) {
+            const btnClass = isRecommendation 
+                ? "w-full bg-white text-amazon hover:bg-gray-100 py-2 rounded font-medium mt-3 transition text-sm"
+                : "w-full bg-amazon-yellow hover:bg-yellow-500 text-black py-2 rounded font-medium mt-3 transition text-sm";
+            
+            const actionBtn = isRecommendation
+                ? `<button class="${btnClass}"><i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ</button>`
+                : `<button onclick="findSimilar(${product.id}, ${product.cluster})" class="${btnClass} border border-gray-300 shadow-sm"><i class="fa-solid fa-brain"></i> Tìm sản phẩm tương tự</button>`;
+
+            return `
+                <div class="product-card bg-white rounded-lg border border-gray-200 overflow-hidden flex flex-col h-full ${isRecommendation ? 'bg-opacity-10 text-white border-gray-600' : ''}">
+                    <div class="h-48 overflow-hidden bg-white flex items-center justify-center p-4">
+                        <img src="${product.image}" alt="Product" class="max-h-full object-contain mix-blend-multiply">
+                    </div>
+                    <div class="p-4 flex-1 flex flex-col">
+                        <h3 class="font-medium text-sm line-clamp-2 mb-2 ${isRecommendation ? 'text-white' : 'text-amazon-light'}" title="${product.title}">
+                            ${product.title}
+                        </h3>
+                        <div class="flex items-center gap-1 mb-1">
+                            ${generateStars(product.rating)}
+                            <span class="text-xs ${isRecommendation ? 'text-gray-300' : 'text-blue-600 hover:underline cursor-pointer'} ml-1">${product.reviews.toLocaleString()}</span>
+                        </div>
+                        <div class="text-xl font-bold mt-auto ${isRecommendation ? 'text-white' : 'text-gray-900'}">
+                            <span class="text-sm align-top">$</span>${Math.floor(product.price)}<span class="text-sm align-top">.${(product.price % 1).toFixed(2).substring(2)}</span>
+                        </div>
+                        ${actionBtn}
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- 3. LOGIC XỬ LÝ SỰ KIỆN ---
+
+        function fillAndSearch(query) {
+            document.getElementById('searchInput').value = query;
+            performSearch();
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') performSearch();
+        }
+
+        function performSearch(source = 'desktop') {
+            const inputId = source === 'mobile' ? 'searchInputMobile' : 'searchInput';
+            const query = document.getElementById(inputId).value.trim().toLowerCase();
+            
+            if (!query) return;
+
+            // Cập nhật UI
+            document.getElementById('welcomeSection').classList.add('hidden');
+            document.getElementById('searchResultsSection').classList.add('hidden');
+            document.getElementById('recommendationSection').classList.add('hidden');
+            document.getElementById('loadingIndicator').classList.remove('hidden');
+            document.getElementById('loadingIndicator').classList.add('flex');
+
+            // Giả lập gọi API và tìm kiếm Semantic (dựa vào tags)
+            setTimeout(() => {
+                const keywords = query.split(' ');
+                let results = mockProducts.filter(p => {
+                    // Logic tìm kiếm giả lập: Nếu query chứa bất kỳ tag nào của sản phẩm
+                    return p.tags.some(tag => query.includes(tag));
+                });
+
+                // Nếu không tìm thấy, random trả về vài sản phẩm (để demo không bị rỗng)
+                if (results.length === 0) {
+                    results = mockProducts.slice(0, 3);
+                }
+
+                displaySearchResults(query, results);
+            }, 800); // Trễ 800ms mô phỏng xử lý PySpark
+        }
+
+        function displaySearchResults(query, results) {
+            document.getElementById('loadingIndicator').classList.add('hidden');
+            document.getElementById('loadingIndicator').classList.remove('flex');
+            
+            const section = document.getElementById('searchResultsSection');
+            const grid = document.getElementById('resultsGrid');
+            
+            document.getElementById('searchQueryDisplay').textContent = `"${query}"`;
+            document.getElementById('resultCount').textContent = results.length;
+            
+            grid.innerHTML = results.map(p => createProductCard(p)).join('');
+            section.classList.remove('hidden');
+        }
+
+        // --- 4. LOGIC K-MEANS RECOMMENDATION ---
+        
+        function findSimilar(productId, clusterId) {
+            // Giả lập API trả về các sản phẩm cùng Cụm (Cluster)
+            const recommendations = mockProducts.filter(p => p.cluster === clusterId && p.id !== productId);
+            
+            document.getElementById('clusterIdDisplay').textContent = clusterId;
+            const recGrid = document.getElementById('recommendationsGrid');
+            
+            // Render thẻ sản phẩm (dùng style cho nền tối)
+            recGrid.innerHTML = recommendations.map(p => createProductCard(p, true)).join('');
+            
+            const recSection = document.getElementById('recommendationSection');
+            recSection.classList.remove('hidden');
+            
+            // Cuộn mượt xuống phần gợi ý
+            setTimeout(() => {
+                recSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+    </script>
+</body>
+</html>
